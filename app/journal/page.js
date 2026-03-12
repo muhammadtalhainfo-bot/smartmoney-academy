@@ -2,16 +2,21 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import AuthGuard from '@/app/components/AuthGuard';
-import { createClient } from '@/lib/supabase';
 
-// ─── Constants ───────────────────────────────────────────────────
 const PAIRS = ['EURUSD','GBPUSD','XAUUSD','NAS100','US30','USDJPY','GBPJPY','AUDUSD','USDCAD','BTCUSD','ETHUSD','SP500'];
 const SESSIONS = ['Asian','London','New York AM','New York PM','London Close','Overlap'];
 const ICT_CONCEPTS = ['FVG','Order Block','Liquidity Sweep','BOS','ChoCH','Breaker Block','Mitigation Block','Silver Bullet','AMD/Power of 3','NWOG','NDOG','SMT Divergence','OTE','Killzone Macro','Unicorn Model','2022 Model'];
 const MISTAKES = ['Early Entry','No HTF Confirmation','Wrong Session','Chased Price','Moved SL','Overleverage','Revenge Trade','FOMO Entry','Ignored Structure','No Setup — Random Entry','Exited Too Early','Held Too Long'];
 const EMOTIONS = ['Calm & Focused','Confident','Anxious','Impatient','Greedy','Fearful','Revenge Mode','Neutral','Overconfident','Hesitant'];
 const DAYS = ['Monday','Tuesday','Wednesday','Thursday','Friday'];
-const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const NAV = [['/', 'Home'],['/courses','Courses'],['/signals','Signals'],['/glossary','Glossary'],['/practice','Practice'],['/journal','Journal'],['/dashboard','Dashboard']];
+
+const emptyTrade = {
+  date: new Date().toISOString().split('T')[0],
+  pair: 'EURUSD', direction: 'Long', session: 'New York AM',
+  entry: '', sl: '', tp: '', rr: '', pnl: '', result: 'Win',
+  concepts: [], mistakes: [], emotion: 'Calm & Focused', notes: '',
+};
 
 const GRADE = (rr, win) => {
   if (!win) return { label: 'L', color: '#F87171', bg: 'rgba(248,113,113,0.1)' };
@@ -21,654 +26,378 @@ const GRADE = (rr, win) => {
   return { label: 'C', color: '#F59E0B', bg: 'rgba(245,158,11,0.08)' };
 };
 
-const emptyTrade = {
-  date: new Date().toISOString().split('T')[0],
-  pair: 'EURUSD', direction: 'Long', session: 'New York AM',
-  entry: '', sl: '', tp: '', rr: '', pnl: '', result: 'Win',
-  concepts: [], mistakes: [], emotion: 'Calm & Focused',
-  notes: '', screenshot: '', grade: 'A',
-};
-
-// ─── Micro components ─────────────────────────────────────────────
-const Tag = ({ label, active, onClick, color = '#D4A843' }) => (
-  <button onClick={onClick} className="px-3 py-1.5 rounded-lg text-xs transition-all font-mono" style={{
-    fontFamily: "'DM Mono', monospace",
-    background: active ? `rgba(${color === '#D4A843' ? '212,168,67' : '248,113,113'},0.15)` : '#141414',
-    border: `1px solid ${active ? color : 'rgba(255,255,255,0.06)'}`,
-    color: active ? color : 'rgba(255,255,255,0.65)',
-    letterSpacing: '0.05em',
-  }}>{label}</button>
-);
-
-const StatCard = ({ label, value, sub, icon, color = '#D4A843', big = false }) => (
-  <div style={{ background: '#0D0D0D', border: '1px solid rgba(212,168,67,0.08)', borderRadius: '16px', padding: '20px' }}>
-    <div style={{ fontSize: '20px', marginBottom: '10px' }}>{icon}</div>
-    <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: big ? '42px' : '32px', color, lineHeight: 1, marginBottom: '4px' }}>{value}</div>
-    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', color: 'rgba(255,255,255,0.25)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: sub ? '4px' : 0 }}>{label}</div>
-    {sub && <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', color: 'rgba(212,168,67,0.75)' }}>{sub}</div>}
-  </div>
-);
-
-// ─── Equity Curve ─────────────────────────────────────────────────
-function EquityCurve({ trades }) {
-  if (trades.length === 0) return (
-    <div style={{ height: '120px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <span style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', color: 'rgba(255,255,255,0.15)' }}>No trades yet</span>
-    </div>
-  );
-  let equity = 0;
-  const points = [0, ...trades.map(t => { equity += (t.result === 'Win' ? 1 : -1) * (parseFloat(t.rr) || 1); return equity; })];
-  const min = Math.min(...points); const max = Math.max(...points);
-  const range = max - min || 1;
-  const w = 600; const h = 120; const pad = 10;
-  const pts = points.map((p, i) => {
-    const x = pad + (i / (points.length - 1)) * (w - pad * 2);
-    const y = h - pad - ((p - min) / range) * (h - pad * 2);
-    return `${x},${y}`;
-  }).join(' ');
-  const isPositive = points[points.length - 1] >= 0;
+function MiniBar({ value, max, color }) {
+  const pct = max > 0 ? (value / max) * 100 : 0;
   return (
-    <svg viewBox={`0 0 ${w} ${h}`} style={{ width: '100%', height: '120px' }}>
-      <defs>
-        <linearGradient id="eq-grad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor={isPositive ? '#34D399' : '#F87171'} stopOpacity="0.3" />
-          <stop offset="100%" stopColor={isPositive ? '#34D399' : '#F87171'} stopOpacity="0" />
-        </linearGradient>
-      </defs>
-      <polyline points={pts} fill="none" stroke={isPositive ? '#34D399' : '#F87171'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <polygon points={`${pad},${h - pad} ${pts} ${w - pad},${h - pad}`} fill="url(#eq-grad)" />
-    </svg>
-  );
-}
-
-// ─── Calendar Heatmap ─────────────────────────────────────────────
-function CalendarHeatmap({ trades }) {
-  const byDate = {};
-  trades.forEach(t => {
-    if (!byDate[t.date]) byDate[t.date] = { wins: 0, losses: 0, rr: 0 };
-    byDate[t.date].wins += t.result === 'Win' ? 1 : 0;
-    byDate[t.date].losses += t.result === 'Loss' ? 1 : 0;
-    byDate[t.date].rr += parseFloat(t.rr) || 0;
-  });
-  const today = new Date();
-  const days = Array.from({ length: 35 }, (_, i) => {
-    const d = new Date(today); d.setDate(d.getDate() - 34 + i);
-    const key = d.toISOString().split('T')[0];
-    const data = byDate[key];
-    return { key, day: d.getDate(), data };
-  });
-  return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '4px' }}>
-      {['M','T','W','T','F','S','S'].map((d, i) => (
-        <div key={i} style={{ fontFamily: "'DM Mono', monospace", fontSize: '9px', color: 'rgba(255,255,255,0.45)', textAlign: 'center', paddingBottom: '4px' }}>{d}</div>
-      ))}
-      {days.map(({ key, day, data }) => {
-        let bg = 'rgba(255,255,255,0.03)';
-        if (data) bg = data.wins > data.losses ? 'rgba(52,211,153,0.3)' : data.losses > data.wins ? 'rgba(248,113,113,0.3)' : 'rgba(212,168,67,0.2)';
-        return (
-          <div key={key} title={data ? `${data.wins}W ${data.losses}L` : ''} style={{
-            background: bg, borderRadius: '4px', aspectRatio: '1',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontFamily: "'DM Mono', monospace", fontSize: '9px',
-            color: data ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.15)',
-            border: key === today.toISOString().split('T')[0] ? '1px solid #D4A843' : '1px solid transparent',
-            cursor: data ? 'pointer' : 'default',
-          }}>{day}</div>
-        );
-      })}
+    <div style={{ background: 'rgba(255,255,255,0.04)', borderRadius: '99px', height: '6px', overflow: 'hidden', flex: 1 }}>
+      <div style={{ width: `${pct}%`, height: '100%', background: `linear-gradient(90deg, ${color}88, ${color})`, borderRadius: '99px', transition: 'width 0.8s ease' }} />
     </div>
   );
 }
 
-// ─── Trade Form ───────────────────────────────────────────────────
-function TradeForm({ onSave, onCancel, initial }) {
-  const [form, setForm] = useState(initial || emptyTrade);
+function TradeForm({ initial, onSave, onCancel }) {
+  const [form, setForm] = useState(initial ? { ...initial } : { ...emptyTrade, date: new Date().toISOString().split('T')[0] });
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }));
   const toggleArr = (k, v) => setForm(f => ({ ...f, [k]: f[k].includes(v) ? f[k].filter(x => x !== v) : [...f[k], v] }));
-
-  const autoRR = () => {
-    const e = parseFloat(form.entry), sl = parseFloat(form.sl), tp = parseFloat(form.tp);
-    if (e && sl && tp) {
-      const rr = Math.abs((tp - e) / (e - sl));
-      set('rr', rr.toFixed(2));
-    }
-  };
-
+  const inp = { width: '100%', background: '#141414', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '8px', padding: '10px 12px', color: 'white', fontFamily: 'DM Mono, monospace', fontSize: '12px', boxSizing: 'border-box', outline: 'none' };
+  const lbl = { fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#808080', letterSpacing: '0.12em', textTransform: 'uppercase', display: 'block', marginBottom: '6px' };
   return (
-    <div style={{ background: '#0A0A0A', border: '1px solid rgba(212,168,67,0.15)', borderRadius: '20px', padding: '28px' }}>
-      <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '28px', color: 'white', letterSpacing: '0.1em', marginBottom: '24px' }}>
-        {initial ? 'EDIT TRADE' : 'LOG NEW TRADE'}
+    <div style={{ background: '#0A0A0A', border: '1px solid rgba(212,168,67,0.15)', borderRadius: '20px', padding: '28px', width: '100%', maxWidth: '720px', maxHeight: '90vh', overflowY: 'auto' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
+        <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '28px', color: 'white', letterSpacing: '0.1em' }}>{initial ? 'EDIT TRADE' : 'LOG NEW TRADE'}</div>
+        <button onClick={onCancel} style={{ background: 'none', border: 'none', color: '#808080', fontSize: '22px', cursor: 'pointer' }}>✕</button>
       </div>
-
-      {/* Row 1 */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', marginBottom: '16px' }}>
-        {[['date', 'Date', 'date'], ['pair', 'Pair', 'text'], ['session', 'Session', 'text']].map(([k, label]) => (
-          <div key={k}>
-            <label style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', color: 'rgba(255,255,255,0.25)', letterSpacing: '0.15em', textTransform: 'uppercase', display: 'block', marginBottom: '6px' }}>{label}</label>
-            {k === 'pair' ? (
-              <select value={form[k]} onChange={e => set(k, e.target.value)} style={{ width: '100%', background: '#141414', border: '1px solid rgba(212,168,67,0.12)', borderRadius: '10px', color: 'white', padding: '10px 12px', fontSize: '13px', fontFamily: "'DM Sans', sans-serif", outline: 'none' }}>
-                {PAIRS.map(p => <option key={p}>{p}</option>)}
-              </select>
-            ) : k === 'session' ? (
-              <select value={form[k]} onChange={e => set(k, e.target.value)} style={{ width: '100%', background: '#141414', border: '1px solid rgba(212,168,67,0.12)', borderRadius: '10px', color: 'white', padding: '10px 12px', fontSize: '13px', fontFamily: "'DM Sans', sans-serif", outline: 'none' }}>
-                {SESSIONS.map(s => <option key={s}>{s}</option>)}
-              </select>
-            ) : (
-              <input type={k === 'date' ? 'date' : 'text'} value={form[k]} onChange={e => set(k, e.target.value)} style={{ width: '100%', background: '#141414', border: '1px solid rgba(212,168,67,0.12)', borderRadius: '10px', color: 'white', padding: '10px 12px', fontSize: '13px', fontFamily: "'DM Sans', sans-serif", outline: 'none', boxSizing: 'border-box' }} />
-            )}
-          </div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '12px', marginBottom: '16px' }}>
+        <div><label style={lbl}>Pair</label><select value={form.pair} onChange={e => set('pair', e.target.value)} style={inp}>{PAIRS.map(p => <option key={p}>{p}</option>)}</select></div>
+        <div><label style={lbl}>Direction</label><div style={{ display: 'flex', gap: '8px' }}>{['Long','Short'].map(d => <button key={d} onClick={() => set('direction', d)} style={{ flex: 1, padding: '10px', borderRadius: '8px', border: `1px solid ${form.direction === d ? (d === 'Long' ? '#34D399' : '#F87171') : 'rgba(255,255,255,0.08)'}`, background: form.direction === d ? (d === 'Long' ? 'rgba(52,211,153,0.1)' : 'rgba(248,113,113,0.1)') : '#141414', color: form.direction === d ? (d === 'Long' ? '#34D399' : '#F87171') : '#C0C0C0', fontFamily: 'DM Mono, monospace', fontSize: '12px', cursor: 'pointer' }}>{d}</button>)}</div></div>
+        <div><label style={lbl}>Date</label><input type="date" value={form.date} onChange={e => set('date', e.target.value)} style={inp} /></div>
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '12px', marginBottom: '16px' }}>
+        {[['entry','Entry Price'],['sl','Stop Loss'],['tp','Take Profit']].map(([k,l]) => (
+          <div key={k}><label style={lbl}>{l}</label><input type="number" value={form[k]} onChange={e => set(k, e.target.value)} placeholder="0.00000" style={inp} /></div>
         ))}
       </div>
-
-      {/* Direction + Result */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '16px' }}>
-        <div>
-          <label style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', color: 'rgba(255,255,255,0.25)', letterSpacing: '0.15em', textTransform: 'uppercase', display: 'block', marginBottom: '6px' }}>Direction</label>
-          <div style={{ display: 'flex', gap: '8px' }}>
-            {['Long', 'Short'].map(d => (
-              <button key={d} onClick={() => set('direction', d)} style={{
-                flex: 1, padding: '10px', borderRadius: '10px', fontSize: '13px', fontWeight: 600, cursor: 'pointer', transition: 'all 0.2s',
-                background: form.direction === d ? (d === 'Long' ? 'rgba(52,211,153,0.15)' : 'rgba(248,113,113,0.15)') : '#141414',
-                border: `1px solid ${form.direction === d ? (d === 'Long' ? '#34D399' : '#F87171') : 'rgba(212,168,67,0.12)'}`,
-                color: form.direction === d ? (d === 'Long' ? '#34D399' : '#F87171') : 'rgba(255,255,255,0.4)',
-                fontFamily: "'DM Sans', sans-serif",
-              }}>{d === 'Long' ? '↑ Long' : '↓ Short'}</button>
-            ))}
-          </div>
-        </div>
-        <div>
-          <label style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', color: 'rgba(255,255,255,0.25)', letterSpacing: '0.15em', textTransform: 'uppercase', display: 'block', marginBottom: '6px' }}>Result</label>
-          <div style={{ display: 'flex', gap: '8px' }}>
-            {['Win', 'Loss', 'BE'].map(r => (
-              <button key={r} onClick={() => set('result', r)} style={{
-                flex: 1, padding: '10px', borderRadius: '10px', fontSize: '13px', fontWeight: 600, cursor: 'pointer', transition: 'all 0.2s',
-                background: form.result === r ? (r === 'Win' ? 'rgba(52,211,153,0.15)' : r === 'Loss' ? 'rgba(248,113,113,0.15)' : 'rgba(212,168,67,0.15)') : '#141414',
-                border: `1px solid ${form.result === r ? (r === 'Win' ? '#34D399' : r === 'Loss' ? '#F87171' : '#D4A843') : 'rgba(212,168,67,0.12)'}`,
-                color: form.result === r ? (r === 'Win' ? '#34D399' : r === 'Loss' ? '#F87171' : '#D4A843') : 'rgba(255,255,255,0.4)',
-                fontFamily: "'DM Sans', sans-serif",
-              }}>{r}</button>
-            ))}
-          </div>
-        </div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '12px', marginBottom: '16px' }}>
+        <div><label style={lbl}>R:R Ratio</label><input type="number" value={form.rr} onChange={e => set('rr', e.target.value)} placeholder="2.5" style={inp} /></div>
+        <div><label style={lbl}>PnL ($)</label><input type="number" value={form.pnl} onChange={e => set('pnl', e.target.value)} placeholder="0.00" style={inp} /></div>
+        <div><label style={lbl}>Result</label><div style={{ display: 'flex', gap: '6px' }}>{['Win','Loss','BE'].map(r => <button key={r} onClick={() => set('result', r)} style={{ flex: 1, padding: '10px', borderRadius: '8px', border: `1px solid ${form.result === r ? '#D4A843' : 'rgba(255,255,255,0.08)'}`, background: form.result === r ? 'rgba(212,168,67,0.1)' : '#141414', color: form.result === r ? '#D4A843' : '#C0C0C0', fontFamily: 'DM Mono, monospace', fontSize: '11px', cursor: 'pointer' }}>{r}</button>)}</div></div>
       </div>
-
-      {/* Entry / SL / TP / RR / PnL */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '12px', marginBottom: '16px' }}>
-        {[['entry','Entry'],['sl','Stop Loss'],['tp','Take Profit'],['rr','R:R'],['pnl','P&L ($)']].map(([k, label]) => (
-          <div key={k}>
-            <label style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', color: 'rgba(255,255,255,0.25)', letterSpacing: '0.12em', textTransform: 'uppercase', display: 'block', marginBottom: '6px' }}>{label}</label>
-            <input
-              type="number" step="any" value={form[k]}
-              onChange={e => { set(k, e.target.value); if (['entry','sl','tp'].includes(k)) setTimeout(autoRR, 100); }}
-              placeholder={k === 'rr' ? 'Auto' : '0.00'}
-              style={{ width: '100%', background: '#141414', border: `1px solid ${k === 'rr' ? 'rgba(212,168,67,0.25)' : 'rgba(212,168,67,0.12)'}`, borderRadius: '10px', color: k === 'rr' ? '#D4A843' : 'white', padding: '10px 12px', fontSize: '13px', fontFamily: "'DM Mono', monospace", outline: 'none', boxSizing: 'border-box' }}
-            />
-          </div>
-        ))}
-      </div>
-
-      {/* ICT Concepts */}
-      <div style={{ marginBottom: '16px' }}>
-        <label style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', color: 'rgba(255,255,255,0.25)', letterSpacing: '0.15em', textTransform: 'uppercase', display: 'block', marginBottom: '8px' }}>ICT Concepts Used</label>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-          {ICT_CONCEPTS.map(c => <Tag key={c} label={c} active={form.concepts.includes(c)} onClick={() => toggleArr('concepts', c)} />)}
-        </div>
-      </div>
-
-      {/* Mistakes */}
-      <div style={{ marginBottom: '16px' }}>
-        <label style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', color: 'rgba(255,255,255,0.25)', letterSpacing: '0.15em', textTransform: 'uppercase', display: 'block', marginBottom: '8px' }}>Mistakes Made</label>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-          {MISTAKES.map(m => <Tag key={m} label={m} active={form.mistakes.includes(m)} onClick={() => toggleArr('mistakes', m)} color="#F87171" />)}
-        </div>
-      </div>
-
-      {/* Emotion */}
-      <div style={{ marginBottom: '16px' }}>
-        <label style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', color: 'rgba(255,255,255,0.25)', letterSpacing: '0.15em', textTransform: 'uppercase', display: 'block', marginBottom: '8px' }}>Emotional State</label>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-          {EMOTIONS.map(e => <Tag key={e} label={e} active={form.emotion === e} onClick={() => set('emotion', e)} />)}
-        </div>
-      </div>
-
-      {/* Notes */}
-      <div style={{ marginBottom: '20px' }}>
-        <label style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', color: 'rgba(255,255,255,0.25)', letterSpacing: '0.15em', textTransform: 'uppercase', display: 'block', marginBottom: '8px' }}>Trade Notes & Analysis</label>
-        <textarea value={form.notes} onChange={e => set('notes', e.target.value)} rows={4} placeholder="What was the setup? Why did you enter? What happened? What would you do differently?" style={{ width: '100%', background: '#141414', border: '1px solid rgba(212,168,67,0.12)', borderRadius: '10px', color: 'white', padding: '12px', fontSize: '13px', fontFamily: "'DM Sans', sans-serif", outline: 'none', resize: 'vertical', boxSizing: 'border-box', lineHeight: 1.6 }} />
-      </div>
-
-      {/* Buttons */}
+      <div style={{ marginBottom: '16px' }}><label style={lbl}>Session</label><div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>{SESSIONS.map(s => <button key={s} onClick={() => set('session', s)} style={{ padding: '6px 14px', borderRadius: '8px', border: `1px solid ${form.session === s ? '#D4A843' : 'rgba(255,255,255,0.06)'}`, background: form.session === s ? 'rgba(212,168,67,0.1)' : '#141414', color: form.session === s ? '#D4A843' : '#C0C0C0', fontFamily: 'DM Mono, monospace', fontSize: '11px', cursor: 'pointer' }}>{s}</button>)}</div></div>
+      <div style={{ marginBottom: '16px' }}><label style={lbl}>ICT Concepts Used</label><div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>{ICT_CONCEPTS.map(c => <button key={c} onClick={() => toggleArr('concepts', c)} style={{ padding: '6px 12px', borderRadius: '8px', border: `1px solid ${form.concepts.includes(c) ? '#D4A843' : 'rgba(255,255,255,0.06)'}`, background: form.concepts.includes(c) ? 'rgba(212,168,67,0.1)' : '#141414', color: form.concepts.includes(c) ? '#D4A843' : '#C0C0C0', fontFamily: 'DM Mono, monospace', fontSize: '10px', cursor: 'pointer' }}>{c}</button>)}</div></div>
+      <div style={{ marginBottom: '16px' }}><label style={lbl}>Mistakes Made</label><div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>{MISTAKES.map(m => <button key={m} onClick={() => toggleArr('mistakes', m)} style={{ padding: '6px 12px', borderRadius: '8px', border: `1px solid ${form.mistakes.includes(m) ? '#F87171' : 'rgba(255,255,255,0.06)'}`, background: form.mistakes.includes(m) ? 'rgba(248,113,113,0.1)' : '#141414', color: form.mistakes.includes(m) ? '#F87171' : '#C0C0C0', fontFamily: 'DM Mono, monospace', fontSize: '10px', cursor: 'pointer' }}>{m}</button>)}</div></div>
+      <div style={{ marginBottom: '16px' }}><label style={lbl}>Emotional State</label><div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>{EMOTIONS.map(e => <button key={e} onClick={() => set('emotion', e)} style={{ padding: '6px 12px', borderRadius: '8px', border: `1px solid ${form.emotion === e ? '#D4A843' : 'rgba(255,255,255,0.06)'}`, background: form.emotion === e ? 'rgba(212,168,67,0.1)' : '#141414', color: form.emotion === e ? '#D4A843' : '#C0C0C0', fontFamily: 'DM Mono, monospace', fontSize: '10px', cursor: 'pointer' }}>{e}</button>)}</div></div>
+      <div style={{ marginBottom: '24px' }}><label style={lbl}>Trade Notes</label><textarea value={form.notes} onChange={e => set('notes', e.target.value)} rows={3} placeholder="What did you see? Why did you enter? What would you do differently?" style={{ ...inp, resize: 'vertical' }} /></div>
       <div style={{ display: 'flex', gap: '12px' }}>
-        <button onClick={() => onSave(form)} style={{
-          flex: 1, padding: '14px', borderRadius: '12px', border: 'none', cursor: 'pointer', fontFamily: "'DM Mono', monospace", fontSize: '13px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
-          background: 'linear-gradient(135deg, #D4A843, #F0C96A)', color: '#080808',
-        }}>Save Trade →</button>
-        <button onClick={onCancel} style={{
-          padding: '14px 24px', borderRadius: '12px', cursor: 'pointer', fontFamily: "'DM Mono', monospace", fontSize: '13px', letterSpacing: '0.1em', textTransform: 'uppercase',
-          background: 'transparent', border: '1px solid rgba(212,168,67,0.15)', color: 'rgba(255,255,255,0.65)',
-        }}>Cancel</button>
+        <button onClick={() => onSave(form)} style={{ flex: 1, background: 'linear-gradient(135deg,#D4A843,#F0C96A)', color: '#080808', border: 'none', borderRadius: '12px', padding: '14px', fontFamily: 'DM Mono, monospace', fontSize: '13px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer' }}>Save Trade</button>
+        <button onClick={onCancel} style={{ padding: '14px 24px', background: 'transparent', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', color: '#808080', fontFamily: 'DM Mono, monospace', fontSize: '13px', cursor: 'pointer' }}>Cancel</button>
       </div>
     </div>
   );
 }
 
-// ─── Main Journal Page ─────────────────────────────────────────────
 export default function JournalPage() {
-  const [menuOpen, setMenuOpen] = React.useState(false);
-  const supabase = createClient();
   const [trades, setTrades] = useState([]);
-  const [view, setView] = useState('dashboard'); // dashboard | log | analytics | calendar
   const [showForm, setShowForm] = useState(false);
-  const [editTrade, setEditTrade] = useState(null);
-  const [filterPair, setFilterPair] = useState('All');
-  const [filterResult, setFilterResult] = useState('All');
-  const [filterSession, setFilterSession] = useState('All');
-  const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState(null);
+  const [editIdx, setEditIdx] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [view, setView] = useState('trades');
 
   useEffect(() => {
-    async function load() {
-      const { data: { user } } = await supabase.auth.getUser();
-      setUser(user);
-      if (user) {
-        const { data } = await supabase.from('trades').select('*').eq('user_id', user.id).order('date', { ascending: false });
-        setTrades(data || []);
-      }
-      setLoading(false);
-    }
-    load();
+    try { const s = localStorage.getItem('sma_trades'); if (s) setTrades(JSON.parse(s)); } catch(e) {}
   }, []);
 
-  async function saveTrade(form) {
-    const rr = parseFloat(form.rr) || 0;
-    const g = GRADE(rr, form.result === 'Win');
-    const trade = { ...form, rr, grade: g.label, user_id: user.id };
-    if (editTrade) {
-      const { data } = await supabase.from('trades').update(trade).eq('id', editTrade.id).select().single();
-      setTrades(t => t.map(x => x.id === editTrade.id ? data : x));
-    } else {
-      const { data } = await supabase.from('trades').insert(trade).select().single();
-      setTrades(t => [data, ...t]);
-    }
-    setShowForm(false); setEditTrade(null);
-  }
+  const save = (t) => {
+    const updated = editIdx !== null ? trades.map((x, i) => i === editIdx ? t : x) : [t, ...trades];
+    setTrades(updated);
+    localStorage.setItem('sma_trades', JSON.stringify(updated));
+    setShowForm(false); setEditIdx(null);
+  };
 
-  async function deleteTrade(id) {
-    await supabase.from('trades').delete().eq('id', id);
-    setTrades(t => t.filter(x => x.id !== id));
-  }
+  const del = (i) => { const u = trades.filter((_,idx) => idx !== i); setTrades(u); localStorage.setItem('sma_trades', JSON.stringify(u)); };
 
-  // ── Analytics ──
   const wins = trades.filter(t => t.result === 'Win').length;
   const losses = trades.filter(t => t.result === 'Loss').length;
-  const be = trades.filter(t => t.result === 'BE').length;
-  const total = trades.length;
-  const winRate = total > 0 ? ((wins / total) * 100).toFixed(1) : '0';
-  const avgRR = total > 0 ? (trades.reduce((a, t) => a + (parseFloat(t.rr) || 0), 0) / total).toFixed(2) : '0';
-  const totalPnL = trades.reduce((a, t) => a + (parseFloat(t.pnl) || 0), 0).toFixed(2);
-  const profitFactor = losses > 0 ? (wins / losses).toFixed(2) : wins > 0 ? '∞' : '0';
-  const streak = (() => {
-    let s = 0;
-    for (const t of trades) { if (t.result === 'Win') s++; else break; }
-    return s;
-  })();
-  const bestRR = trades.length > 0 ? Math.max(...trades.map(t => parseFloat(t.rr) || 0)).toFixed(2) : '0';
+  const wr = trades.length ? Math.round((wins / trades.length) * 100) : 0;
+  const avgRR = trades.length ? (trades.reduce((a,t) => a + parseFloat(t.rr||0), 0) / trades.length).toFixed(2) : '0.00';
+  const totalPnl = trades.reduce((a,t) => a + parseFloat(t.pnl||0), 0);
+  const streak = (() => { let s = 0; for (let t of trades) { if (t.result === 'Win') s++; else break; } return s; })();
 
-  // Best session
-  const sessionStats = {};
+  const dayStats = {};
+  DAYS.forEach(d => { dayStats[d] = { wins: 0, total: 0 }; });
   trades.forEach(t => {
-    if (!sessionStats[t.session]) sessionStats[t.session] = { wins: 0, total: 0 };
-    sessionStats[t.session].total++;
-    if (t.result === 'Win') sessionStats[t.session].wins++;
+    const day = DAYS[new Date(t.date + 'T12:00:00').getDay() - 1];
+    if (day) { dayStats[day].total++; if (t.result === 'Win') dayStats[day].wins++; }
   });
-  const bestSession = Object.entries(sessionStats).sort((a, b) => (b[1].wins / b[1].total) - (a[1].wins / a[1].total))[0]?.[0] || 'N/A';
 
-  // Most common mistake
-  const mistakeCount = {};
-  trades.forEach(t => (t.mistakes || []).forEach(m => { mistakeCount[m] = (mistakeCount[m] || 0) + 1; }));
-  const topMistake = Object.entries(mistakeCount).sort((a, b) => b[1] - a[1])[0]?.[0] || 'None';
+  const emotionStats = {};
+  trades.forEach(t => {
+    if (!emotionStats[t.emotion]) emotionStats[t.emotion] = { wins: 0, total: 0 };
+    emotionStats[t.emotion].total++;
+    if (t.result === 'Win') emotionStats[t.emotion].wins++;
+  });
+  const topEmotions = Object.entries(emotionStats).sort((a,b) => b[1].total - a[1].total).slice(0, 5);
 
-  // Best concept
-  const conceptCount = {};
-  trades.filter(t => t.result === 'Win').forEach(t => (t.concepts || []).forEach(c => { conceptCount[c] = (conceptCount[c] || 0) + 1; }));
-  const topConcept = Object.entries(conceptCount).sort((a, b) => b[1] - a[1])[0]?.[0] || 'N/A';
+  const conceptStats = {};
+  trades.forEach(t => {
+    (t.concepts||[]).forEach(c => {
+      if (!conceptStats[c]) conceptStats[c] = { wins: 0, total: 0 };
+      conceptStats[c].total++;
+      if (t.result === 'Win') conceptStats[c].wins++;
+    });
+  });
+  const topConcepts = Object.entries(conceptStats).sort((a,b) => b[1].total - a[1].total).slice(0, 6);
 
-  // Filtered trades
-  const filtered = trades.filter(t =>
-    (filterPair === 'All' || t.pair === filterPair) &&
-    (filterResult === 'All' || t.result === filterResult) &&
-    (filterSession === 'All' || t.session === filterSession)
-  );
+  const monthlyPnl = {};
+  trades.forEach(t => {
+    const m = t.date ? t.date.slice(0, 7) : 'unknown';
+    if (!monthlyPnl[m]) monthlyPnl[m] = 0;
+    monthlyPnl[m] += parseFloat(t.pnl || 0);
+  });
+  const months = Object.entries(monthlyPnl).sort((a,b) => a[0].localeCompare(b[0])).slice(-6);
+  const maxMonthPnl = Math.max(...months.map(([,v]) => Math.abs(v)), 1);
 
-  const inputStyle = { background: '#141414', border: '1px solid rgba(212,168,67,0.1)', borderRadius: '8px', color: 'white', padding: '8px 12px', fontSize: '12px', fontFamily: "'DM Mono', monospace", outline: 'none', cursor: 'pointer' };
-
-  if (loading) return (
-    <div style={{ minHeight: '100vh', background: '#080808', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <span style={{ fontFamily: "'DM Mono', monospace", color: 'rgba(212,168,67,0.75)', fontSize: '12px', letterSpacing: '0.2em' }}>LOADING JOURNAL...</span>
-    </div>
-  );
+  const card = { background: '#0D0D0D', border: '1px solid rgba(212,168,67,0.08)', borderRadius: '16px', padding: '20px' };
 
   return (
     <AuthGuard>
-    <div style={{ minHeight: '100vh', background: '#080808', color: 'white', fontFamily: "'DM Sans', sans-serif" }}>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap');
-        * { box-sizing: border-box; }
-        ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: #0A0A0A; } ::-webkit-scrollbar-thumb { background: rgba(212,168,67,0.2); border-radius: 4px; }
-        select option { background: #141414; }
-        input[type=date]::-webkit-calendar-picker-indicator { filter: invert(0.5); }
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-        .fade-up { animation: fadeUp 0.4s ease forwards; }
-        .trade-row:hover { background: rgba(212,168,67,0.03) !important; }
-      `}</style>
+      <div style={{ minHeight: '100vh', background: '#080808', color: 'white' }}>
+        <style>{`
+          @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap');
+          * { box-sizing: border-box; }
+          select option { background: #141414; color: white; }
+        `}</style>
 
-      {/* NAV */}
-      <nav style={{ position: 'sticky', top: 0, zIndex: 50, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 32px', borderBottom: '1px solid rgba(212,168,67,0.08)', background: 'rgba(8,8,8,0.97)', backdropFilter: 'blur(20px)' }}>
-        <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none' }}>
-          <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'linear-gradient(135deg, #D4A843, #8A6B28)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Bebas Neue', sans-serif", color: 'black', fontSize: '18px' }}>S</div>
-          <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '20px', letterSpacing: '0.15em', color: 'white' }}>SMARTMONEY</span>
-        </Link>
-        <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
-          {[['/', 'Home'], ['/courses', 'Courses'], ['/signals', 'Signals'], ['/dashboard', 'Dashboard'], ['/journal', 'Journal']].map(([href, label]) => (
-            <Link key={href} href={href} style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', textDecoration: 'none', color: href === '/journal' ? '#D4A843' : 'rgba(255,255,255,0.65)' }}>{label}</Link>
-          ))}
-        </div>
-        <button onClick={() => { setShowForm(true); setEditTrade(null); }} style={{ background: 'linear-gradient(135deg, #D4A843, #F0C96A)', color: '#080808', border: 'none', borderRadius: '10px', padding: '10px 20px', fontFamily: "'DM Mono', monospace", fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer' }}>
-          + Log Trade
-        </button>
-      </nav>
-      {/* ── MOBILE MENU ── */}
-      {menuOpen && (
-        <div style={{ position: 'fixed', inset: 0, zIndex: 50, background: 'rgba(8,8,8,0.98)', backdropFilter: 'blur(20px)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '32px' }}>
-          <button onClick={() => setMenuOpen(false)} style={{ position: 'absolute', top: '24px', right: '24px', background: 'none', border: 'none', color: '#D4A843', fontSize: '28px', cursor: 'pointer' }}>✕</button>
-          {[['/', 'Home'], ['/courses', 'Courses'], ['/signals', 'Signals'], ['/glossary', 'Glossary'], ['/journal', 'Journal'], ['/dashboard', 'Dashboard']].map(([href, label]) => (
-            <a key={href} href={href} onClick={() => setMenuOpen(false)} style={{ fontFamily: 'DM Mono, monospace', fontSize: '24px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)', textDecoration: 'none' }}>{label}</a>
-          ))}
-        </div>
-      )}
-
-      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '32px 24px' }}>
-
-        {/* HEADER */}
-        <div className="fade-up" style={{ marginBottom: '32px' }}>
-          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', color: 'rgba(212,168,67,0.75)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '8px' }}>// Trading Journal</div>
-          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
-            <h1 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 'clamp(40px, 6vw, 72px)', lineHeight: 1, margin: 0 }}>
-              <span style={{ color: 'white' }}>YOUR </span>
-              <span style={{ background: 'linear-gradient(135deg, #8A6B28, #D4A843, #F0C96A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>EDGE DATA</span>
-            </h1>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '12px', color: 'rgba(212,168,67,0.75)' }}>
-              {total} trades logged · {winRate}% win rate
+        <nav style={{ position: 'sticky', top: 0, zIndex: 40, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 24px', borderBottom: '1px solid rgba(212,168,67,0.08)', background: 'rgba(8,8,8,0.95)', backdropFilter: 'blur(20px)' }}>
+          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'linear-gradient(135deg,#D4A843,#8A6B28)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Bebas Neue', color: 'black', fontSize: '18px' }}>S</div>
+            <div>
+              <div style={{ fontFamily: 'Bebas Neue', fontSize: '16px', letterSpacing: '0.15em', color: 'white' }}>SMARTMONEY</div>
+              <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#8A6B28', letterSpacing: '0.2em', marginTop: '-2px' }}>ACADEMY</div>
             </div>
+          </Link>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+            <div style={{ display: 'flex', gap: '24px' }}>
+              {NAV.map(([href, label]) => (
+                <Link key={href} href={href} style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', textDecoration: 'none', color: href === '/journal' ? '#D4A843' : 'rgba(255,255,255,0.7)' }}>{label}</Link>
+              ))}
+            </div>
+            <button onClick={() => { setShowForm(true); setEditIdx(null); }} style={{ background: 'linear-gradient(135deg,#D4A843,#F0C96A)', color: '#080808', border: 'none', borderRadius: '10px', padding: '9px 18px', fontFamily: 'DM Mono, monospace', fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer', whiteSpace: 'nowrap' }}>+ Log Trade</button>
           </div>
-        </div>
+        </nav>
 
-        {/* TABS */}
-        <div style={{ display: 'flex', gap: '2px', background: '#0D0D0D', borderRadius: '12px', padding: '4px', border: '1px solid rgba(212,168,67,0.08)', marginBottom: '28px', width: 'fit-content' }}>
-          {[['dashboard','📊 Overview'], ['log','📋 Trade Log'], ['analytics','📈 Analytics'], ['calendar','📅 Calendar']].map(([key, label]) => (
-            <button key={key} onClick={() => setView(key)} style={{
-              padding: '10px 20px', borderRadius: '10px', border: 'none', cursor: 'pointer', fontFamily: "'DM Mono', monospace", fontSize: '11px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', transition: 'all 0.2s',
-              background: view === key ? 'linear-gradient(135deg, #D4A843, #F0C96A)' : 'transparent',
-              color: view === key ? '#080808' : 'rgba(255,255,255,0.65)',
-            }}>{label}</button>
-          ))}
-        </div>
+        {menuOpen && (
+          <div style={{ position: 'fixed', inset: 0, zIndex: 50, background: 'rgba(8,8,8,0.98)', backdropFilter: 'blur(20px)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '32px' }}>
+            <button onClick={() => setMenuOpen(false)} style={{ position: 'absolute', top: '24px', right: '24px', background: 'none', border: 'none', color: '#D4A843', fontSize: '28px', cursor: 'pointer' }}>✕</button>
+            {NAV.map(([href, label]) => (
+              <a key={href} href={href} onClick={() => setMenuOpen(false)} style={{ fontFamily: 'DM Mono, monospace', fontSize: '24px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)', textDecoration: 'none' }}>{label}</a>
+            ))}
+          </div>
+        )}
 
-        {/* FORM MODAL */}
         {showForm && (
-          <div style={{ marginBottom: '28px' }} className="fade-up">
-            <TradeForm onSave={saveTrade} onCancel={() => { setShowForm(false); setEditTrade(null); }} initial={editTrade} />
+          <div style={{ position: 'fixed', inset: 0, zIndex: 60, background: 'rgba(0,0,0,0.9)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px' }}>
+            <TradeForm initial={editIdx !== null ? trades[editIdx] : null} onSave={save} onCancel={() => { setShowForm(false); setEditIdx(null); }} />
           </div>
         )}
 
-        {/* ── DASHBOARD VIEW ── */}
-        {view === 'dashboard' && (
-          <div className="fade-up">
-            {/* Stats grid */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '12px', marginBottom: '24px' }}>
-              <StatCard icon="🎯" label="Win Rate" value={`${winRate}%`} sub={`${wins}W ${losses}L ${be}BE`} big />
-              <StatCard icon="⚡" label="Avg R:R" value={avgRR} sub={`Best: ${bestRR}R`} />
-              <StatCard icon="💰" label="Total P&L" value={`$${parseFloat(totalPnL) >= 0 ? '+' : ''}${totalPnL}`} color={parseFloat(totalPnL) >= 0 ? '#34D399' : '#F87171'} />
-              <StatCard icon="📊" label="Profit Factor" value={profitFactor} sub="Win/Loss ratio" />
-              <StatCard icon="🔥" label="Win Streak" value={streak} sub="Current" />
-              <StatCard icon="⏰" label="Best Session" value={bestSession.split(' ')[0]} sub={bestSession} />
-              <StatCard icon="🧠" label="Top Concept" value="" sub={topConcept} icon="🎯" />
-              <StatCard icon="⚠️" label="Top Mistake" value="" sub={topMistake} color="#F87171" />
-            </div>
+        <div style={{ maxWidth: '1300px', margin: '0 auto', padding: '32px 24px' }}>
+          <div style={{ marginBottom: '28px' }}>
+            <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(212,168,67,0.75)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '8px' }}>// Trading Journal</div>
+            <div style={{ fontFamily: 'Bebas Neue', fontSize: '42px', letterSpacing: '0.05em', color: 'white', lineHeight: 1 }}>YOUR EDGE OVER TIME</div>
+          </div>
 
-            {/* Equity curve */}
-            <div style={{ background: '#0D0D0D', border: '1px solid rgba(212,168,67,0.08)', borderRadius: '16px', padding: '20px', marginBottom: '24px' }}>
-              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', color: 'rgba(212,168,67,0.75)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '12px' }}>// Equity Curve (R)</div>
-              <EquityCurve trades={[...trades].reverse()} />
-            </div>
-
-            {/* Recent trades */}
-            <div style={{ background: '#0D0D0D', border: '1px solid rgba(212,168,67,0.08)', borderRadius: '16px', padding: '20px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', color: 'rgba(212,168,67,0.75)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>// Recent Trades</div>
-                <button onClick={() => setView('log')} style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', color: '#D4A843', background: 'none', border: 'none', cursor: 'pointer', letterSpacing: '0.1em' }}>View All →</button>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: '12px', marginBottom: '28px' }}>
+            {[
+              { label: 'Total Trades', value: trades.length, icon: '📊', color: '#D4A843' },
+              { label: 'Win Rate', value: wr + '%', icon: '🎯', color: wr >= 60 ? '#34D399' : wr >= 40 ? '#D4A843' : '#F87171' },
+              { label: 'Avg R:R', value: avgRR + 'R', icon: '⚖️', color: '#D4A843' },
+              { label: 'Total PnL', value: (totalPnl >= 0 ? '+' : '') + totalPnl.toFixed(0), icon: '💰', color: totalPnl >= 0 ? '#34D399' : '#F87171' },
+              { label: 'Win Streak', value: streak, icon: '🔥', color: streak >= 3 ? '#F59E0B' : '#D4A843' },
+            ].map(s => (
+              <div key={s.label} style={card}>
+                <div style={{ fontSize: '18px', marginBottom: '8px' }}>{s.icon}</div>
+                <div style={{ fontFamily: 'Bebas Neue', fontSize: '30px', color: s.color, lineHeight: 1 }}>{s.value}</div>
+                <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#808080', letterSpacing: '0.12em', textTransform: 'uppercase', marginTop: '4px' }}>{s.label}</div>
               </div>
-              {trades.slice(0, 5).length === 0 ? (
-                <div style={{ textAlign: 'center', padding: '40px', color: 'rgba(255,255,255,0.15)', fontFamily: "'DM Mono', monospace", fontSize: '12px' }}>
-                  No trades yet. Click "+ Log Trade" to start.
+            ))}
+          </div>
+
+          <div style={{ display: 'flex', gap: '4px', marginBottom: '24px', background: '#0D0D0D', borderRadius: '12px', padding: '4px', width: 'fit-content', border: '1px solid rgba(212,168,67,0.08)' }}>
+            {[['trades','📋 Trades'],['analytics','📈 Analytics'],['calendar','📅 Calendar']].map(([v, l]) => (
+              <button key={v} onClick={() => setView(v)} style={{ padding: '8px 20px', borderRadius: '8px', border: 'none', background: view === v ? 'rgba(212,168,67,0.15)' : 'transparent', color: view === v ? '#D4A843' : '#808080', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.08em', cursor: 'pointer' }}>{l}</button>
+            ))}
+          </div>
+
+          {view === 'trades' && (
+            <div>
+              {trades.length === 0 ? (
+                <div style={{ textAlign: 'center', padding: '80px 24px', border: '1px dashed rgba(212,168,67,0.15)', borderRadius: '20px' }}>
+                  <div style={{ fontSize: '48px', marginBottom: '16px' }}>📋</div>
+                  <div style={{ fontFamily: 'Bebas Neue', fontSize: '28px', color: 'white', letterSpacing: '0.1em', marginBottom: '8px' }}>NO TRADES LOGGED YET</div>
+                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '12px', color: '#808080', marginBottom: '24px' }}>Start building your edge. Log your first trade.</div>
+                  <button onClick={() => setShowForm(true)} style={{ background: 'linear-gradient(135deg,#D4A843,#F0C96A)', color: '#080808', border: 'none', borderRadius: '12px', padding: '12px 28px', fontFamily: 'DM Mono, monospace', fontSize: '12px', fontWeight: 700, cursor: 'pointer', letterSpacing: '0.1em', textTransform: 'uppercase' }}>+ Log First Trade</button>
                 </div>
-              ) : trades.slice(0, 5).map(t => {
-                const g = GRADE(parseFloat(t.rr) || 0, t.result === 'Win');
-                return (
-                  <div key={t.id} className="trade-row" style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px', borderRadius: '10px', marginBottom: '4px', transition: 'all 0.2s', cursor: 'pointer' }}>
-                    <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: g.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Bebas Neue', sans-serif", fontSize: '16px', color: g.color, flexShrink: 0 }}>{g.label}</div>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ fontWeight: 600, fontSize: '14px', color: 'white' }}>{t.pair} <span style={{ color: t.direction === 'Long' ? '#34D399' : '#F87171', fontSize: '12px' }}>{t.direction === 'Long' ? '↑' : '↓'}</span></div>
-                      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', color: 'rgba(255,255,255,0.25)' }}>{t.date} · {t.session}</div>
-                    </div>
-                    <div style={{ textAlign: 'right' }}>
-                      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '14px', color: t.result === 'Win' ? '#34D399' : t.result === 'Loss' ? '#F87171' : '#D4A843', fontWeight: 600 }}>{t.result === 'Win' ? '+' : t.result === 'Loss' ? '-' : ''}{t.rr}R</div>
-                      {t.pnl && <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', color: parseFloat(t.pnl) >= 0 ? 'rgba(52,211,153,0.5)' : 'rgba(248,113,113,0.5)' }}>${t.pnl}</div>}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
-
-        {/* ── TRADE LOG VIEW ── */}
-        {view === 'log' && (
-          <div className="fade-up">
-            {/* Filters */}
-            <div style={{ display: 'flex', gap: '10px', marginBottom: '20px', flexWrap: 'wrap' }}>
-              <select value={filterPair} onChange={e => setFilterPair(e.target.value)} style={inputStyle}>
-                <option>All</option>{PAIRS.map(p => <option key={p}>{p}</option>)}
-              </select>
-              <select value={filterResult} onChange={e => setFilterResult(e.target.value)} style={inputStyle}>
-                {['All','Win','Loss','BE'].map(r => <option key={r}>{r}</option>)}
-              </select>
-              <select value={filterSession} onChange={e => setFilterSession(e.target.value)} style={inputStyle}>
-                <option>All</option>{SESSIONS.map(s => <option key={s}>{s}</option>)}
-              </select>
-              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', color: 'rgba(255,255,255,0.25)', display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
-                {filtered.length} trades
-              </div>
-            </div>
-
-            {/* Table */}
-            <div style={{ background: '#0D0D0D', border: '1px solid rgba(212,168,67,0.08)', borderRadius: '16px', overflow: 'hidden' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '80px 100px 80px 120px 70px 70px 70px 80px 1fr 80px', gap: '0', padding: '12px 16px', borderBottom: '1px solid rgba(212,168,67,0.06)' }}>
-                {['Grade','Date','Pair','Session','Dir','RR','P&L','Result','Concepts',''].map((h, i) => (
-                  <div key={i} style={{ fontFamily: "'DM Mono', monospace", fontSize: '9px', color: 'rgba(255,255,255,0.45)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>{h}</div>
-                ))}
-              </div>
-
-              {filtered.length === 0 ? (
-                <div style={{ textAlign: 'center', padding: '60px', color: 'rgba(255,255,255,0.15)', fontFamily: "'DM Mono', monospace", fontSize: '12px' }}>
-                  No trades match your filters
-                </div>
-              ) : filtered.map(t => {
-                const g = GRADE(parseFloat(t.rr) || 0, t.result === 'Win');
-                return (
-                  <div key={t.id} className="trade-row" style={{ display: 'grid', gridTemplateColumns: '80px 100px 80px 120px 70px 70px 70px 80px 1fr 80px', gap: '0', padding: '12px 16px', borderBottom: '1px solid rgba(255,255,255,0.03)', transition: 'all 0.15s', alignItems: 'center' }}>
-                    <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: g.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Bebas Neue', sans-serif", fontSize: '15px', color: g.color }}>{g.label}</div>
-                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', color: 'rgba(255,255,255,0.4)' }}>{t.date}</div>
-                    <div style={{ fontWeight: 600, fontSize: '13px' }}>{t.pair}</div>
-                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', color: 'rgba(255,255,255,0.65)' }}>{t.session}</div>
-                    <div style={{ fontSize: '13px', color: t.direction === 'Long' ? '#34D399' : '#F87171' }}>{t.direction === 'Long' ? '↑ L' : '↓ S'}</div>
-                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '13px', color: '#D4A843', fontWeight: 600 }}>{t.rr}R</div>
-                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '12px', color: parseFloat(t.pnl) >= 0 ? '#34D399' : '#F87171' }}>{t.pnl ? `$${t.pnl}` : '-'}</div>
-                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', color: t.result === 'Win' ? '#34D399' : t.result === 'Loss' ? '#F87171' : '#D4A843' }}>{t.result}</div>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
-                      {(t.concepts || []).slice(0, 2).map(c => <span key={c} style={{ background: 'rgba(212,168,67,0.08)', border: '1px solid rgba(212,168,67,0.12)', borderRadius: '4px', padding: '2px 6px', fontFamily: "'DM Mono', monospace", fontSize: '9px', color: 'rgba(212,168,67,0.6)' }}>{c}</span>)}
-                      {(t.concepts || []).length > 2 && <span style={{ fontFamily: "'DM Mono', monospace", fontSize: '9px', color: 'rgba(255,255,255,0.45)' }}>+{t.concepts.length - 2}</span>}
-                    </div>
-                    <div style={{ display: 'flex', gap: '6px', justifyContent: 'flex-end' }}>
-                      <button onClick={() => { setEditTrade(t); setShowForm(true); setView('log'); }} style={{ background: 'rgba(212,168,67,0.08)', border: '1px solid rgba(212,168,67,0.12)', borderRadius: '6px', padding: '4px 8px', color: '#D4A843', fontSize: '11px', cursor: 'pointer' }}>✏</button>
-                      <button onClick={() => deleteTrade(t.id)} style={{ background: 'rgba(248,113,113,0.08)', border: '1px solid rgba(248,113,113,0.12)', borderRadius: '6px', padding: '4px 8px', color: '#F87171', fontSize: '11px', cursor: 'pointer' }}>✕</button>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
-
-        {/* ── ANALYTICS VIEW ── */}
-        {view === 'analytics' && (
-          <div className="fade-up" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-
-            {/* Win rate by session */}
-            <div style={{ background: '#0D0D0D', border: '1px solid rgba(212,168,67,0.08)', borderRadius: '16px', padding: '20px' }}>
-              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', color: 'rgba(212,168,67,0.75)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '16px' }}>// Win Rate by Session</div>
-              {Object.entries(sessionStats).length === 0 ? <div style={{ color: 'rgba(255,255,255,0.15)', fontFamily: "'DM Mono', monospace", fontSize: '12px' }}>No data yet</div> :
-                Object.entries(sessionStats).map(([session, data]) => {
-                  const wr = ((data.wins / data.total) * 100).toFixed(0);
-                  return (
-                    <div key={session} style={{ marginBottom: '12px' }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-                        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', color: 'rgba(255,255,255,0.5)' }}>{session}</span>
-                        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', color: '#D4A843' }}>{wr}%</span>
-                      </div>
-                      <div style={{ background: 'rgba(212,168,67,0.06)', borderRadius: '99px', height: '6px', overflow: 'hidden' }}>
-                        <div style={{ width: `${wr}%`, height: '100%', background: 'linear-gradient(90deg, #8A6B28, #D4A843)', borderRadius: '99px', transition: 'width 0.8s ease' }} />
-                      </div>
-                    </div>
-                  );
-                })
-              }
-            </div>
-
-            {/* Win rate by pair */}
-            <div style={{ background: '#0D0D0D', border: '1px solid rgba(212,168,67,0.08)', borderRadius: '16px', padding: '20px' }}>
-              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', color: 'rgba(212,168,67,0.75)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '16px' }}>// Performance by Pair</div>
-              {(() => {
-                const pairStats = {};
-                trades.forEach(t => {
-                  if (!pairStats[t.pair]) pairStats[t.pair] = { wins: 0, total: 0, rr: 0 };
-                  pairStats[t.pair].total++;
-                  if (t.result === 'Win') pairStats[t.pair].wins++;
-                  pairStats[t.pair].rr += parseFloat(t.rr) || 0;
-                });
-                return Object.entries(pairStats).length === 0 ? <div style={{ color: 'rgba(255,255,255,0.15)', fontFamily: "'DM Mono', monospace", fontSize: '12px' }}>No data yet</div> :
-                  Object.entries(pairStats).sort((a, b) => b[1].total - a[1].total).map(([pair, data]) => (
-                    <div key={pair} style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
-                      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '12px', color: 'white', fontWeight: 600, width: '70px' }}>{pair}</div>
-                      <div style={{ flex: 1, background: 'rgba(212,168,67,0.06)', borderRadius: '99px', height: '6px', overflow: 'hidden' }}>
-                        <div style={{ width: `${(data.wins / data.total) * 100}%`, height: '100%', background: 'linear-gradient(90deg, #8A6B28, #34D399)', borderRadius: '99px' }} />
-                      </div>
-                      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', color: 'rgba(255,255,255,0.65)', width: '60px', textAlign: 'right' }}>{data.total} trades</div>
-                    </div>
-                  ));
-              })()}
-            </div>
-
-            {/* Mistake frequency */}
-            <div style={{ background: '#0D0D0D', border: '1px solid rgba(212,168,67,0.08)', borderRadius: '16px', padding: '20px' }}>
-              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', color: 'rgba(212,168,67,0.75)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '16px' }}>// Most Common Mistakes</div>
-              {Object.entries(mistakeCount).length === 0 ? <div style={{ color: 'rgba(255,255,255,0.15)', fontFamily: "'DM Mono', monospace", fontSize: '12px' }}>No mistakes logged 🎯</div> :
-                Object.entries(mistakeCount).sort((a, b) => b[1] - a[1]).slice(0, 6).map(([mistake, count]) => (
-                  <div key={mistake} style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
-                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', color: '#F87171', flex: 1 }}>{mistake}</div>
-                    <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '20px', color: '#F87171' }}>{count}×</div>
-                  </div>
-                ))
-              }
-            </div>
-
-            {/* Emotion vs result */}
-            <div style={{ background: '#0D0D0D', border: '1px solid rgba(212,168,67,0.08)', borderRadius: '16px', padding: '20px' }}>
-              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', color: 'rgba(212,168,67,0.75)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '16px' }}>// Emotion vs Win Rate</div>
-              {(() => {
-                const emotionStats = {};
-                trades.forEach(t => {
-                  if (!emotionStats[t.emotion]) emotionStats[t.emotion] = { wins: 0, total: 0 };
-                  emotionStats[t.emotion].total++;
-                  if (t.result === 'Win') emotionStats[t.emotion].wins++;
-                });
-                return Object.entries(emotionStats).length === 0 ? <div style={{ color: 'rgba(255,255,255,0.15)', fontFamily: "'DM Mono', monospace", fontSize: '12px' }}>No data yet</div> :
-                  Object.entries(emotionStats).sort((a, b) => (b[1].wins / b[1].total) - (a[1].wins / a[1].total)).map(([emotion, data]) => {
-                    const wr = ((data.wins / data.total) * 100).toFixed(0);
+              ) : (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  {trades.map((t, i) => {
+                    const g = GRADE(parseFloat(t.rr || 0), t.result === 'Win');
                     return (
-                      <div key={emotion} style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
-                        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', color: 'rgba(255,255,255,0.4)', flex: 1 }}>{emotion}</div>
-                        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '12px', color: parseInt(wr) >= 60 ? '#34D399' : parseInt(wr) >= 40 ? '#D4A843' : '#F87171', fontWeight: 600 }}>{wr}%</div>
+                      <div key={i} style={{ ...card, display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap', padding: '16px 20px' }}>
+                        <div style={{ fontFamily: 'Bebas Neue', fontSize: '26px', color: g.color, background: g.bg, borderRadius: '10px', width: '48px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>{g.label}</div>
+                        <div style={{ minWidth: '130px' }}>
+                          <div style={{ fontFamily: 'Bebas Neue', fontSize: '18px', color: 'white', letterSpacing: '0.08em' }}>{t.pair} <span style={{ color: t.direction === 'Long' ? '#34D399' : '#F87171', fontSize: '13px' }}>{t.direction}</span></div>
+                          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#808080', marginTop: '2px' }}>{t.date} · {t.session}</div>
+                        </div>
+                        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#C0C0C0' }}>RR: <span style={{ color: '#D4A843' }}>{t.rr || '—'}</span></div>
+                        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: parseFloat(t.pnl) >= 0 ? '#34D399' : '#F87171' }}>{t.pnl ? (parseFloat(t.pnl) > 0 ? '+' : '') + t.pnl : '—'}</div>
+                        {t.concepts && t.concepts.length > 0 && (
+                          <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap', flex: 1 }}>
+                            {t.concepts.slice(0, 3).map(c => (
+                              <span key={c} style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#D4A843', background: 'rgba(212,168,67,0.08)', border: '1px solid rgba(212,168,67,0.15)', borderRadius: '4px', padding: '2px 7px' }}>{c}</span>
+                            ))}
+                          </div>
+                        )}
+                        <div style={{ display: 'flex', gap: '8px', marginLeft: 'auto' }}>
+                          <button onClick={() => { setEditIdx(i); setShowForm(true); }} style={{ background: 'rgba(212,168,67,0.08)', border: '1px solid rgba(212,168,67,0.15)', borderRadius: '8px', padding: '6px 14px', color: '#D4A843', fontFamily: 'DM Mono, monospace', fontSize: '10px', cursor: 'pointer' }}>Edit</button>
+                          <button onClick={() => del(i)} style={{ background: 'rgba(248,113,113,0.08)', border: '1px solid rgba(248,113,113,0.15)', borderRadius: '8px', padding: '6px 14px', color: '#F87171', fontFamily: 'DM Mono, monospace', fontSize: '10px', cursor: 'pointer' }}>Delete</button>
+                        </div>
                       </div>
                     );
-                  });
-              })()}
+                  })}
+                </div>
+              )}
             </div>
-          </div>
-        )}
+          )}
 
-        {/* ── CALENDAR VIEW ── */}
-        {view === 'calendar' && (
-          <div className="fade-up" style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '16px' }}>
-            <div style={{ background: '#0D0D0D', border: '1px solid rgba(212,168,67,0.08)', borderRadius: '16px', padding: '24px' }}>
-              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', color: 'rgba(212,168,67,0.75)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '20px' }}>// 35-Day Activity</div>
-              <CalendarHeatmap trades={trades} />
-              <div style={{ display: 'flex', gap: '16px', marginTop: '16px', flexWrap: 'wrap' }}>
-                {[['rgba(52,211,153,0.3)', 'Win day'], ['rgba(248,113,113,0.3)', 'Loss day'], ['rgba(212,168,67,0.2)', 'Breakeven'], ['rgba(255,255,255,0.03)', 'No trades']].map(([bg, label]) => (
+          {view === 'analytics' && (
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+              <div style={card}>
+                <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.75)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '16px' }}>Win / Loss Breakdown</div>
+                <div style={{ display: 'flex', gap: '12px', marginBottom: '20px' }}>
+                  {[['Wins', wins, '#34D399'],['Losses', losses, '#F87171'],['BE', trades.length - wins - losses, '#D4A843']].map(([l,v,c]) => (
+                    <div key={l} style={{ flex: 1, background: '#141414', borderRadius: '12px', padding: '14px', textAlign: 'center' }}>
+                      <div style={{ fontFamily: 'Bebas Neue', fontSize: '28px', color: c }}>{v}</div>
+                      <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#808080', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{l}</div>
+                    </div>
+                  ))}
+                </div>
+                <div style={{ display: 'flex', borderRadius: '6px', overflow: 'hidden', height: '8px', gap: '2px' }}>
+                  {trades.length > 0 && <>
+                    <div style={{ width: `${(wins/trades.length)*100}%`, background: '#34D399', transition: 'width 0.8s' }} />
+                    <div style={{ width: `${(losses/trades.length)*100}%`, background: '#F87171', transition: 'width 0.8s' }} />
+                    <div style={{ flex: 1, background: '#D4A843', opacity: 0.5 }} />
+                  </>}
+                </div>
+              </div>
+              <div style={card}>
+                <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.75)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '16px' }}>Monthly PnL</div>
+                {months.length === 0 ? (
+                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#808080', textAlign: 'center', padding: '20px' }}>No data yet</div>
+                ) : (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    {months.map(([month, pnl]) => (
+                      <div key={month} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#A0A0A0', width: '60px' }}>{month.slice(5)}/{month.slice(2,4)}</div>
+                        <MiniBar value={Math.abs(pnl)} max={maxMonthPnl} color={pnl >= 0 ? '#34D399' : '#F87171'} />
+                        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: pnl >= 0 ? '#34D399' : '#F87171', width: '60px', textAlign: 'right' }}>{pnl >= 0 ? '+' : ''}{pnl.toFixed(0)}</div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <div style={card}>
+                <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.75)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '16px' }}>Win Rate by Day</div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                  {DAYS.map(day => {
+                    const d = dayStats[day];
+                    const wr = d.total > 0 ? Math.round((d.wins / d.total) * 100) : 0;
+                    return (
+                      <div key={day} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: day === 'Tuesday' ? '#D4A843' : '#A0A0A0', width: '72px' }}>{day.slice(0,3)} {day === 'Tuesday' ? '⚡' : ''}</div>
+                        <MiniBar value={wr} max={100} color={wr >= 60 ? '#34D399' : wr >= 40 ? '#D4A843' : '#F87171'} />
+                        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#C0C0C0', width: '70px', textAlign: 'right' }}>{d.total > 0 ? `${wr}% (${d.total})` : 'No data'}</div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+              <div style={card}>
+                <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.75)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '16px' }}>Emotion vs Win Rate</div>
+                {topEmotions.length === 0 ? (
+                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#808080', textAlign: 'center', padding: '20px' }}>No data yet</div>
+                ) : (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                    {topEmotions.map(([emotion, data]) => {
+                      const wr = Math.round((data.wins / data.total) * 100);
+                      return (
+                        <div key={emotion} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#A0A0A0', width: '110px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{emotion}</div>
+                          <MiniBar value={wr} max={100} color={wr >= 60 ? '#34D399' : wr >= 40 ? '#D4A843' : '#F87171'} />
+                          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#C0C0C0', width: '40px', textAlign: 'right' }}>{wr}%</div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+              <div style={{ ...card, gridColumn: '1 / -1' }}>
+                <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.75)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '16px' }}>Top ICT Concepts — Usage & Win Rate</div>
+                {topConcepts.length === 0 ? (
+                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#808080', textAlign: 'center', padding: '20px' }}>No concept data yet — log trades with ICT concepts selected</div>
+                ) : (
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '12px' }}>
+                    {topConcepts.map(([concept, data]) => {
+                      const wr = Math.round((data.wins / data.total) * 100);
+                      return (
+                        <div key={concept} style={{ background: '#141414', borderRadius: '12px', padding: '14px' }}>
+                          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#D4A843', marginBottom: '8px' }}>{concept}</div>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+                            <MiniBar value={wr} max={100} color={wr >= 60 ? '#34D399' : wr >= 40 ? '#D4A843' : '#F87171'} />
+                            <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#C0C0C0', whiteSpace: 'nowrap' }}>{wr}%</span>
+                          </div>
+                          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#808080' }}>{data.total} trades</div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {view === 'calendar' && (
+            <div style={card}>
+              <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.75)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '20px' }}>Trade Calendar — {new Date().getFullYear()}</div>
+              {(() => {
+                const tradesByDate = {};
+                trades.forEach(t => { if (!tradesByDate[t.date]) tradesByDate[t.date] = []; tradesByDate[t.date].push(t); });
+                const monthsArr = Array.from({ length: 12 }, (_, i) => i);
+                return (
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '16px' }}>
+                    {monthsArr.map(m => {
+                      const year = new Date().getFullYear();
+                      const firstDay = new Date(year, m, 1).getDay();
+                      const daysInMonth = new Date(year, m + 1, 0).getDate();
+                      const monthName = new Date(year, m).toLocaleString('default', { month: 'short' }).toUpperCase();
+                      return (
+                        <div key={m}>
+                          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#D4A843', marginBottom: '8px', letterSpacing: '0.1em' }}>{monthName}</div>
+                          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7,1fr)', gap: '2px' }}>
+                            {['S','M','T','W','T','F','S'].map((d,i) => <div key={i} style={{ fontFamily: 'DM Mono, monospace', fontSize: '8px', color: '#404040', textAlign: 'center', paddingBottom: '3px' }}>{d}</div>)}
+                            {Array.from({ length: firstDay }).map((_, i) => <div key={`e${i}`} />)}
+                            {Array.from({ length: daysInMonth }, (_, i) => i + 1).map(day => {
+                              const dateStr = `${year}-${String(m+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+                              const dayTrades = tradesByDate[dateStr] || [];
+                              const hasWin = dayTrades.some(t => t.result === 'Win');
+                              const hasLoss = dayTrades.some(t => t.result === 'Loss');
+                              const bg = dayTrades.length === 0 ? 'transparent' : hasWin && !hasLoss ? 'rgba(52,211,153,0.3)' : !hasWin && hasLoss ? 'rgba(248,113,113,0.3)' : 'rgba(212,168,67,0.3)';
+                              const borderColor = hasWin && !hasLoss ? 'rgba(52,211,153,0.5)' : hasLoss && !hasWin ? 'rgba(248,113,113,0.5)' : 'rgba(212,168,67,0.5)';
+                              return <div key={day} title={dayTrades.length > 0 ? `${dayTrades.length} trade(s)` : ''} style={{ aspectRatio: '1', borderRadius: '3px', background: bg, border: dayTrades.length > 0 ? `1px solid ${borderColor}` : '1px solid rgba(255,255,255,0.03)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '7px', fontFamily: 'DM Mono, monospace', color: dayTrades.length > 0 ? 'white' : '#303030' }}>{day}</div>;
+                            })}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
+              })()}
+              <div style={{ display: 'flex', gap: '16px', marginTop: '20px', flexWrap: 'wrap' }}>
+                {[['rgba(52,211,153,0.3)','Win day'],['rgba(248,113,113,0.3)','Loss day'],['rgba(212,168,67,0.3)','Mixed day'],['transparent','No trades']].map(([bg, label]) => (
                   <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <div style={{ width: '12px', height: '12px', borderRadius: '3px', background: bg }} />
-                    <span style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', color: 'rgba(255,255,255,0.65)' }}>{label}</span>
+                    <div style={{ width: '12px', height: '12px', borderRadius: '3px', background: bg, border: '1px solid rgba(255,255,255,0.1)' }} />
+                    <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#C0C0C0' }}>{label}</span>
                   </div>
                 ))}
               </div>
             </div>
-            <div style={{ background: '#0D0D0D', border: '1px solid rgba(212,168,67,0.08)', borderRadius: '16px', padding: '24px' }}>
-              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', color: 'rgba(212,168,67,0.75)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '16px' }}>// Win Rate by Day</div>
-              {(() => {
-                const dayStats = {};
-                trades.forEach(t => {
-                  const day = DAYS[new Date(t.date).getDay() - 1];
-                  if (!day) return;
-                  if (!dayStats[day]) dayStats[day] = { wins: 0, total: 0 };
-                  dayStats[day].total++;
-                  if (t.result === 'Win') dayStats[day].wins++;
-                });
-                return DAYS.map(day => {
-                  const data = dayStats[day] || { wins: 0, total: 0 };
-                  const wr = data.total > 0 ? ((data.wins / data.total) * 100).toFixed(0) : 0;
-                  return (
-                    <div key={day} style={{ marginBottom: '14px' }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-                        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', color: day === 'Tuesday' ? '#D4A843' : 'rgba(255,255,255,0.4)' }}>{day} {day === 'Tuesday' ? '⚡' : ''}</span>
-                        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', color: 'rgba(255,255,255,0.65)' }}>{data.total > 0 ? `${wr}% (${data.total})` : 'No data'}</span>
-                      </div>
-                      <div style={{ background: 'rgba(212,168,67,0.06)', borderRadius: '99px', height: '5px', overflow: 'hidden' }}>
-                        <div style={{ width: `${wr}%`, height: '100%', background: 'linear-gradient(90deg, #8A6B28, #D4A843)', borderRadius: '99px', transition: 'width 0.8s ease' }} />
-                      </div>
-                    </div>
-                  );
-                });
-              })()}
-            </div>
-          </div>
-        )}
-      </div>
+          )}
 
-      {/* FOOTER */}
-      <footer style={{ borderTop: '1px solid rgba(212,168,67,0.06)', padding: '24px', marginTop: '60px', textAlign: 'center' }}>
-        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', color: 'rgba(255,255,255,0.15)' }}>SmartMoney Academy Trading Journal — Track your edge, not your feelings.</div>
-      </footer>
-    </div>
+        </div>
+
+        <footer style={{ borderTop: '1px solid rgba(212,168,67,0.06)', padding: '24px', marginTop: '40px', textAlign: 'center' }}>
+          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#707070' }}>SmartMoney Academy Trading Journal — Track your edge, not your feelings.</div>
+        </footer>
+      </div>
     </AuthGuard>
   );
 }

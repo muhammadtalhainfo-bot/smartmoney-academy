@@ -141,7 +141,7 @@ function ModuleCard({ mod, index }) {
           </div>
         </div>
 
-        <p className="text-gray-400 text-sm leading-relaxed mb-4" style={{ fontWeight: 300 }}>
+        <p className="text-gray-300 text-sm leading-relaxed mb-4" style={{ fontWeight: 300 }}>
           {mod.desc}
         </p>
 
@@ -181,7 +181,7 @@ function ModuleCard({ mod, index }) {
             {mod.topics.map((topic, i) => (
               <div key={i} className="flex items-center gap-3">
                 <div className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: '#D4A843', opacity: 0.5 }} />
-                <span className="text-gray-400 text-xs" style={{ fontWeight: 300 }}>{topic}</span>
+                <span className="text-gray-300 text-xs" style={{ fontWeight: 300 }}>{topic}</span>
               </div>
             ))}
           </div>
@@ -311,25 +311,13 @@ export default function CoursesPage() {
           </div>
         </Link>
         <div className="hidden md:flex items-center gap-8">
-          {[['/', 'Home'], ['/courses', 'Courses'], ['/signals', 'Signals'], ['/glossary', 'Glossary'], ['/journal', 'Journal']].map(([href, label]) => (
-            <Link key={href} href={href} className="font-mono-c text-xs text-gray-400 hover:text-[#D4A843] transition-colors tracking-wider uppercase">{label}</Link>
-          ))}
-        </div>
-        <Link href="/courses" className="px-5 py-2.5 rounded-lg text-sm font-mono-c tracking-wider uppercase font-bold" style={{ background: 'linear-gradient(135deg, #D4A843, #F0C96A)', color: '#080808' }}>
-          All Courses
-        </Link>
-      </nav>
-      {/* ── MOBILE MENU ── */}
-      {menuOpen && (
-        <div style={{ position: 'fixed', inset: 0, zIndex: 50, background: 'rgba(8,8,8,0.98)', backdropFilter: 'blur(20px)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '32px' }}>
-          <button onClick={() => setMenuOpen(false)} style={{ position: 'absolute', top: '24px', right: '24px', background: 'none', border: 'none', color: '#D4A843', fontSize: '28px', cursor: 'pointer' }}>✕</button>
-          {[['/', 'Home'], ['/courses', 'Courses'], ['/signals', 'Signals'], ['/glossary', 'Glossary'], ['/journal', 'Journal'], ['/dashboard', 'Dashboard']].map(([href, label]) => (
+          {[['/', 'Home'], ['/courses', 'Courses'], ['/signals', 'Signals'], ['/glossary', 'Glossary'], ['/practice', 'Practice'], ['/journal', 'Journal'], ['/dashboard', 'Dashboard']].map(([href, label]) => (
             <a key={href} href={href} onClick={() => setMenuOpen(false)} style={{ fontFamily: 'DM Mono, monospace', fontSize: '24px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)', textDecoration: 'none' }}>{label}</a>
           ))}
         </div>
-      )}
+      </nav>
 
-      {/* ── HERO ── */}
+            {/* ── HERO ── */}
       <section className="relative z-10 grid-bg px-6 py-20 text-center border-b" style={{ borderColor: 'var(--border)' }}>
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 800px 400px at 50% 100%, rgba(212,168,67,0.05) 0%, transparent 70%)' }} />
         <div className="relative max-w-4xl mx-auto">
@@ -341,7 +329,7 @@ export default function CoursesPage() {
             <span className="text-white">THE COMPLETE </span>
             <span className="gold-gradient-text">ICT CURRICULUM</span>
           </h1>
-          <p className="text-gray-400 text-lg max-w-xl mx-auto" style={{ fontWeight: 300 }}>
+          <p className="text-gray-300 text-lg max-w-xl mx-auto" style={{ fontWeight: 300 }}>
             Every concept. Every model. From basic market structure to the 2025 Venom Model. Built from innercircletrader.net + ICT PDFs.
           </p>
         </div>
@@ -358,7 +346,7 @@ export default function CoursesPage() {
           ].map((s, i) => (
             <div key={i} className="text-center">
               <div className="font-display text-4xl mb-1" style={{ color: s.color }}>{s.value}</div>
-              <div className="font-mono-c text-xs tracking-widest uppercase" style={{ color: 'rgba(255,255,255,0.65)' }}>{s.label}</div>
+              <div className="font-mono-c text-xs tracking-widest uppercase" style={{ color: '#C0C0C0' }}>{s.label}</div>
             </div>
           ))}
         </div>
@@ -373,7 +361,7 @@ export default function CoursesPage() {
               key={f}
               onClick={() => setActiveFilter(f)}
               className={`filter-btn flex-shrink-0 px-4 py-2 rounded-lg text-xs border tracking-wider uppercase ${activeFilter === f ? 'active font-bold' : ''}`}
-              style={activeFilter !== f ? { borderColor: 'rgba(212,168,67,0.15)', color: 'rgba(255,255,255,0.4)', background: 'transparent' } : {}}
+              style={activeFilter !== f ? { borderColor: 'rgba(212,168,67,0.15)', color: '#A0A0A0', background: 'transparent' } : {}}
             >
               {f}
             </button>
@@ -393,7 +381,7 @@ export default function CoursesPage() {
             <div className="mb-12">
               <div className="track-header mb-6">
                 <div className="font-mono-c text-xs tracking-widest uppercase mb-1" style={{ color: '#34D399' }}>Beginner Track</div>
-                <p className="text-gray-500 text-xs" style={{ fontWeight: 300 }}>Start here. No prior knowledge required.</p>
+                <p className="text-gray-300 text-xs" style={{ fontWeight: 300 }}>Start here. No prior knowledge required.</p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {filtered.filter(m => m.level === 'Beginner').map((mod, i) => <ModuleCard key={mod.id} mod={mod} index={i} />)}
@@ -406,7 +394,7 @@ export default function CoursesPage() {
             <div className="mb-12">
               <div className="track-header mb-6" style={{ borderLeftColor: 'rgba(212,168,67,0.5)' }}>
                 <div className="font-mono-c text-xs tracking-widest uppercase mb-1" style={{ color: '#D4A843' }}>Intermediate Track</div>
-                <p className="text-gray-500 text-xs" style={{ fontWeight: 300 }}>Entry models, sessions, and PD arrays in depth.</p>
+                <p className="text-gray-300 text-xs" style={{ fontWeight: 300 }}>Entry models, sessions, and PD arrays in depth.</p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {filtered.filter(m => m.level === 'Intermediate').map((mod, i) => <ModuleCard key={mod.id} mod={mod} index={i} />)}
@@ -419,7 +407,7 @@ export default function CoursesPage() {
             <div className="mb-12">
               <div className="track-header mb-6" style={{ borderLeftColor: 'rgba(248,113,113,0.5)' }}>
                 <div className="font-mono-c text-xs tracking-widest uppercase mb-1" style={{ color: '#F87171' }}>Advanced Track</div>
-                <p className="text-gray-500 text-xs" style={{ fontWeight: 300 }}>Market Maker Models, IPDA, SMT, and 2024 concepts.</p>
+                <p className="text-gray-300 text-xs" style={{ fontWeight: 300 }}>Market Maker Models, IPDA, SMT, and 2024 concepts.</p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {filtered.filter(m => m.level === 'Advanced').map((mod, i) => <ModuleCard key={mod.id} mod={mod} index={i} />)}
@@ -447,7 +435,7 @@ export default function CoursesPage() {
         <div className="max-w-2xl mx-auto text-center">
           <div className="font-mono-c text-xs tracking-widest uppercase mb-4" style={{ color: 'rgba(212,168,67,0.5)' }}>// Start From Zero</div>
           <h2 className="font-display text-5xl text-white mb-4">DON'T KNOW WHERE<br/>TO BEGIN?</h2>
-          <p className="text-gray-400 text-sm mb-8" style={{ fontWeight: 300 }}>Start with Module 1 — Market Structure. Every other concept builds on it.</p>
+          <p className="text-gray-300 text-sm mb-8" style={{ fontWeight: 300 }}>Start with Module 1 — Market Structure. Every other concept builds on it.</p>
           <Link href="/lesson/1">
             <span className="inline-block px-8 py-4 rounded-xl font-mono-c text-sm tracking-widest uppercase font-bold transition-all hover:shadow-lg" style={{ background: 'linear-gradient(135deg, #D4A843, #F0C96A)', color: '#080808' }}>
               Start Module 1 →
@@ -463,10 +451,10 @@ export default function CoursesPage() {
             <div className="w-7 h-7 rounded-lg flex items-center justify-center font-display text-black text-sm" style={{ background: 'linear-gradient(135deg, #D4A843, #8A6B28)' }}>S</div>
             <span className="font-display text-lg tracking-widest text-white">SMARTMONEY ACADEMY</span>
           </div>
-          <div className="font-mono-c text-xs text-gray-600">Educational platform only. Not financial advice.</div>
+          <div className="font-mono-c text-xs text-gray-300">Educational platform only. Not financial advice.</div>
           <div className="flex gap-6">
             {['/courses', '/signals', '/glossary'].map((href, i) => (
-              <Link key={i} href={href} className="font-mono-c text-xs text-gray-500 hover:text-[#D4A843] transition-colors tracking-wider uppercase">{href.slice(1)}</Link>
+              <Link key={i} href={href} className="font-mono-c text-xs text-gray-300 hover:text-[#D4A843] transition-colors tracking-wider uppercase">{href.slice(1)}</Link>
             ))}
           </div>
         </div>

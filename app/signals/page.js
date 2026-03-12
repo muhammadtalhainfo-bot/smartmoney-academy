@@ -108,7 +108,7 @@ function SignalCard({ signal }) {
   const isClosed = signal.status.startsWith('CLOSED');
 
   return (
-    <div className="signal-card rounded-2xl border overflow-hidden" style={{ borderColor: isClosed ? 'rgba(255,255,255,0.05)' : 'rgba(212,168,67,0.12)', background: '#0F0F0F' }}>
+    <div className="signal-card rounded-2xl border overflow-hidden" style={{ borderColor: isClosed ? 'rgba(255,255,255,0.08)' : 'rgba(212,168,67,0.12)', background: '#0F0F0F' }}>
 
       {/* Top bar */}
       <div className="flex items-center justify-between px-5 py-3 border-b" style={{ borderColor: 'rgba(212,168,67,0.06)', background: isClosed ? 'rgba(255,255,255,0.01)' : 'rgba(212,168,67,0.02)' }}>
@@ -117,7 +117,7 @@ function SignalCard({ signal }) {
           <span className="font-mono-c text-[10px] tracking-widest" style={{ color: ss.color }}>{signal.status}</span>
         </div>
         <div className="flex items-center gap-2">
-          <span className="font-mono-c text-[10px]" style={{ color: 'rgba(255,255,255,0.25)' }}>{signal.time}</span>
+          <span className="font-mono-c text-[10px]" style={{ color: '#808080' }}>{signal.time}</span>
           <span className="px-2 py-0.5 rounded text-[10px] font-mono-c" style={{ background: ses.bg, color: ses.color }}>{signal.session}</span>
         </div>
       </div>
@@ -152,7 +152,7 @@ function SignalCard({ signal }) {
             { label: 'TP1', value: signal.tp1, color: '#34D399' },
           ].map((item, i) => (
             <div key={i} className="rounded-xl p-3 text-center" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)' }}>
-              <div className="font-mono-c text-[9px] tracking-widest mb-1" style={{ color: 'rgba(255,255,255,0.25)' }}>{item.label}</div>
+              <div className="font-mono-c text-[9px] tracking-widest mb-1" style={{ color: '#808080' }}>{item.label}</div>
               <div className="font-mono-c text-xs font-medium" style={{ color: item.color }}>{item.value}</div>
             </div>
           ))}
@@ -161,11 +161,11 @@ function SignalCard({ signal }) {
         {/* R:R + Confidence */}
         <div className="flex items-center gap-4 mb-4">
           <div className="flex items-center gap-2">
-            <span className="font-mono-c text-[10px]" style={{ color: 'rgba(255,255,255,0.65)' }}>R:R</span>
+            <span className="font-mono-c text-[10px]" style={{ color: '#C0C0C0' }}>R:R</span>
             <span className="font-mono-c text-sm font-medium" style={{ color: '#D4A843' }}>1:{signal.rr}</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="font-mono-c text-[10px]" style={{ color: 'rgba(255,255,255,0.65)' }}>Confidence</span>
+            <span className="font-mono-c text-[10px]" style={{ color: '#C0C0C0' }}>Confidence</span>
             <div className="flex items-center gap-1.5">
               <div className="w-20 h-1.5 rounded-full" style={{ background: 'rgba(212,168,67,0.1)' }}>
                 <div className="h-1.5 rounded-full" style={{ width: `${signal.confidence}%`, background: signal.confidence >= 85 ? '#34D399' : signal.confidence >= 70 ? '#D4A843' : '#F87171' }} />
@@ -256,8 +256,8 @@ export default function SignalsPage() {
           </div>
         </Link>
         <div className="hidden md:flex items-center gap-8">
-          {[['/', 'Home'], ['/courses', 'Courses'], ['/signals', 'Signals'], ['/glossary', 'Glossary'], ['/journal', 'Journal'], ['/dashboard', 'Dashboard']].map(([href, label]) => (
-            <Link key={href} href={href} className={`font-mono-c text-xs tracking-wider uppercase transition-colors ${href === '/signals' ? 'text-[#D4A843]' : 'text-gray-400 hover:text-[#D4A843]'}`}>{label}</Link>
+          {[['/', 'Home'], ['/courses', 'Courses'], ['/signals', 'Signals'], ['/glossary', 'Glossary'], ['/practice', 'Practice'], ['/journal', 'Journal'], ['/dashboard', 'Dashboard']].map(([href, label]) => (
+            <Link key={href} href={href} className={`font-mono-c text-xs tracking-wider uppercase transition-colors ${href === '/signals' ? 'text-[#D4A843]' : 'text-gray-300 hover:text-[#D4A843]'}`}>{label}</Link>
           ))}
         </div>
         <div className="flex items-center gap-2">
@@ -269,7 +269,7 @@ export default function SignalsPage() {
       {menuOpen && (
         <div style={{ position: 'fixed', inset: 0, zIndex: 50, background: 'rgba(8,8,8,0.98)', backdropFilter: 'blur(20px)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '32px' }}>
           <button onClick={() => setMenuOpen(false)} style={{ position: 'absolute', top: '24px', right: '24px', background: 'none', border: 'none', color: '#D4A843', fontSize: '28px', cursor: 'pointer' }}>✕</button>
-          {[['/', 'Home'], ['/courses', 'Courses'], ['/signals', 'Signals'], ['/glossary', 'Glossary'], ['/journal', 'Journal'], ['/dashboard', 'Dashboard']].map(([href, label]) => (
+          {[['/', 'Home'], ['/courses', 'Courses'], ['/signals', 'Signals'], ['/glossary', 'Glossary'], ['/practice', 'Practice'], ['/journal', 'Journal'], ['/dashboard', 'Dashboard']].map(([href, label]) => (
             <a key={href} href={href} onClick={() => setMenuOpen(false)} style={{ fontFamily: 'DM Mono, monospace', fontSize: '24px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)', textDecoration: 'none' }}>{label}</a>
           ))}
         </div>
@@ -289,7 +289,7 @@ export default function SignalsPage() {
                 <span className="text-white">EDUCATIONAL </span>
                 <span className="gold-gradient">SIGNALS</span>
               </h1>
-              <p className="text-gray-400 text-sm max-w-lg" style={{ fontWeight: 300 }}>
+              <p className="text-gray-300 text-sm max-w-lg" style={{ fontWeight: 300 }}>
                 Each signal is a live ICT lesson — showing exactly which concept triggered it, why, and how the trade was constructed using the 2022 Model.
               </p>
             </div>
@@ -304,7 +304,7 @@ export default function SignalsPage() {
               ].map((s, i) => (
                 <div key={i} className="text-center">
                   <div className="font-display text-3xl" style={{ color: s.color }}>{s.value}</div>
-                  <div className="font-mono-c text-[10px] tracking-widest uppercase" style={{ color: 'rgba(255,255,255,0.25)' }}>{s.label}</div>
+                  <div className="font-mono-c text-[10px] tracking-widest uppercase" style={{ color: '#808080' }}>{s.label}</div>
                 </div>
               ))}
             </div>
@@ -316,7 +316,7 @@ export default function SignalsPage() {
       <div className="relative z-10 disclaimer-box border-b px-6 py-4" style={{ borderColor: 'rgba(212,168,67,0.1)' }}>
         <div className="max-w-6xl mx-auto flex items-center gap-3">
           <span className="text-lg flex-shrink-0">⚠️</span>
-          <p className="font-mono-c text-[10px] text-gray-500 leading-relaxed">
+          <p className="font-mono-c text-[10px] text-gray-300 leading-relaxed">
             EDUCATIONAL ONLY — These signals are ICT concept demonstrations, not financial advice. They are designed to show how ICT models identify setups in real market conditions. Never risk money you cannot afford to lose. Past performance does not guarantee future results.
           </p>
         </div>
@@ -334,10 +334,10 @@ export default function SignalsPage() {
               { name: 'London Close', time: '10AM–12PM', active: false, color: '#34D399' },
               { name: 'NY PM', time: '1PM–4PM', active: false, color: '#6B7280' },
             ].map((s, i) => (
-              <div key={i} className="flex items-center gap-2 px-3 py-2 rounded-lg" style={{ background: s.active ? `${s.color}15` : 'rgba(255,255,255,0.02)', border: `1px solid ${s.active ? s.color + '40' : 'rgba(255,255,255,0.05)'}` }}>
+              <div key={i} className="flex items-center gap-2 px-3 py-2 rounded-lg" style={{ background: s.active ? `${s.color}15` : 'rgba(255,255,255,0.02)', border: `1px solid ${s.active ? s.color + '40' : 'rgba(255,255,255,0.08)'}` }}>
                 {s.active && <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: s.color }} />}
-                <span className="font-mono-c text-[10px]" style={{ color: s.active ? s.color : 'rgba(255,255,255,0.25)' }}>{s.name}</span>
-                <span className="font-mono-c text-[9px]" style={{ color: 'rgba(255,255,255,0.15)' }}>{s.time}</span>
+                <span className="font-mono-c text-[10px]" style={{ color: s.active ? s.color : '#808080' }}>{s.name}</span>
+                <span className="font-mono-c text-[9px]" style={{ color: '#707070' }}>{s.time}</span>
               </div>
             ))}
           </div>
@@ -353,7 +353,7 @@ export default function SignalsPage() {
               key={f}
               onClick={() => setFilter(f)}
               className={`filter-btn px-4 py-2 rounded-lg text-[10px] border tracking-wider uppercase ${filter === f ? 'active' : ''}`}
-              style={filter !== f ? { borderColor: 'rgba(212,168,67,0.12)', color: 'rgba(255,255,255,0.65)', background: 'transparent' } : {}}
+              style={filter !== f ? { borderColor: 'rgba(212,168,67,0.12)', color: '#C0C0C0', background: 'transparent' } : {}}
             >
               {f}
             </button>
@@ -382,7 +382,7 @@ export default function SignalsPage() {
               <div key={i} className="p-5 rounded-2xl border" style={{ borderColor: 'rgba(212,168,67,0.1)', background: '#0F0F0F' }}>
                 <div className="font-display text-5xl mb-3" style={{ color: 'rgba(212,168,67,0.12)' }}>{item.step}</div>
                 <div className="font-semibold text-white text-sm mb-2">{item.title}</div>
-                <p className="text-gray-500 text-xs leading-relaxed" style={{ fontWeight: 300 }}>{item.desc}</p>
+                <p className="text-gray-300 text-xs leading-relaxed" style={{ fontWeight: 300 }}>{item.desc}</p>
               </div>
             ))}
           </div>
@@ -396,10 +396,10 @@ export default function SignalsPage() {
             <div className="w-7 h-7 rounded-lg flex items-center justify-center font-display text-black text-sm" style={{ background: 'linear-gradient(135deg, #D4A843, #8A6B28)' }}>S</div>
             <span className="font-display text-lg tracking-widest text-white">SMARTMONEY ACADEMY</span>
           </div>
-          <div className="font-mono-c text-xs text-gray-600">Educational platform only. Not financial advice.</div>
+          <div className="font-mono-c text-xs text-gray-300">Educational platform only. Not financial advice.</div>
           <div className="flex gap-6">
             {['/courses', '/signals', '/glossary', '/dashboard'].map((href, i) => (
-              <Link key={i} href={href} className="font-mono-c text-xs text-gray-500 hover:text-[#D4A843] transition-colors tracking-wider uppercase">{href.slice(1)}</Link>
+              <Link key={i} href={href} className="font-mono-c text-xs text-gray-300 hover:text-[#D4A843] transition-colors tracking-wider uppercase">{href.slice(1)}</Link>
             ))}
           </div>
 </div>

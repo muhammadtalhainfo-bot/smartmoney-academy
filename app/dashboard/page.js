@@ -170,8 +170,8 @@ export default function DashboardPage() {
           </div>
         </Link>
         <div className="hidden md:flex items-center gap-8">
-          {[['/', 'Home'], ['/courses', 'Courses'], ['/signals', 'Signals'], ['/glossary', 'Glossary'], ['/journal', 'Journal'], ['/dashboard', 'Dashboard']].map(([href, label]) => (
-            <Link key={href} href={href} className={`font-mono-c text-xs tracking-wider uppercase transition-colors ${href === '/dashboard' ? 'text-[#D4A843]' : 'text-gray-400 hover:text-[#D4A843]'}`}>{label}</Link>
+          {[['/', 'Home'], ['/courses', 'Courses'], ['/signals', 'Signals'], ['/glossary', 'Glossary'], ['/practice', 'Practice'], ['/journal', 'Journal'], ['/dashboard', 'Dashboard']].map(([href, label]) => (
+            <Link key={href} href={href} className={`font-mono-c text-xs tracking-wider uppercase transition-colors ${href === '/dashboard' ? 'text-[#D4A843]' : 'text-gray-300 hover:text-[#D4A843]'}`}>{label}</Link>
           ))}
         </div>
         <button onClick={handleSignOut} className="font-mono-c text-xs px-4 py-2 rounded-lg tracking-wider uppercase transition-all" style={{ border: '1px solid rgba(212,168,67,0.15)', color: 'rgba(212,168,67,0.5)' }}>
@@ -182,7 +182,7 @@ export default function DashboardPage() {
       {menuOpen && (
         <div style={{ position: 'fixed', inset: 0, zIndex: 50, background: 'rgba(8,8,8,0.98)', backdropFilter: 'blur(20px)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '32px' }}>
           <button onClick={() => setMenuOpen(false)} style={{ position: 'absolute', top: '24px', right: '24px', background: 'none', border: 'none', color: '#D4A843', fontSize: '28px', cursor: 'pointer' }}>✕</button>
-          {[['/', 'Home'], ['/courses', 'Courses'], ['/signals', 'Signals'], ['/glossary', 'Glossary'], ['/journal', 'Journal'], ['/dashboard', 'Dashboard']].map(([href, label]) => (
+          {[['/', 'Home'], ['/courses', 'Courses'], ['/signals', 'Signals'], ['/glossary', 'Glossary'], ['/practice', 'Practice'], ['/journal', 'Journal'], ['/dashboard', 'Dashboard']].map(([href, label]) => (
             <a key={href} href={href} onClick={() => setMenuOpen(false)} style={{ fontFamily: 'DM Mono, monospace', fontSize: '24px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)', textDecoration: 'none' }}>{label}</a>
           ))}
         </div>
@@ -192,14 +192,14 @@ export default function DashboardPage() {
 
         {/* HEADER */}
         <div className="fade-up mb-10">
-          <div className="font-mono-c text-xs tracking-widest uppercase mb-2" style={{ color: 'rgba(212,168,67,0.75)' }}>// Your Progress</div>
+          <div className="font-mono-c text-xs tracking-widest uppercase mb-2" style={{ color: '#D4A843' }}>// Your Progress</div>
           <div className="flex items-end justify-between flex-wrap gap-4">
             <div>
               <h1 className="font-display leading-none" style={{ fontSize: 'clamp(36px, 6vw, 72px)' }}>
                 <span className="text-white">WELCOME BACK, </span>
                 <span className="gold-gradient">{displayName.toUpperCase()}</span>
               </h1>
-              <p className="text-gray-500 text-sm mt-1" style={{ fontWeight: 300 }}>
+              <p className="text-gray-300 text-sm mt-1" style={{ fontWeight: 300 }}>
                 {currentRank} · {xp} XP · {profile?.streak || 0} day streak
               </p>
             </div>
@@ -222,7 +222,7 @@ export default function DashboardPage() {
             <div key={i} className={`card p-5 ${s.highlight ? 'border-[rgba(212,168,67,0.25)]' : ''}`} style={s.highlight ? { background: 'rgba(212,168,67,0.04)' } : {}}>
               <div className="text-2xl mb-3">{s.icon}</div>
               <div className="font-display text-4xl mb-1" style={{ color: s.highlight ? '#D4A843' : 'white' }}>{s.value}</div>
-              <div className="font-mono-c text-[10px] tracking-widest uppercase mb-1" style={{ color: 'rgba(255,255,255,0.65)' }}>{s.label}</div>
+              <div className="font-mono-c text-[10px] tracking-widest uppercase mb-1" style={{ color: '#C0C0C0' }}>{s.label}</div>
               <div className="font-mono-c text-[10px]" style={{ color: 'rgba(212,168,67,0.7)' }}>{s.sub}</div>
             </div>
           ))}
@@ -231,7 +231,7 @@ export default function DashboardPage() {
         {/* TABS */}
         <div className="fade-up flex gap-6 border-b mb-8" style={{ animationDelay: '0.15s', borderColor: 'rgba(212,168,67,0.1)' }}>
           {[['overview', 'Overview'], ['modules', 'All Modules']].map(([key, label]) => (
-            <button key={key} onClick={() => setActiveTab(key)} className={`tab-btn pb-3 text-xs tracking-widest uppercase ${activeTab === key ? 'active' : 'text-gray-500'}`}>
+            <button key={key} onClick={() => setActiveTab(key)} className={`tab-btn pb-3 text-xs tracking-widest uppercase ${activeTab === key ? 'active' : 'text-gray-300'}`}>
               {label}
             </button>
           ))}
@@ -244,7 +244,7 @@ export default function DashboardPage() {
 
               {/* Overall progress */}
               <div className="card p-6">
-                <div className="font-mono-c text-xs tracking-widest uppercase mb-5" style={{ color: 'rgba(212,168,67,0.75)' }}>// Curriculum Progress</div>
+                <div className="font-mono-c text-xs tracking-widest uppercase mb-5" style={{ color: '#D4A843' }}>// Curriculum Progress</div>
                 <div className="flex items-center gap-6 mb-6">
                   <div className="relative flex-shrink-0">
                     <CircleProgress pct={overallPct} />
@@ -254,7 +254,7 @@ export default function DashboardPage() {
                   </div>
                   <div>
                     <div className="font-display text-3xl text-white mb-1">{completedModuleIds.length} / {totalModules} Modules</div>
-                    <div className="text-gray-500 text-sm" style={{ fontWeight: 300 }}>{completedLessons} of {totalLessons} lessons completed</div>
+                    <div className="text-gray-300 text-sm" style={{ fontWeight: 300 }}>{completedLessons} of {totalLessons} lessons completed</div>
                     <div className="mt-3 progress-bar-bg h-2 w-48">
                       <div className="progress-bar-fill h-2" style={{ width: `${(completedLessons / totalLessons) * 100}%` }} />
                     </div>
@@ -271,7 +271,7 @@ export default function DashboardPage() {
                       <div key={track.label}>
                         <div className="flex justify-between mb-1.5">
                           <span className="font-mono-c text-xs" style={{ color: track.color }}>{track.label}</span>
-                          <span className="font-mono-c text-xs" style={{ color: 'rgba(255,255,255,0.25)' }}>{done}/{track.ids.length}</span>
+                          <span className="font-mono-c text-xs" style={{ color: '#808080' }}>{done}/{track.ids.length}</span>
                         </div>
                         <div className="progress-bar-bg h-1.5">
                           <div className="h-1.5 rounded-full" style={{ width: `${(done / track.ids.length) * 100}%`, background: track.color, transition: 'width 1s ease' }} />
@@ -284,10 +284,10 @@ export default function DashboardPage() {
 
               {/* Recent lessons */}
               <div className="card p-6">
-                <div className="font-mono-c text-xs tracking-widest uppercase mb-5" style={{ color: 'rgba(212,168,67,0.75)' }}>// Recent Lessons</div>
+                <div className="font-mono-c text-xs tracking-widest uppercase mb-5" style={{ color: '#D4A843' }}>// Recent Lessons</div>
                 {recentCompletions.length === 0 ? (
                   <div className="text-center py-8">
-                    <p className="font-mono-c text-xs" style={{ color: 'rgba(255,255,255,0.45)' }}>No lessons completed yet</p>
+                    <p className="font-mono-c text-xs" style={{ color: '#A8A8A8' }}>No lessons completed yet</p>
                     <Link href="/courses" className="inline-block mt-3 font-mono-c text-xs" style={{ color: '#D4A843' }}>Start your first lesson →</Link>
                   </div>
                 ) : (
@@ -301,7 +301,7 @@ export default function DashboardPage() {
                               <div className="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style={{ background: 'rgba(212,168,67,0.08)' }}>{mod?.emoji || '📖'}</div>
                               <div>
                                 <div className="font-medium text-white text-sm">{mod?.title || `Lesson ${c.lesson_id}`}</div>
-                                <div className="font-mono-c text-[10px]" style={{ color: 'rgba(212,168,67,0.75)' }}>{new Date(c.completed_at).toLocaleDateString()}</div>
+                                <div className="font-mono-c text-[10px]" style={{ color: '#D4A843' }}>{new Date(c.completed_at).toLocaleDateString()}</div>
                               </div>
                             </div>
                             <div className="font-display text-xl" style={{ color: c.quiz_score === 100 ? '#34D399' : '#D4A843' }}>{c.quiz_score}%</div>
@@ -318,22 +318,22 @@ export default function DashboardPage() {
             <div className="space-y-6">
               {/* Rank card */}
               <div className="card p-6" style={{ background: 'rgba(212,168,67,0.03)' }}>
-                <div className="font-mono-c text-xs tracking-widest uppercase mb-4" style={{ color: 'rgba(212,168,67,0.75)' }}>// Current Rank</div>
+                <div className="font-mono-c text-xs tracking-widest uppercase mb-4" style={{ color: '#D4A843' }}>// Current Rank</div>
                 <div className="text-center mb-5">
                   <div className="text-5xl mb-3">🎖️</div>
                   <div className="font-display text-3xl text-white mb-1">{currentRank.toUpperCase()}</div>
-                  <div className="font-mono-c text-xs" style={{ color: 'rgba(212,168,67,0.5)' }}>Rank {rankIndex + 1} of {LEVEL_RANKS.length}</div>
+                  <div className="font-mono-c text-xs" style={{ color: '#B0B0B0' }}>Rank {rankIndex + 1} of {LEVEL_RANKS.length}</div>
                 </div>
                 <div className="mb-3">
                   <div className="flex justify-between mb-1.5">
-                    <span className="font-mono-c text-[10px]" style={{ color: 'rgba(255,255,255,0.65)' }}>XP Progress</span>
+                    <span className="font-mono-c text-[10px]" style={{ color: '#D0D0D0', fontSize: '11px' }}>XP Progress</span>
                     <span className="font-mono-c text-[10px]" style={{ color: '#D4A843' }}>{xp} / {xpToNext}</span>
                   </div>
                   <div className="progress-bar-bg h-2">
                     <div className="progress-bar-fill h-2" style={{ width: `${xpPct}%` }} />
                   </div>
                 </div>
-                <div className="font-mono-c text-[10px] text-center" style={{ color: 'rgba(212,168,67,0.75)' }}>
+                <div className="font-mono-c text-[10px] text-center" style={{ color: '#D4A843' }}>
                   Next: {nextRank} ({xpToNext - xp} XP away)
                 </div>
                 <div className="mt-5 space-y-2">
@@ -342,10 +342,10 @@ export default function DashboardPage() {
                     const done = i < rankIndex;
                     return (
                       <div key={i} className="flex items-center gap-3 px-3 py-2 rounded-lg" style={{ background: current ? 'rgba(212,168,67,0.08)' : 'transparent' }}>
-                        <div className="w-5 h-5 rounded-full flex items-center justify-center text-[10px]" style={{ background: done ? '#D4A843' : current ? 'rgba(212,168,67,0.3)' : 'rgba(255,255,255,0.05)', color: done ? '#080808' : current ? '#D4A843' : 'rgba(255,255,255,0.45)' }}>
+                        <div className="w-5 h-5 rounded-full flex items-center justify-center text-[10px]" style={{ background: done ? '#D4A843' : current ? 'rgba(212,168,67,0.3)' : 'rgba(255,255,255,0.08)', color: done ? '#080808' : current ? '#D4A843' : '#A8A8A8' }}>
                           {done ? '✓' : i + 1}
                         </div>
-                        <span className="font-mono-c text-[11px]" style={{ color: current ? '#D4A843' : done ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.45)' }}>{rank}</span>
+                        <span className="font-mono-c text-sm" style={{ color: current ? '#D4A843' : done ? '#C0C0C0' : '#B0B0B0', fontWeight: current ? '600' : '400' }}>{rank}</span>
                         {current && <span className="ml-auto font-mono-c text-[9px]" style={{ color: 'rgba(212,168,67,0.5)' }}>← YOU</span>}
                       </div>
                     );
@@ -355,7 +355,7 @@ export default function DashboardPage() {
 
               {/* Next up */}
               <div className="card p-6">
-                <div className="font-mono-c text-xs tracking-widest uppercase mb-4" style={{ color: 'rgba(212,168,67,0.75)' }}>// Up Next</div>
+                <div className="font-mono-c text-xs tracking-widest uppercase mb-4" style={{ color: '#D4A843' }}>// Up Next</div>
                 {(() => {
                   const nextModule = ALL_MODULES.find(m => !completedModuleIds.includes(m.id));
                   if (!nextModule) return <p className="font-mono-c text-xs text-center py-4" style={{ color: '#34D399' }}>🏆 All modules complete!</p>;
@@ -373,7 +373,7 @@ export default function DashboardPage() {
                         <div className="progress-bar-bg h-1.5 mb-2">
                           <div className="h-1.5 rounded-full" style={{ width: `${(modCompletions / nextModule.lessons) * 100}%`, background: '#D4A843' }} />
                         </div>
-                        <div className="font-mono-c text-[10px]" style={{ color: 'rgba(255,255,255,0.25)' }}>{modCompletions} / {nextModule.lessons} lessons</div>
+                        <div className="font-mono-c text-[10px]" style={{ color: '#808080' }}>{modCompletions} / {nextModule.lessons} lessons</div>
                       </div>
                     </Link>
                   );
@@ -407,10 +407,10 @@ export default function DashboardPage() {
                       <div className="h-1.5 rounded-full" style={{ width: `${pct}%`, background: isComplete ? '#34D399' : '#D4A843', transition: 'width 0.7s ease' }} />
                     </div>
                     <div className="flex justify-between">
-                      <span className="font-mono-c text-[10px]" style={{ color: isComplete ? '#34D399' : modCompletions > 0 ? '#D4A843' : 'rgba(255,255,255,0.15)' }}>
+                      <span className="font-mono-c text-[10px]" style={{ color: isComplete ? '#34D399' : modCompletions > 0 ? '#D4A843' : '#707070' }}>
                         {isComplete ? 'Complete' : modCompletions > 0 ? `${modCompletions}/${mod.lessons} lessons` : 'Not started'}
                       </span>
-                      <span className="font-mono-c text-[10px]" style={{ color: 'rgba(255,255,255,0.45)' }}>{pct}%</span>
+                      <span className="font-mono-c text-[10px]" style={{ color: '#A8A8A8' }}>{pct}%</span>
                     </div>
                   </div>
                 </Link>
@@ -427,7 +427,7 @@ export default function DashboardPage() {
             <div className="w-7 h-7 rounded-lg flex items-center justify-center font-display text-black text-sm" style={{ background: 'linear-gradient(135deg, #D4A843, #8A6B28)' }}>S</div>
             <span className="font-display text-lg tracking-widest text-white">SMARTMONEY ACADEMY</span>
           </div>
-          <div className="font-mono-c text-xs text-gray-600">Educational platform only. Not financial advice.</div>
+          <div className="font-mono-c text-xs text-gray-300">Educational platform only. Not financial advice.</div>
         </div>
       </footer>
     </div>

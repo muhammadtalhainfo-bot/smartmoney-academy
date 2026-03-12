@@ -139,7 +139,7 @@ export default function GlossaryPage() {
         }
         .search-input { background: #0F0F0F; border: 1px solid rgba(212,168,67,0.15); color: white; outline: none; transition: border-color 0.2s; }
         .search-input:focus { border-color: rgba(212,168,67,0.75); }
-        .search-input::placeholder { color: rgba(255,255,255,0.45); font-family: 'DM Mono', monospace; font-size: 12px; }
+        .search-input::placeholder { color: #A8A8A8; font-family: 'DM Mono', monospace; font-size: 12px; }
         .term-row { transition: all 0.2s ease; border-bottom: 1px solid rgba(212,168,67,0.06); }
         .term-row:hover { background: rgba(212,168,67,0.03); }
         .term-row.active { background: rgba(212,168,67,0.05); border-bottom-color: rgba(212,168,67,0.15); }
@@ -161,25 +161,13 @@ export default function GlossaryPage() {
           </div>
         </Link>
         <div className="hidden md:flex items-center gap-8">
-          {[['/', 'Home'], ['/courses', 'Courses'], ['/signals', 'Signals'], ['/glossary', 'Glossary'], ['/journal', 'Journal']].map(([href, label]) => (
-            <Link key={href} href={href} className="font-mono-c text-xs text-gray-400 hover:text-[#D4A843] transition-colors tracking-wider uppercase">{label}</Link>
-          ))}
-        </div>
-        <Link href="/courses" className="px-5 py-2.5 rounded-lg text-sm font-mono-c tracking-wider uppercase font-bold" style={{ background: 'linear-gradient(135deg, #D4A843, #F0C96A)', color: '#080808' }}>
-          Courses
-        </Link>
-      </nav>
-      {/* ── MOBILE MENU ── */}
-      {menuOpen && (
-        <div style={{ position: 'fixed', inset: 0, zIndex: 50, background: 'rgba(8,8,8,0.98)', backdropFilter: 'blur(20px)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '32px' }}>
-          <button onClick={() => setMenuOpen(false)} style={{ position: 'absolute', top: '24px', right: '24px', background: 'none', border: 'none', color: '#D4A843', fontSize: '28px', cursor: 'pointer' }}>✕</button>
-          {[['/', 'Home'], ['/courses', 'Courses'], ['/signals', 'Signals'], ['/glossary', 'Glossary'], ['/journal', 'Journal'], ['/dashboard', 'Dashboard']].map(([href, label]) => (
+          {[['/', 'Home'], ['/courses', 'Courses'], ['/signals', 'Signals'], ['/glossary', 'Glossary'], ['/practice', 'Practice'], ['/journal', 'Journal'], ['/dashboard', 'Dashboard']].map(([href, label]) => (
             <a key={href} href={href} onClick={() => setMenuOpen(false)} style={{ fontFamily: 'DM Mono, monospace', fontSize: '24px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)', textDecoration: 'none' }}>{label}</a>
           ))}
         </div>
-      )}
+      </nav>
 
-      {/* ── HERO ── */}
+            {/* ── HERO ── */}
       <section className="relative z-10 grid-bg px-6 py-16 text-center border-b" style={{ borderColor: 'var(--border)' }}>
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 600px 300px at 50% 100%, rgba(212,168,67,0.05) 0%, transparent 70%)' }} />
         <div className="relative max-w-3xl mx-auto">
@@ -191,7 +179,7 @@ export default function GlossaryPage() {
             <span className="text-white">ICT & SMC </span>
             <span className="gold-gradient">GLOSSARY</span>
           </h1>
-          <p className="text-gray-400 max-w-lg mx-auto text-sm" style={{ fontWeight: 300 }}>
+          <p className="text-gray-300 max-w-lg mx-auto text-sm" style={{ fontWeight: 300 }}>
             Every term from innercircletrader.net, ICT PDFs Months 1–4, and LumiTraders. The complete reference — no fluff.
           </p>
         </div>
@@ -221,7 +209,7 @@ export default function GlossaryPage() {
                 key={cat}
                 onClick={() => setActiveCat(cat)}
                 className={`filter-btn px-4 py-3 rounded-xl text-xs border tracking-wider uppercase ${activeCat === cat ? 'active' : ''}`}
-                style={activeCat !== cat ? { borderColor: 'rgba(212,168,67,0.15)', color: 'rgba(255,255,255,0.65)', background: 'transparent' } : {}}
+                style={activeCat !== cat ? { borderColor: 'rgba(212,168,67,0.15)', color: '#C0C0C0', background: 'transparent' } : {}}
               >
                 {cat}
               </button>
@@ -237,7 +225,7 @@ export default function GlossaryPage() {
               key={letter}
               href={`#letter-${letter}`}
               className="font-mono-c text-[11px] w-6 h-6 flex items-center justify-center rounded hover:text-[#D4A843] transition-colors"
-              style={{ color: 'rgba(255,255,255,0.25)' }}
+              style={{ color: '#808080' }}
             >
               {letter}
             </a>
@@ -278,7 +266,7 @@ export default function GlossaryPage() {
                     >
                       <div className="flex items-center gap-4 min-w-0">
                         <span className="font-semibold text-white text-sm flex-shrink-0">{t.term}</span>
-                        <span className="text-gray-500 text-xs truncate hidden sm:block" style={{ fontWeight: 300 }}>{t.full}</span>
+                        <span className="text-gray-300 text-xs truncate hidden sm:block" style={{ fontWeight: 300 }}>{t.full}</span>
                       </div>
                       <div className="flex items-center gap-3 flex-shrink-0 ml-4">
                         <span className="px-2 py-0.5 rounded text-[10px] font-mono-c border hidden sm:block" style={{ color: cs.color, background: cs.bg, borderColor: cs.border }}>
@@ -321,10 +309,10 @@ export default function GlossaryPage() {
             <div className="w-7 h-7 rounded-lg flex items-center justify-center font-display text-black text-sm" style={{ background: 'linear-gradient(135deg, #D4A843, #8A6B28)' }}>S</div>
             <span className="font-display text-lg tracking-widest text-white">SMARTMONEY ACADEMY</span>
           </div>
-          <div className="font-mono-c text-xs text-gray-600">Educational platform only. Not financial advice.</div>
+          <div className="font-mono-c text-xs text-gray-300">Educational platform only. Not financial advice.</div>
           <div className="flex gap-6">
             {['/courses', '/signals', '/glossary'].map((href, i) => (
-              <Link key={i} href={href} className="font-mono-c text-xs text-gray-500 hover:text-[#D4A843] transition-colors tracking-wider uppercase">{href.slice(1)}</Link>
+              <Link key={i} href={href} className="font-mono-c text-xs text-gray-300 hover:text-[#D4A843] transition-colors tracking-wider uppercase">{href.slice(1)}</Link>
             ))}
           </div>
         </div>
