@@ -365,28 +365,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── FOOTER ── */}
-      <footer className="relative z-10 border-t border-[var(--border)] px-8 py-8">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-7 h-7 rounded-lg flex items-center justify-center font-display text-black text-sm" style={{ background: 'linear-gradient(135deg, #D4A843, #8A6B28)' }}>S</div>
-            <span className="font-display text-lg tracking-widest text-white">SMARTMONEY ACADEMY</span>
-          </div>
-          <div className="font-mono text-xs text-gray-300 text-center">
-            Educational platform only. Not financial advice. Trade at your own risk.
-          </div>
-          <div className="flex gap-6">
-            {['/courses', '/signals', '/glossary'].map((href, i) => (
-              <Link key={i} href={href} className="font-mono text-xs text-gray-300 hover:text-[var(--gold)] transition-colors tracking-wider uppercase">
-                {href.slice(1)}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </footer>
-
-    <EmailCapture />
-    <Footer />
+      <EmailCapture />
+      <Footer />
     </div>
   );
 }
