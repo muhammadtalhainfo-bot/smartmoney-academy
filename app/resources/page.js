@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
+import Footer from '@/app/components/Footer';
 
 const PROP_FIRMS = [
   {
@@ -282,6 +283,7 @@ export default function ResourcesPage() {
           </p>
         </div>
       </div>
+    <Footer />
     </div>
   );
 }

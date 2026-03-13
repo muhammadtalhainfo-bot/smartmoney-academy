@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
+import Footer from '@/app/components/Footer';
 
 // ─── Daily Challenge Questions ────────────────────────────────────
 // 30 questions rotated daily (index = day of year % 30 * 5, take 5)
@@ -647,6 +648,7 @@ export default function PracticePage() {
           SmartMoney Academy — Educational content only. Not financial advice.
         </div>
       </footer>
+    <Footer />
     </div>
   );
 }

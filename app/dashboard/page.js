@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
+import Footer from '@/app/components/Footer';
 import { createClient } from '@/lib/supabase';
 
 const ALL_MODULES = [
@@ -415,6 +416,7 @@ export default function DashboardPage() {
           <div className="font-mono-c text-xs text-gray-300">Educational platform only. Not financial advice.</div>
         </div>
       </footer>
+    <Footer />
     </div>
   );
 }

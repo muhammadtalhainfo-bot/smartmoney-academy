@@ -2,6 +2,7 @@
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
+import Footer from '@/app/components/Footer';
 
 const TERMS = [
   { term: "AMD", full: "Accumulation, Manipulation, Distribution", cat: "ICT", def: "ICT's Power of Three — the 3-phase model of how smart money delivers price every single day. Asian = Accumulate, London = Manipulate (Judas Swing), NY AM = Distribute (real move)." },
@@ -305,6 +306,7 @@ export default function GlossaryPage() {
           </div>
         </div>
       </footer>
+    <Footer />
     </div>
   );
 }

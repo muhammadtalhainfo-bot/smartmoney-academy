@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
+import Footer from '@/app/components/Footer';
 
 // ─── Animated ticker data ───────────────────────────────────────
 const TICKER = [
@@ -383,6 +384,7 @@ export default function HomePage() {
         </div>
       </footer>
 
+    <Footer />
     </div>
   );
 }

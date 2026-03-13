@@ -3,6 +3,7 @@ import AuthGuard from '@/app/components/AuthGuard';
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
+import Footer from '@/app/components/Footer';
 
 const SIGNALS = [
   {
@@ -203,6 +204,7 @@ function SignalCard({ signal }) {
           </div>
         )}
       </div>
+    <Footer />
     </div>
   );
 }

@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
+import Footer from '@/app/components/Footer';
 
 const MODULES = [
   {
@@ -208,6 +209,7 @@ function ModuleCard({ mod, index }) {
           </div>
         </Link>
       </div>
+    <Footer />
     </div>
   );
 }
@@ -451,6 +453,7 @@ export default function CoursesPage() {
           </div>
         </div>
       </footer>
+    <Footer />
     </div>
   );
 }
