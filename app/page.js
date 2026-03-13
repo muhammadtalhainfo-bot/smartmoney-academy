@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Navbar from '@/app/components/Navbar';
 
 // ─── Animated ticker data ───────────────────────────────────────
 const TICKER = [
@@ -176,24 +177,7 @@ export default function HomePage() {
       </div>
 
       {/* ── NAVBAR ── */}
-      <nav className="relative z-20 flex items-center justify-between px-8 py-4 border-b border-[var(--border)]" style={{ background: 'rgba(8,8,8,0.95)', backdropFilter: 'blur(20px)' }}>
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative w-9 h-9">
-            <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-[#D4A843] to-[#8A6B28] opacity-90" />
-            <div className="absolute inset-0 flex items-center justify-center font-display text-black text-lg">S</div>
-          </div>
-          <div>
-            <div className="font-display text-xl tracking-widest text-white group-hover:text-[var(--gold)] transition-colors">SMARTMONEY</div>
-            <div className="font-mono text-[9px] text-[var(--gold-dim)] tracking-[0.2em] -mt-1">ACADEMY</div>
-          </div>
-        </Link>
-
-        <div className="hidden md:flex items-center gap-8">
-          {[['/', 'Home'], ['/courses', 'Courses'], ['/signals', 'Signals'], ['/glossary', 'Glossary'], ['/practice', 'Practice'], ['/journal', 'Journal'], ['/dashboard', 'Dashboard']].map(([href, label]) => (
-            <a key={href} href={href} onClick={() => setMenuOpen(false)} style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)', textDecoration: 'none' }}>{label}</a>
-          ))}
-        </div>
-      </nav>
+      <Navbar active="/" />
 
             {/* ── HERO ── */}
       <section className="relative z-10 grid-bg diagonal-accent min-h-[88vh] flex flex-col items-center justify-center text-center px-6 py-24">

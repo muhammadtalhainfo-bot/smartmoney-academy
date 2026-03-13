@@ -2,6 +2,7 @@
 import AuthGuard from '@/app/components/AuthGuard';
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Navbar from '@/app/components/Navbar';
 
 const SIGNALS = [
   {
@@ -247,24 +248,7 @@ export default function SignalsPage() {
       `}</style>
 
       {/* ── NAV ── */}
-      <nav className="sticky top-0 z-50 flex items-center justify-between px-8 py-4 border-b" style={{ borderColor: 'var(--border)', background: 'rgba(8,8,8,0.97)', backdropFilter: 'blur(20px)' }}>
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-9 h-9 rounded-lg flex items-center justify-center font-display text-black text-lg" style={{ background: 'linear-gradient(135deg, #D4A843, #8A6B28)' }}>S</div>
-          <div>
-            <div className="font-display text-xl tracking-widest text-white group-hover:text-[#D4A843] transition-colors">SMARTMONEY</div>
-            <div className="font-mono-c text-[9px] tracking-[0.2em] -mt-1" style={{ color: '#8A6B28' }}>ACADEMY</div>
-          </div>
-        </Link>
-        <div className="hidden md:flex items-center gap-8">
-          {[['/', 'Home'], ['/courses', 'Courses'], ['/signals', 'Signals'], ['/glossary', 'Glossary'], ['/practice', 'Practice'], ['/journal', 'Journal'], ['/dashboard', 'Dashboard']].map(([href, label]) => (
-            <Link key={href} href={href} className={`font-mono-c text-xs tracking-wider uppercase transition-colors ${href === '/signals' ? 'text-[#D4A843]' : 'text-gray-300 hover:text-[#D4A843]'}`}>{label}</Link>
-          ))}
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="font-mono-c text-xs" style={{ color: '#34D399' }}>{activeCount} LIVE</span>
-        </div>
-      </nav>
+      <Navbar active="/signals" />
       {/* ── MOBILE MENU ── */}
       {menuOpen && (
         <div style={{ position: 'fixed', inset: 0, zIndex: 50, background: 'rgba(8,8,8,0.98)', backdropFilter: 'blur(20px)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '32px' }}>

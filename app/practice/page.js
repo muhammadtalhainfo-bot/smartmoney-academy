@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Navbar from '@/app/components/Navbar';
 
 // ─── Daily Challenge Questions ────────────────────────────────────
 // 30 questions rotated daily (index = day of year % 30 * 5, take 5)
@@ -418,31 +419,7 @@ export default function PracticePage() {
       `}</style>
 
       {/* ── Nav ── */}
-      <nav className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 border-b border-[rgba(212,168,67,0.15)]" style={{ background: 'rgba(8,8,8,0.97)', backdropFilter: 'blur(20px)' }}>
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg flex items-center justify-center font-display text-black text-sm" style={{ background: 'linear-gradient(135deg, #D4A843, #8A6B28)' }}>S</div>
-          <span className="font-display text-base tracking-widest text-white group-hover:text-[#D4A843] transition-colors">SMARTMONEY</span>
-        </Link>
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-6">
-          {[['/', 'Home'], ['/courses', 'Courses'], ['/signals', 'Signals'], ['/glossary', 'Glossary'], ['/practice', 'Practice'], ['/journal', 'Journal'], ['/dashboard', 'Dashboard']].map(([href, label]) => (
-            <Link key={href} href={href} className="font-mono-custom text-xs text-gray-400 hover:text-[#D4A843] transition-colors tracking-wider uppercase">{label}</Link>
-          ))}
-        </div>
-        {/* Mobile hamburger */}
-        <button className="md:hidden flex flex-col gap-1.5 p-2" onClick={() => setMenuOpen(!menuOpen)}>
-          <span className={`block w-5 h-0.5 bg-[#D4A843] transition-all ${menuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-          <span className={`block w-5 h-0.5 bg-[#D4A843] transition-all ${menuOpen ? 'opacity-0' : ''}`}></span>
-          <span className={`block w-5 h-0.5 bg-[#D4A843] transition-all ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
-        </button>
-        {menuOpen && (
-          <div className="absolute top-full left-0 right-0 bg-[#0A0A0A] border-b border-[rgba(212,168,67,0.15)] flex flex-col py-4 md:hidden z-50">
-            {[['/', 'Home'], ['/courses', 'Courses'], ['/signals', 'Signals'], ['/glossary', 'Glossary'], ['/practice', 'Practice'], ['/journal', 'Journal'], ['/dashboard', 'Dashboard']].map(([href, label]) => (
-              <Link key={href} href={href} onClick={() => setMenuOpen(false)} className="px-6 py-3 font-mono-custom text-xs text-gray-400 hover:text-[#D4A843] tracking-wider uppercase">{label}</Link>
-            ))}
-          </div>
-        )}
-      </nav>
+      <Navbar active="/practice" />
 
       <div className="max-w-2xl mx-auto px-4 py-8">
 

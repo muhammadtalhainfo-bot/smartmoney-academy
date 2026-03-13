@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
+import Navbar from '@/app/components/Navbar';
 
 const TERMS = [
   { term: "AMD", full: "Accumulation, Manipulation, Distribution", cat: "ICT", def: "ICT's Power of Three — the 3-phase model of how smart money delivers price every single day. Asian = Accumulate, London = Manipulate (Judas Swing), NY AM = Distribute (real move)." },
@@ -152,20 +153,7 @@ export default function GlossaryPage() {
       `}</style>
 
       {/* ── NAV ── */}
-      <nav className="sticky top-0 z-50 flex items-center justify-between px-8 py-4 border-b" style={{ borderColor: 'var(--border)', background: 'rgba(8,8,8,0.97)', backdropFilter: 'blur(20px)' }}>
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-9 h-9 rounded-lg flex items-center justify-center font-display text-black text-lg" style={{ background: 'linear-gradient(135deg, #D4A843, #8A6B28)' }}>S</div>
-          <div>
-            <div className="font-display text-xl tracking-widest text-white group-hover:text-[#D4A843] transition-colors">SMARTMONEY</div>
-            <div className="font-mono-c text-[9px] tracking-[0.2em] -mt-1" style={{ color: '#8A6B28' }}>ACADEMY</div>
-          </div>
-        </Link>
-        <div className="hidden md:flex items-center gap-8">
-          {[['/', 'Home'], ['/courses', 'Courses'], ['/signals', 'Signals'], ['/glossary', 'Glossary'], ['/practice', 'Practice'], ['/journal', 'Journal'], ['/dashboard', 'Dashboard']].map(([href, label]) => (
-            <a key={href} href={href} onClick={() => setMenuOpen(false)} style={{ fontFamily: 'DM Mono, monospace', fontSize: '24px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)', textDecoration: 'none' }}>{label}</a>
-          ))}
-        </div>
-      </nav>
+      <Navbar active="/glossary" />
 
             {/* ── HERO ── */}
       <section className="relative z-10 grid-bg px-6 py-16 text-center border-b" style={{ borderColor: 'var(--border)' }}>

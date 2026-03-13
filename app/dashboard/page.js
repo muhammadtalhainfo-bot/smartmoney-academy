@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Navbar from '@/app/components/Navbar';
 import { createClient } from '@/lib/supabase';
 
 const ALL_MODULES = [
@@ -161,23 +162,7 @@ export default function DashboardPage() {
       `}</style>
 
       {/* NAV */}
-      <nav className="sticky top-0 z-50 flex items-center justify-between px-8 py-4 border-b" style={{ borderColor: 'var(--border)', background: 'rgba(8,8,8,0.97)', backdropFilter: 'blur(20px)' }}>
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-9 h-9 rounded-lg flex items-center justify-center font-display text-black text-lg" style={{ background: 'linear-gradient(135deg, #D4A843, #8A6B28)' }}>S</div>
-          <div>
-            <div className="font-display text-xl tracking-widest text-white group-hover:text-[#D4A843] transition-colors">SMARTMONEY</div>
-            <div className="font-mono-c text-[9px] tracking-[0.2em] -mt-1" style={{ color: '#8A6B28' }}>ACADEMY</div>
-          </div>
-        </Link>
-        <div className="hidden md:flex items-center gap-8">
-          {[['/', 'Home'], ['/courses', 'Courses'], ['/signals', 'Signals'], ['/glossary', 'Glossary'], ['/practice', 'Practice'], ['/journal', 'Journal'], ['/dashboard', 'Dashboard']].map(([href, label]) => (
-            <Link key={href} href={href} className={`font-mono-c text-xs tracking-wider uppercase transition-colors ${href === '/dashboard' ? 'text-[#D4A843]' : 'text-gray-300 hover:text-[#D4A843]'}`}>{label}</Link>
-          ))}
-        </div>
-        <button onClick={handleSignOut} className="font-mono-c text-xs px-4 py-2 rounded-lg tracking-wider uppercase transition-all" style={{ border: '1px solid rgba(212,168,67,0.15)', color: 'rgba(212,168,67,0.5)' }}>
-          Sign Out
-        </button>
-      </nav>
+      <Navbar active="/dashboard" />
       {/* ── MOBILE MENU ── */}
       {menuOpen && (
         <div style={{ position: 'fixed', inset: 0, zIndex: 50, background: 'rgba(8,8,8,0.98)', backdropFilter: 'blur(20px)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '32px' }}>
