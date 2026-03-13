@@ -127,7 +127,11 @@ function ModuleCard({ mod, index }) {
               className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
               style={{ background: 'rgba(212,168,67,0.05)', border: '1px solid rgba(212,168,67,0.12)' }}
             >
-              {mod.emoji}
+              {mod.image ? (
+                  <img src={mod.image} alt={mod.title} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px', opacity: 0.85 }} />
+                ) : (
+                  <span style={{ fontSize: '36px' }}>{mod.emoji}</span>
+                )}
             </div>
             <div>
               <div className="font-mono-c text-xs mb-1" style={{ color: 'rgba(212,168,67,0.75)', letterSpacing: '0.15em' }}>
