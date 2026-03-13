@@ -10,6 +10,7 @@ const NAV = [
   ['/practice', 'Practice'],
   ['/journal', 'Journal'],
   ['/dashboard', 'Dashboard'],
+  ['/resources', 'Resources'],
 ];
 
 export default function Navbar({ active }) {
