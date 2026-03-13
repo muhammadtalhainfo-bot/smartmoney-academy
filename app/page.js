@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
+import EmailCapture from '@/app/components/EmailCapture';
 import Footer from '@/app/components/Footer';
 
 // ─── Animated ticker data ───────────────────────────────────────
@@ -384,6 +385,7 @@ export default function HomePage() {
         </div>
       </footer>
 
+    <EmailCapture />
     <Footer />
     </div>
   );
