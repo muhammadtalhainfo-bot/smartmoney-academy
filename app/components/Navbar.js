@@ -10,6 +10,8 @@ const NAV = [
   ['/practice', 'Practice'],
   ['/journal', 'Journal'],
   ['/dashboard', 'Dashboard'],
+  ['/leaderboard', 'Leaderboard'],
+  ['/leaderboard', 'Leaderboard'],
   ['/pricing', 'Pricing'],
   ['/resources', 'Resources'],
 ];
