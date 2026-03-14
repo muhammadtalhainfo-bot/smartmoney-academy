@@ -15,6 +15,14 @@ export default function AuthPage() {
   const [success, setSuccess] = useState('');
   const router = useRouter();
 
+  const handleGoogle = async () => {
+    const supabase = createClient();
+    await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: { redirectTo: 'https://smartmoney-academy.vercel.app/dashboard' }
+    });
+  };
+
   const handleAuth = async () => {
     setLoading(true);
     setError('');
