@@ -1,11 +1,14 @@
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+export const runtime = 'nodejs';
+
+const getStripe = () => new Stripe(process.env.STRIPE_SECRET_KEY || '');
 
 export async function POST(req) {
   try {
     const { priceId, email } = await req.json();
 
+    const stripe = getStripe();
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       mode: 'subscription',

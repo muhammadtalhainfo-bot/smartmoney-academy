@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import { createClient } from '@/lib/supabase';
+import Footer from '@/app/components/Footer';
 
 const TOTAL_LESSONS = 14;
 
