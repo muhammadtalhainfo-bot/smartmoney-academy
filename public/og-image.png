@@ -1,0 +1,41 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080808"/>
+      <stop offset="100%" style="stop-color:#111111"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8A6B28"/>
+      <stop offset="40%" style="stop-color:#D4A843"/>
+      <stop offset="60%" style="stop-color:#F0C96A"/>
+      <stop offset="100%" style="stop-color:#8A6B28"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1200" height="4" fill="url(#gold)"/>
+  <circle cx="1100" cy="80" r="200" fill="#D4A843" fill-opacity="0.04"/>
+  <circle cx="100" cy="550" r="150" fill="#D4A843" fill-opacity="0.03"/>
+  <!-- Logo box -->
+  <rect x="60" y="60" width="52" height="52" rx="12" fill="url(#gold)"/>
+  <text x="86" y="97" font-family="Arial Black, sans-serif" font-size="30" font-weight="900" fill="black" text-anchor="middle">S</text>
+  <!-- Brand name -->
+  <text x="128" y="84" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="white" letter-spacing="4">SMARTMONEY</text>
+  <text x="128" y="104" font-family="Arial, sans-serif" font-size="11" fill="#8A6B28" letter-spacing="6">ACADEMY</text>
+  <!-- Main headline -->
+  <text x="60" y="290" font-family="Arial Black, sans-serif" font-size="78" font-weight="900" fill="white" letter-spacing="-1">TRADE LIKE</text>
+  <text x="60" y="380" font-family="Arial Black, sans-serif" font-size="78" font-weight="900" fill="url(#gold)" letter-spacing="-1">INSTITUTIONS</text>
+  <!-- Subtitle -->
+  <text x="60" y="440" font-family="Arial, sans-serif" font-size="24" fill="#888888" letter-spacing="1">Free ICT &amp; Smart Money Concepts Education</text>
+  <!-- Stats -->
+  <rect x="60" y="490" width="180" height="70" rx="10" fill="#161616" stroke="#D4A843" stroke-width="1" stroke-opacity="0.3"/>
+  <text x="150" y="522" font-family="Arial Black, sans-serif" font-size="28" font-weight="900" fill="#D4A843" text-anchor="middle">14</text>
+  <text x="150" y="546" font-family="Arial, sans-serif" font-size="11" fill="#666" text-anchor="middle" letter-spacing="2">MODULES</text>
+  <rect x="260" y="490" width="180" height="70" rx="10" fill="#161616" stroke="#D4A843" stroke-width="1" stroke-opacity="0.3"/>
+  <text x="350" y="522" font-family="Arial Black, sans-serif" font-size="28" font-weight="900" fill="#D4A843" text-anchor="middle">80+</text>
+  <text x="350" y="546" font-family="Arial, sans-serif" font-size="11" fill="#666" text-anchor="middle" letter-spacing="2">LESSONS</text>
+  <rect x="460" y="490" width="180" height="70" rx="10" fill="#161616" stroke="#D4A843" stroke-width="1" stroke-opacity="0.3"/>
+  <text x="550" y="522" font-family="Arial Black, sans-serif" font-size="28" font-weight="900" fill="#34D399" text-anchor="middle">FREE</text>
+  <text x="550" y="546" font-family="Arial, sans-serif" font-size="11" fill="#666" text-anchor="middle" letter-spacing="2">TO START</text>
+  <!-- URL -->
+  <text x="1140" y="590" font-family="Arial, sans-serif" font-size="14" fill="#444" text-anchor="end" letter-spacing="1">smartmoney-academy.vercel.app</text>
+</svg>
