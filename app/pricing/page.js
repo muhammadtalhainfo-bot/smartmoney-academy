@@ -42,6 +42,26 @@ const FAQS = [
 export default function PricingPage() {
   const [annual, setAnnual] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
+  const [checkoutLoading, setCheckoutLoading] = useState(false);
+
+  async function handleCheckout() {
+    setCheckoutLoading(true);
+    try {
+      const priceId = annual
+        ? process.env.NEXT_PUBLIC_STRIPE_YEARLY_PRICE
+        : process.env.NEXT_PUBLIC_STRIPE_MONTHLY_PRICE;
+      const res = await fetch('/api/create-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ priceId }),
+      });
+      const data = await res.json();
+      if (data.url) window.location.href = data.url;
+    } catch (e) {
+      alert('Something went wrong. Please try again.');
+    }
+    setCheckoutLoading(false);
+  }
 
   const monthlyPrice = 19;
   const annualPrice = 149;
@@ -144,10 +164,10 @@ export default function PricingPage() {
           </p>
 
           <button style={{ display: 'block', width: '100%', textAlign: 'center', padding: '15px', borderRadius: '10px', border: 'none', background: 'linear-gradient(135deg,#D4A843,#8A6B28)', color: 'black', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600, cursor: 'pointer', marginBottom: '28px', transition: 'opacity 0.2s' }}
-            onClick={() => alert('Stripe coming soon! For now, contact us to upgrade.')}
+            onClick={handleCheckout} disabled={checkoutLoading}
             onMouseOver={e => e.currentTarget.style.opacity = '0.9'}
             onMouseOut={e => e.currentTarget.style.opacity = '1'}>
-            {annual ? `START FOR $${annualPrice}/YEAR →` : `START FOR $${monthlyPrice}/MONTH →`}
+            {checkoutLoading ? 'LOADING...' : annual ? `START FOR $${annualPrice}/YEAR →` : `START FOR $${monthlyPrice}/MONTH →`}
           </button>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>

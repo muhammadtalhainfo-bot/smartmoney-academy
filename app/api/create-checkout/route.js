@@ -1,0 +1,22 @@
+import Stripe from 'stripe';
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+
+export async function POST(req) {
+  try {
+    const { priceId, email } = await req.json();
+
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      mode: 'subscription',
+      line_items: [{ price: priceId, quantity: 1 }],
+      customer_email: email,
+      success_url: 'https://smartmoney-academy.vercel.app/dashboard?upgraded=true',
+      cancel_url: 'https://smartmoney-academy.vercel.app/pricing',
+    });
+
+    return Response.json({ url: session.url });
+  } catch (err) {
+    return Response.json({ error: err.message }, { status: 500 });
+  }
+}
