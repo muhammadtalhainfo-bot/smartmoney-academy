@@ -1,5 +1,6 @@
 'use client';
 import { useState, use } from 'react';
+import { createClient } from '@/lib/supabase';
 import Link from 'next/link';
 
 // ─── Real chart images from web ──────────────────────────────────
@@ -969,7 +970,21 @@ function Quiz({ questions }) {
       ))}
       {!submitted ? (
         <button
-          onClick={() => setSubmitted(true)}
+          onClick={async () => {
+            setSubmitted(true);
+            try {
+              const supabase = createClient();
+              const { data: { user } } = await supabase.auth.getUser();
+              if (user) {
+                await supabase.from('lesson_completions').upsert({ user_id: user.id, lesson_id: questions[0]?.lessonId || 0 }, { onConflict: 'user_id,lesson_id' });
+                const sc = questions.filter((q, i) => answers[i] === q.answer).length;
+                const xpEarned = sc === questions.length ? 70 : 20;
+                const { data: profile } = await supabase.from('profiles').select('xp').eq('id', user.id).single();
+                const currentXP = profile?.xp || 0;
+                await supabase.from('profiles').upsert({ id: user.id, xp: currentXP + xpEarned }, { onConflict: 'id' });
+              }
+            } catch(e) {}
+          }}
           disabled={Object.keys(answers).length < questions.length}
           className="w-full py-3 rounded-xl font-mono text-sm tracking-wider uppercase transition-all"
           style={{
