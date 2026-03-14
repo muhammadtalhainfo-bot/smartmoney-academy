@@ -209,7 +209,6 @@ function ModuleCard({ mod, index }) {
           </div>
         </Link>
       </div>
-    <Footer />
     </div>
   );
 }
