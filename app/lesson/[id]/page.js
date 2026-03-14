@@ -1,5 +1,6 @@
 'use client';
-import { useState, use } from 'react';
+import { useState, use, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase';
 import Link from 'next/link';
 
@@ -1013,6 +1014,18 @@ function Quiz({ questions }) {
 
 // ─── Main page ───────────────────────────────────────────────────
 export default function LessonPage({ params }) {
+  const router = useRouter();
+
+  useEffect(() => {
+    async function checkAuth() {
+      const supabase = createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        router.push('/auth?redirect=' + encodeURIComponent(window.location.pathname));
+      }
+    }
+    checkAuth();
+  }, []);
   const { id } = use(params);
   const lessonId = parseInt(id) || 1;
   const lesson = LESSONS[lessonId] || LESSONS[1];
