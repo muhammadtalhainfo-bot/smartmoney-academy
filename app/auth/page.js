@@ -8,6 +8,7 @@ const supabase = createClient();
 export default function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -42,6 +43,13 @@ export default function AuthPage() {
       if (error) {
         setError(error.message);
       } else {
+        // Save username to profiles
+        if (username) {
+          const { data: { user: newUser } } = await supabase.auth.getUser();
+          if (newUser) {
+            await supabase.from('profiles').upsert({ id: newUser.id, username: username.trim() }, { onConflict: 'id' });
+          }
+        }
         setSuccess('Account created! Check your email to confirm, then log in.');
       }
     }
@@ -99,6 +107,12 @@ export default function AuthPage() {
                 <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em' }}>OR</span>
                 <div style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.08)' }} />
               </div>
+{!isLogin && (
+              <div>
+                <label style={{ fontFamily: 'DM Mono', fontSize: '10px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', display: 'block', marginBottom: '8px' }}>Username</label>
+                <input className="auth-input" type="text" placeholder="your_trader_name" value={username} onChange={e => setUsername(e.target.value)} />
+              </div>
+            )}
               <input className="auth-input" type="email" placeholder="you@example.com" value={email} onChange={e => setEmail(e.target.value)} />
             </div>
 
