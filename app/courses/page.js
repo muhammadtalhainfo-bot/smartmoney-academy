@@ -7,25 +7,25 @@ import Footer from '@/app/components/Footer';
 const MODULES = [
   {
     id: 1, module: "01", title: "Market Structure", level: "Beginner", tag: "ICT",
-    lessons: 6, duration: "48 min", emoji: "📊", image: "/images/bullish market structure.png",
+    lessons: 6, duration: "48 min", emoji: "📊", image: "/images/market-structure.png",
     desc: "The foundation of everything — how price creates trends, breaks structure, and signals reversals.",
     topics: ["HH/HL & LH/LL", "Break of Structure (BOS)", "Change of Character (ChoCH/MSS)", "CISD — Change in State of Delivery", "STH / ITH / LTH Advanced Structure", "Weekly Market Rhythm"],
   },
   {
     id: 2, module: "02", title: "Liquidity Concepts", level: "Beginner", tag: "ICT",
-    lessons: 5, duration: "45 min", emoji: "💧", image: "/images/LIQUIDITY CONCEPTS.png",
+    lessons: 5, duration: "45 min", emoji: "💧", image: "/images/liquidity.png",
     desc: "Understand WHY price moves — stop hunts, liquidity pools, and how smart money uses retail orders.",
     topics: ["Buy-Side & Sell-Side Liquidity", "Equal Highs & Equal Lows (EQH/EQL)", "Internal vs External Range Liquidity", "Liquidity Sweep vs Liquidity Run", "HRLR vs LRLR"],
   },
   {
     id: 3, module: "03", title: "Fair Value Gaps (FVG)", level: "Beginner", tag: "ICT & SMC",
-    lessons: 5, duration: "42 min", emoji: "🎯", image: "/images/Fair Value Gaps (FVG).png",
+    lessons: 5, duration: "42 min", emoji: "🎯", image: "/images/fvg.png",
     desc: "The most-traded ICT concept — 3-candle price imbalances that act as magnetic entry zones.",
     topics: ["FVG Formation (BISI & SIBI)", "Consequent Encroachment (CE)", "1st Presented FVG", "Inversion FVG (IFVG)", "Balanced Price Range (BPR)", "RDRB"],
   },
   {
     id: 4, module: "04", title: "Order Blocks", level: "Intermediate", tag: "ICT",
-    lessons: 6, duration: "52 min", emoji: "🧱", image: "/images/ORDER BLOCKS.png",
+    lessons: 6, duration: "52 min", emoji: "🧱", image: "/images/order-blocks.png",
     desc: "The institutional footprint — where banks actually place orders and why price always returns.",
     topics: ["Bullish & Bearish OBs", "Breaker Blocks", "Mitigation Blocks", "Rejection Blocks", "Reclaimed OBs (2024)", "Suspension Block (2025)"],
   },
@@ -37,7 +37,7 @@ const MODULES = [
   },
   {
     id: 6, module: "06", title: "Power of Three (AMD)", level: "Intermediate", tag: "ICT",
-    lessons: 5, duration: "44 min", emoji: "🔱", image: "/images/POWER OF THREE (AMD).png",
+    lessons: 5, duration: "44 min", emoji: "🔱", image: "/images/amd.png",
     desc: "Accumulate. Manipulate. Distribute. The three-act script that runs every trading day.",
     topics: ["AMD Daily Framework", "Judas Swing", "Daily Candle Reading", "Weekly AMD Cycle", "Monthly PO3"],
   },
