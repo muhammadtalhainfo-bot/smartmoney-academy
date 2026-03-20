@@ -122,18 +122,16 @@ function ModuleCard({ mod, index }) {
     >
       {/* Card top */}
       <div className="p-6">
+        {/* Banner image */}
+        {mod.image && (
+          <div style={{ margin: '-24px -24px 20px -24px', height: '140px', overflow: 'hidden', borderRadius: '16px 16px 0 0' }}>
+            <img src={mod.image} alt={mod.title} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.9 }} />
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '140px', background: 'linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(8,8,8,0.7))', borderRadius: '16px 16px 0 0' }} />
+            <div style={{ position: 'absolute', top: '12px', right: '12px', fontFamily: 'Bebas Neue, sans-serif', fontSize: '48px', color: 'rgba(212,168,67,0.25)', lineHeight: 1 }}>{mod.module}</div>
+          </div>
+        )}
         <div className="flex items-start justify-between mb-4">
           <div className="flex items-center gap-4">
-            <div
-              className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
-              style={{ background: 'rgba(212,168,67,0.05)', border: '1px solid rgba(212,168,67,0.12)' }}
-            >
-              {mod.image ? (
-                  <img src={mod.image} alt={mod.title} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px', opacity: 0.85 }} />
-                ) : (
-                  <span style={{ fontSize: '36px' }}>{mod.emoji}</span>
-                )}
-            </div>
             <div>
               <div className="font-mono-c text-xs mb-1" style={{ color: 'rgba(212,168,67,0.75)', letterSpacing: '0.15em' }}>
                 MODULE {mod.module}
@@ -141,10 +139,11 @@ function ModuleCard({ mod, index }) {
               <h3 className="font-semibold text-white text-base leading-tight">{mod.title}</h3>
             </div>
           </div>
-          {/* Number accent */}
-          <div className="font-display text-5xl leading-none" style={{ color: 'rgba(212,168,67,0.06)', userSelect: 'none' }}>
-            {mod.module}
-          </div>
+          {!mod.image && (
+            <div className="font-display text-5xl leading-none" style={{ color: 'rgba(212,168,67,0.06)', userSelect: 'none' }}>
+              {mod.module}
+            </div>
+          )}
         </div>
 
         <p className="text-gray-300 text-sm leading-relaxed mb-4" style={{ fontWeight: 300 }}>
