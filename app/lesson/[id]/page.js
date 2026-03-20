@@ -6,13 +6,13 @@ import Link from 'next/link';
 
 // ─── Real chart images from web ──────────────────────────────────
 const CONCEPT_IMAGES = {
-  'market-structure': 'https://fxopen.com/blog/en/content/images/2024/02/ICT-BOS-CHoCH.png',
-  'liquidity': 'https://cdn.prod.website-files.com/65748571e4a1a9ea9d2da59c/65b91c4f2e00cca17ad3c9d1_Buy-Side-Sell-Side-Liquidity.jpg',
-  'fvg': 'https://forextraininggroup.com/wp-content/uploads/2024/01/ICT-Fair-Value-Gap.png',
-  'order-blocks': 'https://tradesetupinfo.com/wp-content/uploads/2023/11/ICT-Order-Block-1.png',
-  'killzones': 'https://ebc-global.com/wp-content/uploads/2024/07/ICT-Kill-Zones.jpg',
-  'premium-discount': 'https://icttrading.com/wp-content/uploads/2023/10/ICT-OTE-Fibonacci.png',
-  'amd': 'https://opofinance.com/wp-content/uploads/2024/02/ICT-Power-of-3.jpg',
+  'market-structure': '/images/market-structure.png',
+  'liquidity': '/images/liquidity.png',
+  'fvg': '/images/fvg.png',
+  'order-blocks': '/images/order-blocks.png',
+  'killzones': '/images/killzones.png',
+  'premium-discount': '/images/premium-discount.png',
+  'amd': '/images/amd.png',
 };
 
 // ─── Full lesson data ─────────────────────────────────────────────
