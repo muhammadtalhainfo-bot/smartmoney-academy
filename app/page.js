@@ -30,7 +30,7 @@ const STATS = [
   { value: '110+', label: 'ICT Concepts' },
   { value: '14', label: 'Modules' },
   { value: '80+', label: 'Lessons' },
-  { value: '2025', label: 'Updated' },
+  { value: '2026', label: 'Updated' },
 ];
 
 const LEVEL_STYLE = {
@@ -278,7 +278,7 @@ export default function HomePage() {
             <div className="font-mono text-xs text-[var(--gold)] tracking-widest uppercase mb-4">// Curriculum</div>
             <h2 className="font-display text-6xl text-white mb-4">WHAT YOU'LL LEARN</h2>
             <p className="text-gray-300 max-w-lg mx-auto text-sm" style={{ fontWeight: 300 }}>
-              14 modules, 80+ lessons. Built from innercircletrader.net, ICT PDFs Months 1–4, and the LumiTraders 2022 book.
+              14+ modules, 80+ lessons. Built from innercircletrader youtube channel, and the LumiTraders 2022 book.
             </p>
           </div>
 

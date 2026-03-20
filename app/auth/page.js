@@ -14,6 +14,8 @@ export default function AuthPage() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const router = useRouter();
+  const searchParams = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : null;
+  const redirectTo = searchParams ? searchParams.get('redirect') || '/dashboard' : '/dashboard';
 
   const handleGoogle = async () => {
     const supabase = createClient();
@@ -33,7 +35,7 @@ export default function AuthPage() {
       if (error) {
         setError(error.message);
       } else {
-        router.push('/dashboard');
+        router.push(redirectTo);
       }
     } else {
       const { error } = await supabase.auth.signUp({ email, password });

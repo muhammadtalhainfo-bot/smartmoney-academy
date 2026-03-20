@@ -1,4 +1,5 @@
 'use client';
+import { QUESTIONS } from './questions';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
@@ -356,8 +357,8 @@ function getTodaysQuestions() {
   const start = new Date(now.getFullYear(), 0, 0);
   const diff = now - start;
   const dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const setIndex = dayOfYear % 6; // 6 sets of 5
-  return ALL_QUESTIONS.slice(setIndex * 5, setIndex * 5 + 5);
+  const setIndex = dayOfYear % Math.floor(QUESTIONS.length / 5);
+  return QUESTIONS.slice(setIndex * 5, setIndex * 5 + 5);
 }
 
 const DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
