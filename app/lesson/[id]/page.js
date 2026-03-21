@@ -552,7 +552,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Intermediate',
     duration: '22 min read',
     category: 'Price Theory',
-    image: '/images/market-structure.png',
+    image: '/images/premium-discount.png',
     imageCaption: 'Premium vs Discount: institutions sell in premium, buy in discount — always relative to a swing range',
     intro: `One of the most powerful yet overlooked concepts in ICT is this: institutions never buy at a random price. They only buy when price is at a discount relative to a defined range — and they only sell when price is at a premium. Once you internalize this single principle, you will stop buying at highs and selling at lows forever. The Premium & Discount framework is ICT's answer to the question every trader asks: "Is this a good price to enter?"`,
     sections: [
@@ -595,7 +595,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Intermediate',
     duration: '25 min read',
     category: 'Execution',
-    image: '/images/order-blocks.png',
+    image: '/images/entry-models.png',
     imageCaption: 'ICT entry models combine liquidity sweeps, displacement, and FVG/OB entries for precision execution',
     intro: `Having all the concepts in your head means nothing if you don't know HOW to combine them into a concrete trade entry. ICT entry models are the specific, repeatable frameworks that tell you exactly when to pull the trigger. These are not vague ideas — they are precise sequences of events that, when all conditions are met, produce high-probability trade entries.`,
     sections: [
