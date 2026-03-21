@@ -17,7 +17,6 @@ const MORE_NAV = [
   ['/certificate', 'Certificate'],
   ['/blog', 'Blog'],
   ['/strategies', 'Strategies'],
-  ['/strategies', 'Strategies'],
   ['/about', 'About'],
   ['/pricing', 'Pricing'],
   ['/resources', 'Resources'],
