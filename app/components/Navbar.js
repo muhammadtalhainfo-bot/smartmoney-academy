@@ -15,6 +15,7 @@ const MORE_NAV = [
   ['/journal', 'Journal'],
   ['/leaderboard', 'Leaderboard'],
   ['/certificate', 'Certificate'],
+  ['/blog', 'Blog'],
   ['/about', 'About'],
   ['/pricing', 'Pricing'],
   ['/resources', 'Resources'],
