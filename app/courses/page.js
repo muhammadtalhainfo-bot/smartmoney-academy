@@ -437,20 +437,7 @@ export default function CoursesPage() {
       </section>
 
       {/* ── FOOTER ── */}
-      <footer className="relative z-10 border-t px-8 py-6" style={{ borderColor: 'var(--border)' }}>
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-7 h-7 rounded-lg flex items-center justify-center font-display text-black text-sm" style={{ background: 'linear-gradient(135deg, #D4A843, #8A6B28)' }}>S</div>
-            <span className="font-display text-lg tracking-widest text-white">SMARTMONEY ACADEMY</span>
-          </div>
-          <div className="font-mono-c text-xs text-gray-300">Educational platform only. Not financial advice.</div>
-          <div className="flex gap-6">
-            {['/courses', '/signals', '/glossary'].map((href, i) => (
-              <Link key={i} href={href} className="font-mono-c text-xs text-gray-300 hover:text-[#D4A843] transition-colors tracking-wider uppercase">{href.slice(1)}</Link>
-            ))}
-          </div>
-        </div>
-      </footer>
+      <Footer />
     <Footer />
     </div>
   );
