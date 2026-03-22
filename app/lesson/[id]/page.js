@@ -977,7 +977,7 @@ function Quiz({ questions }) {
               const supabase = createClient();
               const { data: { user } } = await supabase.auth.getUser();
               if (user) {
-                await supabase.from('lesson_completions').upsert({ user_id: user.id, lesson_id: questions[0]?.lessonId || 0 }, { onConflict: 'user_id,lesson_id' });
+                await supabase.from('lesson_completions').upsert({ user_id: user.id, lesson_id: lessonId }, { onConflict: 'user_id,lesson_id' });
                 const sc = questions.filter((q, i) => answers[i] === q.answer).length;
                 const xpEarned = sc === questions.length ? 70 : 20;
                 const { data: profile } = await supabase.from('profiles').select('xp').eq('id', user.id).single();
