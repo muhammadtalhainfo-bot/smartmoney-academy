@@ -97,6 +97,7 @@ const LEVEL_COLORS = {
   Beginner: { text: '#34D399', bg: 'rgba(52,211,153,0.08)', border: 'rgba(52,211,153,0.2)' },
   Intermediate: { text: '#D4A843', bg: 'rgba(212,168,67,0.08)', border: 'rgba(212,168,67,0.2)' },
   Advanced: { text: '#F87171', bg: 'rgba(248,113,113,0.08)', border: 'rgba(248,113,113,0.2)' },
+  SMC: { text: '#FB923C', bg: 'rgba(251,146,60,0.08)', border: 'rgba(251,146,60,0.2)' },
 };
 
 const TAG_COLORS = {

@@ -1,16 +1,15 @@
-import Stripe from 'stripe';
-import { createClient } from '@supabase/supabase-js';
-
 export const runtime = 'nodejs';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '');
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://abmvklthhjvvehijdqil.supabase.co',
-  process.env.SUPABASE_SERVICE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
-);
-
 export async function POST(req) {
+  const Stripe = (await import('stripe')).default;
+  const { createClient } = await import('@supabase/supabase-js');
+
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '');
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://abmvklthhjvvehijdqil.supabase.co',
+    process.env.SUPABASE_SERVICE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
+  );
+
   const body = await req.text();
   const sig = req.headers.get('stripe-signature');
 
@@ -26,7 +25,6 @@ export async function POST(req) {
     const email = session.customer_email || session.customer_details?.email;
 
     if (email) {
-      // Find user by email and update to pro
       const { data: { users } } = await supabase.auth.admin.listUsers();
       const user = users?.find(u => u.email === email);
 

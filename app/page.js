@@ -59,6 +59,31 @@ const LEVEL_STYLE = {
 
 export default function HomePage() {
   const [menuOpen, setMenuOpen] = React.useState(false);
+  const [ticker, setTicker] = React.useState(DEFAULT_TICKER);
+
+  React.useEffect(() => {
+    async function fetchPrices() {
+      try {
+        const results = await Promise.all(
+          SYMBOLS.map(async ({ pair, finnhub }) => {
+            const res = await fetch(`https://finnhub.io/api/v1/quote?symbol=${finnhub}&token=${FINNHUB_KEY}`);
+            const data = await res.json();
+            if (!data.c) return null;
+            const price = data.c;
+            const prev = data.pc;
+            const changePct = prev ? (((price - prev) / prev) * 100).toFixed(2) : '0.00';
+            const up = parseFloat(changePct) >= 0;
+            return { pair, price: price.toLocaleString('en-US', { maximumFractionDigits: 5 }), change: `${up ? '+' : ''}${changePct}%`, up };
+          })
+        );
+        const valid = results.filter(Boolean);
+        if (valid.length > 0) setTicker(valid);
+      } catch(e) {}
+    }
+    fetchPrices();
+    const interval = setInterval(fetchPrices, 30000);
+    return () => clearInterval(interval);
+  }, []);
   const [tick, setTick] = useState(0);
   const [visible, setVisible] = useState(false);
 
