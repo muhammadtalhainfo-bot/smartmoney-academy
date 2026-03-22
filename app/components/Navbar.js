@@ -17,6 +17,7 @@ const MORE_NAV = [
   ['/certificate', 'Certificate'],
   ['/blog', 'Blog'],
   ['/about', 'About'],
+  ['https://discord.gg/bh2YK6vF', 'Discord 💬'],
   ['/pricing', 'Pricing'],
   ['/resources', 'Resources'],
 ];
