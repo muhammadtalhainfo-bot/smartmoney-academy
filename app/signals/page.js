@@ -1,5 +1,6 @@
 'use client';
 import AuthGuard from '@/app/components/AuthGuard';
+import ProGuard from '@/app/components/ProGuard';
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
@@ -225,7 +226,7 @@ export default function SignalsPage() {
   const closedWins = SIGNALS.filter(s => s.status.startsWith('CLOSED') && s.result?.startsWith('+')).length;
 
   return (
-    <AuthGuard>
+    <AuthGuard><ProGuard>
     <div className="min-h-screen bg-[#080808] text-white" style={{ fontFamily: "'DM Sans', sans-serif" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap');
@@ -391,6 +392,6 @@ export default function SignalsPage() {
 </div>
       </footer>
     </div>
-    </AuthGuard>
+    </ProGuard></AuthGuard>
   );
 }
