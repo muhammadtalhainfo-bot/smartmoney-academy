@@ -7,7 +7,17 @@ import Testimonials from '@/app/components/Testimonials';
 import Footer from '@/app/components/Footer';
 
 // ─── Animated ticker data ───────────────────────────────────────
-const TICKER = [
+const FINNHUB_KEY = 'd704rgpr01qtb4r9fvmgd704rgpr01qtb4r9fvn0';
+const SYMBOLS = [
+  { pair: 'EURUSD', finnhub: 'OANDA:EUR_USD' },
+  { pair: 'XAUUSD', finnhub: 'OANDA:XAU_USD' },
+  { pair: 'NAS100', finnhub: 'NASDAQ:QQQ' },
+  { pair: 'GBPUSD', finnhub: 'OANDA:GBP_USD' },
+  { pair: 'BTCUSD', finnhub: 'BINANCE:BTCUSDT' },
+  { pair: 'US30', finnhub: 'FOREXCOM:DJI' },
+  { pair: 'USDJPY', finnhub: 'OANDA:USD_JPY' },
+];
+const DEFAULT_TICKER = [
   { pair: 'EURUSD', price: '1.08432', change: '+0.12%', up: true },
   { pair: 'XAUUSD', price: '2,341.50', change: '+0.84%', up: true },
   { pair: 'NAS100', price: '18,204.25', change: '-0.23%', up: false },
@@ -166,7 +176,7 @@ export default function HomePage() {
       {/* ── LIVE TICKER ── */}
       <div className="relative z-10 border-b border-[var(--border)] bg-[#0A0A0A] py-2 overflow-hidden">
         <div className="flex ticker-track whitespace-nowrap">
-          {[...TICKER, ...TICKER].map((item, i) => (
+          {[...ticker, ...ticker].map((item, i) => (
             <span key={i} className="inline-flex items-center gap-3 px-6 font-mono text-xs">
               <span className="text-[var(--gold-dim)] font-medium">{item.pair}</span>
               <span className="text-white">{item.price}</span>
