@@ -34,6 +34,14 @@ const COURSES = [
   { id: 4, emoji: '🧱', title: 'Order Blocks', level: 'Intermediate', lessons: 6, desc: 'OB, Breaker, Mitigation — the institutional footprint on charts.' },
   { id: 5, emoji: '⏰', title: 'Killzones & Macros', level: 'Intermediate', lessons: 4, desc: 'London, NY AM, Silver Bullet windows — time is your edge.' },
   { id: 6, emoji: '🔱', title: 'Power of Three (AMD)', level: 'Intermediate', lessons: 5, desc: 'Accumulate, Manipulate, Distribute — the daily market script.' },
+  { id: 7, emoji: '📐', title: 'Premium & Discount', level: 'Intermediate', lessons: 4, desc: 'Institutions only buy cheap and sell expensive — the Fibonacci framework.' },
+  { id: 8, emoji: '🎲', title: 'ICT Entry Models', level: 'Intermediate', lessons: 7, desc: 'Silver Bullet, 2022 Model, Unicorn — the official ICT trade setups.' },
+  { id: 9, emoji: '🏦', title: 'Market Maker Models', level: 'Advanced', lessons: 5, desc: 'MMBM and MMSM — how banks build and unwind massive positions.' },
+  { id: 10, emoji: '🔀', title: 'SMT Divergence', level: 'Advanced', lessons: 4, desc: 'Smart Money Technique — catch institutional divergence before moves.' },
+  { id: 11, emoji: '🤖', title: 'IPDA & CRT', level: 'Advanced', lessons: 5, desc: 'The algorithm itself — IPDA data ranges and Candle Range Theory.' },
+  { id: 12, emoji: '🆕', title: 'ICT 2024 Mentorship', level: 'Advanced', lessons: 8, desc: 'Venom Model, Propulsion Blocks, Quarterly Shifts — newest ICT concepts.' },
+  { id: 13, emoji: '💼', title: 'SMC — Smart Money Concepts', level: 'SMC', lessons: 6, desc: 'Community-built framework derived from ICT — structure, OBs, FVGs.' },
+  { id: 14, emoji: '🔭', title: 'Top-Down Analysis', level: 'Intermediate', lessons: 5, desc: 'Multi-timeframe methodology — from Monthly bias to 1-minute entry.' },
 ];
 
 const STATS = [
