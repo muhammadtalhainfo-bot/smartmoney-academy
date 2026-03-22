@@ -37,7 +37,7 @@ const COURSES = [
 ];
 
 const STATS = [
-  { value: '110+', label: 'ICT Concepts' },
+  { value: '82+', label: 'ICT Concepts' },
   { value: '14', label: 'Modules' },
   { value: '80+', label: 'Lessons' },
   { value: '2026', label: 'Updated' },
