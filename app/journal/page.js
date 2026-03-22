@@ -3,6 +3,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import AuthGuard from '@/app/components/AuthGuard';
 import { createClient } from '@/lib/supabase';
+import Navbar from '@/app/components/Navbar';
 
 const PAIRS = ['EURUSD','GBPUSD','XAUUSD','NAS100','US30','USDJPY','GBPJPY','AUDUSD','USDCAD','BTCUSD','ETHUSD','SP500'];
 const SESSIONS = ['Asian','London','New York AM','New York PM','London Close','Overlap'];
@@ -204,23 +205,7 @@ export default function JournalPage() {
           select option { background: #141414; color: white; }
         `}</style>
 
-        <nav style={{ position: 'sticky', top: 0, zIndex: 40, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 24px', borderBottom: '1px solid rgba(212,168,67,0.08)', background: 'rgba(8,8,8,0.95)', backdropFilter: 'blur(20px)' }}>
-          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'linear-gradient(135deg,#D4A843,#8A6B28)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Bebas Neue', color: 'black', fontSize: '18px' }}>S</div>
-            <div>
-              <div style={{ fontFamily: 'Bebas Neue', fontSize: '16px', letterSpacing: '0.15em', color: 'white' }}>SMARTMONEY</div>
-              <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#8A6B28', letterSpacing: '0.2em', marginTop: '-2px' }}>ACADEMY</div>
-            </div>
-          </Link>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-            <div style={{ display: 'flex', gap: '24px' }}>
-              {NAV.map(([href, label]) => (
-                <Link key={href} href={href} style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', textDecoration: 'none', color: href === '/journal' ? '#D4A843' : 'rgba(255,255,255,0.7)' }}>{label}</Link>
-              ))}
-            </div>
-            <button onClick={() => { setShowForm(true); setEditTrade(null); }} style={{ background: 'linear-gradient(135deg,#D4A843,#F0C96A)', color: '#080808', border: 'none', borderRadius: '10px', padding: '9px 18px', fontFamily: 'DM Mono, monospace', fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer', whiteSpace: 'nowrap' }}>+ Log Trade</button>
-          </div>
-        </nav>
+        <Navbar active="/journal" />
 
         {menuOpen && (
           <div style={{ position: 'fixed', inset: 0, zIndex: 50, background: 'rgba(8,8,8,0.98)', backdropFilter: 'blur(20px)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '32px' }}>
