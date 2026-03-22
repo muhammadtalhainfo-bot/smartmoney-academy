@@ -78,7 +78,7 @@ const MODULES = [
     topics: ["Venom Model 2025", "Propulsion Block", "Quarterly Shift", "SCOB — Silver Bullet Order Block", "QML — Quasi Market Level", "Weekly Profile Templates"],
   },
   {
-    id: 13, module: "13", title: "SMC — Smart Money Concepts", level: "Beginner", tag: "SMC",
+    id: 13, module: "13", title: "SMC — Smart Money Concepts", level: "SMC", tag: "SMC",
     lessons: 6, duration: "50 min", emoji: "💼", image: "/images/smart-money.png",
     desc: "The community-built framework derived from ICT — structure, OBs, FVGs, and CHoCH for beginners.",
     topics: ["SMC vs ICT Differences", "Supply & Demand Zones", "SMC Order Blocks", "SMC ChoCH & BOS", "Inducement", "SMC Trade Framework"],
@@ -391,6 +391,18 @@ export default function CoursesPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {filtered.filter(m => m.level === 'Intermediate').map((mod, i) => <ModuleCard key={mod.id} mod={mod} index={i} />)}
               </div>
+            </div>
+          )}
+
+          {/* SMC Track */}
+          {filtered.filter(m => m.level === 'SMC').length > 0 && (
+            <div className="mb-12">
+              <div className="mb-6 pb-3 border-b" style={{ borderColor: 'rgba(251,146,60,0.15)' }}>
+                <div className="font-mono-c text-xs tracking-widest uppercase mb-1" style={{ color: '#FB923C' }}>SMC Track</div>
+                <div className="text-white font-semibold text-lg">Smart Money Concepts</div>
+                <div className="text-sm mt-1" style={{ color: 'rgba(255,255,255,0.4)' }}>Community-built framework derived from ICT — great companion to the main curriculum.</div>
+              </div>
+              {filtered.filter(m => m.level === 'SMC').map((mod, i) => <ModuleCard key={mod.id} mod={mod} index={i} />)}
             </div>
           )}
 
