@@ -75,7 +75,7 @@ export default function Footer() {
             FOR EDUCATIONAL PURPOSES ONLY · NOT FINANCIAL ADVICE
           </div>
           <div style={{ display: 'flex', gap: '16px' }}>
-            {[['𝕏', 'https://twitter.com'], ['▶', 'https://youtube.com'], ['📱', 'https://tiktok.com'], ['💬', 'https://discord.gg/bh2YK6vF']].map(([icon, href]) => (
+            {[['𝕏', 'https://x.com/riskfirsttrad'], ['▶', 'https://youtube.com/@smart_money_academy0'], ['📱', 'https://www.tiktok.com/@smart.money.academy'], ['💬', 'https://discord.gg/bh2YK6vF']].map(([icon, href]) => (
               <a key={href} href={href} target="_blank" rel="noopener noreferrer" style={{ width: '32px', height: '32px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', color: 'rgba(255,255,255,0.3)', textDecoration: 'none', transition: 'all 0.2s' }} onMouseOver={e => { e.currentTarget.style.borderColor = 'rgba(212,168,67,0.3)'; e.currentTarget.style.color = '#D4A843'; }} onMouseOut={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'; e.currentTarget.style.color = 'rgba(255,255,255,0.3)'; }}>{icon}</a>
             ))}
           </div>
