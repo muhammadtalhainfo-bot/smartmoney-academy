@@ -1,6 +1,11 @@
 import "./globals.css";
 
 export const metadata = {
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
   metadataBase: new URL('https://smartmoney-academy.vercel.app'),
   title: {
     default: 'SmartMoney Academy — Free ICT & Smart Money Concepts Trading Education',
