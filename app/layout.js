@@ -55,6 +55,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-HRGZYFXQ5W"></script>
+      <script dangerouslySetInnerHTML={{ __html: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-HRGZYFXQ5W');
+      ` }} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/icons/icon-192.png" />
