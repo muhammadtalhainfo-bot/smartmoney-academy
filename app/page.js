@@ -9,13 +9,13 @@ import Footer from '@/app/components/Footer';
 // ─── Animated ticker data ───────────────────────────────────────
 const FINNHUB_KEY = 'd704rgpr01qtb4r9fvmgd704rgpr01qtb4r9fvn0';
 const SYMBOLS = [
+  { pair: 'BTCUSD', finnhub: 'BINANCE:BTCUSDT' },
+  { pair: 'ETHUSD', finnhub: 'BINANCE:ETHUSDT' },
+  { pair: 'BNBUSDT', finnhub: 'BINANCE:BNBUSDT' },
+  { pair: 'NAS100', finnhub: 'NASDAQ:QQQ' },
+  { pair: 'SPX500', finnhub: 'OANDA:SPX500_USD' },
   { pair: 'EURUSD', finnhub: 'OANDA:EUR_USD' },
   { pair: 'XAUUSD', finnhub: 'OANDA:XAU_USD' },
-  { pair: 'NAS100', finnhub: 'NASDAQ:QQQ' },
-  { pair: 'GBPUSD', finnhub: 'OANDA:GBP_USD' },
-  { pair: 'BTCUSD', finnhub: 'BINANCE:BTCUSDT' },
-  { pair: 'US30', finnhub: 'FOREXCOM:DJI' },
-  { pair: 'USDJPY', finnhub: 'OANDA:USD_JPY' },
 ];
 const DEFAULT_TICKER = [
   { pair: 'EURUSD', price: '1.08432', change: '+0.12%', up: true },
@@ -64,24 +64,13 @@ export default function HomePage() {
   React.useEffect(() => {
     async function fetchPrices() {
       try {
-        const results = await Promise.all(
-          SYMBOLS.map(async ({ pair, finnhub }) => {
-            const res = await fetch(`https://finnhub.io/api/v1/quote?symbol=${finnhub}&token=${FINNHUB_KEY}`);
-            const data = await res.json();
-            if (!data.c) return null;
-            const price = data.c;
-            const prev = data.pc;
-            const changePct = prev ? (((price - prev) / prev) * 100).toFixed(2) : '0.00';
-            const up = parseFloat(changePct) >= 0;
-            return { pair, price: price.toLocaleString('en-US', { maximumFractionDigits: 5 }), change: `${up ? '+' : ''}${changePct}%`, up };
-          })
-        );
-        const valid = results.filter(Boolean);
-        if (valid.length > 0) setTicker(valid);
+        const res = await fetch('/api/ticker');
+        const json = await res.json();
+        if (json.data && json.data.length > 0) setTicker(json.data);
       } catch(e) {}
     }
     fetchPrices();
-    const interval = setInterval(fetchPrices, 30000);
+    const interval = setInterval(fetchPrices, 60000);
     return () => clearInterval(interval);
   }, []);
   const [tick, setTick] = useState(0);
