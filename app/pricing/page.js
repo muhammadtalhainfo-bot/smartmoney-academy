@@ -1,8 +1,3 @@
-export const metadata = {
-  title: 'Pricing — SmartMoney Academy Pro',
-  description: 'Upgrade to SmartMoney Academy Pro for $19/month. Get live ICT signals, Discord access, AI challenges, and progress certificates.',
-};
-
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';

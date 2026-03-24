@@ -1,8 +1,3 @@
-export const metadata = {
-  title: 'ICT Trading Strategies — Silver Bullet, AMD, OTE & More',
-  description: 'Detailed ICT trading strategy playbooks. Silver Bullet, AMD Model, OTE Entry, FVG+Liquidity, Breaker Block, Turtle Soup, SMT Divergence and Midnight Open.',
-};
-
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
