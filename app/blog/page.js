@@ -1,3 +1,8 @@
+export const metadata = {
+  title: 'ICT Trading Blog — Tips, Strategies & Analysis',
+  description: 'Read our ICT and Smart Money Concepts trading blog. Learn about FVGs, order blocks, liquidity, prop firms, and more.',
+};
+
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';

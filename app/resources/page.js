@@ -1,3 +1,8 @@
+export const metadata = {
+  title: 'Trading Resources — Prop Firms, Brokers & Tools',
+  description: 'Best prop firms, brokers and trading tools for ICT traders. FTMO, The Funded Trader, Pepperstone, IC Markets, TradingView and more.',
+};
+
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';

@@ -1,3 +1,8 @@
+export const metadata = {
+  title: 'About SmartMoney Academy',
+  description: 'SmartMoney Academy is a free ICT and Smart Money Concepts trading education platform. Our mission is to make institutional trading knowledge accessible to everyone.',
+};
+
 'use client';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';

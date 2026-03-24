@@ -1,3 +1,8 @@
+export const metadata = {
+  title: 'ICT Trading Courses — 14 Modules Free',
+  description: 'Free ICT trading courses covering market structure, liquidity, fair value gaps, order blocks, killzones, AMD model and more. 14 modules, 80+ lessons.',
+};
+
 'use client';
 import React, { useState } from 'react';
 import Link from 'next/link';

@@ -1,20 +1,21 @@
 import "./globals.css";
+import CookieBanner from '@/app/components/CookieBanner';
 
 export const metadata = {
-  icons: {
-    icon: '/favicon.svg',
-    shortcut: '/favicon.svg',
-    apple: '/favicon.svg',
-  },
   metadataBase: new URL('https://smartmoney-academy.vercel.app'),
   title: {
     default: 'SmartMoney Academy — Free ICT & Smart Money Concepts Trading Education',
     template: '%s | SmartMoney Academy',
   },
   description: 'Master ICT (Inner Circle Trader) and Smart Money Concepts for free. Learn market structure, liquidity, fair value gaps, order blocks, killzones and more. 14 modules, 80+ lessons.',
-  keywords: ['ICT trading', 'Smart Money Concepts', 'Inner Circle Trader', 'market structure', 'fair value gap', 'order blocks', 'liquidity', 'NAS100', 'forex trading', 'prop firm', 'trading education', 'free trading course'],
+  keywords: ['ICT trading', 'Smart Money Concepts', 'Inner Circle Trader', 'market structure', 'fair value gap', 'order blocks', 'liquidity', 'NAS100', 'forex trading', 'prop firm', 'trading education', 'free trading course', 'ICT mentorship', 'silver bullet strategy', 'AMD model'],
   authors: [{ name: 'SmartMoney Academy' }],
   creator: 'SmartMoney Academy',
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -36,7 +37,7 @@ export const metadata = {
     title: 'SmartMoney Academy — Free ICT Trading Education',
     description: 'Master ICT & Smart Money Concepts for free. 14 modules, 80+ lessons.',
     images: ['/og-image.png'],
-    creator: '@SmartMoneyAcad',
+    creator: '@riskfirsttrad',
   },
   robots: {
     index: true,
@@ -51,43 +52,64 @@ export const metadata = {
   },
 };
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'EducationalOrganization',
+  name: 'SmartMoney Academy',
+  url: 'https://smartmoney-academy.vercel.app',
+  description: 'Free ICT and Smart Money Concepts trading education platform. 14 modules, 80+ lessons.',
+  educationalCredentialAwarded: 'ICT Trading Certificate',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'ICT Trading Courses',
+    itemListElement: [
+      { '@type': 'Course', name: 'Market Structure', description: 'Learn HH/HL, BOS, ChoCH, MSS', provider: { '@type': 'Organization', name: 'SmartMoney Academy' } },
+      { '@type': 'Course', name: 'Liquidity Concepts', description: 'Stop hunts, BSL/SSL, equal highs/lows', provider: { '@type': 'Organization', name: 'SmartMoney Academy' } },
+      { '@type': 'Course', name: 'Fair Value Gaps', description: 'BISI, SIBI, CE, BPR', provider: { '@type': 'Organization', name: 'SmartMoney Academy' } },
+      { '@type': 'Course', name: 'Order Blocks', description: 'OB, Breaker, Mitigation', provider: { '@type': 'Organization', name: 'SmartMoney Academy' } },
+    ],
+  },
+  sameAs: [
+    'https://x.com/riskfirsttrad',
+    'https://youtube.com/@smart_money_academy0',
+    'https://www.tiktok.com/@smart.money.academy',
+    'https://discord.gg/bh2YK6vF',
+  ],
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-HRGZYFXQ5W"></script>
-      <script dangerouslySetInnerHTML={{ __html: `
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-HRGZYFXQ5W');
-      ` }} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/icons/icon-192.png" />
-        <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#D4A843" />
+        <link rel="manifest" href="/manifest.json" />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-HRGZYFXQ5W"></script>
+        <script dangerouslySetInnerHTML={{ __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-HRGZYFXQ5W');
+        ` }} />
         <script
-          src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"
-          defer="true"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.OneSignalDeferred = window.OneSignalDeferred || [];
-              OneSignalDeferred.push(async function(OneSignal) {
-                await OneSignal.init({
-                  appId: "7091f3f0-0cf1-4afa-9587-0c3040b520c7",
-                  notifyButton: { enable: true },,
-                  notifyButton: { enable: false },
-                });
-              });
-            `,
-          }}
-        />
+        <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer />
+        <script dangerouslySetInnerHTML={{ __html: `
+          window.OneSignalDeferred = window.OneSignalDeferred || [];
+          OneSignalDeferred.push(async function(OneSignal) {
+            await OneSignal.init({
+              appId: "7091f3f0-0cf1-4afa-9587-0c3040b520c7",
+              notifyButton: { enable: true },
+            });
+          });
+        ` }} />
       </head>
-      <body>{children}
-        <CookieBanner /></body>
+      <body>
+        {children}
+        <CookieBanner />
+      </body>
     </html>
   );
 }

@@ -1,3 +1,8 @@
+export const metadata = {
+  title: 'ICT & SMC Trading Glossary — 82+ Terms',
+  description: 'Complete ICT and Smart Money Concepts glossary with 82+ terms. FVG, OB, BOS, ChoCH, MSS, liquidity, AMD, IPDA and more — all defined clearly.',
+};
+
 'use client';
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
