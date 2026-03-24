@@ -399,7 +399,7 @@ export default function HomePage() {
               <div className="font-mono text-xs text-[var(--gold)] tracking-widest uppercase mb-4">// Begin Now</div>
               <h2 className="font-display text-5xl text-white mb-4">READY TO THINK<br/>LIKE SMART MONEY?</h2>
               <p className="text-gray-300 mb-8 text-sm leading-relaxed" style={{ fontWeight: 300 }}>
-                Join thousands of traders who stopped guessing and started reading institutional footprints. Free access to all beginner modules.
+                Join 500+ traders who stopped guessing and started reading institutional footprints. Free access to all beginner modules.
               </p>
               <Link href="/courses" className="btn-gold inline-block px-10 py-4 rounded-xl font-mono text-sm tracking-widest uppercase">
                 Start For Free →
