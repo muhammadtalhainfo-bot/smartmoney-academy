@@ -5,7 +5,7 @@ export async function POST(req) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer os_v2_app_oci7h4am6ffpvfmhbqyebnjay7pixdlcl7suuafh6kbm5przcltcuofhu3n4zysoaukeusv72oujryd7zd4izksitd7elagpklwbwmq',
+      'Authorization': 'Bearer ' + process.env.ONESIGNAL_REST_API_KEY,
     },
     body: JSON.stringify({
       app_id: '7091f3f0-0cf1-4afa-9587-0c3040b520c7',
