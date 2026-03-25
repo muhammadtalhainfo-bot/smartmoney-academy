@@ -930,7 +930,8 @@ function Section({ section, index }) {
       )}
     </div>
   );
-  return lessonId >= 4 ? <ProGuard>{pageContent}</ProGuard> : pageContent;
+  );
+}
 }
 
 // ─── Quiz component ──────────────────────────────────────────────
@@ -1012,7 +1013,8 @@ function Quiz({ questions }) {
       )}
     </div>
   );
-  return lessonId >= 4 ? <ProGuard>{pageContent}</ProGuard> : pageContent;
+  );
+}
 }
 
 // ─── Main page ───────────────────────────────────────────────────
@@ -1033,16 +1035,7 @@ export default function LessonPage({ params }) {
   const lessonId = parseInt(id) || 1;
   const lesson = LESSONS[lessonId] || LESSONS[1];
 
-  if (lessonId >= 4) {
-    return (
-      <ProGuard>
-        <LessonContent lessonId={lessonId} lesson={lesson} router={router} />
-      </ProGuard>
-    );
-  }
-
-  const needsPro = lessonId >= 4;
-  const inner = (
+  const page = (
     <div className="min-h-screen bg-[#080808] text-white" style={{ fontFamily: "'DM Sans', sans-serif" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap');
@@ -1153,5 +1146,5 @@ export default function LessonPage({ params }) {
       </footer>
     </div>
   );
-  return lessonId >= 4 ? <ProGuard>{pageContent}</ProGuard> : pageContent;
+  return lessonId >= 4 ? <ProGuard>{page}</ProGuard> : page;
 }
