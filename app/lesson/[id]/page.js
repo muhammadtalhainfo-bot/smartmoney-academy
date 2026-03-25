@@ -2,6 +2,7 @@
 import { useState, use, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase';
+import ProGuard from '@/app/components/ProGuard';
 import Link from 'next/link';
 
 // ─── Real chart images from web ──────────────────────────────────
@@ -929,6 +930,7 @@ function Section({ section, index }) {
       )}
     </div>
   );
+  return lessonId >= 4 ? <ProGuard>{pageContent}</ProGuard> : pageContent;
 }
 
 // ─── Quiz component ──────────────────────────────────────────────
@@ -1010,6 +1012,7 @@ function Quiz({ questions }) {
       )}
     </div>
   );
+  return lessonId >= 4 ? <ProGuard>{pageContent}</ProGuard> : pageContent;
 }
 
 // ─── Main page ───────────────────────────────────────────────────
@@ -1022,14 +1025,6 @@ export default function LessonPage({ params }) {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) {
         router.push('/auth?redirect=' + encodeURIComponent(window.location.pathname));
-        return;
-      }
-      const lessonNum = parseInt(window.location.pathname.split('/').pop()) || 1;
-      if (lessonNum >= 4) {
-        const { data: profile } = await supabase.from('profiles').select('is_pro').eq('id', user.id).single();
-        if (!profile?.is_pro) {
-          router.push('/pricing?reason=pro-lesson');
-        }
       }
     }
     checkAuth();
@@ -1038,7 +1033,16 @@ export default function LessonPage({ params }) {
   const lessonId = parseInt(id) || 1;
   const lesson = LESSONS[lessonId] || LESSONS[1];
 
-  return (
+  if (lessonId >= 4) {
+    return (
+      <ProGuard>
+        <LessonContent lessonId={lessonId} lesson={lesson} router={router} />
+      </ProGuard>
+    );
+  }
+
+  const needsPro = lessonId >= 4;
+  const inner = (
     <div className="min-h-screen bg-[#080808] text-white" style={{ fontFamily: "'DM Sans', sans-serif" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap');
@@ -1149,4 +1153,5 @@ export default function LessonPage({ params }) {
       </footer>
     </div>
   );
+  return lessonId >= 4 ? <ProGuard>{pageContent}</ProGuard> : pageContent;
 }
