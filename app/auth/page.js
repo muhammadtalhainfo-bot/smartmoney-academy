@@ -22,7 +22,7 @@ export default function AuthPage() {
     const supabase = createClient();
     await supabase.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo: 'https://smartmoney-academy.vercel.app/dashboard' }
+      options: { redirectTo: 'https://smartmoney-academy.vercel.app/auth/callback' }
     });
   };
 
