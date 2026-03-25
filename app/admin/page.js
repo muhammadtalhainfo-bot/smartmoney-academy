@@ -55,7 +55,7 @@ export default function AdminPage() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Basic YOUR_ONESIGNAL_REST_API_KEY',
+          'Authorization': 'Basic os_v2_app_oci7h4am6ffpvfmhbqyebnjay7s7irnlabeefqfgo5rb7qo3jmzlddtzg672xas54c7q2frw37owyakf3b4gypmvahfwvsa2bm63rlq',
         },
         body: JSON.stringify({
           app_id: '7091f3f0-0cf1-4afa-9587-0c3040b520c7',
