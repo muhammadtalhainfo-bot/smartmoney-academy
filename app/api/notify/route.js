@@ -5,7 +5,7 @@ export async function POST(req) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Key os_v2_org_bnsdrgaq7nem5ad6bpkpyxkoroitwrfmvlnuromudg7isq7qnvrl3hxl7i3nsesbetjkrjiqxlqckt7rzudverztfelch2ci3bypzda',
+      'Authorization': 'Bearer os_v2_org_bnsdrgaq7nem5ad6bpkpyxkoroitwrfmvlnuromudg7isq7qnvrl3hxl7i3nsesbetjkrjiqxlqckt7rzudverztfelch2ci3bypzda',
     },
     body: JSON.stringify({
       app_id: '7091f3f0-0cf1-4afa-9587-0c3040b520c7',
