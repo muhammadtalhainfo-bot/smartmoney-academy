@@ -56,7 +56,11 @@ export default function AdminPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ title: notifTitle, message: notifMsg }),
       });
-      if (!response.ok) throw new Error('Failed');
+      const result = await response.json();
+      if (!response.ok) {
+        alert('Error: ' + JSON.stringify(result));
+        return;
+      }
       setNotifSent(true);
       setNotifTitle('');
       setNotifMsg('');
