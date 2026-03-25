@@ -51,20 +51,12 @@ export default function AdminPage() {
   const sendNotification = async () => {
     if (!notifTitle || !notifMsg) return;
     try {
-      await fetch('https://onesignal.com/api/v1/notifications', {
+      const response = await fetch('/api/notify', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Basic os_v2_app_oci7h4am6ffpvfmhbqyebnjay7s7irnlabeefqfgo5rb7qo3jmzlddtzg672xas54c7q2frw37owyakf3b4gypmvahfwvsa2bm63rlq',
-        },
-        body: JSON.stringify({
-          app_id: '7091f3f0-0cf1-4afa-9587-0c3040b520c7',
-          included_segments: ['All'],
-          headings: { en: notifTitle },
-          contents: { en: notifMsg },
-          url: 'https://smartmoney-academy.vercel.app',
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: notifTitle, message: notifMsg }),
       });
+      if (!response.ok) throw new Error('Failed');
       setNotifSent(true);
       setNotifTitle('');
       setNotifMsg('');
