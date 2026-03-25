@@ -26,7 +26,8 @@ export default function LeaderboardPage() {
   useEffect(() => {
     async function load() {
       const supabase = createClient();
-      const { data: { user } } = await supabase.auth.getUser();
+      const { data: { session } } = await supabase.auth.getSession();
+      const user = session?.user;
 
       // Fetch top 50
       const { data: top } = await supabase

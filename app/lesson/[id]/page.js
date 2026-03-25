@@ -976,7 +976,8 @@ function Quiz({ questions }) {
             setSubmitted(true);
             try {
               const supabase = createClient();
-              const { data: { user } } = await supabase.auth.getUser();
+              const { data: { session } } = await supabase.auth.getSession();
+      const user = session?.user;
               if (user) {
                 await supabase.from('lesson_completions').upsert({ user_id: user.id, lesson_id: lessonId }, { onConflict: 'user_id,lesson_id' });
                 const sc = questions.filter((q, i) => answers[i] === q.answer).length;
@@ -1020,8 +1021,8 @@ export default function LessonPage({ params }) {
   useEffect(() => {
     async function checkAuth() {
       const supabase = createClient();
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
         router.push('/auth?redirect=' + encodeURIComponent(window.location.pathname));
       }
     }

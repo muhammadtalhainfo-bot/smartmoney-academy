@@ -52,7 +52,8 @@ export default function DashboardPage() {
   useEffect(() => {
     async function loadData() {
       // Check auth
-      const { data: { user } } = await supabase.auth.getUser();
+      const { data: { session } } = await supabase.auth.getSession();
+      const user = session?.user;
       if (!user) { router.push('/auth'); return; }
       setUser(user);
 

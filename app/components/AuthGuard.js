@@ -11,7 +11,8 @@ export default function AuthGuard({ children }) {
 
   useEffect(() => {
     async function check() {
-      const { data: { user } } = await supabase.auth.getUser();
+      const { data: { session } } = await supabase.auth.getSession();
+      const user = session?.user;
       if (!user) {
         // Save where they were trying to go
         localStorage.setItem('redirectAfterLogin', pathname);
