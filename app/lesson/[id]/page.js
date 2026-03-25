@@ -1022,6 +1022,14 @@ export default function LessonPage({ params }) {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) {
         router.push('/auth?redirect=' + encodeURIComponent(window.location.pathname));
+        return;
+      }
+      const lessonNum = parseInt(window.location.pathname.split('/').pop()) || 1;
+      if (lessonNum >= 4) {
+        const { data: profile } = await supabase.from('profiles').select('is_pro').eq('id', user.id).single();
+        if (!profile?.is_pro) {
+          router.push('/pricing?reason=pro-lesson');
+        }
       }
     }
     checkAuth();
