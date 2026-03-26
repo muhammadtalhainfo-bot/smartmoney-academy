@@ -1021,6 +1021,8 @@ export default function LessonPage({ params }) {
   useEffect(() => {
     async function checkAuth() {
       const supabase = createClient();
+      // Wait for session to load from localStorage
+      await new Promise(resolve => setTimeout(resolve, 300));
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) {
         router.push('/auth?redirect=' + encodeURIComponent(window.location.pathname));
