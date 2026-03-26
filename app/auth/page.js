@@ -26,7 +26,6 @@ export default function AuthPage() {
 
   const handleAuth = async () => {
     const supabase = createClient();
-    const supabase = createClient();
     setLoading(true);
     setError('');
     setSuccess('');
