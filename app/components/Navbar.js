@@ -1,5 +1,6 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { createClient } from '@/lib/supabase';
 import Link from 'next/link';
 
 const MAIN_NAV = [
@@ -26,6 +27,16 @@ const ALL_NAV = [...MAIN_NAV, ...MORE_NAV];
 
 export default function Navbar({ active }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    async function checkSession() {
+      const supabase = createClient();
+      const { data: { session } } = await supabase.auth.getSession();
+      setIsLoggedIn(!!session);
+    }
+    checkSession();
+  }, []);
   const [moreOpen, setMoreOpen] = useState(false);
 
   return (
@@ -65,8 +76,8 @@ export default function Navbar({ active }) {
           </div>
         </div>
 
-        <Link href="/auth" className="hidden-mobile" style={{ background: 'linear-gradient(135deg, #D4A843, #F0C96A)', color: '#080808', borderRadius: '8px', padding: '8px 18px', fontFamily: "'DM Mono', monospace", fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none', flexShrink: 0 }}>
-          Start Free
+        <Link href={isLoggedIn ? '/courses' : '/auth'} className="hidden-mobile" style={{ background: 'linear-gradient(135deg, #D4A843, #F0C96A)', color: '#080808', borderRadius: '8px', padding: '8px 18px', fontFamily: "'DM Mono', monospace", fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none', flexShrink: 0 }}>
+          {isLoggedIn ? 'Courses' : 'Start Free'}
         </Link>
 
         <button onClick={() => setMenuOpen(!menuOpen)} className="show-mobile" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '4px', display: 'flex', flexDirection: 'column', gap: '5px' }}>
