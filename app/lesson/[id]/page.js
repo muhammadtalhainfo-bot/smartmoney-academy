@@ -900,7 +900,7 @@ const LEVEL_STYLE = {
 };
 
 // ─── Section component ───────────────────────────────────────────
-function Section({ section, index }) {
+function Section({ section, index, diagramSrc, diagramAlt }) {
   const [open, setOpen] = useState(index === 0);
   return (
     <div className="border border-[rgba(212,168,67,0.1)] rounded-xl overflow-hidden mb-4">
@@ -921,6 +921,26 @@ function Section({ section, index }) {
           <div className="pt-5 text-gray-300 leading-relaxed text-sm whitespace-pre-line mb-4" style={{ fontWeight: 300 }}>
             {section.content}
           </div>
+          {diagramSrc && (
+            <div className="mb-4 rounded-xl overflow-hidden border border-[rgba(212,168,67,0.18)] bg-[#0A0A0A]">
+              <img
+                src={diagramSrc}
+                alt={diagramAlt}
+                className="w-full object-cover"
+                style={{ maxHeight: '360px', objectFit: 'cover', background: '#0F0F0F' }}
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.nextSibling.style.display = 'flex';
+                }}
+              />
+              <div style={{ display: 'none' }} className="h-40 items-center justify-center bg-[#0F0F0F]">
+                <p className="font-mono-custom text-xs text-gray-500">Module diagram unavailable</p>
+              </div>
+              <div className="px-4 py-2 border-t border-[rgba(212,168,67,0.12)]">
+                <p className="font-mono-custom text-[11px] text-gray-500">ICT concept diagram</p>
+              </div>
+            </div>
+          )}
           {section.highlight && (
             <div className="flex gap-3 p-4 rounded-xl border border-[rgba(212,168,67,0.2)] bg-[rgba(212,168,67,0.05)]">
               <div className="text-sm text-[#D4A843] leading-relaxed">{section.highlight}</div>
@@ -933,7 +953,7 @@ function Section({ section, index }) {
 }
 
 // ─── Quiz component ──────────────────────────────────────────────
-function Quiz({ questions }) {
+function Quiz({ questions, lessonId }) {
   const [answers, setAnswers] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const score = submitted ? questions.filter((q, i) => answers[i] === q.answer).length : 0;
@@ -979,7 +999,15 @@ function Quiz({ questions }) {
               const { data: { session } } = await supabase.auth.getSession();
       const user = session?.user;
               if (user) {
-                await supabase.from('lesson_completions').upsert({ user_id: user.id, lesson_id: lessonId }, { onConflict: 'user_id,lesson_id' });
+                const normalizedLessonId = Number.parseInt(String(lessonId), 10);
+                if (!Number.isNaN(normalizedLessonId)) {
+                  await supabase
+                    .from('lesson_completions')
+                    .upsert(
+                      { user_id: user.id, lesson_id: normalizedLessonId },
+                      { onConflict: 'user_id,lesson_id' }
+                    );
+                }
                 const sc = questions.filter((q, i) => answers[i] === q.answer).length;
                 const xpEarned = sc === questions.length ? 70 : 20;
                 const { data: profile } = await supabase.from('profiles').select('xp').eq('id', user.id).single();
@@ -1031,7 +1059,8 @@ export default function LessonPage({ params }) {
     checkAuth();
   }, []);
   const { id } = use(params);
-  const lessonId = parseInt(id) || 1;
+  const lessonId = Number.parseInt(id, 10) || 1;
+  const moduleDiagramSrc = `/modules/module-${String(lessonId).padStart(2, '0')}.png`;
   const lesson = LESSONS[lessonId] || LESSONS[1];
 
   const page = (
@@ -1105,14 +1134,20 @@ export default function LessonPage({ params }) {
         <div className="mb-10">
           <div className="font-mono-custom text-xs text-[var(--gold)] tracking-widest uppercase mb-5">// Lesson Content</div>
           {lesson.sections.map((section, i) => (
-            <Section key={i} section={section} index={i} />
+            <Section
+              key={i}
+              section={section}
+              index={i}
+              diagramSrc={i === 0 ? moduleDiagramSrc : null}
+              diagramAlt={`${lesson.title} ICT concept diagram`}
+            />
           ))}
         </div>
 
         {/* ── Quiz ── */}
         <div className="mb-10">
           <div className="font-mono-custom text-xs text-[var(--gold)] tracking-widest uppercase mb-5">// Test Your Understanding</div>
-          <Quiz questions={lesson.quiz} />
+          <Quiz questions={lesson.quiz} lessonId={lessonId} />
         </div>
 
         {/* ── Navigation ── */}
