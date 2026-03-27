@@ -6,15 +6,6 @@ import ProGuard from '@/app/components/ProGuard';
 import Link from 'next/link';
 
 // ─── Real chart images from web ──────────────────────────────────
-const CONCEPT_IMAGES = {
-  'market-structure': '/images/market-structure.png',
-  'liquidity': '/images/liquidity.png',
-  'fvg': '/images/fvg.png',
-  'order-blocks': '/images/order-blocks.png',
-  'killzones': '/images/killzones.png',
-  'premium-discount': '/images/premium-discount.png',
-  'amd': '/images/amd.png',
-};
 
 // ─── Full lesson data ─────────────────────────────────────────────
 const LESSONS = {
@@ -25,7 +16,6 @@ const LESSONS = {
     level: 'Beginner',
     duration: '18 min read',
     category: 'Foundation',
-    image: CONCEPT_IMAGES['market-structure'],
     imageCaption: 'BOS vs ChoCH — the two most critical market structure signals in ICT',
     intro: `Before you can trade ICT, you need to understand one thing: price is not random. It moves in a very specific, structured way — and once you learn to read that structure, you will never look at a chart the same way again. Market structure is the foundation of everything in ICT. It tells you the direction price is going, when that direction is changing, and when a new move is starting.`,
     sections: [
@@ -111,7 +101,6 @@ This is a complete top-down analysis framework. Every ICT trade starts here.`,
     level: 'Beginner',
     duration: '20 min read',
     category: 'Foundation',
-    image: CONCEPT_IMAGES['liquidity'],
     imageCaption: 'Buy-side liquidity (BSL) sits above highs, sell-side liquidity (SSL) sits below lows',
     intro: `Here is a truth that will change how you see every chart: price does not move because of news, fundamentals, or technical indicators. Price moves to collect liquidity. And liquidity is nothing more than the stop-loss orders and pending orders of millions of retail traders. Once you understand this — you stop being the prey and start following the predator.`,
     sections: [
@@ -195,7 +184,6 @@ The most powerful ICT setups always follow the pattern: Liquidity Sweep → Stru
     level: 'Beginner',
     duration: '16 min read',
     category: 'PD Arrays',
-    image: CONCEPT_IMAGES['fvg'],
     imageCaption: 'A bullish FVG: gap between candle 1 high and candle 3 low — price returns to fill it',
     intro: `If you could only learn one ICT concept, the Fair Value Gap (FVG) would be the best choice. It is the most consistently predictive pattern in the entire methodology, it appears on every timeframe, every instrument, and it works because it's based on a fundamental truth about how markets function: price hates imbalance and will always return to fill it.`,
     sections: [
@@ -295,7 +283,6 @@ Risk:Reward is typically 1:3 or better on FVG trades.`,
     level: 'Intermediate',
     duration: '22 min read',
     category: 'PD Arrays',
-    image: CONCEPT_IMAGES['order-blocks'],
     imageCaption: 'Bullish OB: last bearish candle before a strong bullish move — institutions bought here',
     intro: `Order Blocks (OBs) are the most powerful price delivery array in the ICT methodology. While the FVG shows you WHERE price moved fast, the Order Block shows you exactly WHERE the institution placed their original order. It's the footprint left behind by a bank or hedge fund as they accumulated their position — and price always returns to these zones to offer more fill at the same price.`,
     sections: [
@@ -382,7 +369,6 @@ How to determine which to use:
     level: 'Intermediate',
     duration: '15 min read',
     category: 'Time & Sessions',
-    image: CONCEPT_IMAGES['killzones'],
     imageCaption: 'The four ICT Killzones — Asian, London, New York AM, and London Close',
     intro: `One of the most underrated secrets in trading is this: WHEN you trade matters more than WHAT you trade. The same setup that works at 9:30 AM New York will fail completely at 2:00 PM. ICT's Killzone framework explains exactly why — and gives you a precise schedule for when the algorithm actually delivers price. Trading outside Killzones is gambling. Trading inside them is reading the playbook.`,
     sections: [
@@ -462,7 +448,6 @@ This simple framework alone — just trading the Asian range sweep + reversal �
     level: 'Intermediate',
     duration: '17 min read',
     category: 'Market Mechanics',
-    image: CONCEPT_IMAGES['amd'],
     imageCaption: 'AMD: price accumulates in Asia, manipulates (Judas) in London, distributes in New York',
     intro: `The Power of Three (PO3) — also known as AMD (Accumulate, Manipulate, Distribute) — is ICT's model for how every single trading day is engineered by institutional participants. Once you understand this three-act script, you will stop being confused by price action and start reading the daily narrative with clarity. Most losing days happen because traders fight this structure instead of flowing with it.`,
     sections: [
@@ -553,7 +538,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Intermediate',
     duration: '22 min read',
     category: 'Price Theory',
-    image: '/images/premium-discount.png',
     imageCaption: 'Premium vs Discount: institutions sell in premium, buy in discount — always relative to a swing range',
     intro: `One of the most powerful yet overlooked concepts in ICT is this: institutions never buy at a random price. They only buy when price is at a discount relative to a defined range — and they only sell when price is at a premium. Once you internalize this single principle, you will stop buying at highs and selling at lows forever. The Premium & Discount framework is ICT's answer to the question every trader asks: "Is this a good price to enter?"`,
     sections: [
@@ -596,7 +580,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Intermediate',
     duration: '25 min read',
     category: 'Execution',
-    image: '/images/entry-models.png',
     imageCaption: 'ICT entry models combine liquidity sweeps, displacement, and FVG/OB entries for precision execution',
     intro: `Having all the concepts in your head means nothing if you don't know HOW to combine them into a concrete trade entry. ICT entry models are the specific, repeatable frameworks that tell you exactly when to pull the trigger. These are not vague ideas — they are precise sequences of events that, when all conditions are met, produce high-probability trade entries.`,
     sections: [
@@ -639,7 +622,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Intermediate',
     duration: '20 min read',
     category: 'Strategy',
-    image: '/images/killzones.png',
     imageCaption: 'The Silver Bullet operates in three specific one-hour windows when the algorithm delivers its most predictable price action',
     intro: `The Silver Bullet is ICT's most specific, most repeatable, and most teachable trade setup. Unlike other concepts that require significant interpretation, the Silver Bullet has precise rules: specific times, specific sequences, and specific entry and exit criteria. This is the most comprehensive breakdown of the Silver Bullet available anywhere.`,
     sections: [
@@ -682,7 +664,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Advanced',
     duration: '24 min read',
     category: 'Analysis',
-    image: '/images/market-structure.png',
     imageCaption: 'HTF analysis starts on monthly/weekly charts and works down to the entry timeframe — never the reverse',
     intro: `The single biggest mistake new ICT traders make is starting their analysis on the 5-minute chart. They see a setup, take it, and wonder why it fails. The reason is almost always the same: they traded against the higher timeframe. ICT's multi-timeframe analysis is not optional — it is the foundation of everything.`,
     sections: [
@@ -725,7 +706,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Advanced',
     duration: '26 min read',
     category: 'Theory',
-    image: '/images/fvg.png',
     imageCaption: 'The IPDA delivers price in programmatic, predictable ways — understanding its logic is the key to reading markets like an institution',
     intro: `Most traders treat the market like a chaotic battlefield. ICT's view is fundamentally different: the market is a programmatic delivery system. The Interbank Price Delivery Algorithm (IPDA) follows rules. It has patterns. It is predictable. Understanding this changes everything about how you read price.`,
     sections: [
@@ -768,7 +748,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Advanced',
     duration: '21 min read',
     category: 'Risk Management',
-    image: '/images/amd.png',
     imageCaption: 'Risk management is the difference between a successful trader and a blown account — ICT\'s rules are non-negotiable',
     intro: `ICT has said it repeatedly: "Risk management is the only thing that matters." You can have the best entry model in the world, but without proper risk management, you will blow your account. This is not a cliché — it is a mathematical certainty.`,
     sections: [
@@ -811,7 +790,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Advanced',
     duration: '19 min read',
     category: 'Execution',
-    image: '/images/order-blocks.png',
     imageCaption: 'Trade management after entry determines profitability as much as the entry itself',
     intro: `Getting into a trade is only half the battle. Managing it after entry — the harder half — is what separates profitable traders from break-even ones. Most traders enter well but exit poorly: closing winners too early and letting losers run.`,
     sections: [
@@ -854,7 +832,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Advanced',
     duration: '23 min read',
     category: 'Strategy',
-    image: '/images/amd.png',
     imageCaption: 'A trading plan transforms random trades into a systematic, repeatable process — without it, you are gambling',
     intro: `You now understand all core ICT concepts. Now comes the most important step: putting it all together into a written trading plan you will follow every day. Without a plan, all the knowledge is useless. With a great plan — and the discipline to follow it — consistency becomes possible.`,
     sections: [
@@ -921,26 +898,7 @@ function Section({ section, index, diagramSrc, diagramAlt }) {
           <div className="pt-5 text-gray-300 leading-relaxed text-sm whitespace-pre-line mb-4" style={{ fontWeight: 300 }}>
             {section.content}
           </div>
-          {diagramSrc && (
-            <div className="mb-4 rounded-xl overflow-hidden border border-[rgba(212,168,67,0.18)] bg-[#0A0A0A]">
-              <img
-                src={diagramSrc}
-                alt={diagramAlt}
-                className="w-full object-cover"
-                style={{ maxHeight: '360px', objectFit: 'cover', background: '#0F0F0F' }}
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.nextSibling.style.display = 'flex';
-                }}
-              />
-              <div style={{ display: 'none' }} className="h-40 items-center justify-center bg-[#0F0F0F]">
-                <p className="font-mono-custom text-xs text-gray-500">Module diagram unavailable</p>
-              </div>
-              <div className="px-4 py-2 border-t border-[rgba(212,168,67,0.12)]">
-                <p className="font-mono-custom text-[11px] text-gray-500">ICT concept diagram</p>
-              </div>
-            </div>
-          )}
+
           {section.highlight && (
             <div className="flex gap-3 p-4 rounded-xl border border-[rgba(212,168,67,0.2)] bg-[rgba(212,168,67,0.05)]">
               <div className="text-sm text-[#D4A843] leading-relaxed">{section.highlight}</div>
@@ -1110,25 +1068,7 @@ export default function LessonPage({ params }) {
           <p className="text-gray-300 leading-relaxed" style={{ fontWeight: 300 }}>{lesson.intro}</p>
         </div>
 
-        {/* ── Chart Image ── */}
-        <div className="mb-8 rounded-2xl overflow-hidden border border-[var(--border)]">
-          <img
-            src={lesson.image}
-            alt={lesson.title}
-            className="w-full object-cover"
-            style={{ maxHeight: '400px', objectFit: 'contain', background: '#0F0F0F' }}
-            onError={(e) => {
-              e.target.style.display = 'none';
-              e.target.nextSibling.style.display = 'flex';
-            }}
-          />
-          <div style={{ display: 'none' }} className="h-48 items-center justify-center bg-[#0F0F0F]">
-            <p className="font-mono-custom text-xs text-gray-500">Chart image — view on desktop for full quality</p>
-          </div>
-          <div className="px-4 py-3 bg-[#0A0A0A] border-t border-[var(--border)]">
-            <p className="font-mono-custom text-xs text-gray-500">{lesson.imageCaption}</p>
-          </div>
-        </div>
+
 
         {/* ── Content sections ── */}
         <div className="mb-10">
