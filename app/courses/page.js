@@ -126,7 +126,7 @@ function ModuleCard({ mod, index }) {
         {/* Banner image */}
         {mod.image && (
           <div style={{ margin: '-24px -24px 20px -24px', height: '140px', overflow: 'hidden', borderRadius: '16px 16px 0 0' }}>
-            <img src={mod.image} alt={mod.title} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.9 }} />
+            <img src={mod.image} alt={mod.title} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', opacity: 1 }} />
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '140px', background: 'linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(8,8,8,0.7))', borderRadius: '16px 16px 0 0' }} />
             <div style={{ position: 'absolute', top: '12px', right: '12px', fontFamily: 'Bebas Neue, sans-serif', fontSize: '48px', color: 'rgba(212,168,67,0.25)', lineHeight: 1 }}>{mod.module}</div>
           </div>
