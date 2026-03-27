@@ -12,9 +12,7 @@ export default function AuthGuard({ children }) {
   useEffect(() => {
     async function check() {
       const { data: { session } } = await supabase.auth.getSession();
-      const user = session?.user;
-      if (!user) {
-        // Save where they were trying to go
+      if (!session?.user) {
         localStorage.setItem('redirectAfterLogin', pathname);
         router.push('/auth');
       } else {
@@ -22,6 +20,17 @@ export default function AuthGuard({ children }) {
       }
     }
     check();
+
+    // Listen for auth state changes — keeps session alive across pages
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'SIGNED_OUT' || !session) {
+        router.push('/auth');
+      } else if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
+        setChecking(false);
+      }
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
 
   if (checking) {
