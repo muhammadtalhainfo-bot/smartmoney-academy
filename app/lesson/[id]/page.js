@@ -1007,10 +1007,25 @@ export default function LessonPage({ params }) {
   useEffect(() => {
     async function checkAuth() {
       const supabase = createClient();
-      // Wait for session to load from localStorage
-      await new Promise(resolve => setTimeout(resolve, 300));
+      // First try getSession
       const { data: { session } } = await supabase.auth.getSession();
-      if (!session) {
+      if (session) return; // already logged in, do nothing
+
+      // If no session, wait for onAuthStateChange to confirm
+      const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+        if (session) {
+          subscription.unsubscribe();
+          return;
+        }
+      });
+
+      // Wait a bit longer for session to hydrate from storage
+      await new Promise(resolve => setTimeout(resolve, 800));
+
+      const { data: { session: retrySession } } = await supabase.auth.getSession();
+      subscription.unsubscribe();
+
+      if (!retrySession) {
         router.push('/auth?redirect=' + encodeURIComponent(window.location.pathname));
       }
     }
