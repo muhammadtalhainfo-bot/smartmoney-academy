@@ -1135,5 +1135,5 @@ export default function LessonPage({ params }) {
       </footer>
     </div>
   );
-  return lessonId >= 4 ? <ProGuard>{page}</ProGuard> : page;
+  return page;
 }
