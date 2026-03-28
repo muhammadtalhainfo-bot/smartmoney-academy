@@ -165,6 +165,7 @@ export default function HomePage() {
         }
 
         /* Grid lines bg */
+        body { overflow-x: hidden; }
         .grid-bg {
           background-image:
             linear-gradient(rgba(212,168,67,0.03) 1px, transparent 1px),
@@ -221,7 +222,7 @@ export default function HomePage() {
         <div className="absolute inset-0 pointer-events-none">
           <div style={{
             position: 'absolute', top: '30%', left: '50%', transform: 'translate(-50%, -50%)',
-            width: '600px', height: '600px',
+            width: 'min(600px, 90vw)', height: 'min(600px, 90vw)',
             background: 'radial-gradient(circle, rgba(212,168,67,0.08) 0%, transparent 70%)',
           }} />
         </div>
