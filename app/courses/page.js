@@ -1,4 +1,5 @@
 'use client';
+import { createClient } from '@/lib/supabase';
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
@@ -216,6 +217,21 @@ function ModuleCard({ mod, index }) {
 export default function CoursesPage() {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const [activeFilter, setActiveFilter] = useState('All');
+  const [completedIds, setCompletedIds] = useState([]);
+
+  useEffect(() => {
+    async function loadProgress() {
+      const supabase = createClient();
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) return;
+      const { data } = await supabase
+        .from('lesson_completions')
+        .select('lesson_id')
+        .eq('user_id', session.user.id);
+      if (data) setCompletedIds(data.map(d => d.lesson_id));
+    }
+    loadProgress();
+  }, []);
 
   const filtered = MODULES.filter(m => {
     if (activeFilter === 'All') return true;
