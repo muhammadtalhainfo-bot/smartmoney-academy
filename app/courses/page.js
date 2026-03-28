@@ -196,7 +196,7 @@ function ModuleCard({ mod, index }) {
 
       {/* Start button */}
       <div className="px-6 pb-6">
-        <Link href={`/lesson/${mod.id}`} onClick={(e) => { const user = typeof window !== 'undefined' && localStorage.getItem('sb-abmvklthhjvvehijdqil-auth-token'); if (!user) { e.preventDefault(); window.location.href = '/auth?redirect=/lesson/' + mod.id; } }}>
+        <Link href={`/lesson/${mod.id}`} >
           <div
             className="start-btn w-full py-3 rounded-xl text-center font-mono-c text-xs tracking-widest uppercase transition-all mt-4"
             style={{

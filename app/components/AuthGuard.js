@@ -6,42 +6,33 @@ import { createClient } from '@/lib/supabase';
 export default function AuthGuard({ children }) {
   const router = useRouter();
   const pathname = usePathname();
-  const [checking, setChecking] = useState(true);
+  const [ready, setReady] = useState(false);
   const supabase = createClient();
 
   useEffect(() => {
-    async function check() {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session?.user) {
-        localStorage.setItem('redirectAfterLogin', pathname);
-        router.push('/auth');
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session) {
+        setReady(true);
       } else {
-        setChecking(false);
-      }
-    }
-    check();
-
-    // Listen for auth state changes — keeps session alive across pages
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      if (event === 'SIGNED_OUT' || !session) {
-        router.push('/auth');
-      } else if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
-        setChecking(false);
+        supabase.auth.refreshSession().then(({ data: { session: s } }) => {
+          if (s) {
+            setReady(true);
+          } else {
+            localStorage.setItem('redirectAfterLogin', pathname);
+            router.push('/auth');
+          }
+        });
       }
     });
-
-    return () => subscription.unsubscribe();
   }, []);
 
-  if (checking) {
-    return (
-      <div className="min-h-screen bg-[#080808] flex items-center justify-center">
-        <div style={{ fontFamily: "'DM Mono', monospace", color: 'rgba(212,168,67,0.5)', fontSize: '12px', letterSpacing: '0.2em' }}>
-          CHECKING ACCESS...
-        </div>
+  if (!ready) return (
+    <div className="min-h-screen bg-[#080808] flex items-center justify-center">
+      <div style={{ fontFamily: "'DM Mono', monospace", color: 'rgba(212,168,67,0.5)', fontSize: '12px', letterSpacing: '0.2em' }}>
+        LOADING...
       </div>
-    );
-  }
+    </div>
+  );
 
   return children;
 }

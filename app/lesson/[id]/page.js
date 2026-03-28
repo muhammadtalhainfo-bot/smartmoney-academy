@@ -1003,21 +1003,18 @@ function Quiz({ questions, lessonId }) {
 export default function LessonPage({ params }) {
   const router = useRouter();
 
-  const [authChecked, setAuthChecked] = useState(false);
+  const [authReady, setAuthReady] = useState(false);
 
   useEffect(() => {
     const supabase = createClient();
-    
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session) {
-        setAuthChecked(true);
+        setAuthReady(true);
       } else {
-        // Try refreshing the session before redirecting
-        supabase.auth.refreshSession().then(({ data: { session: refreshed } }) => {
-          if (refreshed) {
-            setAuthChecked(true);
+        supabase.auth.refreshSession().then(({ data: { session: s } }) => {
+          if (s) {
+            setAuthReady(true);
           } else {
-            localStorage.setItem('redirectAfterLogin', window.location.pathname);
             router.push('/auth?redirect=' + encodeURIComponent(window.location.pathname));
           }
         });
@@ -1025,15 +1022,13 @@ export default function LessonPage({ params }) {
     });
   }, []);
 
-  if (!authChecked) {
-    return (
-      <div className="min-h-screen bg-[#080808] flex items-center justify-center">
-        <div style={{ fontFamily: "'DM Mono', monospace", color: 'rgba(212,168,67,0.5)', fontSize: '12px', letterSpacing: '0.2em' }}>
-          LOADING...
-        </div>
+  if (!authReady) return (
+    <div className="min-h-screen bg-[#080808] flex items-center justify-center">
+      <div style={{ fontFamily: "'DM Mono', monospace", color: 'rgba(212,168,67,0.5)', fontSize: '12px', letterSpacing: '0.2em' }}>
+        LOADING...
       </div>
-    );
-  }
+    </div>
+  );
   const { id } = use(params);
   const lessonId = Number.parseInt(id, 10) || 1;
   const moduleDiagramSrc = `/modules/module-${String(lessonId).padStart(2, '0')}.png`;
