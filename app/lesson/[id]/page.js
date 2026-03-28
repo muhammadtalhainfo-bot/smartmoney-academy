@@ -2,7 +2,6 @@
 import { useState, use, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase';
-import ProGuard from '@/app/components/ProGuard';
 import Link from 'next/link';
 
 // ─── Real chart images from web ──────────────────────────────────
@@ -1005,31 +1004,12 @@ export default function LessonPage({ params }) {
   const router = useRouter();
 
   useEffect(() => {
-    async function checkAuth() {
-      const supabase = createClient();
-      // First try getSession
-      const { data: { session } } = await supabase.auth.getSession();
-      if (session) return; // already logged in, do nothing
-
-      // If no session, wait for onAuthStateChange to confirm
-      const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-        if (session) {
-          subscription.unsubscribe();
-          return;
-        }
-      });
-
-      // Wait a bit longer for session to hydrate from storage
-      await new Promise(resolve => setTimeout(resolve, 800));
-
-      const { data: { session: retrySession } } = await supabase.auth.getSession();
-      subscription.unsubscribe();
-
-      if (!retrySession) {
+    const supabase = createClient();
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (!session) {
         router.push('/auth?redirect=' + encodeURIComponent(window.location.pathname));
       }
-    }
-    checkAuth();
+    });
   }, []);
   const { id } = use(params);
   const lessonId = Number.parseInt(id, 10) || 1;
