@@ -6,7 +6,7 @@ import Link from 'next/link';
 const MAIN_NAV = [
   ['/', 'Home'],
   ['/courses', 'Courses'],
-  ['/signals', 'Signals'],
+  ['/mentorship', 'Mentorship'],
   ['/glossary', 'Glossary'],
   ['/dashboard', 'Dashboard'],
 ];
