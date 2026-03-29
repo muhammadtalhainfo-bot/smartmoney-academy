@@ -374,7 +374,7 @@ export default function CoursesPage() {
       </div>
 
       {/* ── FILTERS ── */}
-      <section className="sticky" top-[72px] z-40 border-b px-6 py-4" style={{ borderColor: 'var(--border)', background: 'rgba(8,8,8,0.97)', backdropFilter: 'blur(20px)' }}>
+      <section className="sticky top-[72px] z-40 border-b px-6 py-4" style={{ borderColor: 'var(--border)', background: 'rgba(8,8,8,0.97)', backdropFilter: 'blur(20px)' }}>
         <div className="max-w-6xl mx-auto flex items-center gap-2 overflow-x-auto pb-1 scrollbar-hide">
           <span className="font-mono-c text-xs mr-2 flex-shrink-0" style={{ color: 'rgba(212,168,67,0.75)' }}>FILTER:</span>
           {FILTERS.map(f => (
