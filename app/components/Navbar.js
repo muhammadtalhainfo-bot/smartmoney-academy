@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase';
 import Link from 'next/link';
 
@@ -55,9 +55,13 @@ export default function Navbar({ active }) {
 
         {/* Desktop Nav */}
         <div className="hidden-mobile" style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-          {MAIN_NAV.map(([href, label]) => (
-            <Link key={href} href={href} style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', textDecoration: 'none', color: active === href ? '#D4A843' : 'rgba(255,255,255,0.6)', borderBottom: active === href ? '1px solid #D4A843' : '1px solid transparent', paddingBottom: '2px', transition: 'color 0.2s', whiteSpace: 'nowrap' }}>{label}</Link>
+          {MAIN_NAV.map(([href, label], i) => (
+            <React.Fragment key={href}>
+              {i > 0 && <span style={{ color: 'rgba(212,168,67,0.25)', fontSize: '12px', userSelect: 'none' }}>|</span>}
+              <Link href={href} style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', textDecoration: 'none', color: active === href ? '#D4A843' : 'rgba(255,255,255,0.6)', borderBottom: active === href ? '1px solid #D4A843' : '1px solid transparent', paddingBottom: '2px', transition: 'color 0.2s', whiteSpace: 'nowrap' }}>{label}</Link>
+            </React.Fragment>
           ))}
+          <span style={{ color: 'rgba(212,168,67,0.25)', fontSize: '12px', userSelect: 'none' }}>|</span>
 
           {/* More Dropdown */}
           <div style={{ position: 'relative' }}>
