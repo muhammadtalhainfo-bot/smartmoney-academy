@@ -1,6 +1,6 @@
 'use client';
 import { createClient } from '@/lib/supabase';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
