@@ -339,7 +339,7 @@ export default function CoursesPage() {
             <span className="gold-gradient-text">ICT CURRICULUM</span>
           </h1>
           <p className="text-gray-300 text-lg max-w-xl mx-auto" style={{ fontWeight: 300 }}>
-            Every concept. Every model. From basic market structure to the 2024 Venom Model. Built from innercircletrader.net + ICT PDFs.
+            Every concept. Every model. From basic market structure to the 2024 Venom Model. Built from ICT's YouTube channel and mentorship content.
           </p>
         </div>
       </section>
