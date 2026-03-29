@@ -162,7 +162,7 @@ export default function GlossaryPage() {
         <div className="relative max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border mb-5 font-mono-c text-xs tracking-widest" style={{ borderColor: 'var(--border)', background: 'rgba(212,168,67,0.04)', color: '#D4A843' }}>
             <span className="w-1.5 h-1.5 rounded-full bg-[#D4A843]" />
-            {TERMS.length} TERMS · UPDATED 2025
+            {TERMS.length} TERMS · UPDATED 2026
           </div>
           <h1 className="font-display leading-none mb-4" style={{ fontSize: 'clamp(42px, 8vw, 88px)' }}>
             <span className="text-white">ICT & SMC </span>
