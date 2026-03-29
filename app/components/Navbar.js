@@ -12,6 +12,7 @@ const MAIN_NAV = [
 ];
 
 const MORE_NAV = [
+  ['/mentorship', '2022 ICT Mentorship'],
   ['/practice', 'Practice'],
   ['/journal', 'Journal'],
   ['/leaderboard', 'Leaderboard'],
