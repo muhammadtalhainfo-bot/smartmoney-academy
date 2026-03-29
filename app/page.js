@@ -311,7 +311,7 @@ export default function HomePage() {
             <div className="font-mono text-xs text-[var(--gold)] tracking-widest uppercase mb-4">// Curriculum</div>
             <h2 className="font-display text-6xl text-white mb-4">WHAT YOU'LL LEARN</h2>
             <p className="text-gray-300 max-w-lg mx-auto text-sm" style={{ fontWeight: 300 }}>
-              14+ modules, 80+ lessons. Built from innercircletrader youtube channel, and the LumiTraders 2022 book.
+              14+ modules, 80+ lessons. Built from ICT's YouTube channel — updated through the 2026 Mentorship.
             </p>
           </div>
 
