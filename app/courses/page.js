@@ -361,18 +361,21 @@ export default function CoursesPage() {
         </div>
       </section>
 
-      {/* ── FILTERS ── */}
-      <section className="sticky top-[72px] z-40 border-b px-6 py-4" style={{ borderColor: 'var(--border)', background: 'rgba(8,8,8,0.97)', backdropFilter: 'blur(20px)' }}>
-        <div className="max-w-6xl mx-auto flex items-center gap-2 overflow-x-auto pb-1 scrollbar-hide">
-          {/* Foundations Banner */}
-          <div style={{ background: 'rgba(212,168,67,0.06)', border: '1px solid rgba(212,168,67,0.2)', borderRadius: '16px', padding: '20px 28px', marginBottom: '32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
-            <div>
-              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', letterSpacing: '0.2em', color: '#D4A843', marginBottom: '6px' }}>// NEW TO TRADING?</div>
-              <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '15px', color: 'white', fontWeight: 600 }}>Start with Trading Foundations before ICT concepts.</div>
-              <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '13px', color: 'rgba(255,255,255,0.5)', marginTop: '4px' }}>Learn what trading is, how markets work, and risk management basics first.</div>
-            </div>
-            <a href="/foundations" style={{ background: 'linear-gradient(135deg, #D4A843, #F0C96A)', color: '#080808', borderRadius: '8px', padding: '10px 20px', fontFamily: "'DM Mono', monospace", fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none', whiteSpace: 'nowrap' }}>Start With Foundations →</a>
+      {/* Foundations Banner */}
+      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '32px 24px 0' }}>
+        <div style={{ background: 'rgba(212,168,67,0.06)', border: '1px solid rgba(212,168,67,0.2)', borderRadius: '16px', padding: '20px 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
+          <div>
+            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', letterSpacing: '0.2em', color: '#D4A843', marginBottom: '6px' }}>// NEW TO TRADING?</div>
+            <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '15px', color: 'white', fontWeight: 600 }}>Start with Trading Foundations before ICT concepts.</div>
+            <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '13px', color: 'rgba(255,255,255,0.5)', marginTop: '4px' }}>Learn what trading is, how markets work, and risk management basics first.</div>
           </div>
+          <a href="/foundations" style={{ background: 'linear-gradient(135deg, #D4A843, #F0C96A)', color: '#080808', borderRadius: '8px', padding: '10px 20px', fontFamily: "'DM Mono', monospace", fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none', whiteSpace: 'nowrap' }}>Start With Foundations →</a>
+        </div>
+      </div>
+
+      {/* ── FILTERS ── */}
+      <section className="sticky" top-[72px] z-40 border-b px-6 py-4" style={{ borderColor: 'var(--border)', background: 'rgba(8,8,8,0.97)', backdropFilter: 'blur(20px)' }}>
+        <div className="max-w-6xl mx-auto flex items-center gap-2 overflow-x-auto pb-1 scrollbar-hide">
           <span className="font-mono-c text-xs mr-2 flex-shrink-0" style={{ color: 'rgba(212,168,67,0.75)' }}>FILTER:</span>
           {FILTERS.map(f => (
             <button
