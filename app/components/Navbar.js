@@ -12,6 +12,7 @@ const MAIN_NAV = [
 ];
 
 const MORE_NAV = [
+  ['/foundations', 'Trading Foundations'],
   ['/practice', 'Practice'],
   ['/journal', 'Journal'],
   ['/leaderboard', 'Leaderboard'],
