@@ -72,10 +72,10 @@ export default function Navbar({ active }) {
               MORE <span style={{ fontSize: '8px', transition: 'transform 0.2s', display: 'inline-block', transform: moreOpen ? 'rotate(180deg)' : 'none' }}>▾</span>
             </button>
             {moreOpen && (
-              <div style={{ position: 'absolute', top: 'calc(100% + 12px)', right: 0, background: '#111', border: '1px solid rgba(212,168,67,0.15)', borderRadius: '12px', padding: '8px', minWidth: '160px', zIndex: 50, boxShadow: '0 20px 40px rgba(0,0,0,0.5)' }}>
+              <div style={{ position: 'absolute', top: 'calc(100% + 12px)', right: 0, background: '#111', border: '1px solid rgba(212,168,67,0.15)', borderRadius: '12px', padding: '8px', minWidth: '200px', zIndex: 50, boxShadow: '0 20px 40px rgba(0,0,0,0.5)' }}>
                 {MORE_NAV.map(([href, label]) => (
                   <Link key={href} href={href} onClick={() => setMoreOpen(false)}
-                    style={{ display: 'block', padding: '9px 14px', fontFamily: "'DM Mono', monospace", fontSize: '11px', letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none', color: active === href ? '#D4A843' : 'rgba(255,255,255,0.6)', borderRadius: '8px', background: active === href ? 'rgba(212,168,67,0.06)' : 'transparent' }}
+                    style={{ display: 'block', padding: '9px 14px', fontFamily: "'DM Mono', monospace", fontSize: '11px', letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none', color: active === href ? '#D4A843' : 'rgba(255,255,255,0.6)', borderRadius: '8px', background: active === href ? 'rgba(212,168,67,0.06)' : 'transparent', whiteSpace: 'nowrap' }}
                     onMouseOver={e => { e.currentTarget.style.color = '#D4A843'; e.currentTarget.style.background = 'rgba(212,168,67,0.04)'; }}
                     onMouseOut={e => { e.currentTarget.style.color = active === href ? '#D4A843' : 'rgba(255,255,255,0.6)'; e.currentTarget.style.background = active === href ? 'rgba(212,168,67,0.06)' : 'transparent'; }}>
                     {label}
