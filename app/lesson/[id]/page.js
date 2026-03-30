@@ -1031,7 +1031,7 @@ export default function LessonPage({ params }) {
   );
   const { id } = use(params);
   const lessonId = Number.parseInt(id, 10) || 1;
-  const moduleDiagramSrc = `/modules/module-${String(lessonId).padStart(2, '0')}.png`;
+  const moduleDiagramSrc = `/modules/module-${String(lessonId).padStart(2, '0')}.webp`;
   const lesson = LESSONS[lessonId] || LESSONS[1];
 
   const page = (
@@ -1050,7 +1050,7 @@ export default function LessonPage({ params }) {
           <span className="font-display text-base tracking-widest text-white group-hover:text-[var(--gold)] transition-colors">SMARTMONEY</span>
         </Link>
         <div className="hidden md:flex items-center gap-6">
-          {[['/', 'Home'], ['/courses', 'Courses'], ['/signals', 'Signals'], ['/glossary', 'Glossary']].map(([href, label]) => (
+          {[['/', 'Home'], ['/foundations', 'Foundations'], ['/courses', 'Courses'], ['/mentorship', 'Mentorship']].map(([href, label]) => (
             <Link key={href} href={href} className="font-mono-custom text-xs text-gray-400 hover:text-[var(--gold)] transition-colors tracking-wider uppercase">{label}</Link>
           ))}
         </div>
@@ -1082,6 +1082,19 @@ export default function LessonPage({ params }) {
         </div>
 
 
+
+        {/* ── Module Banner Image ── */}
+        <div className="mb-8 rounded-2xl overflow-hidden border border-[var(--border)]" style={{ background: '#0F0F0F' }}>
+          <img
+            src={moduleDiagramSrc}
+            alt={lesson.title + ' — ICT concept diagram'}
+            style={{ width: '100%', maxHeight: '380px', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+            onError={(e) => { e.target.parentElement.style.display = 'none'; }}
+          />
+          <div className="px-4 py-3 border-t border-[var(--border)]">
+            <p className="font-mono-custom text-xs text-gray-500">{lesson.imageCaption}</p>
+          </div>
+        </div>
 
         {/* ── Content sections ── */}
         <div className="mb-10">
