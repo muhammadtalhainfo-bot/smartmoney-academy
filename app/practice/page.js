@@ -467,7 +467,7 @@ export default function PracticePage() {
 
               {/* Question */}
               <div className="p-6 rounded-2xl border border-[rgba(212,168,67,0.15)] bg-[#0F0F0F] mb-5">
-                <p className="text-white text-lg font-medium leading-relaxed">{q.question}</p>
+                <p className="text-white text-lg font-medium leading-relaxed">{q.q}</p>
               </div>
 
               {/* Options */}
