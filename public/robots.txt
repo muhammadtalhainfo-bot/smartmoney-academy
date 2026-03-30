@@ -4,4 +4,4 @@ Disallow: /dashboard
 Disallow: /journal
 Disallow: /api/
 
-Sitemap: https://smartmoney-academy.vercel.app/sitemap.xml
+Sitemap: https://ictflow.com/sitemap.xml
