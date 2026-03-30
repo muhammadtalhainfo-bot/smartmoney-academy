@@ -646,7 +646,7 @@ export default function PracticePage() {
       {/* Footer */}
       <footer className="border-t border-[rgba(212,168,67,0.1)] px-8 py-6 mt-16">
         <div className="max-w-2xl mx-auto text-center font-mono-custom text-xs text-gray-600">
-          SmartMoney Academy — Educational content only. Not financial advice.
+          ICT Flow — Educational content only. Not financial advice.
         </div>
       </footer>
     <Footer />

@@ -12,7 +12,7 @@ export async function POST(req) {
       included_segments: ['All'],
       headings: { en: title },
       contents: { en: message },
-      url: 'https://smartmoney-academy.vercel.app',
+      url: 'https://ictflow.com',
     }),
   });
 

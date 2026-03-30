@@ -67,7 +67,7 @@ export default function BlogPage() {
               <div style={{ padding: '36px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
                   <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'rgba(212,168,67,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'DM Mono, monospace', fontSize: '8px', color: '#D4A843' }}>SMA</div>
-                  <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.4)' }}>SmartMoney Academy Team</span>
+                  <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.4)' }}>ICT Flow Team</span>
                 </div>
                 <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#D4A843', background: 'rgba(212,168,67,0.08)', padding: '3px 10px', borderRadius: '4px', letterSpacing: '0.1em', alignSelf: 'flex-start', marginBottom: '12px' }}>{featured.category}</span>
                 <h2 style={{ fontSize: '22px', fontWeight: 500, color: 'white', lineHeight: 1.4, marginBottom: '12px' }}>{featured.title}</h2>
@@ -105,7 +105,7 @@ export default function BlogPage() {
                 <div style={{ padding: '18px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
                     <div style={{ width: '22px', height: '22px', borderRadius: '50%', background: 'rgba(212,168,67,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'DM Mono, monospace', fontSize: '7px', color: '#D4A843', flexShrink: 0 }}>SMA</div>
-                    <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.35)' }}>SmartMoney Academy Team</span>
+                    <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.35)' }}>ICT Flow Team</span>
                   </div>
                   <h3 style={{ fontSize: '15px', fontWeight: 500, color: 'white', lineHeight: 1.4, marginBottom: '8px' }}>{post.title}</h3>
                   <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.4)', lineHeight: 1.6, fontWeight: 300, marginBottom: '12px' }}>{post.description}</p>

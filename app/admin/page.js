@@ -79,7 +79,7 @@ export default function AdminPage() {
         <style>{'@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap");'}</style>
         <div style={{ ...card, width: '100%', maxWidth: '400px', textAlign: 'center' }}>
           <div style={{ fontFamily: 'Bebas Neue', fontSize: '32px', color: 'white', marginBottom: '8px' }}>ADMIN PANEL</div>
-          <div style={{ ...mono, fontSize: '11px', color: 'rgba(212,168,67,0.5)', marginBottom: '24px' }}>SmartMoney Academy</div>
+          <div style={{ ...mono, fontSize: '11px', color: 'rgba(212,168,67,0.5)', marginBottom: '24px' }}>ICT Flow</div>
           <input
             type="password"
             placeholder="Enter admin password"
@@ -106,7 +106,7 @@ export default function AdminPage() {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
           <div>
             <div style={{ fontFamily: 'Bebas Neue', fontSize: '42px', color: 'white' }}>ADMIN PANEL</div>
-            <div style={{ ...mono, fontSize: '11px', color: 'rgba(212,168,67,0.5)' }}>SmartMoney Academy — Internal Dashboard</div>
+            <div style={{ ...mono, fontSize: '11px', color: 'rgba(212,168,67,0.5)' }}>ICT Flow — Internal Dashboard</div>
           </div>
           <button onClick={loadData} style={{ background: 'rgba(212,168,67,0.1)', border: '1px solid rgba(212,168,67,0.2)', borderRadius: '8px', padding: '8px 16px', color: '#D4A843', ...mono, fontSize: '11px', cursor: 'pointer' }}>
             ↻ Refresh

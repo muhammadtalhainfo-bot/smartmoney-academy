@@ -443,7 +443,7 @@ export default function JournalPage() {
         </div>
 
         <footer style={{ borderTop: '1px solid rgba(212,168,67,0.06)', padding: '24px', marginTop: '40px', textAlign: 'center' }}>
-          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#707070' }}>SmartMoney Academy Trading Journal — Track your edge, not your feelings.</div>
+          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#707070' }}>ICT Flow Trading Journal — Track your edge, not your feelings.</div>
         </footer>
       </div>
     </AuthGuard>

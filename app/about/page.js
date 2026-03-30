@@ -56,7 +56,7 @@ export default function AboutPage() {
             <span className="shine">INSTITUTIONS</span>
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '17px', lineHeight: 1.8, fontWeight: 300, maxWidth: '560px', margin: '0 auto' }}>
-            SmartMoney Academy was built with one goal: make ICT and Smart Money Concepts accessible to every trader — regardless of background or budget. No $500 courses. No gatekeeping. Just the cleanest ICT education on the internet, free.
+            ICT Flow was built with one goal: make ICT and Smart Money Concepts accessible to every trader — regardless of background or budget. No $500 courses. No gatekeeping. Just the cleanest ICT education on the internet, free.
           </p>
         </div>
       </section>
@@ -84,7 +84,7 @@ export default function AboutPage() {
             When we first discovered ICT's methodology, we spent hundreds of hours scattered across YouTube videos, old forum posts, and paid courses trying to piece it together. There was no single resource that laid it all out clearly.
           </p>
           <p>
-            We built SmartMoney Academy to be that resource — a structured, progressive curriculum that takes a complete beginner from market structure basics all the way to advanced IPDA theory and trade management. Built from ICT's official YouTube content and mentorship material.
+            We built ICT Flow to be that resource — a structured, progressive curriculum that takes a complete beginner from market structure basics all the way to advanced IPDA theory and trade management. Built from ICT's official YouTube content and mentorship material.
           </p>
           <p>
             We're traders who got tired of seeing beginners pay $300+ for information that should be free. ICT himself gives his content away on YouTube. We just organized it into a proper learning path.

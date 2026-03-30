@@ -1047,7 +1047,7 @@ export default function LessonPage({ params }) {
       <nav className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 border-b border-[var(--border)]" style={{ background: 'rgba(8,8,8,0.97)', backdropFilter: 'blur(20px)' }}>
         <Link href="/" className="flex items-center gap-2 group">
           <div className="w-8 h-8 rounded-lg flex items-center justify-center font-display text-black text-sm" style={{ background: 'linear-gradient(135deg, #D4A843, #8A6B28)' }}>S</div>
-          <span className="font-display text-base tracking-widest text-white group-hover:text-[var(--gold)] transition-colors">SMARTMONEY</span>
+          <span className="font-display text-base tracking-widest text-white group-hover:text-[var(--gold)] transition-colors">ICT FLOW</span>
         </Link>
         <div className="hidden md:flex items-center gap-6">
           {[['/', 'Home'], ['/foundations', 'Foundations'], ['/courses', 'Courses'], ['/mentorship', 'Mentorship']].map(([href, label]) => (
@@ -1141,7 +1141,7 @@ export default function LessonPage({ params }) {
       {/* ── Footer ── */}
       <footer className="border-t border-[var(--border)] px-8 py-6 mt-16">
         <div className="max-w-4xl mx-auto text-center font-mono-custom text-xs text-gray-600">
-          SmartMoney Academy — Educational content only. Not financial advice.
+          ICT Flow — Educational content only. Not financial advice.
         </div>
       </footer>
     </div>

@@ -65,7 +65,7 @@ export const POSTS = [
       },
       {
         type: 'paragraph',
-        text: 'The best free resource is ICT\'s YouTube channel (@InnerCircleTrader) where he has published thousands of hours of content. SmartMoney Academy has structured this content into a progressive 14-module curriculum — from basic market structure all the way to advanced IPDA theory — making it easier to learn ICT in a logical sequence rather than jumping between random videos.',
+        text: 'The best free resource is ICT\'s YouTube channel (@InnerCircleTrader) where he has published thousands of hours of content. ICT Flow has structured this content into a progressive 14-module curriculum — from basic market structure all the way to advanced IPDA theory — making it easier to learn ICT in a logical sequence rather than jumping between random videos.',
       },
       {
         type: 'cta',

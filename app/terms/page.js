@@ -16,11 +16,11 @@ export default function TermsPage() {
         <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.3)', marginBottom: '48px' }}>Last updated: March 2026</div>
                 <div style={{ marginBottom: '40px' }}>
           <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '28px', color: '#D4A843', marginBottom: '12px', letterSpacing: '0.05em' }}>Acceptance of Terms</h2>
-          <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: '1.8', fontSize: '15px' }}>By accessing SmartMoney Academy, you agree to these terms. If you do not agree, please do not use the platform.</p>
+          <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: '1.8', fontSize: '15px' }}>By accessing ICT Flow, you agree to these terms. If you do not agree, please do not use the platform.</p>
         </div>
         <div style={{ marginBottom: '40px' }}>
           <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '28px', color: '#D4A843', marginBottom: '12px', letterSpacing: '0.05em' }}>Educational Purpose Only</h2>
-          <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: '1.8', fontSize: '15px' }}>SmartMoney Academy provides educational content about trading concepts only. Nothing on this platform constitutes financial advice, investment advice, or a recommendation to buy or sell any financial instrument.</p>
+          <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: '1.8', fontSize: '15px' }}>ICT Flow provides educational content about trading concepts only. Nothing on this platform constitutes financial advice, investment advice, or a recommendation to buy or sell any financial instrument.</p>
         </div>
         <div style={{ marginBottom: '40px' }}>
           <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '28px', color: '#D4A843', marginBottom: '12px', letterSpacing: '0.05em' }}>User Accounts</h2>
@@ -36,7 +36,7 @@ export default function TermsPage() {
         </div>
         <div style={{ marginBottom: '40px' }}>
           <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '28px', color: '#D4A843', marginBottom: '12px', letterSpacing: '0.05em' }}>Disclaimer of Liability</h2>
-          <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: '1.8', fontSize: '15px' }}>SmartMoney Academy is not liable for any trading losses. Trading involves substantial risk. Past performance shown in examples does not guarantee future results.</p>
+          <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: '1.8', fontSize: '15px' }}>ICT Flow is not liable for any trading losses. Trading involves substantial risk. Past performance shown in examples does not guarantee future results.</p>
         </div>
         <div style={{ marginBottom: '40px' }}>
           <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '28px', color: '#D4A843', marginBottom: '12px', letterSpacing: '0.05em' }}>Changes to Terms</h2>

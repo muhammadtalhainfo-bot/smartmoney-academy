@@ -97,7 +97,7 @@ const TOOLS = [
     name: 'ICT Mentorship (Official)',
     logo: '🎓',
     color: '#D4A843',
-    desc: "Michael Huddleston's official YouTube channel. Free content — use alongside SmartMoney Academy.",
+    desc: "Michael Huddleston's official YouTube channel. Free content — use alongside ICT Flow.",
     commission: 'Free resource',
     price: 'Free on YouTube',
     link: 'https://youtube.com/@InnerCircleTrader',
@@ -279,7 +279,7 @@ export default function ResourcesPage() {
         {/* DISCLAIMER */}
         <div style={{ marginTop: '64px', padding: '24px', background: 'rgba(212,168,67,0.03)', border: '1px solid rgba(212,168,67,0.1)', borderRadius: '12px' }}>
           <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.3)', lineHeight: 1.8, letterSpacing: '0.05em' }}>
-            <span style={{ color: 'rgba(212,168,67,0.6)' }}>DISCLAIMER:</span> This page contains affiliate links. SmartMoney Academy may earn a commission when you sign up through these links at no additional cost to you. All products listed are ones we genuinely recommend for ICT traders. Trading financial instruments involves significant risk of loss and is not suitable for all investors. Past performance is not indicative of future results. This is not financial advice.
+            <span style={{ color: 'rgba(212,168,67,0.6)' }}>DISCLAIMER:</span> This page contains affiliate links. ICT Flow may earn a commission when you sign up through these links at no additional cost to you. All products listed are ones we genuinely recommend for ICT traders. Trading financial instruments involves significant risk of loss and is not suitable for all investors. Past performance is not indicative of future results. This is not financial advice.
           </p>
         </div>
       </div>

@@ -125,7 +125,7 @@ export default function CertificatePage() {
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', marginBottom: '32px' }}>
                 <div style={{ width: '40px', height: '40px', borderRadius: '8px', background: 'linear-gradient(135deg,#D4A843,#8A6B28)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Bebas Neue, sans-serif', color: 'black', fontSize: '22px' }}>S</div>
                 <div style={{ textAlign: 'left' }}>
-                  <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '18px', letterSpacing: '0.15em', color: '#1a1a1a' }}>SMARTMONEY ACADEMY</div>
+                  <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '18px', letterSpacing: '0.15em', color: '#1a1a1a' }}>ICT FLOW</div>
                   <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#8A6B28', letterSpacing: '0.2em' }}>ICT & SMART MONEY EDUCATION</div>
                 </div>
               </div>
@@ -161,7 +161,7 @@ export default function CertificatePage() {
                   <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#D4A843' }}>SMA-{user.id.slice(0, 8).toUpperCase()}</div>
                 </div>
                 <div style={{ textAlign: 'right' }}>
-                  <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '20px', color: '#D4A843', letterSpacing: '0.1em' }}>SMARTMONEY</div>
+                  <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '20px', color: '#D4A843', letterSpacing: '0.1em' }}>ICT FLOW</div>
                   <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '8px', color: '#999', letterSpacing: '0.15em' }}>ACADEMY</div>
                 </div>
               </div>

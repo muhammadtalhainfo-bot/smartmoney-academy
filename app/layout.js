@@ -2,15 +2,15 @@ import "./globals.css";
 import CookieBanner from '@/app/components/CookieBanner';
 
 export const metadata = {
-  metadataBase: new URL('https://smartmoney-academy.vercel.app'),
+  metadataBase: new URL('https://ictflow.com'),
   title: {
-    default: 'SmartMoney Academy — Free ICT & Smart Money Concepts Trading Education',
-    template: '%s | SmartMoney Academy',
+    default: 'ICT Flow — Free ICT & Smart Money Concepts Trading Education',
+    template: '%s | ICT Flow',
   },
   description: 'Master ICT (Inner Circle Trader) and Smart Money Concepts for free. Learn market structure, liquidity, fair value gaps, order blocks, killzones and more. 14 modules, 80+ lessons.',
   keywords: ['ICT trading', 'Smart Money Concepts', 'Inner Circle Trader', 'market structure', 'fair value gap', 'order blocks', 'liquidity', 'NAS100', 'forex trading', 'prop firm', 'trading education', 'free trading course', 'ICT mentorship', 'silver bullet strategy', 'AMD model'],
-  authors: [{ name: 'SmartMoney Academy' }],
-  creator: 'SmartMoney Academy',
+  authors: [{ name: 'ICT Flow' }],
+  creator: 'ICT Flow',
   icons: {
     icon: '/favicon.svg',
     shortcut: '/favicon.svg',
@@ -19,22 +19,22 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://smartmoney-academy.vercel.app',
-    siteName: 'SmartMoney Academy',
-    title: 'SmartMoney Academy — Free ICT Trading Education',
+    url: 'https://ictflow.com',
+    siteName: 'ICT Flow',
+    title: 'ICT Flow — Free ICT Trading Education',
     description: 'Master ICT & Smart Money Concepts for free. 14 modules, 80+ lessons. Learn to trade like institutions.',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'SmartMoney Academy — Trade Like Institutions',
+        alt: 'ICT Flow — Trade Like Institutions',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SmartMoney Academy — Free ICT Trading Education',
+    title: 'ICT Flow — Free ICT Trading Education',
     description: 'Master ICT & Smart Money Concepts for free. 14 modules, 80+ lessons.',
     images: ['/og-image.png'],
     creator: '@riskfirsttrad',
@@ -55,18 +55,18 @@ export const metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'EducationalOrganization',
-  name: 'SmartMoney Academy',
-  url: 'https://smartmoney-academy.vercel.app',
+  name: 'ICT Flow',
+  url: 'https://ictflow.com',
   description: 'Free ICT and Smart Money Concepts trading education platform. 14 modules, 80+ lessons.',
   educationalCredentialAwarded: 'ICT Trading Certificate',
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'ICT Trading Courses',
     itemListElement: [
-      { '@type': 'Course', name: 'Market Structure', description: 'Learn HH/HL, BOS, ChoCH, MSS', provider: { '@type': 'Organization', name: 'SmartMoney Academy' } },
-      { '@type': 'Course', name: 'Liquidity Concepts', description: 'Stop hunts, BSL/SSL, equal highs/lows', provider: { '@type': 'Organization', name: 'SmartMoney Academy' } },
-      { '@type': 'Course', name: 'Fair Value Gaps', description: 'BISI, SIBI, CE, BPR', provider: { '@type': 'Organization', name: 'SmartMoney Academy' } },
-      { '@type': 'Course', name: 'Order Blocks', description: 'OB, Breaker, Mitigation', provider: { '@type': 'Organization', name: 'SmartMoney Academy' } },
+      { '@type': 'Course', name: 'Market Structure', description: 'Learn HH/HL, BOS, ChoCH, MSS', provider: { '@type': 'Organization', name: 'ICT Flow' } },
+      { '@type': 'Course', name: 'Liquidity Concepts', description: 'Stop hunts, BSL/SSL, equal highs/lows', provider: { '@type': 'Organization', name: 'ICT Flow' } },
+      { '@type': 'Course', name: 'Fair Value Gaps', description: 'BISI, SIBI, CE, BPR', provider: { '@type': 'Organization', name: 'ICT Flow' } },
+      { '@type': 'Course', name: 'Order Blocks', description: 'OB, Breaker, Mitigation', provider: { '@type': 'Organization', name: 'ICT Flow' } },
     ],
   },
   sameAs: [

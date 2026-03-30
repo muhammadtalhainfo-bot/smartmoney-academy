@@ -20,7 +20,7 @@ export default function PrivacyPage() {
         </div>
         <div style={{ marginBottom: '40px' }}>
           <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '28px', color: '#D4A843', marginBottom: '12px', letterSpacing: '0.05em' }}>How We Use Your Information</h2>
-          <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: '1.8', fontSize: '15px' }}>Your information is used to provide and improve SmartMoney Academy services, track your learning progress, send educational updates if you opt in, and process payments via Stripe.</p>
+          <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: '1.8', fontSize: '15px' }}>Your information is used to provide and improve ICT Flow services, track your learning progress, send educational updates if you opt in, and process payments via Stripe.</p>
         </div>
         <div style={{ marginBottom: '40px' }}>
           <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '28px', color: '#D4A843', marginBottom: '12px', letterSpacing: '0.05em' }}>Data Storage</h2>

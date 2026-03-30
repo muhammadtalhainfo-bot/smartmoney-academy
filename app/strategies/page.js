@@ -56,7 +56,7 @@ const STRATEGIES = [
   {
     slug: 'fvg-liquidity-sweep',
     title: 'FVG + Liquidity Sweep',
-    creator: 'SmartMoney Academy',
+    creator: 'ICT Flow',
     avatar: 'SMA',
     color: '#3B82F6',
     tags: ['Forex', 'Indices', 'Futures'],
@@ -71,7 +71,7 @@ const STRATEGIES = [
   {
     slug: 'breaker-block-model',
     title: 'Breaker Block Model',
-    creator: 'SmartMoney Academy',
+    creator: 'ICT Flow',
     avatar: 'SMA',
     color: '#EF4444',
     tags: ['Forex', 'Indices'],
@@ -86,7 +86,7 @@ const STRATEGIES = [
   {
     slug: 'turtle-soup',
     title: 'Turtle Soup Strategy',
-    creator: 'SmartMoney Academy',
+    creator: 'ICT Flow',
     avatar: 'SMA',
     color: '#F59E0B',
     tags: ['Forex', 'Indices', 'Futures'],
@@ -101,7 +101,7 @@ const STRATEGIES = [
   {
     slug: 'smt-divergence-entry',
     title: 'SMT Divergence Entry',
-    creator: 'SmartMoney Academy',
+    creator: 'ICT Flow',
     avatar: 'SMA',
     color: '#14B8A6',
     tags: ['Forex', 'Indices'],
@@ -116,7 +116,7 @@ const STRATEGIES = [
   {
     slug: 'midnight-open-model',
     title: 'Midnight Open Model',
-    creator: 'SmartMoney Academy',
+    creator: 'ICT Flow',
     avatar: 'SMA',
     color: '#6366F1',
     tags: ['Forex', 'Indices', 'Futures'],

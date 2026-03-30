@@ -1,5 +1,5 @@
 export default function sitemap() {
-  const base = 'https://smartmoney-academy.vercel.app';
+  const base = 'https://ictflow.com';
   const pages = ['', '/courses', '/glossary', '/mentorship', '/practice', '/pricing', '/resources', '/leaderboard', '/journal', '/dashboard', '/about', '/certificate'];
   const lessons = Array.from({length: 14}, (_, i) => `/lesson/${i + 1}`);
   

@@ -14,8 +14,8 @@ export async function POST(req) {
       mode: 'subscription',
       line_items: [{ price: priceId, quantity: 1 }],
       customer_email: email,
-      success_url: 'https://smartmoney-academy.vercel.app/dashboard?upgraded=true',
-      cancel_url: 'https://smartmoney-academy.vercel.app/pricing',
+      success_url: 'https://ictflow.com/dashboard?upgraded=true',
+      cancel_url: 'https://ictflow.com/pricing',
     });
 
     return Response.json({ url: session.url });
