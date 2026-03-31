@@ -1,7 +1,7 @@
 {
   "name": "ICT Flow",
-  "short_name": "ICT Flow",
-  "description": "Master ICT & Smart Money Concepts — Institutional Trading Education",
+  "short_name": "ICTFlow",
+  "description": "Master ICT & Smart Money Concepts \u2014 Institutional Trading Education",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#080808",
@@ -9,16 +9,14 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "/icons/icon-192.png",
+      "src": "/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     },
     {
-      "src": "/icons/icon-512.png",
+      "src": "/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     }
   ],
   "screenshots": [
@@ -28,6 +26,9 @@
       "type": "image/png"
     }
   ],
-  "categories": ["education", "finance"],
+  "categories": [
+    "education",
+    "finance"
+  ],
   "lang": "en"
 }
