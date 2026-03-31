@@ -1,7 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" fill="#0B0B0B"/>
-  <rect x="96" y="96" width="320" height="320" fill="none" stroke="#D4AF37" stroke-width="18" rx="18"/>
-  <path d="M150 300 C220 250, 290 330, 360 200" fill="none" stroke="#D4AF37" stroke-width="20" stroke-linecap="round"/>
-  <polygon points="360,200 392,210 370,240" fill="#D4AF37"/>
-  <text x="256" y="285" text-anchor="middle" font-size="120" font-family="Arial, Helvetica, sans-serif" fill="#D4AF37" font-weight="bold">IF</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512"><metadata><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"><rdf:Description><dc:creator>RealFaviconGenerator</dc:creator><dc:source>https://realfavicongenerator.net</dc:source></rdf:Description></rdf:RDF></metadata><rect width="512" height="512" fill="#0B0B0B"></rect><rect x="96" y="96" width="320" height="320" fill="none" stroke="#D4AF37" stroke-width="18" rx="18"></rect><path d="M150 300 C220 250, 290 330, 360 200" fill="none" stroke="#D4AF37" stroke-width="20" stroke-linecap="round"></path><polygon points="360,200 392,210 370,240" fill="#D4AF37"></polygon><text x="256" y="285" text-anchor="middle" font-size="120" font-family="Arial, Helvetica, sans-serif" fill="#D4AF37" font-weight="bold">IF</text></svg>
