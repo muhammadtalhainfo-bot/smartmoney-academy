@@ -24,7 +24,7 @@ export default function Footer() {
           {/* BRAND */}
           <div style={{ gridColumn: 'span 1' }}>
             <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
-              <div style={{ width: '34px', height: '34px', borderRadius: '8px', background: 'linear-gradient(135deg,#D4A843,#8A6B28)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Bebas Neue', sans-serif", color: 'black', fontSize: '18px' }}>S</div>
+              <img src="/ictflow-symbol.svg" alt="ICT Flow" style={{ width: '34px', height: '34px', borderRadius: '8px' }} />
               <div>
                 <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '16px', letterSpacing: '0.15em', color: 'white' }}>ICT FLOW</div>
                 <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#8A6B28', letterSpacing: '0.2em' }}>ACADEMY</div>
