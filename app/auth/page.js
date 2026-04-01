@@ -68,10 +68,10 @@ export default function AuthPage() {
 
         {/* Logo */}
         <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '40px', textDecoration: 'none', justifyContent: 'center' }}>
-          <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'linear-gradient(135deg, #D4A843, #8A6B28)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Bebas Neue', fontSize: '20px', color: '#080808' }}>S</div>
+          <img src="/ictflow-symbol.svg" alt="ICT Flow" style={{ width: '40px', height: '40px', borderRadius: '10px' }} />
           <div>
             <div style={{ fontFamily: 'Bebas Neue', fontSize: '20px', letterSpacing: '0.15em', color: '#F5F5F5' }}>ICT FLOW</div>
-            <div style={{ fontFamily: 'DM Mono', fontSize: '9px', color: '#8A6B28', letterSpacing: '0.2em' }}>ACADEMY</div>
+            <div style={{ fontFamily: 'DM Mono', fontSize: '9px', color: '#8A6B28', letterSpacing: '0.2em' }}>TRADING EDUCATION</div>
           </div>
         </Link>
 
