@@ -11,7 +11,7 @@ const ICT_CONCEPTS = ['FVG','Order Block','Liquidity Sweep','BOS','ChoCH','Break
 const MISTAKES = ['Early Entry','No HTF Confirmation','Wrong Session','Chased Price','Moved SL','Overleverage','Revenge Trade','FOMO Entry','Ignored Structure','No Setup — Random Entry','Exited Too Early','Held Too Long'];
 const EMOTIONS = ['Calm & Focused','Confident','Anxious','Impatient','Greedy','Fearful','Revenge Mode','Neutral','Overconfident','Hesitant'];
 const DAYS = ['Monday','Tuesday','Wednesday','Thursday','Friday'];
-const NAV = [['/', 'Home'],['/courses','Courses'],['/signals','Signals'],['/glossary','Glossary'],['/practice','Practice'],['/journal','Journal'],['/dashboard','Dashboard']];
+const NAV = [['/', 'Home'],['/courses','Courses'],['/glossary','Glossary'],['/practice','Practice'],['/journal','Journal'],['/dashboard','Dashboard']];
 
 const emptyTrade = {
   date: new Date().toISOString().split('T')[0],

@@ -10,7 +10,7 @@ const FREE_FEATURES = [
   { text: 'Basic practice questions', included: true },
   { text: 'Trade Journal', included: true },
   { text: 'Modules 4–14 (Advanced curriculum)', included: false },
-  { text: 'Live ICT Signals (NAS100 & Gold)', included: false },
+  
   { text: 'AI-generated daily challenges', included: false },
   { text: 'Certificate of completion', included: false },
   { text: 'Discord community access', included: false },
@@ -20,7 +20,7 @@ const FREE_FEATURES = [
 const PRO_FEATURES = [
   { text: 'Everything in Free', included: true },
   { text: 'All 14 modules unlocked', included: true },
-  { text: 'Live ICT Signals (NAS100 & Gold)', included: true },
+  
   { text: 'AI-generated daily challenges', included: true },
   { text: 'Certificate of completion', included: true },
   { text: 'Discord community access', included: true },

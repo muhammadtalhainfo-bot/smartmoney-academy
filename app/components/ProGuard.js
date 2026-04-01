@@ -49,7 +49,7 @@ export default function ProGuard({ children }) {
           <div className="font-mono-c text-xs tracking-widest mb-3" style={{ color: 'rgba(212,168,67,0.5)', fontFamily: 'DM Mono, monospace' }}>// PRO FEATURE</div>
           <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '48px', color: 'white', marginBottom: '16px' }}>UPGRADE TO PRO</h1>
           <p className="text-sm mb-8 leading-relaxed" style={{ color: 'rgba(255,255,255,0.5)', marginBottom: '32px' }}>
-            Live ICT signals, advanced analysis, and Discord access are Pro features. Upgrade for $19/month to unlock everything.
+            Discord community access and certificates are Pro features. Upgrade for $19/month to unlock everything.
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             <Link href="/pricing" style={{ display: 'block', width: '100%', padding: '16px', borderRadius: '12px', fontFamily: 'DM Mono, monospace', fontSize: '14px', letterSpacing: '0.1em', textTransform: 'uppercase', textAlign: 'center', fontWeight: 700, background: 'linear-gradient(135deg, #D4A843, #F0C96A)', color: '#080808', textDecoration: 'none' }}>
