@@ -43,7 +43,7 @@ const TESTIMONIALS = [
     avatar: 'J',
     color: '#3B82F6',
     text: 'Started as a complete beginner in January. By March I was consistently identifying daily bias using the higher timeframe analysis module. The progression from beginner to advanced is perfectly structured.',
-    tag: 'Module 10 — HTF Analysis',
+    tag: 'Module 10 — SMT Divergence',
     stars: 5,
   },
   {

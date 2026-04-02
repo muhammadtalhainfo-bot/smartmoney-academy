@@ -468,7 +468,7 @@ export default function CoursesPage() {
         <div className="max-w-2xl mx-auto text-center">
           <div className="font-mono-c text-xs tracking-widest uppercase mb-4" style={{ color: 'rgba(212,168,67,0.5)' }}>// Start From Zero</div>
           <h2 className="font-display text-5xl text-white mb-4">DON'T KNOW WHERE<br/>TO BEGIN?</h2>
-          <p className="text-gray-300 text-sm mb-8" style={{ fontWeight: 300 }}>Start with Module 1 — Market Structure. Every other concept builds on it.</p>
+          <p className="text-gray-300 text-sm mb-8" style={{ fontWeight: 300 }}>New to trading? Start with Trading Foundations first, then come back here.</p>
           <Link href="/lesson/1">
             <span className="inline-block px-8 py-4 rounded-xl font-mono-c text-sm tracking-widest uppercase font-bold transition-all hover:shadow-lg" style={{ background: 'linear-gradient(135deg, #D4A843, #F0C96A)', color: '#080808' }}>
               Start Module 1 →

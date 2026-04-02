@@ -247,7 +247,7 @@ export default function HomePage() {
         </p>
 
         <div className="fade-up delay-4 flex flex-col sm:flex-row gap-4 justify-center mb-16">
-          <Link href="/courses" className="btn-gold px-8 py-4 rounded-xl text-base font-mono tracking-wide uppercase">
+          <Link href="/foundations" className="btn-gold px-8 py-4 rounded-xl text-base font-mono tracking-wide uppercase">
             Begin Your Journey →
           </Link>
           <Link href="/glossary" className="px-8 py-4 rounded-xl text-base font-mono tracking-wide uppercase border border-[var(--border)] text-gray-300 hover:border-[var(--gold)] hover:text-[var(--gold)] transition-all">

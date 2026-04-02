@@ -41,7 +41,7 @@ export default function Footer() {
           {/* LEARN */}
           <div>
             <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.6)', letterSpacing: '0.15em', marginBottom: '16px' }}>LEARN</div>
-            {[['/', 'Home'], ['/courses', 'Courses'], ['/lesson/1', 'Start Here'], ['/practice', 'Daily Practice'], ['/glossary', 'ICT Glossary']].map(([href, label]) => (
+            {[['/', 'Home'], ['/foundations', 'Trading Foundations'], ['/courses', 'Courses'], ['/mentorship', '2022 Mentorship'], ['/glossary', 'ICT Glossary']].map(([href, label]) => (
               <div key={href} style={{ marginBottom: '10px' }}>
                 <Link href={href} style={{ textDecoration: 'none', color: 'rgba(255,255,255,0.4)', fontSize: '13px', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color = '#D4A843'} onMouseOut={e => e.target.style.color = 'rgba(255,255,255,0.4)'}>{label}</Link>
               </div>
@@ -51,7 +51,7 @@ export default function Footer() {
           {/* TOOLS */}
           <div>
             <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.6)', letterSpacing: '0.15em', marginBottom: '16px' }}>TOOLS</div>
-            {[['/mentorship', 'Mentorship'], ['/journal', 'Trade Journal'], ['/dashboard', 'Dashboard'], ['/resources', 'Resources']].map(([href, label]) => (
+            {[['/journal', 'Trade Journal'], ['/dashboard', 'Dashboard'], ['/practice', 'Daily Practice'], ['/resources', 'Resources']].map(([href, label]) => (
               <div key={href} style={{ marginBottom: '10px' }}>
                 <Link href={href} style={{ textDecoration: 'none', color: 'rgba(255,255,255,0.4)', fontSize: '13px', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color = '#D4A843'} onMouseOut={e => e.target.style.color = 'rgba(255,255,255,0.4)'}>{label}</Link>
               </div>

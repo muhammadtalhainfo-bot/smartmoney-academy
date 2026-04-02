@@ -1138,6 +1138,26 @@ export default function LessonPage({ params }) {
 
       </div>
 
+      {/* ── Next Step CTA ── */}
+      <div className="border-t border-[var(--border)] px-6 py-8 mt-8">
+        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <div className="font-mono-custom text-xs text-[var(--gold)] tracking-widest uppercase mb-1">// What to study next</div>
+            <div className="text-white font-semibold">Continue your ICT journey</div>
+          </div>
+          <div className="flex gap-3">
+            {lesson.nextLesson && (
+              <Link href={`/lesson/${lesson.nextLesson.id}`} className="btn-gold px-6 py-3 rounded-xl font-mono-custom text-xs tracking-widest uppercase" style={{ background: 'linear-gradient(135deg,#D4A843,#F0C96A)', color: '#080808', textDecoration: 'none', fontWeight: 700 }}>
+                Next: {lesson.nextLesson.title} →
+              </Link>
+            )}
+            <Link href="/courses" style={{ padding: '12px 20px', borderRadius: '12px', border: '1px solid rgba(212,168,67,0.2)', color: 'rgba(255,255,255,0.5)', fontFamily: 'DM Mono,monospace', fontSize: '12px', textDecoration: 'none', letterSpacing: '0.08em' }}>
+              All Modules
+            </Link>
+          </div>
+        </div>
+      </div>
+
       {/* ── Footer ── */}
       <footer className="border-t border-[var(--border)] px-8 py-6 mt-16">
         <div className="max-w-4xl mx-auto text-center font-mono-custom text-xs text-gray-600">
