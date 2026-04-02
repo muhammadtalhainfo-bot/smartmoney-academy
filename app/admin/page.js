@@ -82,39 +82,6 @@ export default function AdminPage() {
   const card = { background: '#0D0D0D', border: '1px solid rgba(212,168,67,0.1)', borderRadius: '16px', padding: '24px', marginBottom: '24px' };
 
   if (!authed) {
-    const loadBlogPosts = async () => {
-    const { data } = await supabase.from('blog_posts').select('*').order('created_at', { ascending: false });
-    if (data) setBlogPosts(data);
-  };
-
-  const saveBlogPost = async () => {
-    if (!blogForm.title || !blogForm.content) {
-      setBlogMsg('Title and content are required');
-      return;
-    }
-    setBlogSaving(true);
-    const slug = blogForm.slug || blogForm.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-    const { error } = await supabase.from('blog_posts').upsert({
-      ...blogForm,
-      slug,
-      published: true
-    }, { onConflict: 'slug' });
-    if (error) {
-      setBlogMsg('Error: ' + error.message);
-    } else {
-      setBlogMsg('Post published successfully!');
-      setBlogForm({ title: '', slug: '', description: '', category: 'Beginner', read_time: '5 min read', image_url: '', content: '' });
-      loadBlogPosts();
-    }
-    setBlogSaving(false);
-  };
-
-  const deleteBlogPost = async (slug) => {
-    if (!confirm('Delete this post?')) return;
-    await supabase.from('blog_posts').delete().eq('slug', slug);
-    loadBlogPosts();
-  };
-
   return (
 
       <div style={{ minHeight: '100vh', background: '#080808', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
