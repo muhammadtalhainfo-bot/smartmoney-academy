@@ -1343,7 +1343,7 @@ export default function JournalPage() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
               <div style={{ width: '32px', height: '32px', background: `linear-gradient(135deg, ${C.gold}, ${C.gold2})`, borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', color: C.bg, fontWeight: 700, flexShrink: 0 }}>E</div>
               <div>
-                <div style={{ fontSize: '14px', fontWeight: 700, color: C.text, letterSpacing: '-0.3px' }}>EdgeLog</div>
+                <div style={{ fontSize: '14px', fontWeight: 700, color: C.text, letterSpacing: '-0.3px' }}>ICT Flow Journal</div>
                 <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: C.text3, letterSpacing: '0.1em', marginTop: '1px' }}>TRADE JOURNAL</div>
               </div>
             </div>
@@ -1396,7 +1396,7 @@ export default function JournalPage() {
 
           <div style={{ borderTop: `1px solid ${C.border}`, padding: '20px 36px', marginTop: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: C.text3 }}>
-              ICT Flow — EdgeLog · {trades.length} trades · Track your edge, not your feelings.
+              ICT Flow — ICT Flow Journal · {trades.length} trades · Track your edge. Every trade is data.
             </div>
             <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: C.text3 }}>
               <a href="/courses" style={{ color: C.gold, textDecoration: 'none' }}>← Back to Courses</a>
