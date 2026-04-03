@@ -106,11 +106,11 @@ export default function BlogPost({ params }) {
 
   return (
     <div style={{ minHeight: '100vh', background: '#080808', color: 'white', fontFamily: "'DM Sans', sans-serif" }}>
-      <style>{\`
+      <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
         .font-display { font-family: 'Bebas Neue', sans-serif; }
         .shine { background: linear-gradient(135deg, #8A6B28 0%, #D4A843 40%, #F0C96A 60%, #D4A843 80%, #8A6B28 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-      \`}</style>
+      `}</style>
 
       <Navbar active="/blog" />
 
