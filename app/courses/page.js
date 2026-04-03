@@ -115,120 +115,94 @@ function ModuleCard({ mod, index }) {
 
   return (
     <div
-      className="module-card rounded-2xl border overflow-hidden"
+      className="module-card"
       style={{
-        borderColor: 'rgba(212,168,67,0.1)',
-        background: '#0F0F0F',
+        borderRadius: '18px',
+        border: '1px solid rgba(212,168,67,0.12)',
+        background: '#0C0C0C',
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
         animationDelay: `${index * 0.04}s`,
       }}
     >
-      {/* ── PREMIUM BANNER ── */}
-      <div style={{ position: 'relative', height: '172px', overflow: 'hidden', borderRadius: '16px 16px 0 0' }}>
-        {/* Chart image (existing) */}
-        {mod.image && (
+      {/* ── HEADER STRIP — no image, pure premium layout ── */}
+      <div style={{
+        position: 'relative',
+        padding: '20px 22px 18px',
+        background: 'linear-gradient(135deg, #111008 0%, #0E0E0E 60%, #0C0C0C 100%)',
+        borderBottom: '1px solid rgba(212,168,67,0.08)',
+        overflow: 'hidden',
+      }}>
+        {/* Subtle gold radial glow top-right */}
+        <div style={{ position: 'absolute', top: 0, right: 0, width: '160px', height: '100px', background: 'radial-gradient(ellipse at 100% 0%, rgba(212,168,67,0.07) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        {/* Ghost module number watermark */}
+        <div style={{
+          position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)',
+          fontFamily: 'Bebas Neue, sans-serif', fontSize: '72px', lineHeight: 1,
+          color: 'rgba(212,168,67,0.05)', userSelect: 'none', letterSpacing: '-3px', pointerEvents: 'none',
+        }}>{mod.module}</div>
+
+        {/* Top row: module tag + level badge */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            {/* IF monogram */}
+            <div style={{
+              width: '26px', height: '26px', borderRadius: '7px',
+              background: 'rgba(212,168,67,0.1)', border: '1px solid rgba(212,168,67,0.25)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontFamily: 'Bebas Neue, sans-serif', fontSize: '11px', color: '#D4A843', letterSpacing: '0.05em',
+            }}>IF</div>
+            <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', letterSpacing: '0.2em', color: 'rgba(212,168,67,0.5)', textTransform: 'uppercase' }}>
+              Module {mod.module}
+            </span>
+          </div>
+          <span style={{
+            padding: '3px 10px', borderRadius: '100px',
+            border: `1px solid ${lvl.border}`,
+            fontFamily: 'DM Mono, monospace', fontSize: '9px', letterSpacing: '0.1em',
+            color: lvl.text, background: lvl.bg,
+          }}>{mod.level}</span>
+        </div>
+
+        {/* Module title */}
+        <h3 style={{
+          fontFamily: 'Bebas Neue, sans-serif',
+          fontSize: '24px', letterSpacing: '0.04em',
+          color: 'white', lineHeight: 1.05,
+          marginBottom: '10px', position: 'relative',
+        }}>{mod.title}</h3>
+
+        {/* Thin gold divider line */}
+        <div style={{ height: '1px', background: 'linear-gradient(90deg, rgba(212,168,67,0.3), rgba(212,168,67,0.06) 60%, transparent)', borderRadius: '1px' }} />
+      </div>
+
+      {/* ── IMAGE PREVIEW — untouched, clean display ── */}
+      {mod.image && (
+        <div style={{ height: '148px', overflow: 'hidden', background: '#0A0A0A', borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
           <img
             src={mod.image}
             alt={mod.title}
-            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', opacity: 0.55 }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
           />
-        )}
-
-        {/* Dark base if no image */}
-        {!mod.image && (
-          <div style={{ position: 'absolute', inset: 0, background: '#0A0A0A' }} />
-        )}
-
-        {/* Gradient overlays */}
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(160deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.85) 100%)' }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 60% 80% at 100% 100%, rgba(212,168,67,0.12) 0%, transparent 70%)' }} />
-
-        {/* Gold corner frame lines */}
-        {/* Top-left */}
-        <div style={{ position: 'absolute', top: '10px', left: '10px', width: '22px', height: '22px', borderTop: '1.5px solid rgba(212,168,67,0.6)', borderLeft: '1.5px solid rgba(212,168,67,0.6)', borderRadius: '3px 0 0 0' }} />
-        {/* Top-right */}
-        <div style={{ position: 'absolute', top: '10px', right: '10px', width: '22px', height: '22px', borderTop: '1.5px solid rgba(212,168,67,0.6)', borderRight: '1.5px solid rgba(212,168,67,0.6)', borderRadius: '0 3px 0 0' }} />
-        {/* Bottom-left */}
-        <div style={{ position: 'absolute', bottom: '10px', left: '10px', width: '22px', height: '22px', borderBottom: '1.5px solid rgba(212,168,67,0.6)', borderLeft: '1.5px solid rgba(212,168,67,0.6)', borderRadius: '0 0 0 3px' }} />
-        {/* Bottom-right */}
-        <div style={{ position: 'absolute', bottom: '10px', right: '10px', width: '22px', height: '22px', borderBottom: '1.5px solid rgba(212,168,67,0.6)', borderRight: '1.5px solid rgba(212,168,67,0.6)', borderRadius: '0 0 3px 0' }} />
-
-        {/* Subtle scan line */}
-        <div style={{ position: 'absolute', left: '10px', right: '10px', top: '50%', height: '1px', background: 'linear-gradient(90deg, transparent, rgba(212,168,67,0.06), transparent)', transform: 'translateY(-50%)' }} />
-
-        {/* IF logo mark — top left */}
-        <div style={{
-          position: 'absolute', top: '18px', left: '18px',
-          width: '32px', height: '32px', borderRadius: '8px',
-          background: 'rgba(10,10,10,0.85)',
-          border: '1px solid rgba(212,168,67,0.4)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          backdropFilter: 'blur(8px)',
-        }}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-            <path d="M4 4h16M4 4v16M4 12h8" stroke="#D4A843" strokeWidth="2.2" strokeLinecap="round"/>
-            <path d="M16 12l2 4" stroke="#D4A843" strokeWidth="1.8" strokeLinecap="round"/>
-          </svg>
         </div>
+      )}
 
-        {/* Module number — large ghost watermark */}
-        <div style={{
-          position: 'absolute', right: '16px', bottom: '0px',
-          fontFamily: 'Bebas Neue, sans-serif',
-          fontSize: '80px', lineHeight: '1',
-          color: 'rgba(212,168,67,0.08)',
-          userSelect: 'none', letterSpacing: '-2px',
-        }}>{mod.module}</div>
-
-        {/* Title block — bottom */}
-        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '14px 18px 14px 18px' }}>
-          <div style={{
-            fontFamily: 'DM Mono, monospace',
-            fontSize: '9px', letterSpacing: '0.2em',
-            color: 'rgba(212,168,67,0.7)',
-            marginBottom: '4px', textTransform: 'uppercase',
-          }}>
-            MODULE {mod.module}
-          </div>
-          <h3 style={{
-            fontFamily: 'Bebas Neue, sans-serif',
-            fontSize: '22px', letterSpacing: '0.04em',
-            color: 'white', lineHeight: 1.05,
-            textShadow: '0 2px 12px rgba(0,0,0,0.8)',
-          }}>{mod.title}</h3>
-        </div>
-
-        {/* Level badge — top right */}
-        <div style={{
-          position: 'absolute', top: '18px', right: '18px',
-          padding: '3px 10px',
-          borderRadius: '100px',
-          background: 'rgba(10,10,10,0.8)',
-          border: `1px solid ${lvl.border}`,
-          fontFamily: 'DM Mono, monospace',
-          fontSize: '9px', letterSpacing: '0.12em',
-          color: lvl.text,
-          backdropFilter: 'blur(8px)',
-        }}>{mod.level}</div>
-      </div>
-
-      {/* Card body */}
-      <div className="p-6" style={{ paddingTop: '16px' }}>
-        <div className="flex items-start justify-between mb-4" style={{ marginBottom: '12px' }}>
-        </div>
-
-        <p className="text-gray-300 text-sm leading-relaxed mb-4" style={{ fontWeight: 300 }}>
+      {/* ── CONTENT BODY ── */}
+      <div style={{ padding: '18px 22px 0', flex: 1 }}>
+        <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.65, fontWeight: 300, marginBottom: '14px' }}>
           {mod.desc}
         </p>
 
-        {/* Tags row */}
-        <div className="flex items-center gap-2 mb-4 flex-wrap">
-          <span className="px-2.5 py-1 rounded-lg text-xs font-mono-c border" style={{ color: lvl.text, background: lvl.bg, borderColor: lvl.border }}>
-            {mod.level}
-          </span>
-          <span className="px-2.5 py-1 rounded-lg text-xs font-mono-c border" style={{ color: tag.text, background: tag.bg, borderColor: tag.border }}>
-            {mod.tag}
-          </span>
-          <span className="ml-auto font-mono-c text-xs" style={{ color: 'rgba(212,168,67,0.75)' }}>
+        {/* Tag + meta row */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '7px', marginBottom: '14px', flexWrap: 'wrap' }}>
+          <span style={{
+            padding: '3px 9px', borderRadius: '6px',
+            border: `1px solid ${tag.border}`,
+            fontFamily: 'DM Mono, monospace', fontSize: '9px', letterSpacing: '0.1em',
+            color: tag.text, background: tag.bg,
+          }}>{mod.tag}</span>
+          <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.2)', marginLeft: 'auto' }}>
             {mod.lessons} lessons · {mod.duration}
           </span>
         </div>
@@ -236,27 +210,29 @@ function ModuleCard({ mod, index }) {
         {/* Topics toggle */}
         <button
           onClick={() => setExpanded(!expanded)}
-          className="w-full flex items-center justify-between py-2.5 px-3 rounded-lg text-xs font-mono-c transition-all"
           style={{
-            background: expanded ? 'rgba(212,168,67,0.06)' : 'rgba(255,255,255,0.02)',
+            width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+            padding: '9px 13px', borderRadius: '9px',
+            background: expanded ? 'rgba(212,168,67,0.05)' : 'transparent',
             border: '1px solid rgba(212,168,67,0.1)',
-            color: 'rgba(212,168,67,0.7)',
-            letterSpacing: '0.1em',
+            color: 'rgba(212,168,67,0.65)',
+            fontFamily: 'DM Mono, monospace', fontSize: '9px', letterSpacing: '0.15em',
+            cursor: 'pointer', textTransform: 'uppercase',
           }}
         >
-          <span>{expanded ? 'HIDE TOPICS' : 'VIEW TOPICS'}</span>
-          <span>{expanded ? '−' : '+'}</span>
+          <span>{expanded ? 'Hide Topics' : 'View Topics'}</span>
+          <span style={{ fontSize: '14px', lineHeight: 1 }}>{expanded ? '−' : '+'}</span>
         </button>
       </div>
 
       {/* Topics list */}
       {expanded && (
-        <div className="px-6 pb-5 border-t" style={{ borderColor: 'rgba(212,168,67,0.08)' }}>
-          <div className="pt-4 space-y-2">
+        <div style={{ padding: '0 22px 14px', borderTop: '1px solid rgba(212,168,67,0.07)', marginTop: '2px' }}>
+          <div style={{ paddingTop: '14px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
             {mod.topics.map((topic, i) => (
-              <div key={i} className="flex items-center gap-3">
-                <div className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: '#D4A843', opacity: 0.5 }} />
-                <span className="text-gray-300 text-xs" style={{ fontWeight: 300 }}>{topic}</span>
+              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: '#D4A843', opacity: 0.4, flexShrink: 0 }} />
+                <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.45)', fontWeight: 300 }}>{topic}</span>
               </div>
             ))}
           </div>
@@ -264,16 +240,16 @@ function ModuleCard({ mod, index }) {
       )}
 
       {/* Start button */}
-      <div className="px-6 pb-6">
-        <Link href={`/lesson/${mod.id}`} >
-          <div
-            className="start-btn w-full py-3 rounded-xl text-center font-mono-c text-xs tracking-widest uppercase transition-all mt-4"
-            style={{
-              border: '1px solid rgba(212,168,67,0.2)',
-              color: '#D4A843',
-              background: 'transparent',
-            }}
-          >
+      <div style={{ padding: '14px 22px 20px' }}>
+        <Link href={`/lesson/${mod.id}`}>
+          <div className="start-btn" style={{
+            width: '100%', padding: '11px', borderRadius: '10px',
+            border: '1px solid rgba(212,168,67,0.2)',
+            color: '#D4A843', background: 'transparent',
+            fontFamily: 'DM Mono, monospace', fontSize: '10px',
+            letterSpacing: '0.15em', textTransform: 'uppercase',
+            textAlign: 'center', cursor: 'pointer',
+          }}>
             Start Module →
           </div>
         </Link>
@@ -359,13 +335,13 @@ export default function CoursesPage() {
           transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
         }
         .module-card:hover {
-          border-color: rgba(212,168,67,0.3) !important;
-          transform: translateY(-3px);
-          box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 25px rgba(212,168,67,0.05);
+          border-color: rgba(212,168,67,0.28) !important;
+          transform: translateY(-4px);
+          box-shadow: 0 24px 60px rgba(0,0,0,0.6), 0 0 30px rgba(212,168,67,0.04);
         }
         .module-card:hover .start-btn {
-          background: rgba(212,168,67,0.08) !important;
-          border-color: rgba(212,168,67,0.75) !important;
+          background: rgba(212,168,67,0.07) !important;
+          border-color: rgba(212,168,67,0.5) !important;
         }
 
         .filter-btn {
