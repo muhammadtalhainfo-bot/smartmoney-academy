@@ -1341,7 +1341,7 @@ export default function JournalPage() {
           {/* Logo */}
           <div style={{ padding: '22px 18px 16px', borderBottom: `1px solid ${C.border}` }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <div style={{ width: '32px', height: '32px', background: `linear-gradient(135deg, ${C.gold}, ${C.gold2})`, borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', color: C.bg, fontWeight: 700, flexShrink: 0 }}>E</div>
+              <img src="/ictflow-symbol.svg" alt="ICT Flow" style={{ width: "32px", height: "32px", borderRadius: "8px", flexShrink: 0 }} />
               <div>
                 <div style={{ fontSize: '14px', fontWeight: 700, color: C.text, letterSpacing: '-0.3px' }}>ICT Flow Journal</div>
                 <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: C.text3, letterSpacing: '0.1em', marginTop: '1px' }}>TRADE JOURNAL</div>

@@ -12,7 +12,11 @@ export const metadata = {
   authors: [{ name: 'ICT Flow' }],
   creator: 'ICT Flow',
   icons: {
-    icon: '/favicon.svg',
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: '32x32' },
+      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+    ],
     shortcut: '/favicon.ico',
     apple: '/apple-touch-icon.png',
   },

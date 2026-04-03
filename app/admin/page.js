@@ -1163,7 +1163,7 @@ export default function AdminPage() {
       <div style={{ position: 'absolute', inset: 0, background: `radial-gradient(ellipse at center, rgba(212,168,67,0.04) 0%, transparent 70%)` }} />
 
       <div style={{ ...css.card, width: '100%', maxWidth: '380px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
-        <div style={{ width: '52px', height: '52px', background: `linear-gradient(135deg, ${G}, ${G2})`, borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 18px', fontSize: '22px' }}>⚙️</div>
+        <img src="/ictflow-symbol.svg" alt="ICT Flow" style={{ width: "52px", height: "52px", borderRadius: "14px", margin: "0 auto 18px", display: "block" }} />
         <div style={{ ...css.bebas, fontSize: '30px', color: 'white', marginBottom: '4px', letterSpacing: '0.04em' }}>ADMIN CONSOLE</div>
         <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.5)`, marginBottom: '24px', letterSpacing: '0.15em' }}>ICT FLOW — RESTRICTED ACCESS</div>
 
@@ -1208,7 +1208,7 @@ export default function AdminPage() {
       }}>
         {/* Logo */}
         <div style={{ padding: sidebarCollapsed ? '18px 10px' : '20px 18px', borderBottom: `1px solid ${BORDER}`, display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <div style={{ width: '32px', height: '32px', background: `linear-gradient(135deg, ${G}, ${G2})`, borderRadius: '8px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px' }}>⚙️</div>
+          <img src="/ictflow-symbol.svg" alt="ICT Flow" style={{ width: "32px", height: "32px", borderRadius: "8px", flexShrink: 0 }} />
           {!sidebarCollapsed && (
             <div>
               <div style={{ ...css.bebas, fontSize: '16px', color: 'white', lineHeight: 1, letterSpacing: '0.04em' }}>ICT FLOW</div>
