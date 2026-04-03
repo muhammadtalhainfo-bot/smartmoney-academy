@@ -15,7 +15,7 @@ const PROP_FIRMS = [
     commission: '$100–$200 per referral',
     payout: '80–90% profit split',
     challenge: '$155 for $10K account',
-    link: 'https://ftmo.com',
+    link: 'https://ftmo.com/?affiliates=ictflow',
     features: ['2-step evaluation', '10% max drawdown', 'No time limit', 'Bi-weekly payouts'],
   },
   {
@@ -28,7 +28,7 @@ const PROP_FIRMS = [
     commission: '$75–$150 per referral',
     payout: 'Up to 90% profit split',
     challenge: '$135 for $10K account',
-    link: 'https://thefundedtrader.com',
+    link: 'https://thefundedtrader.com/?ref=ictflow',
     features: ['Standard & Royal plans', 'Unlimited trading days', 'Weekend holding', 'Scaling up to $1.5M'],
   },
   {
@@ -41,7 +41,7 @@ const PROP_FIRMS = [
     commission: '$50–$100 per referral',
     payout: '80% profit split',
     challenge: '$128 for $10K account',
-    link: 'https://e8funding.com',
+    link: 'https://e8funding.com/?ref=ictflow',
     features: ['1-step option available', 'No minimum trading days', 'Easy scaling plan', '8% max drawdown'],
   },
   {
@@ -54,7 +54,7 @@ const PROP_FIRMS = [
     commission: '$50–$120 per referral',
     payout: '100% first $25K then 90%',
     challenge: '$97/month for $50K',
-    link: 'https://apextraderfunding.com',
+    link: 'https://apextraderfunding.com/?ref=ictflow',
     features: ['1-step evaluation', 'Futures only', '100% first payout', 'Multiple accounts'],
   },
 ];
@@ -68,7 +68,7 @@ const BROKERS = [
     commission: 'Up to $600 per referral',
     spread: 'From 0.0 pips (Razor)',
     platforms: 'MT4, MT5, cTrader',
-    link: 'https://pepperstone.com',
+    link: 'https://pepperstone.com/?ref=ictflow',
   },
   {
     name: 'IC Markets',
@@ -78,7 +78,7 @@ const BROKERS = [
     commission: 'Up to $400 per referral',
     spread: 'From 0.0 pips (Raw)',
     platforms: 'MT4, MT5, cTrader',
-    link: 'https://icmarkets.com',
+    link: 'https://icmarkets.com/?ref=ictflow',
   },
 ];
 
@@ -90,7 +90,7 @@ const TOOLS = [
     desc: 'The best charting platform for ICT analysis. Draw OBs, FVGs, and structure with precision.',
     commission: '30% recurring commission',
     price: 'Free–$59.95/month',
-    link: 'https://tradingview.com',
+    link: 'https://www.tradingview.com/?aff_id=ictflow',
     highlight: 'BEST RECURRING',
   },
   {
