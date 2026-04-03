@@ -939,7 +939,7 @@ function PricingSection({ supabase }) {
 // ─── SEO ─────────────────────────────────────────────────────────────────────
 function SEOSection({ supabase }) {
   const [form, setForm] = useState({
-    site_name: 'ICT Flow — Smart Money Academy',
+    site_name: 'ICT Flow',
     site_tagline: 'Master ICT & Smart Money Concepts',
     meta_description: 'The most comprehensive ICT & Smart Money Concepts learning platform. Master market structure, liquidity, FVGs, order blocks, and all ICT strategies.',
     keywords: 'ICT trading, smart money concepts, order blocks, fair value gap, liquidity, market structure, forex trading education',
