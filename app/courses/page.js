@@ -122,30 +122,98 @@ function ModuleCard({ mod, index }) {
         animationDelay: `${index * 0.04}s`,
       }}
     >
-      {/* Card top */}
-      <div className="p-6">
-        {/* Banner image */}
+      {/* ── PREMIUM BANNER ── */}
+      <div style={{ position: 'relative', height: '172px', overflow: 'hidden', borderRadius: '16px 16px 0 0' }}>
+        {/* Chart image (existing) */}
         {mod.image && (
-          <div style={{ margin: '-24px -24px 20px -24px', height: '140px', overflow: 'hidden', borderRadius: '16px 16px 0 0' }}>
-            <img src={mod.image} alt={mod.title} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', opacity: 1 }} />
-            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '140px', background: 'linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(8,8,8,0.7))', borderRadius: '16px 16px 0 0' }} />
-            <div style={{ position: 'absolute', top: '12px', right: '12px', fontFamily: 'Bebas Neue, sans-serif', fontSize: '48px', color: 'rgba(212,168,67,0.25)', lineHeight: 1 }}>{mod.module}</div>
-          </div>
+          <img
+            src={mod.image}
+            alt={mod.title}
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', opacity: 0.55 }}
+          />
         )}
-        <div className="flex items-start justify-between mb-4">
-          <div className="flex items-center gap-4">
-            <div>
-              <div className="font-mono-c text-xs mb-1" style={{ color: 'rgba(212,168,67,0.75)', letterSpacing: '0.15em' }}>
-                MODULE {mod.module}
-              </div>
-              <h3 className="font-semibold text-white text-base leading-tight">{mod.title}</h3>
-            </div>
+
+        {/* Dark base if no image */}
+        {!mod.image && (
+          <div style={{ position: 'absolute', inset: 0, background: '#0A0A0A' }} />
+        )}
+
+        {/* Gradient overlays */}
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(160deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.85) 100%)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 60% 80% at 100% 100%, rgba(212,168,67,0.12) 0%, transparent 70%)' }} />
+
+        {/* Gold corner frame lines */}
+        {/* Top-left */}
+        <div style={{ position: 'absolute', top: '10px', left: '10px', width: '22px', height: '22px', borderTop: '1.5px solid rgba(212,168,67,0.6)', borderLeft: '1.5px solid rgba(212,168,67,0.6)', borderRadius: '3px 0 0 0' }} />
+        {/* Top-right */}
+        <div style={{ position: 'absolute', top: '10px', right: '10px', width: '22px', height: '22px', borderTop: '1.5px solid rgba(212,168,67,0.6)', borderRight: '1.5px solid rgba(212,168,67,0.6)', borderRadius: '0 3px 0 0' }} />
+        {/* Bottom-left */}
+        <div style={{ position: 'absolute', bottom: '10px', left: '10px', width: '22px', height: '22px', borderBottom: '1.5px solid rgba(212,168,67,0.6)', borderLeft: '1.5px solid rgba(212,168,67,0.6)', borderRadius: '0 0 0 3px' }} />
+        {/* Bottom-right */}
+        <div style={{ position: 'absolute', bottom: '10px', right: '10px', width: '22px', height: '22px', borderBottom: '1.5px solid rgba(212,168,67,0.6)', borderRight: '1.5px solid rgba(212,168,67,0.6)', borderRadius: '0 0 3px 0' }} />
+
+        {/* Subtle scan line */}
+        <div style={{ position: 'absolute', left: '10px', right: '10px', top: '50%', height: '1px', background: 'linear-gradient(90deg, transparent, rgba(212,168,67,0.06), transparent)', transform: 'translateY(-50%)' }} />
+
+        {/* IF logo mark — top left */}
+        <div style={{
+          position: 'absolute', top: '18px', left: '18px',
+          width: '32px', height: '32px', borderRadius: '8px',
+          background: 'rgba(10,10,10,0.85)',
+          border: '1px solid rgba(212,168,67,0.4)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          backdropFilter: 'blur(8px)',
+        }}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <path d="M4 4h16M4 4v16M4 12h8" stroke="#D4A843" strokeWidth="2.2" strokeLinecap="round"/>
+            <path d="M16 12l2 4" stroke="#D4A843" strokeWidth="1.8" strokeLinecap="round"/>
+          </svg>
+        </div>
+
+        {/* Module number — large ghost watermark */}
+        <div style={{
+          position: 'absolute', right: '16px', bottom: '0px',
+          fontFamily: 'Bebas Neue, sans-serif',
+          fontSize: '80px', lineHeight: '1',
+          color: 'rgba(212,168,67,0.08)',
+          userSelect: 'none', letterSpacing: '-2px',
+        }}>{mod.module}</div>
+
+        {/* Title block — bottom */}
+        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '14px 18px 14px 18px' }}>
+          <div style={{
+            fontFamily: 'DM Mono, monospace',
+            fontSize: '9px', letterSpacing: '0.2em',
+            color: 'rgba(212,168,67,0.7)',
+            marginBottom: '4px', textTransform: 'uppercase',
+          }}>
+            MODULE {mod.module}
           </div>
-          {!mod.image && (
-            <div className="font-display text-5xl leading-none" style={{ color: 'rgba(212,168,67,0.06)', userSelect: 'none' }}>
-              {mod.module}
-            </div>
-          )}
+          <h3 style={{
+            fontFamily: 'Bebas Neue, sans-serif',
+            fontSize: '22px', letterSpacing: '0.04em',
+            color: 'white', lineHeight: 1.05,
+            textShadow: '0 2px 12px rgba(0,0,0,0.8)',
+          }}>{mod.title}</h3>
+        </div>
+
+        {/* Level badge — top right */}
+        <div style={{
+          position: 'absolute', top: '18px', right: '18px',
+          padding: '3px 10px',
+          borderRadius: '100px',
+          background: 'rgba(10,10,10,0.8)',
+          border: `1px solid ${lvl.border}`,
+          fontFamily: 'DM Mono, monospace',
+          fontSize: '9px', letterSpacing: '0.12em',
+          color: lvl.text,
+          backdropFilter: 'blur(8px)',
+        }}>{mod.level}</div>
+      </div>
+
+      {/* Card body */}
+      <div className="p-6" style={{ paddingTop: '16px' }}>
+        <div className="flex items-start justify-between mb-4" style={{ marginBottom: '12px' }}>
         </div>
 
         <p className="text-gray-300 text-sm leading-relaxed mb-4" style={{ fontWeight: 300 }}>
