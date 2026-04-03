@@ -12,11 +12,9 @@ export const metadata = {
   authors: [{ name: 'ICT Flow' }],
   creator: 'ICT Flow',
   icons: {
-      shortcut: '/favicon.ico',
-      apple: '/apple-touch-icon.png',
     icon: '/favicon.svg',
-    shortcut: '/favicon.svg',
-    apple: '/favicon.svg',
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
   },
   openGraph: {
     type: 'website',
