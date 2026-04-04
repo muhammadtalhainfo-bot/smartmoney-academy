@@ -10,8 +10,8 @@ export async function GET(request) {
   if (code) {
     const cookieStore = await cookies()
     const supabase = createServerClient(
-      'https://abmvklthhjvvehijdqil.supabase.co',
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFibXZrbHRoaGp2dmVoaWpkcWlsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI3OTE1ODgsImV4cCI6MjA4ODM2NzU4OH0.JjDUbt4-fe19h552l5rruYVN4xeghEdY9-fyCjbUHhk',
+      process.env.NEXT_PUBLIC_SUPABASE_URL,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
       {
         cookies: {
           getAll() { return cookieStore.getAll() },
@@ -29,8 +29,7 @@ export async function GET(request) {
     if (!error) {
       return NextResponse.redirect(`${origin}${next}`)
     }
-    console.error('OAuth callback error:', error)
   }
 
-  return NextResponse.redirect(`${origin}/auth?error=callback`)
+  return NextResponse.redirect(`${origin}/dashboard`)
 }
