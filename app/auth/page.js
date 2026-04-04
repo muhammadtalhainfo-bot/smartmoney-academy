@@ -1,9 +1,9 @@
 'use client';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, useEffect, Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase';
-export default function AuthPage() {
+function AuthPageInner() {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
@@ -16,14 +16,14 @@ export default function AuthPage() {
   const [forgotEmail, setForgotEmail] = useState('');
   const [forgotSent, setForgotSent] = useState(false);
   const router = useRouter();
-  const searchParams = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : null;
-  const redirectTo = searchParams ? searchParams.get('redirect') || '/dashboard' : '/dashboard';
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams?.get('redirect') || '/dashboard';
 
   const handleGoogle = async () => {
     const supabase = createClient();
     await supabase.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo: 'https://ictflow.com/auth/callback' }
+      options: { redirectTo: window.location.origin + '/auth/callback' }
     });
   };
 
@@ -34,12 +34,15 @@ export default function AuthPage() {
     setSuccess('');
 
     if (isLogin) {
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      const { data: loginData, error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) {
         setError(error.message);
+      } else if (loginData?.session) {
+        // Session confirmed — wait for storage then redirect
+        await new Promise(r => setTimeout(r, 600));
+        router.replace(redirectTo);
       } else {
-        await new Promise(r => setTimeout(r, 500));
-        router.push(redirectTo);
+        setError('Login failed. Please try again.');
       }
     } else {
       const { data: signUpData, error } = await supabase.auth.signUp({ 
@@ -216,5 +219,17 @@ export default function AuthPage() {
 
       </div>
     </div>
+  );
+}
+
+export default function AuthPage() {
+  return (
+    <Suspense fallback={
+      <div style={{ minHeight: '100vh', background: '#080808', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ fontFamily: 'DM Mono, monospace', color: 'rgba(212,168,67,0.5)', fontSize: '12px', letterSpacing: '0.2em' }}>LOADING...</div>
+      </div>
+    }>
+      <AuthPageInner />
+    </Suspense>
   );
 }

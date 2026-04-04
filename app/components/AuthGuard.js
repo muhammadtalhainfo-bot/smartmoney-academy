@@ -26,13 +26,13 @@ export default function AuthGuard({ children }) {
           setReady(true);
         } else {
           localStorage.setItem('redirectAfterLogin', pathname);
-          router.push('/auth');
+          router.replace('/auth');
         }
       } catch (err) {
         console.error('AuthGuard error:', err);
         if (isMounted) {
           setError('Failed to verify authentication');
-          router.push('/auth');
+          router.replace('/auth');
         }
       }
     };
@@ -44,7 +44,7 @@ export default function AuthGuard({ children }) {
       if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
         setReady(true);
       } else if (event === 'SIGNED_OUT') {
-        router.push('/auth');
+        router.replace('/auth');
       }
     });
 
