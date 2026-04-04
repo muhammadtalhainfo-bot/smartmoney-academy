@@ -159,6 +159,42 @@ export default function AuthPage() {
               </div>
             </div>
 
+            {/* Forgot Password Link */}
+            {isLogin && !showForgot && (
+              <div style={{ textAlign: 'right', marginTop: '-4px' }}>
+                <button onClick={() => { setShowForgot(true); setError(''); }}
+                  style={{ background: 'none', border: 'none', color: 'rgba(212,168,67,0.7)', fontFamily: 'DM Mono', fontSize: '11px', cursor: 'pointer', letterSpacing: '0.05em', padding: 0 }}>
+                  Forgot password?
+                </button>
+              </div>
+            )}
+
+            {/* Forgot Password Panel */}
+            {showForgot && (
+              <div style={{ background: 'rgba(212,168,67,0.05)', border: '1px solid rgba(212,168,67,0.15)', borderRadius: '12px', padding: '18px' }}>
+                <div style={{ fontFamily: 'DM Mono', fontSize: '10px', color: '#D4A843', marginBottom: '12px', letterSpacing: '0.12em' }}>// RESET PASSWORD</div>
+                {forgotSent ? (
+                  <div style={{ color: '#34D399', fontFamily: 'DM Sans', fontSize: '13px' }}>✓ Reset link sent! Check your email.</div>
+                ) : (
+                  <>
+                    <input value={forgotEmail} onChange={e => setForgotEmail(e.target.value)}
+                      placeholder="Enter your email" type="email"
+                      style={{ width: '100%', background: '#080808', border: '1px solid rgba(212,168,67,0.2)', borderRadius: '8px', padding: '10px 14px', color: 'white', fontFamily: 'DM Sans', fontSize: '14px', marginBottom: '10px', boxSizing: 'border-box', outline: 'none' }} />
+                    <div style={{ display: 'flex', gap: '8px' }}>
+                      <button onClick={handleForgotPassword}
+                        style={{ flex: 1, background: 'linear-gradient(135deg, #D4A843, #F0C96A)', color: '#080808', border: 'none', borderRadius: '8px', padding: '10px', fontFamily: 'DM Mono', fontSize: '11px', fontWeight: 700, cursor: 'pointer' }}>
+                        SEND RESET LINK
+                      </button>
+                      <button onClick={() => { setShowForgot(false); setForgotSent(false); setForgotEmail(''); }}
+                        style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', padding: '10px 14px', color: 'rgba(255,255,255,0.4)', fontFamily: 'DM Mono', fontSize: '11px', cursor: 'pointer' }}>
+                        CANCEL
+                      </button>
+                    </div>
+                  </>
+                )}
+              </div>
+            )}
+
             {/* Error / Success */}
             {error && <div style={{ background: 'rgba(248,113,113,0.1)', border: '1px solid rgba(248,113,113,0.3)', borderRadius: '8px', padding: '12px', color: '#F87171', fontSize: '13px' }}>{error}</div>}
             {success && <div style={{ background: 'rgba(74,222,128,0.1)', border: '1px solid rgba(74,222,128,0.3)', borderRadius: '8px', padding: '12px', color: '#4ADE80', fontSize: '13px' }}>{success}</div>}

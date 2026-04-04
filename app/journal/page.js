@@ -1396,7 +1396,7 @@ export default function JournalPage() {
 
           <div style={{ borderTop: `1px solid ${C.border}`, padding: '20px 36px', marginTop: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: C.text3 }}>
-              ICT Flow — ICT Flow Journal · {trades.length} trades · Track your edge. Every trade is data.
+              ICT Flow Journal · {trades.length} trades · Track your edge. Every trade is data.
             </div>
             <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: C.text3 }}>
               <a href="/courses" style={{ color: C.gold, textDecoration: 'none' }}>← Back to Courses</a>
