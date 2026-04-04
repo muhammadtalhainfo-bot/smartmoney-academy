@@ -42,7 +42,6 @@ function CircleProgress({ pct, size = 90, stroke = 7, color = '#D4A843' }) {
 export default function DashboardPage() {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const router = useRouter();
-  const supabase = createClient();
   const [user, setUser] = useState(null);
   const [profile, setProfile] = useState(null);
   const [completions, setCompletions] = useState([]);
@@ -50,6 +49,7 @@ export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState('overview');
 
   useEffect(() => {
+    const supabase = createClient();
     async function loadData() {
       // Check auth with retry
       let { data: { session } } = await supabase.auth.getSession();
