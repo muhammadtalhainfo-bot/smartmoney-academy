@@ -50,13 +50,17 @@ export default function DashboardPage() {
 
   useEffect(() => {
     const supabase = createClient();
+    let isMounted = true;
     async function loadData() {
-      // Check auth with retry
+      try {
+      // Check auth with retry (3x exponential backoff)
       let { data: { session } } = await supabase.auth.getSession();
-      if (!session) {
-        await new Promise(r => setTimeout(r, 500));
-        const { data: { session: s2 } } = await supabase.auth.getSession();
-        session = s2;
+      let retryCount = 0;
+      while (!session && retryCount < 3) {
+        await new Promise(r => setTimeout(r, 500 * (retryCount + 1)));
+        const { data: { session: s } } = await supabase.auth.getSession();
+        session = s;
+        retryCount++;
       }
       const user = session?.user;
       if (!user) { router.push('/auth'); return; }
@@ -80,9 +84,17 @@ export default function DashboardPage() {
       // Update streak
       await updateStreak(user.id, profileData);
       setLoading(false);
+      } catch (err) { console.error('Dashboard error:', err); setLoading(false); }
     }
     loadData();
-  }, []);
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
+      if (!isMounted) return;
+      if (event === 'SIGNED_OUT') router.push('/auth');
+    });
+
+    return () => { isMounted = false; subscription?.unsubscribe(); };
+  }, [router]);
 
   async function updateStreak(userId, prof) {
     if (!prof) return;
