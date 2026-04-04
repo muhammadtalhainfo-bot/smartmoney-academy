@@ -12,6 +12,9 @@ export default function AuthPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [showForgot, setShowForgot] = useState(false);
+  const [forgotEmail, setForgotEmail] = useState('');
+  const [forgotSent, setForgotSent] = useState(false);
   const router = useRouter();
   const searchParams = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : null;
   const redirectTo = searchParams ? searchParams.get('redirect') || '/dashboard' : '/dashboard';
@@ -70,6 +73,18 @@ export default function AuthPage() {
       }
     }
     setLoading(false);
+  };
+
+  const handleForgotPassword = async () => {
+    if (!forgotEmail) { setError('Enter your email first'); return; }
+    setLoading(true);
+    const supabase = createClient();
+    const { error } = await supabase.auth.resetPasswordForEmail(forgotEmail, {
+      redirectTo: 'https://ictflow.com/auth/reset',
+    });
+    setLoading(false);
+    if (error) { setError(error.message); }
+    else { setForgotSent(true); }
   };
 
   return (
