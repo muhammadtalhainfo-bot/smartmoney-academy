@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
+import ModuleBanner from '@/app/components/ModuleBanner';
 
 const MODULES = [
   {
@@ -179,11 +180,14 @@ function ModuleCard({ mod, index }) {
 
       {/* ── IMAGE PREVIEW — untouched, clean display ── */}
       {mod.image && (
-        <div style={{ height: '148px', overflow: 'hidden', background: '#0A0A0A', borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
-          <img
-            src={mod.image}
-            alt={mod.title}
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+        <div style={{ height: '148px', overflow: 'hidden', background: '#090909', borderBottom: '1px solid rgba(255,255,255,0.04)', flexShrink: 0 }}>
+          <ModuleBanner
+            id={mod.module}
+            title={mod.title}
+            label={mod.level}
+            levelColor={lvl}
+            width={300}
+            height={148}
           />
         </div>
       )}

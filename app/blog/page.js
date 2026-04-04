@@ -5,6 +5,7 @@ import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 import { POSTS as STATIC_POSTS } from './posts';
 import { createClient } from '@/lib/supabase';
+import ModuleBanner from '@/app/components/ModuleBanner';
 
 const CATEGORIES = ['All', 'Beginner', 'Intermediate', 'Advanced', 'Strategy', 'Psychology', 'News', 'Analysis'];
 
@@ -187,12 +188,13 @@ export default function BlogPage() {
                   </div>
 
                   {/* ── IMAGE — clean, full width, untouched ── */}
-                  <div style={{ height: '220px', overflow: 'hidden', background: '#0A0A0A' }}>
-                    <img
-                      src={featured.image}
-                      alt={featured.title}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                      onError={e => { e.target.style.display = 'none'; }}
+                  <div style={{ height: '220px', overflow: 'hidden', background: '#090909' }}>
+                    <ModuleBanner
+                      id={featured.slug}
+                      title={featured.title}
+                      label={featured.category}
+                      width={1100}
+                      height={220}
                     />
                   </div>
                 </div>
@@ -272,12 +274,13 @@ export default function BlogPage() {
                       </div>
 
                       {/* ── IMAGE — clean, untouched ── */}
-                      <div style={{ height: '140px', overflow: 'hidden', background: '#0A0A0A', borderBottom: '1px solid rgba(255,255,255,0.03)', flexShrink: 0 }}>
-                        <img
-                          src={post.image}
-                          alt={post.title}
-                          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                          onError={e => { e.target.style.display = 'none'; }}
+                      <div style={{ height: '140px', overflow: 'hidden', background: '#090909', borderBottom: '1px solid rgba(255,255,255,0.03)', flexShrink: 0 }}>
+                        <ModuleBanner
+                          id={post.slug}
+                          title={post.title}
+                          label={post.category}
+                          width={300}
+                          height={140}
                         />
                       </div>
 
