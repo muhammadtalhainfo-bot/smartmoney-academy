@@ -38,6 +38,7 @@ export default function AuthPage() {
       if (error) {
         setError(error.message);
       } else {
+        await new Promise(r => setTimeout(r, 500));
         router.push(redirectTo);
       }
     } else {
@@ -68,6 +69,7 @@ export default function AuthPage() {
           setSuccess('Account created! Please check your email to confirm your account, then log in.');
         } else {
           const redirect = new URLSearchParams(window.location.search).get('redirect') || '/dashboard';
+          await new Promise(r => setTimeout(r, 500));
           router.push(redirect);
         }
       }
