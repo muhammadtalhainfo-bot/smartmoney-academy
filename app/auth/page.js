@@ -38,18 +38,35 @@ export default function AuthPage() {
         router.push(redirectTo);
       }
     } else {
-      const { error } = await supabase.auth.signUp({ email, password });
+      const { data: signUpData, error } = await supabase.auth.signUp({ 
+        email, 
+        password,
+        options: {
+          emailRedirectTo: window.location.origin + '/auth/callback',
+          data: { username: username.trim() }
+        }
+      });
       if (error) {
         setError(error.message);
+      } else if (signUpData?.user?.identities?.length === 0) {
+        setError('An account with this email already exists. Please log in instead.');
       } else {
-        // Save username to profiles
-        if (username) {
-          const { data: { user: newUser } } = await supabase.auth.getUser();
-          if (newUser) {
-            await supabase.from('profiles').upsert({ id: newUser.id, username: username.trim() }, { onConflict: 'id' });
-          }
+        // Save username to profiles immediately
+        if (username && signUpData?.user) {
+          await supabase.from('profiles').upsert({ 
+            id: signUpData.user.id, 
+            username: username.trim() 
+          }, { onConflict: 'id' });
         }
-        setSuccess('Account created! Check your email to confirm, then log in.');
+        // Auto sign in — no email confirmation required
+        const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
+        if (signInError) {
+          // If auto sign in fails (email confirmation required), show friendly message
+          setSuccess('Account created! Please check your email to confirm your account, then log in.');
+        } else {
+          const redirect = new URLSearchParams(window.location.search).get('redirect') || '/dashboard';
+          router.push(redirect);
+        }
       }
     }
     setLoading(false);
