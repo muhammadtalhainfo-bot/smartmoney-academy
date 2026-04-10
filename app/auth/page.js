@@ -71,9 +71,14 @@ function AuthPageInner() {
           // If auto sign in fails (email confirmation required), show friendly message
           setSuccess('Account created! Please check your email to confirm your account, then log in.');
         } else {
-          const redirect = new URLSearchParams(window.location.search).get('redirect') || '/dashboard';
+          const redirect = new URLSearchParams(window.location.search).get('redirect') || null;
           await new Promise(r => setTimeout(r, 500));
-          router.push(redirect);
+          if (redirect) {
+            router.push(redirect);
+          } else {
+            // First time signup → send to foundations
+            router.push('/foundations?welcome=1');
+          }
         }
       }
     }

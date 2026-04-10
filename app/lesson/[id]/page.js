@@ -1158,9 +1158,24 @@ export default function LessonPage({ params }) {
         </div>
       </div>
 
+            {/* ── Next Step CTA ── */}
+      {lesson.nextLesson && (
+        <div style={{ borderTop: '1px solid rgba(212,168,67,0.1)', padding: '32px 24px', marginTop: '24px', background: '#0A0A0A' }}>
+          <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
+            <div>
+              <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.5)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '6px' }}>// Up Next</div>
+              <div style={{ fontSize: '16px', fontWeight: 600, color: 'white' }}>{lesson.nextLesson.title}</div>
+            </div>
+            <Link href={`/lesson/${lesson.nextLesson.id}`} style={{ background: 'linear-gradient(135deg, #D4A843, #F0C96A)', color: '#080808', padding: '12px 24px', borderRadius: '10px', fontFamily: 'DM Mono, monospace', fontSize: '12px', fontWeight: 700, letterSpacing: '0.08em', textDecoration: 'none', whiteSpace: 'nowrap' }}>
+              Next Lesson →
+            </Link>
+          </div>
+        </div>
+      )}
+
       {/* ── Footer ── */}
-      <footer className="border-t border-[var(--border)] px-8 py-6 mt-16">
-        <div className="max-w-4xl mx-auto text-center font-mono-custom text-xs text-gray-600">
+      <footer style={{ borderTop: '1px solid rgba(212,168,67,0.1)', padding: '24px', marginTop: '0' }}>
+        <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center', fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.2)' }}>
           ICT Flow — Educational content only. Not financial advice.
         </div>
       </footer>

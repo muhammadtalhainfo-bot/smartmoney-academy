@@ -263,6 +263,8 @@ export default function FoundationsPage() {
   const pct = Math.round((completed.length / TOPICS.length) * 100);
   const mono = { fontFamily: 'DM Mono, monospace' };
 
+  const isWelcome = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('welcome') === '1';
+
   return (
     <div style={{ minHeight: '100vh', background: '#080808', color: 'white', fontFamily: "'DM Sans', sans-serif" }}>
       <style>{`
@@ -281,6 +283,22 @@ export default function FoundationsPage() {
       `}</style>
 
       <Navbar active="/foundations" />
+
+      {/* Welcome banner for new signups */}
+      {isWelcome && (
+        <div style={{ background: 'linear-gradient(135deg, rgba(52,211,153,0.1), rgba(52,211,153,0.05))', borderBottom: '1px solid rgba(52,211,153,0.2)', padding: '14px 24px' }}>
+          <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+            <span style={{ fontSize: '20px' }}>🎉</span>
+            <div style={{ flex: 1 }}>
+              <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#34D399', fontWeight: 700 }}>Welcome to ICT Flow! </span>
+              <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.7)' }}>Start here — complete Trading Foundations before jumping into ICT modules.</span>
+            </div>
+            <a href="/courses" style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#34D399', border: '1px solid rgba(52,211,153,0.3)', borderRadius: '7px', padding: '6px 14px', textDecoration: 'none', whiteSpace: 'nowrap' }}>
+              Skip to Courses →
+            </a>
+          </div>
+        </div>
+      )}
 
       {/* Hero */}
       <section style={{ padding: '80px 24px 64px', borderBottom: '1px solid rgba(212,168,67,0.1)', background: 'linear-gradient(180deg, #0D0D0D 0%, #080808 100%)', position: 'relative', overflow: 'hidden' }}>
