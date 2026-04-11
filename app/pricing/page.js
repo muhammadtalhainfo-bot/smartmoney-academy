@@ -3,13 +3,14 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
+import { COURSE_META } from '@/app/lib/courseMeta';
 
 const FREE_FEATURES = [
   { text: 'Modules 1–3 (Market Structure, Liquidity, FVG)', included: true },
   { text: 'ICT Glossary (75+ terms)', included: true },
   { text: 'Basic practice questions', included: true },
   { text: 'Trade Journal', included: true },
-  { text: 'Modules 4–14 (Advanced curriculum)', included: false },
+  { text: `Modules 4–${COURSE_META.totalModules} (Advanced curriculum)`, included: false },
   
   { text: 'AI-generated daily challenges', included: false },
   { text: 'Certificate of completion', included: false },
@@ -19,7 +20,7 @@ const FREE_FEATURES = [
 
 const PRO_FEATURES = [
   { text: 'Everything in Free', included: true },
-  { text: 'All 14 modules unlocked', included: true },
+  { text: `All ${COURSE_META.totalModules} modules unlocked`, included: true },
   
   { text: 'AI-generated daily challenges', included: true },
   { text: 'Certificate of completion', included: true },

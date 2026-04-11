@@ -4,8 +4,9 @@ import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import { createClient } from '@/lib/supabase';
 import Footer from '@/app/components/Footer';
+import { COURSE_META } from '@/app/lib/courseMeta';
 
-const TOTAL_LESSONS = 14;
+const TOTAL_MODULES = COURSE_META.totalModules;
 
 export default function CertificatePage() {
   const [user, setUser] = useState(null);
@@ -40,8 +41,8 @@ export default function CertificatePage() {
     load();
   }, []);
 
-  const progress = Math.round((completed / TOTAL_LESSONS) * 100);
-  const eligible = completed >= TOTAL_LESSONS;
+  const progress = Math.round((completed / TOTAL_MODULES) * 100);
+  const eligible = completed >= TOTAL_MODULES;
   const name = profile?.username || user?.email?.split('@')[0] || 'Trader';
   const date = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
@@ -78,7 +79,7 @@ export default function CertificatePage() {
                 YOUR <span className="shine">PROGRESS</span>
               </h1>
               <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '15px', fontWeight: 300 }}>
-                Complete all 14 modules to earn your certificate.
+                Complete all {TOTAL_MODULES} modules to earn your certificate.
               </p>
             </div>
 
@@ -86,13 +87,13 @@ export default function CertificatePage() {
             <div style={{ background: '#0D0D0D', border: '1px solid rgba(212,168,67,0.15)', borderRadius: '16px', padding: '32px', marginBottom: '32px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
                 <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.4)', letterSpacing: '0.1em' }}>MODULES COMPLETED</span>
-                <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#D4A843' }}>{completed}/{TOTAL_LESSONS}</span>
+                <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#D4A843' }}>{completed}/{TOTAL_MODULES}</span>
               </div>
               <div style={{ height: '8px', background: 'rgba(255,255,255,0.06)', borderRadius: '100px', overflow: 'hidden', marginBottom: '24px' }}>
                 <div style={{ height: '100%', width: `${progress}%`, background: 'linear-gradient(90deg,#8A6B28,#D4A843)', borderRadius: '100px', transition: 'width 0.5s' }} />
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '10px' }}>
-                {Array.from({ length: TOTAL_LESSONS }, (_, i) => (
+                {Array.from({ length: TOTAL_MODULES }, (_, i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', borderRadius: '8px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)' }}>
                     <span style={{ fontSize: '14px' }}>{i < completed ? '✅' : '⬜'}</span>
                     <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: i < completed ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.25)' }}>MODULE {String(i + 1).padStart(2, '0')}</span>
@@ -139,11 +140,11 @@ export default function CertificatePage() {
               <div style={{ fontFamily: 'Georgia, serif', fontSize: '14px', color: '#666', marginBottom: '24px', lineHeight: 1.8 }}>
                 has successfully completed the<br />
                 <strong style={{ color: '#1a1a1a' }}>ICT & Smart Money Concepts Curriculum</strong><br />
-                comprising all 14 modules and 80+ lessons
+                comprising all {COURSE_META.totalModules} modules and {COURSE_META.totalLessons}+ lessons
               </div>
 
               <div style={{ display: 'flex', justifyContent: 'center', gap: '32px', marginBottom: '32px' }}>
-                {[['14', 'Modules'], ['80+', 'Lessons'], [profile?.xp || 0, 'XP Earned']].map(([val, label]) => (
+                {[[String(COURSE_META.totalModules), 'Modules'], [`${COURSE_META.totalLessons}+`, 'Lessons'], [profile?.xp || 0, 'XP Earned']].map(([val, label]) => (
                   <div key={label} style={{ textAlign: 'center' }}>
                     <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '32px', color: '#D4A843' }}>{val}</div>
                     <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#999', letterSpacing: '0.15em' }}>{label}</div>

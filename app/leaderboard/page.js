@@ -72,7 +72,7 @@ export default function LeaderboardPage() {
             <span className="shine">TRADERS</span>
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '15px', fontWeight: 300 }}>
-            Earn XP by completing lessons and daily challenges. Climb the ranks.
+            Earn XP by completing modules and daily challenges. Climb the ranks.
           </p>
         </div>
       </section>
@@ -149,7 +149,7 @@ export default function LeaderboardPage() {
         <div style={{ marginTop: '40px', padding: '24px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '12px', marginBottom: '16px' }}>
           <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.6)', letterSpacing: '0.15em', marginBottom: '16px' }}>HOW TO EARN XP</div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '12px' }}>
-            {[['Complete a lesson', '+10 XP'], ['Pass a quiz', '+20 XP'], ['Daily challenge', '+20 XP'], ['Perfect score', '+50 XP'], ['7-day streak', '+100 XP']].map(([action, xp]) => (
+            {[['Complete a module quiz', '+20 XP'], ['Perfect module quiz', '+70 XP'], ['Daily challenge', 'Up to +100 XP'], ['7-day streak', '+100 XP']].map(([action, xp]) => (
               <div key={action} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)' }}>{action}</span>
                 <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '12px', color: '#D4A843' }}>{xp}</span>
