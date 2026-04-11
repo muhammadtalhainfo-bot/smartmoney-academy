@@ -91,9 +91,109 @@ const MODULES = [
     desc: "The complete multi-timeframe methodology — from Monthly bias to 1-minute entry precision.",
     topics: ["Monthly / Weekly Bias", "Daily Narrative Building", "4H Confirmation", "15M & 5M Entry Timeframe", "Full Trade Walkthrough"],
   },
+
+  // ─── NEW MODULES (15–28) ───────────────────────────────────────────────────
+  {
+    id: 15, module: "15", title: "Daily Bias Framework", level: "Intermediate", tag: "ICT",
+    lessons: 6, duration: "54 min", emoji: "🧭", image: "/modules/module-15.webp",
+    desc: "The single most important decision of every trading day — determining directional bias before price moves and building a narrative that guides every entry.",
+    topics: ["What Daily Bias Actually Means", "HTF Context → Daily Narrative", "Previous Day High / Low Logic", "Midnight Open & True Day High/Low", "Session Bias Alignment", "When to Flip Bias Mid-Day"],
+    isNew: true,
+  },
+  {
+    id: 16, module: "16", title: "Draw on Liquidity", level: "Intermediate", tag: "ICT",
+    lessons: 5, duration: "48 min", emoji: "🎯", image: "/modules/module-16.webp",
+    desc: "Understanding where price is going BEFORE it gets there — the single concept that separates ICT traders from everyone else.",
+    topics: ["What is the Draw on Liquidity (DOL)", "Identifying the Next Likely Target", "ERL vs IRL — External vs Internal Range Liquidity", "DOL on Multiple Timeframes", "Trading With the Draw vs Against It", "DOL and PD Array Confluence"],
+    isNew: true,
+  },
+  {
+    id: 17, module: "17", title: "Dealing Ranges & PD Arrays", level: "Intermediate", tag: "ICT",
+    lessons: 6, duration: "52 min", emoji: "📦", image: "/modules/module-17.webp",
+    desc: "The full PD Array Matrix — every institutional zone ranked by strength, and how to use them in order of priority for entries and targets.",
+    topics: ["What is a Dealing Range", "Full PD Array Matrix — All 12 Arrays Ranked", "Breaker vs Mitigation vs Order Block Priority", "IFVG as a PD Array", "Nested Dealing Ranges", "How to Stack PD Arrays for Confluence"],
+    isNew: true,
+  },
+  {
+    id: 18, module: "18", title: "Institutional Order Flow", level: "Advanced", tag: "ICT",
+    lessons: 7, duration: "65 min", emoji: "🏛️", image: "/modules/module-18.webp",
+    desc: "How banks and hedge funds actually move price — accumulation, manipulation, and distribution at the institutional scale that drives every move you see.",
+    topics: ["Institutional vs Retail Order Flow", "How Banks Build Positions", "Stop Hunt Engineering", "Institutional Candle Signatures", "Displacement and Commitment of Direction", "Reading Institutional Intent from Price Structure", "Order Flow Confirmation Before Entry"],
+    isNew: true,
+  },
+  {
+    id: 19, module: "19", title: "Session Timing & Market Hours", level: "Beginner", tag: "ICT",
+    lessons: 5, duration: "40 min", emoji: "🕐", image: "/modules/module-19.webp",
+    desc: "Markets follow precise time-based delivery patterns. Knowing the clock is as important as knowing the chart.",
+    topics: ["The Four Trading Sessions", "Asian Session — Range Building", "London Session — Manipulation & Displacement", "New York AM — Primary Distribution", "London Close & NY PM Reversal Logic", "DST Changes and Session Shifts"],
+    isNew: true,
+  },
+  {
+    id: 20, module: "20", title: "Narrative Building", level: "Advanced", tag: "ICT",
+    lessons: 8, duration: "72 min", emoji: "📖", image: "/modules/module-20.webp",
+    desc: "The highest-level ICT skill — constructing a complete trade story from monthly bias down to 1-minute entry before price moves.",
+    topics: ["What is a Trading Narrative", "Monthly → Weekly → Daily Alignment", "Building the Daily Story from Midnight Open", "Session-Level Narrative Construction", "When the Narrative Fails — Invalidation Logic", "Narrative vs Indicators", "Full Walkthrough: Building a Trade from Scratch", "Backtesting Your Narrative Framework"],
+    isNew: true,
+  },
+  {
+    id: 21, module: "21", title: "Quarterly Theory & Seasonal Tendencies", level: "Advanced", tag: "ICT",
+    lessons: 5, duration: "50 min", emoji: "📅", image: "/modules/module-21.webp",
+    desc: "Markets breathe in quarterly cycles — Q1 accumulation, Q2 manipulation, Q3 distribution, Q4 reversal. Understanding this macro rhythm transforms your bias.",
+    topics: ["The Four Quarters of Every Year", "Q1: January Effect & Accumulation Logic", "Q2: Spring Manipulation", "Q3: Summer Distribution Patterns", "Q4: Year-End Positioning & Reversal Setups", "Monthly Seasonal Tendencies by Pair"],
+    isNew: true,
+  },
+  {
+    id: 22, module: "22", title: "Liquidity Voids & Gaps", level: "Intermediate", tag: "ICT",
+    lessons: 5, duration: "44 min", emoji: "🕳️", image: "/modules/module-22.webp",
+    desc: "The invisible zones price is magnetically drawn to fill — understanding voids, gaps, and inefficiencies at every level.",
+    topics: ["Liquidity Voids vs Fair Value Gaps", "Weekend Gaps (NWOG & NDOG)", "Opening Gaps as Draw on Liquidity", "Void Fill Patterns — Full vs Partial", "Inversion of Gaps After Fill", "Trading Into and Out of Voids"],
+    isNew: true,
+  },
+  {
+    id: 23, module: "23", title: "Time & Price Theory", level: "Advanced", tag: "ICT",
+    lessons: 6, duration: "58 min", emoji: "⏳", image: "/modules/module-23.webp",
+    desc: "Price and time are inseparable. The algorithm delivers price to specific locations at specific times. Master both dimensions.",
+    topics: ["The Time-Price Matrix", "Macro Time Windows (8 precise windows)", "Price Delivery at Specific Times", "Time-Based Reversals", "The 20-Minute Rule", "Using Time Alone to Predict Price"],
+    isNew: true,
+  },
+  {
+    id: 24, module: "24", title: "Turtle Soup & Stop Hunts", level: "Intermediate", tag: "ICT",
+    lessons: 5, duration: "42 min", emoji: "🐢", image: "/modules/module-24.webp",
+    desc: "The most reliable reversal pattern in ICT — engineering false breakouts to trap retail breakout traders and reverse violently against them.",
+    topics: ["What is Turtle Soup — The Origin", "Engineering the Stop Hunt", "Identifying the Setup: EQH/EQL as Bait", "Entry Logic After the Sweep", "Turtle Soup on Multiple Timeframes", "Common Errors That Kill the Trade"],
+    isNew: true,
+  },
+  {
+    id: 25, module: "25", title: "Judas Swing & AMD Deep Dive", level: "Intermediate", tag: "ICT",
+    lessons: 6, duration: "55 min", emoji: "🎭", image: "/modules/module-25.webp",
+    desc: "The manipulation phase of AMD dissected — how the false move traps retail traders and how to position against it every session.",
+    topics: ["The Judas Swing — What It Is and Why It Exists", "London Judas Swing Anatomy", "NY AM Judas Swing Patterns", "How Far the Manipulation Extends", "Confirming Judas vs Real Breakout", "Entries After Judas Completion"],
+    isNew: true,
+  },
+  {
+    id: 26, module: "26", title: "Balanced Price Range (BPR)", level: "Advanced", tag: "ICT",
+    lessons: 4, duration: "36 min", emoji: "⚖️", image: "/modules/module-26.webp",
+    desc: "The highest-probability reaction zone in ICT — where a bullish and bearish FVG overlap to create the most precise entry point on any chart.",
+    topics: ["BPR Formation — Bullish FVG meets Bearish FVG", "Why BPR Creates Extreme Reactions", "Identifying BPR on Any Timeframe", "BPR + OB Confluence", "Partial BPR Fills and Continuation"],
+    isNew: true,
+  },
+  {
+    id: 27, module: "27", title: "Execution & Trade Management", level: "Advanced", tag: "ICT",
+    lessons: 7, duration: "65 min", emoji: "⚡", image: "/modules/module-27.webp",
+    desc: "Knowing the setup is 40% of trading. Execution is the other 60%. Precise entry, SL placement, TP logic, partials, and break-even — the professional framework.",
+    topics: ["Entry Precision — Limit vs Market Orders", "Stop Loss Placement Logic", "Take Profit at Liquidity Targets", "Partial Profits — When and How Much", "Break Even Logic and Trail Stops", "Position Sizing and Risk Per Trade", "The Psychology of Execution"],
+    isNew: true,
+  },
+  {
+    id: 28, module: "28", title: "Backtesting & Model Development", level: "Advanced", tag: "ICT",
+    lessons: 6, duration: "60 min", emoji: "🔬", image: "/modules/module-28.webp",
+    desc: "No edge can be trusted until proven across hundreds of historical setups. Build your personal ICT model and prove it works before risking real capital.",
+    topics: ["Why Most Traders Skip This and Fail", "Setting Up a Proper Backtesting Environment", "What to Record in Every Backtest", "Sample Size — Minimum for Statistical Significance", "Turning Results Into a Defined Model", "Forward Testing Your Model on Demo"],
+    isNew: true,
+  },
 ];
 
-const FILTERS = ['All', 'Beginner', 'Intermediate', 'Advanced', 'ICT', 'SMC', '2024'];
+const FILTERS = ['All', 'Beginner', 'Intermediate', 'Advanced', 'ICT', 'ICT & SMC', 'SMC', '2024', 'New'];
 
 const LEVEL_COLORS = {
   Beginner: { text: '#34D399', bg: 'rgba(52,211,153,0.08)', border: 'rgba(52,211,153,0.2)' },
