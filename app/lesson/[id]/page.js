@@ -16,7 +16,6 @@ const LESSONS = {
     level: 'Beginner',
     duration: '18 min read',
     category: 'Foundation',
-    imageCaption: 'BOS vs ChoCH — the two most critical market structure signals in ICT',
     intro: `Before you can trade ICT, you need to understand one thing: price is not random. It moves in a very specific, structured way — and once you learn to read that structure, you will never look at a chart the same way again. Market structure is the foundation of everything in ICT. It tells you the direction price is going, when that direction is changing, and when a new move is starting.`,
     sections: [
       {
@@ -101,7 +100,6 @@ This is a complete top-down analysis framework. Every ICT trade starts here.`,
     level: 'Beginner',
     duration: '20 min read',
     category: 'Foundation',
-    imageCaption: 'Buy-side liquidity (BSL) sits above highs, sell-side liquidity (SSL) sits below lows',
     intro: `Here is a truth that will change how you see every chart: price does not move because of news, fundamentals, or technical indicators. Price moves to collect liquidity. And liquidity is nothing more than the stop-loss orders and pending orders of millions of retail traders. Once you understand this — you stop being the prey and start following the predator.`,
     sections: [
       {
@@ -184,7 +182,6 @@ The most powerful ICT setups always follow the pattern: Liquidity Sweep → Stru
     level: 'Beginner',
     duration: '16 min read',
     category: 'PD Arrays',
-    imageCaption: 'A bullish FVG: gap between candle 1 high and candle 3 low — price returns to fill it',
     intro: `If you could only learn one ICT concept, the Fair Value Gap (FVG) would be the best choice. It is the most consistently predictive pattern in the entire methodology, it appears on every timeframe, every instrument, and it works because it's based on a fundamental truth about how markets function: price hates imbalance and will always return to fill it.`,
     sections: [
       {
@@ -283,7 +280,6 @@ Risk:Reward is typically 1:3 or better on FVG trades.`,
     level: 'Intermediate',
     duration: '22 min read',
     category: 'PD Arrays',
-    imageCaption: 'Bullish OB: last bearish candle before a strong bullish move — institutions bought here',
     intro: `Order Blocks (OBs) are the most powerful price delivery array in the ICT methodology. While the FVG shows you WHERE price moved fast, the Order Block shows you exactly WHERE the institution placed their original order. It's the footprint left behind by a bank or hedge fund as they accumulated their position — and price always returns to these zones to offer more fill at the same price.`,
     sections: [
       {
@@ -369,7 +365,6 @@ How to determine which to use:
     level: 'Intermediate',
     duration: '15 min read',
     category: 'Time & Sessions',
-    imageCaption: 'The four ICT Killzones — Asian, London, New York AM, and London Close',
     intro: `One of the most underrated secrets in trading is this: WHEN you trade matters more than WHAT you trade. The same setup that works at 9:30 AM New York will fail completely at 2:00 PM. ICT's Killzone framework explains exactly why — and gives you a precise schedule for when the algorithm actually delivers price. Trading outside Killzones is gambling. Trading inside them is reading the playbook.`,
     sections: [
       {
@@ -448,7 +443,6 @@ This simple framework alone — just trading the Asian range sweep + reversal �
     level: 'Intermediate',
     duration: '17 min read',
     category: 'Market Mechanics',
-    imageCaption: 'AMD: price accumulates in Asia, manipulates (Judas) in London, distributes in New York',
     intro: `The Power of Three (PO3) — also known as AMD (Accumulate, Manipulate, Distribute) — is ICT's model for how every single trading day is engineered by institutional participants. Once you understand this three-act script, you will stop being confused by price action and start reading the daily narrative with clarity. Most losing days happen because traders fight this structure instead of flowing with it.`,
     sections: [
       {
@@ -538,7 +532,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Intermediate',
     duration: '22 min read',
     category: 'Price Theory',
-    imageCaption: 'Premium vs Discount: institutions sell in premium, buy in discount — always relative to a swing range',
     intro: `One of the most powerful yet overlooked concepts in ICT is this: institutions never buy at a random price. They only buy when price is at a discount relative to a defined range — and they only sell when price is at a premium. Once you internalize this single principle, you will stop buying at highs and selling at lows forever. The Premium & Discount framework is ICT's answer to the question every trader asks: "Is this a good price to enter?"`,
     sections: [
       {
@@ -580,7 +573,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Intermediate',
     duration: '25 min read',
     category: 'Execution',
-    imageCaption: 'ICT entry models combine liquidity sweeps, displacement, and FVG/OB entries for precision execution',
     intro: `Having all the concepts in your head means nothing if you don't know HOW to combine them into a concrete trade entry. ICT entry models are the specific, repeatable frameworks that tell you exactly when to pull the trigger. These are not vague ideas — they are precise sequences of events that, when all conditions are met, produce high-probability trade entries.`,
     sections: [
       {
@@ -622,7 +614,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Intermediate',
     duration: '20 min read',
     category: 'Strategy',
-    imageCaption: 'The Silver Bullet operates in three specific one-hour windows when the algorithm delivers its most predictable price action',
     intro: `The Silver Bullet is ICT's most specific, most repeatable, and most teachable trade setup. Unlike other concepts that require significant interpretation, the Silver Bullet has precise rules: specific times, specific sequences, and specific entry and exit criteria. This is the most comprehensive breakdown of the Silver Bullet available anywhere.`,
     sections: [
       {
@@ -664,7 +655,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Advanced',
     duration: '24 min read',
     category: 'Analysis',
-    imageCaption: 'HTF analysis starts on monthly/weekly charts and works down to the entry timeframe — never the reverse',
     intro: `The single biggest mistake new ICT traders make is starting their analysis on the 5-minute chart. They see a setup, take it, and wonder why it fails. The reason is almost always the same: they traded against the higher timeframe. ICT's multi-timeframe analysis is not optional — it is the foundation of everything.`,
     sections: [
       {
@@ -706,7 +696,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Advanced',
     duration: '26 min read',
     category: 'Theory',
-    imageCaption: 'The IPDA delivers price in programmatic, predictable ways — understanding its logic is the key to reading markets like an institution',
     intro: `Most traders treat the market like a chaotic battlefield. ICT's view is fundamentally different: the market is a programmatic delivery system. The Interbank Price Delivery Algorithm (IPDA) follows rules. It has patterns. It is predictable. Understanding this changes everything about how you read price.`,
     sections: [
       {
@@ -748,7 +737,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Advanced',
     duration: '21 min read',
     category: 'Risk Management',
-    imageCaption: 'Risk management is the difference between a successful trader and a blown account — ICT\'s rules are non-negotiable',
     intro: `ICT has said it repeatedly: "Risk management is the only thing that matters." You can have the best entry model in the world, but without proper risk management, you will blow your account. This is not a cliché — it is a mathematical certainty.`,
     sections: [
       {
@@ -790,7 +778,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Advanced',
     duration: '19 min read',
     category: 'Execution',
-    imageCaption: 'Trade management after entry determines profitability as much as the entry itself',
     intro: `Getting into a trade is only half the battle. Managing it after entry — the harder half — is what separates profitable traders from break-even ones. Most traders enter well but exit poorly: closing winners too early and letting losers run.`,
     sections: [
       {
@@ -832,7 +819,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Advanced',
     duration: '23 min read',
     category: 'Strategy',
-    imageCaption: 'A trading plan transforms random trades into a systematic, repeatable process — without it, you are gambling',
     intro: `You now understand all core ICT concepts. Now comes the most important step: putting it all together into a written trading plan you will follow every day. Without a plan, all the knowledge is useless. With a great plan — and the discipline to follow it — consistency becomes possible.`,
     sections: [
       {
@@ -876,7 +862,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Intermediate',
     duration: '20 min read',
     category: 'Analysis',
-    imageCaption: 'Daily bias is determined before the session opens  --  from monthly down to daily timeframe alignment',
     intro: `Every professional ICT trader makes one critical decision before placing a single trade: which direction is price going today? This is called Daily Bias  --  and getting it right means every entry you take during the day has the full force of institutional order flow behind it. Getting it wrong means you are fighting the algorithm every step of the way.`,
     sections: [
       {
@@ -926,7 +911,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Intermediate',
     duration: '18 min read',
     category: 'Analysis',
-    imageCaption: 'The Draw on Liquidity is always the next unmitigated liquidity pool  --  price is magnetically drawn toward it',
     intro: `The Draw on Liquidity (DOL) is the concept that separates traders who anticipate from traders who react. While retail traders wonder "where will price go?" after it has already moved, ICT traders identify the next liquidity target BEFORE price reaches it. This is not prediction  --  it is understanding the algorithmic sequence that governs all price delivery.`,
     sections: [
       {
@@ -952,7 +936,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
       {
         title: 'Common DOL Mistakes',
         content: `MISTAKE 1  --  CONFUSING DOL WITH RANDOM TP LEVELS:\nPlacing take-profit at "2:1 R:R" or "50 pips" without identifying an actual liquidity pool. The DOL is always a specific, identifiable liquidity level  --  not an arbitrary number.\n\nMISTAKE 2  --  TARGETING THE WRONG ERL:\nSkipping the nearest ERL and targeting a distant one. The algorithm works step by step  --  it collects the nearest liquidity before moving to the next. Target the first unmitigated ERL in your bias direction.\n\nMISTAKE 3  --  TRADING INTO A VOID:\nEntering a trade where the DOL has already been reached. If the equal highs have already been swept, there is no DOL above them  --  you need to identify the new ERL that forms after the sweep.\n\nMISTAKE 4  --  IGNORING LRLR vs HRLR:\nLow Resistance Liquidity Runs (LRLR) reach their DOL cleanly with minimal opposing structure. High Resistance Liquidity Runs (HRLR) face multiple opposing PD arrays on the way to the target  --  lower probability. Assess the path before entering.',
-        highlight: '📌 Always ask: is this a LRLR (clean path to target) or HRLR (multiple obstacles)? LRLR setups reach their DOL reliably. HRLR setups frequently fail before reaching the target.',
+        highlight: '📌 Always ask: is this a LRLR (clean path to target) or HRLR (multiple obstacles)? LRLR setups reach their DOL reliably. HRLR setups frequently fail before reaching the target.`,
       },
     ],
     quiz: [
@@ -971,7 +955,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Intermediate',
     duration: '22 min read',
     category: 'PD Arrays',
-    imageCaption: 'The PD Array Matrix ranks every institutional zone from most powerful (Breaker) to least (SIBI/BISI)',
     intro: `PD Arrays  --  Price Delivery Arrays  --  are the institutional zones on your chart where the algorithm is programmed to deliver price and create reactions. Understanding which arrays exist, how to rank them by strength, and how to use them in order of priority is what separates advanced ICT practitioners from beginners who draw random boxes and call them Order Blocks.`,
     sections: [
       {
@@ -1016,7 +999,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Advanced',
     duration: '24 min read',
     category: 'Advanced',
-    imageCaption: 'Institutional order flow: accumulation below, stop hunt, displacement, distribution above  --  the complete cycle',
     intro: `Retail traders ask "where is price going?" Institutional traders ask "where do we need to deliver price to fill our orders?" These are fundamentally different questions  --  and the gap between them is the gap between consistent losses and consistent profits. This lesson breaks down exactly how banks and hedge funds operate, and how their operation creates every pattern ICT traders use.`,
     sections: [
       {
@@ -1071,7 +1053,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Beginner',
     duration: '17 min read',
     category: 'Timing',
-    imageCaption: 'The four sessions  --  Asia, London, New York AM, New York PM  --  each with distinct institutional behavior',
     intro: `One of ICT's most powerful but often overlooked teachings is this: time matters as much as price. The same setup that produces a clean 3R trade during the New York AM Killzone will frequently fail or produce a messy, slow-moving trade if taken at 2 PM New York time. Institutional liquidity is not constant  --  it floods the market during specific windows and retreats during others. Trading in the right window transforms your results.`,
     sections: [
       {
@@ -1116,7 +1097,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Advanced',
     duration: '25 min read',
     category: 'Advanced',
-    imageCaption: 'Narrative building: monthly → weekly → daily → session → entry  --  one coherent story from top to bottom',
     intro: `Narrative building is the highest-level skill in ICT methodology. It is the ability to construct a complete, coherent story about what the algorithm intends to do  --  before price does it. Not from indicators. Not from patterns. From understanding the current position in the institutional delivery cycle across all relevant timeframes. When you can tell the narrative accurately, trading becomes anticipatory rather than reactive.`,
     sections: [
       {
@@ -1176,7 +1156,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Advanced',
     duration: '20 min read',
     category: 'Advanced',
-    imageCaption: 'Q1-Q4 quarterly cycle: accumulation → manipulation → distribution → reversal  --  the annual market script',
     intro: `Just as daily price delivery follows the AMD cycle, and weekly delivery follows a predictable Monday-to-Friday rhythm, the annual market follows a quarterly cycle that institutional traders understand and use to position for the largest moves of the year. Quarterly Theory adds the macro layer that most ICT traders miss  --  the seasonal and cyclical context that determines whether a daily or weekly setup has the full force of institutional bias behind it.`,
     sections: [
       {
@@ -1221,7 +1200,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Intermediate',
     duration: '16 min read',
     category: 'PD Arrays',
-    imageCaption: 'NWOG and NDOG gaps  --  weekend and daily opening gaps that act as powerful Draw on Liquidity targets',
     intro: `Every gap on a price chart represents a zone where the market never traded at equilibrium  --  where price jumped from one level to another without the normal two-sided participation that characterizes healthy price delivery. These gaps create institutional obligations  --  zones where unfilled orders remain and where the algorithm is programmed to return and reprice. Understanding liquidity voids and gaps is understanding some of the most reliable Draw on Liquidity targets available.`,
     sections: [
       {
@@ -1266,7 +1244,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Advanced',
     duration: '22 min read',
     category: 'Advanced',
-    imageCaption: 'The Time-Price matrix: 8 macro windows deliver price to specific levels at predictable times each day',
     intro: `Most traders analyze price. Advanced ICT practitioners analyze price AND time simultaneously. ICT's core thesis is that the algorithm delivers price to specific targets at specific times  --  not randomly throughout the day. The 8 Macro Time Windows are the precise moments when the algorithm is most likely to initiate, accelerate, or reverse price delivery. Once you align your entries with these windows, the timing of your trades transforms from guesswork into systematic precision.`,
     sections: [
       {
@@ -1311,7 +1288,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Intermediate',
     duration: '18 min read',
     category: 'Strategy',
-    imageCaption: 'Turtle Soup: price sweeps above EQH or below EQL → immediate reversal → trend in opposite direction',
     intro: `The Turtle Soup is named after the "Turtle Trader" breakout strategy  --  a system that buys new 20-day highs and sells new 20-day lows. ICT's Turtle Soup is designed to trade AGAINST turtle traders  --  to catch the reversal immediately after price takes out an obvious high or low and fails to continue in the breakout direction. It is one of the most consistently reliable setups in the entire ICT framework because it is based on the single most predictable institutional behavior: sweeping retail stop orders before reversing.`,
     sections: [
       {
@@ -1356,7 +1332,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Intermediate',
     duration: '20 min read',
     category: 'Strategy',
-    imageCaption: 'The Judas Swing: a false move against the daily bias that sweeps liquidity before the real delivery begins',
     intro: `The Judas Swing is named deliberately  --  it is a betrayal. A false move in the wrong direction that deceives retail traders into positioning opposite to the day's real institutional delivery. Understanding the Judas Swing is understanding the Manipulation phase of AMD in its most practical and tradeable form. Once you can identify it in real time, you are no longer the one being betrayed  --  you are the one positioned to profit from those who are.`,
     sections: [
       {
@@ -1406,7 +1381,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Advanced',
     duration: '16 min read',
     category: 'PD Arrays',
-    imageCaption: 'BPR: bullish FVG and bearish FVG overlap  --  the dual institutional zone that creates the sharpest reactions',
     intro: `The Balanced Price Range is where two opposing Fair Value Gaps overlap  --  where a zone of bullish institutional imbalance and a zone of bearish institutional imbalance occupy the same price range. This overlap creates the most concentrated institutional interest of any entry zone in the ICT framework. Reactions from BPRs are typically sharper, faster, and more complete than reactions from any single PD Array.`,
     sections: [
       {
@@ -1451,7 +1425,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Advanced',
     duration: '24 min read',
     category: 'Execution',
-    imageCaption: 'Precise entry + correct SL placement + planned TP = execution that lets the edge compound over time',
     intro: `Most ICT learners spend 90% of their time on concepts and 10% on execution. In reality, two traders with identical knowledge of ICT concepts will produce completely different results based on how they execute. Precise entry timing, non-negotiable stop placement, intelligent take-profit management, and the psychology of holding a winning trade  --  these are the skills that determine whether your ICT knowledge produces profits or frustration.`,
     sections: [
       {
@@ -1506,7 +1479,6 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     level: 'Advanced',
     duration: '22 min read',
     category: 'Strategy',
-    imageCaption: 'The backtesting process: 100+ historical trades → statistical analysis → defined model → forward test → live trading',
     intro: `The most dangerous phrase in trading is "I think this setup works." ICT traders do not think  --  they know, because they have tested their setup across hundreds of historical occurrences and measured the results statistically. Backtesting is not busywork. It is the process that transforms a set of interesting concepts into a provable, statistical edge  --  the foundation of consistent profitability.`,
     sections: [
       {
