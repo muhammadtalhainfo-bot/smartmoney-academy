@@ -936,7 +936,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
       {
         title: 'Common DOL Mistakes',
         content: `MISTAKE 1  --  CONFUSING DOL WITH RANDOM TP LEVELS:\nPlacing take-profit at "2:1 R:R" or "50 pips" without identifying an actual liquidity pool. The DOL is always a specific, identifiable liquidity level  --  not an arbitrary number.\n\nMISTAKE 2  --  TARGETING THE WRONG ERL:\nSkipping the nearest ERL and targeting a distant one. The algorithm works step by step  --  it collects the nearest liquidity before moving to the next. Target the first unmitigated ERL in your bias direction.\n\nMISTAKE 3  --  TRADING INTO A VOID:\nEntering a trade where the DOL has already been reached. If the equal highs have already been swept, there is no DOL above them  --  you need to identify the new ERL that forms after the sweep.\n\nMISTAKE 4  --  IGNORING LRLR vs HRLR:\nLow Resistance Liquidity Runs (LRLR) reach their DOL cleanly with minimal opposing structure. High Resistance Liquidity Runs (HRLR) face multiple opposing PD arrays on the way to the target  --  lower probability. Assess the path before entering.`,
-        highlight: '📌 Always ask: is this a LRLR (clean path to target) or HRLR (multiple obstacles)? LRLR setups reach their DOL reliably. HRLR setups frequently fail before reaching the target.`,
+        highlight: '📌 Always ask: is this a LRLR (clean path to target) or HRLR (multiple obstacles)? LRLR setups reach their DOL reliably. HRLR setups frequently fail before reaching the target.',
       },
     ],
     quiz: [
