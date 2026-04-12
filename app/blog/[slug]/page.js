@@ -1,19 +1,16 @@
 'use client';
 import Link from 'next/link';
-import { use, useState, useEffect } from 'react';
+import { use } from 'react';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 import { POSTS } from '../posts';
-import { createClient } from '@/lib/supabase';
 
 function renderContent(content) {
-  // content from DB is a plain string — render as paragraphs
   if (typeof content === 'string') {
     return content.split(/\n\n+/).map((para, i) => (
       <p key={i} style={{ fontSize: '15px', color: 'rgba(255,255,255,0.65)', lineHeight: 1.8, fontWeight: 300, marginBottom: '20px' }}>{para.trim()}</p>
     ));
   }
-  // content from posts.js is an array of blocks
   if (Array.isArray(content)) {
     return content.map((block, i) => {
       if (block.type === 'intro') return (
@@ -48,51 +45,7 @@ function renderContent(content) {
 
 export default function BlogPost({ params }) {
   const { slug } = use(params);
-  const [post, setPost] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function load() {
-      setLoading(true);
-      try {
-        const supabase = createClient();
-        const { data: dbPost } = await supabase
-          .from('blog_posts')
-          .select('*')
-          .eq('slug', slug)
-          .eq('published', true)
-          .single();
-
-        if (dbPost) {
-          setPost({
-            slug: dbPost.slug,
-            title: dbPost.title,
-            description: dbPost.description || '',
-            category: dbPost.category || 'Beginner',
-            readTime: dbPost.read_time || '5 min read',
-            date: dbPost.date || '',
-            image: dbPost.image || dbPost.image_url || '/images/market-structure.png',
-            content: dbPost.content || dbPost.content_json || '',
-          });
-        } else {
-          // Fallback to static posts
-          const staticPost = POSTS.find(p => p.slug === slug);
-          setPost(staticPost || null);
-        }
-      } catch (e) {
-        const staticPost = POSTS.find(p => p.slug === slug);
-        setPost(staticPost || null);
-      }
-      setLoading(false);
-    }
-    load();
-  }, [slug]);
-
-  if (loading) return (
-    <div style={{ minHeight: '100vh', background: '#080808', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '12px', color: 'rgba(255,255,255,0.3)' }}>LOADING...</div>
-    </div>
-  );
+  const post = POSTS.find(p => p.slug === slug) || null;
 
   if (!post) return (
     <div style={{ minHeight: '100vh', background: '#080808', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -108,23 +61,26 @@ export default function BlogPost({ params }) {
     <div style={{ minHeight: '100vh', background: '#080808', color: 'white', fontFamily: "'DM Sans', sans-serif" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
-        .font-display { font-family: 'Bebas Neue', sans-serif; }
         .shine { background: linear-gradient(135deg, #8A6B28 0%, #D4A843 40%, #F0C96A 60%, #D4A843 80%, #8A6B28 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
       `}</style>
 
       <Navbar active="/blog" />
 
-      <div style={{ height: '320px', overflow: 'hidden', position: 'relative' }}>
-        <img src={post.image} alt={post.title} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.5 }}
-          onError={e => { e.target.style.display = 'none'; }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent, #080808)' }} />
+      <div style={{ height: '320px', overflow: 'hidden', position: 'relative', background: '#0D0D0D' }}>
+        <img
+          src={post.image || '/images/market-structure.png'}
+          alt={post.title}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.4 }}
+          onError={e => { e.target.style.display = 'none'; }}
+        />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 30%, #080808)' }} />
       </div>
 
       <article style={{ maxWidth: '720px', margin: '-80px auto 0', padding: '0 24px 80px', position: 'relative' }}>
         <div style={{ display: 'flex', gap: '12px', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap' }}>
           <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#D4A843', background: 'rgba(212,168,67,0.08)', padding: '4px 12px', borderRadius: '4px', letterSpacing: '0.1em' }}>{post.category}</span>
-          <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.08em' }}>{post.readTime}</span>
-          {post.date && <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.08em' }}>{post.date}</span>}
+          <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.35)' }}>{post.readTime}</span>
+          {post.date && <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.35)' }}>{post.date}</span>}
         </div>
 
         <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(36px, 6vw, 56px)', color: 'white', lineHeight: 1.1, marginBottom: '32px', letterSpacing: '0.02em' }}>{post.title}</h1>
@@ -137,9 +93,7 @@ export default function BlogPost({ params }) {
 
         <div style={{ marginTop: '64px', padding: '32px', background: '#0D0D0D', border: '1px solid rgba(212,168,67,0.12)', borderRadius: '16px', textAlign: 'center' }}>
           <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '28px', color: 'white', marginBottom: '8px' }}>READY TO APPLY THIS?</div>
-          <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '14px', marginBottom: '24px' }}>
-            14 free ICT modules. Structured learning. Zero fluff.
-          </p>
+          <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '14px', marginBottom: '24px' }}>14 free ICT modules. Structured learning. Zero fluff.</p>
           <Link href="/courses" style={{ background: 'linear-gradient(135deg,#D4A843,#F0C96A)', color: '#080808', padding: '12px 32px', borderRadius: '8px', fontFamily: 'DM Mono, monospace', fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textDecoration: 'none' }}>
             START LEARNING FREE
           </Link>
