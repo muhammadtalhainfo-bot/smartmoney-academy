@@ -1,5 +1,6 @@
 import "./globals.css";
 import CookieBanner from '@/app/components/CookieBanner';
+import { COURSE_META } from '@/app/lib/courseMeta';
 
 export const metadata = {
   metadataBase: new URL('https://ictflow.com'),
@@ -7,7 +8,7 @@ export const metadata = {
     default: 'ICT Flow — Free ICT & Smart Money Concepts Trading Education',
     template: '%s | ICT Flow',
   },
-  description: 'Master ICT (Inner Circle Trader) and Smart Money Concepts for free. Learn market structure, liquidity, fair value gaps, order blocks, killzones and more. 14 modules, 80+ lessons.',
+  description: `Master ICT (Inner Circle Trader) and Smart Money Concepts for free. Learn market structure, liquidity, fair value gaps, order blocks, killzones and more. ${COURSE_META.totalModules} modules, ${COURSE_META.totalLessons}+ lessons.`,
   keywords: ['ICT trading', 'Smart Money Concepts', 'Inner Circle Trader', 'market structure', 'fair value gap', 'order blocks', 'liquidity', 'NAS100', 'forex trading', 'prop firm', 'trading education', 'free trading course', 'ICT mentorship', 'silver bullet strategy', 'AMD model'],
   authors: [{ name: 'ICT Flow' }],
   creator: 'ICT Flow',
@@ -26,7 +27,7 @@ export const metadata = {
     url: 'https://ictflow.com',
     siteName: 'ICT Flow',
     title: 'ICT Flow — Free ICT Trading Education',
-    description: 'Master ICT & Smart Money Concepts for free. 14 modules, 80+ lessons. Learn to trade like institutions.',
+    description: `Master ICT & Smart Money Concepts for free. ${COURSE_META.totalModules} modules, ${COURSE_META.totalLessons}+ lessons. Learn to trade like institutions.`,
     images: [
       {
         url: '/og-image.png',
@@ -39,7 +40,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'ICT Flow — Free ICT Trading Education',
-    description: 'Master ICT & Smart Money Concepts for free. 14 modules, 80+ lessons.',
+    description: `Master ICT & Smart Money Concepts for free. ${COURSE_META.totalModules} modules, ${COURSE_META.totalLessons}+ lessons.`,
     images: ['/og-image.png'],
     creator: '@riskfirsttrad',
   },
@@ -61,7 +62,7 @@ const jsonLd = {
   '@type': 'EducationalOrganization',
   name: 'ICT Flow',
   url: 'https://ictflow.com',
-  description: 'Free ICT and Smart Money Concepts trading education platform. 14 modules, 80+ lessons.',
+  description: `Free ICT and Smart Money Concepts trading education platform. ${COURSE_META.totalModules} modules, ${COURSE_META.totalLessons}+ lessons.`,
   educationalCredentialAwarded: 'ICT Trading Certificate',
   hasOfferCatalog: {
     '@type': 'OfferCatalog',

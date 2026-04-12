@@ -91,7 +91,7 @@ const FREE_FEATURES_DEFAULT = [
 ];
 const PRO_FEATURES_DEFAULT = [
   'Everything in Free',
-  'All 14 modules unlocked',
+  'All 28 modules unlocked',
   'AI-generated daily challenges',
   'Certificate of completion',
   'Discord community access',
