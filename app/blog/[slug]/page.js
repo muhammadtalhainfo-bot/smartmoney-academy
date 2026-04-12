@@ -26,7 +26,7 @@ function renderContent(content) {
         <ul key={i} style={{ marginBottom: '24px', paddingLeft: '0', listStyle: 'none' }}>
           {block.items.map((item, j) => (
             <li key={j} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', marginBottom: '12px', fontSize: '15px', color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, fontWeight: 300 }}>
-              <span style={{ color: '#D4A843', flexShrink: 0, marginTop: '4px' }}>◆</span>
+              <span style={{ color: '#D4A843', flexShrink: 0, marginTop: '4px' }}>diamond</span>
               <span>{item}</span>
             </li>
           ))}
@@ -44,8 +44,12 @@ function renderContent(content) {
 }
 
 export default function BlogPost({ params }) {
-  const { slug } = use(params);
-  const post = POSTS.find(p => p.slug === slug) || null;
+  const resolvedParams = use(params);
+  const slug = resolvedParams ? resolvedParams.slug : null;
+
+  if (!slug) return <div style={{ minHeight: '100vh', background: '#080808' }} />;
+
+  const post = POSTS.find(p => p && p.slug === slug) || null;
 
   if (!post) return (
     <div style={{ minHeight: '100vh', background: '#080808', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -61,7 +65,6 @@ export default function BlogPost({ params }) {
     <div style={{ minHeight: '100vh', background: '#080808', color: 'white', fontFamily: "'DM Sans', sans-serif" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
-        .shine { background: linear-gradient(135deg, #8A6B28 0%, #D4A843 40%, #F0C96A 60%, #D4A843 80%, #8A6B28 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
       `}</style>
 
       <Navbar active="/blog" />
