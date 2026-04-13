@@ -27,14 +27,7 @@ export const metadata = {
     siteName: 'ICT Flow',
     title: 'ICT Flow — Free ICT Trading Education',
     description: 'Master ICT & Smart Money Concepts for free. 14 modules, 80+ lessons. Learn to trade like institutions.',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'ICT Flow — Trade Like Institutions',
-      },
-    ],
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ICT Flow — Trade Like Institutions' }],
   },
   twitter: {
     card: 'summary_large_image',
