@@ -1,1 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512"><metadata><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"><rdf:Description><dc:creator>RealFaviconGenerator</dc:creator><dc:source>https://realfavicongenerator.net</dc:source></rdf:Description></rdf:RDF></metadata><rect width="512" height="512" fill="#0B0B0B"></rect><rect x="96" y="96" width="320" height="320" fill="none" stroke="#D4AF37" stroke-width="18" rx="18"></rect><path d="M150 300 C220 250, 290 330, 360 200" fill="none" stroke="#D4AF37" stroke-width="20" stroke-linecap="round"></path><polygon points="360,200 392,210 370,240" fill="#D4AF37"></polygon><text x="256" y="285" text-anchor="middle" font-size="120" font-family="Arial, Helvetica, sans-serif" fill="#D4AF37" font-weight="bold">IF</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="22" fill="#080808"/>
+  <rect x="3" y="3" width="94" height="94" rx="20" fill="none" stroke="#D4A843" stroke-width="3"/>
+  <text x="50" y="58" font-family="Arial Black, sans-serif" font-size="42" font-weight="900" fill="#D4A843" text-anchor="middle">IF</text>
+  <polyline points="20,72 35,58 50,65 65,45 80,50" fill="none" stroke="#D4A843" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
