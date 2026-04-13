@@ -99,10 +99,15 @@ export default function RootLayout({ children }) {
             await OneSignal.init({
               appId: "7091f3f0-0cf1-4afa-9587-0c3040b520c7",
               notifyButton: { enable: true },
+              allowLocalhostAsSecureOrigin: false,
+              serviceWorkerPath: "/OneSignalSDKWorker.js",
             });
           });
         ` }} />
-      </head>
+        <link rel="preconnect" href="https://api.onesignal.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+</head>
       <body>
         {children}
         <CookieBanner />
