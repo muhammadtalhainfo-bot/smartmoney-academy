@@ -27,10 +27,10 @@ export default function Footer() {
               <img src="/ictflow-symbol.svg" alt="ICT Flow" style={{ width: '34px', height: '34px', borderRadius: '8px' }} />
               <div>
                 <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '16px', letterSpacing: '0.15em', color: 'white' }}>ICT FLOW</div>
-                <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#8A6B28', letterSpacing: '0.2em' }}>ACADEMY</div>
+                <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#B8924A', letterSpacing: '0.2em' }}>ACADEMY</div>
               </div>
             </Link>
-            <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '13px', lineHeight: 1.7, marginBottom: '16px' }}>
+            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '13px', lineHeight: 1.7, marginBottom: '16px' }}>
               Free ICT & Smart Money Concepts education. Trade like institutions.
             </p>
             <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.5)', letterSpacing: '0.1em' }}>
@@ -40,30 +40,30 @@ export default function Footer() {
 
           {/* LEARN */}
           <div>
-            <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.6)', letterSpacing: '0.15em', marginBottom: '16px' }}>LEARN</div>
+            <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.85)', letterSpacing: '0.15em', marginBottom: '16px' }}>LEARN</div>
             {[['/', 'Home'], ['/foundations', 'Trading Foundations'], ['/courses', 'Courses'], ['/mentorship', '2022 Mentorship'], ['/glossary', 'ICT Glossary']].map(([href, label]) => (
               <div key={href} style={{ marginBottom: '10px' }}>
-                <Link href={href} style={{ textDecoration: 'none', color: 'rgba(255,255,255,0.4)', fontSize: '13px', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color = '#D4A843'} onMouseOut={e => e.target.style.color = 'rgba(255,255,255,0.4)'}>{label}</Link>
+                <Link href={href} style={{ textDecoration: 'none', color: 'rgba(255,255,255,0.65)', fontSize: '13px', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color = '#D4A843'} onMouseOut={e => e.target.style.color = 'rgba(255,255,255,0.4)'}>{label}</Link>
               </div>
             ))}
           </div>
 
           {/* TOOLS */}
           <div>
-            <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.6)', letterSpacing: '0.15em', marginBottom: '16px' }}>TOOLS</div>
+            <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.85)', letterSpacing: '0.15em', marginBottom: '16px' }}>TOOLS</div>
             {[['/journal', 'Trade Journal'], ['/dashboard', 'Dashboard'], ['/practice', 'Daily Practice'], ['/resources', 'Resources']].map(([href, label]) => (
               <div key={href} style={{ marginBottom: '10px' }}>
-                <Link href={href} style={{ textDecoration: 'none', color: 'rgba(255,255,255,0.4)', fontSize: '13px', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color = '#D4A843'} onMouseOut={e => e.target.style.color = 'rgba(255,255,255,0.4)'}>{label}</Link>
+                <Link href={href} style={{ textDecoration: 'none', color: 'rgba(255,255,255,0.65)', fontSize: '13px', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color = '#D4A843'} onMouseOut={e => e.target.style.color = 'rgba(255,255,255,0.4)'}>{label}</Link>
               </div>
             ))}
           </div>
 
           {/* LEGAL */}
           <div>
-            <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.6)', letterSpacing: '0.15em', marginBottom: '16px' }}>LEGAL</div>
+            <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.85)', letterSpacing: '0.15em', marginBottom: '16px' }}>LEGAL</div>
             {[['/privacy', 'Privacy Policy'], ['/terms', 'Terms of Service'], ['/cookies', 'Cookie Policy'], ['/resources', 'Affiliate Disclosure']].map(([href, label], i) => (
               <div key={i} style={{ marginBottom: '10px' }}>
-                <Link href={href} style={{ textDecoration: 'none', color: 'rgba(255,255,255,0.4)', fontSize: '13px', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color = '#D4A843'} onMouseOut={e => e.target.style.color = 'rgba(255,255,255,0.4)'}>{label}</Link>
+                <Link href={href} style={{ textDecoration: 'none', color: 'rgba(255,255,255,0.65)', fontSize: '13px', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color = '#D4A843'} onMouseOut={e => e.target.style.color = 'rgba(255,255,255,0.4)'}>{label}</Link>
               </div>
             ))}
           </div>

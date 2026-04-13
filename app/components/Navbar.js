@@ -48,7 +48,7 @@ export default function Navbar({ active }) {
           <img src="/ictflow-symbol.svg" alt="ICT Flow" style={{ width: '34px', height: '34px', borderRadius: '8px' }} />
           <div>
             <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '17px', letterSpacing: '0.15em', color: 'white', lineHeight: 1.1 }}>ICT FLOW</div>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '9px', color: '#8A6B28', letterSpacing: '0.2em' }}>TRADING EDUCATION</div>
+            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '9px', color: '#B8924A', letterSpacing: '0.2em' }}>TRADING EDUCATION</div>
           </div>
         </Link>
 

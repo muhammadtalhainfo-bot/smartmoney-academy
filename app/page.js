@@ -201,7 +201,7 @@ export default function HomePage() {
         <div className="flex ticker-track whitespace-nowrap">
           {[...ticker, ...ticker].map((item, i) => (
             <span key={i} className="inline-flex items-center gap-3 px-6 font-mono text-xs">
-              <span className="text-[var(--gold-dim)] font-medium">{item.pair}</span>
+              <span className="text-[#D4A843] font-medium">{item.pair}</span>
               <span className="text-white">{item.price}</span>
               <span className={item.up ? 'text-emerald-400' : 'text-red-400'}>
                 {item.up ? '▲' : '▼'} {item.change}
@@ -330,7 +330,7 @@ export default function HomePage() {
                   <h3 className="font-semibold text-white mb-2">{c.title}</h3>
                   <p className="text-gray-300 text-xs leading-relaxed mb-4" style={{ fontWeight: 300 }}>{c.desc}</p>
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-[10px] text-[var(--gold-dim)]">{c.lessons} LESSONS</span>
+                    <span className="font-mono text-[10px] text-[#D4A843]">{c.lessons} LESSONS</span>
                     <span className="text-[var(--gold)] text-sm">→</span>
                   </div>
                 </div>
@@ -372,7 +372,7 @@ export default function HomePage() {
       {/* ── QUOTE ── */}
       <section className="relative z-10 px-6 py-24 text-center diagonal-accent">
         <div className="max-w-3xl mx-auto">
-          <div className="font-mono text-xs text-[var(--gold-dim)] tracking-widest uppercase mb-8">// ICT on Trading</div>
+          <div className="font-mono text-xs text-[#D4A843] tracking-widest uppercase mb-8">// ICT on Trading</div>
           <blockquote className="font-display text-3xl md:text-5xl text-white leading-tight mb-8">
             "STOP TRYING TO PREDICT.<br/>
             <span style={{ color: 'var(--gold)' }}>START READING THE ALGORITHM."</span>

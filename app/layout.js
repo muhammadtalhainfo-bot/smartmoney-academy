@@ -109,7 +109,7 @@ export default function RootLayout({ children }) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 </head>
       <body>
-        {children}
+        <main id="main-content">{children}</main>
         <CookieBanner />
       </body>
     </html>
