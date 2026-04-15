@@ -59,7 +59,7 @@ const TESTIMONIALS = [
 
 export default function Testimonials() {
   return (
-    <section style={{ padding: '80px 24px', borderTop: '1px solid rgba(212,168,67,0.1)', position: 'relative', overflow: 'hidden' }}>
+    <section style={{ padding: '80px 24px', borderTop: '1px solid rgba(212,168,67,0.15)', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 800px 400px at 50% 50%, rgba(212,168,67,0.03) 0%, transparent 70%)', pointerEvents: 'none' }} />
       <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative' }}>
 
@@ -81,7 +81,7 @@ export default function Testimonials() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '16px' }}>
           {TESTIMONIALS.map((t, i) => (
             <div key={i} style={{ background: '#0D0D0D', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '16px', padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px', transition: 'border-color 0.2s' }}
-              onMouseOver={e => e.currentTarget.style.borderColor = 'rgba(212,168,67,0.2)'}
+              onMouseOver={e => e.currentTarget.style.borderColor = 'rgba(212,168,67,0.8)'}
               onMouseOut={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'}>
 
               {/* STARS */}

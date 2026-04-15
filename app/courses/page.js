@@ -197,7 +197,7 @@ const FILTERS = ['All', 'Beginner', 'Intermediate', 'Advanced', 'ICT', 'ICT & SM
 
 const LEVEL_COLORS = {
   Beginner: { text: '#34D399', bg: 'rgba(52,211,153,0.08)', border: 'rgba(52,211,153,0.2)' },
-  Intermediate: { text: '#D4A843', bg: 'rgba(212,168,67,0.08)', border: 'rgba(212,168,67,0.2)' },
+  Intermediate: { text: '#D4A843', bg: 'rgba(212,168,67,0.12)', border: 'rgba(212,168,67,0.8)' },
   Advanced: { text: '#F87171', bg: 'rgba(248,113,113,0.08)', border: 'rgba(248,113,113,0.2)' },
   SMC: { text: '#FB923C', bg: 'rgba(251,146,60,0.08)', border: 'rgba(251,146,60,0.2)' },
 };
@@ -232,7 +232,7 @@ function ModuleCard({ mod, index }) {
         position: 'relative',
         padding: '20px 22px 18px',
         background: 'linear-gradient(135deg, #111008 0%, #0E0E0E 60%, #0C0C0C 100%)',
-        borderBottom: '1px solid rgba(212,168,67,0.08)',
+        borderBottom: '1px solid rgba(212,168,67,0.12)',
         overflow: 'hidden',
       }}>
         {/* Subtle gold radial glow top-right */}
@@ -250,7 +250,7 @@ function ModuleCard({ mod, index }) {
             {/* IF monogram */}
             <div style={{
               width: '26px', height: '26px', borderRadius: '7px',
-              background: 'rgba(212,168,67,0.1)', border: '1px solid rgba(212,168,67,0.25)',
+              background: 'rgba(212,168,67,0.15)', border: '1px solid rgba(212,168,67,0.25)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               fontFamily: 'Bebas Neue, sans-serif', fontSize: '11px', color: '#D4A843', letterSpacing: '0.05em',
             }}>IF</div>
@@ -275,7 +275,7 @@ function ModuleCard({ mod, index }) {
         }}>{mod.title}</h3>
 
         {/* Thin gold divider line */}
-        <div style={{ height: '1px', background: 'linear-gradient(90deg, rgba(212,168,67,0.3), rgba(212,168,67,0.06) 60%, transparent)', borderRadius: '1px' }} />
+        <div style={{ height: '1px', background: 'linear-gradient(90deg, rgba(212,168,67,0.8), rgba(212,168,67,0.06) 60%, transparent)', borderRadius: '1px' }} />
       </div>
 
       {/* ── IMAGE PREVIEW — untouched, clean display ── */}
@@ -318,7 +318,7 @@ function ModuleCard({ mod, index }) {
             width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
             padding: '9px 13px', borderRadius: '9px',
             background: expanded ? 'rgba(212,168,67,0.05)' : 'transparent',
-            border: '1px solid rgba(212,168,67,0.1)',
+            border: '1px solid rgba(212,168,67,0.15)',
             color: 'rgba(212,168,67,0.85)',
             fontFamily: 'DM Mono, monospace', fontSize: '9px', letterSpacing: '0.15em',
             cursor: 'pointer', textTransform: 'uppercase',
@@ -348,7 +348,7 @@ function ModuleCard({ mod, index }) {
         <Link href={`/lesson/${mod.id}`}>
           <div className="start-btn" style={{
             width: '100%', padding: '11px', borderRadius: '10px',
-            border: '1px solid rgba(212,168,67,0.2)',
+            border: '1px solid rgba(212,168,67,0.8)',
             color: '#D4A843', background: 'transparent',
             fontFamily: 'DM Mono, monospace', fontSize: '10px',
             letterSpacing: '0.15em', textTransform: 'uppercase',
@@ -466,7 +466,7 @@ export default function CoursesPage() {
         }
 
         .track-header {
-          border-left: 2px solid rgba(212,168,67,0.3);
+          border-left: 2px solid rgba(212,168,67,0.8);
           padding-left: 16px;
         }
       `}</style>
@@ -511,7 +511,7 @@ export default function CoursesPage() {
 
       {/* Foundations Banner */}
       <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '32px 24px 0' }}>
-        <div style={{ background: 'rgba(212,168,67,0.06)', border: '1px solid rgba(212,168,67,0.2)', borderRadius: '16px', padding: '20px 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
+        <div style={{ background: 'rgba(212,168,67,0.06)', border: '1px solid rgba(212,168,67,0.8)', borderRadius: '16px', padding: '20px 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
           <div>
             <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', letterSpacing: '0.2em', color: '#D4A843', marginBottom: '6px' }}>// NEW TO TRADING?</div>
             <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '15px', color: 'white', fontWeight: 600 }}>Start with Trading Foundations before ICT concepts.</div>

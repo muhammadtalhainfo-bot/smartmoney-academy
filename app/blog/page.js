@@ -37,7 +37,7 @@ export default function BlogPage() {
 
       <Navbar active="/blog" />
 
-      <section style={{ padding: '64px 24px 40px', borderBottom: '1px solid rgba(212,168,67,0.1)' }}>
+      <section style={{ padding: '64px 24px 40px', borderBottom: '1px solid rgba(212,168,67,0.15)' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', textAlign: 'center' }}>
           <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(52px, 8vw, 80px)', lineHeight: 1, marginBottom: '12px' }}>
             <span className="shine">NEWS & INSIGHTS</span>
@@ -53,14 +53,14 @@ export default function BlogPage() {
         {active === 'All' && featured && (
           <Link href={'/blog/' + featured.slug} style={{ textDecoration: 'none', display: 'block', marginBottom: '48px' }}>
             <div className="card" style={{ background: '#0C0C0C', border: '1px solid rgba(212,168,67,0.15)', borderRadius: '20px', overflow: 'hidden' }}>
-              <div style={{ padding: '22px 32px 20px', background: 'linear-gradient(135deg, #111008 0%, #0F0F0E 60%, #0C0C0C 100%)', borderBottom: '1px solid rgba(212,168,67,0.08)' }}>
+              <div style={{ padding: '22px 32px 20px', background: 'linear-gradient(135deg, #111008 0%, #0F0F0E 60%, #0C0C0C 100%)', borderBottom: '1px solid rgba(212,168,67,0.12)' }}>
                 <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '20px' }}>
                   <div style={{ flex: 1 }}>
                     <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(24px, 3vw, 34px)', color: 'white', lineHeight: 1.05, marginBottom: '12px' }}>{featured.title}</h2>
                     <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.42)', lineHeight: 1.65, fontWeight: 300 }}>{featured.description}</p>
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '12px', flexShrink: 0 }}>
-                    <span style={{ padding: '4px 12px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.3)', fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#D4A843' }}>FEATURED</span>
+                    <span style={{ padding: '4px 12px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.8)', fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#D4A843' }}>FEATURED</span>
                     <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(212,168,67,0.7)' }}>Read article</span>
                   </div>
                 </div>
@@ -81,7 +81,7 @@ export default function BlogPage() {
               <button key={cat} onClick={() => setActive(cat)} style={{
                 padding: '6px 14px', borderRadius: '100px',
                 border: '1px solid ' + (active === cat ? '#D4A843' : 'rgba(255,255,255,0.1)'),
-                background: active === cat ? 'rgba(212,168,67,0.1)' : 'transparent',
+                background: active === cat ? 'rgba(212,168,67,0.15)' : 'transparent',
                 color: active === cat ? '#D4A843' : 'rgba(255,255,255,0.5)',
                 fontFamily: 'DM Mono, monospace', fontSize: '10px', cursor: 'pointer'
               }}>
@@ -94,7 +94,7 @@ export default function BlogPage() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '16px' }}>
           {rest.map(post => (
             <Link key={post.slug} href={'/blog/' + post.slug} style={{ textDecoration: 'none' }}>
-              <div className="card" style={{ background: '#0C0C0C', border: '1px solid rgba(212,168,67,0.1)', borderRadius: '18px', overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column' }}>
+              <div className="card" style={{ background: '#0C0C0C', border: '1px solid rgba(212,168,67,0.15)', borderRadius: '18px', overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ padding: '16px 20px 14px', background: 'linear-gradient(135deg, #111008 0%, #0E0E0E 100%)', borderBottom: '1px solid rgba(212,168,67,0.07)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
                     <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.28)' }}>ICT Flow Team</span>

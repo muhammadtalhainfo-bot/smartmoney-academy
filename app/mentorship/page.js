@@ -476,20 +476,20 @@ export default function MentorshipPage() {
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap');
         * { box-sizing: border-box; }
         .font-display { font-family: 'Bebas Neue', sans-serif; }
-        .ep-card { transition: all 0.2s ease; border: 1px solid rgba(212,168,67,0.1); }
-        .ep-card:hover { border-color: rgba(212,168,67,0.3); transform: translateY(-1px); }
+        .ep-card { transition: all 0.2s ease; border: 1px solid rgba(212,168,67,0.15); }
+        .ep-card:hover { border-color: rgba(212,168,67,0.8); transform: translateY(-1px); }
         .tag-pill { cursor: pointer; transition: all 0.15s; }
-        .progress-bar { background: rgba(212,168,67,0.08); border-radius: 99px; overflow: hidden; height: 6px; }
+        .progress-bar { background: rgba(212,168,67,0.12); border-radius: 99px; overflow: hidden; height: 6px; }
         .progress-fill { background: linear-gradient(90deg, #8A6B28, #D4A843, #F0C96A); height: 6px; border-radius: 99px; transition: width 0.8s ease; }
         input::placeholder { color: rgba(255,255,255,0.55); }
         input:focus { outline: none; border-color: rgba(212,168,67,0.75) !important; }
-        ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: #0A0A0A; } ::-webkit-scrollbar-thumb { background: rgba(212,168,67,0.3); border-radius: 4px; }
+        ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: #0A0A0A; } ::-webkit-scrollbar-thumb { background: rgba(212,168,67,0.8); border-radius: 4px; }
       `}</style>
 
       <Navbar active="/mentorship" />
 
       {/* Hero */}
-      <section style={{ borderBottom: '1px solid rgba(212,168,67,0.1)', background: 'linear-gradient(180deg, #0A0A0A 0%, #080808 100%)', padding: '64px 24px 48px' }}>
+      <section style={{ borderBottom: '1px solid rgba(212,168,67,0.15)', background: 'linear-gradient(180deg, #0A0A0A 0%, #080808 100%)', padding: '64px 24px 48px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ ...mono, fontSize: '11px', color: 'rgba(212,168,67,0.8)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '12px' }}>// Michael J. Huddleston</div>
           <h1 className="font-display" style={{ fontSize: 'clamp(42px, 7vw, 96px)', lineHeight: 1, marginBottom: '16px' }}>
@@ -529,7 +529,7 @@ export default function MentorshipPage() {
       </section>
 
       {/* Phase overview */}
-      <div style={{ borderBottom: '1px solid rgba(212,168,67,0.08)', background: '#0A0A0A', padding: '20px 24px', overflowX: 'auto' }}>
+      <div style={{ borderBottom: '1px solid rgba(212,168,67,0.12)', background: '#0A0A0A', padding: '20px 24px', overflowX: 'auto' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', gap: '12px', flexWrap: 'nowrap', minWidth: 'max-content' }}>
           {PHASES.map(p => {
             const phaseEps = EPISODES.filter(e => e.phase === p.id);
@@ -547,7 +547,7 @@ export default function MentorshipPage() {
       </div>
 
       {/* Search and filters */}
-      <div style={{ borderBottom: '1px solid rgba(212,168,67,0.08)', background: 'rgba(8,8,8,0.97)', backdropFilter: 'blur(20px)', padding: '16px 24px', position: 'sticky', top: '72px', zIndex: 40 }}>
+      <div style={{ borderBottom: '1px solid rgba(212,168,67,0.12)', background: 'rgba(8,8,8,0.97)', backdropFilter: 'blur(20px)', padding: '16px 24px', position: 'sticky', top: '72px', zIndex: 40 }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
             <input
@@ -590,14 +590,14 @@ export default function MentorshipPage() {
                   const isMustWatch = ep.tags.includes('Must Watch');
 
                   return (
-                    <div key={ep.id} className="ep-card" style={{ background: isWatched ? 'rgba(52,211,153,0.03)' : '#0D0D0D', borderRadius: '14px', overflow: 'hidden', borderColor: isWatched ? 'rgba(52,211,153,0.15)' : isMustWatch ? 'rgba(212,168,67,0.2)' : 'rgba(212,168,67,0.08)' }}>
+                    <div key={ep.id} className="ep-card" style={{ background: isWatched ? 'rgba(52,211,153,0.03)' : '#0D0D0D', borderRadius: '14px', overflow: 'hidden', borderColor: isWatched ? 'rgba(52,211,153,0.15)' : isMustWatch ? 'rgba(212,168,67,0.8)' : 'rgba(212,168,67,0.12)' }}>
 
                       {/* Episode header */}
                       <div style={{ padding: '16px 20px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '16px' }}
                         onClick={() => setExpandedId(isExpanded ? null : ep.id)}>
 
                         {/* Episode number */}
-                        <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: isWatched ? 'rgba(52,211,153,0.15)' : 'rgba(212,168,67,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                        <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: isWatched ? 'rgba(52,211,153,0.15)' : 'rgba(212,168,67,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                           {isWatched
                             ? <span style={{ color: '#34D399', fontSize: '16px' }}>✓</span>
                             : <span className="font-display" style={{ color: '#D4A843', fontSize: '16px' }}>{String(ep.id).padStart(2, '0')}</span>
@@ -613,7 +613,7 @@ export default function MentorshipPage() {
                           <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
                             <span style={{ ...mono, fontSize: '10px', color: '#808080' }}>{ep.duration}</span>
                             {ep.concepts.slice(0, 3).map(c => (
-                              <span key={c} style={{ ...mono, fontSize: '9px', color: 'rgba(212,168,67,0.75)', background: 'rgba(212,168,67,0.05)', border: '1px solid rgba(212,168,67,0.1)', padding: '1px 6px', borderRadius: '4px' }}>{c}</span>
+                              <span key={c} style={{ ...mono, fontSize: '9px', color: 'rgba(212,168,67,0.75)', background: 'rgba(212,168,67,0.05)', border: '1px solid rgba(212,168,67,0.15)', padding: '1px 6px', borderRadius: '4px' }}>{c}</span>
                             ))}
                             {ep.concepts.length > 3 && <span style={{ ...mono, fontSize: '9px', color: '#606060' }}>+{ep.concepts.length - 3} more</span>}
                           </div>
@@ -632,7 +632,7 @@ export default function MentorshipPage() {
 
                       {/* Expanded content */}
                       {isExpanded && (
-                        <div style={{ borderTop: '1px solid rgba(212,168,67,0.08)', padding: '20px', background: 'rgba(0,0,0,0.2)' }}>
+                        <div style={{ borderTop: '1px solid rgba(212,168,67,0.12)', padding: '20px', background: 'rgba(0,0,0,0.2)' }}>
                           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
                             {/* Summary */}
                             <div>
@@ -651,7 +651,7 @@ export default function MentorshipPage() {
                             <div style={{ ...mono, fontSize: '10px', color: '#808080', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '8px' }}>Concepts Covered</div>
                             <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
                               {ep.concepts.map(c => (
-                                <span key={c} style={{ ...mono, fontSize: '10px', color: '#D4A843', background: 'rgba(212,168,67,0.08)', border: '1px solid rgba(212,168,67,0.15)', padding: '3px 8px', borderRadius: '6px' }}>{c}</span>
+                                <span key={c} style={{ ...mono, fontSize: '10px', color: '#D4A843', background: 'rgba(212,168,67,0.12)', border: '1px solid rgba(212,168,67,0.15)', padding: '3px 8px', borderRadius: '6px' }}>{c}</span>
                               ))}
                             </div>
                           </div>

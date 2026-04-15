@@ -4,10 +4,10 @@ import Link from 'next/link';
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer style={{ borderTop: '1px solid rgba(212,168,67,0.1)', background: '#080808', marginTop: '80px' }}>
+    <footer style={{ borderTop: '1px solid rgba(212,168,67,0.15)', background: '#080808', marginTop: '80px' }}>
 
       {/* DISCLAIMER BAR */}
-      <div style={{ background: 'rgba(212,168,67,0.04)', borderBottom: '1px solid rgba(212,168,67,0.08)', padding: '16px 24px' }}>
+      <div style={{ background: 'rgba(212,168,67,0.04)', borderBottom: '1px solid rgba(212,168,67,0.12)', padding: '16px 24px' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
           <span style={{ color: '#D4A843', fontSize: '16px', flexShrink: 0, marginTop: '1px' }}>⚠️</span>
           <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, letterSpacing: '0.04em', margin: 0 }}>
@@ -76,7 +76,7 @@ export default function Footer() {
           </div>
           <div style={{ display: 'flex', gap: '16px' }}>
             {[['𝕏', 'https://x.com/riskfirsttrad'], ['▶', 'https://youtube.com/@smart_money_academy0'], ['📱', 'https://www.tiktok.com/@smart.money.academy'], ['💬', 'https://discord.gg/bh2YK6vF']].map(([icon, href]) => (
-              <a key={href} href={href} target="_blank" rel="noopener noreferrer" style={{ width: '32px', height: '32px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', color: 'rgba(255,255,255,0.65)', textDecoration: 'none', transition: 'all 0.2s' }} onMouseOver={e => { e.currentTarget.style.borderColor = 'rgba(212,168,67,0.3)'; e.currentTarget.style.color = '#D4A843'; }} onMouseOut={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)'; e.currentTarget.style.color = 'rgba(255,255,255,0.65)'; }}>{icon}</a>
+              <a key={href} href={href} target="_blank" rel="noopener noreferrer" style={{ width: '32px', height: '32px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', color: 'rgba(255,255,255,0.65)', textDecoration: 'none', transition: 'all 0.2s' }} onMouseOver={e => { e.currentTarget.style.borderColor = 'rgba(212,168,67,0.8)'; e.currentTarget.style.color = '#D4A843'; }} onMouseOut={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.5)'; e.currentTarget.style.color = 'rgba(255,255,255,0.65)'; }}>{icon}</a>
             ))}
           </div>
         </div>

@@ -208,7 +208,7 @@ export default function GlossaryPage() {
 
         {/* A–Z quick jump */}
         <div className="max-w-5xl mx-auto mt-3 flex items-center gap-1 flex-wrap">
-          <span className="font-mono-c text-[10px] mr-1" style={{ color: 'rgba(212,168,67,0.3)' }}>JUMP:</span>
+          <span className="font-mono-c text-[10px] mr-1" style={{ color: 'rgba(212,168,67,0.8)' }}>JUMP:</span>
           {grouped.map(([letter]) => (
             <a
               key={letter}
@@ -229,7 +229,7 @@ export default function GlossaryPage() {
       <div className="relative z-10 max-w-5xl mx-auto px-6 py-10">
         {grouped.length === 0 && (
           <div className="text-center py-20">
-            <p className="font-mono-c text-xs" style={{ color: 'rgba(212,168,67,0.3)' }}>No terms match "{search}"</p>
+            <p className="font-mono-c text-xs" style={{ color: 'rgba(212,168,67,0.8)' }}>No terms match "{search}"</p>
           </div>
         )}
 
@@ -238,12 +238,12 @@ export default function GlossaryPage() {
             {/* Letter header */}
             <div className="flex items-center gap-4 mb-4">
               <div className="font-display text-5xl leading-none" style={{ color: 'rgba(212,168,67,0.15)' }}>{letter}</div>
-              <div className="flex-1 h-px" style={{ background: 'rgba(212,168,67,0.08)' }} />
+              <div className="flex-1 h-px" style={{ background: 'rgba(212,168,67,0.12)' }} />
               <span className="font-mono-c text-[10px]" style={{ color: 'rgba(212,168,67,0.25)' }}>{terms.length}</span>
             </div>
 
             {/* Terms in this group */}
-            <div className="rounded-2xl overflow-hidden border" style={{ borderColor: 'rgba(212,168,67,0.1)', background: '#0F0F0F' }}>
+            <div className="rounded-2xl overflow-hidden border" style={{ borderColor: 'rgba(212,168,67,0.15)', background: '#0F0F0F' }}>
               {terms.map((t, i) => {
                 const isOpen = expanded === `${letter}-${i}`;
                 const cs = CAT_STYLE[t.cat] || CAT_STYLE['ICT'];
@@ -261,14 +261,14 @@ export default function GlossaryPage() {
                         <span className="px-2 py-0.5 rounded text-[10px] font-mono-c border hidden sm:block" style={{ color: cs.color, background: cs.bg, borderColor: cs.border }}>
                           {t.cat}
                         </span>
-                        <span className="font-mono-c text-base" style={{ color: isOpen ? '#D4A843' : 'rgba(212,168,67,0.3)' }}>
+                        <span className="font-mono-c text-base" style={{ color: isOpen ? '#D4A843' : 'rgba(212,168,67,0.8)' }}>
                           {isOpen ? '−' : '+'}
                         </span>
                       </div>
                     </button>
 
                     {isOpen && (
-                      <div className="slide-down px-6 pb-5 border-t" style={{ borderColor: 'rgba(212,168,67,0.08)' }}>
+                      <div className="slide-down px-6 pb-5 border-t" style={{ borderColor: 'rgba(212,168,67,0.12)' }}>
                         <div className="pt-4">
                           <div className="font-mono-c text-xs mb-3" style={{ color: 'rgba(212,168,67,0.75)' }}>{t.full}</div>
                           <p className="text-gray-300 text-sm leading-relaxed" style={{ fontWeight: 300 }}>{t.def}</p>

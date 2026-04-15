@@ -76,7 +76,7 @@ export default function PricingPage() {
         .font-display { font-family: 'Bebas Neue', sans-serif; }
         .font-mono-c { font-family: 'DM Mono', monospace; }
         .shine { background: linear-gradient(135deg, #8A6B28 0%, #D4A843 40%, #F0C96A 60%, #D4A843 80%, #8A6B28 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .card-pro { background: linear-gradient(135deg, rgba(212,168,67,0.06) 0%, rgba(212,168,67,0.02) 100%); border: 1px solid rgba(212,168,67,0.3); }
+        .card-pro { background: linear-gradient(135deg, rgba(212,168,67,0.06) 0%, rgba(212,168,67,0.02) 100%); border: 1px solid rgba(212,168,67,0.8); }
         .card-free { background: #0D0D0D; border: 1px solid rgba(255,255,255,0.08); }
         .toggle-pill { transition: all 0.25s; }
         .faq-item { border-bottom: 1px solid rgba(255,255,255,0.06); }
@@ -142,7 +142,7 @@ export default function PricingPage() {
 
         {/* PRO */}
         <div className="card-pro" style={{ borderRadius: '20px', padding: '36px', position: 'relative', overflow: 'hidden' }}>
-          <div style={{ position: 'absolute', top: 0, right: 0, width: '250px', height: '250px', background: 'radial-gradient(circle, rgba(212,168,67,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
+          <div style={{ position: 'absolute', top: 0, right: 0, width: '250px', height: '250px', background: 'radial-gradient(circle, rgba(212,168,67,0.12) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
           {/* POPULAR BADGE */}
           <div style={{ position: 'absolute', top: '20px', right: '20px', background: 'linear-gradient(135deg,#D4A843,#8A6B28)', borderRadius: '6px', padding: '4px 12px', fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'black', fontWeight: 600, letterSpacing: '0.1em' }}>POPULAR</div>

@@ -45,7 +45,7 @@ export default function AboutPage() {
       <Navbar active="/about" />
 
       {/* HERO */}
-      <section style={{ padding: '80px 24px 60px', textAlign: 'center', borderBottom: '1px solid rgba(212,168,67,0.1)', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ padding: '80px 24px 60px', textAlign: 'center', borderBottom: '1px solid rgba(212,168,67,0.15)', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 700px 400px at 50% 100%, rgba(212,168,67,0.05) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '700px', margin: '0 auto', position: 'relative' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.15)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.15em', color: '#D4A843', marginBottom: '24px' }}>
@@ -62,7 +62,7 @@ export default function AboutPage() {
       </section>
 
       {/* STATS */}
-      <section style={{ borderBottom: '1px solid rgba(212,168,67,0.08)', background: '#0A0A0A' }}>
+      <section style={{ borderBottom: '1px solid rgba(212,168,67,0.12)', background: '#0A0A0A' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto', padding: '48px 24px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '32px', textAlign: 'center' }}>
           {STATS.map(s => (
             <div key={s.label}>
@@ -96,7 +96,7 @@ export default function AboutPage() {
       </section>
 
       {/* VALUES */}
-      <section style={{ borderTop: '1px solid rgba(212,168,67,0.08)', padding: '80px 24px', background: '#0A0A0A' }}>
+      <section style={{ borderTop: '1px solid rgba(212,168,67,0.12)', padding: '80px 24px', background: '#0A0A0A' }}>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
             <h2 className="font-display" style={{ fontSize: '48px', color: 'white', lineHeight: 1 }}>

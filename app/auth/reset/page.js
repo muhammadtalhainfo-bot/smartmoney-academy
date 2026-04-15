@@ -38,13 +38,13 @@ export default function ResetPasswordPage() {
               <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.8)', marginBottom: '6px', letterSpacing: '0.1em' }}>NEW PASSWORD</div>
               <input type="password" value={password} onChange={e => setPassword(e.target.value)}
                 placeholder="Min 6 characters"
-                style={{ width: '100%', background: '#080808', border: '1px solid rgba(212,168,67,0.2)', borderRadius: '8px', padding: '12px 14px', color: 'white', fontSize: '14px', boxSizing: 'border-box', outline: 'none' }} />
+                style={{ width: '100%', background: '#080808', border: '1px solid rgba(212,168,67,0.8)', borderRadius: '8px', padding: '12px 14px', color: 'white', fontSize: '14px', boxSizing: 'border-box', outline: 'none' }} />
             </div>
             <div style={{ marginBottom: '20px' }}>
               <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.8)', marginBottom: '6px', letterSpacing: '0.1em' }}>CONFIRM PASSWORD</div>
               <input type="password" value={confirm} onChange={e => setConfirm(e.target.value)}
                 placeholder="Repeat password"
-                style={{ width: '100%', background: '#080808', border: '1px solid rgba(212,168,67,0.2)', borderRadius: '8px', padding: '12px 14px', color: 'white', fontSize: '14px', boxSizing: 'border-box', outline: 'none' }} />
+                style={{ width: '100%', background: '#080808', border: '1px solid rgba(212,168,67,0.8)', borderRadius: '8px', padding: '12px 14px', color: 'white', fontSize: '14px', boxSizing: 'border-box', outline: 'none' }} />
             </div>
             {error && <div style={{ color: '#F87171', fontFamily: 'DM Mono, monospace', fontSize: '12px', marginBottom: '14px' }}>{error}</div>}
             <button onClick={handleReset} disabled={loading}

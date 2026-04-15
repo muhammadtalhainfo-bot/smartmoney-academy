@@ -116,7 +116,7 @@ export default function CertificatePage() {
             </div>
 
             {/* CERTIFICATE CARD */}
-            <div className="cert-card" style={{ background: 'white', borderRadius: '16px', padding: '60px', textAlign: 'center', position: 'relative', overflow: 'hidden', boxShadow: '0 0 80px rgba(212,168,67,0.2)' }}>
+            <div className="cert-card" style={{ background: 'white', borderRadius: '16px', padding: '60px', textAlign: 'center', position: 'relative', overflow: 'hidden', boxShadow: '0 0 80px rgba(212,168,67,0.8)' }}>
               {/* Gold border */}
               <div style={{ position: 'absolute', inset: '12px', border: '2px solid #D4A843', borderRadius: '10px', opacity: 0.4, pointerEvents: 'none' }} />
               <div style={{ position: 'absolute', inset: '16px', border: '1px solid #D4A843', borderRadius: '8px', opacity: 0.2, pointerEvents: 'none' }} />

@@ -12,8 +12,8 @@ const BG = '#060608';
 const S1 = '#0C0C10';
 const S2 = '#111118';
 const S3 = '#16161E';
-const BORDER = 'rgba(212,168,67,0.1)';
-const BORDER2 = 'rgba(212,168,67,0.2)';
+const BORDER = 'rgba(212,168,67,0.15)';
+const BORDER2 = 'rgba(212,168,67,0.8)';
 
 const css = {
   card: { background: S2, border: `1px solid ${BORDER}`, borderRadius: '12px', padding: '20px' },
@@ -324,7 +324,7 @@ function UsersSection({ users, supabase, onReload }) {
                   <td style={{ padding: '10px 12px', fontSize: '13px' }}>{u.streak || 0}🔥</td>
                   <td style={{ padding: '10px 12px' }}>
                     <button onClick={() => togglePro(u)} style={{
-                      background: u.is_pro ? 'rgba(52,211,153,0.1)' : 'rgba(212,168,67,0.1)',
+                      background: u.is_pro ? 'rgba(52,211,153,0.1)' : 'rgba(212,168,67,0.15)',
                       border: `1px solid ${u.is_pro ? 'rgba(52,211,153,0.3)' : BORDER2}`,
                       borderRadius: '5px', padding: '3px 10px',
                       color: u.is_pro ? '#34D399' : G,
@@ -1155,7 +1155,7 @@ export default function AdminPage() {
         input[type=checkbox] { accent-color: ${G}; }
         ::-webkit-scrollbar { width: 4px; height: 4px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: rgba(212,168,67,0.2); border-radius: 2px; }
+        ::-webkit-scrollbar-thumb { background: rgba(212,168,67,0.8); border-radius: 2px; }
       `}</style>
 
       {/* BG grid */}
@@ -1191,7 +1191,7 @@ export default function AdminPage() {
         input[type=checkbox] { accent-color: ${G}; }
         ::-webkit-scrollbar { width: 4px; height: 4px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: rgba(212,168,67,0.2); border-radius: 2px; }
+        ::-webkit-scrollbar-thumb { background: rgba(212,168,67,0.8); border-radius: 2px; }
         select option { background: #111118; }
         button:hover { opacity: 0.88; }
         a:hover { opacity: 0.8; }

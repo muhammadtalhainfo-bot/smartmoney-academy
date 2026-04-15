@@ -37,11 +37,11 @@ export default function EmailCapture() {
   }
 
   return (
-    <section style={{ padding: '80px 24px', borderTop: '1px solid rgba(212,168,67,0.1)', borderBottom: '1px solid rgba(212,168,67,0.1)', background: 'rgba(212,168,67,0.02)', position: 'relative', overflow: 'hidden' }}>
+    <section style={{ padding: '80px 24px', borderTop: '1px solid rgba(212,168,67,0.15)', borderBottom: '1px solid rgba(212,168,67,0.15)', background: 'rgba(212,168,67,0.02)', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 600px 300px at 50% 50%, rgba(212,168,67,0.04) 0%, transparent 70%)', pointerEvents: 'none' }} />
       <div style={{ maxWidth: '560px', margin: '0 auto', textAlign: 'center', position: 'relative' }}>
 
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.2)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.15em', color: '#D4A843', marginBottom: '24px' }}>
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.8)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.15em', color: '#D4A843', marginBottom: '24px' }}>
           <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#D4A843', display: 'inline-block', animation: 'pulse 2s infinite' }} />
           FREE UPDATES · NO SPAM
         </div>
@@ -73,7 +73,7 @@ export default function EmailCapture() {
               <button
                 onClick={handleSubmit}
                 disabled={status === 'loading'}
-                style={{ padding: '14px 24px', background: status === 'loading' ? 'rgba(212,168,67,0.3)' : 'linear-gradient(135deg,#D4A843,#8A6B28)', border: 'none', borderRadius: '10px', color: 'black', fontFamily: 'DM Mono, monospace', fontSize: '12px', fontWeight: 600, letterSpacing: '0.1em', cursor: status === 'loading' ? 'not-allowed' : 'pointer', whiteSpace: 'nowrap', transition: 'opacity 0.2s' }}
+                style={{ padding: '14px 24px', background: status === 'loading' ? 'rgba(212,168,67,0.8)' : 'linear-gradient(135deg,#D4A843,#8A6B28)', border: 'none', borderRadius: '10px', color: 'black', fontFamily: 'DM Mono, monospace', fontSize: '12px', fontWeight: 600, letterSpacing: '0.1em', cursor: status === 'loading' ? 'not-allowed' : 'pointer', whiteSpace: 'nowrap', transition: 'opacity 0.2s' }}
               >
                 {status === 'loading' ? '...' : 'NOTIFY ME'}
               </button>

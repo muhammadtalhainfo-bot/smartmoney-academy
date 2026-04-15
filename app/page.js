@@ -142,12 +142,12 @@ export default function HomePage() {
         /* Card hover */
         .course-card {
           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          border: 1px solid rgba(212,168,67,0.1);
+          border: 1px solid rgba(212,168,67,0.15);
         }
         .course-card:hover {
           border-color: rgba(212,168,67,0.7);
           transform: translateY(-4px);
-          box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(212,168,67,0.08);
+          box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(212,168,67,0.12);
         }
 
         /* Gold button */
@@ -223,7 +223,7 @@ export default function HomePage() {
           <div style={{
             position: 'absolute', top: '30%', left: '50%', transform: 'translate(-50%, -50%)',
             width: 'min(600px, 90vw)', height: 'min(600px, 90vw)',
-            background: 'radial-gradient(circle, rgba(212,168,67,0.08) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(212,168,67,0.12) 0%, transparent 70%)',
           }} />
         </div>
 
@@ -355,7 +355,7 @@ export default function HomePage() {
             {[
               { time: '8PM–12AM', zone: 'Asian', role: 'ACCUMULATION', desc: 'Build Asian Range', color: 'rgba(99,102,241,0.1)', border: 'rgba(99,102,241,0.3)', text: '#818CF8' },
               { time: '2AM–5AM', zone: 'London', role: 'MANIPULATION', desc: 'Judas Swing / Stop Hunt', color: 'rgba(239,68,68,0.1)', border: 'rgba(239,68,68,0.3)', text: '#F87171' },
-              { time: '7AM–12PM', zone: 'New York AM', role: 'DISTRIBUTION', desc: 'Real Directional Move', color: 'rgba(212,168,67,0.1)', border: 'rgba(212,168,67,0.3)', text: '#D4A843' },
+              { time: '7AM–12PM', zone: 'New York AM', role: 'DISTRIBUTION', desc: 'Real Directional Move', color: 'rgba(212,168,67,0.15)', border: 'rgba(212,168,67,0.8)', text: '#D4A843' },
               { time: '10AM–12PM', zone: 'London Close', role: 'REVERSAL', desc: 'Profit Taking / Fade', color: 'rgba(16,185,129,0.1)', border: 'rgba(16,185,129,0.3)', text: '#34D399' },
             ].map((s, i) => (
               <div key={i} className="rounded-xl p-4 border text-center" style={{ background: s.color, borderColor: s.border }}>
@@ -384,7 +384,7 @@ export default function HomePage() {
       {/* ── CTA ── */}
       <section className="relative z-10 px-6 py-24 bg-[var(--bg2)]">
         <div className="max-w-2xl mx-auto text-center">
-          <div className="p-px rounded-2xl glow-gold" style={{ background: 'linear-gradient(135deg, rgba(212,168,67,0.3), transparent, rgba(212,168,67,0.3))' }}>
+          <div className="p-px rounded-2xl glow-gold" style={{ background: 'linear-gradient(135deg, rgba(212,168,67,0.8), transparent, rgba(212,168,67,0.8))' }}>
             <div className="bg-[var(--bg3)] rounded-2xl p-12">
               <div className="font-mono text-xs text-[var(--gold)] tracking-widest uppercase mb-4">// Begin Now</div>
               <h2 className="font-display text-5xl text-white mb-4">READY TO THINK<br/>LIKE SMART MONEY?</h2>

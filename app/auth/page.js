@@ -101,7 +101,7 @@ function AuthPageInner() {
     <div style={{ minHeight: '100vh', background: '#080808', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'DM Sans', sans-serif", padding: '24px' }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap');
-        .auth-input { background: #141414; border: 1px solid rgba(212,168,67,0.2); border-radius: 10px; color: #F5F5F5; padding: 12px 16px; font-size: 15px; font-family: 'DM Sans', sans-serif; outline: none; width: 100%; transition: border-color 0.2s; }
+        .auth-input { background: #141414; border: 1px solid rgba(212,168,67,0.8); border-radius: 10px; color: #F5F5F5; padding: 12px 16px; font-size: 15px; font-family: 'DM Sans', sans-serif; outline: none; width: 100%; transition: border-color 0.2s; }
         .auth-input:focus { border-color: #D4A843; }
         .auth-input::placeholder { color: rgba(255,255,255,0.55); }
       `}</style>
@@ -189,7 +189,7 @@ function AuthPageInner() {
                   <>
                     <input value={forgotEmail} onChange={e => setForgotEmail(e.target.value)}
                       placeholder="Enter your email" type="email"
-                      style={{ width: '100%', background: '#080808', border: '1px solid rgba(212,168,67,0.2)', borderRadius: '8px', padding: '10px 14px', color: 'white', fontFamily: 'DM Sans', fontSize: '14px', marginBottom: '10px', boxSizing: 'border-box', outline: 'none' }} />
+                      style={{ width: '100%', background: '#080808', border: '1px solid rgba(212,168,67,0.8)', borderRadius: '8px', padding: '10px 14px', color: 'white', fontFamily: 'DM Sans', fontSize: '14px', marginBottom: '10px', boxSizing: 'border-box', outline: 'none' }} />
                     <div style={{ display: 'flex', gap: '8px' }}>
                       <button onClick={handleForgotPassword}
                         style={{ flex: 1, background: 'linear-gradient(135deg, #D4A843, #F0C96A)', color: '#080808', border: 'none', borderRadius: '8px', padding: '10px', fontFamily: 'DM Mono', fontSize: '11px', fontWeight: 700, cursor: 'pointer' }}>

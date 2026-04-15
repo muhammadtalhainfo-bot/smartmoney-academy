@@ -455,7 +455,7 @@ export default function PracticePage() {
             <div key={current} className="fade-up">
               {/* Topic tag */}
               <div className="flex items-center gap-2 mb-4">
-                <span className="font-mono-custom text-xs px-3 py-1 rounded-lg border border-[rgba(212,168,67,0.2)] text-[#D4A843] bg-[rgba(212,168,67,0.05)]">
+                <span className="font-mono-custom text-xs px-3 py-1 rounded-lg border border-[rgba(212,168,67,0.8)] text-[#D4A843] bg-[rgba(212,168,67,0.05)]">
                   {q.topic}
                 </span>
                 <span className={`font-mono-custom text-xs px-3 py-1 rounded-lg border ${
@@ -473,7 +473,7 @@ export default function PracticePage() {
               {/* Options */}
               <div className="space-y-3 mb-6">
                 {q.options.map((opt, i) => {
-                  let borderColor = 'rgba(212,168,67,0.1)';
+                  let borderColor = 'rgba(212,168,67,0.15)';
                   let bg = '#0F0F0F';
                   let textColor = 'text-gray-400';
                   let icon = null;
@@ -481,7 +481,7 @@ export default function PracticePage() {
                   if (!revealed) {
                     if (selected === i) {
                       borderColor = 'rgba(212,168,67,0.8)';
-                      bg = 'rgba(212,168,67,0.08)';
+                      bg = 'rgba(212,168,67,0.12)';
                       textColor = 'text-[#D4A843]';
                     }
                   } else {
@@ -505,7 +505,7 @@ export default function PracticePage() {
                       key={i}
                       onClick={() => handleSelect(i)}
                       disabled={revealed}
-                      className={`w-full text-left px-5 py-4 rounded-xl border transition-all flex items-center justify-between gap-3 ${revealed ? '' : 'hover:border-[rgba(212,168,67,0.3)] cursor-pointer'} ${textColor}`}
+                      className={`w-full text-left px-5 py-4 rounded-xl border transition-all flex items-center justify-between gap-3 ${revealed ? '' : 'hover:border-[rgba(212,168,67,0.8)] cursor-pointer'} ${textColor}`}
                       style={{ borderColor, background: bg }}
                     >
                       <div className="flex items-center gap-3">
@@ -522,7 +522,7 @@ export default function PracticePage() {
 
               {/* Explanation (revealed) */}
               {revealed && (
-                <div className="fade-up p-5 rounded-xl border border-[rgba(212,168,67,0.2)] bg-[rgba(212,168,67,0.04)] mb-5">
+                <div className="fade-up p-5 rounded-xl border border-[rgba(212,168,67,0.8)] bg-[rgba(212,168,67,0.04)] mb-5">
                   <div className="font-mono-custom text-xs text-[#D4A843] mb-2">// Explanation</div>
                   <p className="text-gray-300 text-sm leading-relaxed">{q.explanation}</p>
                   <Link href={`/lesson/${q.lesson}`} className="inline-flex items-center gap-1 mt-3 font-mono-custom text-xs text-[#D4A843] hover:text-[#F0C96A] transition-colors">
@@ -538,7 +538,7 @@ export default function PracticePage() {
                   disabled={selected === null}
                   className="w-full py-4 rounded-xl font-mono-custom text-sm tracking-wider uppercase font-bold transition-all"
                   style={{
-                    background: selected !== null ? 'linear-gradient(135deg, #D4A843, #F0C96A)' : 'rgba(212,168,67,0.1)',
+                    background: selected !== null ? 'linear-gradient(135deg, #D4A843, #F0C96A)' : 'rgba(212,168,67,0.15)',
                     color: selected !== null ? '#080808' : '#8A6B28',
                   }}
                 >
@@ -575,7 +575,7 @@ export default function PracticePage() {
             <div className="w-40 h-40 rounded-full mx-auto mb-6 flex flex-col items-center justify-center border-2"
               style={{
                 borderColor: finalScore >= 4 ? '#34D399' : finalScore >= 3 ? '#D4A843' : '#EF4444',
-                background: finalScore >= 4 ? 'rgba(52,211,153,0.08)' : finalScore >= 3 ? 'rgba(212,168,67,0.08)' : 'rgba(239,68,68,0.08)',
+                background: finalScore >= 4 ? 'rgba(52,211,153,0.08)' : finalScore >= 3 ? 'rgba(212,168,67,0.12)' : 'rgba(239,68,68,0.08)',
               }}>
               <div className="font-display text-6xl" style={{
                 background: finalScore >= 4 ? 'linear-gradient(135deg,#34D399,#6EE7B7)' : finalScore >= 3 ? 'linear-gradient(135deg,#D4A843,#F0C96A)' : 'linear-gradient(135deg,#EF4444,#FCA5A5)',
@@ -587,7 +587,7 @@ export default function PracticePage() {
             </div>
 
             {/* XP earned */}
-            <div className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-[rgba(212,168,67,0.2)] bg-[rgba(212,168,67,0.05)] mb-6">
+            <div className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-[rgba(212,168,67,0.8)] bg-[rgba(212,168,67,0.05)] mb-6">
               <span className="text-xl">⚡</span>
               <span className="font-display text-2xl" style={{ color: '#D4A843' }}>+{xpEarned} XP</span>
               <span className="font-mono-custom text-xs text-gray-500">earned</span>
@@ -625,7 +625,7 @@ export default function PracticePage() {
             {/* Action buttons */}
             <div className="grid grid-cols-2 gap-3">
               <Link href="/courses">
-                <div className="py-4 rounded-xl border border-[rgba(212,168,67,0.2)] bg-[#0F0F0F] hover:border-[rgba(212,168,67,0.75)] transition-all text-center">
+                <div className="py-4 rounded-xl border border-[rgba(212,168,67,0.8)] bg-[#0F0F0F] hover:border-[rgba(212,168,67,0.75)] transition-all text-center">
                   <div className="font-mono-custom text-xs text-[#D4A843] tracking-wider uppercase">Study</div>
                   <div className="text-xs text-gray-500 mt-1">Review lessons</div>
                 </div>
@@ -644,7 +644,7 @@ export default function PracticePage() {
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-[rgba(212,168,67,0.1)] px-8 py-6 mt-16">
+      <footer className="border-t border-[rgba(212,168,67,0.15)] px-8 py-6 mt-16">
         <div className="max-w-2xl mx-auto text-center font-mono-custom text-xs text-gray-600">
           ICT Flow — Educational content only. Not financial advice.
         </div>

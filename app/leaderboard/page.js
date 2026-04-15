@@ -60,7 +60,7 @@ export default function LeaderboardPage() {
       <Navbar active="/leaderboard" />
 
       {/* HERO */}
-      <section style={{ padding: '60px 24px 40px', textAlign: 'center', borderBottom: '1px solid rgba(212,168,67,0.1)', position: 'relative' }}>
+      <section style={{ padding: '60px 24px 40px', textAlign: 'center', borderBottom: '1px solid rgba(212,168,67,0.15)', position: 'relative' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 600px 300px at 50% 100%, rgba(212,168,67,0.05) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '600px', margin: '0 auto', position: 'relative' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.15)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.15em', color: '#D4A843', marginBottom: '20px' }}>
@@ -91,7 +91,7 @@ export default function LeaderboardPage() {
 
         {/* USER POSITION */}
         {currentUser && userRank && (
-          <div style={{ background: 'rgba(212,168,67,0.06)', border: '1px solid rgba(212,168,67,0.2)', borderRadius: '12px', padding: '16px 20px', marginBottom: '24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div style={{ background: 'rgba(212,168,67,0.06)', border: '1px solid rgba(212,168,67,0.8)', borderRadius: '12px', padding: '16px 20px', marginBottom: '24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#D4A843', letterSpacing: '0.1em' }}>YOUR POSITION</div>
             <div className="font-display" style={{ fontSize: '32px', color: '#D4A843' }}>#{userRank}</div>
           </div>
