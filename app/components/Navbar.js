@@ -67,7 +67,7 @@ export default function Navbar({ active }) {
               MORE <span style={{ fontSize: '8px', display: 'inline-block', transform: moreOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>▾</span>
             </button>
             {moreOpen && (
-              <div style={{ position: 'absolute', top: 'calc(100% + 12px)', right: 0, background: '#111', border: '1px solid rgba(212,168,67,0.25)', borderRadius: '12px', padding: '8px', minWidth: '200px', zIndex: 50, boxShadow: '0 20px 40px rgba(0,0,0,0.5)' }}>
+              <div style={{ position: 'absolute', top: 'calc(100% + 12px)', right: 0, background: '#111', border: '1px solid rgba(212,168,67,0.75)', borderRadius: '12px', padding: '8px', minWidth: '200px', zIndex: 50, boxShadow: '0 20px 40px rgba(0,0,0,0.5)' }}>
                 {MORE_NAV.map(([href, label]) => (
                   <Link key={href} href={href} onClick={() => setMoreOpen(false)}
                     target={href.startsWith('http') ? '_blank' : undefined}

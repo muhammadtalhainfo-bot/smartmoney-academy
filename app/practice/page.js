@@ -466,14 +466,14 @@ export default function PracticePage() {
               </div>
 
               {/* Question */}
-              <div className="p-6 rounded-2xl border border-[rgba(212,168,67,0.25)] bg-[#0F0F0F] mb-5">
+              <div className="p-6 rounded-2xl border border-[rgba(212,168,67,0.75)] bg-[#0F0F0F] mb-5">
                 <p className="text-white text-lg font-medium leading-relaxed">{q.q}</p>
               </div>
 
               {/* Options */}
               <div className="space-y-3 mb-6">
                 {q.options.map((opt, i) => {
-                  let borderColor = 'rgba(212,168,67,0.25)';
+                  let borderColor = 'rgba(212,168,67,0.75)';
                   let bg = '#0F0F0F';
                   let textColor = 'text-gray-300';
                   let icon = null;
@@ -538,7 +538,7 @@ export default function PracticePage() {
                   disabled={selected === null}
                   className="w-full py-4 rounded-xl font-mono-custom text-sm tracking-wider uppercase font-bold transition-all"
                   style={{
-                    background: selected !== null ? 'linear-gradient(135deg, #D4A843, #F0C96A)' : 'rgba(212,168,67,0.25)',
+                    background: selected !== null ? 'linear-gradient(135deg, #D4A843, #F0C96A)' : 'rgba(212,168,67,0.75)',
                     color: selected !== null ? '#080808' : '#8A6B28',
                   }}
                 >
@@ -594,7 +594,7 @@ export default function PracticePage() {
             </div>
 
             {/* Performance message */}
-            <div className="p-5 rounded-xl border border-[rgba(212,168,67,0.25)] bg-[#0F0F0F] mb-6 text-left">
+            <div className="p-5 rounded-xl border border-[rgba(212,168,67,0.75)] bg-[#0F0F0F] mb-6 text-left">
               <p className="text-white font-semibold mb-1">
                 {finalScore === 5 ? '🎯 Perfect Score! Elite level.' :
                  finalScore === 4 ? '💪 Strong performance. One missed — review it.' :
@@ -644,7 +644,7 @@ export default function PracticePage() {
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-[rgba(212,168,67,0.25)] px-8 py-6 mt-16">
+      <footer className="border-t border-[rgba(212,168,67,0.75)] px-8 py-6 mt-16">
         <div className="max-w-2xl mx-auto text-center font-mono-custom text-xs text-gray-300">
           ICT Flow — Educational content only. Not financial advice.
         </div>

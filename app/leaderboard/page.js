@@ -60,10 +60,10 @@ export default function LeaderboardPage() {
       <Navbar active="/leaderboard" />
 
       {/* HERO */}
-      <section style={{ padding: '60px 24px 40px', textAlign: 'center', borderBottom: '1px solid rgba(212,168,67,0.25)', position: 'relative' }}>
+      <section style={{ padding: '60px 24px 40px', textAlign: 'center', borderBottom: '1px solid rgba(212,168,67,0.75)', position: 'relative' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 600px 300px at 50% 100%, rgba(212,168,67,0.05) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '600px', margin: '0 auto', position: 'relative' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.25)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.15em', color: '#D4A843', marginBottom: '20px' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.75)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.15em', color: '#D4A843', marginBottom: '20px' }}>
             <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#34D399', display: 'inline-block', animation: 'pulse 2s infinite' }} />
             LIVE LEADERBOARD
           </div>

@@ -476,7 +476,7 @@ export default function MentorshipPage() {
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap');
         * { box-sizing: border-box; }
         .font-display { font-family: 'Bebas Neue', sans-serif; }
-        .ep-card { transition: all 0.2s ease; border: 1px solid rgba(212,168,67,0.25); }
+        .ep-card { transition: all 0.2s ease; border: 1px solid rgba(212,168,67,0.75); }
         .ep-card:hover { border-color: rgba(212,168,67,0.8); transform: translateY(-1px); }
         .tag-pill { cursor: pointer; transition: all 0.15s; }
         .progress-bar { background: rgba(212,168,67,0.22); border-radius: 99px; overflow: hidden; height: 6px; }
@@ -489,7 +489,7 @@ export default function MentorshipPage() {
       <Navbar active="/mentorship" />
 
       {/* Hero */}
-      <section style={{ borderBottom: '1px solid rgba(212,168,67,0.25)', background: 'linear-gradient(180deg, #0A0A0A 0%, #080808 100%)', padding: '64px 24px 48px' }}>
+      <section style={{ borderBottom: '1px solid rgba(212,168,67,0.75)', background: 'linear-gradient(180deg, #0A0A0A 0%, #080808 100%)', padding: '64px 24px 48px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ ...mono, fontSize: '11px', color: 'rgba(212,168,67,0.8)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '12px' }}>// Michael J. Huddleston</div>
           <h1 className="font-display" style={{ fontSize: 'clamp(42px, 7vw, 96px)', lineHeight: 1, marginBottom: '16px' }}>
@@ -554,13 +554,13 @@ export default function MentorshipPage() {
               value={search}
               onChange={e => setSearch(e.target.value)}
               placeholder="Search episodes, concepts..."
-              style={{ background: '#0F0F0F', border: '1px solid rgba(212,168,67,0.25)', borderRadius: '8px', padding: '8px 14px', color: 'white', ...mono, fontSize: '12px', width: '100%' }}
+              style={{ background: '#0F0F0F', border: '1px solid rgba(212,168,67,0.75)', borderRadius: '8px', padding: '8px 14px', color: 'white', ...mono, fontSize: '12px', width: '100%' }}
             />
             <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', flex: 1 }}>
               {['All', ...ALL_TAGS].map(tag => (
                 <button key={tag} onClick={() => setActiveTag(tag)}
                   className="tag-pill"
-                  style={{ background: activeTag === tag ? 'rgba(212,168,67,0.25)' : 'transparent', border: `1px solid ${activeTag === tag ? 'rgba(212,168,67,0.75)' : 'rgba(255,255,255,0.18)'}`, borderRadius: '99px', padding: '4px 10px', ...mono, fontSize: '10px', color: activeTag === tag ? '#D4A843' : '#808080', letterSpacing: '0.06em' }}>
+                  style={{ background: activeTag === tag ? 'rgba(212,168,67,0.75)' : 'transparent', border: `1px solid ${activeTag === tag ? 'rgba(212,168,67,0.75)' : 'rgba(255,255,255,0.18)'}`, borderRadius: '99px', padding: '4px 10px', ...mono, fontSize: '10px', color: activeTag === tag ? '#D4A843' : '#808080', letterSpacing: '0.06em' }}>
                   {tag}
                 </button>
               ))}
@@ -608,12 +608,12 @@ export default function MentorshipPage() {
                         <div style={{ flex: 1, minWidth: 0 }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '4px' }}>
                             <span style={{ fontSize: '14px', fontWeight: 600, color: 'white' }}>{ep.title}</span>
-                            {isMustWatch && <span style={{ ...mono, fontSize: '9px', background: 'rgba(212,168,67,0.25)', color: '#D4A843', padding: '2px 6px', borderRadius: '4px', letterSpacing: '0.08em' }}>MUST WATCH</span>}
+                            {isMustWatch && <span style={{ ...mono, fontSize: '9px', background: 'rgba(212,168,67,0.75)', color: '#D4A843', padding: '2px 6px', borderRadius: '4px', letterSpacing: '0.08em' }}>MUST WATCH</span>}
                           </div>
                           <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
                             <span style={{ ...mono, fontSize: '10px', color: '#808080' }}>{ep.duration}</span>
                             {ep.concepts.slice(0, 3).map(c => (
-                              <span key={c} style={{ ...mono, fontSize: '9px', color: 'rgba(212,168,67,0.75)', background: 'rgba(212,168,67,0.05)', border: '1px solid rgba(212,168,67,0.25)', padding: '1px 6px', borderRadius: '4px' }}>{c}</span>
+                              <span key={c} style={{ ...mono, fontSize: '9px', color: 'rgba(212,168,67,0.75)', background: 'rgba(212,168,67,0.05)', border: '1px solid rgba(212,168,67,0.75)', padding: '1px 6px', borderRadius: '4px' }}>{c}</span>
                             ))}
                             {ep.concepts.length > 3 && <span style={{ ...mono, fontSize: '9px', color: '#9CA3AF' }}>+{ep.concepts.length - 3} more</span>}
                           </div>
@@ -640,7 +640,7 @@ export default function MentorshipPage() {
                               <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '13px', lineHeight: 1.7, fontWeight: 300 }}>{ep.summary}</p>
                             </div>
                             {/* Key Lesson */}
-                            <div style={{ background: 'rgba(212,168,67,0.05)', border: '1px solid rgba(212,168,67,0.25)', borderRadius: '10px', padding: '16px' }}>
+                            <div style={{ background: 'rgba(212,168,67,0.05)', border: '1px solid rgba(212,168,67,0.75)', borderRadius: '10px', padding: '16px' }}>
                               <div style={{ ...mono, fontSize: '10px', color: '#D4A843', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '8px' }}>🎯 Key Lesson</div>
                               <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '13px', lineHeight: 1.6 }}>{ep.keyLesson}</p>
                             </div>
@@ -651,7 +651,7 @@ export default function MentorshipPage() {
                             <div style={{ ...mono, fontSize: '10px', color: '#808080', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '8px' }}>Concepts Covered</div>
                             <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
                               {ep.concepts.map(c => (
-                                <span key={c} style={{ ...mono, fontSize: '10px', color: '#D4A843', background: 'rgba(212,168,67,0.22)', border: '1px solid rgba(212,168,67,0.25)', padding: '3px 8px', borderRadius: '6px' }}>{c}</span>
+                                <span key={c} style={{ ...mono, fontSize: '10px', color: '#D4A843', background: 'rgba(212,168,67,0.22)', border: '1px solid rgba(212,168,67,0.75)', padding: '3px 8px', borderRadius: '6px' }}>{c}</span>
                               ))}
                             </div>
                           </div>

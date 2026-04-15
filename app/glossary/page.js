@@ -139,12 +139,12 @@ export default function GlossaryPage() {
           background-image: linear-gradient(rgba(212,168,67,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(212,168,67,0.03) 1px, transparent 1px);
           background-size: 60px 60px;
         }
-        .search-input { background: #0F0F0F; border: 1px solid rgba(212,168,67,0.25); color: white; outline: none; transition: border-color 0.2s; }
+        .search-input { background: #0F0F0F; border: 1px solid rgba(212,168,67,0.75); color: white; outline: none; transition: border-color 0.2s; }
         .search-input:focus { border-color: rgba(212,168,67,0.75); }
         .search-input::placeholder { color: #A8A8A8; font-family: 'DM Mono', monospace; font-size: 12px; }
         .term-row { transition: all 0.2s ease; border-bottom: 1px solid rgba(212,168,67,0.06); }
         .term-row:hover { background: rgba(212,168,67,0.03); }
-        .term-row.active { background: rgba(212,168,67,0.05); border-bottom-color: rgba(212,168,67,0.25); }
+        .term-row.active { background: rgba(212,168,67,0.05); border-bottom-color: rgba(212,168,67,0.75); }
         .filter-btn { font-family: 'DM Mono', monospace; transition: all 0.2s ease; }
         .filter-btn.active { background: linear-gradient(135deg, #D4A843, #F0C96A); color: #080808; font-weight: 700; border-color: transparent; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
@@ -198,7 +198,7 @@ export default function GlossaryPage() {
                 key={cat}
                 onClick={() => setActiveCat(cat)}
                 className={`filter-btn px-4 py-3 rounded-xl text-xs border tracking-wider uppercase ${activeCat === cat ? 'active' : ''}`}
-                style={activeCat !== cat ? { borderColor: 'rgba(212,168,67,0.25)', color: '#C0C0C0', background: 'transparent' } : {}}
+                style={activeCat !== cat ? { borderColor: 'rgba(212,168,67,0.75)', color: '#C0C0C0', background: 'transparent' } : {}}
               >
                 {cat}
               </button>
@@ -237,13 +237,13 @@ export default function GlossaryPage() {
           <div key={letter} id={`letter-${letter}`} className="letter-anchor mb-10">
             {/* Letter header */}
             <div className="flex items-center gap-4 mb-4">
-              <div className="font-display text-5xl leading-none" style={{ color: 'rgba(212,168,67,0.25)' }}>{letter}</div>
+              <div className="font-display text-5xl leading-none" style={{ color: 'rgba(212,168,67,0.75)' }}>{letter}</div>
               <div className="flex-1 h-px" style={{ background: 'rgba(212,168,67,0.22)' }} />
               <span className="font-mono-c text-[10px]" style={{ color: 'rgba(212,168,67,0.75)' }}>{terms.length}</span>
             </div>
 
             {/* Terms in this group */}
-            <div className="rounded-2xl overflow-hidden border" style={{ borderColor: 'rgba(212,168,67,0.25)', background: '#0F0F0F' }}>
+            <div className="rounded-2xl overflow-hidden border" style={{ borderColor: 'rgba(212,168,67,0.75)', background: '#0F0F0F' }}>
               {terms.map((t, i) => {
                 const isOpen = expanded === `${letter}-${i}`;
                 const cs = CAT_STYLE[t.cat] || CAT_STYLE['ICT'];

@@ -83,7 +83,7 @@ export default function CertificatePage() {
             </div>
 
             {/* Progress bar */}
-            <div style={{ background: '#0D0D0D', border: '1px solid rgba(212,168,67,0.25)', borderRadius: '16px', padding: '32px', marginBottom: '32px' }}>
+            <div style={{ background: '#0D0D0D', border: '1px solid rgba(212,168,67,0.75)', borderRadius: '16px', padding: '32px', marginBottom: '32px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
                 <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.1em' }}>MODULES COMPLETED</span>
                 <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#D4A843' }}>{completed}/{TOTAL_LESSONS}</span>

@@ -154,10 +154,10 @@ export default function StrategiesPage() {
       {!strategy ? (
         <>
           {/* HERO */}
-          <section style={{ padding: '64px 24px 40px', textAlign: 'center', borderBottom: '1px solid rgba(212,168,67,0.25)', position: 'relative' }}>
+          <section style={{ padding: '64px 24px 40px', textAlign: 'center', borderBottom: '1px solid rgba(212,168,67,0.75)', position: 'relative' }}>
             <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 600px 300px at 50% 100%, rgba(212,168,67,0.04) 0%, transparent 70%)', pointerEvents: 'none' }} />
             <div style={{ maxWidth: '600px', margin: '0 auto', position: 'relative' }}>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.25)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.15em', color: '#D4A843', marginBottom: '20px' }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.75)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.15em', color: '#D4A843', marginBottom: '20px' }}>
                 ICT STRATEGY LIBRARY
               </div>
               <h1 className="font-display" style={{ fontSize: 'clamp(48px, 8vw, 80px)', lineHeight: 1, marginBottom: '12px' }}>
@@ -173,7 +173,7 @@ export default function StrategiesPage() {
           <section style={{ maxWidth: '1100px', margin: '0 auto', padding: '32px 24px' }}>
             <div style={{ display: 'flex', gap: '8px', marginBottom: '32px', flexWrap: 'wrap' }}>
               {ALL_TAGS.map(tag => (
-                <button key={tag} onClick={() => setActiveTag(tag)} style={{ padding: '8px 18px', borderRadius: '100px', border: `1px solid ${activeTag === tag ? '#D4A843' : 'rgba(255,255,255,0.2)'}`, background: activeTag === tag ? 'rgba(212,168,67,0.25)' : 'transparent', color: activeTag === tag ? '#D4A843' : 'rgba(255,255,255,0.85)', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.1em', cursor: 'pointer' }}>
+                <button key={tag} onClick={() => setActiveTag(tag)} style={{ padding: '8px 18px', borderRadius: '100px', border: `1px solid ${activeTag === tag ? '#D4A843' : 'rgba(255,255,255,0.2)'}`, background: activeTag === tag ? 'rgba(212,168,67,0.75)' : 'transparent', color: activeTag === tag ? '#D4A843' : 'rgba(255,255,255,0.85)', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.1em', cursor: 'pointer' }}>
                   {tag}
                 </button>
               ))}

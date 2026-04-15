@@ -250,7 +250,7 @@ function ModuleCard({ mod, index }) {
             {/* IF monogram */}
             <div style={{
               width: '26px', height: '26px', borderRadius: '7px',
-              background: 'rgba(212,168,67,0.25)', border: '1px solid rgba(212,168,67,0.75)',
+              background: 'rgba(212,168,67,0.75)', border: '1px solid rgba(212,168,67,0.75)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               fontFamily: 'Bebas Neue, sans-serif', fontSize: '11px', color: '#D4A843', letterSpacing: '0.05em',
             }}>IF</div>
@@ -318,7 +318,7 @@ function ModuleCard({ mod, index }) {
             width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
             padding: '9px 13px', borderRadius: '9px',
             background: expanded ? 'rgba(212,168,67,0.05)' : 'transparent',
-            border: '1px solid rgba(212,168,67,0.25)',
+            border: '1px solid rgba(212,168,67,0.75)',
             color: 'rgba(212,168,67,0.85)',
             fontFamily: 'DM Mono, monospace', fontSize: '9px', letterSpacing: '0.15em',
             cursor: 'pointer', textTransform: 'uppercase',
@@ -530,7 +530,7 @@ export default function CoursesPage() {
               key={f}
               onClick={() => setActiveFilter(f)}
               className={`filter-btn flex-shrink-0 px-4 py-2 rounded-lg text-xs border tracking-wider uppercase ${activeFilter === f ? 'active font-bold' : ''}`}
-              style={activeFilter !== f ? { borderColor: 'rgba(212,168,67,0.25)', color: '#A0A0A0', background: 'transparent' } : {}}
+              style={activeFilter !== f ? { borderColor: 'rgba(212,168,67,0.75)', color: '#A0A0A0', background: 'transparent' } : {}}
             >
               {f}
             </button>

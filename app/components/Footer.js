@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer style={{ borderTop: '1px solid rgba(212,168,67,0.25)', background: '#080808', marginTop: '80px' }}>
+    <footer style={{ borderTop: '1px solid rgba(212,168,67,0.75)', background: '#080808', marginTop: '80px' }}>
 
       {/* DISCLAIMER BAR */}
       <div style={{ background: 'rgba(212,168,67,0.04)', borderBottom: '1px solid rgba(212,168,67,0.22)', padding: '16px 24px' }}>

@@ -25,7 +25,7 @@ export default function ResetPasswordPage() {
   return (
     <div style={{ minHeight: '100vh', background: '#080808', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px', fontFamily: 'DM Sans, sans-serif' }}>
       <style>{'@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap");'}</style>
-      <div style={{ background: '#0D0D0D', border: '1px solid rgba(212,168,67,0.25)', borderRadius: '20px', padding: '40px', width: '100%', maxWidth: '420px' }}>
+      <div style={{ background: '#0D0D0D', border: '1px solid rgba(212,168,67,0.75)', borderRadius: '20px', padding: '40px', width: '100%', maxWidth: '420px' }}>
         <img src="/ictflow-symbol.svg" alt="ICT Flow" style={{ width: '48px', height: '48px', borderRadius: '12px', display: 'block', margin: '0 auto 20px' }} />
         <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '32px', color: 'white', textAlign: 'center', marginBottom: '8px' }}>SET NEW PASSWORD</div>
         <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(212,168,67,0.75)', textAlign: 'center', marginBottom: '28px', letterSpacing: '0.1em' }}>ICT FLOW — ACCOUNT RECOVERY</div>

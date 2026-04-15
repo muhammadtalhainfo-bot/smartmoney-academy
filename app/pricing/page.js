@@ -213,7 +213,7 @@ export default function PricingPage() {
 
       {/* BOTTOM CTA */}
       <section style={{ padding: '0 24px 80px', textAlign: 'center' }}>
-        <div style={{ maxWidth: '500px', margin: '0 auto', padding: '48px', background: 'rgba(212,168,67,0.04)', border: '1px solid rgba(212,168,67,0.25)', borderRadius: '20px' }}>
+        <div style={{ maxWidth: '500px', margin: '0 auto', padding: '48px', background: 'rgba(212,168,67,0.04)', border: '1px solid rgba(212,168,67,0.75)', borderRadius: '20px' }}>
           <div className="font-display shine" style={{ fontSize: '40px', marginBottom: '12px' }}>START FREE TODAY</div>
           <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px', marginBottom: '24px', fontWeight: 300 }}>No credit card. No commitment. Just ICT education.</p>
           <Link href="/auth" style={{ display: 'inline-block', padding: '14px 36px', background: 'linear-gradient(135deg,#D4A843,#8A6B28)', borderRadius: '10px', color: 'black', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600 }}>

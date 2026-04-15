@@ -59,13 +59,13 @@ const TESTIMONIALS = [
 
 export default function Testimonials() {
   return (
-    <section style={{ padding: '80px 24px', borderTop: '1px solid rgba(212,168,67,0.25)', position: 'relative', overflow: 'hidden' }}>
+    <section style={{ padding: '80px 24px', borderTop: '1px solid rgba(212,168,67,0.75)', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 800px 400px at 50% 50%, rgba(212,168,67,0.03) 0%, transparent 70%)', pointerEvents: 'none' }} />
       <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative' }}>
 
         {/* HEADER */}
         <div style={{ textAlign: 'center', marginBottom: '56px' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.25)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.15em', color: '#D4A843', marginBottom: '20px' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.75)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.15em', color: '#D4A843', marginBottom: '20px' }}>
             ★★★★★ STUDENT RESULTS
           </div>
           <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 'clamp(40px, 7vw, 72px)', color: 'white', lineHeight: 1, marginBottom: '12px' }}>

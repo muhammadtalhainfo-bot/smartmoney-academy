@@ -12,7 +12,7 @@ const BG = '#060608';
 const S1 = '#0C0C10';
 const S2 = '#111118';
 const S3 = '#16161E';
-const BORDER = 'rgba(212,168,67,0.25)';
+const BORDER = 'rgba(212,168,67,0.75)';
 const BORDER2 = 'rgba(212,168,67,0.8)';
 
 const css = {
@@ -324,7 +324,7 @@ function UsersSection({ users, supabase, onReload }) {
                   <td style={{ padding: '10px 12px', fontSize: '13px' }}>{u.streak || 0}🔥</td>
                   <td style={{ padding: '10px 12px' }}>
                     <button onClick={() => togglePro(u)} style={{
-                      background: u.is_pro ? 'rgba(52,211,153,0.1)' : 'rgba(212,168,67,0.25)',
+                      background: u.is_pro ? 'rgba(52,211,153,0.1)' : 'rgba(212,168,67,0.75)',
                       border: `1px solid ${u.is_pro ? 'rgba(52,211,153,0.3)' : BORDER2}`,
                       borderRadius: '5px', padding: '3px 10px',
                       color: u.is_pro ? '#34D399' : G,

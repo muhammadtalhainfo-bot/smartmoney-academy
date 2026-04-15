@@ -45,10 +45,10 @@ export default function AboutPage() {
       <Navbar active="/about" />
 
       {/* HERO */}
-      <section style={{ padding: '80px 24px 60px', textAlign: 'center', borderBottom: '1px solid rgba(212,168,67,0.25)', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ padding: '80px 24px 60px', textAlign: 'center', borderBottom: '1px solid rgba(212,168,67,0.75)', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 700px 400px at 50% 100%, rgba(212,168,67,0.05) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '700px', margin: '0 auto', position: 'relative' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.25)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.15em', color: '#D4A843', marginBottom: '24px' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.75)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.15em', color: '#D4A843', marginBottom: '24px' }}>
             OUR MISSION
           </div>
           <h1 className="font-display" style={{ fontSize: 'clamp(52px, 9vw, 96px)', lineHeight: 1, marginBottom: '24px' }}>

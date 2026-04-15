@@ -33,7 +33,7 @@ function renderContent(content) {
         </ul>
       );
       if (block.type === 'highlight') return (
-        <div key={i} style={{ background: 'rgba(212,168,67,0.06)', border: '1px solid rgba(212,168,67,0.25)', borderRadius: '12px', padding: '20px 24px', marginBottom: '24px' }}>
+        <div key={i} style={{ background: 'rgba(212,168,67,0.06)', border: '1px solid rgba(212,168,67,0.75)', borderRadius: '12px', padding: '20px 24px', marginBottom: '24px' }}>
           <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.8)', lineHeight: 1.7, fontWeight: 400, margin: 0 }}>{block.text}</p>
         </div>
       );

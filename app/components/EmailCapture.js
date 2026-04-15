@@ -37,7 +37,7 @@ export default function EmailCapture() {
   }
 
   return (
-    <section style={{ padding: '80px 24px', borderTop: '1px solid rgba(212,168,67,0.25)', borderBottom: '1px solid rgba(212,168,67,0.25)', background: 'rgba(212,168,67,0.02)', position: 'relative', overflow: 'hidden' }}>
+    <section style={{ padding: '80px 24px', borderTop: '1px solid rgba(212,168,67,0.75)', borderBottom: '1px solid rgba(212,168,67,0.75)', background: 'rgba(212,168,67,0.02)', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 600px 300px at 50% 50%, rgba(212,168,67,0.04) 0%, transparent 70%)', pointerEvents: 'none' }} />
       <div style={{ maxWidth: '560px', margin: '0 auto', textAlign: 'center', position: 'relative' }}>
 
@@ -68,7 +68,7 @@ export default function EmailCapture() {
                 onChange={e => { setEmail(e.target.value); setStatus('idle'); setMsg(''); }}
                 onKeyDown={e => e.key === 'Enter' && handleSubmit()}
                 placeholder="your@email.com"
-                style={{ flex: 1, padding: '14px 18px', background: 'rgba(255,255,255,0.04)', border: `1px solid ${status === 'error' ? 'rgba(248,113,113,0.4)' : 'rgba(212,168,67,0.25)'}`, borderRadius: '10px', color: 'white', fontSize: '14px', fontFamily: 'DM Mono, monospace', outline: 'none', letterSpacing: '0.05em' }}
+                style={{ flex: 1, padding: '14px 18px', background: 'rgba(255,255,255,0.04)', border: `1px solid ${status === 'error' ? 'rgba(248,113,113,0.4)' : 'rgba(212,168,67,0.75)'}`, borderRadius: '10px', color: 'white', fontSize: '14px', fontFamily: 'DM Mono, monospace', outline: 'none', letterSpacing: '0.05em' }}
               />
               <button
                 onClick={handleSubmit}

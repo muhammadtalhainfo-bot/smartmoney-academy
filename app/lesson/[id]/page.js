@@ -1534,7 +1534,7 @@ const LEVEL_STYLE = {
 function Section({ section, index, diagramSrc, diagramAlt }) {
   const [open, setOpen] = useState(index === 0);
   return (
-    <div className="border border-[rgba(212,168,67,0.25)] rounded-xl overflow-hidden mb-4">
+    <div className="border border-[rgba(212,168,67,0.75)] rounded-xl overflow-hidden mb-4">
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between p-5 text-left hover:bg-[rgba(212,168,67,0.03)] transition-colors"
@@ -1548,7 +1548,7 @@ function Section({ section, index, diagramSrc, diagramAlt }) {
         <span className="text-[#D4A843] text-lg">{open ? '−' : '+'}</span>
       </button>
       {open && (
-        <div className="px-5 pb-6 border-t border-[rgba(212,168,67,0.25)]">
+        <div className="px-5 pb-6 border-t border-[rgba(212,168,67,0.75)]">
           <div className="pt-5 text-gray-300 leading-relaxed text-sm whitespace-pre-line mb-4" style={{ fontWeight: 300 }}>
             {section.content}
           </div>
@@ -1580,11 +1580,11 @@ function Quiz({ questions, lessonId }) {
           <p className="text-white text-sm font-medium mb-3">{qi + 1}. {q.q}</p>
           <div className="space-y-2">
             {q.options.map((opt, oi) => {
-              let style = 'border-[rgba(212,168,67,0.25)] bg-[#0F0F0F] text-gray-300 hover:border-[rgba(212,168,67,0.8)]';
+              let style = 'border-[rgba(212,168,67,0.75)] bg-[#0F0F0F] text-gray-300 hover:border-[rgba(212,168,67,0.8)]';
               if (submitted) {
                 if (oi === q.answer) style = 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300';
                 else if (answers[qi] === oi) style = 'border-red-500/40 bg-red-500/10 text-red-300';
-                else style = 'border-[rgba(212,168,67,0.25)] bg-[#0F0F0F] text-gray-300';
+                else style = 'border-[rgba(212,168,67,0.75)] bg-[#0F0F0F] text-gray-300';
               } else if (answers[qi] === oi) {
                 style = 'border-[rgba(212,168,67,0.75)] bg-[rgba(212,168,67,0.22)] text-[#D4A843]';
               }
@@ -1633,7 +1633,7 @@ function Quiz({ questions, lessonId }) {
           style={{
             background: Object.keys(answers).length === questions.length
               ? 'linear-gradient(135deg, #D4A843, #F0C96A)'
-              : 'rgba(212,168,67,0.25)',
+              : 'rgba(212,168,67,0.75)',
             color: Object.keys(answers).length === questions.length ? '#080808' : '#8A6B28',
             fontWeight: 700,
           }}
@@ -1693,7 +1693,7 @@ export default function LessonPage({ params }) {
     <div className="min-h-screen bg-[#080808] text-white" style={{ fontFamily: "'DM Sans', sans-serif" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap');
-        :root { --gold: #D4A843; --gold-light: #F0C96A; --gold-dim: #8A6B28; --bg2: #0F0F0F; --bg3: #141414; --border: rgba(212,168,67,0.25); }
+        :root { --gold: #D4A843; --gold-light: #F0C96A; --gold-dim: #8A6B28; --bg2: #0F0F0F; --bg3: #141414; --border: rgba(212,168,67,0.75); }
         .font-display { font-family: 'Bebas Neue', sans-serif; }
         .font-mono-custom { font-family: 'DM Mono', monospace; }
       `}</style>
@@ -1716,7 +1716,7 @@ export default function LessonPage({ params }) {
         {/* ── Breadcrumb ── */}
         <div className="flex items-center gap-2 font-mono-custom text-xs text-gray-300 mb-8">
           <Link href="/courses" className="hover:text-[var(--gold)] transition-colors">Courses</Link>
-          <span className="text-gray-700">›</span>
+          <span className="text-gray-500">›</span>
           <span className="text-[var(--gold)]">{lesson.title}</span>
         </div>
 

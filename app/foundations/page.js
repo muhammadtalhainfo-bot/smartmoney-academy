@@ -301,7 +301,7 @@ export default function FoundationsPage() {
       )}
 
       {/* Hero */}
-      <section style={{ padding: '80px 24px 64px', borderBottom: '1px solid rgba(212,168,67,0.25)', background: 'linear-gradient(180deg, #0D0D0D 0%, #080808 100%)', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ padding: '80px 24px 64px', borderBottom: '1px solid rgba(212,168,67,0.75)', background: 'linear-gradient(180deg, #0D0D0D 0%, #080808 100%)', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(212,168,67,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(212,168,67,0.025) 1px, transparent 1px)', backgroundSize: '60px 60px', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <div style={{ ...mono, fontSize: '11px', color: 'rgba(212,168,67,0.8)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '16px' }}>// Step 0 — Before ICT & SMC</div>
@@ -396,7 +396,7 @@ export default function FoundationsPage() {
               <div style={{ ...mono, fontSize: '10px', color: 'rgba(212,168,67,0.75)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '4px' }}>// Topics</div>
               <h2 className="font-display" style={{ fontSize: '36px', color: 'white' }}>{activeStep === 'All' ? 'ALL TOPICS' : `STEP ${activeStep}: ${STEPS[parseInt(activeStep)-1]?.name.toUpperCase()}`}</h2>
             </div>
-            <button onClick={() => setActiveStep('All')} style={{ ...mono, fontSize: '11px', color: 'rgba(212,168,67,0.8)', background: 'transparent', border: '1px solid rgba(212,168,67,0.25)', borderRadius: '8px', padding: '6px 14px', cursor: 'pointer' }}>
+            <button onClick={() => setActiveStep('All')} style={{ ...mono, fontSize: '11px', color: 'rgba(212,168,67,0.8)', background: 'transparent', border: '1px solid rgba(212,168,67,0.75)', borderRadius: '8px', padding: '6px 14px', cursor: 'pointer' }}>
               Show All →
             </button>
           </div>
@@ -493,7 +493,7 @@ export default function FoundationsPage() {
       </section>
 
       {/* Next Steps CTA */}
-      <section style={{ padding: '64px 24px', borderTop: '1px solid rgba(212,168,67,0.25)' }}>
+      <section style={{ padding: '64px 24px', borderTop: '1px solid rgba(212,168,67,0.75)' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', textAlign: 'center' }}>
           <div style={{ ...mono, fontSize: '10px', color: 'rgba(212,168,67,0.75)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '12px' }}>// What's Next</div>
           <h2 className="font-display" style={{ fontSize: '56px', color: 'white', marginBottom: '16px' }}>READY FOR THE REAL THING?</h2>
