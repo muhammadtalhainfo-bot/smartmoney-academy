@@ -1236,6 +1236,11 @@ function Progress({ trades, stats }) {
 }
 
 // ─── MAIN PAGE ────────────────────────────────────────────────────────────────
+const sanitizeInput = (str) => {
+  if (typeof str !== 'string') return str;
+  return str.replace(/[<>]/g, '').trim().slice(0, 1000);
+};
+
 export default function JournalPage() {
   const [page, setPage] = useState('dashboard');
   const [trades, setTrades] = useState([]);

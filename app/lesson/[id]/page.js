@@ -1,3 +1,15 @@
+export async function generateMetadata({ params }) {
+  const lessonId = parseInt(params.id);
+  const lesson = Object.values(LESSONS).find(l => l.id === lessonId);
+  if (!lesson) {
+    return { title: 'Lesson Not Found | ICT Flow' };
+  }
+  return {
+    title: `${lesson.title} | ICT Flow`,
+    description: lesson.intro?.slice(0, 160) || 'Learn ICT trading concepts'
+  };
+}
+
 // v2
 'use client';
 import { useState, use, useEffect } from 'react';
