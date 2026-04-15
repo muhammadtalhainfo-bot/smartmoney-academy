@@ -549,12 +549,12 @@ export default function MentorshipPage() {
       {/* Search and filters */}
       <div style={{ borderBottom: '1px solid rgba(212,168,67,0.12)', background: 'rgba(8,8,8,0.97)', backdropFilter: 'blur(20px)', padding: '16px 24px', position: 'sticky', top: '72px', zIndex: 40 }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexDirection: 'column' }}>
             <input
               value={search}
               onChange={e => setSearch(e.target.value)}
               placeholder="Search episodes, concepts..."
-              style={{ background: '#0F0F0F', border: '1px solid rgba(212,168,67,0.15)', borderRadius: '8px', padding: '8px 14px', color: 'white', ...mono, fontSize: '12px', width: '240px' }}
+              style={{ background: '#0F0F0F', border: '1px solid rgba(212,168,67,0.15)', borderRadius: '8px', padding: '8px 14px', color: 'white', ...mono, fontSize: '12px', width: '100%' }}
             />
             <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', flex: 1 }}>
               {['All', ...ALL_TAGS].map(tag => (
