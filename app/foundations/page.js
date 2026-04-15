@@ -422,7 +422,7 @@ export default function FoundationsPage() {
                         <span style={{ fontSize: '15px', fontWeight: 600, color: 'white' }}>{topic.title}</span>
                         <span style={{ ...mono, fontSize: '9px', color: step?.color, background: `${step?.color}15`, padding: '2px 7px', borderRadius: '4px' }}>Step {topic.step}</span>
                       </div>
-                      <div style={{ ...mono, fontSize: '10px', color: '#606060' }}>{step?.name}</div>
+                      <div style={{ ...mono, fontSize: '10px', color: '#9CA3AF' }}>{step?.name}</div>
                     </div>
                     <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexShrink: 0 }}>
                       <button onClick={(e) => { e.stopPropagation(); toggleCompleted(topic.id); }}

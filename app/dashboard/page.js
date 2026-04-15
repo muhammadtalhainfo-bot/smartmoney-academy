@@ -411,7 +411,7 @@ export default function DashboardPage() {
                       <div className="h-1.5 rounded-full" style={{ width: `${pct}%`, background: isComplete ? '#34D399' : '#D4A843', transition: 'width 0.7s ease' }} />
                     </div>
                     <div className="flex justify-between">
-                      <span className="font-mono-c text-[10px]" style={{ color: isComplete ? '#34D399' : modCompletions > 0 ? '#D4A843' : '#707070' }}>
+                      <span className="font-mono-c text-[10px]" style={{ color: isComplete ? '#34D399' : modCompletions > 0 ? '#D4A843' : '#A1A1AA' }}>
                         {isComplete ? 'Complete' : modCompletions > 0 ? `${modCompletions}/${mod.lessons} lessons` : 'Not started'}
                       </span>
                       <span className="font-mono-c text-[10px]" style={{ color: '#A8A8A8' }}>{pct}%</span>

@@ -615,7 +615,7 @@ export default function MentorshipPage() {
                             {ep.concepts.slice(0, 3).map(c => (
                               <span key={c} style={{ ...mono, fontSize: '9px', color: 'rgba(212,168,67,0.75)', background: 'rgba(212,168,67,0.05)', border: '1px solid rgba(212,168,67,0.25)', padding: '1px 6px', borderRadius: '4px' }}>{c}</span>
                             ))}
-                            {ep.concepts.length > 3 && <span style={{ ...mono, fontSize: '9px', color: '#606060' }}>+{ep.concepts.length - 3} more</span>}
+                            {ep.concepts.length > 3 && <span style={{ ...mono, fontSize: '9px', color: '#9CA3AF' }}>+{ep.concepts.length - 3} more</span>}
                           </div>
                         </div>
 
@@ -659,7 +659,7 @@ export default function MentorshipPage() {
                           {/* Tags */}
                           <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
                             {ep.tags.map(t => (
-                              <span key={t} style={{ ...mono, fontSize: '9px', color: '#606060', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.15)', padding: '2px 7px', borderRadius: '4px' }}>{t}</span>
+                              <span key={t} style={{ ...mono, fontSize: '9px', color: '#9CA3AF', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.15)', padding: '2px 7px', borderRadius: '4px' }}>{t}</span>
                             ))}
                           </div>
                         </div>
