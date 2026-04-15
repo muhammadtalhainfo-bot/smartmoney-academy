@@ -270,7 +270,7 @@ export default function GlossaryPage() {
                     {isOpen && (
                       <div className="slide-down px-6 pb-5 border-t" style={{ borderColor: 'rgba(212,168,67,0.08)' }}>
                         <div className="pt-4">
-                          <div className="font-mono-c text-xs mb-3" style={{ color: 'rgba(212,168,67,0.5)' }}>{t.full}</div>
+                          <div className="font-mono-c text-xs mb-3" style={{ color: 'rgba(212,168,67,0.75)' }}>{t.full}</div>
                           <p className="text-gray-300 text-sm leading-relaxed" style={{ fontWeight: 300 }}>{t.def}</p>
                           <div className="mt-3 flex items-center gap-3">
                             <span className="px-2.5 py-1 rounded-lg text-[10px] font-mono-c border" style={{ color: cs.color, background: cs.bg, borderColor: cs.border }}>

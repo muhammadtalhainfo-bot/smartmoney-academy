@@ -81,7 +81,7 @@ export default function EmailCapture() {
             {msg && status === 'error' && (
               <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(248,113,113,0.8)', letterSpacing: '0.05em' }}>{msg}</p>
             )}
-            <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.2)', letterSpacing: '0.08em', marginTop: '12px' }}>
+            <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.5)', letterSpacing: '0.08em', marginTop: '12px' }}>
               JOIN 500+ TRADERS · UNSUBSCRIBE ANYTIME
             </p>
           </>

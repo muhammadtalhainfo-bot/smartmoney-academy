@@ -254,7 +254,7 @@ function ModuleCard({ mod, index }) {
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               fontFamily: 'Bebas Neue, sans-serif', fontSize: '11px', color: '#D4A843', letterSpacing: '0.05em',
             }}>IF</div>
-            <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', letterSpacing: '0.2em', color: 'rgba(212,168,67,0.5)', textTransform: 'uppercase' }}>
+            <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', letterSpacing: '0.2em', color: 'rgba(212,168,67,0.75)', textTransform: 'uppercase' }}>
               Module {mod.module}
             </span>
           </div>
@@ -306,7 +306,7 @@ function ModuleCard({ mod, index }) {
             fontFamily: 'DM Mono, monospace', fontSize: '9px', letterSpacing: '0.1em',
             color: tag.text, background: tag.bg,
           }}>{mod.tag}</span>
-          <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.2)', marginLeft: 'auto' }}>
+          <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.5)', marginLeft: 'auto' }}>
             {mod.lessons} lessons · {mod.duration}
           </span>
         </div>
@@ -319,7 +319,7 @@ function ModuleCard({ mod, index }) {
             padding: '9px 13px', borderRadius: '9px',
             background: expanded ? 'rgba(212,168,67,0.05)' : 'transparent',
             border: '1px solid rgba(212,168,67,0.1)',
-            color: 'rgba(212,168,67,0.65)',
+            color: 'rgba(212,168,67,0.85)',
             fontFamily: 'DM Mono, monospace', fontSize: '9px', letterSpacing: '0.15em',
             cursor: 'pointer', textTransform: 'uppercase',
           }}
@@ -445,7 +445,7 @@ export default function CoursesPage() {
         }
         .module-card:hover .start-btn {
           background: rgba(212,168,67,0.07) !important;
-          border-color: rgba(212,168,67,0.5) !important;
+          border-color: rgba(212,168,67,0.75) !important;
         }
 
         .filter-btn {
@@ -561,7 +561,7 @@ export default function CoursesPage() {
           {/* Intermediate Track */}
           {filtered.some(m => m.level === 'Intermediate') && (activeFilter === 'All' || activeFilter === 'Intermediate') && (
             <div className="mb-12">
-              <div className="track-header mb-6" style={{ borderLeftColor: 'rgba(212,168,67,0.5)' }}>
+              <div className="track-header mb-6" style={{ borderLeftColor: 'rgba(212,168,67,0.75)' }}>
                 <div className="font-mono-c text-xs tracking-widest uppercase mb-1" style={{ color: '#D4A843' }}>Intermediate Track</div>
                 <p className="text-gray-300 text-xs" style={{ fontWeight: 300 }}>Entry models, sessions, and PD arrays in depth.</p>
               </div>
@@ -577,7 +577,7 @@ export default function CoursesPage() {
               <div className="mb-6 pb-3 border-b" style={{ borderColor: 'rgba(251,146,60,0.15)' }}>
                 <div className="font-mono-c text-xs tracking-widest uppercase mb-1" style={{ color: '#FB923C' }}>SMC Track</div>
                 <div className="text-white font-semibold text-lg">Smart Money Concepts</div>
-                <div className="text-sm mt-1" style={{ color: 'rgba(255,255,255,0.4)' }}>Community-built framework derived from ICT — great companion to the main curriculum.</div>
+                <div className="text-sm mt-1" style={{ color: 'rgba(255,255,255,0.7)' }}>Community-built framework derived from ICT — great companion to the main curriculum.</div>
               </div>
               {filtered.filter(m => m.level === 'SMC').map((mod, i) => <ModuleCard key={mod.id} mod={mod} index={i} />)}
             </div>
@@ -614,7 +614,7 @@ export default function CoursesPage() {
       {/* ── BOTTOM CTA ── */}
       <section className="relative z-10 px-6 py-16 border-t" style={{ borderColor: 'var(--border)', background: '#0A0A0A' }}>
         <div className="max-w-2xl mx-auto text-center">
-          <div className="font-mono-c text-xs tracking-widest uppercase mb-4" style={{ color: 'rgba(212,168,67,0.5)' }}>// Start From Zero</div>
+          <div className="font-mono-c text-xs tracking-widest uppercase mb-4" style={{ color: 'rgba(212,168,67,0.75)' }}>// Start From Zero</div>
           <h2 className="font-display text-5xl text-white mb-4">DON'T KNOW WHERE<br/>TO BEGIN?</h2>
           <p className="text-gray-300 text-sm mb-8" style={{ fontWeight: 300 }}>New to trading? Start with Trading Foundations first, then come back here.</p>
           <Link href="/lesson/1">

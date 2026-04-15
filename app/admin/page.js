@@ -43,7 +43,7 @@ const css = {
     borderRadius: '8px', padding: '7px 14px', color: '#F87171',
     fontFamily: 'DM Mono, monospace', fontSize: '10px', cursor: 'pointer',
   },
-  label: { fontFamily: 'DM Mono, monospace', fontSize: '10px', color: `rgba(212,168,67,0.65)`, marginBottom: '6px', letterSpacing: '0.12em', display: 'block', textTransform: 'uppercase' },
+  label: { fontFamily: 'DM Mono, monospace', fontSize: '10px', color: `rgba(212,168,67,0.85)`, marginBottom: '6px', letterSpacing: '0.12em', display: 'block', textTransform: 'uppercase' },
 };
 
 // ─── STATIC DATA (mirrors site) ───────────────────────────────────────────────
@@ -114,8 +114,8 @@ const StatCard = ({ icon, value, label, sub }) => (
   <div style={{ ...css.card, textAlign: 'center' }}>
     <div style={{ fontSize: '22px', marginBottom: '8px' }}>{icon}</div>
     <div style={{ ...css.bebas, fontSize: '38px', color: G, lineHeight: 1 }}>{value}</div>
-    <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', marginTop: '6px' }}>{label}</div>
-    {sub && <div style={{ ...css.mono, fontSize: '9px', color: `rgba(212,168,67,0.4)`, marginTop: '4px' }}>{sub}</div>}
+    <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(255,255,255,0.7)', textTransform: 'uppercase', marginTop: '6px' }}>{label}</div>
+    {sub && <div style={{ ...css.mono, fontSize: '9px', color: `rgba(212,168,67,0.75)`, marginTop: '4px' }}>{sub}</div>}
   </div>
 );
 
@@ -207,7 +207,7 @@ function DashboardSection({ users, emails, trades, proUsers, loading, onRefresh 
       } />
 
       {loading ? (
-        <div style={{ textAlign: 'center', padding: '60px', ...css.mono, fontSize: '12px', color: `rgba(212,168,67,0.4)` }}>LOADING DATA...</div>
+        <div style={{ textAlign: 'center', padding: '60px', ...css.mono, fontSize: '12px', color: `rgba(212,168,67,0.75)` }}>LOADING DATA...</div>
       ) : (
         <>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '14px', marginBottom: '24px' }}>
@@ -220,12 +220,12 @@ function DashboardSection({ users, emails, trades, proUsers, loading, onRefresh 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
             {/* Top Users */}
             <div style={css.card}>
-              <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.6)`, marginBottom: '14px', letterSpacing: '0.15em' }}>// TOP USERS BY XP</div>
+              <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.15em' }}>// TOP USERS BY XP</div>
               {topUsers.length === 0 ? (
-                <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.2)', textAlign: 'center', padding: '20px' }}>No users yet</div>
+                <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.5)', textAlign: 'center', padding: '20px' }}>No users yet</div>
               ) : topUsers.map((u, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '8px 0', borderBottom: `1px solid ${BORDER}` }}>
-                  <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(255,255,255,0.2)', width: '18px' }}>#{i + 1}</div>
+                  <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(255,255,255,0.5)', width: '18px' }}>#{i + 1}</div>
                   <div style={{ flex: 1, fontSize: '13px' }}>{u.username || u.email?.split('@')[0] || '—'}</div>
                   <div style={{ ...css.mono, fontSize: '11px', color: G }}>{u.xp || 0} XP</div>
                   <Badge color={u.is_pro ? '#34D399' : '#666'}>{u.is_pro ? 'PRO' : 'FREE'}</Badge>
@@ -235,14 +235,14 @@ function DashboardSection({ users, emails, trades, proUsers, loading, onRefresh 
 
             {/* Recent Emails */}
             <div style={css.card}>
-              <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.6)`, marginBottom: '14px', letterSpacing: '0.15em' }}>// RECENT EMAIL LEADS</div>
+              <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.15em' }}>// RECENT EMAIL LEADS</div>
               {recentEmails.length === 0 ? (
-                <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.2)', textAlign: 'center', padding: '20px' }}>No email signups yet</div>
+                <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.5)', textAlign: 'center', padding: '20px' }}>No email signups yet</div>
               ) : recentEmails.map((e, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '8px 0', borderBottom: `1px solid ${BORDER}` }}>
                   <div style={{ fontSize: '16px' }}>📧</div>
                   <div style={{ flex: 1, fontSize: '13px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{e.email}</div>
-                  <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(255,255,255,0.3)' }}>{e.created_at ? new Date(e.created_at).toLocaleDateString() : '—'}</div>
+                  <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(255,255,255,0.6)' }}>{e.created_at ? new Date(e.created_at).toLocaleDateString() : '—'}</div>
                 </div>
               ))}
             </div>
@@ -250,7 +250,7 @@ function DashboardSection({ users, emails, trades, proUsers, loading, onRefresh 
 
           {/* Quick Links */}
           <div style={{ ...css.card, marginTop: '16px' }}>
-            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.6)`, marginBottom: '14px', letterSpacing: '0.15em' }}>// QUICK LINKS — LIVE SITE</div>
+            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.15em' }}>// QUICK LINKS — LIVE SITE</div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
               {['/', '/courses', '/blog', '/pricing', '/glossary', '/practice', '/leaderboard', '/dashboard'].map(href => (
                 <a key={href} href={href} target="_blank" rel="noopener noreferrer"
@@ -311,7 +311,7 @@ function UsersSection({ users, supabase, onReload }) {
             <thead>
               <tr>
                 {['Username', 'Email', 'XP', 'Streak', 'Plan', 'Joined', 'Actions'].map(h => (
-                  <th key={h} style={{ ...css.mono, fontSize: '9px', color: `rgba(212,168,67,0.5)`, padding: '8px 12px', textAlign: 'left', borderBottom: `1px solid ${BORDER}`, textTransform: 'uppercase', whiteSpace: 'nowrap' }}>{h}</th>
+                  <th key={h} style={{ ...css.mono, fontSize: '9px', color: `rgba(212,168,67,0.75)`, padding: '8px 12px', textAlign: 'left', borderBottom: `1px solid ${BORDER}`, textTransform: 'uppercase', whiteSpace: 'nowrap' }}>{h}</th>
                 ))}
               </tr>
             </thead>
@@ -331,14 +331,14 @@ function UsersSection({ users, supabase, onReload }) {
                       ...css.mono, fontSize: '10px', cursor: 'pointer'
                     }}>{u.is_pro ? '✓ PRO' : 'FREE'}</button>
                   </td>
-                  <td style={{ padding: '10px 12px', fontSize: '11px', color: 'rgba(255,255,255,0.3)', whiteSpace: 'nowrap' }}>{u.created_at ? new Date(u.created_at).toLocaleDateString() : '—'}</td>
+                  <td style={{ padding: '10px 12px', fontSize: '11px', color: 'rgba(255,255,255,0.6)', whiteSpace: 'nowrap' }}>{u.created_at ? new Date(u.created_at).toLocaleDateString() : '—'}</td>
                   <td style={{ padding: '10px 12px' }}>
                     <button onClick={() => deleteUser(u)} style={{ ...css.btnDanger }}>DELETE</button>
                   </td>
                 </tr>
               ))}
               {filtered.length === 0 && (
-                <tr><td colSpan={7} style={{ padding: '40px', textAlign: 'center', ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.2)' }}>No users found</td></tr>
+                <tr><td colSpan={7} style={{ padding: '40px', textAlign: 'center', ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.5)' }}>No users found</td></tr>
               )}
             </tbody>
           </table>
@@ -426,7 +426,7 @@ function BlogSection({ supabase }) {
         {/* Sidebar */}
         <div>
           <div style={{ ...css.card, marginBottom: '16px' }}>
-            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.6)`, marginBottom: '14px', letterSpacing: '0.12em' }}>PUBLISH SETTINGS</div>
+            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.12em' }}>PUBLISH SETTINGS</div>
             <FieldGroup label="Status">
               <div style={{ display: 'flex', gap: '8px' }}>
                 {['Published', 'Draft'].map(s => (
@@ -434,7 +434,7 @@ function BlogSection({ supabase }) {
                     style={{ flex: 1, padding: '8px', borderRadius: '7px', border: `1px solid`,
                       background: (s === 'Published') === form.published ? `${G}18` : 'transparent',
                       borderColor: (s === 'Published') === form.published ? G : BORDER2,
-                      color: (s === 'Published') === form.published ? G : 'rgba(255,255,255,0.4)',
+                      color: (s === 'Published') === form.published ? G : 'rgba(255,255,255,0.7)',
                       ...css.mono, fontSize: '11px', cursor: 'pointer' }}>{s}</button>
                 ))}
               </div>
@@ -459,18 +459,18 @@ function BlogSection({ supabase }) {
           </div>
 
           <div style={{ ...css.card, marginBottom: '16px' }}>
-            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.6)`, marginBottom: '14px', letterSpacing: '0.12em' }}>COVER IMAGE</div>
+            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.12em' }}>COVER IMAGE</div>
             <FieldGroup label="Image URL">
               <Input value={form.image} onChange={e => setForm({ ...form, image: e.target.value })} placeholder="/images/fvg.png or https://..." />
             </FieldGroup>
             {form.image && <img src={form.image} alt="" style={{ width: '100%', height: '100px', objectFit: 'cover', borderRadius: '8px', marginTop: '8px' }} onError={e => e.target.style.display = 'none'} />}
-            <div style={{ ...css.mono, fontSize: '9px', color: 'rgba(255,255,255,0.25)', marginTop: '8px', lineHeight: 1.6 }}>
+            <div style={{ ...css.mono, fontSize: '9px', color: 'rgba(255,255,255,0.55)', marginTop: '8px', lineHeight: 1.6 }}>
               Built-in: /images/market-structure.png · /images/liquidity.png · /images/fvg.png · /images/order-blocks.png · /images/killzones.png · /images/amd.png · /images/premium-discount.png
             </div>
           </div>
 
           <div style={{ ...css.card, marginBottom: '16px' }}>
-            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.6)`, marginBottom: '14px', letterSpacing: '0.12em' }}>SEO META TAGS</div>
+            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.12em' }}>SEO META TAGS</div>
             <FieldGroup label="Meta Title (leave blank to use post title)">
               <Input value={form.meta_title || ''} onChange={e => setForm({ ...form, meta_title: e.target.value })} placeholder="Custom SEO title..." />
             </FieldGroup>
@@ -502,7 +502,7 @@ function BlogSection({ supabase }) {
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
         {filtered.length === 0 ? (
-          <div style={{ ...css.card, textAlign: 'center', padding: '50px', ...css.mono, fontSize: '12px', color: 'rgba(255,255,255,0.2)' }}>
+          <div style={{ ...css.card, textAlign: 'center', padding: '50px', ...css.mono, fontSize: '12px', color: 'rgba(255,255,255,0.5)' }}>
             {posts.length === 0 ? 'No blog posts yet. Click NEW POST to write your first article.' : 'No posts match your search.'}
           </div>
         ) : filtered.map(p => (
@@ -515,14 +515,14 @@ function BlogSection({ supabase }) {
                 {p.featured && <span style={{ ...css.mono, fontSize: '9px', color: G, marginRight: '8px' }}>★ FEATURED</span>}
                 {p.title}
               </div>
-              <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.5)` }}>{p.category} · {p.read_time} · /{p.slug}</div>
+              <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.75)` }}>{p.category} · {p.read_time} · /{p.slug}</div>
             </div>
             <div style={{ display: 'flex', gap: '8px', flexShrink: 0, alignItems: 'center' }}>
               <button onClick={() => togglePub(p)} style={{
                 background: p.published ? 'rgba(52,211,153,0.1)' : 'rgba(255,255,255,0.05)',
                 border: `1px solid ${p.published ? 'rgba(52,211,153,0.3)' : BORDER}`,
                 borderRadius: '6px', padding: '5px 12px',
-                color: p.published ? '#34D399' : 'rgba(255,255,255,0.3)',
+                color: p.published ? '#34D399' : 'rgba(255,255,255,0.6)',
                 ...css.mono, fontSize: '10px', cursor: 'pointer'
               }}>{p.published ? '● LIVE' : '○ DRAFT'}</button>
               <button onClick={() => edit(p)} style={{ ...css.btn, padding: '6px 14px', fontSize: '10px' }}>EDIT</button>
@@ -604,16 +604,16 @@ function CoursesSection({ supabase }) {
             ) : (
               <div style={{ ...css.card, display: 'flex', alignItems: 'center', gap: '14px', padding: '12px 18px' }}>
                 <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: `${G}18`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', flexShrink: 0 }}>{m.emoji}</div>
-                <div style={{ ...css.mono, fontSize: '11px', color: `rgba(212,168,67,0.5)`, width: '28px', flexShrink: 0 }}>{m.module}</div>
+                <div style={{ ...css.mono, fontSize: '11px', color: `rgba(212,168,67,0.75)`, width: '28px', flexShrink: 0 }}>{m.module}</div>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontSize: '14px', fontWeight: 600, marginBottom: '3px' }}>{m.title}</div>
-                  <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(255,255,255,0.4)' }}>{m.lessons} lessons · {m.duration} · {m.tag}</div>
+                  <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(255,255,255,0.7)' }}>{m.lessons} lessons · {m.duration} · {m.tag}</div>
                 </div>
                 <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
                   <Badge color={m.level === 'Beginner' ? '#34D399' : m.level === 'Intermediate' ? G : m.level === 'Advanced' ? '#F87171' : '#A78BFA'}>{m.level}</Badge>
                   {m.locked && <Badge color="#F87171">PRO</Badge>}
-                  {m.comingSoon && <Badge color="rgba(255,255,255,0.4)">SOON</Badge>}
-                  {m.visible === false && <Badge color="rgba(255,255,255,0.2)">HIDDEN</Badge>}
+                  {m.comingSoon && <Badge color="rgba(255,255,255,0.7)">SOON</Badge>}
+                  {m.visible === false && <Badge color="rgba(255,255,255,0.5)">HIDDEN</Badge>}
                   <button onClick={() => startEdit(m)} style={{ ...css.btn, padding: '6px 14px', fontSize: '10px', marginLeft: '6px' }}>EDIT</button>
                 </div>
               </div>
@@ -644,8 +644,8 @@ function PagesSection() {
             onClick={() => setSelected(selected === p.href ? null : p.href)}>
             <div style={{ flex: 1 }}>
               <div style={{ fontWeight: 600, fontSize: '14px', marginBottom: '2px' }}>{p.label}</div>
-              <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.5)` }}>{p.href}</div>
-              <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.4)', marginTop: '3px' }}>{p.desc}</div>
+              <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.75)` }}>{p.href}</div>
+              <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.7)', marginTop: '3px' }}>{p.desc}</div>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
               <a href={p.href} target="_blank" rel="noopener noreferrer" style={{ ...css.btn, padding: '6px 12px', fontSize: '10px', textDecoration: 'none', display: 'block', textAlign: 'center' }}>VIEW ↗</a>
@@ -656,11 +656,11 @@ function PagesSection() {
 
       {selected && (
         <div style={{ ...css.card, marginTop: '16px', border: `1px solid ${BORDER2}` }}>
-          <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.6)`, marginBottom: '10px', letterSpacing: '0.12em' }}>PAGE FILE LOCATION</div>
+          <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '10px', letterSpacing: '0.12em' }}>PAGE FILE LOCATION</div>
           <div style={{ background: S1, borderRadius: '8px', padding: '14px', ...css.mono, fontSize: '13px', color: G }}>
             app{selected === '/' ? '/page.js' : `${selected}/page.js`}
           </div>
-          <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.4)', marginTop: '10px' }}>
+          <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.7)', marginTop: '10px' }}>
             Edit this file in your code editor and push to GitHub to update the live site.
           </div>
         </div>
@@ -738,7 +738,7 @@ function BannersSection({ supabase }) {
       )}
 
       {banners.length === 0 ? (
-        <div style={{ ...css.card, textAlign: 'center', padding: '50px', ...css.mono, fontSize: '12px', color: 'rgba(255,255,255,0.2)' }}>
+        <div style={{ ...css.card, textAlign: 'center', padding: '50px', ...css.mono, fontSize: '12px', color: 'rgba(255,255,255,0.5)' }}>
           No banners created yet. Add your first site-wide announcement, promo, or alert.
         </div>
       ) : (
@@ -747,7 +747,7 @@ function BannersSection({ supabase }) {
             <div key={b.id} style={{ ...css.card, display: 'flex', alignItems: 'center', gap: '14px', padding: '14px 18px', borderLeft: `3px solid ${TYPE_COLORS[b.type] || G}` }}>
               <div style={{ flex: 1 }}>
                 <div style={{ fontSize: '14px', fontWeight: 500, marginBottom: '3px' }}>{b.text}</div>
-                <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(255,255,255,0.3)' }}>
+                <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(255,255,255,0.6)' }}>
                   {b.type?.toUpperCase()} · Page: {b.page} {b.cta_text && `· CTA: "${b.cta_text}" → ${b.cta_url}`}
                 </div>
               </div>
@@ -756,7 +756,7 @@ function BannersSection({ supabase }) {
                   background: b.active ? 'rgba(52,211,153,0.1)' : 'rgba(255,255,255,0.05)',
                   border: `1px solid ${b.active ? 'rgba(52,211,153,0.3)' : BORDER}`,
                   borderRadius: '6px', padding: '5px 12px',
-                  color: b.active ? '#34D399' : 'rgba(255,255,255,0.3)',
+                  color: b.active ? '#34D399' : 'rgba(255,255,255,0.6)',
                   ...css.mono, fontSize: '10px', cursor: 'pointer'
                 }}>{b.active ? '● LIVE' : '○ OFF'}</button>
                 <button onClick={() => del(b.id)} style={{ ...css.btnDanger }}>DEL</button>
@@ -802,7 +802,7 @@ function MediaSection() {
             <div style={{ width: '100%', height: '80px', background: S3, borderRadius: '6px', overflow: 'hidden', marginBottom: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <img src={img} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => { e.target.style.display = 'none'; e.target.parentNode.innerHTML = '<span style="font-size:24px">🖼️</span>'; }} />
             </div>
-            <div style={{ ...css.mono, fontSize: '9px', color: copied === img ? G : 'rgba(255,255,255,0.4)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+            <div style={{ ...css.mono, fontSize: '9px', color: copied === img ? G : 'rgba(255,255,255,0.7)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
               {copied === img ? '✓ COPIED!' : img.split('/').pop()}
             </div>
           </div>
@@ -828,7 +828,7 @@ function CategoriesSection({ supabase }) {
           { title: 'Glossary Categories', items: GLOSSARY_CATS, color: G },
         ].map(group => (
           <div key={group.title} style={css.card}>
-            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.6)`, marginBottom: '14px', letterSpacing: '0.12em' }}>{group.title.toUpperCase()}</div>
+            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.12em' }}>{group.title.toUpperCase()}</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {group.items.map(item => (
                 <div key={item} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '8px 12px', background: S3, borderRadius: '7px' }}>
@@ -837,7 +837,7 @@ function CategoriesSection({ supabase }) {
                 </div>
               ))}
             </div>
-            <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(255,255,255,0.25)', marginTop: '12px' }}>
+            <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(255,255,255,0.55)', marginTop: '12px' }}>
               Edit in source files to add/remove categories
             </div>
           </div>
@@ -886,19 +886,19 @@ function PricingSection({ supabase }) {
       {/* Prices */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
         <div style={css.card}>
-          <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.6)`, marginBottom: '14px', letterSpacing: '0.12em' }}>MONTHLY PRICE (USD)</div>
+          <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.12em' }}>MONTHLY PRICE (USD)</div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <div style={{ fontSize: '24px', color: G, fontWeight: 700 }}>$</div>
             <Input value={monthlyPrice} onChange={e => setMonthlyPrice(e.target.value)} style={{ fontSize: '28px', fontWeight: 700, color: G, width: '120px' }} />
-            <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.4)' }}>/month</div>
+            <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.7)' }}>/month</div>
           </div>
         </div>
         <div style={css.card}>
-          <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.6)`, marginBottom: '14px', letterSpacing: '0.12em' }}>ANNUAL PRICE (USD)</div>
+          <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.12em' }}>ANNUAL PRICE (USD)</div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <div style={{ fontSize: '24px', color: '#34D399', fontWeight: 700 }}>$</div>
             <Input value={annualPrice} onChange={e => setAnnualPrice(e.target.value)} style={{ fontSize: '28px', fontWeight: 700, color: '#34D399', width: '120px' }} />
-            <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.4)' }}>/year</div>
+            <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.7)' }}>/year</div>
           </div>
         </div>
       </div>
@@ -910,7 +910,7 @@ function PricingSection({ supabase }) {
           { plan: 'pro', label: 'PRO PLAN FEATURES', features: proFeatures, color: G },
         ].map(({ plan, label, features, color }) => (
           <div key={plan} style={css.card}>
-            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.6)`, marginBottom: '14px', letterSpacing: '0.12em' }}>{label}</div>
+            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.12em' }}>{label}</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '12px' }}>
               {features.map((f, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 10px', background: S3, borderRadius: '7px' }}>
@@ -969,7 +969,7 @@ function SEOSection({ supabase }) {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
         <div>
           <div style={{ ...css.card, marginBottom: '16px' }}>
-            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.6)`, marginBottom: '14px', letterSpacing: '0.12em' }}>GLOBAL SITE META</div>
+            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.12em' }}>GLOBAL SITE META</div>
             <FieldGroup label="Site Name"><Input value={form.site_name} onChange={e => setForm({ ...form, site_name: e.target.value })} /></FieldGroup>
             <FieldGroup label="Site Tagline"><Input value={form.site_tagline} onChange={e => setForm({ ...form, site_tagline: e.target.value })} /></FieldGroup>
             <FieldGroup label="Default Meta Description"><Textarea value={form.meta_description} onChange={e => setForm({ ...form, meta_description: e.target.value })} rows={3} /></FieldGroup>
@@ -980,21 +980,21 @@ function SEOSection({ supabase }) {
 
         <div>
           <div style={{ ...css.card, marginBottom: '16px' }}>
-            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.6)`, marginBottom: '14px', letterSpacing: '0.12em' }}>SOCIAL & OG</div>
+            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.12em' }}>SOCIAL & OG</div>
             <FieldGroup label="OG Image URL (used for link previews)"><Input value={form.og_image} onChange={e => setForm({ ...form, og_image: e.target.value })} /></FieldGroup>
             <FieldGroup label="Twitter/X Handle"><Input value={form.twitter_handle} onChange={e => setForm({ ...form, twitter_handle: e.target.value })} placeholder="@yourhandle" /></FieldGroup>
           </div>
 
           <div style={{ ...css.card, marginBottom: '16px' }}>
-            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.6)`, marginBottom: '14px', letterSpacing: '0.12em' }}>ANALYTICS & VERIFICATION</div>
+            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.12em' }}>ANALYTICS & VERIFICATION</div>
             <FieldGroup label="Google Analytics ID"><Input value={form.google_analytics} onChange={e => setForm({ ...form, google_analytics: e.target.value })} placeholder="G-XXXXXXXXXX" /></FieldGroup>
             <FieldGroup label="Google Site Verification"><Input value={form.google_site_verify} onChange={e => setForm({ ...form, google_site_verify: e.target.value })} /></FieldGroup>
           </div>
 
           <div style={{ ...css.card, marginBottom: '16px', background: 'rgba(212,168,67,0.04)' }}>
-            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.6)`, marginBottom: '10px', letterSpacing: '0.12em' }}>SITEMAP STATUS</div>
+            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '10px', letterSpacing: '0.12em' }}>SITEMAP STATUS</div>
             <div style={{ ...css.mono, fontSize: '12px', color: '#34D399', marginBottom: '4px' }}>✓ Dynamic sitemap active</div>
-            <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.4)' }}>app/sitemap.js — auto-generates for all pages & lessons</div>
+            <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.7)' }}>app/sitemap.js — auto-generates for all pages & lessons</div>
             <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" style={{ ...css.mono, fontSize: '11px', color: G, display: 'block', marginTop: '8px' }}>View sitemap.xml ↗</a>
           </div>
 
@@ -1024,13 +1024,13 @@ function NavSection() {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
         {[{ label: 'MAIN NAV (always visible)', items: MAIN }, { label: '"MORE" DROPDOWN', items: MORE }].map(group => (
           <div key={group.label} style={css.card}>
-            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.6)`, marginBottom: '14px', letterSpacing: '0.12em' }}>{group.label}</div>
+            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.12em' }}>{group.label}</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {group.items.map(([href, label], i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '8px 12px', background: S3, borderRadius: '7px' }}>
-                  <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(255,255,255,0.25)', width: '18px' }}>{i + 1}</div>
+                  <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(255,255,255,0.55)', width: '18px' }}>{i + 1}</div>
                   <div style={{ flex: 1, fontSize: '13px' }}>{label}</div>
-                  <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.4)` }}>{href}</div>
+                  <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.75)` }}>{href}</div>
                 </div>
               ))}
             </div>
@@ -1073,7 +1073,7 @@ function NotificationsSection() {
       <SectionHeader title="PUSH NOTIFICATIONS" />
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
         <div style={css.card}>
-          <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.6)`, marginBottom: '16px', letterSpacing: '0.12em' }}>SEND TO ALL USERS</div>
+          <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '16px', letterSpacing: '0.12em' }}>SEND TO ALL USERS</div>
           <Toast msg={status.text} type={status.type} />
           <FieldGroup label="Notification Title *">
             <Input value={title} onChange={e => setTitle(e.target.value)} placeholder="e.g. New Module Released!" />
@@ -1091,7 +1091,7 @@ function NotificationsSection() {
 
         {/* Preview */}
         <div>
-          <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.6)`, marginBottom: '14px', letterSpacing: '0.12em' }}>PREVIEW</div>
+          <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.12em' }}>PREVIEW</div>
           <div style={{ background: S3, borderRadius: '16px', padding: '16px', maxWidth: '320px' }}>
             <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
               <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: `${G}20`, border: `1px solid ${BORDER2}`, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px' }}>📈</div>
@@ -1101,7 +1101,7 @@ function NotificationsSection() {
               </div>
             </div>
           </div>
-          <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.3)', marginTop: '14px', lineHeight: 1.6 }}>
+          <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.6)', marginTop: '14px', lineHeight: 1.6 }}>
             Powered by OneSignal. Sends to all users who have enabled browser push notifications on your site.
           </div>
         </div>
@@ -1151,7 +1151,7 @@ export default function AdminPage() {
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap');
         * { box-sizing: border-box; }
         input, textarea, select { outline: none; color: white; }
-        input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.2); }
+        input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.5); }
         input[type=checkbox] { accent-color: ${G}; }
         ::-webkit-scrollbar { width: 4px; height: 4px; }
         ::-webkit-scrollbar-track { background: transparent; }
@@ -1165,7 +1165,7 @@ export default function AdminPage() {
       <div style={{ ...css.card, width: '100%', maxWidth: '380px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
         <img src="/ictflow-symbol.svg" alt="ICT Flow" style={{ width: "52px", height: "52px", borderRadius: "14px", margin: "0 auto 18px", display: "block" }} />
         <div style={{ ...css.bebas, fontSize: '30px', color: 'white', marginBottom: '4px', letterSpacing: '0.04em' }}>ADMIN CONSOLE</div>
-        <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.5)`, marginBottom: '24px', letterSpacing: '0.15em' }}>ICT FLOW — RESTRICTED ACCESS</div>
+        <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.75)`, marginBottom: '24px', letterSpacing: '0.15em' }}>ICT FLOW — RESTRICTED ACCESS</div>
 
         <input type="password" placeholder="Enter admin password" value={pass}
           onChange={e => { setPass(e.target.value); setError(''); }}
@@ -1187,7 +1187,7 @@ export default function AdminPage() {
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap');
         * { box-sizing: border-box; }
         input, textarea, select { outline: none; color: white; }
-        input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.2); }
+        input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.5); }
         input[type=checkbox] { accent-color: ${G}; }
         ::-webkit-scrollbar { width: 4px; height: 4px; }
         ::-webkit-scrollbar-track { background: transparent; }
@@ -1212,10 +1212,10 @@ export default function AdminPage() {
           {!sidebarCollapsed && (
             <div>
               <div style={{ ...css.bebas, fontSize: '16px', color: 'white', lineHeight: 1, letterSpacing: '0.04em' }}>ICT FLOW</div>
-              <div style={{ ...css.mono, fontSize: '8px', color: `rgba(212,168,67,0.5)`, letterSpacing: '0.1em' }}>ADMIN</div>
+              <div style={{ ...css.mono, fontSize: '8px', color: `rgba(212,168,67,0.75)`, letterSpacing: '0.1em' }}>ADMIN</div>
             </div>
           )}
-          <button onClick={() => setSidebarCollapsed(!sidebarCollapsed)} style={{ marginLeft: 'auto', background: 'none', border: 'none', color: 'rgba(255,255,255,0.3)', cursor: 'pointer', fontSize: '14px', flexShrink: 0 }}>
+          <button onClick={() => setSidebarCollapsed(!sidebarCollapsed)} style={{ marginLeft: 'auto', background: 'none', border: 'none', color: 'rgba(255,255,255,0.6)', cursor: 'pointer', fontSize: '14px', flexShrink: 0 }}>
             {sidebarCollapsed ? '→' : '←'}
           </button>
         </div>
@@ -1225,7 +1225,7 @@ export default function AdminPage() {
           {GROUPS.map(group => (
             <div key={group.id} style={{ marginBottom: '8px' }}>
               {!sidebarCollapsed && (
-                <div style={{ ...css.mono, fontSize: '8px', color: 'rgba(255,255,255,0.2)', letterSpacing: '0.15em', padding: '6px 8px 4px', textTransform: 'uppercase' }}>{group.label}</div>
+                <div style={{ ...css.mono, fontSize: '8px', color: 'rgba(255,255,255,0.5)', letterSpacing: '0.15em', padding: '6px 8px 4px', textTransform: 'uppercase' }}>{group.label}</div>
               )}
               {TABS.filter(t => t.group === group.id).map(tab => (
                 <button key={tab.id} onClick={() => setActiveTab(tab.id)}
@@ -1256,7 +1256,7 @@ export default function AdminPage() {
           <a href="/" target="_blank" rel="noopener noreferrer" style={{
             display: 'flex', alignItems: 'center', gap: '8px',
             padding: '8px 10px', borderRadius: '8px',
-            color: 'rgba(255,255,255,0.3)', textDecoration: 'none', fontSize: '13px',
+            color: 'rgba(255,255,255,0.6)', textDecoration: 'none', fontSize: '13px',
             justifyContent: sidebarCollapsed ? 'center' : 'flex-start',
           }}>
             <span>🌐</span>

@@ -28,20 +28,20 @@ export default function ResetPasswordPage() {
       <div style={{ background: '#0D0D0D', border: '1px solid rgba(212,168,67,0.15)', borderRadius: '20px', padding: '40px', width: '100%', maxWidth: '420px' }}>
         <img src="/ictflow-symbol.svg" alt="ICT Flow" style={{ width: '48px', height: '48px', borderRadius: '12px', display: 'block', margin: '0 auto 20px' }} />
         <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '32px', color: 'white', textAlign: 'center', marginBottom: '8px' }}>SET NEW PASSWORD</div>
-        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(212,168,67,0.5)', textAlign: 'center', marginBottom: '28px', letterSpacing: '0.1em' }}>ICT FLOW — ACCOUNT RECOVERY</div>
+        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(212,168,67,0.75)', textAlign: 'center', marginBottom: '28px', letterSpacing: '0.1em' }}>ICT FLOW — ACCOUNT RECOVERY</div>
 
         {success ? (
           <div style={{ textAlign: 'center', color: '#34D399', fontFamily: 'DM Mono, monospace', fontSize: '13px' }}>✓ Password updated! Redirecting...</div>
         ) : (
           <>
             <div style={{ marginBottom: '14px' }}>
-              <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.6)', marginBottom: '6px', letterSpacing: '0.1em' }}>NEW PASSWORD</div>
+              <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.8)', marginBottom: '6px', letterSpacing: '0.1em' }}>NEW PASSWORD</div>
               <input type="password" value={password} onChange={e => setPassword(e.target.value)}
                 placeholder="Min 6 characters"
                 style={{ width: '100%', background: '#080808', border: '1px solid rgba(212,168,67,0.2)', borderRadius: '8px', padding: '12px 14px', color: 'white', fontSize: '14px', boxSizing: 'border-box', outline: 'none' }} />
             </div>
             <div style={{ marginBottom: '20px' }}>
-              <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.6)', marginBottom: '6px', letterSpacing: '0.1em' }}>CONFIRM PASSWORD</div>
+              <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.8)', marginBottom: '6px', letterSpacing: '0.1em' }}>CONFIRM PASSWORD</div>
               <input type="password" value={confirm} onChange={e => setConfirm(e.target.value)}
                 placeholder="Repeat password"
                 style={{ width: '100%', background: '#080808', border: '1px solid rgba(212,168,67,0.2)', borderRadius: '8px', padding: '12px 14px', color: 'white', fontSize: '14px', boxSizing: 'border-box', outline: 'none' }} />

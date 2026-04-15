@@ -480,7 +480,7 @@ export default function PracticePage() {
 
                   if (!revealed) {
                     if (selected === i) {
-                      borderColor = 'rgba(212,168,67,0.6)';
+                      borderColor = 'rgba(212,168,67,0.8)';
                       bg = 'rgba(212,168,67,0.08)';
                       textColor = 'text-[#D4A843]';
                     }
@@ -625,7 +625,7 @@ export default function PracticePage() {
             {/* Action buttons */}
             <div className="grid grid-cols-2 gap-3">
               <Link href="/courses">
-                <div className="py-4 rounded-xl border border-[rgba(212,168,67,0.2)] bg-[#0F0F0F] hover:border-[rgba(212,168,67,0.4)] transition-all text-center">
+                <div className="py-4 rounded-xl border border-[rgba(212,168,67,0.2)] bg-[#0F0F0F] hover:border-[rgba(212,168,67,0.75)] transition-all text-center">
                   <div className="font-mono-custom text-xs text-[#D4A843] tracking-wider uppercase">Study</div>
                   <div className="text-xs text-gray-500 mt-1">Review lessons</div>
                 </div>

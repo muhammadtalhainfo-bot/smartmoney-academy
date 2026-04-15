@@ -137,7 +137,7 @@ export default function ResourcesPage() {
           <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '16px', fontWeight: 300, lineHeight: 1.7, maxWidth: '500px', margin: '0 auto 12px' }}>
             Every link below is an affiliate link. If you sign up through here, we earn a commission at no extra cost to you — it's how we keep this academy free.
           </p>
-          <p style={{ color: 'rgba(212,168,67,0.6)', fontSize: '12px', fontFamily: 'DM Mono, monospace', letterSpacing: '0.1em' }}>
+          <p style={{ color: 'rgba(212,168,67,0.8)', fontSize: '12px', fontFamily: 'DM Mono, monospace', letterSpacing: '0.1em' }}>
             ⚠️ TRADING INVOLVES RISK — ONLY USE CAPITAL YOU CAN AFFORD TO LOSE
           </p>
         </div>
@@ -147,7 +147,7 @@ export default function ResourcesPage() {
       <section style={{ position: 'sticky', top: '64px', zIndex: 30, background: 'rgba(8,8,8,0.97)', backdropFilter: 'blur(20px)', borderBottom: '1px solid var(--border)', padding: '0 24px' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'flex', gap: '0' }}>
           {[['prop', 'Prop Firms'], ['brokers', 'Brokers'], ['tools', 'Tools & Platforms']].map(([key, label]) => (
-            <button key={key} className="tab-btn" onClick={() => setActiveTab(key)} style={{ padding: '16px 24px', background: 'none', border: 'none', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', cursor: 'pointer', color: activeTab === key ? '#D4A843' : 'rgba(255,255,255,0.4)', borderBottom: activeTab === key ? '2px solid #D4A843' : '2px solid transparent', marginBottom: '-1px' }}>
+            <button key={key} className="tab-btn" onClick={() => setActiveTab(key)} style={{ padding: '16px 24px', background: 'none', border: 'none', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', cursor: 'pointer', color: activeTab === key ? '#D4A843' : 'rgba(255,255,255,0.7)', borderBottom: activeTab === key ? '2px solid #D4A843' : '2px solid transparent', marginBottom: '-1px' }}>
               {label}
             </button>
           ))}
@@ -162,7 +162,7 @@ export default function ResourcesPage() {
           <>
             <div style={{ marginBottom: '32px' }}>
               <h2 className="font-display" style={{ fontSize: '36px', color: 'white', marginBottom: '8px' }}>PROP TRADING FIRMS</h2>
-              <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '14px', fontFamily: 'DM Mono, monospace' }}>Get funded up to $200,000 — trade with their capital, keep the profits</p>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px', fontFamily: 'DM Mono, monospace' }}>Get funded up to $200,000 — trade with their capital, keep the profits</p>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(480px, 1fr))', gap: '20px' }}>
               {PROP_FIRMS.map((firm) => (
@@ -177,7 +177,7 @@ export default function ResourcesPage() {
                       </div>
                     </div>
                     <div style={{ background: `${firm.color}15`, border: `1px solid ${firm.color}30`, borderRadius: '8px', padding: '6px 12px', textAlign: 'right' }}>
-                      <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.4)', letterSpacing: '0.1em', marginBottom: '2px' }}>COMMISSION</div>
+                      <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.1em', marginBottom: '2px' }}>COMMISSION</div>
                       <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '12px', color: firm.color, fontWeight: 500 }}>{firm.commission}</div>
                     </div>
                   </div>
@@ -185,7 +185,7 @@ export default function ResourcesPage() {
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '20px' }}>
                     {[['Profit Split', firm.payout], ['Challenge Cost', firm.challenge]].map(([label, val]) => (
                       <div key={label} style={{ background: 'rgba(255,255,255,0.03)', borderRadius: '8px', padding: '10px 14px' }}>
-                        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.1em', marginBottom: '4px' }}>{label}</div>
+                        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.65)', letterSpacing: '0.1em', marginBottom: '4px' }}>{label}</div>
                         <div style={{ fontSize: '13px', color: 'rgba(255,255,255,0.8)', fontWeight: 500 }}>{val}</div>
                       </div>
                     ))}
@@ -196,7 +196,7 @@ export default function ResourcesPage() {
                     ))}
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '16px', borderTop: '1px solid var(--border)' }}>
-                    <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em' }}>AFFILIATE LINK</span>
+                    <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.6)', letterSpacing: '0.1em' }}>AFFILIATE LINK</span>
                     <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '12px', color: firm.color, letterSpacing: '0.1em' }}>GET FUNDED →</span>
                   </div>
                 </a>
@@ -210,7 +210,7 @@ export default function ResourcesPage() {
           <>
             <div style={{ marginBottom: '32px' }}>
               <h2 className="font-display" style={{ fontSize: '36px', color: 'white', marginBottom: '8px' }}>BROKERS</h2>
-              <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '14px', fontFamily: 'DM Mono, monospace' }}>For personal trading — tight spreads, fast execution</p>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px', fontFamily: 'DM Mono, monospace' }}>For personal trading — tight spreads, fast execution</p>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(440px, 1fr))', gap: '20px' }}>
               {BROKERS.map((broker) => (
@@ -224,13 +224,13 @@ export default function ResourcesPage() {
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', marginBottom: '20px' }}>
                     {[['Commission', broker.commission], ['Spreads', broker.spread], ['Platforms', broker.platforms]].map(([label, val]) => (
                       <div key={label} style={{ background: 'rgba(255,255,255,0.03)', borderRadius: '8px', padding: '10px 14px' }}>
-                        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.1em', marginBottom: '4px' }}>{label}</div>
+                        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.65)', letterSpacing: '0.1em', marginBottom: '4px' }}>{label}</div>
                         <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.8)', fontWeight: 500 }}>{val}</div>
                       </div>
                     ))}
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '16px', borderTop: '1px solid var(--border)' }}>
-                    <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em' }}>AFFILIATE LINK</span>
+                    <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.6)', letterSpacing: '0.1em' }}>AFFILIATE LINK</span>
                     <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '12px', color: broker.color, letterSpacing: '0.1em' }}>OPEN ACCOUNT →</span>
                   </div>
                 </a>
@@ -244,7 +244,7 @@ export default function ResourcesPage() {
           <>
             <div style={{ marginBottom: '32px' }}>
               <h2 className="font-display" style={{ fontSize: '36px', color: 'white', marginBottom: '8px' }}>TOOLS & PLATFORMS</h2>
-              <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '14px', fontFamily: 'DM Mono, monospace' }}>Software every serious ICT trader uses daily</p>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px', fontFamily: 'DM Mono, monospace' }}>Software every serious ICT trader uses daily</p>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(440px, 1fr))', gap: '20px' }}>
               {TOOLS.map((tool) => (
@@ -261,13 +261,13 @@ export default function ResourcesPage() {
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '20px' }}>
                     {[['Commission', tool.commission], ['Pricing', tool.price]].map(([label, val]) => (
                       <div key={label} style={{ background: 'rgba(255,255,255,0.03)', borderRadius: '8px', padding: '10px 14px' }}>
-                        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.1em', marginBottom: '4px' }}>{label}</div>
+                        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.65)', letterSpacing: '0.1em', marginBottom: '4px' }}>{label}</div>
                         <div style={{ fontSize: '13px', color: 'rgba(255,255,255,0.8)', fontWeight: 500 }}>{val}</div>
                       </div>
                     ))}
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '16px', borderTop: '1px solid var(--border)' }}>
-                    <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em' }}>AFFILIATE LINK</span>
+                    <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.6)', letterSpacing: '0.1em' }}>AFFILIATE LINK</span>
                     <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '12px', color: tool.color, letterSpacing: '0.1em' }}>GET STARTED →</span>
                   </div>
                 </a>
@@ -278,8 +278,8 @@ export default function ResourcesPage() {
 
         {/* DISCLAIMER */}
         <div style={{ marginTop: '64px', padding: '24px', background: 'rgba(212,168,67,0.03)', border: '1px solid rgba(212,168,67,0.1)', borderRadius: '12px' }}>
-          <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.3)', lineHeight: 1.8, letterSpacing: '0.05em' }}>
-            <span style={{ color: 'rgba(212,168,67,0.6)' }}>DISCLAIMER:</span> This page contains affiliate links. ICT Flow may earn a commission when you sign up through these links at no additional cost to you. All products listed are ones we genuinely recommend for ICT traders. Trading financial instruments involves significant risk of loss and is not suitable for all investors. Past performance is not indicative of future results. This is not financial advice.
+          <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, letterSpacing: '0.05em' }}>
+            <span style={{ color: 'rgba(212,168,67,0.8)' }}>DISCLAIMER:</span> This page contains affiliate links. ICT Flow may earn a commission when you sign up through these links at no additional cost to you. All products listed are ones we genuinely recommend for ICT traders. Trading financial instruments involves significant risk of loss and is not suitable for all investors. Past performance is not indicative of future results. This is not financial advice.
           </p>
         </div>
       </div>

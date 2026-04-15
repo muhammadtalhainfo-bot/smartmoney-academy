@@ -55,7 +55,7 @@ export default function BlogPost({ params }) {
     <div style={{ minHeight: '100vh', background: '#080808', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <div style={{ textAlign: 'center' }}>
         <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '64px', color: '#D4A843' }}>404</div>
-        <p style={{ color: 'rgba(255,255,255,0.4)', marginBottom: '24px' }}>Post not found</p>
+        <p style={{ color: 'rgba(255,255,255,0.7)', marginBottom: '24px' }}>Post not found</p>
         <Link href="/blog" style={{ color: '#D4A843', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px' }}>Back to Blog</Link>
       </div>
     </div>
@@ -82,8 +82,8 @@ export default function BlogPost({ params }) {
       <article style={{ maxWidth: '720px', margin: '-80px auto 0', padding: '0 24px 80px', position: 'relative' }}>
         <div style={{ display: 'flex', gap: '12px', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap' }}>
           <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#D4A843', background: 'rgba(212,168,67,0.08)', padding: '4px 12px', borderRadius: '4px', letterSpacing: '0.1em' }}>{post.category}</span>
-          <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.35)' }}>{post.readTime}</span>
-          {post.date && <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.35)' }}>{post.date}</span>}
+          <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.65)' }}>{post.readTime}</span>
+          {post.date && <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.65)' }}>{post.date}</span>}
         </div>
 
         <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(36px, 6vw, 56px)', color: 'white', lineHeight: 1.1, marginBottom: '32px', letterSpacing: '0.02em' }}>{post.title}</h1>
@@ -96,7 +96,7 @@ export default function BlogPost({ params }) {
 
         <div style={{ marginTop: '64px', padding: '32px', background: '#0D0D0D', border: '1px solid rgba(212,168,67,0.12)', borderRadius: '16px', textAlign: 'center' }}>
           <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '28px', color: 'white', marginBottom: '8px' }}>READY TO APPLY THIS?</div>
-          <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '14px', marginBottom: '24px' }}>14 free ICT modules. Structured learning. Zero fluff.</p>
+          <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px', marginBottom: '24px' }}>14 free ICT modules. Structured learning. Zero fluff.</p>
           <Link href="/courses" style={{ background: 'linear-gradient(135deg,#D4A843,#F0C96A)', color: '#080808', padding: '12px 32px', borderRadius: '8px', fontFamily: 'DM Mono, monospace', fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textDecoration: 'none' }}>
             START LEARNING FREE
           </Link>

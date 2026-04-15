@@ -163,7 +163,7 @@ export default function StrategiesPage() {
               <h1 className="font-display" style={{ fontSize: 'clamp(48px, 8vw, 80px)', lineHeight: 1, marginBottom: '12px' }}>
                 <span style={{ color: 'white' }}>PROVEN </span><span className="shine">STRATEGIES</span>
               </h1>
-              <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '15px', fontWeight: 300 }}>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '15px', fontWeight: 300 }}>
                 Skip the guesswork. Start with ready-made ICT strategy playbooks with clear entry rules, risk management, and examples.
               </p>
             </div>
@@ -186,21 +186,21 @@ export default function StrategiesPage() {
                     <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: `${s.color}20`, border: `1px solid ${s.color}40`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'DM Mono, monospace', fontSize: '9px', color: s.color, fontWeight: 600, flexShrink: 0 }}>{s.avatar}</div>
                     <div>
                       <div style={{ fontSize: '13px', fontWeight: 500, color: 'white' }}>{s.title}</div>
-                      <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.3)', marginTop: '2px' }}>{s.creator}</div>
+                      <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.6)', marginTop: '2px' }}>{s.creator}</div>
                     </div>
                   </div>
                   <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)', lineHeight: 1.6, fontWeight: 300, marginBottom: '16px' }}>{s.description}</p>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '6px', marginBottom: '16px' }}>
                     {[['Win Rate', s.stats.winRate], ['R:R', s.stats.rr], ['Freq', s.stats.trades], ['Type', s.stats.type]].map(([label, val]) => (
                       <div key={label} style={{ background: 'rgba(255,255,255,0.03)', borderRadius: '6px', padding: '6px', textAlign: 'center' }}>
-                        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '8px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.08em', marginBottom: '2px' }}>{label}</div>
+                        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '8px', color: 'rgba(255,255,255,0.6)', letterSpacing: '0.08em', marginBottom: '2px' }}>{label}</div>
                         <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: s.color }}>{val}</div>
                       </div>
                     ))}
                   </div>
                   <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '16px' }}>
                     {s.tags.map(tag => (
-                      <span key={tag} style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', padding: '3px 8px', borderRadius: '4px', letterSpacing: '0.08em' }}>{tag}</span>
+                      <span key={tag} style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.7)', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', padding: '3px 8px', borderRadius: '4px', letterSpacing: '0.08em' }}>{tag}</span>
                     ))}
                   </div>
                   <button style={{ width: '100%', padding: '10px', background: `${s.color}15`, border: `1px solid ${s.color}30`, borderRadius: '8px', color: s.color, fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.1em', cursor: 'pointer' }}>
@@ -214,20 +214,20 @@ export default function StrategiesPage() {
       ) : (
         /* PLAYBOOK DETAIL */
         <section style={{ maxWidth: '800px', margin: '0 auto', padding: '40px 24px 80px' }}>
-          <button onClick={() => setSelected(null)} style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.4)', background: 'none', border: 'none', cursor: 'pointer', marginBottom: '32px', letterSpacing: '0.1em' }}>← BACK TO STRATEGIES</button>
+          <button onClick={() => setSelected(null)} style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.7)', background: 'none', border: 'none', cursor: 'pointer', marginBottom: '32px', letterSpacing: '0.1em' }}>← BACK TO STRATEGIES</button>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '24px' }}>
             <div style={{ width: '52px', height: '52px', borderRadius: '50%', background: `${strategy.color}20`, border: `1px solid ${strategy.color}40`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'DM Mono, monospace', fontSize: '10px', color: strategy.color, fontWeight: 600 }}>{strategy.avatar}</div>
             <div>
               <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '36px', color: 'white', lineHeight: 1, letterSpacing: '0.05em' }}>{strategy.title}</h1>
-              <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.35)', marginTop: '4px' }}>by {strategy.creator}</div>
+              <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.65)', marginTop: '4px' }}>by {strategy.creator}</div>
             </div>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px', marginBottom: '32px' }}>
             {[['Win Rate', strategy.stats.winRate], ['R:R Avg', strategy.stats.rr], ['Frequency', strategy.stats.trades], ['Type', strategy.stats.type]].map(([label, val]) => (
               <div key={label} style={{ background: '#0D0D0D', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '10px', padding: '14px', textAlign: 'center' }}>
-                <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em', marginBottom: '6px' }}>{label}</div>
+                <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.6)', letterSpacing: '0.1em', marginBottom: '6px' }}>{label}</div>
                 <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '24px', color: strategy.color }}>{val}</div>
               </div>
             ))}

@@ -1540,7 +1540,7 @@ function Section({ section, index, diagramSrc, diagramAlt }) {
         className="w-full flex items-center justify-between p-5 text-left hover:bg-[rgba(212,168,67,0.03)] transition-colors"
       >
         <div className="flex items-center gap-3">
-          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', color: 'rgba(212,168,67,0.5)' }}>
+          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', color: 'rgba(212,168,67,0.75)' }}>
             {String(index + 1).padStart(2, '0')}
           </span>
           <span className="font-semibold text-white">{section.title}</span>
@@ -1586,7 +1586,7 @@ function Quiz({ questions, lessonId }) {
                 else if (answers[qi] === oi) style = 'border-red-500/40 bg-red-500/10 text-red-300';
                 else style = 'border-[rgba(212,168,67,0.1)] bg-[#0F0F0F] text-gray-600';
               } else if (answers[qi] === oi) {
-                style = 'border-[rgba(212,168,67,0.5)] bg-[rgba(212,168,67,0.08)] text-[#D4A843]';
+                style = 'border-[rgba(212,168,67,0.75)] bg-[rgba(212,168,67,0.08)] text-[#D4A843]';
               }
               return (
                 <button
@@ -1679,7 +1679,7 @@ export default function LessonPage({ params }) {
 
   if (!authReady) return (
     <div className="min-h-screen bg-[#080808] flex items-center justify-center">
-      <div style={{ fontFamily: "'DM Mono', monospace", color: 'rgba(212,168,67,0.5)', fontSize: '12px', letterSpacing: '0.2em' }}>
+      <div style={{ fontFamily: "'DM Mono', monospace", color: 'rgba(212,168,67,0.75)', fontSize: '12px', letterSpacing: '0.2em' }}>
         LOADING...
       </div>
     </div>

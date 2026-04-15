@@ -118,23 +118,23 @@ export default function PricingPage() {
 
         {/* FREE */}
         <div className="card-free" style={{ borderRadius: '20px', padding: '36px' }}>
-          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.2em', color: 'rgba(255,255,255,0.4)', marginBottom: '16px' }}>FREE FOREVER</div>
+          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.2em', color: 'rgba(255,255,255,0.7)', marginBottom: '16px' }}>FREE FOREVER</div>
           <div style={{ display: 'flex', alignItems: 'flex-end', gap: '6px', marginBottom: '8px' }}>
             <span className="font-display" style={{ fontSize: '64px', lineHeight: 1, color: 'white' }}>$0</span>
           </div>
-          <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '13px', marginBottom: '28px', lineHeight: 1.6 }}>
+          <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '13px', marginBottom: '28px', lineHeight: 1.6 }}>
             Start your ICT journey with the fundamentals. No credit card required.
           </p>
           <Link href="/auth" style={{ display: 'block', textAlign: 'center', padding: '14px', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.12)', background: 'transparent', color: 'rgba(255,255,255,0.7)', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', marginBottom: '28px', transition: 'all 0.2s' }}
-            onMouseOver={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)'; e.currentTarget.style.color = 'white'; }}
+            onMouseOver={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.6)'; e.currentTarget.style.color = 'white'; }}
             onMouseOut={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'; e.currentTarget.style.color = 'rgba(255,255,255,0.7)'; }}>
             GET STARTED FREE →
           </Link>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {FREE_FEATURES.map((f, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', opacity: f.included ? 1 : 0.3 }}>
-                <span style={{ fontSize: '14px', color: f.included ? '#34D399' : 'rgba(255,255,255,0.2)', flexShrink: 0 }}>{f.included ? '✓' : '✗'}</span>
-                <span style={{ fontSize: '13px', color: f.included ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.3)', textDecoration: f.included ? 'none' : 'none' }}>{f.text}</span>
+                <span style={{ fontSize: '14px', color: f.included ? '#34D399' : 'rgba(255,255,255,0.5)', flexShrink: 0 }}>{f.included ? '✓' : '✗'}</span>
+                <span style={{ fontSize: '13px', color: f.included ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.6)', textDecoration: f.included ? 'none' : 'none' }}>{f.text}</span>
               </div>
             ))}
           </div>
@@ -152,10 +152,10 @@ export default function PricingPage() {
             <span className="font-display" style={{ fontSize: '64px', lineHeight: 1, color: 'white' }}>
               ${annual ? annualMonthly : monthlyPrice}
             </span>
-            <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '12px', color: 'rgba(255,255,255,0.4)', paddingBottom: '12px' }}>/month</span>
+            <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '12px', color: 'rgba(255,255,255,0.7)', paddingBottom: '12px' }}>/month</span>
           </div>
           {annual && (
-            <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.4)', marginBottom: '4px' }}>
+            <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.7)', marginBottom: '4px' }}>
               Billed as <span style={{ color: '#D4A843' }}>${annualPrice}/year</span>
             </div>
           )}
@@ -187,7 +187,7 @@ export default function PricingPage() {
           {[['500+', 'Active Students'], ['14', 'ICT Modules'], ['75+', 'Glossary Terms'], ['Free', 'To Start']].map(([val, label]) => (
             <div key={label}>
               <div className="font-display shine" style={{ fontSize: '48px', lineHeight: 1 }}>{val}</div>
-              <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.15em', marginTop: '6px' }}>{label}</div>
+              <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.65)', letterSpacing: '0.15em', marginTop: '6px' }}>{label}</div>
             </div>
           ))}
         </div>
@@ -215,7 +215,7 @@ export default function PricingPage() {
       <section style={{ padding: '0 24px 80px', textAlign: 'center' }}>
         <div style={{ maxWidth: '500px', margin: '0 auto', padding: '48px', background: 'rgba(212,168,67,0.04)', border: '1px solid rgba(212,168,67,0.15)', borderRadius: '20px' }}>
           <div className="font-display shine" style={{ fontSize: '40px', marginBottom: '12px' }}>START FREE TODAY</div>
-          <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '14px', marginBottom: '24px', fontWeight: 300 }}>No credit card. No commitment. Just ICT education.</p>
+          <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px', marginBottom: '24px', fontWeight: 300 }}>No credit card. No commitment. Just ICT education.</p>
           <Link href="/auth" style={{ display: 'inline-block', padding: '14px 36px', background: 'linear-gradient(135deg,#D4A843,#8A6B28)', borderRadius: '10px', color: 'black', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600 }}>
             CREATE FREE ACCOUNT →
           </Link>

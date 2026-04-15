@@ -68,7 +68,7 @@ export default function ProGuard({ children }) {
 
   if (checking) return (
     <div className="min-h-screen bg-[#080808] flex items-center justify-center">
-      <div style={{ fontFamily: "'DM Mono', monospace", color: 'rgba(212,168,67,0.5)', fontSize: '12px', letterSpacing: '0.2em' }}>
+      <div style={{ fontFamily: "'DM Mono', monospace", color: 'rgba(212,168,67,0.75)', fontSize: '12px', letterSpacing: '0.2em' }}>
         CHECKING ACCESS...
       </div>
     </div>
@@ -78,7 +78,7 @@ export default function ProGuard({ children }) {
     <div className="min-h-screen bg-[#080808] flex items-center justify-center px-6" style={{ fontFamily: "'DM Sans', sans-serif" }}>
       <div style={{ textAlign: 'center', maxWidth: '400px' }}>
         <div style={{ width: '64px', height: '64px', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 24px', fontSize: '28px', background: 'rgba(212,168,67,0.08)', border: '1px solid rgba(212,168,67,0.2)' }}>🔒</div>
-        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.5)', letterSpacing: '0.2em', marginBottom: '12px' }}>// PRO FEATURE</div>
+        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.75)', letterSpacing: '0.2em', marginBottom: '12px' }}>// PRO FEATURE</div>
         <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '48px', color: 'white', marginBottom: '16px', lineHeight: 1 }}>UPGRADE TO PRO</h1>
         <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '14px', lineHeight: 1.7, marginBottom: '32px' }}>
           Discord community access and certificates are Pro features. Upgrade for $19/month to unlock everything.

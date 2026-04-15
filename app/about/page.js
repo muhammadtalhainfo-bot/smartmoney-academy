@@ -67,7 +67,7 @@ export default function AboutPage() {
           {STATS.map(s => (
             <div key={s.label}>
               <div className="font-display shine" style={{ fontSize: '52px', lineHeight: 1 }}>{s.value}</div>
-              <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.15em', marginTop: '6px' }}>{s.label}</div>
+              <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.65)', letterSpacing: '0.15em', marginTop: '6px' }}>{s.label}</div>
             </div>
           ))}
         </div>
@@ -75,7 +75,7 @@ export default function AboutPage() {
 
       {/* STORY */}
       <section style={{ maxWidth: '700px', margin: '0 auto', padding: '80px 24px' }}>
-        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.6)', letterSpacing: '0.2em', marginBottom: '20px' }}>THE STORY</div>
+        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.8)', letterSpacing: '0.2em', marginBottom: '20px' }}>THE STORY</div>
         <h2 className="font-display" style={{ fontSize: '48px', color: 'white', marginBottom: '32px', lineHeight: 1 }}>
           WHY WE <span className="shine">BUILT THIS</span>
         </h2>
@@ -121,7 +121,7 @@ export default function AboutPage() {
       <section style={{ padding: '80px 24px', textAlign: 'center' }}>
         <div style={{ maxWidth: '500px', margin: '0 auto' }}>
           <h2 className="font-display shine" style={{ fontSize: '52px', lineHeight: 1, marginBottom: '16px' }}>START LEARNING TODAY</h2>
-          <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '15px', marginBottom: '32px', fontWeight: 300 }}>
+          <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '15px', marginBottom: '32px', fontWeight: 300 }}>
             Join 500+ traders learning to think like smart money. Free forever.
           </p>
           <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>

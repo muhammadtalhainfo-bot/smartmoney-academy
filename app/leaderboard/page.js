@@ -71,7 +71,7 @@ export default function LeaderboardPage() {
             <span style={{ color: 'white' }}>TOP </span>
             <span className="shine">TRADERS</span>
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '15px', fontWeight: 300 }}>
+          <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '15px', fontWeight: 300 }}>
             Earn XP by completing lessons and daily challenges. Climb the ranks.
           </p>
         </div>
@@ -84,7 +84,7 @@ export default function LeaderboardPage() {
             <div key={r.name} style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '6px 14px', borderRadius: '100px', border: `1px solid ${r.color}30`, background: `${r.color}10` }}>
               <span style={{ fontSize: '14px' }}>{r.icon}</span>
               <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: r.color, letterSpacing: '0.1em' }}>{r.name}</span>
-              <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.3)' }}>{r.min}+ XP</span>
+              <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.6)' }}>{r.min}+ XP</span>
             </div>
           ))}
         </div>
@@ -99,7 +99,7 @@ export default function LeaderboardPage() {
 
         {!currentUser && (
           <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '16px 20px', marginBottom: '24px', textAlign: 'center' }}>
-            <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.4)' }}>
+            <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.7)' }}>
               <Link href="/auth" style={{ color: '#D4A843', textDecoration: 'none' }}>Sign in</Link> to see your rank
             </span>
           </div>
@@ -110,14 +110,14 @@ export default function LeaderboardPage() {
           {/* Header */}
           <div style={{ display: 'grid', gridTemplateColumns: '60px 1fr 120px 80px', padding: '12px 20px', borderBottom: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.02)' }}>
             {['RANK', 'TRADER', 'XP', 'STREAK'].map(h => (
-              <div key={h} style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.15em' }}>{h}</div>
+              <div key={h} style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.6)', letterSpacing: '0.15em' }}>{h}</div>
             ))}
           </div>
 
           {loading ? (
-            <div style={{ padding: '48px', textAlign: 'center', color: 'rgba(255,255,255,0.3)', fontFamily: 'DM Mono, monospace', fontSize: '12px' }}>LOADING...</div>
+            <div style={{ padding: '48px', textAlign: 'center', color: 'rgba(255,255,255,0.6)', fontFamily: 'DM Mono, monospace', fontSize: '12px' }}>LOADING...</div>
           ) : leaders.length === 0 ? (
-            <div style={{ padding: '48px', textAlign: 'center', color: 'rgba(255,255,255,0.3)', fontFamily: 'DM Mono, monospace', fontSize: '12px' }}>NO DATA YET — BE THE FIRST!</div>
+            <div style={{ padding: '48px', textAlign: 'center', color: 'rgba(255,255,255,0.6)', fontFamily: 'DM Mono, monospace', fontSize: '12px' }}>NO DATA YET — BE THE FIRST!</div>
           ) : (
             leaders.map((p, i) => {
               const rank = getRank(p.xp || 0);
@@ -125,7 +125,7 @@ export default function LeaderboardPage() {
               const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : null;
               return (
                 <div key={p.id} className="row-hover" style={{ display: 'grid', gridTemplateColumns: '60px 1fr 120px 80px', padding: '14px 20px', borderBottom: '1px solid rgba(255,255,255,0.04)', background: isMe ? 'rgba(212,168,67,0.04)' : 'transparent', transition: 'background 0.2s' }}>
-                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '14px', color: i < 3 ? '#D4A843' : 'rgba(255,255,255,0.4)', fontWeight: 600 }}>
+                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '14px', color: i < 3 ? '#D4A843' : 'rgba(255,255,255,0.7)', fontWeight: 600 }}>
                     {medal || `#${i + 1}`}
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -138,7 +138,7 @@ export default function LeaderboardPage() {
                     </div>
                   </div>
                   <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '13px', color: '#D4A843', fontWeight: 600 }}>{(p.xp || 0).toLocaleString()} XP</div>
-                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '12px', color: 'rgba(255,255,255,0.4)' }}>🔥 {p.streak || 0}</div>
+                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '12px', color: 'rgba(255,255,255,0.7)' }}>🔥 {p.streak || 0}</div>
                 </div>
               );
             })
@@ -147,7 +147,7 @@ export default function LeaderboardPage() {
 
         {/* XP GUIDE */}
         <div style={{ marginTop: '40px', padding: '24px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '12px', marginBottom: '16px' }}>
-          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.6)', letterSpacing: '0.15em', marginBottom: '16px' }}>HOW TO EARN XP</div>
+          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.8)', letterSpacing: '0.15em', marginBottom: '16px' }}>HOW TO EARN XP</div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '12px' }}>
             {[['Complete a lesson', '+10 XP'], ['Pass a quiz', '+20 XP'], ['Daily challenge', '+20 XP'], ['Perfect score', '+50 XP'], ['7-day streak', '+100 XP']].map(([action, xp]) => (
               <div key={action} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>

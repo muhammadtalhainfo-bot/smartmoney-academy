@@ -481,8 +481,8 @@ export default function MentorshipPage() {
         .tag-pill { cursor: pointer; transition: all 0.15s; }
         .progress-bar { background: rgba(212,168,67,0.08); border-radius: 99px; overflow: hidden; height: 6px; }
         .progress-fill { background: linear-gradient(90deg, #8A6B28, #D4A843, #F0C96A); height: 6px; border-radius: 99px; transition: width 0.8s ease; }
-        input::placeholder { color: rgba(255,255,255,0.25); }
-        input:focus { outline: none; border-color: rgba(212,168,67,0.4) !important; }
+        input::placeholder { color: rgba(255,255,255,0.55); }
+        input:focus { outline: none; border-color: rgba(212,168,67,0.75) !important; }
         ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: #0A0A0A; } ::-webkit-scrollbar-thumb { background: rgba(212,168,67,0.3); border-radius: 4px; }
       `}</style>
 
@@ -491,7 +491,7 @@ export default function MentorshipPage() {
       {/* Hero */}
       <section style={{ borderBottom: '1px solid rgba(212,168,67,0.1)', background: 'linear-gradient(180deg, #0A0A0A 0%, #080808 100%)', padding: '64px 24px 48px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div style={{ ...mono, fontSize: '11px', color: 'rgba(212,168,67,0.6)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '12px' }}>// Michael J. Huddleston</div>
+          <div style={{ ...mono, fontSize: '11px', color: 'rgba(212,168,67,0.8)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '12px' }}>// Michael J. Huddleston</div>
           <h1 className="font-display" style={{ fontSize: 'clamp(42px, 7vw, 96px)', lineHeight: 1, marginBottom: '16px' }}>
             <span style={{ color: 'white' }}>ICT 2022 </span>
             <span style={{ background: 'linear-gradient(135deg, #8A6B28, #D4A843, #F0C96A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>MENTORSHIP</span>
@@ -518,7 +518,7 @@ export default function MentorshipPage() {
           {/* Progress bar */}
           <div style={{ maxWidth: '400px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
-              <span style={{ ...mono, fontSize: '10px', color: 'rgba(212,168,67,0.6)', letterSpacing: '0.1em' }}>YOUR PROGRESS</span>
+              <span style={{ ...mono, fontSize: '10px', color: 'rgba(212,168,67,0.8)', letterSpacing: '0.1em' }}>YOUR PROGRESS</span>
               <span style={{ ...mono, fontSize: '10px', color: '#D4A843' }}>{pct}%</span>
             </div>
             <div className="progress-bar">
@@ -560,12 +560,12 @@ export default function MentorshipPage() {
               {['All', ...ALL_TAGS].map(tag => (
                 <button key={tag} onClick={() => setActiveTag(tag)}
                   className="tag-pill"
-                  style={{ background: activeTag === tag ? 'rgba(212,168,67,0.15)' : 'transparent', border: `1px solid ${activeTag === tag ? 'rgba(212,168,67,0.4)' : 'rgba(255,255,255,0.08)'}`, borderRadius: '99px', padding: '4px 10px', ...mono, fontSize: '10px', color: activeTag === tag ? '#D4A843' : '#808080', letterSpacing: '0.06em' }}>
+                  style={{ background: activeTag === tag ? 'rgba(212,168,67,0.15)' : 'transparent', border: `1px solid ${activeTag === tag ? 'rgba(212,168,67,0.75)' : 'rgba(255,255,255,0.08)'}`, borderRadius: '99px', padding: '4px 10px', ...mono, fontSize: '10px', color: activeTag === tag ? '#D4A843' : '#808080', letterSpacing: '0.06em' }}>
                   {tag}
                 </button>
               ))}
             </div>
-            <span style={{ ...mono, fontSize: '11px', color: 'rgba(212,168,67,0.5)', whiteSpace: 'nowrap' }}>{filtered.length} episodes</span>
+            <span style={{ ...mono, fontSize: '11px', color: 'rgba(212,168,67,0.75)', whiteSpace: 'nowrap' }}>{filtered.length} episodes</span>
           </div>
         </div>
       </div>
@@ -613,7 +613,7 @@ export default function MentorshipPage() {
                           <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
                             <span style={{ ...mono, fontSize: '10px', color: '#808080' }}>{ep.duration}</span>
                             {ep.concepts.slice(0, 3).map(c => (
-                              <span key={c} style={{ ...mono, fontSize: '9px', color: 'rgba(212,168,67,0.5)', background: 'rgba(212,168,67,0.05)', border: '1px solid rgba(212,168,67,0.1)', padding: '1px 6px', borderRadius: '4px' }}>{c}</span>
+                              <span key={c} style={{ ...mono, fontSize: '9px', color: 'rgba(212,168,67,0.75)', background: 'rgba(212,168,67,0.05)', border: '1px solid rgba(212,168,67,0.1)', padding: '1px 6px', borderRadius: '4px' }}>{c}</span>
                             ))}
                             {ep.concepts.length > 3 && <span style={{ ...mono, fontSize: '9px', color: '#606060' }}>+{ep.concepts.length - 3} more</span>}
                           </div>
@@ -636,7 +636,7 @@ export default function MentorshipPage() {
                           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
                             {/* Summary */}
                             <div>
-                              <div style={{ ...mono, fontSize: '10px', color: 'rgba(212,168,67,0.6)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '8px' }}>Episode Summary</div>
+                              <div style={{ ...mono, fontSize: '10px', color: 'rgba(212,168,67,0.8)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '8px' }}>Episode Summary</div>
                               <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '13px', lineHeight: 1.7, fontWeight: 300 }}>{ep.summary}</p>
                             </div>
                             {/* Key Lesson */}

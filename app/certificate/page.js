@@ -63,11 +63,11 @@ export default function CertificatePage() {
       <div style={{ maxWidth: '900px', margin: '0 auto', padding: '48px 24px' }}>
 
         {loading ? (
-          <div style={{ textAlign: 'center', padding: '80px', fontFamily: 'DM Mono, monospace', color: 'rgba(255,255,255,0.3)' }}>LOADING...</div>
+          <div style={{ textAlign: 'center', padding: '80px', fontFamily: 'DM Mono, monospace', color: 'rgba(255,255,255,0.6)' }}>LOADING...</div>
         ) : !user ? (
           <div style={{ textAlign: 'center', padding: '80px' }}>
             <div className="font-display" style={{ fontSize: '48px', color: 'white', marginBottom: '16px' }}>SIGN IN REQUIRED</div>
-            <p style={{ color: 'rgba(255,255,255,0.4)', marginBottom: '24px' }}>You need an account to view your certificate.</p>
+            <p style={{ color: 'rgba(255,255,255,0.7)', marginBottom: '24px' }}>You need an account to view your certificate.</p>
             <Link href="/auth" style={{ padding: '14px 32px', background: 'linear-gradient(135deg,#D4A843,#8A6B28)', borderRadius: '10px', color: 'black', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.1em' }}>SIGN IN →</Link>
           </div>
         ) : !eligible ? (
@@ -77,7 +77,7 @@ export default function CertificatePage() {
               <h1 className="font-display" style={{ fontSize: 'clamp(40px, 7vw, 72px)', color: 'white', lineHeight: 1, marginBottom: '12px' }}>
                 YOUR <span className="shine">PROGRESS</span>
               </h1>
-              <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '15px', fontWeight: 300 }}>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '15px', fontWeight: 300 }}>
                 Complete all 14 modules to earn your certificate.
               </p>
             </div>
@@ -85,7 +85,7 @@ export default function CertificatePage() {
             {/* Progress bar */}
             <div style={{ background: '#0D0D0D', border: '1px solid rgba(212,168,67,0.15)', borderRadius: '16px', padding: '32px', marginBottom: '32px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
-                <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.4)', letterSpacing: '0.1em' }}>MODULES COMPLETED</span>
+                <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.1em' }}>MODULES COMPLETED</span>
                 <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#D4A843' }}>{completed}/{TOTAL_LESSONS}</span>
               </div>
               <div style={{ height: '8px', background: 'rgba(255,255,255,0.06)', borderRadius: '100px', overflow: 'hidden', marginBottom: '24px' }}>
@@ -95,7 +95,7 @@ export default function CertificatePage() {
                 {Array.from({ length: TOTAL_LESSONS }, (_, i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', borderRadius: '8px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)' }}>
                     <span style={{ fontSize: '14px' }}>{i < completed ? '✅' : '⬜'}</span>
-                    <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: i < completed ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.25)' }}>MODULE {String(i + 1).padStart(2, '0')}</span>
+                    <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: i < completed ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.55)' }}>MODULE {String(i + 1).padStart(2, '0')}</span>
                   </div>
                 ))}
               </div>
@@ -112,7 +112,7 @@ export default function CertificatePage() {
           <div>
             <div className="no-print" style={{ textAlign: 'center', marginBottom: '32px' }}>
               <h1 className="font-display shine" style={{ fontSize: '56px', lineHeight: 1, marginBottom: '8px' }}>CONGRATULATIONS!</h1>
-              <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '15px' }}>Your certificate is ready. Print or save as PDF.</p>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '15px' }}>Your certificate is ready. Print or save as PDF.</p>
             </div>
 
             {/* CERTIFICATE CARD */}

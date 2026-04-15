@@ -124,7 +124,7 @@ export default function DashboardPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-[#080808] flex items-center justify-center">
-        <div className="font-mono-c text-xs tracking-widest" style={{ fontFamily: "'DM Mono', monospace", color: 'rgba(212,168,67,0.5)' }}>
+        <div className="font-mono-c text-xs tracking-widest" style={{ fontFamily: "'DM Mono', monospace", color: 'rgba(212,168,67,0.75)' }}>
           LOADING YOUR DASHBOARD...
         </div>
       </div>
@@ -350,7 +350,7 @@ export default function DashboardPage() {
                           {done ? '✓' : i + 1}
                         </div>
                         <span className="font-mono-c text-sm" style={{ color: current ? '#D4A843' : done ? '#C0C0C0' : '#B0B0B0', fontWeight: current ? '600' : '400' }}>{rank}</span>
-                        {current && <span className="ml-auto font-mono-c text-[9px]" style={{ color: 'rgba(212,168,67,0.5)' }}>← YOU</span>}
+                        {current && <span className="ml-auto font-mono-c text-[9px]" style={{ color: 'rgba(212,168,67,0.75)' }}>← YOU</span>}
                       </div>
                     );
                   })}
@@ -371,7 +371,7 @@ export default function DashboardPage() {
                           <span className="text-2xl">{nextModule.emoji}</span>
                           <div>
                             <div className="font-semibold text-white text-sm">{nextModule.title}</div>
-                            <div className="font-mono-c text-[10px]" style={{ color: 'rgba(212,168,67,0.5)' }}>Module {nextModule.id} · {nextModule.level}</div>
+                            <div className="font-mono-c text-[10px]" style={{ color: 'rgba(212,168,67,0.75)' }}>Module {nextModule.id} · {nextModule.level}</div>
                           </div>
                         </div>
                         <div className="progress-bar-bg h-1.5 mb-2">

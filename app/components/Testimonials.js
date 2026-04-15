@@ -72,7 +72,7 @@ export default function Testimonials() {
             TRADERS ARE
             <span style={{ background: 'linear-gradient(135deg, #8A6B28 0%, #D4A843 40%, #F0C96A 60%, #D4A843 80%, #8A6B28 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}> WINNING</span>
           </h2>
-          <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '15px', fontWeight: 300, maxWidth: '400px', margin: '0 auto' }}>
+          <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '15px', fontWeight: 300, maxWidth: '400px', margin: '0 auto' }}>
             Real feedback from students who applied what they learned.
           </p>
         </div>

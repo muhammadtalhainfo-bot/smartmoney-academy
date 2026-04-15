@@ -42,7 +42,7 @@ export default function BlogPage() {
           <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(52px, 8vw, 80px)', lineHeight: 1, marginBottom: '12px' }}>
             <span className="shine">NEWS & INSIGHTS</span>
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '15px', fontWeight: 300 }}>
+          <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '15px', fontWeight: 300 }}>
             ICT education, strategy guides, and prop firm tips delivered weekly.
           </p>
         </div>
@@ -109,7 +109,7 @@ export default function BlogPage() {
                   <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.38)', lineHeight: 1.65, fontWeight: 300, marginBottom: '14px', flex: 1 }}>{post.description}</p>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.22)' }}>{post.readTime}</span>
-                    <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.6)' }}>Read</span>
+                    <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.8)' }}>Read</span>
                   </div>
                 </div>
               </div>
