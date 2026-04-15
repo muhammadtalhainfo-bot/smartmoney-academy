@@ -432,13 +432,13 @@ export default function PracticePage() {
               <div className="flex items-center justify-between mb-2">
                 <div>
                   <div className="font-mono-custom text-xs text-[#D4A843] tracking-widest uppercase mb-1">// Daily Challenge</div>
-                  <div className="font-mono-custom text-xs text-gray-400">{dateStr}</div>
+                  <div className="font-mono-custom text-xs text-gray-300">{dateStr}</div>
                 </div>
                 <div className="text-right">
                   <div className="font-display text-3xl" style={{ background: 'linear-gradient(135deg, #D4A843, #F0C96A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                     {current + 1}/{questions.length}
                   </div>
-                  <div className="font-mono-custom text-xs text-gray-400">questions</div>
+                  <div className="font-mono-custom text-xs text-gray-300">questions</div>
                 </div>
               </div>
 
@@ -496,7 +496,7 @@ export default function PracticePage() {
                       textColor = 'text-red-300';
                       icon = '✗';
                     } else {
-                      textColor = 'text-gray-400';
+                      textColor = 'text-gray-300';
                     }
                   }
 
@@ -583,14 +583,14 @@ export default function PracticePage() {
               }}>
                 {finalScore}/{questions.length}
               </div>
-              <div className="font-mono-custom text-xs text-gray-400 mt-1">correct</div>
+              <div className="font-mono-custom text-xs text-gray-300 mt-1">correct</div>
             </div>
 
             {/* XP earned */}
             <div className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-[rgba(212,168,67,0.8)] bg-[rgba(212,168,67,0.05)] mb-6">
               <span className="text-xl">⚡</span>
               <span className="font-display text-2xl" style={{ color: '#D4A843' }}>+{xpEarned} XP</span>
-              <span className="font-mono-custom text-xs text-gray-400">earned</span>
+              <span className="font-mono-custom text-xs text-gray-300">earned</span>
             </div>
 
             {/* Performance message */}
@@ -615,7 +615,7 @@ export default function PracticePage() {
                     <span className={`text-base shrink-0 mt-0.5 ${ans.correct ? 'text-emerald-400' : 'text-red-400'}`}>{ans.correct ? '✓' : '✗'}</span>
                     <div>
                       <p className={`text-sm font-medium ${ans.correct ? 'text-emerald-300' : 'text-red-300'}`}>{question.topic}</p>
-                      <p className="text-gray-400 text-xs mt-0.5 leading-relaxed">{question.question.substring(0, 80)}...</p>
+                      <p className="text-gray-300 text-xs mt-0.5 leading-relaxed">{question.question.substring(0, 80)}...</p>
                     </div>
                   </div>
                 );
@@ -627,7 +627,7 @@ export default function PracticePage() {
               <Link href="/courses">
                 <div className="py-4 rounded-xl border border-[rgba(212,168,67,0.8)] bg-[#0F0F0F] hover:border-[rgba(212,168,67,0.75)] transition-all text-center">
                   <div className="font-mono-custom text-xs text-[#D4A843] tracking-wider uppercase">Study</div>
-                  <div className="text-xs text-gray-400 mt-1">Review lessons</div>
+                  <div className="text-xs text-gray-300 mt-1">Review lessons</div>
                 </div>
               </Link>
               <Link href="/dashboard">
@@ -638,14 +638,14 @@ export default function PracticePage() {
               </Link>
             </div>
 
-            <p className="font-mono-custom text-xs text-gray-400 mt-6">New challenge unlocks tomorrow at midnight</p>
+            <p className="font-mono-custom text-xs text-gray-300 mt-6">New challenge unlocks tomorrow at midnight</p>
           </div>
         )}
       </div>
 
       {/* Footer */}
       <footer className="border-t border-[rgba(212,168,67,0.25)] px-8 py-6 mt-16">
-        <div className="max-w-2xl mx-auto text-center font-mono-custom text-xs text-gray-400">
+        <div className="max-w-2xl mx-auto text-center font-mono-custom text-xs text-gray-300">
           ICT Flow — Educational content only. Not financial advice.
         </div>
       </footer>

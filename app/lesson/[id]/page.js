@@ -1584,7 +1584,7 @@ function Quiz({ questions, lessonId }) {
               if (submitted) {
                 if (oi === q.answer) style = 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300';
                 else if (answers[qi] === oi) style = 'border-red-500/40 bg-red-500/10 text-red-300';
-                else style = 'border-[rgba(212,168,67,0.25)] bg-[#0F0F0F] text-gray-400';
+                else style = 'border-[rgba(212,168,67,0.25)] bg-[#0F0F0F] text-gray-300';
               } else if (answers[qi] === oi) {
                 style = 'border-[rgba(212,168,67,0.75)] bg-[rgba(212,168,67,0.22)] text-[#D4A843]';
               }
@@ -1714,7 +1714,7 @@ export default function LessonPage({ params }) {
       <div className="max-w-4xl mx-auto px-6 py-12">
 
         {/* ── Breadcrumb ── */}
-        <div className="flex items-center gap-2 font-mono-custom text-xs text-gray-400 mb-8">
+        <div className="flex items-center gap-2 font-mono-custom text-xs text-gray-300 mb-8">
           <Link href="/courses" className="hover:text-[var(--gold)] transition-colors">Courses</Link>
           <span className="text-gray-700">›</span>
           <span className="text-[var(--gold)]">{lesson.title}</span>
@@ -1724,8 +1724,8 @@ export default function LessonPage({ params }) {
         <div className="mb-10">
           <div className="flex items-center gap-3 mb-4 flex-wrap">
             <span className={`px-3 py-1 rounded-lg text-xs font-mono-custom border ${LEVEL_STYLE[lesson.level]}`}>{lesson.level}</span>
-            <span className="font-mono-custom text-xs text-gray-400">📖 {lesson.duration}</span>
-            <span className="font-mono-custom text-xs text-gray-400">🏷 {lesson.category}</span>
+            <span className="font-mono-custom text-xs text-gray-300">📖 {lesson.duration}</span>
+            <span className="font-mono-custom text-xs text-gray-300">🏷 {lesson.category}</span>
           </div>
           <h1 className="font-display text-5xl md:text-7xl text-white mb-4 leading-none">{lesson.title.toUpperCase()}</h1>
           <p className="text-gray-300 text-lg" style={{ fontWeight: 300 }}>{lesson.subtitle}</p>
@@ -1747,7 +1747,7 @@ export default function LessonPage({ params }) {
             onError={(e) => { e.target.parentElement.style.display = 'none'; }}
           />
           <div className="px-4 py-3 border-t border-[var(--border)]">
-            <p className="font-mono-custom text-xs text-gray-400">{lesson.imageCaption}</p>
+            <p className="font-mono-custom text-xs text-gray-300">{lesson.imageCaption}</p>
           </div>
         </div>
 
@@ -1776,7 +1776,7 @@ export default function LessonPage({ params }) {
           {lesson.prevLesson ? (
             <Link href={`/lesson/${lesson.prevLesson.id}`}>
               <div className="p-5 rounded-xl border border-[var(--border)] bg-[var(--bg2)] hover:border-[rgba(212,168,67,0.35)] transition-all group">
-                <div className="font-mono-custom text-xs text-gray-400 mb-1">← Previous</div>
+                <div className="font-mono-custom text-xs text-gray-300 mb-1">← Previous</div>
                 <div className="font-semibold text-white group-hover:text-[var(--gold)] transition-colors">{lesson.prevLesson.title}</div>
               </div>
             </Link>
@@ -1784,7 +1784,7 @@ export default function LessonPage({ params }) {
           {lesson.nextLesson && (
             <Link href={`/lesson/${lesson.nextLesson.id}`}>
               <div className="p-5 rounded-xl border border-[var(--border)] bg-[var(--bg2)] hover:border-[rgba(212,168,67,0.35)] transition-all group text-right">
-                <div className="font-mono-custom text-xs text-gray-400 mb-1">Next →</div>
+                <div className="font-mono-custom text-xs text-gray-300 mb-1">Next →</div>
                 <div className="font-semibold text-white group-hover:text-[var(--gold)] transition-colors">{lesson.nextLesson.title}</div>
               </div>
             </Link>
@@ -1815,7 +1815,7 @@ export default function LessonPage({ params }) {
 
       {/* ── Footer ── */}
       <footer className="border-t border-[var(--border)] px-8 py-6 mt-16">
-        <div className="max-w-4xl mx-auto text-center font-mono-custom text-xs text-gray-400">
+        <div className="max-w-4xl mx-auto text-center font-mono-custom text-xs text-gray-300">
           ICT Flow - Educational content only. Not financial advice.
         </div>
       </footer>
