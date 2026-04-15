@@ -27,9 +27,9 @@ export default function CookieBanner() {
       gap: '16px', flexWrap: 'wrap',
       boxShadow: '0 8px 32px rgba(0,0,0,0.6)'
     }}>
-      <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.6)', margin: 0, flex: 1 }}>
+      <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.8)', margin: 0, flex: 1 }}>
         We use cookies to improve your experience. By continuing, you agree to our{' '}
-        <Link href="/cookies" style={{ color: '#D4A843', textDecoration: 'none' }}>Cookie Policy</Link>.
+        <Link href="/cookies" style={{ color: '#D4A843', textDecoration: 'underline' }}>Cookie Policy</Link>.
       </p>
       <div style={{ display: 'flex', gap: '8px' }}>
         <button onClick={accept} style={{

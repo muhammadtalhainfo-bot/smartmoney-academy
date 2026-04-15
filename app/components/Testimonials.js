@@ -104,7 +104,7 @@ export default function Testimonials() {
                 </div>
                 <div>
                   <div style={{ fontSize: '13px', color: 'white', fontWeight: 500 }}>{t.name}</div>
-                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.05em' }}>{t.handle}</div>
+                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.6)', letterSpacing: '0.05em' }}>{t.handle}</div>
                 </div>
               </div>
             </div>
@@ -112,7 +112,7 @@ export default function Testimonials() {
         </div>
 
         {/* BOTTOM NOTE */}
-        <p style={{ textAlign: 'center', fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.2)', letterSpacing: '0.1em', marginTop: '40px' }}>
+        <p style={{ textAlign: 'center', fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.55)', letterSpacing: '0.1em', marginTop: '40px' }}>
           RESULTS MAY VARY · TRADING INVOLVES RISK · THESE ARE INDIVIDUAL EXPERIENCES
         </p>
       </div>
