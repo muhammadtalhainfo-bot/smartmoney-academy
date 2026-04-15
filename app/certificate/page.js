@@ -78,7 +78,7 @@ export default function CertificatePage() {
                 YOUR <span className="shine">PROGRESS</span>
               </h1>
               <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '15px', fontWeight: 300 }}>
-                Complete all 14 modules to earn your certificate.
+                Complete all 28 modules to earn your certificate.
               </p>
             </div>
 
@@ -139,11 +139,11 @@ export default function CertificatePage() {
               <div style={{ fontFamily: 'Georgia, serif', fontSize: '14px', color: '#666', marginBottom: '24px', lineHeight: 1.8 }}>
                 has successfully completed the<br />
                 <strong style={{ color: '#1a1a1a' }}>ICT & Smart Money Concepts Curriculum</strong><br />
-                comprising all 14 modules and 80+ lessons
+                comprising all 28 modules and 80+ lessons
               </div>
 
               <div style={{ display: 'flex', justifyContent: 'center', gap: '32px', marginBottom: '32px' }}>
-                {[['14', 'Modules'], ['80+', 'Lessons'], [profile?.xp || 0, 'XP Earned']].map(([val, label]) => (
+                {[['28', 'Modules'], ['80+', 'Lessons'], [profile?.xp || 0, 'XP Earned']].map(([val, label]) => (
                   <div key={label} style={{ textAlign: 'center' }}>
                     <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '32px', color: '#D4A843' }}>{val}</div>
                     <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#999', letterSpacing: '0.15em' }}>{label}</div>

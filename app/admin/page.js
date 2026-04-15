@@ -61,7 +61,7 @@ const MODULES_DATA = [
   { id: 11, module: '11', title: 'IPDA & CRT', level: 'Advanced', tag: 'ICT', lessons: 5, duration: '50 min', emoji: '🤖' },
   { id: 12, module: '12', title: 'ICT 2024 Mentorship', level: 'Advanced', tag: '2024', lessons: 8, duration: '75 min', emoji: '🆕' },
   { id: 13, module: '13', title: 'SMC — Smart Money Concepts', level: 'SMC', tag: 'SMC', lessons: 6, duration: '50 min', emoji: '💼' },
-  { id: 14, module: '14', title: 'Top-Down Analysis', level: 'Intermediate', tag: 'ICT', lessons: 5, duration: '42 min', emoji: '🔭' },
+  { id: 14, module: '28', title: 'Top-Down Analysis', level: 'Intermediate', tag: 'ICT', lessons: 5, duration: '42 min', emoji: '🔭' },
 ];
 
 const NAV_PAGES = [
@@ -91,7 +91,7 @@ const FREE_FEATURES_DEFAULT = [
 ];
 const PRO_FEATURES_DEFAULT = [
   'Everything in Free',
-  'All 14 modules unlocked',
+  'All 28 modules unlocked',
   'AI-generated daily challenges',
   'Certificate of completion',
   'Discord community access',

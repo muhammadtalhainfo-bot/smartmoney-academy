@@ -46,7 +46,7 @@ const COURSES = [
 
 const STATS = [
   { value: '82+', label: 'ICT Concepts' },
-  { value: '14', label: 'Modules' },
+  { value: '28', label: 'Modules' },
   { value: '80+', label: 'Lessons' },
   { value: '2026', label: 'Updated' },
 ];
@@ -311,7 +311,7 @@ export default function HomePage() {
             <div className="font-mono text-xs text-[var(--gold)] tracking-widest uppercase mb-4">// Curriculum</div>
             <h2 className="font-display text-6xl text-white mb-4">WHAT YOU'LL LEARN</h2>
             <p className="text-gray-300 max-w-lg mx-auto text-sm" style={{ fontWeight: 300 }}>
-              14+ modules, 80+ lessons. Built from ICT's YouTube channel — updated through the 2026 Mentorship.
+              28+ modules, 80+ lessons. Built from ICT's YouTube channel — updated through the 2026 Mentorship.
             </p>
           </div>
 
@@ -340,7 +340,7 @@ export default function HomePage() {
 
           <div className="text-center">
             <Link href="/courses" className="btn-gold inline-flex items-center gap-3 px-8 py-4 rounded-xl font-mono text-sm tracking-wider uppercase">
-              View All 14 Modules →
+              View All 28 Modules →
             </Link>
           </div>
 

@@ -19,7 +19,7 @@ const FREE_FEATURES = [
 
 const PRO_FEATURES = [
   { text: 'Everything in Free', included: true },
-  { text: 'All 14 modules unlocked', included: true },
+  { text: 'All 28 modules unlocked', included: true },
   
   { text: 'AI-generated daily challenges', included: true },
   { text: 'Certificate of completion', included: true },
@@ -184,7 +184,7 @@ export default function PricingPage() {
       {/* SOCIAL PROOF */}
       <section style={{ borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '40px 24px', background: 'rgba(255,255,255,0.01)' }}>
         <div style={{ maxWidth: '900px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '32px', textAlign: 'center' }}>
-          {[['500+', 'Active Students'], ['14', 'ICT Modules'], ['75+', 'Glossary Terms'], ['Free', 'To Start']].map(([val, label]) => (
+          {[['500+', 'Active Students'], ['28', 'ICT Modules'], ['75+', 'Glossary Terms'], ['Free', 'To Start']].map(([val, label]) => (
             <div key={label}>
               <div className="font-display shine" style={{ fontSize: '48px', lineHeight: 1 }}>{val}</div>
               <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.65)', letterSpacing: '0.15em', marginTop: '6px' }}>{label}</div>

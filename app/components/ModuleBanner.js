@@ -347,7 +347,7 @@ const BANNERS = {
     </>
   ),
 
-  '14': ({ w, h }) => (  // Top-Down Analysis — MTF pyramid
+  '28': ({ w, h }) => (  // Top-Down Analysis — MTF pyramid
     <>
       <GridLines w={w} h={h} spacing={36} opacity={0.03} />
       {/* Timeframe pyramid */}
@@ -426,7 +426,7 @@ const BANNERS = {
     </>
   ),
 
-  'best-timeframes-ict-trading': ({ w, h }) => BANNERS['14']({ w, h }),
+  'best-timeframes-ict-trading': ({ w, h }) => BANNERS['28']({ w, h }),
 
   'ict-liquidity-explained': ({ w, h }) => BANNERS['02']({ w, h }),
 

@@ -1716,7 +1716,7 @@ export default function LessonPage({ params }) {
         {/* ── Breadcrumb ── */}
         <div className="flex items-center gap-2 font-mono-custom text-xs text-gray-300 mb-8">
           <Link href="/courses" className="hover:text-[var(--gold)] transition-colors">Courses</Link>
-          <span className="text-gray-500">›</span>
+          <span className="text-gray-400">›</span>
           <span className="text-[var(--gold)]">{lesson.title}</span>
         </div>
 

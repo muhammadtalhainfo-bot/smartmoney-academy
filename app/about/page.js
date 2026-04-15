@@ -4,7 +4,7 @@ import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 
 const STATS = [
-  { value: '14', label: 'ICT Modules' },
+  { value: '28', label: 'ICT Modules' },
   { value: '80+', label: 'Lessons Built' },
   { value: '500+', label: 'Students Enrolled' },
   { value: '100%', label: 'Free to Start' },

@@ -86,7 +86,7 @@ const MODULES = [
     topics: ["SMC vs ICT Differences", "Supply & Demand Zones", "SMC Order Blocks", "SMC ChoCH & BOS", "Inducement", "SMC Trade Framework"],
   },
   {
-    id: 14, module: "14", title: "Top-Down Analysis", level: "Intermediate", tag: "ICT & SMC",
+    id: 14, module: "28", title: "Top-Down Analysis", level: "Intermediate", tag: "ICT & SMC",
     lessons: 5, duration: "45 min", emoji: "🔭", image: "/modules/module-14.webp",
     desc: "The complete multi-timeframe methodology — from Monthly bias to 1-minute entry precision.",
     topics: ["Monthly / Weekly Bias", "Daily Narrative Building", "4H Confirmation", "15M & 5M Entry Timeframe", "Full Trade Walkthrough"],
