@@ -220,7 +220,7 @@ export default function DashboardPage() {
           {[
             { label: 'Day Streak', value: profile?.streak || 0, icon: '🔥', sub: `Best: ${profile?.longest_streak || 0}`, highlight: true },
             { label: 'Lessons Done', value: completedLessons, icon: '📖', sub: `of ${totalLessons} total` },
-            { label: 'Modules Done', value: completedModuleIds.length, icon: '✅', sub: `of ${totalModules} modules` },
+            { label: 'Modules Done', value: completedModuleIds.length, icon: '✅', sub: `of 28 modules` },
             { label: 'Total XP', value: xp.toLocaleString(), icon: '⚡', sub: `${xpToNext - xp} to next rank` },
           ].map((s, i) => (
             <div key={i} className={`card p-5 ${s.highlight ? 'border-[rgba(212,168,67,0.75)]' : ''}`} style={s.highlight ? { background: 'rgba(212,168,67,0.04)' } : {}}>

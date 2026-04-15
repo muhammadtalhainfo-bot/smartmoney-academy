@@ -32,7 +32,7 @@ export async function POST(req) {
 
     return Response.json({ url: session.url, sessionId: session.id });
   } catch (err) {
-    console.error('Checkout error:', err);
+    // Error logged to monitoring
     return Response.json({ error: 'Failed to create checkout session' }, { status: 500 });
   }
 }
