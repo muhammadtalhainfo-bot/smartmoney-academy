@@ -24,7 +24,7 @@ export async function POST(req) {
     try {
       event = stripe.webhooks.constructEvent(body, sig, process.env.STRIPE_WEBHOOK_SECRET);
     } catch (err) {
-      console.warn('Webhook verification failed:', err.message);
+      // Log removed
       return Response.json({ error: 'Webhook signature failed' }, { status: 400 });
     }
 
@@ -35,7 +35,7 @@ export async function POST(req) {
 
       const { data: { users } } = await supabase.auth.admin.listUsers();
       const user = users?.find(u => u.email?.toLowerCase() === email.toLowerCase());
-      if (!user) { console.warn('No user for email:', email); return Response.json({ received: true }); }
+      if (!user) { // Log removed return Response.json({ received: true }); }
 
       await supabase.from('profiles').upsert({
         id: user.id,
@@ -44,7 +44,7 @@ export async function POST(req) {
         stripe_customer_id: session.customer,
       }, { onConflict: 'id' });
 
-      console.log('User upgraded to Pro:', user.id);
+      // Log removed
     }
 
     if (event.type === 'customer.subscription.deleted') {
@@ -52,13 +52,13 @@ export async function POST(req) {
       const { data: profiles } = await supabase.from('profiles').select('id').eq('stripe_customer_id', customerId);
       if (profiles?.length > 0) {
         await supabase.from('profiles').update({ is_pro: false }).eq('id', profiles[0].id);
-        console.log('User downgraded:', profiles[0].id);
+        // Log removed
       }
     }
 
     return Response.json({ received: true });
   } catch (err) {
-    console.error('Webhook error:', err);
+    // Log removed
     return Response.json({ error: 'Webhook failed' }, { status: 500 });
   }
 }

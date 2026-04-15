@@ -24,7 +24,7 @@ export default function sitemap() {
     url, priority, changeFrequency, lastModified: now,
   }))
 
-  const lessonPages = Array.from({ length: 25 }, (_, i) => ({
+  const lessonPages = Array.from({ length: 28 }, (_, i) => ({
     url: `${BASE}/lesson/${i + 1}`,
     lastModified: now,
     changeFrequency: 'monthly',
