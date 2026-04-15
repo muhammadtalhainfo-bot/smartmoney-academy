@@ -82,7 +82,7 @@ export default function Testimonials() {
           {TESTIMONIALS.map((t, i) => (
             <div key={i} style={{ background: '#0D0D0D', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '16px', padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px', transition: 'border-color 0.2s' }}
               onMouseOver={e => e.currentTarget.style.borderColor = 'rgba(212,168,67,0.2)'}
-              onMouseOut={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'}>
+              onMouseOut={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'}>
 
               {/* STARS */}
               <div style={{ color: '#D4A843', fontSize: '13px', letterSpacing: '2px' }}>{'★'.repeat(t.stars)}</div>
