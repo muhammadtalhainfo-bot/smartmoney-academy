@@ -42,7 +42,7 @@ export default function Navbar({ active }) {
 
   return (
     <>
-      <nav style={{ position: 'sticky', top: 0, zIndex: 40, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 24px', borderBottom: '1px solid rgba(212,168,67,0.12)', background: 'rgba(8,8,8,0.97)', backdropFilter: 'blur(20px)' }}>
+      <nav style={{ position: 'sticky', top: 0, zIndex: 40, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 24px', borderBottom: '1px solid rgba(212,168,67,0.22)', background: 'rgba(8,8,8,0.97)', backdropFilter: 'blur(20px)' }}>
 
         <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', flexShrink: 0 }}>
           <img src="/ictflow-symbol.svg" alt="ICT Flow" style={{ width: '34px', height: '34px', borderRadius: '8px' }} />
@@ -55,11 +55,11 @@ export default function Navbar({ active }) {
         <div className="hidden-mobile" style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
           {MAIN_NAV.map(([href, label], i) => (
             <React.Fragment key={href}>
-              {i > 0 && <span style={{ color: 'rgba(212,168,67,0.25)', fontSize: '12px', userSelect: 'none' }}>|</span>}
+              {i > 0 && <span style={{ color: 'rgba(212,168,67,0.75)', fontSize: '12px', userSelect: 'none' }}>|</span>}
               <Link href={href} style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', textDecoration: 'none', color: active === href ? '#D4A843' : 'rgba(255,255,255,0.6)', borderBottom: active === href ? '1px solid #D4A843' : '1px solid transparent', paddingBottom: '2px', transition: 'color 0.2s', whiteSpace: 'nowrap' }}>{label}</Link>
             </React.Fragment>
           ))}
-          <span style={{ color: 'rgba(212,168,67,0.25)', fontSize: '12px', userSelect: 'none' }}>|</span>
+          <span style={{ color: 'rgba(212,168,67,0.75)', fontSize: '12px', userSelect: 'none' }}>|</span>
 
           <div style={{ position: 'relative' }}>
             <button onClick={() => setMoreOpen(!moreOpen)} onBlur={() => setTimeout(() => setMoreOpen(false), 150)}
@@ -67,7 +67,7 @@ export default function Navbar({ active }) {
               MORE <span style={{ fontSize: '8px', display: 'inline-block', transform: moreOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>▾</span>
             </button>
             {moreOpen && (
-              <div style={{ position: 'absolute', top: 'calc(100% + 12px)', right: 0, background: '#111', border: '1px solid rgba(212,168,67,0.15)', borderRadius: '12px', padding: '8px', minWidth: '200px', zIndex: 50, boxShadow: '0 20px 40px rgba(0,0,0,0.5)' }}>
+              <div style={{ position: 'absolute', top: 'calc(100% + 12px)', right: 0, background: '#111', border: '1px solid rgba(212,168,67,0.25)', borderRadius: '12px', padding: '8px', minWidth: '200px', zIndex: 50, boxShadow: '0 20px 40px rgba(0,0,0,0.5)' }}>
                 {MORE_NAV.map(([href, label]) => (
                   <Link key={href} href={href} onClick={() => setMoreOpen(false)}
                     target={href.startsWith('http') ? '_blank' : undefined}
@@ -106,7 +106,7 @@ export default function Navbar({ active }) {
             <Link key={href} href={href} onClick={() => setMenuOpen(false)}
               target={href.startsWith('http') ? '_blank' : undefined}
               rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              style={{ fontFamily: "'DM Mono', monospace", fontSize: '15px', letterSpacing: '0.15em', textTransform: 'uppercase', color: active === href ? '#D4A843' : 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>{label}</Link>
+              style={{ fontFamily: "'DM Mono', monospace", fontSize: '15px', letterSpacing: '0.15em', textTransform: 'uppercase', color: active === href ? '#D4A843' : 'rgba(255,255,255,0.85)', textDecoration: 'none' }}>{label}</Link>
           ))}
           <Link href={isLoggedIn ? '/courses' : '/auth'} onClick={() => setMenuOpen(false)} style={{ marginTop: '16px', background: 'linear-gradient(135deg, #D4A843, #F0C96A)', color: '#080808', borderRadius: '8px', padding: '14px 32px', fontFamily: "'DM Mono', monospace", fontSize: '13px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none' }}>
             {isLoggedIn ? 'My Courses' : 'Start Free'}

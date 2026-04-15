@@ -41,7 +41,7 @@ export default function CookieBanner() {
         }}>Accept</button>
         <button onClick={() => setShow(false)} style={{
           background: 'transparent', color: 'rgba(255,255,255,0.7)',
-          border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px',
+          border: '1px solid rgba(255,255,255,0.2)', borderRadius: '8px',
           padding: '8px 16px', fontFamily: 'DM Mono, monospace',
           fontSize: '11px', cursor: 'pointer'
         }}>Decline</button>

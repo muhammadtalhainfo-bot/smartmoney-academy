@@ -154,10 +154,10 @@ export default function StrategiesPage() {
       {!strategy ? (
         <>
           {/* HERO */}
-          <section style={{ padding: '64px 24px 40px', textAlign: 'center', borderBottom: '1px solid rgba(212,168,67,0.15)', position: 'relative' }}>
+          <section style={{ padding: '64px 24px 40px', textAlign: 'center', borderBottom: '1px solid rgba(212,168,67,0.25)', position: 'relative' }}>
             <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 600px 300px at 50% 100%, rgba(212,168,67,0.04) 0%, transparent 70%)', pointerEvents: 'none' }} />
             <div style={{ maxWidth: '600px', margin: '0 auto', position: 'relative' }}>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.15)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.15em', color: '#D4A843', marginBottom: '20px' }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.25)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.15em', color: '#D4A843', marginBottom: '20px' }}>
                 ICT STRATEGY LIBRARY
               </div>
               <h1 className="font-display" style={{ fontSize: 'clamp(48px, 8vw, 80px)', lineHeight: 1, marginBottom: '12px' }}>
@@ -173,7 +173,7 @@ export default function StrategiesPage() {
           <section style={{ maxWidth: '1100px', margin: '0 auto', padding: '32px 24px' }}>
             <div style={{ display: 'flex', gap: '8px', marginBottom: '32px', flexWrap: 'wrap' }}>
               {ALL_TAGS.map(tag => (
-                <button key={tag} onClick={() => setActiveTag(tag)} style={{ padding: '8px 18px', borderRadius: '100px', border: `1px solid ${activeTag === tag ? '#D4A843' : 'rgba(255,255,255,0.1)'}`, background: activeTag === tag ? 'rgba(212,168,67,0.15)' : 'transparent', color: activeTag === tag ? '#D4A843' : 'rgba(255,255,255,0.5)', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.1em', cursor: 'pointer' }}>
+                <button key={tag} onClick={() => setActiveTag(tag)} style={{ padding: '8px 18px', borderRadius: '100px', border: `1px solid ${activeTag === tag ? '#D4A843' : 'rgba(255,255,255,0.2)'}`, background: activeTag === tag ? 'rgba(212,168,67,0.25)' : 'transparent', color: activeTag === tag ? '#D4A843' : 'rgba(255,255,255,0.85)', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.1em', cursor: 'pointer' }}>
                   {tag}
                 </button>
               ))}
@@ -189,7 +189,7 @@ export default function StrategiesPage() {
                       <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.6)', marginTop: '2px' }}>{s.creator}</div>
                     </div>
                   </div>
-                  <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)', lineHeight: 1.6, fontWeight: 300, marginBottom: '16px' }}>{s.description}</p>
+                  <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.85)', lineHeight: 1.6, fontWeight: 300, marginBottom: '16px' }}>{s.description}</p>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '6px', marginBottom: '16px' }}>
                     {[['Win Rate', s.stats.winRate], ['R:R', s.stats.rr], ['Freq', s.stats.trades], ['Type', s.stats.type]].map(([label, val]) => (
                       <div key={label} style={{ background: 'rgba(255,255,255,0.03)', borderRadius: '6px', padding: '6px', textAlign: 'center' }}>
@@ -200,7 +200,7 @@ export default function StrategiesPage() {
                   </div>
                   <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '16px' }}>
                     {s.tags.map(tag => (
-                      <span key={tag} style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.7)', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', padding: '3px 8px', borderRadius: '4px', letterSpacing: '0.08em' }}>{tag}</span>
+                      <span key={tag} style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.7)', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.18)', padding: '3px 8px', borderRadius: '4px', letterSpacing: '0.08em' }}>{tag}</span>
                     ))}
                   </div>
                   <button style={{ width: '100%', padding: '10px', background: `${s.color}15`, border: `1px solid ${s.color}30`, borderRadius: '8px', color: s.color, fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.1em', cursor: 'pointer' }}>
@@ -251,8 +251,8 @@ export default function StrategiesPage() {
             </div>
           ))}
 
-          <div style={{ marginTop: '40px', padding: '24px', background: 'rgba(212,168,67,0.04)', border: '1px solid rgba(212,168,67,0.12)', borderRadius: '12px', textAlign: 'center' }}>
-            <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '14px', marginBottom: '16px', fontWeight: 300 }}>Practice this strategy with our daily challenges</p>
+          <div style={{ marginTop: '40px', padding: '24px', background: 'rgba(212,168,67,0.04)', border: '1px solid rgba(212,168,67,0.22)', borderRadius: '12px', textAlign: 'center' }}>
+            <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '14px', marginBottom: '16px', fontWeight: 300 }}>Practice this strategy with our daily challenges</p>
             <Link href="/practice" style={{ display: 'inline-block', padding: '12px 28px', background: 'linear-gradient(135deg,#D4A843,#8A6B28)', borderRadius: '8px', color: 'black', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.1em', fontWeight: 600 }}>
               START DAILY PRACTICE →
             </Link>

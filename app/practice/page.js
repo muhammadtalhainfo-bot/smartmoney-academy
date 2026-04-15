@@ -432,13 +432,13 @@ export default function PracticePage() {
               <div className="flex items-center justify-between mb-2">
                 <div>
                   <div className="font-mono-custom text-xs text-[#D4A843] tracking-widest uppercase mb-1">// Daily Challenge</div>
-                  <div className="font-mono-custom text-xs text-gray-500">{dateStr}</div>
+                  <div className="font-mono-custom text-xs text-gray-400">{dateStr}</div>
                 </div>
                 <div className="text-right">
                   <div className="font-display text-3xl" style={{ background: 'linear-gradient(135deg, #D4A843, #F0C96A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                     {current + 1}/{questions.length}
                   </div>
-                  <div className="font-mono-custom text-xs text-gray-500">questions</div>
+                  <div className="font-mono-custom text-xs text-gray-400">questions</div>
                 </div>
               </div>
 
@@ -466,22 +466,22 @@ export default function PracticePage() {
               </div>
 
               {/* Question */}
-              <div className="p-6 rounded-2xl border border-[rgba(212,168,67,0.15)] bg-[#0F0F0F] mb-5">
+              <div className="p-6 rounded-2xl border border-[rgba(212,168,67,0.25)] bg-[#0F0F0F] mb-5">
                 <p className="text-white text-lg font-medium leading-relaxed">{q.q}</p>
               </div>
 
               {/* Options */}
               <div className="space-y-3 mb-6">
                 {q.options.map((opt, i) => {
-                  let borderColor = 'rgba(212,168,67,0.15)';
+                  let borderColor = 'rgba(212,168,67,0.25)';
                   let bg = '#0F0F0F';
-                  let textColor = 'text-gray-400';
+                  let textColor = 'text-gray-300';
                   let icon = null;
 
                   if (!revealed) {
                     if (selected === i) {
                       borderColor = 'rgba(212,168,67,0.8)';
-                      bg = 'rgba(212,168,67,0.12)';
+                      bg = 'rgba(212,168,67,0.22)';
                       textColor = 'text-[#D4A843]';
                     }
                   } else {
@@ -496,7 +496,7 @@ export default function PracticePage() {
                       textColor = 'text-red-300';
                       icon = '✗';
                     } else {
-                      textColor = 'text-gray-600';
+                      textColor = 'text-gray-400';
                     }
                   }
 
@@ -538,7 +538,7 @@ export default function PracticePage() {
                   disabled={selected === null}
                   className="w-full py-4 rounded-xl font-mono-custom text-sm tracking-wider uppercase font-bold transition-all"
                   style={{
-                    background: selected !== null ? 'linear-gradient(135deg, #D4A843, #F0C96A)' : 'rgba(212,168,67,0.15)',
+                    background: selected !== null ? 'linear-gradient(135deg, #D4A843, #F0C96A)' : 'rgba(212,168,67,0.25)',
                     color: selected !== null ? '#080808' : '#8A6B28',
                   }}
                 >
@@ -575,7 +575,7 @@ export default function PracticePage() {
             <div className="w-40 h-40 rounded-full mx-auto mb-6 flex flex-col items-center justify-center border-2"
               style={{
                 borderColor: finalScore >= 4 ? '#34D399' : finalScore >= 3 ? '#D4A843' : '#EF4444',
-                background: finalScore >= 4 ? 'rgba(52,211,153,0.08)' : finalScore >= 3 ? 'rgba(212,168,67,0.12)' : 'rgba(239,68,68,0.08)',
+                background: finalScore >= 4 ? 'rgba(52,211,153,0.08)' : finalScore >= 3 ? 'rgba(212,168,67,0.22)' : 'rgba(239,68,68,0.08)',
               }}>
               <div className="font-display text-6xl" style={{
                 background: finalScore >= 4 ? 'linear-gradient(135deg,#34D399,#6EE7B7)' : finalScore >= 3 ? 'linear-gradient(135deg,#D4A843,#F0C96A)' : 'linear-gradient(135deg,#EF4444,#FCA5A5)',
@@ -583,25 +583,25 @@ export default function PracticePage() {
               }}>
                 {finalScore}/{questions.length}
               </div>
-              <div className="font-mono-custom text-xs text-gray-500 mt-1">correct</div>
+              <div className="font-mono-custom text-xs text-gray-400 mt-1">correct</div>
             </div>
 
             {/* XP earned */}
             <div className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-[rgba(212,168,67,0.8)] bg-[rgba(212,168,67,0.05)] mb-6">
               <span className="text-xl">⚡</span>
               <span className="font-display text-2xl" style={{ color: '#D4A843' }}>+{xpEarned} XP</span>
-              <span className="font-mono-custom text-xs text-gray-500">earned</span>
+              <span className="font-mono-custom text-xs text-gray-400">earned</span>
             </div>
 
             {/* Performance message */}
-            <div className="p-5 rounded-xl border border-[rgba(212,168,67,0.15)] bg-[#0F0F0F] mb-6 text-left">
+            <div className="p-5 rounded-xl border border-[rgba(212,168,67,0.25)] bg-[#0F0F0F] mb-6 text-left">
               <p className="text-white font-semibold mb-1">
                 {finalScore === 5 ? '🎯 Perfect Score! Elite level.' :
                  finalScore === 4 ? '💪 Strong performance. One missed — review it.' :
                  finalScore === 3 ? '📈 Solid. Two gaps to close — check the lessons.' :
                  finalScore <= 2 ? '📖 Go back to the lessons. Fundamentals first.' : ''}
               </p>
-              <p className="text-gray-400 text-sm">Come back tomorrow for a new challenge. Consistency builds the edge.</p>
+              <p className="text-gray-300 text-sm">Come back tomorrow for a new challenge. Consistency builds the edge.</p>
             </div>
 
             {/* Question review */}
@@ -615,7 +615,7 @@ export default function PracticePage() {
                     <span className={`text-base shrink-0 mt-0.5 ${ans.correct ? 'text-emerald-400' : 'text-red-400'}`}>{ans.correct ? '✓' : '✗'}</span>
                     <div>
                       <p className={`text-sm font-medium ${ans.correct ? 'text-emerald-300' : 'text-red-300'}`}>{question.topic}</p>
-                      <p className="text-gray-500 text-xs mt-0.5 leading-relaxed">{question.question.substring(0, 80)}...</p>
+                      <p className="text-gray-400 text-xs mt-0.5 leading-relaxed">{question.question.substring(0, 80)}...</p>
                     </div>
                   </div>
                 );
@@ -627,7 +627,7 @@ export default function PracticePage() {
               <Link href="/courses">
                 <div className="py-4 rounded-xl border border-[rgba(212,168,67,0.8)] bg-[#0F0F0F] hover:border-[rgba(212,168,67,0.75)] transition-all text-center">
                   <div className="font-mono-custom text-xs text-[#D4A843] tracking-wider uppercase">Study</div>
-                  <div className="text-xs text-gray-500 mt-1">Review lessons</div>
+                  <div className="text-xs text-gray-400 mt-1">Review lessons</div>
                 </div>
               </Link>
               <Link href="/dashboard">
@@ -638,14 +638,14 @@ export default function PracticePage() {
               </Link>
             </div>
 
-            <p className="font-mono-custom text-xs text-gray-600 mt-6">New challenge unlocks tomorrow at midnight</p>
+            <p className="font-mono-custom text-xs text-gray-400 mt-6">New challenge unlocks tomorrow at midnight</p>
           </div>
         )}
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-[rgba(212,168,67,0.15)] px-8 py-6 mt-16">
-        <div className="max-w-2xl mx-auto text-center font-mono-custom text-xs text-gray-600">
+      <footer className="border-t border-[rgba(212,168,67,0.25)] px-8 py-6 mt-16">
+        <div className="max-w-2xl mx-auto text-center font-mono-custom text-xs text-gray-400">
           ICT Flow — Educational content only. Not financial advice.
         </div>
       </footer>

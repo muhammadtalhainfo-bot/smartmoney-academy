@@ -72,14 +72,14 @@ export default function PricingPage() {
     <div style={{ minHeight: '100vh', background: '#080808', color: 'white', fontFamily: "'DM Sans', sans-serif" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
-        :root { --gold: #D4A843; --border: rgba(212,168,67,0.12); }
+        :root { --gold: #D4A843; --border: rgba(212,168,67,0.22); }
         .font-display { font-family: 'Bebas Neue', sans-serif; }
         .font-mono-c { font-family: 'DM Mono', monospace; }
         .shine { background: linear-gradient(135deg, #8A6B28 0%, #D4A843 40%, #F0C96A 60%, #D4A843 80%, #8A6B28 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .card-pro { background: linear-gradient(135deg, rgba(212,168,67,0.06) 0%, rgba(212,168,67,0.02) 100%); border: 1px solid rgba(212,168,67,0.8); }
-        .card-free { background: #0D0D0D; border: 1px solid rgba(255,255,255,0.08); }
+        .card-free { background: #0D0D0D; border: 1px solid rgba(255,255,255,0.18); }
         .toggle-pill { transition: all 0.25s; }
-        .faq-item { border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .faq-item { border-bottom: 1px solid rgba(255,255,255,0.15); }
       `}</style>
 
       <Navbar active="/pricing" />
@@ -96,16 +96,16 @@ export default function PricingPage() {
             <span className="shine">INVEST IN YOUR</span><br />
             <span style={{ color: 'white' }}>TRADING EDGE</span>
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '16px', lineHeight: 1.7, fontWeight: 300, marginBottom: '40px' }}>
+          <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '16px', lineHeight: 1.7, fontWeight: 300, marginBottom: '40px' }}>
             Start free. Upgrade when you're ready. No hidden fees, no lock-ins.
           </p>
 
           {/* BILLING TOGGLE */}
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '14px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '100px', padding: '6px 8px' }}>
-            <button onClick={() => setAnnual(false)} style={{ padding: '8px 20px', borderRadius: '100px', border: 'none', cursor: 'pointer', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.1em', transition: 'all 0.2s', background: !annual ? '#D4A843' : 'transparent', color: !annual ? 'black' : 'rgba(255,255,255,0.5)' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '14px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.18)', borderRadius: '100px', padding: '6px 8px' }}>
+            <button onClick={() => setAnnual(false)} style={{ padding: '8px 20px', borderRadius: '100px', border: 'none', cursor: 'pointer', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.1em', transition: 'all 0.2s', background: !annual ? '#D4A843' : 'transparent', color: !annual ? 'black' : 'rgba(255,255,255,0.85)' }}>
               MONTHLY
             </button>
-            <button onClick={() => setAnnual(true)} style={{ padding: '8px 20px', borderRadius: '100px', border: 'none', cursor: 'pointer', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.1em', transition: 'all 0.2s', background: annual ? '#D4A843' : 'transparent', color: annual ? 'black' : 'rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <button onClick={() => setAnnual(true)} style={{ padding: '8px 20px', borderRadius: '100px', border: 'none', cursor: 'pointer', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.1em', transition: 'all 0.2s', background: annual ? '#D4A843' : 'transparent', color: annual ? 'black' : 'rgba(255,255,255,0.85)', display: 'flex', alignItems: 'center', gap: '8px' }}>
               ANNUAL
               <span style={{ background: annual ? 'rgba(0,0,0,0.2)' : 'rgba(52,211,153,0.15)', color: annual ? 'black' : '#34D399', fontSize: '9px', padding: '2px 7px', borderRadius: '100px', fontWeight: 600 }}>SAVE {savings}%</span>
             </button>
@@ -133,7 +133,7 @@ export default function PricingPage() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {FREE_FEATURES.map((f, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', opacity: f.included ? 1 : 0.3 }}>
-                <span style={{ fontSize: '14px', color: f.included ? '#34D399' : 'rgba(255,255,255,0.5)', flexShrink: 0 }}>{f.included ? '✓' : '✗'}</span>
+                <span style={{ fontSize: '14px', color: f.included ? '#34D399' : 'rgba(255,255,255,0.85)', flexShrink: 0 }}>{f.included ? '✓' : '✗'}</span>
                 <span style={{ fontSize: '13px', color: f.included ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.6)', textDecoration: f.included ? 'none' : 'none' }}>{f.text}</span>
               </div>
             ))}
@@ -142,7 +142,7 @@ export default function PricingPage() {
 
         {/* PRO */}
         <div className="card-pro" style={{ borderRadius: '20px', padding: '36px', position: 'relative', overflow: 'hidden' }}>
-          <div style={{ position: 'absolute', top: 0, right: 0, width: '250px', height: '250px', background: 'radial-gradient(circle, rgba(212,168,67,0.12) 0%, transparent 70%)', pointerEvents: 'none' }} />
+          <div style={{ position: 'absolute', top: 0, right: 0, width: '250px', height: '250px', background: 'radial-gradient(circle, rgba(212,168,67,0.22) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
           {/* POPULAR BADGE */}
           <div style={{ position: 'absolute', top: '20px', right: '20px', background: 'linear-gradient(135deg,#D4A843,#8A6B28)', borderRadius: '6px', padding: '4px 12px', fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'black', fontWeight: 600, letterSpacing: '0.1em' }}>POPULAR</div>
@@ -159,7 +159,7 @@ export default function PricingPage() {
               Billed as <span style={{ color: '#D4A843' }}>${annualPrice}/year</span>
             </div>
           )}
-          <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '13px', marginBottom: '28px', lineHeight: 1.6 }}>
+          <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '13px', marginBottom: '28px', lineHeight: 1.6 }}>
             Full access to everything. Trade smarter, faster, with institutional precision.
           </p>
 
@@ -205,7 +205,7 @@ export default function PricingPage() {
               <span style={{ color: '#D4A843', fontSize: '18px', flexShrink: 0, transition: 'transform 0.2s', transform: openFaq === i ? 'rotate(45deg)' : 'none' }}>+</span>
             </div>
             {openFaq === i && (
-              <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '14px', lineHeight: 1.7, marginTop: '12px', fontWeight: 300 }}>{faq.a}</p>
+              <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '14px', lineHeight: 1.7, marginTop: '12px', fontWeight: 300 }}>{faq.a}</p>
             )}
           </div>
         ))}
@@ -213,7 +213,7 @@ export default function PricingPage() {
 
       {/* BOTTOM CTA */}
       <section style={{ padding: '0 24px 80px', textAlign: 'center' }}>
-        <div style={{ maxWidth: '500px', margin: '0 auto', padding: '48px', background: 'rgba(212,168,67,0.04)', border: '1px solid rgba(212,168,67,0.15)', borderRadius: '20px' }}>
+        <div style={{ maxWidth: '500px', margin: '0 auto', padding: '48px', background: 'rgba(212,168,67,0.04)', border: '1px solid rgba(212,168,67,0.25)', borderRadius: '20px' }}>
           <div className="font-display shine" style={{ fontSize: '40px', marginBottom: '12px' }}>START FREE TODAY</div>
           <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px', marginBottom: '24px', fontWeight: 300 }}>No credit card. No commitment. Just ICT education.</p>
           <Link href="/auth" style={{ display: 'inline-block', padding: '14px 36px', background: 'linear-gradient(135deg,#D4A843,#8A6B28)', borderRadius: '10px', color: 'black', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600 }}>

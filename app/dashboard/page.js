@@ -31,7 +31,7 @@ function CircleProgress({ pct, size = 90, stroke = 7, color = '#D4A843' }) {
   const dash = (pct / 100) * circ;
   return (
     <svg width={size} height={size} style={{ transform: 'rotate(-90deg)' }}>
-      <circle cx={size/2} cy={size/2} r={r} fill="none" stroke="rgba(212,168,67,0.15)" strokeWidth={stroke} />
+      <circle cx={size/2} cy={size/2} r={r} fill="none" stroke="rgba(212,168,67,0.25)" strokeWidth={stroke} />
       <circle cx={size/2} cy={size/2} r={r} fill="none" stroke={color} strokeWidth={stroke}
         strokeDasharray={`${dash} ${circ}`} strokeLinecap="round"
         style={{ transition: 'stroke-dasharray 1s ease' }} />
@@ -159,7 +159,7 @@ export default function DashboardPage() {
     <div className="min-h-screen bg-[#080808] text-white" style={{ fontFamily: "'DM Sans', sans-serif" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap');
-        :root { --gold: #D4A843; --gold-dim: #8A6B28; --border: rgba(212,168,67,0.12); }
+        :root { --gold: #D4A843; --gold-dim: #8A6B28; --border: rgba(212,168,67,0.22); }
         .font-display { font-family: 'Bebas Neue', sans-serif; }
         .font-mono-c { font-family: 'DM Mono', monospace; }
         body::before {
@@ -168,13 +168,13 @@ export default function DashboardPage() {
           pointer-events: none; z-index: 0; opacity: 0.4;
         }
         .grid-bg { background-image: linear-gradient(rgba(212,168,67,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(212,168,67,0.025) 1px, transparent 1px); background-size: 60px 60px; }
-        .card { background: #0F0F0F; border: 1px solid rgba(212,168,67,0.15); border-radius: 16px; }
+        .card { background: #0F0F0F; border: 1px solid rgba(212,168,67,0.25); border-radius: 16px; }
         .card-hover { transition: all 0.25s ease; }
-        .card-hover:hover { border-color: rgba(212,168,67,0.25); transform: translateY(-2px); }
+        .card-hover:hover { border-color: rgba(212,168,67,0.75); transform: translateY(-2px); }
         .gold-gradient { background: linear-gradient(135deg, #8A6B28, #D4A843, #F0C96A, #D4A843); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .tab-btn { font-family: 'DM Mono', monospace; transition: all 0.2s; border-bottom: 2px solid transparent; }
         .tab-btn.active { color: #D4A843; border-bottom-color: #D4A843; }
-        .progress-bar-bg { background: rgba(212,168,67,0.12); border-radius: 99px; overflow: hidden; }
+        .progress-bar-bg { background: rgba(212,168,67,0.22); border-radius: 99px; overflow: hidden; }
         .progress-bar-fill { background: linear-gradient(90deg, #8A6B28, #D4A843, #F0C96A); border-radius: 99px; transition: width 1s ease; }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
         .fade-up { animation: fadeUp 0.5s ease forwards; opacity: 0; }
@@ -223,17 +223,17 @@ export default function DashboardPage() {
             { label: 'Modules Done', value: completedModuleIds.length, icon: '✅', sub: `of ${totalModules} modules` },
             { label: 'Total XP', value: xp.toLocaleString(), icon: '⚡', sub: `${xpToNext - xp} to next rank` },
           ].map((s, i) => (
-            <div key={i} className={`card p-5 ${s.highlight ? 'border-[rgba(212,168,67,0.25)]' : ''}`} style={s.highlight ? { background: 'rgba(212,168,67,0.04)' } : {}}>
+            <div key={i} className={`card p-5 ${s.highlight ? 'border-[rgba(212,168,67,0.75)]' : ''}`} style={s.highlight ? { background: 'rgba(212,168,67,0.04)' } : {}}>
               <div className="text-2xl mb-3">{s.icon}</div>
               <div className="font-display text-4xl mb-1" style={{ color: s.highlight ? '#D4A843' : 'white' }}>{s.value}</div>
               <div className="font-mono-c text-[10px] tracking-widest uppercase mb-1" style={{ color: '#C0C0C0' }}>{s.label}</div>
-              <div className="font-mono-c text-[10px]" style={{ color: 'rgba(212,168,67,0.7)' }}>{s.sub}</div>
+              <div className="font-mono-c text-[10px]" style={{ color: '#D4A843' }}>{s.sub}</div>
             </div>
           ))}
         </div>
 
         {/* TABS */}
-        <div className="fade-up flex gap-6 border-b mb-8" style={{ animationDelay: '0.15s', borderColor: 'rgba(212,168,67,0.15)' }}>
+        <div className="fade-up flex gap-6 border-b mb-8" style={{ animationDelay: '0.15s', borderColor: 'rgba(212,168,67,0.25)' }}>
           {[['overview', 'Overview'], ['modules', 'All Modules']].map(([key, label]) => (
             <button key={key} onClick={() => setActiveTab(key)} className={`tab-btn pb-3 text-xs tracking-widest uppercase ${activeTab === key ? 'active' : 'text-gray-300'}`}>
               {label}
@@ -300,9 +300,9 @@ export default function DashboardPage() {
                       const mod = ALL_MODULES.find(m => m.id === c.module_id);
                       return (
                         <Link key={i} href={`/lesson/${c.lesson_id}`}>
-                          <div className="flex items-center justify-between p-4 rounded-xl border transition-all hover:border-[rgba(212,168,67,0.25)] cursor-pointer mb-2" style={{ borderColor: 'rgba(212,168,67,0.12)', background: '#141414' }}>
+                          <div className="flex items-center justify-between p-4 rounded-xl border transition-all hover:border-[rgba(212,168,67,0.75)] cursor-pointer mb-2" style={{ borderColor: 'rgba(212,168,67,0.22)', background: '#141414' }}>
                             <div className="flex items-center gap-3">
-                              <div className="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style={{ background: 'rgba(212,168,67,0.12)' }}>{mod?.emoji || '📖'}</div>
+                              <div className="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style={{ background: 'rgba(212,168,67,0.22)' }}>{mod?.emoji || '📖'}</div>
                               <div>
                                 <div className="font-medium text-white text-sm">{mod?.title || `Lesson ${c.lesson_id}`}</div>
                                 <div className="font-mono-c text-[10px]" style={{ color: '#D4A843' }}>{new Date(c.completed_at).toLocaleDateString()}</div>
@@ -345,8 +345,8 @@ export default function DashboardPage() {
                     const current = i === rankIndex;
                     const done = i < rankIndex;
                     return (
-                      <div key={i} className="flex items-center gap-3 px-3 py-2 rounded-lg" style={{ background: current ? 'rgba(212,168,67,0.12)' : 'transparent' }}>
-                        <div className="w-5 h-5 rounded-full flex items-center justify-center text-[10px]" style={{ background: done ? '#D4A843' : current ? 'rgba(212,168,67,0.8)' : 'rgba(255,255,255,0.08)', color: done ? '#080808' : current ? '#D4A843' : '#A8A8A8' }}>
+                      <div key={i} className="flex items-center gap-3 px-3 py-2 rounded-lg" style={{ background: current ? 'rgba(212,168,67,0.22)' : 'transparent' }}>
+                        <div className="w-5 h-5 rounded-full flex items-center justify-center text-[10px]" style={{ background: done ? '#D4A843' : current ? 'rgba(212,168,67,0.8)' : 'rgba(255,255,255,0.18)', color: done ? '#080808' : current ? '#D4A843' : '#A8A8A8' }}>
                           {done ? '✓' : i + 1}
                         </div>
                         <span className="font-mono-c text-sm" style={{ color: current ? '#D4A843' : done ? '#C0C0C0' : '#B0B0B0', fontWeight: current ? '600' : '400' }}>{rank}</span>
@@ -366,7 +366,7 @@ export default function DashboardPage() {
                   const modCompletions = completions.filter(c => c.module_id === nextModule.id).length;
                   return (
                     <Link href={`/lesson/${nextModule.id}`}>
-                      <div className="p-4 rounded-xl border cursor-pointer transition-all hover:border-[rgba(212,168,67,0.8)]" style={{ borderColor: 'rgba(212,168,67,0.15)', background: 'rgba(212,168,67,0.03)' }}>
+                      <div className="p-4 rounded-xl border cursor-pointer transition-all hover:border-[rgba(212,168,67,0.8)]" style={{ borderColor: 'rgba(212,168,67,0.25)', background: 'rgba(212,168,67,0.03)' }}>
                         <div className="flex items-center gap-3 mb-3">
                           <span className="text-2xl">{nextModule.emoji}</span>
                           <div>
@@ -399,9 +399,9 @@ export default function DashboardPage() {
                   <div className="card card-hover p-5 cursor-pointer h-full">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl" style={{ background: 'rgba(212,168,67,0.06)', border: '1px solid rgba(212,168,67,0.15)' }}>{mod.emoji}</div>
+                        <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl" style={{ background: 'rgba(212,168,67,0.06)', border: '1px solid rgba(212,168,67,0.25)' }}>{mod.emoji}</div>
                         <div>
-                          <div className="font-mono-c text-[10px] mb-0.5" style={{ color: 'rgba(212,168,67,0.7)', letterSpacing: '0.15em' }}>MODULE {String(mod.id).padStart(2, '0')}</div>
+                          <div className="font-mono-c text-[10px] mb-0.5" style={{ color: '#D4A843', letterSpacing: '0.15em' }}>MODULE {String(mod.id).padStart(2, '0')}</div>
                           <div className="font-semibold text-white text-sm">{mod.title}</div>
                         </div>
                       </div>

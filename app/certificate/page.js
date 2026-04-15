@@ -83,12 +83,12 @@ export default function CertificatePage() {
             </div>
 
             {/* Progress bar */}
-            <div style={{ background: '#0D0D0D', border: '1px solid rgba(212,168,67,0.15)', borderRadius: '16px', padding: '32px', marginBottom: '32px' }}>
+            <div style={{ background: '#0D0D0D', border: '1px solid rgba(212,168,67,0.25)', borderRadius: '16px', padding: '32px', marginBottom: '32px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
                 <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.1em' }}>MODULES COMPLETED</span>
                 <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#D4A843' }}>{completed}/{TOTAL_LESSONS}</span>
               </div>
-              <div style={{ height: '8px', background: 'rgba(255,255,255,0.06)', borderRadius: '100px', overflow: 'hidden', marginBottom: '24px' }}>
+              <div style={{ height: '8px', background: 'rgba(255,255,255,0.15)', borderRadius: '100px', overflow: 'hidden', marginBottom: '24px' }}>
                 <div style={{ height: '100%', width: `${progress}%`, background: 'linear-gradient(90deg,#8A6B28,#D4A843)', borderRadius: '100px', transition: 'width 0.5s' }} />
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '10px' }}>
@@ -172,7 +172,7 @@ export default function CertificatePage() {
               <button onClick={() => window.print()} style={{ padding: '14px 32px', background: 'linear-gradient(135deg,#D4A843,#8A6B28)', borderRadius: '10px', color: 'black', border: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600, cursor: 'pointer' }}>
                 🖨️ PRINT / SAVE PDF
               </button>
-              <Link href="/dashboard" style={{ padding: '14px 32px', background: 'transparent', borderRadius: '10px', color: 'rgba(255,255,255,0.6)', border: '1px solid rgba(255,255,255,0.1)', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+              <Link href="/dashboard" style={{ padding: '14px 32px', background: 'transparent', borderRadius: '10px', color: 'rgba(255,255,255,0.6)', border: '1px solid rgba(255,255,255,0.2)', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
                 BACK TO DASHBOARD
               </Link>
             </div>

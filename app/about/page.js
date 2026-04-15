@@ -45,24 +45,24 @@ export default function AboutPage() {
       <Navbar active="/about" />
 
       {/* HERO */}
-      <section style={{ padding: '80px 24px 60px', textAlign: 'center', borderBottom: '1px solid rgba(212,168,67,0.15)', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ padding: '80px 24px 60px', textAlign: 'center', borderBottom: '1px solid rgba(212,168,67,0.25)', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 700px 400px at 50% 100%, rgba(212,168,67,0.05) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '700px', margin: '0 auto', position: 'relative' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.15)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.15em', color: '#D4A843', marginBottom: '24px' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.25)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.15em', color: '#D4A843', marginBottom: '24px' }}>
             OUR MISSION
           </div>
           <h1 className="font-display" style={{ fontSize: 'clamp(52px, 9vw, 96px)', lineHeight: 1, marginBottom: '24px' }}>
             <span style={{ color: 'white' }}>TRADE LIKE</span><br />
             <span className="shine">INSTITUTIONS</span>
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '17px', lineHeight: 1.8, fontWeight: 300, maxWidth: '560px', margin: '0 auto' }}>
+          <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '17px', lineHeight: 1.8, fontWeight: 300, maxWidth: '560px', margin: '0 auto' }}>
             ICT Flow was built with one goal: make ICT and Smart Money Concepts accessible to every trader — regardless of background or budget. No $500 courses. No gatekeeping. Just the cleanest ICT education on the internet, free.
           </p>
         </div>
       </section>
 
       {/* STATS */}
-      <section style={{ borderBottom: '1px solid rgba(212,168,67,0.12)', background: '#0A0A0A' }}>
+      <section style={{ borderBottom: '1px solid rgba(212,168,67,0.22)', background: '#0A0A0A' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto', padding: '48px 24px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '32px', textAlign: 'center' }}>
           {STATS.map(s => (
             <div key={s.label}>
@@ -89,14 +89,14 @@ export default function AboutPage() {
           <p>
             We're traders who got tired of seeing beginners pay $300+ for information that should be free. ICT himself gives his content away on YouTube. We just organized it into a proper learning path.
           </p>
-          <p style={{ color: 'rgba(212,168,67,0.7)', fontStyle: 'italic' }}>
+          <p style={{ color: '#D4A843', fontStyle: 'italic' }}>
             "Stop trying to predict. Start reading the algorithm." — ICT
           </p>
         </div>
       </section>
 
       {/* VALUES */}
-      <section style={{ borderTop: '1px solid rgba(212,168,67,0.12)', padding: '80px 24px', background: '#0A0A0A' }}>
+      <section style={{ borderTop: '1px solid rgba(212,168,67,0.22)', padding: '80px 24px', background: '#0A0A0A' }}>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
             <h2 className="font-display" style={{ fontSize: '48px', color: 'white', lineHeight: 1 }}>
@@ -105,11 +105,11 @@ export default function AboutPage() {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(380px, 1fr))', gap: '20px' }}>
             {VALUES.map(v => (
-              <div key={v.title} style={{ background: '#111', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '16px', padding: '28px', display: 'flex', gap: '16px' }}>
+              <div key={v.title} style={{ background: '#111', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '16px', padding: '28px', display: 'flex', gap: '16px' }}>
                 <div style={{ fontSize: '28px', flexShrink: 0 }}>{v.icon}</div>
                 <div>
                   <div className="font-display" style={{ fontSize: '22px', color: 'white', marginBottom: '8px', letterSpacing: '0.05em' }}>{v.title}</div>
-                  <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '14px', lineHeight: 1.7, fontWeight: 300 }}>{v.desc}</p>
+                  <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '14px', lineHeight: 1.7, fontWeight: 300 }}>{v.desc}</p>
                 </div>
               </div>
             ))}
@@ -128,7 +128,7 @@ export default function AboutPage() {
             <Link href="/courses" style={{ padding: '14px 32px', background: 'linear-gradient(135deg,#D4A843,#8A6B28)', borderRadius: '10px', color: 'black', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600 }}>
               VIEW CURRICULUM →
             </Link>
-            <Link href="/auth" style={{ padding: '14px 32px', background: 'transparent', borderRadius: '10px', color: 'rgba(255,255,255,0.6)', border: '1px solid rgba(255,255,255,0.1)', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em' }}>
+            <Link href="/auth" style={{ padding: '14px 32px', background: 'transparent', borderRadius: '10px', color: 'rgba(255,255,255,0.6)', border: '1px solid rgba(255,255,255,0.2)', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em' }}>
               CREATE ACCOUNT
             </Link>
           </div>

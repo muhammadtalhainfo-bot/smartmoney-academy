@@ -37,7 +37,7 @@ export default function EmailCapture() {
   }
 
   return (
-    <section style={{ padding: '80px 24px', borderTop: '1px solid rgba(212,168,67,0.15)', borderBottom: '1px solid rgba(212,168,67,0.15)', background: 'rgba(212,168,67,0.02)', position: 'relative', overflow: 'hidden' }}>
+    <section style={{ padding: '80px 24px', borderTop: '1px solid rgba(212,168,67,0.25)', borderBottom: '1px solid rgba(212,168,67,0.25)', background: 'rgba(212,168,67,0.02)', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 600px 300px at 50% 50%, rgba(212,168,67,0.04) 0%, transparent 70%)', pointerEvents: 'none' }} />
       <div style={{ maxWidth: '560px', margin: '0 auto', textAlign: 'center', position: 'relative' }}>
 
@@ -51,7 +51,7 @@ export default function EmailCapture() {
           <span style={{ background: 'linear-gradient(135deg, #8A6B28 0%, #D4A843 40%, #F0C96A 60%, #D4A843 80%, #8A6B28 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>THE MARKET</span>
         </h2>
 
-        <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '15px', lineHeight: 1.7, marginBottom: '32px', fontWeight: 300 }}>
+        <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '15px', lineHeight: 1.7, marginBottom: '32px', fontWeight: 300 }}>
           Get notified when new ICT modules drop, weekly market breakdowns, and exclusive trading tips — all free.
         </p>
 
@@ -68,7 +68,7 @@ export default function EmailCapture() {
                 onChange={e => { setEmail(e.target.value); setStatus('idle'); setMsg(''); }}
                 onKeyDown={e => e.key === 'Enter' && handleSubmit()}
                 placeholder="your@email.com"
-                style={{ flex: 1, padding: '14px 18px', background: 'rgba(255,255,255,0.04)', border: `1px solid ${status === 'error' ? 'rgba(248,113,113,0.4)' : 'rgba(212,168,67,0.15)'}`, borderRadius: '10px', color: 'white', fontSize: '14px', fontFamily: 'DM Mono, monospace', outline: 'none', letterSpacing: '0.05em' }}
+                style={{ flex: 1, padding: '14px 18px', background: 'rgba(255,255,255,0.04)', border: `1px solid ${status === 'error' ? 'rgba(248,113,113,0.4)' : 'rgba(212,168,67,0.25)'}`, borderRadius: '10px', color: 'white', fontSize: '14px', fontFamily: 'DM Mono, monospace', outline: 'none', letterSpacing: '0.05em' }}
               />
               <button
                 onClick={handleSubmit}
@@ -81,7 +81,7 @@ export default function EmailCapture() {
             {msg && status === 'error' && (
               <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(248,113,113,0.8)', letterSpacing: '0.05em' }}>{msg}</p>
             )}
-            <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.5)', letterSpacing: '0.08em', marginTop: '12px' }}>
+            <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.85)', letterSpacing: '0.08em', marginTop: '12px' }}>
               JOIN 500+ TRADERS · UNSUBSCRIBE ANYTIME
             </p>
           </>

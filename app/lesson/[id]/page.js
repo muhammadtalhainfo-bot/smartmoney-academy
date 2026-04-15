@@ -1534,7 +1534,7 @@ const LEVEL_STYLE = {
 function Section({ section, index, diagramSrc, diagramAlt }) {
   const [open, setOpen] = useState(index === 0);
   return (
-    <div className="border border-[rgba(212,168,67,0.15)] rounded-xl overflow-hidden mb-4">
+    <div className="border border-[rgba(212,168,67,0.25)] rounded-xl overflow-hidden mb-4">
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between p-5 text-left hover:bg-[rgba(212,168,67,0.03)] transition-colors"
@@ -1548,7 +1548,7 @@ function Section({ section, index, diagramSrc, diagramAlt }) {
         <span className="text-[#D4A843] text-lg">{open ? '−' : '+'}</span>
       </button>
       {open && (
-        <div className="px-5 pb-6 border-t border-[rgba(212,168,67,0.15)]">
+        <div className="px-5 pb-6 border-t border-[rgba(212,168,67,0.25)]">
           <div className="pt-5 text-gray-300 leading-relaxed text-sm whitespace-pre-line mb-4" style={{ fontWeight: 300 }}>
             {section.content}
           </div>
@@ -1580,13 +1580,13 @@ function Quiz({ questions, lessonId }) {
           <p className="text-white text-sm font-medium mb-3">{qi + 1}. {q.q}</p>
           <div className="space-y-2">
             {q.options.map((opt, oi) => {
-              let style = 'border-[rgba(212,168,67,0.15)] bg-[#0F0F0F] text-gray-400 hover:border-[rgba(212,168,67,0.8)]';
+              let style = 'border-[rgba(212,168,67,0.25)] bg-[#0F0F0F] text-gray-300 hover:border-[rgba(212,168,67,0.8)]';
               if (submitted) {
                 if (oi === q.answer) style = 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300';
                 else if (answers[qi] === oi) style = 'border-red-500/40 bg-red-500/10 text-red-300';
-                else style = 'border-[rgba(212,168,67,0.15)] bg-[#0F0F0F] text-gray-600';
+                else style = 'border-[rgba(212,168,67,0.25)] bg-[#0F0F0F] text-gray-400';
               } else if (answers[qi] === oi) {
-                style = 'border-[rgba(212,168,67,0.75)] bg-[rgba(212,168,67,0.12)] text-[#D4A843]';
+                style = 'border-[rgba(212,168,67,0.75)] bg-[rgba(212,168,67,0.22)] text-[#D4A843]';
               }
               return (
                 <button
@@ -1633,7 +1633,7 @@ function Quiz({ questions, lessonId }) {
           style={{
             background: Object.keys(answers).length === questions.length
               ? 'linear-gradient(135deg, #D4A843, #F0C96A)'
-              : 'rgba(212,168,67,0.15)',
+              : 'rgba(212,168,67,0.25)',
             color: Object.keys(answers).length === questions.length ? '#080808' : '#8A6B28',
             fontWeight: 700,
           }}
@@ -1645,7 +1645,7 @@ function Quiz({ questions, lessonId }) {
           <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '36px', background: 'linear-gradient(135deg, #D4A843, #F0C96A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
             {score}/{questions.length}
           </div>
-          <p className="text-gray-400 text-sm mt-1">
+          <p className="text-gray-300 text-sm mt-1">
             {score === questions.length ? '🎯 Perfect! You nailed it.' : score >= questions.length / 2 ? '💪 Good job. Review the ones you missed.' : '📖 Re-read the lesson and try again.'}
           </p>
         </div>
@@ -1693,7 +1693,7 @@ export default function LessonPage({ params }) {
     <div className="min-h-screen bg-[#080808] text-white" style={{ fontFamily: "'DM Sans', sans-serif" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap');
-        :root { --gold: #D4A843; --gold-light: #F0C96A; --gold-dim: #8A6B28; --bg2: #0F0F0F; --bg3: #141414; --border: rgba(212,168,67,0.15); }
+        :root { --gold: #D4A843; --gold-light: #F0C96A; --gold-dim: #8A6B28; --bg2: #0F0F0F; --bg3: #141414; --border: rgba(212,168,67,0.25); }
         .font-display { font-family: 'Bebas Neue', sans-serif; }
         .font-mono-custom { font-family: 'DM Mono', monospace; }
       `}</style>
@@ -1706,7 +1706,7 @@ export default function LessonPage({ params }) {
         </Link>
         <div className="hidden md:flex items-center gap-6">
           {[['/', 'Home'], ['/foundations', 'Foundations'], ['/courses', 'Courses'], ['/mentorship', 'Mentorship']].map(([href, label]) => (
-            <Link key={href} href={href} className="font-mono-custom text-xs text-gray-400 hover:text-[var(--gold)] transition-colors tracking-wider uppercase">{label}</Link>
+            <Link key={href} href={href} className="font-mono-custom text-xs text-gray-300 hover:text-[var(--gold)] transition-colors tracking-wider uppercase">{label}</Link>
           ))}
         </div>
       </nav>
@@ -1714,7 +1714,7 @@ export default function LessonPage({ params }) {
       <div className="max-w-4xl mx-auto px-6 py-12">
 
         {/* ── Breadcrumb ── */}
-        <div className="flex items-center gap-2 font-mono-custom text-xs text-gray-500 mb-8">
+        <div className="flex items-center gap-2 font-mono-custom text-xs text-gray-400 mb-8">
           <Link href="/courses" className="hover:text-[var(--gold)] transition-colors">Courses</Link>
           <span className="text-gray-700">›</span>
           <span className="text-[var(--gold)]">{lesson.title}</span>
@@ -1724,11 +1724,11 @@ export default function LessonPage({ params }) {
         <div className="mb-10">
           <div className="flex items-center gap-3 mb-4 flex-wrap">
             <span className={`px-3 py-1 rounded-lg text-xs font-mono-custom border ${LEVEL_STYLE[lesson.level]}`}>{lesson.level}</span>
-            <span className="font-mono-custom text-xs text-gray-500">📖 {lesson.duration}</span>
-            <span className="font-mono-custom text-xs text-gray-500">🏷 {lesson.category}</span>
+            <span className="font-mono-custom text-xs text-gray-400">📖 {lesson.duration}</span>
+            <span className="font-mono-custom text-xs text-gray-400">🏷 {lesson.category}</span>
           </div>
           <h1 className="font-display text-5xl md:text-7xl text-white mb-4 leading-none">{lesson.title.toUpperCase()}</h1>
-          <p className="text-gray-400 text-lg" style={{ fontWeight: 300 }}>{lesson.subtitle}</p>
+          <p className="text-gray-300 text-lg" style={{ fontWeight: 300 }}>{lesson.subtitle}</p>
         </div>
 
         {/* ── Intro ── */}
@@ -1747,7 +1747,7 @@ export default function LessonPage({ params }) {
             onError={(e) => { e.target.parentElement.style.display = 'none'; }}
           />
           <div className="px-4 py-3 border-t border-[var(--border)]">
-            <p className="font-mono-custom text-xs text-gray-500">{lesson.imageCaption}</p>
+            <p className="font-mono-custom text-xs text-gray-400">{lesson.imageCaption}</p>
           </div>
         </div>
 
@@ -1776,7 +1776,7 @@ export default function LessonPage({ params }) {
           {lesson.prevLesson ? (
             <Link href={`/lesson/${lesson.prevLesson.id}`}>
               <div className="p-5 rounded-xl border border-[var(--border)] bg-[var(--bg2)] hover:border-[rgba(212,168,67,0.35)] transition-all group">
-                <div className="font-mono-custom text-xs text-gray-500 mb-1">← Previous</div>
+                <div className="font-mono-custom text-xs text-gray-400 mb-1">← Previous</div>
                 <div className="font-semibold text-white group-hover:text-[var(--gold)] transition-colors">{lesson.prevLesson.title}</div>
               </div>
             </Link>
@@ -1784,7 +1784,7 @@ export default function LessonPage({ params }) {
           {lesson.nextLesson && (
             <Link href={`/lesson/${lesson.nextLesson.id}`}>
               <div className="p-5 rounded-xl border border-[var(--border)] bg-[var(--bg2)] hover:border-[rgba(212,168,67,0.35)] transition-all group text-right">
-                <div className="font-mono-custom text-xs text-gray-500 mb-1">Next →</div>
+                <div className="font-mono-custom text-xs text-gray-400 mb-1">Next →</div>
                 <div className="font-semibold text-white group-hover:text-[var(--gold)] transition-colors">{lesson.nextLesson.title}</div>
               </div>
             </Link>
@@ -1806,7 +1806,7 @@ export default function LessonPage({ params }) {
                 Next: {lesson.nextLesson.title} →
               </Link>
             )}
-            <Link href="/courses" style={{ padding: '12px 20px', borderRadius: '12px', border: '1px solid rgba(212,168,67,0.8)', color: 'rgba(255,255,255,0.5)', fontFamily: 'DM Mono,monospace', fontSize: '12px', textDecoration: 'none', letterSpacing: '0.08em' }}>
+            <Link href="/courses" style={{ padding: '12px 20px', borderRadius: '12px', border: '1px solid rgba(212,168,67,0.8)', color: 'rgba(255,255,255,0.85)', fontFamily: 'DM Mono,monospace', fontSize: '12px', textDecoration: 'none', letterSpacing: '0.08em' }}>
               All Modules
             </Link>
           </div>
@@ -1815,7 +1815,7 @@ export default function LessonPage({ params }) {
 
       {/* ── Footer ── */}
       <footer className="border-t border-[var(--border)] px-8 py-6 mt-16">
-        <div className="max-w-4xl mx-auto text-center font-mono-custom text-xs text-gray-600">
+        <div className="max-w-4xl mx-auto text-center font-mono-custom text-xs text-gray-400">
           ICT Flow - Educational content only. Not financial advice.
         </div>
       </footer>

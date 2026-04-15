@@ -197,7 +197,7 @@ const FILTERS = ['All', 'Beginner', 'Intermediate', 'Advanced', 'ICT', 'ICT & SM
 
 const LEVEL_COLORS = {
   Beginner: { text: '#34D399', bg: 'rgba(52,211,153,0.08)', border: 'rgba(52,211,153,0.2)' },
-  Intermediate: { text: '#D4A843', bg: 'rgba(212,168,67,0.12)', border: 'rgba(212,168,67,0.8)' },
+  Intermediate: { text: '#D4A843', bg: 'rgba(212,168,67,0.22)', border: 'rgba(212,168,67,0.8)' },
   Advanced: { text: '#F87171', bg: 'rgba(248,113,113,0.08)', border: 'rgba(248,113,113,0.2)' },
   SMC: { text: '#FB923C', bg: 'rgba(251,146,60,0.08)', border: 'rgba(251,146,60,0.2)' },
 };
@@ -219,7 +219,7 @@ function ModuleCard({ mod, index }) {
       className="module-card"
       style={{
         borderRadius: '18px',
-        border: '1px solid rgba(212,168,67,0.12)',
+        border: '1px solid rgba(212,168,67,0.22)',
         background: '#0C0C0C',
         overflow: 'hidden',
         display: 'flex',
@@ -232,7 +232,7 @@ function ModuleCard({ mod, index }) {
         position: 'relative',
         padding: '20px 22px 18px',
         background: 'linear-gradient(135deg, #111008 0%, #0E0E0E 60%, #0C0C0C 100%)',
-        borderBottom: '1px solid rgba(212,168,67,0.12)',
+        borderBottom: '1px solid rgba(212,168,67,0.22)',
         overflow: 'hidden',
       }}>
         {/* Subtle gold radial glow top-right */}
@@ -250,7 +250,7 @@ function ModuleCard({ mod, index }) {
             {/* IF monogram */}
             <div style={{
               width: '26px', height: '26px', borderRadius: '7px',
-              background: 'rgba(212,168,67,0.15)', border: '1px solid rgba(212,168,67,0.25)',
+              background: 'rgba(212,168,67,0.25)', border: '1px solid rgba(212,168,67,0.75)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               fontFamily: 'Bebas Neue, sans-serif', fontSize: '11px', color: '#D4A843', letterSpacing: '0.05em',
             }}>IF</div>
@@ -294,7 +294,7 @@ function ModuleCard({ mod, index }) {
 
       {/* ── CONTENT BODY ── */}
       <div style={{ padding: '18px 22px 0', flex: 1 }}>
-        <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.65, fontWeight: 300, marginBottom: '14px' }}>
+        <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.65, fontWeight: 300, marginBottom: '14px' }}>
           {mod.desc}
         </p>
 
@@ -306,7 +306,7 @@ function ModuleCard({ mod, index }) {
             fontFamily: 'DM Mono, monospace', fontSize: '9px', letterSpacing: '0.1em',
             color: tag.text, background: tag.bg,
           }}>{mod.tag}</span>
-          <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.5)', marginLeft: 'auto' }}>
+          <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.85)', marginLeft: 'auto' }}>
             {mod.lessons} lessons · {mod.duration}
           </span>
         </div>
@@ -318,7 +318,7 @@ function ModuleCard({ mod, index }) {
             width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
             padding: '9px 13px', borderRadius: '9px',
             background: expanded ? 'rgba(212,168,67,0.05)' : 'transparent',
-            border: '1px solid rgba(212,168,67,0.15)',
+            border: '1px solid rgba(212,168,67,0.25)',
             color: 'rgba(212,168,67,0.85)',
             fontFamily: 'DM Mono, monospace', fontSize: '9px', letterSpacing: '0.15em',
             cursor: 'pointer', textTransform: 'uppercase',
@@ -336,7 +336,7 @@ function ModuleCard({ mod, index }) {
             {mod.topics.map((topic, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: '#D4A843', opacity: 0.4, flexShrink: 0 }} />
-                <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.45)', fontWeight: 300 }}>{topic}</span>
+                <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.75)', fontWeight: 300 }}>{topic}</span>
               </div>
             ))}
           </div>
@@ -406,7 +406,7 @@ export default function CoursesPage() {
           --gold: #D4A843;
           --gold-dim: #8A6B28;
           --bg2: #0F0F0F;
-          --border: rgba(212,168,67,0.12);
+          --border: rgba(212,168,67,0.22);
         }
 
         .font-display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.02em; }
@@ -515,7 +515,7 @@ export default function CoursesPage() {
           <div>
             <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', letterSpacing: '0.2em', color: '#D4A843', marginBottom: '6px' }}>// NEW TO TRADING?</div>
             <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '15px', color: 'white', fontWeight: 600 }}>Start with Trading Foundations before ICT concepts.</div>
-            <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '13px', color: 'rgba(255,255,255,0.5)', marginTop: '4px' }}>Learn what trading is, how markets work, and risk management basics first.</div>
+            <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '13px', color: 'rgba(255,255,255,0.85)', marginTop: '4px' }}>Learn what trading is, how markets work, and risk management basics first.</div>
           </div>
           <a href="/foundations" style={{ background: 'linear-gradient(135deg, #D4A843, #F0C96A)', color: '#080808', borderRadius: '8px', padding: '10px 20px', fontFamily: "'DM Mono', monospace", fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none', whiteSpace: 'nowrap' }}>Start With Foundations →</a>
         </div>
@@ -530,7 +530,7 @@ export default function CoursesPage() {
               key={f}
               onClick={() => setActiveFilter(f)}
               className={`filter-btn flex-shrink-0 px-4 py-2 rounded-lg text-xs border tracking-wider uppercase ${activeFilter === f ? 'active font-bold' : ''}`}
-              style={activeFilter !== f ? { borderColor: 'rgba(212,168,67,0.15)', color: '#A0A0A0', background: 'transparent' } : {}}
+              style={activeFilter !== f ? { borderColor: 'rgba(212,168,67,0.25)', color: '#A0A0A0', background: 'transparent' } : {}}
             >
               {f}
             </button>

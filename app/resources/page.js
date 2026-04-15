@@ -112,7 +112,7 @@ export default function ResourcesPage() {
     <div style={{ minHeight: '100vh', background: '#080808', color: 'white', fontFamily: "'DM Sans', sans-serif" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
-        :root { --gold: #D4A843; --gold-light: #F0C96A; --gold-dim: #8A6B28; --border: rgba(212,168,67,0.12); }
+        :root { --gold: #D4A843; --gold-light: #F0C96A; --gold-dim: #8A6B28; --border: rgba(212,168,67,0.22); }
         .card-hover { transition: all 0.25s; cursor: pointer; }
         .card-hover:hover { transform: translateY(-3px); border-color: rgba(212,168,67,0.35) !important; }
         .tab-btn { transition: all 0.2s; }
@@ -192,7 +192,7 @@ export default function ResourcesPage() {
                   </div>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '20px' }}>
                     {firm.features.map(f => (
-                      <span key={f} style={{ fontSize: '11px', color: 'rgba(255,255,255,0.5)', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '4px', padding: '3px 10px' }}>✓ {f}</span>
+                      <span key={f} style={{ fontSize: '11px', color: 'rgba(255,255,255,0.85)', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.18)', borderRadius: '4px', padding: '3px 10px' }}>✓ {f}</span>
                     ))}
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '16px', borderTop: '1px solid var(--border)' }}>
@@ -277,7 +277,7 @@ export default function ResourcesPage() {
         )}
 
         {/* DISCLAIMER */}
-        <div style={{ marginTop: '64px', padding: '24px', background: 'rgba(212,168,67,0.03)', border: '1px solid rgba(212,168,67,0.15)', borderRadius: '12px' }}>
+        <div style={{ marginTop: '64px', padding: '24px', background: 'rgba(212,168,67,0.03)', border: '1px solid rgba(212,168,67,0.25)', borderRadius: '12px' }}>
           <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, letterSpacing: '0.05em' }}>
             <span style={{ color: 'rgba(212,168,67,0.8)' }}>DISCLAIMER:</span> This page contains affiliate links. ICT Flow may earn a commission when you sign up through these links at no additional cost to you. All products listed are ones we genuinely recommend for ICT traders. Trading financial instruments involves significant risk of loss and is not suitable for all investors. Past performance is not indicative of future results. This is not financial advice.
           </p>

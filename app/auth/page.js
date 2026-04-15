@@ -118,7 +118,7 @@ function AuthPageInner() {
         </Link>
 
         {/* Card */}
-        <div style={{ background: '#0F0F0F', border: '1px solid rgba(212,168,67,0.12)', borderRadius: '20px', padding: '36px' }}>
+        <div style={{ background: '#0F0F0F', border: '1px solid rgba(212,168,67,0.22)', borderRadius: '20px', padding: '36px' }}>
 
           {/* Tabs */}
           <div style={{ display: 'flex', background: '#141414', borderRadius: '12px', padding: '4px', marginBottom: '28px' }}>
@@ -144,9 +144,9 @@ function AuthPageInner() {
                 Continue with Google
               </button>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-                <div style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.08)' }} />
+                <div style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.18)' }} />
                 <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.55)', letterSpacing: '0.1em' }}>OR</span>
-                <div style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.08)' }} />
+                <div style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.18)' }} />
               </div>
 {!isLogin && (
               <div>
@@ -173,7 +173,7 @@ function AuthPageInner() {
             {isLogin && !showForgot && (
               <div style={{ textAlign: 'right', marginTop: '-4px' }}>
                 <button onClick={() => { setShowForgot(true); setError(''); }}
-                  style={{ background: 'none', border: 'none', color: 'rgba(212,168,67,0.7)', fontFamily: 'DM Mono', fontSize: '11px', cursor: 'pointer', letterSpacing: '0.05em', padding: 0 }}>
+                  style={{ background: 'none', border: 'none', color: '#D4A843', fontFamily: 'DM Mono', fontSize: '11px', cursor: 'pointer', letterSpacing: '0.05em', padding: 0 }}>
                   Forgot password?
                 </button>
               </div>
@@ -181,7 +181,7 @@ function AuthPageInner() {
 
             {/* Forgot Password Panel */}
             {showForgot && (
-              <div style={{ background: 'rgba(212,168,67,0.05)', border: '1px solid rgba(212,168,67,0.15)', borderRadius: '12px', padding: '18px' }}>
+              <div style={{ background: 'rgba(212,168,67,0.05)', border: '1px solid rgba(212,168,67,0.25)', borderRadius: '12px', padding: '18px' }}>
                 <div style={{ fontFamily: 'DM Mono', fontSize: '10px', color: '#D4A843', marginBottom: '12px', letterSpacing: '0.12em' }}>// RESET PASSWORD</div>
                 {forgotSent ? (
                   <div style={{ color: '#34D399', fontFamily: 'DM Sans', fontSize: '13px' }}>✓ Reset link sent! Check your email.</div>
@@ -196,7 +196,7 @@ function AuthPageInner() {
                         SEND RESET LINK
                       </button>
                       <button onClick={() => { setShowForgot(false); setForgotSent(false); setForgotEmail(''); }}
-                        style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', padding: '10px 14px', color: 'rgba(255,255,255,0.7)', fontFamily: 'DM Mono', fontSize: '11px', cursor: 'pointer' }}>
+                        style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '8px', padding: '10px 14px', color: 'rgba(255,255,255,0.7)', fontFamily: 'DM Mono', fontSize: '11px', cursor: 'pointer' }}>
                         CANCEL
                       </button>
                     </div>

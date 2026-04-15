@@ -60,10 +60,10 @@ export default function LeaderboardPage() {
       <Navbar active="/leaderboard" />
 
       {/* HERO */}
-      <section style={{ padding: '60px 24px 40px', textAlign: 'center', borderBottom: '1px solid rgba(212,168,67,0.15)', position: 'relative' }}>
+      <section style={{ padding: '60px 24px 40px', textAlign: 'center', borderBottom: '1px solid rgba(212,168,67,0.25)', position: 'relative' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 600px 300px at 50% 100%, rgba(212,168,67,0.05) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '600px', margin: '0 auto', position: 'relative' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.15)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.15em', color: '#D4A843', marginBottom: '20px' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.25)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.15em', color: '#D4A843', marginBottom: '20px' }}>
             <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#34D399', display: 'inline-block', animation: 'pulse 2s infinite' }} />
             LIVE LEADERBOARD
           </div>
@@ -98,7 +98,7 @@ export default function LeaderboardPage() {
         )}
 
         {!currentUser && (
-          <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '16px 20px', marginBottom: '24px', textAlign: 'center' }}>
+          <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.18)', borderRadius: '12px', padding: '16px 20px', marginBottom: '24px', textAlign: 'center' }}>
             <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.7)' }}>
               <Link href="/auth" style={{ color: '#D4A843', textDecoration: 'none' }}>Sign in</Link> to see your rank
             </span>
@@ -106,9 +106,9 @@ export default function LeaderboardPage() {
         )}
 
         {/* LEADERBOARD TABLE */}
-        <div style={{ background: '#0D0D0D', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '16px', overflow: 'hidden' }}>
+        <div style={{ background: '#0D0D0D', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '16px', overflow: 'hidden' }}>
           {/* Header */}
-          <div style={{ display: 'grid', gridTemplateColumns: '60px 1fr 120px 80px', padding: '12px 20px', borderBottom: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.02)' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '60px 1fr 120px 80px', padding: '12px 20px', borderBottom: '1px solid rgba(255,255,255,0.15)', background: 'rgba(255,255,255,0.02)' }}>
             {['RANK', 'TRADER', 'XP', 'STREAK'].map(h => (
               <div key={h} style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.6)', letterSpacing: '0.15em' }}>{h}</div>
             ))}
@@ -146,12 +146,12 @@ export default function LeaderboardPage() {
         </div>
 
         {/* XP GUIDE */}
-        <div style={{ marginTop: '40px', padding: '24px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '12px', marginBottom: '16px' }}>
+        <div style={{ marginTop: '40px', padding: '24px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '12px', marginBottom: '16px' }}>
           <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.8)', letterSpacing: '0.15em', marginBottom: '16px' }}>HOW TO EARN XP</div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '12px' }}>
             {[['Complete a lesson', '+10 XP'], ['Pass a quiz', '+20 XP'], ['Daily challenge', '+20 XP'], ['Perfect score', '+50 XP'], ['7-day streak', '+100 XP']].map(([action, xp]) => (
               <div key={action} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)' }}>{action}</span>
+                <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.85)' }}>{action}</span>
                 <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '12px', color: '#D4A843' }}>{xp}</span>
               </div>
             ))}

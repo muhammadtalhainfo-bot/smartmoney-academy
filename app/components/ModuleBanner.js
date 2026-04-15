@@ -6,7 +6,7 @@
 
 const GOLD = '#D4A843';
 const GOLD_DIM = '#8A6B28';
-const GOLD_FAINT = 'rgba(212,168,67,0.12)';
+const GOLD_FAINT = 'rgba(212,168,67,0.22)';
 const BG = '#090909';
 
 // IF Logo mark — compact SVG
@@ -75,7 +75,7 @@ const BANNERS = {
         <circle key={i} cx={x} cy={y} r="3.5" fill="none" stroke={GOLD} strokeWidth="1.2" strokeOpacity="0.8" />
       ))}
       {/* BOS label */}
-      <rect x={130} y={h-100} width={44} height={16} rx="3" fill="rgba(212,168,67,0.15)" stroke={GOLD} strokeWidth="0.7" strokeOpacity="0.4" />
+      <rect x={130} y={h-100} width={44} height={16} rx="3" fill="rgba(212,168,67,0.25)" stroke={GOLD} strokeWidth="0.7" strokeOpacity="0.4" />
       <text x={152} y={h-88} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={GOLD} fillOpacity="0.7">BOS</text>
       {/* ChoCH */}
       <line x1={62} y1={h-28} x2={62} y2={h-42} stroke={GOLD} strokeWidth="0.8" strokeOpacity="0.35" strokeDasharray="3,3" />
@@ -126,7 +126,7 @@ const BANNERS = {
       <line x1={174} y1={48} x2={174} y2={62} stroke="#F87171" strokeWidth="1.2" strokeOpacity="0.55" />
       <line x1={174} y1={107} x2={174} y2={120} stroke="#F87171" strokeWidth="1.2" strokeOpacity="0.55" />
       {/* FVG zone — between candle1 low and candle3 high */}
-      <rect x={87} y={95} width={80} height={22} rx="2" fill="rgba(212,168,67,0.12)" stroke={GOLD} strokeWidth="1" strokeOpacity="0.6" strokeDasharray="4,3" />
+      <rect x={87} y={95} width={80} height={22} rx="2" fill="rgba(212,168,67,0.22)" stroke={GOLD} strokeWidth="1" strokeOpacity="0.6" strokeDasharray="4,3" />
       <text x={127} y={109} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={GOLD} fillOpacity="0.85">FVG</text>
       {/* CE line */}
       <line x1={87} y1={106} x2={167} y2={106} stroke={GOLD} strokeWidth="0.8" strokeOpacity="0.4" strokeDasharray="3,3" />
@@ -138,7 +138,7 @@ const BANNERS = {
     <>
       <GridLines w={w} h={h} spacing={36} opacity={0.03} />
       {/* OB zone */}
-      <rect x={20} y={55} width={70} height={35} rx="3" fill="rgba(212,168,67,0.15)" stroke={GOLD} strokeWidth="1.2" strokeOpacity="0.7" />
+      <rect x={20} y={55} width={70} height={35} rx="3" fill="rgba(212,168,67,0.25)" stroke={GOLD} strokeWidth="1.2" strokeOpacity="0.7" />
       <text x={55} y={70} textAnchor="middle" fontFamily="monospace" fontSize="8.5" fill={GOLD} fillOpacity="0.9">ORDER</text>
       <text x={55} y={82} textAnchor="middle" fontFamily="monospace" fontSize="8.5" fill={GOLD} fillOpacity="0.9">BLOCK</text>
       {/* Price moves up from OB */}
@@ -278,7 +278,7 @@ const BANNERS = {
       <text x={24} y={56} fontFamily="monospace" fontSize="7.5" fill={GOLD} fillOpacity="0.8">EURUSD</text>
       <text x={24} y={90} fontFamily="monospace" fontSize="7.5" fill="#818CF8" fillOpacity="0.8">GBPUSD</text>
       {/* Divergence zone */}
-      <rect x={155} y={42} width={60} height={40} rx="3" fill="rgba(212,168,67,0.12)" stroke={GOLD} strokeWidth="0.8" strokeOpacity="0.5" strokeDasharray="3,3" />
+      <rect x={155} y={42} width={60} height={40} rx="3" fill="rgba(212,168,67,0.22)" stroke={GOLD} strokeWidth="0.8" strokeOpacity="0.5" strokeDasharray="3,3" />
       <text x={185} y={h-22} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={GOLD} fillOpacity="0.8">SMT DIV</text>
       {/* Divergence lines */}
       <line x1={155} y1={65} x2={215} y2={75} stroke={GOLD} strokeWidth="0.8" strokeOpacity="0.4" />
@@ -342,7 +342,7 @@ const BANNERS = {
       <text x={w/2} y={h-22} textAnchor="middle" fontFamily="monospace" fontSize="7" fill="#34D399" fillOpacity="0.5">BUY-SIDE INEFFICIENCY</text>
       {/* CHoCH line */}
       <line x1={w/2} y1={48} x2={w/2} y2={h-48} stroke={GOLD} strokeWidth="1" strokeOpacity="0.4" strokeDasharray="4,3" />
-      <rect x={w/2-20} y={h/2-10} width={40} height={20} rx="3" fill="rgba(212,168,67,0.15)" stroke={GOLD} strokeWidth="0.8" strokeOpacity="0.5" />
+      <rect x={w/2-20} y={h/2-10} width={40} height={20} rx="3" fill="rgba(212,168,67,0.25)" stroke={GOLD} strokeWidth="0.8" strokeOpacity="0.5" />
       <text x={w/2} y={h/2+4} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={GOLD} fillOpacity="0.85">CHoCH</text>
     </>
   ),
@@ -377,7 +377,7 @@ const BANNERS = {
       <text x={w/2} y={h*0.35} textAnchor="middle" fontFamily="'Bebas Neue', sans-serif" fontSize="42" fill={GOLD} fillOpacity="0.12" letterSpacing="4">ICT</text>
       <polyline points={`18,${h*0.6} 55,${h*0.5} 95,${h*0.55} 135,${h*0.38} 175,${h*0.42} 215,${h*0.3} ${w-20},${h*0.25}`}
         fill="none" stroke={GOLD} strokeWidth="1.6" strokeOpacity="0.7" />
-      <rect x={20} y={h*0.28} width={55} height={18} rx="3" fill="rgba(212,168,67,0.15)" stroke={GOLD} strokeWidth="0.8" strokeOpacity="0.5" />
+      <rect x={20} y={h*0.28} width={55} height={18} rx="3" fill="rgba(212,168,67,0.25)" stroke={GOLD} strokeWidth="0.8" strokeOpacity="0.5" />
       <text x={47} y={h*0.28+12} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={GOLD} fillOpacity="0.85">SMART MONEY</text>
     </>
   ),

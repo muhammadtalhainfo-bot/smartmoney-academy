@@ -12,7 +12,7 @@ const BG = '#060608';
 const S1 = '#0C0C10';
 const S2 = '#111118';
 const S3 = '#16161E';
-const BORDER = 'rgba(212,168,67,0.15)';
+const BORDER = 'rgba(212,168,67,0.25)';
 const BORDER2 = 'rgba(212,168,67,0.8)';
 
 const css = {
@@ -34,7 +34,7 @@ const css = {
   },
   btnGhost: {
     background: 'transparent', border: `1px solid ${BORDER2}`,
-    borderRadius: '8px', padding: '10px 18px', color: 'rgba(255,255,255,0.5)',
+    borderRadius: '8px', padding: '10px 18px', color: 'rgba(255,255,255,0.85)',
     fontFamily: 'DM Mono, monospace', fontSize: '11px', cursor: 'pointer',
     letterSpacing: '0.06em',
   },
@@ -222,10 +222,10 @@ function DashboardSection({ users, emails, trades, proUsers, loading, onRefresh 
             <div style={css.card}>
               <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.15em' }}>// TOP USERS BY XP</div>
               {topUsers.length === 0 ? (
-                <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.5)', textAlign: 'center', padding: '20px' }}>No users yet</div>
+                <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.85)', textAlign: 'center', padding: '20px' }}>No users yet</div>
               ) : topUsers.map((u, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '8px 0', borderBottom: `1px solid ${BORDER}` }}>
-                  <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(255,255,255,0.5)', width: '18px' }}>#{i + 1}</div>
+                  <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(255,255,255,0.85)', width: '18px' }}>#{i + 1}</div>
                   <div style={{ flex: 1, fontSize: '13px' }}>{u.username || u.email?.split('@')[0] || '—'}</div>
                   <div style={{ ...css.mono, fontSize: '11px', color: G }}>{u.xp || 0} XP</div>
                   <Badge color={u.is_pro ? '#34D399' : '#666'}>{u.is_pro ? 'PRO' : 'FREE'}</Badge>
@@ -237,7 +237,7 @@ function DashboardSection({ users, emails, trades, proUsers, loading, onRefresh 
             <div style={css.card}>
               <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.15em' }}>// RECENT EMAIL LEADS</div>
               {recentEmails.length === 0 ? (
-                <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.5)', textAlign: 'center', padding: '20px' }}>No email signups yet</div>
+                <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.85)', textAlign: 'center', padding: '20px' }}>No email signups yet</div>
               ) : recentEmails.map((e, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '8px 0', borderBottom: `1px solid ${BORDER}` }}>
                   <div style={{ fontSize: '16px' }}>📧</div>
@@ -319,12 +319,12 @@ function UsersSection({ users, supabase, onReload }) {
               {filtered.map((u, i) => (
                 <tr key={i} style={{ borderBottom: `1px solid rgba(255,255,255,0.03)` }}>
                   <td style={{ padding: '10px 12px', fontSize: '13px', fontWeight: 500 }}>{u.username || '—'}</td>
-                  <td style={{ padding: '10px 12px', fontSize: '12px', color: 'rgba(255,255,255,0.5)' }}>{u.email || '—'}</td>
+                  <td style={{ padding: '10px 12px', fontSize: '12px', color: 'rgba(255,255,255,0.85)' }}>{u.email || '—'}</td>
                   <td style={{ padding: '10px 12px', color: G, ...css.mono, fontSize: '12px' }}>{u.xp || 0}</td>
                   <td style={{ padding: '10px 12px', fontSize: '13px' }}>{u.streak || 0}🔥</td>
                   <td style={{ padding: '10px 12px' }}>
                     <button onClick={() => togglePro(u)} style={{
-                      background: u.is_pro ? 'rgba(52,211,153,0.1)' : 'rgba(212,168,67,0.15)',
+                      background: u.is_pro ? 'rgba(52,211,153,0.1)' : 'rgba(212,168,67,0.25)',
                       border: `1px solid ${u.is_pro ? 'rgba(52,211,153,0.3)' : BORDER2}`,
                       borderRadius: '5px', padding: '3px 10px',
                       color: u.is_pro ? '#34D399' : G,
@@ -338,7 +338,7 @@ function UsersSection({ users, supabase, onReload }) {
                 </tr>
               ))}
               {filtered.length === 0 && (
-                <tr><td colSpan={7} style={{ padding: '40px', textAlign: 'center', ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.5)' }}>No users found</td></tr>
+                <tr><td colSpan={7} style={{ padding: '40px', textAlign: 'center', ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.85)' }}>No users found</td></tr>
               )}
             </tbody>
           </table>
@@ -454,7 +454,7 @@ function BlogSection({ supabase }) {
             </FieldGroup>
             <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', marginTop: '4px' }}>
               <input type="checkbox" checked={form.featured} onChange={e => setForm({ ...form, featured: e.target.checked })} />
-              <span style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.5)' }}>Featured post (shown first)</span>
+              <span style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.85)' }}>Featured post (shown first)</span>
             </label>
           </div>
 
@@ -502,7 +502,7 @@ function BlogSection({ supabase }) {
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
         {filtered.length === 0 ? (
-          <div style={{ ...css.card, textAlign: 'center', padding: '50px', ...css.mono, fontSize: '12px', color: 'rgba(255,255,255,0.5)' }}>
+          <div style={{ ...css.card, textAlign: 'center', padding: '50px', ...css.mono, fontSize: '12px', color: 'rgba(255,255,255,0.85)' }}>
             {posts.length === 0 ? 'No blog posts yet. Click NEW POST to write your first article.' : 'No posts match your search.'}
           </div>
         ) : filtered.map(p => (
@@ -559,7 +559,7 @@ function CoursesSection({ supabase }) {
     <div>
       <SectionHeader title={`COURSE MODULES (${modules.length})`} />
       <div style={{ ...css.card, padding: '14px 18px', marginBottom: '16px', background: 'rgba(212,168,67,0.04)' }}>
-        <div style={{ ...css.mono, fontSize: '11px', color: `rgba(212,168,67,0.7)` }}>
+        <div style={{ ...css.mono, fontSize: '11px', color: `#D4A843` }}>
           ℹ️ Course modules are defined in your <code style={{ color: G }}>app/courses/page.js</code> source file. Changes here show a live preview. To make them permanent, apply the same changes to your source file and push to GitHub.
         </div>
       </div>
@@ -585,15 +585,15 @@ function CoursesSection({ supabase }) {
                 <div style={{ display: 'flex', gap: '16px', marginBottom: '12px' }}>
                   <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}>
                     <input type="checkbox" checked={form.locked} onChange={e => setForm({ ...form, locked: e.target.checked })} />
-                    <span style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.5)' }}>Pro locked</span>
+                    <span style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.85)' }}>Pro locked</span>
                   </label>
                   <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}>
                     <input type="checkbox" checked={form.comingSoon} onChange={e => setForm({ ...form, comingSoon: e.target.checked })} />
-                    <span style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.5)' }}>Coming soon</span>
+                    <span style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.85)' }}>Coming soon</span>
                   </label>
                   <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}>
                     <input type="checkbox" checked={form.visible !== false} onChange={e => setForm({ ...form, visible: e.target.checked })} />
-                    <span style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.5)' }}>Visible</span>
+                    <span style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.85)' }}>Visible</span>
                   </label>
                 </div>
                 <div style={{ display: 'flex', gap: '10px' }}>
@@ -613,7 +613,7 @@ function CoursesSection({ supabase }) {
                   <Badge color={m.level === 'Beginner' ? '#34D399' : m.level === 'Intermediate' ? G : m.level === 'Advanced' ? '#F87171' : '#A78BFA'}>{m.level}</Badge>
                   {m.locked && <Badge color="#F87171">PRO</Badge>}
                   {m.comingSoon && <Badge color="rgba(255,255,255,0.7)">SOON</Badge>}
-                  {m.visible === false && <Badge color="rgba(255,255,255,0.5)">HIDDEN</Badge>}
+                  {m.visible === false && <Badge color="rgba(255,255,255,0.85)">HIDDEN</Badge>}
                   <button onClick={() => startEdit(m)} style={{ ...css.btn, padding: '6px 14px', fontSize: '10px', marginLeft: '6px' }}>EDIT</button>
                 </div>
               </div>
@@ -633,7 +633,7 @@ function PagesSection() {
     <div>
       <SectionHeader title="SITE PAGES" />
       <div style={{ ...css.card, padding: '14px 18px', marginBottom: '16px', background: 'rgba(212,168,67,0.04)' }}>
-        <div style={{ ...css.mono, fontSize: '11px', color: `rgba(212,168,67,0.7)` }}>
+        <div style={{ ...css.mono, fontSize: '11px', color: `#D4A843` }}>
           ℹ️ All pages are React/Next.js files. Select a page below to see its file location and open it in the live site.
         </div>
       </div>
@@ -738,7 +738,7 @@ function BannersSection({ supabase }) {
       )}
 
       {banners.length === 0 ? (
-        <div style={{ ...css.card, textAlign: 'center', padding: '50px', ...css.mono, fontSize: '12px', color: 'rgba(255,255,255,0.5)' }}>
+        <div style={{ ...css.card, textAlign: 'center', padding: '50px', ...css.mono, fontSize: '12px', color: 'rgba(255,255,255,0.85)' }}>
           No banners created yet. Add your first site-wide announcement, promo, or alert.
         </div>
       ) : (
@@ -790,7 +790,7 @@ function MediaSection() {
     <div>
       <SectionHeader title="MEDIA LIBRARY" />
       <div style={{ ...css.card, padding: '14px 18px', marginBottom: '16px', background: 'rgba(212,168,67,0.04)' }}>
-        <div style={{ ...css.mono, fontSize: '11px', color: `rgba(212,168,67,0.7)` }}>
+        <div style={{ ...css.mono, fontSize: '11px', color: `#D4A843` }}>
           ℹ️ These are the static images available in your project. To add new images, place them in the <code style={{ color: G }}>/public/images/</code> folder and push to GitHub.
         </div>
       </div>
@@ -878,7 +878,7 @@ function PricingSection({ supabase }) {
       <Toast msg={msg} />
 
       <div style={{ ...css.card, padding: '14px 18px', marginBottom: '16px', background: 'rgba(212,168,67,0.04)' }}>
-        <div style={{ ...css.mono, fontSize: '11px', color: `rgba(212,168,67,0.7)` }}>
+        <div style={{ ...css.mono, fontSize: '11px', color: `#D4A843` }}>
           ℹ️ Pricing data lives in <code style={{ color: G }}>app/pricing/page.js</code>. Stripe prices are set in your Stripe dashboard and linked via environment variables.
         </div>
       </div>
@@ -1016,7 +1016,7 @@ function NavSection() {
     <div>
       <SectionHeader title="NAVIGATION MANAGER" />
       <div style={{ ...css.card, padding: '14px 18px', marginBottom: '16px', background: 'rgba(212,168,67,0.04)' }}>
-        <div style={{ ...css.mono, fontSize: '11px', color: `rgba(212,168,67,0.7)` }}>
+        <div style={{ ...css.mono, fontSize: '11px', color: `#D4A843` }}>
           ℹ️ Navigation is defined in <code style={{ color: G }}>app/components/Navbar.js</code>. Edit that file to add, remove, or reorder nav items.
         </div>
       </div>
@@ -1097,7 +1097,7 @@ function NotificationsSection() {
               <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: `${G}20`, border: `1px solid ${BORDER2}`, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px' }}>📈</div>
               <div>
                 <div style={{ fontWeight: 600, fontSize: '13px', marginBottom: '3px' }}>{title || 'Notification Title'}</div>
-                <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.5)', lineHeight: 1.5 }}>{msg || 'Your message will appear here...'}</div>
+                <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.85)', lineHeight: 1.5 }}>{msg || 'Your message will appear here...'}</div>
               </div>
             </div>
           </div>
@@ -1151,7 +1151,7 @@ export default function AdminPage() {
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap');
         * { box-sizing: border-box; }
         input, textarea, select { outline: none; color: white; }
-        input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.5); }
+        input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.85); }
         input[type=checkbox] { accent-color: ${G}; }
         ::-webkit-scrollbar { width: 4px; height: 4px; }
         ::-webkit-scrollbar-track { background: transparent; }
@@ -1187,7 +1187,7 @@ export default function AdminPage() {
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap');
         * { box-sizing: border-box; }
         input, textarea, select { outline: none; color: white; }
-        input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.5); }
+        input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.85); }
         input[type=checkbox] { accent-color: ${G}; }
         ::-webkit-scrollbar { width: 4px; height: 4px; }
         ::-webkit-scrollbar-track { background: transparent; }
@@ -1225,7 +1225,7 @@ export default function AdminPage() {
           {GROUPS.map(group => (
             <div key={group.id} style={{ marginBottom: '8px' }}>
               {!sidebarCollapsed && (
-                <div style={{ ...css.mono, fontSize: '8px', color: 'rgba(255,255,255,0.5)', letterSpacing: '0.15em', padding: '6px 8px 4px', textTransform: 'uppercase' }}>{group.label}</div>
+                <div style={{ ...css.mono, fontSize: '8px', color: 'rgba(255,255,255,0.85)', letterSpacing: '0.15em', padding: '6px 8px 4px', textTransform: 'uppercase' }}>{group.label}</div>
               )}
               {TABS.filter(t => t.group === group.id).map(tab => (
                 <button key={tab.id} onClick={() => setActiveTab(tab.id)}
@@ -1234,7 +1234,7 @@ export default function AdminPage() {
                     padding: sidebarCollapsed ? '10px' : '9px 10px',
                     borderRadius: '8px', border: 'none',
                     background: activeTab === tab.id ? `${G}18` : 'transparent',
-                    color: activeTab === tab.id ? G : 'rgba(255,255,255,0.45)',
+                    color: activeTab === tab.id ? G : 'rgba(255,255,255,0.75)',
                     cursor: 'pointer', marginBottom: '2px',
                     justifyContent: sidebarCollapsed ? 'center' : 'flex-start',
                     borderLeft: activeTab === tab.id ? `2px solid ${G}` : '2px solid transparent',

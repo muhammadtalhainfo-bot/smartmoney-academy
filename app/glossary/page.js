@@ -127,7 +127,7 @@ export default function GlossaryPage() {
     <div className="min-h-screen bg-[#080808] text-white" style={{ fontFamily: "'DM Sans', sans-serif" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap');
-        :root { --gold: #D4A843; --gold-dim: #8A6B28; --border: rgba(212,168,67,0.12); --bg2: #0F0F0F; }
+        :root { --gold: #D4A843; --gold-dim: #8A6B28; --border: rgba(212,168,67,0.22); --bg2: #0F0F0F; }
         .font-display { font-family: 'Bebas Neue', sans-serif; }
         .font-mono-c { font-family: 'DM Mono', monospace; }
         body::before {
@@ -139,12 +139,12 @@ export default function GlossaryPage() {
           background-image: linear-gradient(rgba(212,168,67,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(212,168,67,0.03) 1px, transparent 1px);
           background-size: 60px 60px;
         }
-        .search-input { background: #0F0F0F; border: 1px solid rgba(212,168,67,0.15); color: white; outline: none; transition: border-color 0.2s; }
+        .search-input { background: #0F0F0F; border: 1px solid rgba(212,168,67,0.25); color: white; outline: none; transition: border-color 0.2s; }
         .search-input:focus { border-color: rgba(212,168,67,0.75); }
         .search-input::placeholder { color: #A8A8A8; font-family: 'DM Mono', monospace; font-size: 12px; }
         .term-row { transition: all 0.2s ease; border-bottom: 1px solid rgba(212,168,67,0.06); }
         .term-row:hover { background: rgba(212,168,67,0.03); }
-        .term-row.active { background: rgba(212,168,67,0.05); border-bottom-color: rgba(212,168,67,0.15); }
+        .term-row.active { background: rgba(212,168,67,0.05); border-bottom-color: rgba(212,168,67,0.25); }
         .filter-btn { font-family: 'DM Mono', monospace; transition: all 0.2s ease; }
         .filter-btn.active { background: linear-gradient(135deg, #D4A843, #F0C96A); color: #080808; font-weight: 700; border-color: transparent; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
@@ -198,7 +198,7 @@ export default function GlossaryPage() {
                 key={cat}
                 onClick={() => setActiveCat(cat)}
                 className={`filter-btn px-4 py-3 rounded-xl text-xs border tracking-wider uppercase ${activeCat === cat ? 'active' : ''}`}
-                style={activeCat !== cat ? { borderColor: 'rgba(212,168,67,0.15)', color: '#C0C0C0', background: 'transparent' } : {}}
+                style={activeCat !== cat ? { borderColor: 'rgba(212,168,67,0.25)', color: '#C0C0C0', background: 'transparent' } : {}}
               >
                 {cat}
               </button>
@@ -219,7 +219,7 @@ export default function GlossaryPage() {
               {letter}
             </a>
           ))}
-          <span className="ml-auto font-mono-c text-[10px]" style={{ color: 'rgba(212,168,67,0.7)' }}>
+          <span className="ml-auto font-mono-c text-[10px]" style={{ color: '#D4A843' }}>
             {filtered.length} / {TERMS.length} terms
           </span>
         </div>
@@ -237,13 +237,13 @@ export default function GlossaryPage() {
           <div key={letter} id={`letter-${letter}`} className="letter-anchor mb-10">
             {/* Letter header */}
             <div className="flex items-center gap-4 mb-4">
-              <div className="font-display text-5xl leading-none" style={{ color: 'rgba(212,168,67,0.15)' }}>{letter}</div>
-              <div className="flex-1 h-px" style={{ background: 'rgba(212,168,67,0.12)' }} />
-              <span className="font-mono-c text-[10px]" style={{ color: 'rgba(212,168,67,0.25)' }}>{terms.length}</span>
+              <div className="font-display text-5xl leading-none" style={{ color: 'rgba(212,168,67,0.25)' }}>{letter}</div>
+              <div className="flex-1 h-px" style={{ background: 'rgba(212,168,67,0.22)' }} />
+              <span className="font-mono-c text-[10px]" style={{ color: 'rgba(212,168,67,0.75)' }}>{terms.length}</span>
             </div>
 
             {/* Terms in this group */}
-            <div className="rounded-2xl overflow-hidden border" style={{ borderColor: 'rgba(212,168,67,0.15)', background: '#0F0F0F' }}>
+            <div className="rounded-2xl overflow-hidden border" style={{ borderColor: 'rgba(212,168,67,0.25)', background: '#0F0F0F' }}>
               {terms.map((t, i) => {
                 const isOpen = expanded === `${letter}-${i}`;
                 const cs = CAT_STYLE[t.cat] || CAT_STYLE['ICT'];
@@ -268,7 +268,7 @@ export default function GlossaryPage() {
                     </button>
 
                     {isOpen && (
-                      <div className="slide-down px-6 pb-5 border-t" style={{ borderColor: 'rgba(212,168,67,0.12)' }}>
+                      <div className="slide-down px-6 pb-5 border-t" style={{ borderColor: 'rgba(212,168,67,0.22)' }}>
                         <div className="pt-4">
                           <div className="font-mono-c text-xs mb-3" style={{ color: 'rgba(212,168,67,0.75)' }}>{t.full}</div>
                           <p className="text-gray-300 text-sm leading-relaxed" style={{ fontWeight: 300 }}>{t.def}</p>

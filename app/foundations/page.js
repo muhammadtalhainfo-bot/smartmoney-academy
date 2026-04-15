@@ -274,7 +274,7 @@ export default function FoundationsPage() {
         .topic-card { transition: all 0.2s ease; cursor: pointer; }
         .topic-card:hover { transform: translateY(-2px); }
         .step-btn { transition: all 0.15s; cursor: pointer; }
-        .progress-bar { background: rgba(212,168,67,0.12); border-radius: 99px; overflow: hidden; height: 8px; }
+        .progress-bar { background: rgba(212,168,67,0.22); border-radius: 99px; overflow: hidden; height: 8px; }
         .progress-fill { background: linear-gradient(90deg, #8A6B28, #D4A843, #F0C96A); height: 8px; border-radius: 99px; transition: width 1s ease; }
         .btn-gold { background: linear-gradient(135deg, #D4A843, #F0C96A); color: #080808; font-weight: 700; transition: all 0.2s; }
         .btn-gold:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(212,168,67,0.8); }
@@ -301,7 +301,7 @@ export default function FoundationsPage() {
       )}
 
       {/* Hero */}
-      <section style={{ padding: '80px 24px 64px', borderBottom: '1px solid rgba(212,168,67,0.15)', background: 'linear-gradient(180deg, #0D0D0D 0%, #080808 100%)', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ padding: '80px 24px 64px', borderBottom: '1px solid rgba(212,168,67,0.25)', background: 'linear-gradient(180deg, #0D0D0D 0%, #080808 100%)', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(212,168,67,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(212,168,67,0.025) 1px, transparent 1px)', backgroundSize: '60px 60px', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <div style={{ ...mono, fontSize: '11px', color: 'rgba(212,168,67,0.8)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '16px' }}>// Step 0 — Before ICT & SMC</div>
@@ -343,7 +343,7 @@ export default function FoundationsPage() {
       </section>
 
       {/* Progress bar */}
-      <div style={{ background: '#0A0A0A', borderBottom: '1px solid rgba(212,168,67,0.12)', padding: '16px 24px' }}>
+      <div style={{ background: '#0A0A0A', borderBottom: '1px solid rgba(212,168,67,0.22)', padding: '16px 24px' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
             <span style={{ ...mono, fontSize: '10px', color: 'rgba(212,168,67,0.8)', letterSpacing: '0.12em' }}>YOUR FOUNDATION PROGRESS</span>
@@ -356,7 +356,7 @@ export default function FoundationsPage() {
       </div>
 
       {/* Roadmap Steps */}
-      <section style={{ padding: '48px 24px', background: '#080808', borderBottom: '1px solid rgba(212,168,67,0.12)' }}>
+      <section style={{ padding: '48px 24px', background: '#080808', borderBottom: '1px solid rgba(212,168,67,0.22)' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <div style={{ ...mono, fontSize: '10px', color: 'rgba(212,168,67,0.75)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '8px' }}>// Learning Roadmap</div>
           <h2 className="font-display" style={{ fontSize: '42px', color: 'white', marginBottom: '32px' }}>YOUR PATH TO MASTERY</h2>
@@ -368,7 +368,7 @@ export default function FoundationsPage() {
               return (
                 <button key={step.id} onClick={() => setActiveStep(isActive ? 'All' : String(step.id))}
                   className="step-btn"
-                  style={{ background: isActive ? `${step.color}10` : '#0D0D0D', border: `1px solid ${isActive ? step.color + '40' : 'rgba(255,255,255,0.06)'}`, borderRadius: '14px', padding: '20px', textAlign: 'left' }}>
+                  style={{ background: isActive ? `${step.color}10` : '#0D0D0D', border: `1px solid ${isActive ? step.color + '40' : 'rgba(255,255,255,0.15)'}`, borderRadius: '14px', padding: '20px', textAlign: 'left' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
                     <span style={{ fontSize: '24px' }}>{step.icon}</span>
                     <span style={{ ...mono, fontSize: '10px', color: step.color, letterSpacing: '0.1em' }}>STEP {step.id}</span>
@@ -396,7 +396,7 @@ export default function FoundationsPage() {
               <div style={{ ...mono, fontSize: '10px', color: 'rgba(212,168,67,0.75)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '4px' }}>// Topics</div>
               <h2 className="font-display" style={{ fontSize: '36px', color: 'white' }}>{activeStep === 'All' ? 'ALL TOPICS' : `STEP ${activeStep}: ${STEPS[parseInt(activeStep)-1]?.name.toUpperCase()}`}</h2>
             </div>
-            <button onClick={() => setActiveStep('All')} style={{ ...mono, fontSize: '11px', color: 'rgba(212,168,67,0.8)', background: 'transparent', border: '1px solid rgba(212,168,67,0.15)', borderRadius: '8px', padding: '6px 14px', cursor: 'pointer' }}>
+            <button onClick={() => setActiveStep('All')} style={{ ...mono, fontSize: '11px', color: 'rgba(212,168,67,0.8)', background: 'transparent', border: '1px solid rgba(212,168,67,0.25)', borderRadius: '8px', padding: '6px 14px', cursor: 'pointer' }}>
               Show All →
             </button>
           </div>
@@ -426,7 +426,7 @@ export default function FoundationsPage() {
                     </div>
                     <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexShrink: 0 }}>
                       <button onClick={(e) => { e.stopPropagation(); toggleCompleted(topic.id); }}
-                        style={{ background: isDone ? 'rgba(52,211,153,0.1)' : 'rgba(255,255,255,0.04)', border: `1px solid ${isDone ? 'rgba(52,211,153,0.3)' : 'rgba(255,255,255,0.08)'}`, borderRadius: '8px', padding: '6px 12px', ...mono, fontSize: '10px', color: isDone ? '#34D399' : '#808080', cursor: 'pointer' }}>
+                        style={{ background: isDone ? 'rgba(52,211,153,0.1)' : 'rgba(255,255,255,0.04)', border: `1px solid ${isDone ? 'rgba(52,211,153,0.3)' : 'rgba(255,255,255,0.18)'}`, borderRadius: '8px', padding: '6px 12px', ...mono, fontSize: '10px', color: isDone ? '#34D399' : '#808080', cursor: 'pointer' }}>
                         {isDone ? '✓ DONE' : 'MARK DONE'}
                       </button>
                       <span style={{ color: '#D4A843', fontSize: '18px' }}>{isOpen ? '−' : '+'}</span>
@@ -435,7 +435,7 @@ export default function FoundationsPage() {
 
                   {/* Expanded */}
                   {isOpen && (
-                    <div style={{ borderTop: '1px solid rgba(212,168,67,0.12)', padding: '24px 22px', background: 'rgba(0,0,0,0.15)' }}>
+                    <div style={{ borderTop: '1px solid rgba(212,168,67,0.22)', padding: '24px 22px', background: 'rgba(0,0,0,0.15)' }}>
                       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px', marginBottom: '16px' }}>
                         {/* Explanation */}
                         <div>
@@ -466,7 +466,7 @@ export default function FoundationsPage() {
       </section>
 
       {/* Checkpoint Quiz */}
-      <section style={{ padding: '48px 24px', background: '#0A0A0A', borderTop: '1px solid rgba(212,168,67,0.12)' }}>
+      <section style={{ padding: '48px 24px', background: '#0A0A0A', borderTop: '1px solid rgba(212,168,67,0.22)' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <div style={{ ...mono, fontSize: '10px', color: 'rgba(212,168,67,0.75)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '8px' }}>// Checkpoint</div>
           <h2 className="font-display" style={{ fontSize: '42px', color: 'white', marginBottom: '24px' }}>FOUNDATION CHECKLIST</h2>
@@ -483,7 +483,7 @@ export default function FoundationsPage() {
               "I understand risk-to-reward ratio and can calculate it",
               "I commit to demo trading for at least 3 months",
             ].map((item, i) => (
-              <div key={i} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', padding: '14px 16px', background: '#0D0D0D', border: '1px solid rgba(212,168,67,0.12)', borderRadius: '10px' }}>
+              <div key={i} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', padding: '14px 16px', background: '#0D0D0D', border: '1px solid rgba(212,168,67,0.22)', borderRadius: '10px' }}>
                 <div style={{ width: '20px', height: '20px', borderRadius: '50%', border: '1.5px solid rgba(212,168,67,0.8)', flexShrink: 0, marginTop: '1px' }} />
                 <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.65)', lineHeight: 1.5 }}>{item}</span>
               </div>
@@ -493,11 +493,11 @@ export default function FoundationsPage() {
       </section>
 
       {/* Next Steps CTA */}
-      <section style={{ padding: '64px 24px', borderTop: '1px solid rgba(212,168,67,0.15)' }}>
+      <section style={{ padding: '64px 24px', borderTop: '1px solid rgba(212,168,67,0.25)' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', textAlign: 'center' }}>
           <div style={{ ...mono, fontSize: '10px', color: 'rgba(212,168,67,0.75)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '12px' }}>// What's Next</div>
           <h2 className="font-display" style={{ fontSize: '56px', color: 'white', marginBottom: '16px' }}>READY FOR THE REAL THING?</h2>
-          <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.5)', maxWidth: '500px', margin: '0 auto 40px', lineHeight: 1.7, fontWeight: 300 }}>
+          <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.85)', maxWidth: '500px', margin: '0 auto 40px', lineHeight: 1.7, fontWeight: 300 }}>
             You've built the foundation. Now step into the full ICT curriculum and learn how institutions actually move markets.
           </p>
           <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -507,7 +507,7 @@ export default function FoundationsPage() {
             <Link href="/courses" style={{ padding: '16px 32px', borderRadius: '12px', ...mono, fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase', border: '1px solid rgba(212,168,67,0.8)', color: 'rgba(255,255,255,0.6)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>
               View All Modules
             </Link>
-            <Link href="/glossary" style={{ padding: '16px 32px', borderRadius: '12px', ...mono, fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.7)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>
+            <Link href="/glossary" style={{ padding: '16px 32px', borderRadius: '12px', ...mono, fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase', border: '1px solid rgba(255,255,255,0.18)', color: 'rgba(255,255,255,0.7)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>
               ICT Glossary
             </Link>
           </div>
