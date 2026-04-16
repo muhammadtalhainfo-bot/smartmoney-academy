@@ -171,18 +171,13 @@ const Divider = () => <div style={{ height: '1px', background: BORDER, margin: '
 
 // ─── TABS CONFIG ─────────────────────────────────────────────────────────────
 const TABS = [
-  { id: 'dashboard', label: '📊 Dashboard', group: 'overview' },
-  { id: 'users', label: '👥 Users', group: 'overview' },
-  { id: 'blog', label: '✍️ Blog', group: 'content' },
-  { id: 'courses', label: '📚 Courses', group: 'content' },
-  { id: 'pages', label: '📄 Pages', group: 'content' },
-  { id: 'banners', label: '🚨 Banners', group: 'content' },
-  { id: 'media', label: '🖼️ Media', group: 'content' },
-  { id: 'categories', label: '🏷️ Categories', group: 'content' },
-  { id: 'pricing', label: '💳 Pricing', group: 'settings' },
-  { id: 'seo', label: '🔍 SEO', group: 'settings' },
-  { id: 'nav', label: '🧭 Navigation', group: 'settings' },
-  { id: 'notifications', label: '🔔 Notifications', group: 'settings' },
+  { id: 'overview', label: 'Overview', icon: '📊' },
+  { id: 'users', label: 'Users', icon: '👥' },
+  { id: 'content', label: 'Content', icon: '📝' },
+  { id: 'blog', label: 'Blog', icon: '📰' },
+  { id: 'analytics', label: 'Analytics', icon: '📈' },
+  { id: 'notifications', label: 'Notifications', icon: '🔔' },
+  { id: 'settings', label: 'Settings', icon: '⚙️' },
 ];
 
 const GROUPS = [
