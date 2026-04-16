@@ -206,7 +206,7 @@ export default function HomePage() {
               <span className={item.up ? 'text-emerald-400' : 'text-red-400'}>
                 {item.up ? '▲' : '▼'} {item.change}
               </span>
-              <span className="text-gray-800">·</span>
+              <span className="text-gray-200">·</span>
             </span>
           ))}
         </div>
@@ -242,7 +242,7 @@ export default function HomePage() {
           }}>INSTITUTIONS</span>
         </h1>
 
-        <p className="fade-up delay-3 text-gray-800 text-lg max-w-xl mx-auto mb-10 leading-relaxed" style={{ fontWeight: 300 }}>
+        <p className="fade-up delay-3 text-gray-200 text-lg max-w-xl mx-auto mb-10 leading-relaxed" style={{ fontWeight: 300 }}>
           Master ICT — the methodology used by banks, hedge funds, and professional traders to move markets. Every concept. Zero fluff.
         </p>
 
@@ -250,7 +250,7 @@ export default function HomePage() {
           <Link href="/foundations" className="btn-gold px-8 py-4 rounded-xl text-base font-mono tracking-wide uppercase">
             Begin Your Journey →
           </Link>
-          <Link href="/glossary" className="px-8 py-4 rounded-xl text-base font-mono tracking-wide uppercase border border-[var(--border)] text-gray-800 hover:border-[var(--gold)] hover:text-[var(--gold)] transition-all">
+          <Link href="/glossary" className="px-8 py-4 rounded-xl text-base font-mono tracking-wide uppercase border border-[var(--border)] text-gray-200 hover:border-[var(--gold)] hover:text-[var(--gold)] transition-all">
             ICT Glossary
           </Link>
         </div>
@@ -260,7 +260,7 @@ export default function HomePage() {
           {STATS.map((s, i) => (
             <div key={i} className="text-center">
               <div className="stat-value text-4xl">{s.value}</div>
-              <div className="font-mono text-xs text-gray-800 tracking-widest uppercase mt-1">{s.label}</div>
+              <div className="font-mono text-xs text-gray-200 tracking-widest uppercase mt-1">{s.label}</div>
             </div>
           ))}
         </div>
@@ -276,10 +276,10 @@ export default function HomePage() {
             <div>
               <div className="font-mono text-xs text-[var(--gold)] tracking-widest uppercase mb-4">// What is ICT</div>
               <h2 className="font-display text-5xl text-white mb-6 leading-tight">THE ALGORITHM<br/>RUNS THE MARKET</h2>
-              <p className="text-gray-800 leading-relaxed mb-6" style={{ fontWeight: 300 }}>
+              <p className="text-gray-200 leading-relaxed mb-6" style={{ fontWeight: 300 }}>
                 ICT (Inner Circle Trader) is Michael Huddleston's complete methodology for understanding how the Interbank Price Delivery Algorithm (IPDA) moves markets. It explains exactly why price moves — not what happened, but what was engineered to happen.
               </p>
-              <p className="text-gray-800 leading-relaxed" style={{ fontWeight: 300 }}>
+              <p className="text-gray-200 leading-relaxed" style={{ fontWeight: 300 }}>
                 Banks don't react to news. They create the moves that retail traders react to. ICT teaches you to stop being the liquidity — and start following the institutions that consume it.
               </p>
             </div>
@@ -294,7 +294,7 @@ export default function HomePage() {
                   <span className="text-2xl flex-shrink-0">{item.icon}</span>
                   <div>
                     <p className="font-semibold text-white text-sm mb-1">{item.title}</p>
-                    <p className="text-gray-800 text-xs leading-relaxed">{item.desc}</p>
+                    <p className="text-gray-200 text-xs leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -310,7 +310,7 @@ export default function HomePage() {
           <div className="text-center mb-14">
             <div className="font-mono text-xs text-[var(--gold)] tracking-widest uppercase mb-4">// Curriculum</div>
             <h2 className="font-display text-6xl text-white mb-4">WHAT YOU'LL LEARN</h2>
-            <p className="text-gray-800 max-w-lg mx-auto text-sm" style={{ fontWeight: 300 }}>
+            <p className="text-gray-200 max-w-lg mx-auto text-sm" style={{ fontWeight: 300 }}>
               28+ modules, 80+ lessons. Built from ICT's YouTube channel — updated through the 2026 Mentorship.
             </p>
           </div>
@@ -328,7 +328,7 @@ export default function HomePage() {
                     </span>
                   </div>
                   <h3 className="font-semibold text-white mb-2">{c.title}</h3>
-                  <p className="text-gray-800 text-xs leading-relaxed mb-4" style={{ fontWeight: 300 }}>{c.desc}</p>
+                  <p className="text-gray-200 text-xs leading-relaxed mb-4" style={{ fontWeight: 300 }}>{c.desc}</p>
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-[10px] text-[#E8C547]">{c.lessons} LESSONS</span>
                     <span className="text-[var(--gold)] text-sm">→</span>
@@ -361,8 +361,8 @@ export default function HomePage() {
               <div key={i} className="rounded-xl p-4 border text-center" style={{ background: s.color, borderColor: s.border }}>
                 <div className="font-mono text-[10px] tracking-widest mb-2" style={{ color: s.text }}>{s.role}</div>
                 <div className="font-semibold text-white text-sm mb-1">{s.zone}</div>
-                <div className="font-mono text-[10px] text-gray-800 mb-2">{s.time} EST</div>
-                <div className="text-xs text-gray-800" style={{ fontWeight: 300 }}>{s.desc}</div>
+                <div className="font-mono text-[10px] text-gray-200 mb-2">{s.time} EST</div>
+                <div className="text-xs text-gray-200" style={{ fontWeight: 300 }}>{s.desc}</div>
               </div>
             ))}
           </div>
@@ -377,7 +377,7 @@ export default function HomePage() {
             "STOP TRYING TO PREDICT.<br/>
             <span style={{ color: 'var(--gold)' }}>START READING THE ALGORITHM."</span>
           </blockquote>
-          <p className="font-mono text-xs text-gray-800 tracking-widest">— MICHAEL J. HUDDLESTON (ICT)</p>
+          <p className="font-mono text-xs text-gray-200 tracking-widest">— MICHAEL J. HUDDLESTON (ICT)</p>
         </div>
       </section>
 
@@ -388,7 +388,7 @@ export default function HomePage() {
             <div className="bg-[var(--bg3)] rounded-2xl p-12">
               <div className="font-mono text-xs text-[var(--gold)] tracking-widest uppercase mb-4">// Begin Now</div>
               <h2 className="font-display text-5xl text-white mb-4">READY TO THINK<br/>LIKE SMART MONEY?</h2>
-              <p className="text-gray-800 mb-8 text-sm leading-relaxed" style={{ fontWeight: 300 }}>
+              <p className="text-gray-200 mb-8 text-sm leading-relaxed" style={{ fontWeight: 300 }}>
                 Join thousands of traders who stopped guessing and started reading institutional footprints. Free access to all beginner modules.
               </p>
               <Link href="/courses" className="btn-gold inline-block px-10 py-4 rounded-xl font-mono text-sm tracking-widest uppercase">
