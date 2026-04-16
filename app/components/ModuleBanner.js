@@ -5,7 +5,7 @@
 // Does NOT use or modify any existing images
 
 const GOLD = '#E8C547';
-const GOLD_DIM = '#8A6B28';
+const GOLD_DIM = '#D4A843';
 const GOLD_FAINT = 'rgba(212,168,67,0.22)';
 const BG = '#090909';
 

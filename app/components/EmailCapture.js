@@ -48,7 +48,7 @@ export default function EmailCapture() {
 
         <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 'clamp(36px, 7vw, 64px)', color: 'white', lineHeight: 1, marginBottom: '16px', letterSpacing: '0.02em' }}>
           STAY AHEAD OF<br />
-          <span style={{ background: 'linear-gradient(135deg, #8A6B28 0%, #E8C547 40%, #F0C96A 60%, #E8C547 80%, #8A6B28 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>THE MARKET</span>
+          <span style={{ background: 'linear-gradient(135deg, #D4A843 0%, #E8C547 40%, #F0C96A 60%, #E8C547 80%, #D4A843 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>THE MARKET</span>
         </h2>
 
         <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '15px', lineHeight: 1.7, marginBottom: '32px', fontWeight: 300 }}>
@@ -73,7 +73,7 @@ export default function EmailCapture() {
               <button
                 onClick={handleSubmit}
                 disabled={status === 'loading'}
-                style={{ padding: '14px 24px', background: status === 'loading' ? '#E8C547' : 'linear-gradient(135deg,#E8C547,#8A6B28)', border: 'none', borderRadius: '10px', color: 'black', fontFamily: 'DM Mono, monospace', fontSize: '12px', fontWeight: 600, letterSpacing: '0.1em', cursor: status === 'loading' ? 'not-allowed' : 'pointer', whiteSpace: 'nowrap', transition: 'opacity 0.2s' }}
+                style={{ padding: '14px 24px', background: status === 'loading' ? '#E8C547' : 'linear-gradient(135deg,#E8C547,#D4A843)', border: 'none', borderRadius: '10px', color: 'black', fontFamily: 'DM Mono, monospace', fontSize: '12px', fontWeight: 600, letterSpacing: '0.1em', cursor: status === 'loading' ? 'not-allowed' : 'pointer', whiteSpace: 'nowrap', transition: 'opacity 0.2s' }}
               >
                 {status === 'loading' ? '...' : 'NOTIFY ME'}
               </button>
