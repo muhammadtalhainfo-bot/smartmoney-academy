@@ -2,7 +2,7 @@
 import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { createClient } from '@/lib/supabase';
+import { createClient } from '@/lib/supabase';\nimport { trackLogin, trackSignUp, setUserId } from '@/lib/analytics';
 function AuthPageInner() {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');

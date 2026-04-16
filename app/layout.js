@@ -86,7 +86,9 @@ export default function RootLayout({ children }) {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-HRGZYFXQ5W');
+          gtag('config', 'G-HRGZYFXQ5W', {
+  'user_id': typeof window !== 'undefined' && window.__USER_ID__ ? window.__USER_ID__ : undefined
+});
         ` }} />
         <script
           type="application/ld+json"
