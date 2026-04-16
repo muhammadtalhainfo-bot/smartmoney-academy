@@ -50,7 +50,7 @@ export default function CertificatePage() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&family=Playfair+Display:ital,wght@1,700&display=swap');
         .font-display { font-family: 'Bebas Neue', sans-serif; }
-        .shine { background: linear-gradient(135deg, #8A6B28 0%, #D4A843 40%, #F0C96A 60%, #D4A843 80%, #8A6B28 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .shine { background: linear-gradient(135deg, #8A6B28 0%, #E8C547 40%, #F0C96A 60%, #E8C547 80%, #8A6B28 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         @media print {
           body { background: white !important; }
           .no-print { display: none !important; }
@@ -68,7 +68,7 @@ export default function CertificatePage() {
           <div style={{ textAlign: 'center', padding: '80px' }}>
             <div className="font-display" style={{ fontSize: '48px', color: 'white', marginBottom: '16px' }}>SIGN IN REQUIRED</div>
             <p style={{ color: 'rgba(255,255,255,0.7)', marginBottom: '24px' }}>You need an account to view your certificate.</p>
-            <Link href="/auth" style={{ padding: '14px 32px', background: 'linear-gradient(135deg,#D4A843,#8A6B28)', borderRadius: '10px', color: 'black', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.1em' }}>SIGN IN →</Link>
+            <Link href="/auth" style={{ padding: '14px 32px', background: 'linear-gradient(135deg,#E8C547,#8A6B28)', borderRadius: '10px', color: 'black', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.1em' }}>SIGN IN →</Link>
           </div>
         ) : !eligible ? (
           /* PROGRESS VIEW */
@@ -83,13 +83,13 @@ export default function CertificatePage() {
             </div>
 
             {/* Progress bar */}
-            <div style={{ background: '#0D0D0D', border: '1px solid rgba(212,168,67,0.75)', borderRadius: '16px', padding: '32px', marginBottom: '32px' }}>
+            <div style={{ background: '#111111', border: '1px solid rgba(232,197,71,0.95)', borderRadius: '16px', padding: '32px', marginBottom: '32px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
                 <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.1em' }}>MODULES COMPLETED</span>
-                <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#D4A843' }}>{completed}/{TOTAL_MODULES}</span>
+                <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#E8C547' }}>{completed}/{TOTAL_MODULES}</span>
               </div>
               <div style={{ height: '8px', background: 'rgba(255,255,255,0.15)', borderRadius: '100px', overflow: 'hidden', marginBottom: '24px' }}>
-                <div style={{ height: '100%', width: `${progress}%`, background: 'linear-gradient(90deg,#8A6B28,#D4A843)', borderRadius: '100px', transition: 'width 0.5s' }} />
+                <div style={{ height: '100%', width: `${progress}%`, background: 'linear-gradient(90deg,#8A6B28,#E8C547)', borderRadius: '100px', transition: 'width 0.5s' }} />
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '10px' }}>
                 {Array.from({ length: 28 }, (_, i) => (
@@ -102,7 +102,7 @@ export default function CertificatePage() {
             </div>
 
             <div style={{ textAlign: 'center' }}>
-              <Link href="/courses" style={{ display: 'inline-block', padding: '14px 36px', background: 'linear-gradient(135deg,#D4A843,#8A6B28)', borderRadius: '10px', color: 'black', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600 }}>
+              <Link href="/courses" style={{ display: 'inline-block', padding: '14px 36px', background: 'linear-gradient(135deg,#E8C547,#8A6B28)', borderRadius: '10px', color: 'black', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600 }}>
                 CONTINUE LEARNING →
               </Link>
             </div>
@@ -116,14 +116,14 @@ export default function CertificatePage() {
             </div>
 
             {/* CERTIFICATE CARD */}
-            <div className="cert-card" style={{ background: 'white', borderRadius: '16px', padding: '60px', textAlign: 'center', position: 'relative', overflow: 'hidden', boxShadow: '0 0 80px rgba(212,168,67,0.8)' }}>
+            <div className="cert-card" style={{ background: 'white', borderRadius: '16px', padding: '60px', textAlign: 'center', position: 'relative', overflow: 'hidden', boxShadow: '0 0 80px #E8C547' }}>
               {/* Gold border */}
-              <div style={{ position: 'absolute', inset: '12px', border: '2px solid #D4A843', borderRadius: '10px', opacity: 0.4, pointerEvents: 'none' }} />
-              <div style={{ position: 'absolute', inset: '16px', border: '1px solid #D4A843', borderRadius: '8px', opacity: 0.2, pointerEvents: 'none' }} />
+              <div style={{ position: 'absolute', inset: '12px', border: '2px solid #E8C547', borderRadius: '10px', opacity: 0.4, pointerEvents: 'none' }} />
+              <div style={{ position: 'absolute', inset: '16px', border: '1px solid #E8C547', borderRadius: '8px', opacity: 0.2, pointerEvents: 'none' }} />
 
               {/* Logo */}
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', marginBottom: '32px' }}>
-                <div style={{ width: '40px', height: '40px', borderRadius: '8px', background: 'linear-gradient(135deg,#D4A843,#8A6B28)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Bebas Neue, sans-serif', color: 'black', fontSize: '22px' }}>S</div>
+                <div style={{ width: '40px', height: '40px', borderRadius: '8px', background: 'linear-gradient(135deg,#E8C547,#8A6B28)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Bebas Neue, sans-serif', color: 'black', fontSize: '22px' }}>S</div>
                 <div style={{ textAlign: 'left' }}>
                   <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '18px', letterSpacing: '0.15em', color: '#1a1a1a' }}>ICT FLOW</div>
                   <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#8A6B28', letterSpacing: '0.2em' }}>ICT & SMART MONEY EDUCATION</div>
@@ -134,7 +134,7 @@ export default function CertificatePage() {
 
               <div style={{ fontFamily: 'Georgia, serif', fontSize: '14px', color: '#666', marginBottom: '8px' }}>This certifies that</div>
 
-              <div style={{ fontFamily: 'Playfair Display, serif', fontSize: '48px', fontStyle: 'italic', color: '#D4A843', marginBottom: '8px', lineHeight: 1.2 }}>{name}</div>
+              <div style={{ fontFamily: 'Playfair Display, serif', fontSize: '48px', fontStyle: 'italic', color: '#E8C547', marginBottom: '8px', lineHeight: 1.2 }}>{name}</div>
 
               <div style={{ fontFamily: 'Georgia, serif', fontSize: '14px', color: '#666', marginBottom: '24px', lineHeight: 1.8 }}>
                 has successfully completed the<br />
@@ -145,7 +145,7 @@ export default function CertificatePage() {
               <div style={{ display: 'flex', justifyContent: 'center', gap: '32px', marginBottom: '32px' }}>
                 {[['28', 'Modules'], ['80+', 'Lessons'], [profile?.xp || 0, 'XP Earned']].map(([val, label]) => (
                   <div key={label} style={{ textAlign: 'center' }}>
-                    <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '32px', color: '#D4A843' }}>{val}</div>
+                    <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '32px', color: '#E8C547' }}>{val}</div>
                     <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#999', letterSpacing: '0.15em' }}>{label}</div>
                   </div>
                 ))}
@@ -158,10 +158,10 @@ export default function CertificatePage() {
                 </div>
                 <div style={{ textAlign: 'center' }}>
                   <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#999', letterSpacing: '0.1em', marginBottom: '4px' }}>CREDENTIAL ID</div>
-                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#D4A843' }}>SMA-{user.id.slice(0, 8).toUpperCase()}</div>
+                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#E8C547' }}>SMA-{user.id.slice(0, 8).toUpperCase()}</div>
                 </div>
                 <div style={{ textAlign: 'right' }}>
-                  <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '20px', color: '#D4A843', letterSpacing: '0.1em' }}>ICT FLOW</div>
+                  <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '20px', color: '#E8C547', letterSpacing: '0.1em' }}>ICT FLOW</div>
                   <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '8px', color: '#999', letterSpacing: '0.15em' }}>ACADEMY</div>
                 </div>
               </div>
@@ -169,10 +169,10 @@ export default function CertificatePage() {
 
             {/* ACTIONS */}
             <div className="no-print" style={{ display: 'flex', gap: '12px', justifyContent: 'center', marginTop: '32px' }}>
-              <button onClick={() => window.print()} style={{ padding: '14px 32px', background: 'linear-gradient(135deg,#D4A843,#8A6B28)', borderRadius: '10px', color: 'black', border: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600, cursor: 'pointer' }}>
+              <button onClick={() => window.print()} style={{ padding: '14px 32px', background: 'linear-gradient(135deg,#E8C547,#8A6B28)', borderRadius: '10px', color: 'black', border: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600, cursor: 'pointer' }}>
                 🖨️ PRINT / SAVE PDF
               </button>
-              <Link href="/dashboard" style={{ padding: '14px 32px', background: 'transparent', borderRadius: '10px', color: 'rgba(255,255,255,0.6)', border: '1px solid rgba(255,255,255,0.2)', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+              <Link href="/dashboard" style={{ padding: '14px 32px', background: 'transparent', borderRadius: '10px', color: 'rgba(255,255,255,0.6)', border: '1px solid rgba(255,255,255,0.6)', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
                 BACK TO DASHBOARD
               </Link>
             </div>

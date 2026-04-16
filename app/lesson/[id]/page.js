@@ -1533,28 +1533,28 @@ const LEVEL_STYLE = {
 function Section({ section, index, diagramSrc, diagramAlt }) {
   const [open, setOpen] = useState(index === 0);
   return (
-    <div className="border border-[rgba(212,168,67,0.75)] rounded-xl overflow-hidden mb-4">
+    <div className="border border-[rgba(232,197,71,0.95)] rounded-xl overflow-hidden mb-4">
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between p-5 text-left hover:bg-[rgba(212,168,67,0.03)] transition-colors"
       >
         <div className="flex items-center gap-3">
-          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', color: 'rgba(212,168,67,0.75)' }}>
+          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', color: 'rgba(232,197,71,0.95)' }}>
             {String(index + 1).padStart(2, '0')}
           </span>
           <span className="font-semibold text-white">{section.title}</span>
         </div>
-        <span className="text-[#D4A843] text-lg">{open ? '−' : '+'}</span>
+        <span className="text-[#E8C547] text-lg">{open ? '−' : '+'}</span>
       </button>
       {open && (
-        <div className="px-5 pb-6 border-t border-[rgba(212,168,67,0.75)]">
-          <div className="pt-5 text-gray-300 leading-relaxed text-sm whitespace-pre-line mb-4" style={{ fontWeight: 300 }}>
+        <div className="px-5 pb-6 border-t border-[rgba(232,197,71,0.95)]">
+          <div className="pt-5 text-gray-200 leading-relaxed text-sm whitespace-pre-line mb-4" style={{ fontWeight: 300 }}>
             {section.content}
           </div>
 
           {section.highlight && (
-            <div className="flex gap-3 p-4 rounded-xl border border-[rgba(212,168,67,0.8)] bg-[rgba(212,168,67,0.05)]">
-              <div className="text-sm text-[#D4A843] leading-relaxed">{section.highlight}</div>
+            <div className="flex gap-3 p-4 rounded-xl border border-[#E8C547] bg-[rgba(212,168,67,0.05)]">
+              <div className="text-sm text-[#E8C547] leading-relaxed">{section.highlight}</div>
             </div>
           )}
         </div>
@@ -1570,8 +1570,8 @@ function Quiz({ questions, lessonId }) {
   const score = submitted ? questions.filter((q, i) => answers[i] === q.answer).length : 0;
 
   return (
-    <div className="rounded-2xl border border-[rgba(212,168,67,0.8)] bg-[rgba(212,168,67,0.03)] p-6">
-      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', color: '#D4A843', letterSpacing: '0.15em' }} className="mb-4">
+    <div className="rounded-2xl border border-[#E8C547] bg-[rgba(212,168,67,0.03)] p-6">
+      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', color: '#E8C547', letterSpacing: '0.15em' }} className="mb-4">
         // KNOWLEDGE CHECK
       </div>
       {questions.map((q, qi) => (
@@ -1579,13 +1579,13 @@ function Quiz({ questions, lessonId }) {
           <p className="text-white text-sm font-medium mb-3">{qi + 1}. {q.q}</p>
           <div className="space-y-2">
             {q.options.map((opt, oi) => {
-              let style = 'border-[rgba(212,168,67,0.75)] bg-[#0F0F0F] text-gray-300 hover:border-[rgba(212,168,67,0.8)]';
+              let style = 'border-[rgba(232,197,71,0.95)] bg-[#0F0F0F] text-gray-200 hover:border-[#E8C547]';
               if (submitted) {
                 if (oi === q.answer) style = 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300';
                 else if (answers[qi] === oi) style = 'border-red-500/40 bg-red-500/10 text-red-300';
-                else style = 'border-[rgba(212,168,67,0.75)] bg-[#0F0F0F] text-gray-300';
+                else style = 'border-[rgba(232,197,71,0.95)] bg-[#0F0F0F] text-gray-200';
               } else if (answers[qi] === oi) {
-                style = 'border-[rgba(212,168,67,0.75)] bg-[rgba(212,168,67,0.22)] text-[#D4A843]';
+                style = 'border-[rgba(232,197,71,0.95)] bg-[rgba(212,168,67,0.22)] text-[#E8C547]';
               }
               return (
                 <button
@@ -1631,8 +1631,8 @@ function Quiz({ questions, lessonId }) {
           className="w-full py-3 rounded-xl font-mono text-sm tracking-wider uppercase transition-all"
           style={{
             background: Object.keys(answers).length === questions.length
-              ? 'linear-gradient(135deg, #D4A843, #F0C96A)'
-              : 'rgba(212,168,67,0.75)',
+              ? 'linear-gradient(135deg, #E8C547, #F0C96A)'
+              : 'rgba(232,197,71,0.95)',
             color: Object.keys(answers).length === questions.length ? '#080808' : '#8A6B28',
             fontWeight: 700,
           }}
@@ -1640,11 +1640,11 @@ function Quiz({ questions, lessonId }) {
           Submit Answers
         </button>
       ) : (
-        <div className="text-center p-4 rounded-xl border border-[rgba(212,168,67,0.8)] bg-[rgba(212,168,67,0.05)]">
-          <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '36px', background: 'linear-gradient(135deg, #D4A843, #F0C96A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+        <div className="text-center p-4 rounded-xl border border-[#E8C547] bg-[rgba(212,168,67,0.05)]">
+          <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '36px', background: 'linear-gradient(135deg, #E8C547, #F0C96A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
             {score}/{questions.length}
           </div>
-          <p className="text-gray-300 text-sm mt-1">
+          <p className="text-gray-200 text-sm mt-1">
             {score === questions.length ? '🎯 Perfect! You nailed it.' : score >= questions.length / 2 ? '💪 Good job. Review the ones you missed.' : '📖 Re-read the lesson and try again.'}
           </p>
         </div>
@@ -1678,7 +1678,7 @@ export default function LessonPage({ params }) {
 
   if (!authReady) return (
     <div className="min-h-screen bg-[#080808] flex items-center justify-center">
-      <div style={{ fontFamily: "'DM Mono', monospace", color: 'rgba(212,168,67,0.75)', fontSize: '12px', letterSpacing: '0.2em' }}>
+      <div style={{ fontFamily: "'DM Mono', monospace", color: 'rgba(232,197,71,0.95)', fontSize: '12px', letterSpacing: '0.2em' }}>
         LOADING...
       </div>
     </div>
@@ -1692,7 +1692,7 @@ export default function LessonPage({ params }) {
     <div className="min-h-screen bg-[#080808] text-white" style={{ fontFamily: "'DM Sans', sans-serif" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap');
-        :root { --gold: #D4A843; --gold-light: #F0C96A; --gold-dim: #8A6B28; --bg2: #0F0F0F; --bg3: #141414; --border: rgba(212,168,67,0.75); }
+        :root { --gold: #E8C547; --gold-light: #F0C96A; --gold-dim: #8A6B28; --bg2: #0F0F0F; --bg3: #141414; --border: rgba(232,197,71,0.95); }
         .font-display { font-family: 'Bebas Neue', sans-serif; }
         .font-mono-custom { font-family: 'DM Mono', monospace; }
       `}</style>
@@ -1700,12 +1700,12 @@ export default function LessonPage({ params }) {
       {/* ── Nav ── */}
       <nav className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 border-b border-[var(--border)]" style={{ background: 'rgba(8,8,8,0.97)', backdropFilter: 'blur(20px)' }}>
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg flex items-center justify-center font-display text-black text-sm" style={{ background: 'linear-gradient(135deg, #D4A843, #8A6B28)' }}>S</div>
+          <div className="w-8 h-8 rounded-lg flex items-center justify-center font-display text-black text-sm" style={{ background: 'linear-gradient(135deg, #E8C547, #8A6B28)' }}>S</div>
           <span className="font-display text-base tracking-widest text-white group-hover:text-[var(--gold)] transition-colors">ICT FLOW</span>
         </Link>
         <div className="hidden md:flex items-center gap-6">
           {[['/', 'Home'], ['/foundations', 'Foundations'], ['/courses', 'Courses'], ['/mentorship', 'Mentorship']].map(([href, label]) => (
-            <Link key={href} href={href} className="font-mono-custom text-xs text-gray-300 hover:text-[var(--gold)] transition-colors tracking-wider uppercase">{label}</Link>
+            <Link key={href} href={href} className="font-mono-custom text-xs text-gray-200 hover:text-[var(--gold)] transition-colors tracking-wider uppercase">{label}</Link>
           ))}
         </div>
       </nav>
@@ -1713,9 +1713,9 @@ export default function LessonPage({ params }) {
       <div className="max-w-4xl mx-auto px-6 py-12">
 
         {/* ── Breadcrumb ── */}
-        <div className="flex items-center gap-2 font-mono-custom text-xs text-gray-300 mb-8">
+        <div className="flex items-center gap-2 font-mono-custom text-xs text-gray-200 mb-8">
           <Link href="/courses" className="hover:text-[var(--gold)] transition-colors">Courses</Link>
-          <span className="text-gray-400">›</span>
+          <span className="text-gray-300">›</span>
           <span className="text-[var(--gold)]">{lesson.title}</span>
         </div>
 
@@ -1723,16 +1723,16 @@ export default function LessonPage({ params }) {
         <div className="mb-10">
           <div className="flex items-center gap-3 mb-4 flex-wrap">
             <span className={`px-3 py-1 rounded-lg text-xs font-mono-custom border ${LEVEL_STYLE[lesson.level]}`}>{lesson.level}</span>
-            <span className="font-mono-custom text-xs text-gray-300">📖 {lesson.duration}</span>
-            <span className="font-mono-custom text-xs text-gray-300">🏷 {lesson.category}</span>
+            <span className="font-mono-custom text-xs text-gray-200">📖 {lesson.duration}</span>
+            <span className="font-mono-custom text-xs text-gray-200">🏷 {lesson.category}</span>
           </div>
           <h1 className="font-display text-5xl md:text-7xl text-white mb-4 leading-none">{lesson.title.toUpperCase()}</h1>
-          <p className="text-gray-300 text-lg" style={{ fontWeight: 300 }}>{lesson.subtitle}</p>
+          <p className="text-gray-200 text-lg" style={{ fontWeight: 300 }}>{lesson.subtitle}</p>
         </div>
 
         {/* ── Intro ── */}
         <div className="p-6 rounded-2xl border border-[var(--border)] bg-[var(--bg2)] mb-8">
-          <p className="text-gray-300 leading-relaxed" style={{ fontWeight: 300 }}>{lesson.intro}</p>
+          <p className="text-gray-200 leading-relaxed" style={{ fontWeight: 300 }}>{lesson.intro}</p>
         </div>
 
 
@@ -1746,7 +1746,7 @@ export default function LessonPage({ params }) {
             onError={(e) => { e.target.parentElement.style.display = 'none'; }}
           />
           <div className="px-4 py-3 border-t border-[var(--border)]">
-            <p className="font-mono-custom text-xs text-gray-300">{lesson.imageCaption}</p>
+            <p className="font-mono-custom text-xs text-gray-200">{lesson.imageCaption}</p>
           </div>
         </div>
 
@@ -1775,7 +1775,7 @@ export default function LessonPage({ params }) {
           {lesson.prevLesson ? (
             <Link href={`/lesson/${lesson.prevLesson.id}`}>
               <div className="p-5 rounded-xl border border-[var(--border)] bg-[var(--bg2)] hover:border-[rgba(212,168,67,0.35)] transition-all group">
-                <div className="font-mono-custom text-xs text-gray-300 mb-1">← Previous</div>
+                <div className="font-mono-custom text-xs text-gray-200 mb-1">← Previous</div>
                 <div className="font-semibold text-white group-hover:text-[var(--gold)] transition-colors">{lesson.prevLesson.title}</div>
               </div>
             </Link>
@@ -1783,7 +1783,7 @@ export default function LessonPage({ params }) {
           {lesson.nextLesson && (
             <Link href={`/lesson/${lesson.nextLesson.id}`}>
               <div className="p-5 rounded-xl border border-[var(--border)] bg-[var(--bg2)] hover:border-[rgba(212,168,67,0.35)] transition-all group text-right">
-                <div className="font-mono-custom text-xs text-gray-300 mb-1">Next →</div>
+                <div className="font-mono-custom text-xs text-gray-200 mb-1">Next →</div>
                 <div className="font-semibold text-white group-hover:text-[var(--gold)] transition-colors">{lesson.nextLesson.title}</div>
               </div>
             </Link>
@@ -1801,11 +1801,11 @@ export default function LessonPage({ params }) {
           </div>
           <div className="flex gap-3">
             {lesson.nextLesson && (
-              <Link href={`/lesson/${lesson.nextLesson.id}`} className="btn-gold px-6 py-3 rounded-xl font-mono-custom text-xs tracking-widest uppercase" style={{ background: 'linear-gradient(135deg,#D4A843,#F0C96A)', color: '#080808', textDecoration: 'none', fontWeight: 700 }}>
+              <Link href={`/lesson/${lesson.nextLesson.id}`} className="btn-gold px-6 py-3 rounded-xl font-mono-custom text-xs tracking-widest uppercase" style={{ background: 'linear-gradient(135deg,#E8C547,#F0C96A)', color: '#080808', textDecoration: 'none', fontWeight: 700 }}>
                 Next: {lesson.nextLesson.title} →
               </Link>
             )}
-            <Link href="/courses" style={{ padding: '12px 20px', borderRadius: '12px', border: '1px solid rgba(212,168,67,0.8)', color: 'rgba(255,255,255,0.85)', fontFamily: 'DM Mono,monospace', fontSize: '12px', textDecoration: 'none', letterSpacing: '0.08em' }}>
+            <Link href="/courses" style={{ padding: '12px 20px', borderRadius: '12px', border: '1px solid #E8C547', color: 'rgba(255,255,255,0.85)', fontFamily: 'DM Mono,monospace', fontSize: '12px', textDecoration: 'none', letterSpacing: '0.08em' }}>
               All Modules
             </Link>
           </div>
@@ -1814,7 +1814,7 @@ export default function LessonPage({ params }) {
 
       {/* ── Footer ── */}
       <footer className="border-t border-[var(--border)] px-8 py-6 mt-16">
-        <div className="max-w-4xl mx-auto text-center font-mono-custom text-xs text-gray-300">
+        <div className="max-w-4xl mx-auto text-center font-mono-custom text-xs text-gray-200">
           ICT Flow - Educational content only. Not financial advice.
         </div>
       </footer>

@@ -34,7 +34,7 @@ const TOPICS = [
     explanation: "Line charts show closing prices. Bar charts show OHLC (Open, High, Low, Close). Candlestick charts show the full story of each period visually. ICT traders exclusively use candlestick charts.",
     example: "A 15-minute candlestick shows exactly what happened in that 15 minutes: where price opened, where it went highest, lowest, and where it closed.",
     remember: "Always use candlestick charts. They show the most information per candle.",
-    color: "#D4A843"
+    color: "#E8C547"
   },
   {
     id: 4, step: 2, stepName: "Read the Chart",
@@ -97,7 +97,7 @@ const TOPICS = [
     explanation: "BID = price you can SELL at. ASK = price you can BUY at. Going Long = BUYing, expecting price to rise. Going Short = SELLing, expecting price to fall. The spread is the gap between Bid and Ask.",
     example: "GBPUSD: Bid 1.2650 / Ask 1.2652. You go Long (buy) at 1.2652. Price rises to 1.2700. You close (sell) at bid 1.2700. Profit = 48 pips.",
     remember: "You always BUY at the higher price (Ask) and SELL at the lower price (Bid). The spread is your immediate loss on entry.",
-    color: "#D4A843"
+    color: "#E8C547"
   },
   {
     id: 11, step: 3, stepName: "Understand Risk",
@@ -151,7 +151,7 @@ const TOPICS = [
     explanation: "Uptrend = Higher Highs (HH) + Higher Lows (HL). Downtrend = Lower Highs (LH) + Lower Lows (LL). Break of Structure (BOS) = continuation signal. Change of Character (CHoCH) = potential reversal signal.",
     example: "Price makes HH at 100, pulls back to HL at 95, rallies to new HH at 105. This is a healthy uptrend. If price then breaks below 95 (the HL), structure has shifted bearish.",
     remember: "Market structure is the foundation of everything. Before any trade, ask: what is the current structure and where is it likely going next?",
-    color: "#D4A843"
+    color: "#E8C547"
   },
   {
     id: 17, step: 4, stepName: "Practice Market Structure",
@@ -187,7 +187,7 @@ const TOPICS = [
     explanation: "ICT (Inner Circle Trader) is a methodology by Michael J. Huddleston that teaches traders how the Interbank Price Delivery Algorithm (IPDA) moves markets. It focuses on Time and Price — specific time windows when the algorithm delivers price to specific levels.",
     example: "Instead of random support/resistance, ICT teaches that price moves to collect liquidity (stops) at specific times (killzones) before delivering to institutional objectives (Fair Value Gaps and Order Blocks).",
     remember: "ICT is not magic. It's a framework for understanding WHY price moves, not just WHERE it might go. Start with the 2022 Mentorship after mastering these foundations.",
-    color: "#D4A843"
+    color: "#E8C547"
   },
   {
     id: 21, step: 5, stepName: "Move into ICT & SMC",
@@ -240,7 +240,7 @@ const STEPS = [
   { id: 1, name: "Learn the Language", desc: "Understand trading fundamentals, markets, and terminology", color: "#34D399", icon: "📖" },
   { id: 2, name: "Read the Chart", desc: "Master candlesticks, timeframes, and chart reading", color: "#818CF8", icon: "📊" },
   { id: 3, name: "Understand Risk", desc: "Risk management, position sizing, and capital protection", color: "#F87171", icon: "🛡️" },
-  { id: 4, name: "Practice Market Structure", desc: "Structure, S/R, trends, and liquidity basics", color: "#D4A843", icon: "🏗️" },
+  { id: 4, name: "Practice Market Structure", desc: "Structure, S/R, trends, and liquidity basics", color: "#E8C547", icon: "🏗️" },
   { id: 5, name: "Move into ICT & SMC", desc: "Introduction to institutional concepts and smart money", color: "#C084FC", icon: "🎓" },
   { id: 6, name: "Psychology & Common Mistakes", desc: "Mental game, common errors, and how to practice", color: "#F59E0B", icon: "🧠" },
 ];
@@ -283,11 +283,11 @@ export default function FoundationsPage() {
         .topic-card:hover { transform: translateY(-2px); }
         .step-btn { transition: all 0.15s; cursor: pointer; }
         .progress-bar { background: rgba(212,168,67,0.22); border-radius: 99px; overflow: hidden; height: 8px; }
-        .progress-fill { background: linear-gradient(90deg, #8A6B28, #D4A843, #F0C96A); height: 8px; border-radius: 99px; transition: width 1s ease; }
-        .btn-gold { background: linear-gradient(135deg, #D4A843, #F0C96A); color: #080808; font-weight: 700; transition: all 0.2s; }
-        .btn-gold:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(212,168,67,0.8); }
+        .progress-fill { background: linear-gradient(90deg, #8A6B28, #E8C547, #F0C96A); height: 8px; border-radius: 99px; transition: width 1s ease; }
+        .btn-gold { background: linear-gradient(135deg, #E8C547, #F0C96A); color: #080808; font-weight: 700; transition: all 0.2s; }
+        .btn-gold:hover { transform: translateY(-1px); box-shadow: 0 8px 24px #E8C547; }
         ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-thumb { background: rgba(212,168,67,0.8); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: #E8C547; border-radius: 4px; }
       `}</style>
 
       <Navbar active="/foundations" />
@@ -309,18 +309,18 @@ export default function FoundationsPage() {
       )}
 
       {/* Hero */}
-      <section style={{ padding: '80px 24px 64px', borderBottom: '1px solid rgba(212,168,67,0.75)', background: 'linear-gradient(180deg, #0D0D0D 0%, #080808 100%)', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ padding: '80px 24px 64px', borderBottom: '1px solid rgba(232,197,71,0.95)', background: 'linear-gradient(180deg, #111111 0%, #080808 100%)', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(212,168,67,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(212,168,67,0.025) 1px, transparent 1px)', backgroundSize: '60px 60px', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-          <div style={{ ...mono, fontSize: '11px', color: 'rgba(212,168,67,0.8)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '16px' }}>// Step 0 — Before ICT & SMC</div>
+          <div style={{ ...mono, fontSize: '11px', color: '#E8C547', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '16px' }}>// Step 0 — Before ICT & SMC</div>
           <h1 className="font-display" style={{ fontSize: 'clamp(48px, 8vw, 110px)', lineHeight: 1, marginBottom: '20px', letterSpacing: '0.02em' }}>
             <span style={{ display: 'block', color: 'white' }}>TRADING</span>
-            <span style={{ display: 'block', background: 'linear-gradient(135deg, #8A6B28, #D4A843, #F0C96A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>FOUNDATIONS</span>
+            <span style={{ display: 'block', background: 'linear-gradient(135deg, #8A6B28, #E8C547, #F0C96A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>FOUNDATIONS</span>
           </h1>
           <p style={{ fontSize: '18px', color: 'rgba(255,255,255,0.6)', maxWidth: '580px', lineHeight: 1.7, fontWeight: 300, marginBottom: '12px' }}>
             Start from zero. Learn the real basics before touching ICT, SMC, or any advanced strategy. This is the foundation that separates profitable traders from gamblers.
           </p>
-          <p style={{ ...mono, fontSize: '11px', color: 'rgba(212,168,67,0.75)', marginBottom: '36px', letterSpacing: '0.05em' }}>
+          <p style={{ ...mono, fontSize: '11px', color: 'rgba(232,197,71,0.95)', marginBottom: '36px', letterSpacing: '0.05em' }}>
             Complete this before starting the ICT 2022 Mentorship or any module
           </p>
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '48px' }}>
@@ -328,7 +328,7 @@ export default function FoundationsPage() {
               className="btn-gold" style={{ padding: '14px 28px', borderRadius: '12px', ...mono, fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase', border: 'none', cursor: 'pointer' }}>
               Start Beginner Journey →
             </button>
-            <Link href="/glossary" style={{ padding: '14px 28px', borderRadius: '12px', ...mono, fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase', border: '1px solid rgba(212,168,67,0.8)', color: 'rgba(255,255,255,0.6)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>
+            <Link href="/glossary" style={{ padding: '14px 28px', borderRadius: '12px', ...mono, fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase', border: '1px solid #E8C547', color: 'rgba(255,255,255,0.6)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>
               View Trading Glossary
             </Link>
           </div>
@@ -342,7 +342,7 @@ export default function FoundationsPage() {
               { value: `${pct}%`, label: 'Progress' },
             ].map((s, i) => (
               <div key={i}>
-                <div className="font-display" style={{ fontSize: '38px', color: '#D4A843', lineHeight: 1 }}>{s.value}</div>
+                <div className="font-display" style={{ fontSize: '38px', color: '#E8C547', lineHeight: 1 }}>{s.value}</div>
                 <div style={{ ...mono, fontSize: '10px', color: '#808080', letterSpacing: '0.12em', textTransform: 'uppercase', marginTop: '4px' }}>{s.label}</div>
               </div>
             ))}
@@ -354,8 +354,8 @@ export default function FoundationsPage() {
       <div style={{ background: '#0A0A0A', borderBottom: '1px solid rgba(212,168,67,0.22)', padding: '16px 24px' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-            <span style={{ ...mono, fontSize: '10px', color: 'rgba(212,168,67,0.8)', letterSpacing: '0.12em' }}>YOUR FOUNDATION PROGRESS</span>
-            <span style={{ ...mono, fontSize: '10px', color: '#D4A843' }}>{completed.length} of {TOPICS.length} topics completed</span>
+            <span style={{ ...mono, fontSize: '10px', color: '#E8C547', letterSpacing: '0.12em' }}>YOUR FOUNDATION PROGRESS</span>
+            <span style={{ ...mono, fontSize: '10px', color: '#E8C547' }}>{completed.length} of {TOPICS.length} topics completed</span>
           </div>
           <div className="progress-bar">
             <div className="progress-fill" style={{ width: `${pct}%` }} />
@@ -366,7 +366,7 @@ export default function FoundationsPage() {
       {/* Roadmap Steps */}
       <section style={{ padding: '48px 24px', background: '#080808', borderBottom: '1px solid rgba(212,168,67,0.22)' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-          <div style={{ ...mono, fontSize: '10px', color: 'rgba(212,168,67,0.75)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '8px' }}>// Learning Roadmap</div>
+          <div style={{ ...mono, fontSize: '10px', color: 'rgba(232,197,71,0.95)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '8px' }}>// Learning Roadmap</div>
           <h2 className="font-display" style={{ fontSize: '42px', color: 'white', marginBottom: '32px' }}>YOUR PATH TO MASTERY</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
             {STEPS.map((step, i) => {
@@ -376,7 +376,7 @@ export default function FoundationsPage() {
               return (
                 <button key={step.id} onClick={() => setActiveStep(isActive ? 'All' : String(step.id))}
                   className="step-btn"
-                  style={{ background: isActive ? `${step.color}10` : '#0D0D0D', border: `1px solid ${isActive ? step.color + '40' : 'rgba(255,255,255,0.15)'}`, borderRadius: '14px', padding: '20px', textAlign: 'left' }}>
+                  style={{ background: isActive ? `${step.color}10` : '#111111', border: `1px solid ${isActive ? step.color + '40' : 'rgba(255,255,255,0.15)'}`, borderRadius: '14px', padding: '20px', textAlign: 'left' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
                     <span style={{ fontSize: '24px' }}>{step.icon}</span>
                     <span style={{ ...mono, fontSize: '10px', color: step.color, letterSpacing: '0.1em' }}>STEP {step.id}</span>
@@ -401,10 +401,10 @@ export default function FoundationsPage() {
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px', flexWrap: 'wrap', gap: '12px' }}>
             <div>
-              <div style={{ ...mono, fontSize: '10px', color: 'rgba(212,168,67,0.75)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '4px' }}>// Topics</div>
+              <div style={{ ...mono, fontSize: '10px', color: 'rgba(232,197,71,0.95)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '4px' }}>// Topics</div>
               <h2 className="font-display" style={{ fontSize: '36px', color: 'white' }}>{activeStep === 'All' ? 'ALL TOPICS' : `STEP ${activeStep}: ${STEPS[parseInt(activeStep)-1]?.name.toUpperCase()}`}</h2>
             </div>
-            <button onClick={() => setActiveStep('All')} style={{ ...mono, fontSize: '11px', color: 'rgba(212,168,67,0.8)', background: 'transparent', border: '1px solid rgba(212,168,67,0.75)', borderRadius: '8px', padding: '6px 14px', cursor: 'pointer' }}>
+            <button onClick={() => setActiveStep('All')} style={{ ...mono, fontSize: '11px', color: '#E8C547', background: 'transparent', border: '1px solid rgba(232,197,71,0.95)', borderRadius: '8px', padding: '6px 14px', cursor: 'pointer' }}>
               Show All →
             </button>
           </div>
@@ -417,7 +417,7 @@ export default function FoundationsPage() {
 
               return (
                 <div key={topic.id} className="topic-card"
-                  style={{ background: isDone ? 'rgba(52,211,153,0.03)' : '#0D0D0D', border: `1px solid ${isDone ? 'rgba(52,211,153,0.2)' : `${topic.color}20`}`, borderRadius: '16px', overflow: 'hidden' }}>
+                  style={{ background: isDone ? 'rgba(52,211,153,0.03)' : '#111111', border: `1px solid ${isDone ? 'rgba(52,211,153,0.2)' : `${topic.color}20`}`, borderRadius: '16px', overflow: 'hidden' }}>
 
                   {/* Header */}
                   <div style={{ padding: '18px 22px', display: 'flex', alignItems: 'center', gap: '16px' }}
@@ -430,14 +430,14 @@ export default function FoundationsPage() {
                         <span style={{ fontSize: '15px', fontWeight: 600, color: 'white' }}>{topic.title}</span>
                         <span style={{ ...mono, fontSize: '9px', color: step?.color, background: `${step?.color}15`, padding: '2px 7px', borderRadius: '4px' }}>Step {topic.step}</span>
                       </div>
-                      <div style={{ ...mono, fontSize: '10px', color: '#9CA3AF' }}>{step?.name}</div>
+                      <div style={{ ...mono, fontSize: '10px', color: '#D1D5DB' }}>{step?.name}</div>
                     </div>
                     <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexShrink: 0 }}>
                       <button onClick={(e) => { e.stopPropagation(); toggleCompleted(topic.id); }}
                         style={{ background: isDone ? 'rgba(52,211,153,0.1)' : 'rgba(255,255,255,0.04)', border: `1px solid ${isDone ? 'rgba(52,211,153,0.3)' : 'rgba(255,255,255,0.18)'}`, borderRadius: '8px', padding: '6px 12px', ...mono, fontSize: '10px', color: isDone ? '#34D399' : '#808080', cursor: 'pointer' }}>
                         {isDone ? '✓ DONE' : 'MARK DONE'}
                       </button>
-                      <span style={{ color: '#D4A843', fontSize: '18px' }}>{isOpen ? '−' : '+'}</span>
+                      <span style={{ color: '#E8C547', fontSize: '18px' }}>{isOpen ? '−' : '+'}</span>
                     </div>
                   </div>
 
@@ -447,7 +447,7 @@ export default function FoundationsPage() {
                       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px', marginBottom: '16px' }}>
                         {/* Explanation */}
                         <div>
-                          <div style={{ ...mono, fontSize: '10px', color: 'rgba(212,168,67,0.8)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '8px' }}>What it means</div>
+                          <div style={{ ...mono, fontSize: '10px', color: '#E8C547', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '8px' }}>What it means</div>
                           <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, fontWeight: 300 }}>{topic.explanation}</p>
                         </div>
                         {/* Example */}
@@ -457,10 +457,10 @@ export default function FoundationsPage() {
                         </div>
                       </div>
                       {/* Remember */}
-                      <div style={{ background: 'rgba(212,168,67,0.06)', border: '1px solid rgba(212,168,67,0.8)', borderRadius: '10px', padding: '14px 16px', display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                      <div style={{ background: 'rgba(212,168,67,0.06)', border: '1px solid #E8C547', borderRadius: '10px', padding: '14px 16px', display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
                         <span style={{ fontSize: '16px', flexShrink: 0 }}>💡</span>
                         <div>
-                          <span style={{ ...mono, fontSize: '10px', color: '#D4A843', letterSpacing: '0.1em' }}>REMEMBER THIS: </span>
+                          <span style={{ ...mono, fontSize: '10px', color: '#E8C547', letterSpacing: '0.1em' }}>REMEMBER THIS: </span>
                           <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.75)' }}>{topic.remember}</span>
                         </div>
                       </div>
@@ -476,7 +476,7 @@ export default function FoundationsPage() {
       {/* Checkpoint Quiz */}
       <section style={{ padding: '48px 24px', background: '#0A0A0A', borderTop: '1px solid rgba(212,168,67,0.22)' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-          <div style={{ ...mono, fontSize: '10px', color: 'rgba(212,168,67,0.75)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '8px' }}>// Checkpoint</div>
+          <div style={{ ...mono, fontSize: '10px', color: 'rgba(232,197,71,0.95)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '8px' }}>// Checkpoint</div>
           <h2 className="font-display" style={{ fontSize: '42px', color: 'white', marginBottom: '24px' }}>FOUNDATION CHECKLIST</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '12px' }}>
             {[
@@ -491,8 +491,8 @@ export default function FoundationsPage() {
               "I understand risk-to-reward ratio and can calculate it",
               "I commit to demo trading for at least 3 months",
             ].map((item, i) => (
-              <div key={i} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', padding: '14px 16px', background: '#0D0D0D', border: '1px solid rgba(212,168,67,0.22)', borderRadius: '10px' }}>
-                <div style={{ width: '20px', height: '20px', borderRadius: '50%', border: '1.5px solid rgba(212,168,67,0.8)', flexShrink: 0, marginTop: '1px' }} />
+              <div key={i} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', padding: '14px 16px', background: '#111111', border: '1px solid rgba(212,168,67,0.22)', borderRadius: '10px' }}>
+                <div style={{ width: '20px', height: '20px', borderRadius: '50%', border: '1.5px solid #E8C547', flexShrink: 0, marginTop: '1px' }} />
                 <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.65)', lineHeight: 1.5 }}>{item}</span>
               </div>
             ))}
@@ -501,9 +501,9 @@ export default function FoundationsPage() {
       </section>
 
       {/* Next Steps CTA */}
-      <section style={{ padding: '64px 24px', borderTop: '1px solid rgba(212,168,67,0.75)' }}>
+      <section style={{ padding: '64px 24px', borderTop: '1px solid rgba(232,197,71,0.95)' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', textAlign: 'center' }}>
-          <div style={{ ...mono, fontSize: '10px', color: 'rgba(212,168,67,0.75)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '12px' }}>// What's Next</div>
+          <div style={{ ...mono, fontSize: '10px', color: 'rgba(232,197,71,0.95)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '12px' }}>// What's Next</div>
           <h2 className="font-display" style={{ fontSize: '56px', color: 'white', marginBottom: '16px' }}>READY FOR THE REAL THING?</h2>
           <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.85)', maxWidth: '500px', margin: '0 auto 40px', lineHeight: 1.7, fontWeight: 300 }}>
             You've built the foundation. Now step into the full ICT curriculum and learn how institutions actually move markets.
@@ -512,7 +512,7 @@ export default function FoundationsPage() {
             <Link href="/mentorship" className="btn-gold" style={{ padding: '16px 32px', borderRadius: '12px', ...mono, fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>
               ICT 2022 Mentorship →
             </Link>
-            <Link href="/courses" style={{ padding: '16px 32px', borderRadius: '12px', ...mono, fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase', border: '1px solid rgba(212,168,67,0.8)', color: 'rgba(255,255,255,0.6)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>
+            <Link href="/courses" style={{ padding: '16px 32px', borderRadius: '12px', ...mono, fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase', border: '1px solid #E8C547', color: 'rgba(255,255,255,0.6)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>
               View All Modules
             </Link>
             <Link href="/glossary" style={{ padding: '16px 32px', borderRadius: '12px', ...mono, fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase', border: '1px solid rgba(255,255,255,0.18)', color: 'rgba(255,255,255,0.7)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>

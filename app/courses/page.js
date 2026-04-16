@@ -197,7 +197,7 @@ const FILTERS = ['All', 'Beginner', 'Intermediate', 'Advanced', 'ICT', 'ICT & SM
 
 const LEVEL_COLORS = {
   Beginner: { text: '#34D399', bg: 'rgba(52,211,153,0.08)', border: 'rgba(52,211,153,0.2)' },
-  Intermediate: { text: '#D4A843', bg: 'rgba(212,168,67,0.22)', border: 'rgba(212,168,67,0.8)' },
+  Intermediate: { text: '#E8C547', bg: 'rgba(212,168,67,0.22)', border: '#E8C547' },
   Advanced: { text: '#F87171', bg: 'rgba(248,113,113,0.08)', border: 'rgba(248,113,113,0.2)' },
   SMC: { text: '#FB923C', bg: 'rgba(251,146,60,0.08)', border: 'rgba(251,146,60,0.2)' },
 };
@@ -250,11 +250,11 @@ function ModuleCard({ mod, index }) {
             {/* IF monogram */}
             <div style={{
               width: '26px', height: '26px', borderRadius: '7px',
-              background: 'rgba(212,168,67,0.75)', border: '1px solid rgba(212,168,67,0.75)',
+              background: 'rgba(232,197,71,0.95)', border: '1px solid rgba(232,197,71,0.95)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontFamily: 'Bebas Neue, sans-serif', fontSize: '11px', color: '#D4A843', letterSpacing: '0.05em',
+              fontFamily: 'Bebas Neue, sans-serif', fontSize: '11px', color: '#E8C547', letterSpacing: '0.05em',
             }}>IF</div>
-            <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', letterSpacing: '0.2em', color: 'rgba(212,168,67,0.75)', textTransform: 'uppercase' }}>
+            <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', letterSpacing: '0.2em', color: 'rgba(232,197,71,0.95)', textTransform: 'uppercase' }}>
               Module {mod.module}
             </span>
           </div>
@@ -275,7 +275,7 @@ function ModuleCard({ mod, index }) {
         }}>{mod.title}</h3>
 
         {/* Thin gold divider line */}
-        <div style={{ height: '1px', background: 'linear-gradient(90deg, rgba(212,168,67,0.8), rgba(212,168,67,0.06) 60%, transparent)', borderRadius: '1px' }} />
+        <div style={{ height: '1px', background: 'linear-gradient(90deg, #E8C547, rgba(212,168,67,0.06) 60%, transparent)', borderRadius: '1px' }} />
       </div>
 
       {/* ── IMAGE PREVIEW — untouched, clean display ── */}
@@ -318,7 +318,7 @@ function ModuleCard({ mod, index }) {
             width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
             padding: '9px 13px', borderRadius: '9px',
             background: expanded ? 'rgba(212,168,67,0.05)' : 'transparent',
-            border: '1px solid rgba(212,168,67,0.75)',
+            border: '1px solid rgba(232,197,71,0.95)',
             color: 'rgba(212,168,67,0.85)',
             fontFamily: 'DM Mono, monospace', fontSize: '9px', letterSpacing: '0.15em',
             cursor: 'pointer', textTransform: 'uppercase',
@@ -335,7 +335,7 @@ function ModuleCard({ mod, index }) {
           <div style={{ paddingTop: '14px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
             {mod.topics.map((topic, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: '#D4A843', opacity: 0.4, flexShrink: 0 }} />
+                <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: '#E8C547', opacity: 0.4, flexShrink: 0 }} />
                 <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.75)', fontWeight: 300 }}>{topic}</span>
               </div>
             ))}
@@ -348,8 +348,8 @@ function ModuleCard({ mod, index }) {
         <Link href={`/lesson/${mod.id}`}>
           <div className="start-btn" style={{
             width: '100%', padding: '11px', borderRadius: '10px',
-            border: '1px solid rgba(212,168,67,0.8)',
-            color: '#D4A843', background: 'transparent',
+            border: '1px solid #E8C547',
+            color: '#E8C547', background: 'transparent',
             fontFamily: 'DM Mono, monospace', fontSize: '10px',
             letterSpacing: '0.15em', textTransform: 'uppercase',
             textAlign: 'center', cursor: 'pointer',
@@ -403,7 +403,7 @@ export default function CoursesPage() {
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap');
 
         :root {
-          --gold: #D4A843;
+          --gold: #E8C547;
           --gold-dim: #8A6B28;
           --bg2: #0F0F0F;
           --border: rgba(212,168,67,0.22);
@@ -445,7 +445,7 @@ export default function CoursesPage() {
         }
         .module-card:hover .start-btn {
           background: rgba(212,168,67,0.07) !important;
-          border-color: rgba(212,168,67,0.75) !important;
+          border-color: rgba(232,197,71,0.95) !important;
         }
 
         .filter-btn {
@@ -453,20 +453,20 @@ export default function CoursesPage() {
           font-family: 'DM Mono', monospace;
         }
         .filter-btn.active {
-          background: linear-gradient(135deg, #D4A843, #F0C96A);
+          background: linear-gradient(135deg, #E8C547, #F0C96A);
           color: #080808;
           border-color: transparent;
         }
 
         .gold-gradient-text {
-          background: linear-gradient(135deg, #8A6B28 0%, #D4A843 40%, #F0C96A 60%, #D4A843 80%, #8A6B28 100%);
+          background: linear-gradient(135deg, #8A6B28 0%, #E8C547 40%, #F0C96A 60%, #E8C547 80%, #8A6B28 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
         }
 
         .track-header {
-          border-left: 2px solid rgba(212,168,67,0.8);
+          border-left: 2px solid #E8C547;
           padding-left: 16px;
         }
       `}</style>
@@ -478,15 +478,15 @@ export default function CoursesPage() {
       <section className="relative z-10 grid-bg px-6 py-20 text-center border-b" style={{ borderColor: 'var(--border)' }}>
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 800px 400px at 50% 100%, rgba(212,168,67,0.05) 0%, transparent 70%)' }} />
         <div className="relative max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border mb-6 font-mono-c text-xs tracking-widest" style={{ borderColor: 'var(--border)', background: 'rgba(212,168,67,0.04)', color: '#D4A843' }}>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#D4A843] animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border mb-6 font-mono-c text-xs tracking-widest" style={{ borderColor: 'var(--border)', background: 'rgba(212,168,67,0.04)', color: '#E8C547' }}>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#E8C547] animate-pulse" />
             {stats.total} MODULES · {stats.lessons}+ LESSONS
           </div>
           <h1 className="font-display leading-none mb-4" style={{ fontSize: 'clamp(48px, 9vw, 100px)' }}>
             <span className="text-white">THE COMPLETE </span>
             <span className="gold-gradient-text">ICT CURRICULUM</span>
           </h1>
-          <p className="text-gray-300 text-lg max-w-xl mx-auto" style={{ fontWeight: 300 }}>
+          <p className="text-gray-200 text-lg max-w-xl mx-auto" style={{ fontWeight: 300 }}>
             Every concept. Every model. From basic market structure to the 2026 Mentorship Models. Built from ICT's YouTube channel — updated through 2026 Mentorship.
           </p>
         </div>
@@ -497,7 +497,7 @@ export default function CoursesPage() {
         <div className="max-w-5xl mx-auto px-6 py-8 grid grid-cols-2 md:grid-cols-4 gap-6">
           {[
             { label: 'Beginner Modules', value: stats.beginner, color: '#34D399' },
-            { label: 'Intermediate Modules', value: stats.intermediate, color: '#D4A843' },
+            { label: 'Intermediate Modules', value: stats.intermediate, color: '#E8C547' },
             { label: 'Advanced Modules', value: stats.advanced, color: '#F87171' },
             { label: 'Total Lessons', value: `${stats.lessons}+`, color: '#818CF8' },
           ].map((s, i) => (
@@ -511,31 +511,31 @@ export default function CoursesPage() {
 
       {/* Foundations Banner */}
       <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '32px 24px 0' }}>
-        <div style={{ background: 'rgba(212,168,67,0.06)', border: '1px solid rgba(212,168,67,0.8)', borderRadius: '16px', padding: '20px 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
+        <div style={{ background: 'rgba(212,168,67,0.06)', border: '1px solid #E8C547', borderRadius: '16px', padding: '20px 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
           <div>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', letterSpacing: '0.2em', color: '#D4A843', marginBottom: '6px' }}>// NEW TO TRADING?</div>
+            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', letterSpacing: '0.2em', color: '#E8C547', marginBottom: '6px' }}>// NEW TO TRADING?</div>
             <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '15px', color: 'white', fontWeight: 600 }}>Start with Trading Foundations before ICT concepts.</div>
             <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '13px', color: 'rgba(255,255,255,0.85)', marginTop: '4px' }}>Learn what trading is, how markets work, and risk management basics first.</div>
           </div>
-          <a href="/foundations" style={{ background: 'linear-gradient(135deg, #D4A843, #F0C96A)', color: '#080808', borderRadius: '8px', padding: '10px 20px', fontFamily: "'DM Mono', monospace", fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none', whiteSpace: 'nowrap' }}>Start With Foundations →</a>
+          <a href="/foundations" style={{ background: 'linear-gradient(135deg, #E8C547, #F0C96A)', color: '#080808', borderRadius: '8px', padding: '10px 20px', fontFamily: "'DM Mono', monospace", fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none', whiteSpace: 'nowrap' }}>Start With Foundations →</a>
         </div>
       </div>
 
       {/* ── FILTERS ── */}
       <section className="sticky top-[72px] z-40 border-b px-6 py-4" style={{ borderColor: 'var(--border)', background: 'rgba(8,8,8,0.97)', backdropFilter: 'blur(20px)' }}>
         <div className="max-w-6xl mx-auto flex items-center gap-2 overflow-x-auto pb-1 scrollbar-hide">
-          <span className="font-mono-c text-xs mr-2 flex-shrink-0" style={{ color: 'rgba(212,168,67,0.75)' }}>FILTER:</span>
+          <span className="font-mono-c text-xs mr-2 flex-shrink-0" style={{ color: 'rgba(232,197,71,0.95)' }}>FILTER:</span>
           {FILTERS.map(f => (
             <button
               key={f}
               onClick={() => setActiveFilter(f)}
               className={`filter-btn flex-shrink-0 px-4 py-2 rounded-lg text-xs border tracking-wider uppercase ${activeFilter === f ? 'active font-bold' : ''}`}
-              style={activeFilter !== f ? { borderColor: 'rgba(212,168,67,0.75)', color: '#A0A0A0', background: 'transparent' } : {}}
+              style={activeFilter !== f ? { borderColor: 'rgba(232,197,71,0.95)', color: '#A0A0A0', background: 'transparent' } : {}}
             >
               {f}
             </button>
           ))}
-          <span className="ml-auto font-mono-c text-xs flex-shrink-0" style={{ color: 'rgba(212,168,67,0.75)' }}>
+          <span className="ml-auto font-mono-c text-xs flex-shrink-0" style={{ color: 'rgba(232,197,71,0.95)' }}>
             {filtered.length} modules
           </span>
         </div>
@@ -550,7 +550,7 @@ export default function CoursesPage() {
             <div className="mb-12">
               <div className="track-header mb-6">
                 <div className="font-mono-c text-xs tracking-widest uppercase mb-1" style={{ color: '#34D399' }}>Beginner Track</div>
-                <p className="text-gray-300 text-xs" style={{ fontWeight: 300 }}>Start here. No prior knowledge required.</p>
+                <p className="text-gray-200 text-xs" style={{ fontWeight: 300 }}>Start here. No prior knowledge required.</p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {filtered.filter(m => m.level === 'Beginner').map((mod, i) => <ModuleCard key={mod.id} mod={mod} index={i} />)}
@@ -561,9 +561,9 @@ export default function CoursesPage() {
           {/* Intermediate Track */}
           {filtered.some(m => m.level === 'Intermediate') && (activeFilter === 'All' || activeFilter === 'Intermediate') && (
             <div className="mb-12">
-              <div className="track-header mb-6" style={{ borderLeftColor: 'rgba(212,168,67,0.75)' }}>
-                <div className="font-mono-c text-xs tracking-widest uppercase mb-1" style={{ color: '#D4A843' }}>Intermediate Track</div>
-                <p className="text-gray-300 text-xs" style={{ fontWeight: 300 }}>Entry models, sessions, and PD arrays in depth.</p>
+              <div className="track-header mb-6" style={{ borderLeftColor: 'rgba(232,197,71,0.95)' }}>
+                <div className="font-mono-c text-xs tracking-widest uppercase mb-1" style={{ color: '#E8C547' }}>Intermediate Track</div>
+                <p className="text-gray-200 text-xs" style={{ fontWeight: 300 }}>Entry models, sessions, and PD arrays in depth.</p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {filtered.filter(m => m.level === 'Intermediate').map((mod, i) => <ModuleCard key={mod.id} mod={mod} index={i} />)}
@@ -588,7 +588,7 @@ export default function CoursesPage() {
             <div className="mb-12">
               <div className="track-header mb-6" style={{ borderLeftColor: 'rgba(248,113,113,0.5)' }}>
                 <div className="font-mono-c text-xs tracking-widest uppercase mb-1" style={{ color: '#F87171' }}>Advanced Track</div>
-                <p className="text-gray-300 text-xs" style={{ fontWeight: 300 }}>Market Maker Models, IPDA, SMT, and 2024 concepts.</p>
+                <p className="text-gray-200 text-xs" style={{ fontWeight: 300 }}>Market Maker Models, IPDA, SMT, and 2024 concepts.</p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {filtered.filter(m => m.level === 'Advanced').map((mod, i) => <ModuleCard key={mod.id} mod={mod} index={i} />)}
@@ -605,7 +605,7 @@ export default function CoursesPage() {
 
           {filtered.length === 0 && (
             <div className="text-center py-20">
-              <p className="font-mono-c text-xs" style={{ color: 'rgba(212,168,67,0.75)' }}>No modules match this filter.</p>
+              <p className="font-mono-c text-xs" style={{ color: 'rgba(232,197,71,0.95)' }}>No modules match this filter.</p>
             </div>
           )}
         </div>
@@ -614,11 +614,11 @@ export default function CoursesPage() {
       {/* ── BOTTOM CTA ── */}
       <section className="relative z-10 px-6 py-16 border-t" style={{ borderColor: 'var(--border)', background: '#0A0A0A' }}>
         <div className="max-w-2xl mx-auto text-center">
-          <div className="font-mono-c text-xs tracking-widest uppercase mb-4" style={{ color: 'rgba(212,168,67,0.75)' }}>// Start From Zero</div>
+          <div className="font-mono-c text-xs tracking-widest uppercase mb-4" style={{ color: 'rgba(232,197,71,0.95)' }}>// Start From Zero</div>
           <h2 className="font-display text-5xl text-white mb-4">DON'T KNOW WHERE<br/>TO BEGIN?</h2>
-          <p className="text-gray-300 text-sm mb-8" style={{ fontWeight: 300 }}>New to trading? Start with Trading Foundations first, then come back here.</p>
+          <p className="text-gray-200 text-sm mb-8" style={{ fontWeight: 300 }}>New to trading? Start with Trading Foundations first, then come back here.</p>
           <Link href="/lesson/1">
-            <span className="inline-block px-8 py-4 rounded-xl font-mono-c text-sm tracking-widest uppercase font-bold transition-all hover:shadow-lg" style={{ background: 'linear-gradient(135deg, #D4A843, #F0C96A)', color: '#080808' }}>
+            <span className="inline-block px-8 py-4 rounded-xl font-mono-c text-sm tracking-widest uppercase font-bold transition-all hover:shadow-lg" style={{ background: 'linear-gradient(135deg, #E8C547, #F0C96A)', color: '#080808' }}>
               Start Module 1 →
             </span>
           </Link>

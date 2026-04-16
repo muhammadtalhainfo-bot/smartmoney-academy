@@ -21,7 +21,7 @@ export default function CookieBanner() {
     <div style={{
       position: 'fixed', bottom: '24px', left: '50%', transform: 'translateX(-50%)',
       zIndex: 1000, width: '90%', maxWidth: '600px',
-      background: '#0F0F0F', border: '1px solid rgba(212,168,67,0.8)',
+      background: '#0F0F0F', border: '1px solid #E8C547',
       borderRadius: '16px', padding: '16px 20px',
       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       gap: '16px', flexWrap: 'wrap',
@@ -29,11 +29,11 @@ export default function CookieBanner() {
     }}>
       <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.8)', margin: 0, flex: 1 }}>
         We use cookies to improve your experience. By continuing, you agree to our{' '}
-        <Link href="/cookies" style={{ color: '#D4A843', textDecoration: 'underline' }}>Cookie Policy</Link>.
+        <Link href="/cookies" style={{ color: '#E8C547', textDecoration: 'underline' }}>Cookie Policy</Link>.
       </p>
       <div style={{ display: 'flex', gap: '8px' }}>
         <button onClick={accept} style={{
-          background: 'linear-gradient(135deg, #D4A843, #F0C96A)',
+          background: 'linear-gradient(135deg, #E8C547, #F0C96A)',
           color: '#080808', border: 'none', borderRadius: '8px',
           padding: '8px 20px', fontFamily: 'DM Mono, monospace',
           fontSize: '11px', fontWeight: 700, cursor: 'pointer',
@@ -41,7 +41,7 @@ export default function CookieBanner() {
         }}>Accept</button>
         <button onClick={() => setShow(false)} style={{
           background: 'transparent', color: 'rgba(255,255,255,0.7)',
-          border: '1px solid rgba(255,255,255,0.2)', borderRadius: '8px',
+          border: '1px solid rgba(255,255,255,0.6)', borderRadius: '8px',
           padding: '8px 16px', fontFamily: 'DM Mono, monospace',
           fontSize: '11px', cursor: 'pointer'
         }}>Decline</button>

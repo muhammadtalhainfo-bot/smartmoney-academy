@@ -30,14 +30,14 @@ export default function BlogPage() {
     <div style={{ minHeight: '100vh', background: '#080808', color: 'white', fontFamily: "'DM Sans', sans-serif" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
-        .shine { background: linear-gradient(135deg, #8A6B28 0%, #D4A843 40%, #F0C96A 60%, #D4A843 80%, #8A6B28 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .shine { background: linear-gradient(135deg, #8A6B28 0%, #E8C547 40%, #F0C96A 60%, #E8C547 80%, #8A6B28 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .card { transition: all 0.2s; }
-        .card:hover { border-color: rgba(212,168,67,0.75) !important; transform: translateY(-2px); }
+        .card:hover { border-color: rgba(232,197,71,0.95) !important; transform: translateY(-2px); }
       `}</style>
 
       <Navbar active="/blog" />
 
-      <section style={{ padding: '64px 24px 40px', borderBottom: '1px solid rgba(212,168,67,0.75)' }}>
+      <section style={{ padding: '64px 24px 40px', borderBottom: '1px solid rgba(232,197,71,0.95)' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', textAlign: 'center' }}>
           <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(52px, 8vw, 80px)', lineHeight: 1, marginBottom: '12px' }}>
             <span className="shine">NEWS & INSIGHTS</span>
@@ -52,7 +52,7 @@ export default function BlogPage() {
 
         {active === 'All' && featured && (
           <Link href={'/blog/' + featured.slug} style={{ textDecoration: 'none', display: 'block', marginBottom: '48px' }}>
-            <div className="card" style={{ background: '#0C0C0C', border: '1px solid rgba(212,168,67,0.75)', borderRadius: '20px', overflow: 'hidden' }}>
+            <div className="card" style={{ background: '#0C0C0C', border: '1px solid rgba(232,197,71,0.95)', borderRadius: '20px', overflow: 'hidden' }}>
               <div style={{ padding: '22px 32px 20px', background: 'linear-gradient(135deg, #111008 0%, #0F0F0E 60%, #0C0C0C 100%)', borderBottom: '1px solid rgba(212,168,67,0.22)' }}>
                 <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '20px' }}>
                   <div style={{ flex: 1 }}>
@@ -60,8 +60,8 @@ export default function BlogPage() {
                     <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.42)', lineHeight: 1.65, fontWeight: 300 }}>{featured.description}</p>
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '12px', flexShrink: 0 }}>
-                    <span style={{ padding: '4px 12px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.8)', fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#D4A843' }}>FEATURED</span>
-                    <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#D4A843' }}>Read article</span>
+                    <span style={{ padding: '4px 12px', borderRadius: '100px', border: '1px solid #E8C547', fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#E8C547' }}>FEATURED</span>
+                    <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#E8C547' }}>Read article</span>
                   </div>
                 </div>
               </div>
@@ -80,9 +80,9 @@ export default function BlogPage() {
             {CATEGORIES.map(cat => (
               <button key={cat} onClick={() => setActive(cat)} style={{
                 padding: '6px 14px', borderRadius: '100px',
-                border: '1px solid ' + (active === cat ? '#D4A843' : 'rgba(255,255,255,0.2)'),
-                background: active === cat ? 'rgba(212,168,67,0.75)' : 'transparent',
-                color: active === cat ? '#D4A843' : 'rgba(255,255,255,0.85)',
+                border: '1px solid ' + (active === cat ? '#E8C547' : 'rgba(255,255,255,0.6)'),
+                background: active === cat ? 'rgba(232,197,71,0.95)' : 'transparent',
+                color: active === cat ? '#E8C547' : 'rgba(255,255,255,0.85)',
                 fontFamily: 'DM Mono, monospace', fontSize: '10px', cursor: 'pointer'
               }}>
                 {cat}
@@ -94,11 +94,11 @@ export default function BlogPage() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '16px' }}>
           {rest.map(post => (
             <Link key={post.slug} href={'/blog/' + post.slug} style={{ textDecoration: 'none' }}>
-              <div className="card" style={{ background: '#0C0C0C', border: '1px solid rgba(212,168,67,0.75)', borderRadius: '18px', overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column' }}>
+              <div className="card" style={{ background: '#0C0C0C', border: '1px solid rgba(232,197,71,0.95)', borderRadius: '18px', overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ padding: '16px 20px 14px', background: 'linear-gradient(135deg, #111008 0%, #0E0E0E 100%)', borderBottom: '1px solid rgba(212,168,67,0.07)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
                     <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.28)' }}>ICT Flow Team</span>
-                    <span style={{ padding: '2px 9px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.22)', fontFamily: 'DM Mono, monospace', fontSize: '8px', color: '#D4A843' }}>{post.category}</span>
+                    <span style={{ padding: '2px 9px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.22)', fontFamily: 'DM Mono, monospace', fontSize: '8px', color: '#E8C547' }}>{post.category}</span>
                   </div>
                   <h3 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '20px', color: 'white', lineHeight: 1.1, marginBottom: '10px' }}>{post.title}</h3>
                 </div>
@@ -109,7 +109,7 @@ export default function BlogPage() {
                   <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.38)', lineHeight: 1.65, fontWeight: 300, marginBottom: '14px', flex: 1 }}>{post.description}</p>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.22)' }}>{post.readTime}</span>
-                    <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.8)' }}>Read</span>
+                    <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#E8C547' }}>Read</span>
                   </div>
                 </div>
               </div>

@@ -50,7 +50,7 @@ const TESTIMONIALS = [
     name: 'Fatima A.',
     handle: '@fatimatrading',
     avatar: 'F',
-    color: '#D4A843',
+    color: '#E8C547',
     text: 'The ICT glossary alone is worth bookmarking. 75+ terms with clear definitions. I used to google every term during ICT videos — now I just check the glossary. Game changer.',
     tag: 'ICT Glossary',
     stars: 5,
@@ -59,18 +59,18 @@ const TESTIMONIALS = [
 
 export default function Testimonials() {
   return (
-    <section style={{ padding: '80px 24px', borderTop: '1px solid rgba(212,168,67,0.75)', position: 'relative', overflow: 'hidden' }}>
+    <section style={{ padding: '80px 24px', borderTop: '1px solid rgba(232,197,71,0.95)', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 800px 400px at 50% 50%, rgba(212,168,67,0.03) 0%, transparent 70%)', pointerEvents: 'none' }} />
       <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative' }}>
 
         {/* HEADER */}
         <div style={{ textAlign: 'center', marginBottom: '56px' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.75)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.15em', color: '#D4A843', marginBottom: '20px' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', borderRadius: '100px', border: '1px solid rgba(232,197,71,0.95)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.15em', color: '#E8C547', marginBottom: '20px' }}>
             ★★★★★ STUDENT RESULTS
           </div>
           <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 'clamp(40px, 7vw, 72px)', color: 'white', lineHeight: 1, marginBottom: '12px' }}>
             TRADERS ARE
-            <span style={{ background: 'linear-gradient(135deg, #8A6B28 0%, #D4A843 40%, #F0C96A 60%, #D4A843 80%, #8A6B28 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}> WINNING</span>
+            <span style={{ background: 'linear-gradient(135deg, #8A6B28 0%, #E8C547 40%, #F0C96A 60%, #E8C547 80%, #8A6B28 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}> WINNING</span>
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '15px', fontWeight: 300, maxWidth: '400px', margin: '0 auto' }}>
             Real feedback from students who applied what they learned.
@@ -80,12 +80,12 @@ export default function Testimonials() {
         {/* GRID */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '16px' }}>
           {TESTIMONIALS.map((t, i) => (
-            <div key={i} style={{ background: '#0D0D0D', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '16px', padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px', transition: 'border-color 0.2s' }}
-              onMouseOver={e => e.currentTarget.style.borderColor = 'rgba(212,168,67,0.8)'}
+            <div key={i} style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '16px', padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px', transition: 'border-color 0.2s' }}
+              onMouseOver={e => e.currentTarget.style.borderColor = '#E8C547'}
               onMouseOut={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'}>
 
               {/* STARS */}
-              <div style={{ color: '#D4A843', fontSize: '13px', letterSpacing: '2px' }}>{'★'.repeat(t.stars)}</div>
+              <div style={{ color: '#E8C547', fontSize: '13px', letterSpacing: '2px' }}>{'★'.repeat(t.stars)}</div>
 
               {/* TEXT */}
               <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px', lineHeight: 1.7, fontWeight: 300, flex: 1 }}>

@@ -10,7 +10,7 @@ const RANKS = [
   { name: 'Smart Money', min: 100, color: '#10B981', icon: '💡' },
   { name: 'Institutional', min: 500, color: '#3B82F6', icon: '🏦' },
   { name: 'Liquidity Hunter', min: 1000, color: '#8B5CF6', icon: '🎯' },
-  { name: 'ICT Master', min: 2500, color: '#D4A843', icon: '👑' },
+  { name: 'ICT Master', min: 2500, color: '#E8C547', icon: '👑' },
 ];
 
 function getRank(xp) {
@@ -53,17 +53,17 @@ export default function LeaderboardPage() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
         .font-display { font-family: 'Bebas Neue', sans-serif; }
-        .shine { background: linear-gradient(135deg, #8A6B28 0%, #D4A843 40%, #F0C96A 60%, #D4A843 80%, #8A6B28 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .shine { background: linear-gradient(135deg, #8A6B28 0%, #E8C547 40%, #F0C96A 60%, #E8C547 80%, #8A6B28 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .row-hover:hover { background: rgba(212,168,67,0.04) !important; }
       `}</style>
 
       <Navbar active="/leaderboard" />
 
       {/* HERO */}
-      <section style={{ padding: '60px 24px 40px', textAlign: 'center', borderBottom: '1px solid rgba(212,168,67,0.75)', position: 'relative' }}>
+      <section style={{ padding: '60px 24px 40px', textAlign: 'center', borderBottom: '1px solid rgba(232,197,71,0.95)', position: 'relative' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 600px 300px at 50% 100%, rgba(212,168,67,0.05) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '600px', margin: '0 auto', position: 'relative' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.75)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.15em', color: '#D4A843', marginBottom: '20px' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', borderRadius: '100px', border: '1px solid rgba(232,197,71,0.95)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.15em', color: '#E8C547', marginBottom: '20px' }}>
             <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#34D399', display: 'inline-block', animation: 'pulse 2s infinite' }} />
             LIVE LEADERBOARD
           </div>
@@ -91,22 +91,22 @@ export default function LeaderboardPage() {
 
         {/* USER POSITION */}
         {currentUser && userRank && (
-          <div style={{ background: 'rgba(212,168,67,0.06)', border: '1px solid rgba(212,168,67,0.8)', borderRadius: '12px', padding: '16px 20px', marginBottom: '24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#D4A843', letterSpacing: '0.1em' }}>YOUR POSITION</div>
-            <div className="font-display" style={{ fontSize: '32px', color: '#D4A843' }}>#{userRank}</div>
+          <div style={{ background: 'rgba(212,168,67,0.06)', border: '1px solid #E8C547', borderRadius: '12px', padding: '16px 20px', marginBottom: '24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#E8C547', letterSpacing: '0.1em' }}>YOUR POSITION</div>
+            <div className="font-display" style={{ fontSize: '32px', color: '#E8C547' }}>#{userRank}</div>
           </div>
         )}
 
         {!currentUser && (
           <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.18)', borderRadius: '12px', padding: '16px 20px', marginBottom: '24px', textAlign: 'center' }}>
             <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.7)' }}>
-              <Link href="/auth" style={{ color: '#D4A843', textDecoration: 'none' }}>Sign in</Link> to see your rank
+              <Link href="/auth" style={{ color: '#E8C547', textDecoration: 'none' }}>Sign in</Link> to see your rank
             </span>
           </div>
         )}
 
         {/* LEADERBOARD TABLE */}
-        <div style={{ background: '#0D0D0D', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '16px', overflow: 'hidden' }}>
+        <div style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '16px', overflow: 'hidden' }}>
           {/* Header */}
           <div style={{ display: 'grid', gridTemplateColumns: '60px 1fr 120px 80px', padding: '12px 20px', borderBottom: '1px solid rgba(255,255,255,0.15)', background: 'rgba(255,255,255,0.02)' }}>
             {['RANK', 'TRADER', 'XP', 'STREAK'].map(h => (
@@ -125,19 +125,19 @@ export default function LeaderboardPage() {
               const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : null;
               return (
                 <div key={p.id} className="row-hover" style={{ display: 'grid', gridTemplateColumns: '60px 1fr 120px 80px', padding: '14px 20px', borderBottom: '1px solid rgba(255,255,255,0.04)', background: isMe ? 'rgba(212,168,67,0.04)' : 'transparent', transition: 'background 0.2s' }}>
-                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '14px', color: i < 3 ? '#D4A843' : 'rgba(255,255,255,0.7)', fontWeight: 600 }}>
+                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '14px', color: i < 3 ? '#E8C547' : 'rgba(255,255,255,0.7)', fontWeight: 600 }}>
                     {medal || `#${i + 1}`}
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                     <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: `${rank.color}20`, border: `1px solid ${rank.color}40`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', flexShrink: 0 }}>{rank.icon}</div>
                     <div>
-                      <div style={{ fontSize: '13px', color: isMe ? '#D4A843' : 'rgba(255,255,255,0.85)', fontWeight: 500 }}>
-                        {p.username || 'Anonymous'} {isMe && <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#D4A843' }}>(YOU)</span>}
+                      <div style={{ fontSize: '13px', color: isMe ? '#E8C547' : 'rgba(255,255,255,0.85)', fontWeight: 500 }}>
+                        {p.username || 'Anonymous'} {isMe && <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#E8C547' }}>(YOU)</span>}
                       </div>
                       <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: rank.color, letterSpacing: '0.08em' }}>{rank.name}</div>
                     </div>
                   </div>
-                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '13px', color: '#D4A843', fontWeight: 600 }}>{(p.xp || 0).toLocaleString()} XP</div>
+                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '13px', color: '#E8C547', fontWeight: 600 }}>{(p.xp || 0).toLocaleString()} XP</div>
                   <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '12px', color: 'rgba(255,255,255,0.7)' }}>🔥 {p.streak || 0}</div>
                 </div>
               );
@@ -147,12 +147,12 @@ export default function LeaderboardPage() {
 
         {/* XP GUIDE */}
         <div style={{ marginTop: '40px', padding: '24px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '12px', marginBottom: '16px' }}>
-          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.8)', letterSpacing: '0.15em', marginBottom: '16px' }}>HOW TO EARN XP</div>
+          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#E8C547', letterSpacing: '0.15em', marginBottom: '16px' }}>HOW TO EARN XP</div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '12px' }}>
             {[['Complete a lesson', '+10 XP'], ['Pass a quiz', '+20 XP'], ['Daily challenge', '+20 XP'], ['Perfect score', '+50 XP'], ['7-day streak', '+100 XP']].map(([action, xp]) => (
               <div key={action} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.85)' }}>{action}</span>
-                <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '12px', color: '#D4A843' }}>{xp}</span>
+                <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '12px', color: '#E8C547' }}>{xp}</span>
               </div>
             ))}
           </div>

@@ -11,7 +11,7 @@ export default function Loading() {
         width: '48px',
         height: '48px',
         border: '3px solid rgba(212,168,67,0.2)',
-        borderTop: '3px solid #D4A843',
+        borderTop: '3px solid #E8C547',
         borderRadius: '50%',
         animation: 'spin 1s linear infinite'
       }} />

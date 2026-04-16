@@ -32,7 +32,7 @@ export default function NotFound() {
         This page could not be found.
       </p>
       <a href="/" style={{
-        background: 'linear-gradient(135deg, #D4A843, #F0C96A)',
+        background: 'linear-gradient(135deg, #E8C547, #F0C96A)',
         color: '#080808',
         padding: '12px 24px',
         borderRadius: '8px',

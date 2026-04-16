@@ -10,7 +10,7 @@ const STRATEGIES = [
     title: 'The ICT Silver Bullet',
     creator: 'Michael J. Huddleston (ICT)',
     avatar: 'ICT',
-    color: '#D4A843',
+    color: '#E8C547',
     tags: ['Forex', 'Indices'],
     description: 'A precision intraday strategy using three specific one-hour windows. Requires a liquidity sweep followed by a 1-minute FVG entry. Consistent 3:1+ risk-reward with tight stops.',
     stats: { winRate: '62%', rr: '3.2:1', trades: 'Daily', type: 'Intraday' },
@@ -144,9 +144,9 @@ export default function StrategiesPage() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
         .font-display { font-family: 'Bebas Neue', sans-serif; }
-        .shine { background: linear-gradient(135deg, #8A6B28 0%, #D4A843 40%, #F0C96A 60%, #D4A843 80%, #8A6B28 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .shine { background: linear-gradient(135deg, #8A6B28 0%, #E8C547 40%, #F0C96A 60%, #E8C547 80%, #8A6B28 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .strat-card { transition: all 0.2s; cursor: pointer; }
-        .strat-card:hover { border-color: rgba(212,168,67,0.8) !important; transform: translateY(-2px); }
+        .strat-card:hover { border-color: #E8C547 !important; transform: translateY(-2px); }
       `}</style>
 
       <Navbar active="/strategies" />
@@ -154,10 +154,10 @@ export default function StrategiesPage() {
       {!strategy ? (
         <>
           {/* HERO */}
-          <section style={{ padding: '64px 24px 40px', textAlign: 'center', borderBottom: '1px solid rgba(212,168,67,0.75)', position: 'relative' }}>
+          <section style={{ padding: '64px 24px 40px', textAlign: 'center', borderBottom: '1px solid rgba(232,197,71,0.95)', position: 'relative' }}>
             <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 600px 300px at 50% 100%, rgba(212,168,67,0.04) 0%, transparent 70%)', pointerEvents: 'none' }} />
             <div style={{ maxWidth: '600px', margin: '0 auto', position: 'relative' }}>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.75)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.15em', color: '#D4A843', marginBottom: '20px' }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', borderRadius: '100px', border: '1px solid rgba(232,197,71,0.95)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.15em', color: '#E8C547', marginBottom: '20px' }}>
                 ICT STRATEGY LIBRARY
               </div>
               <h1 className="font-display" style={{ fontSize: 'clamp(48px, 8vw, 80px)', lineHeight: 1, marginBottom: '12px' }}>
@@ -173,7 +173,7 @@ export default function StrategiesPage() {
           <section style={{ maxWidth: '1100px', margin: '0 auto', padding: '32px 24px' }}>
             <div style={{ display: 'flex', gap: '8px', marginBottom: '32px', flexWrap: 'wrap' }}>
               {ALL_TAGS.map(tag => (
-                <button key={tag} onClick={() => setActiveTag(tag)} style={{ padding: '8px 18px', borderRadius: '100px', border: `1px solid ${activeTag === tag ? '#D4A843' : 'rgba(255,255,255,0.2)'}`, background: activeTag === tag ? 'rgba(212,168,67,0.75)' : 'transparent', color: activeTag === tag ? '#D4A843' : 'rgba(255,255,255,0.85)', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.1em', cursor: 'pointer' }}>
+                <button key={tag} onClick={() => setActiveTag(tag)} style={{ padding: '8px 18px', borderRadius: '100px', border: `1px solid ${activeTag === tag ? '#E8C547' : 'rgba(255,255,255,0.6)'}`, background: activeTag === tag ? 'rgba(232,197,71,0.95)' : 'transparent', color: activeTag === tag ? '#E8C547' : 'rgba(255,255,255,0.85)', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.1em', cursor: 'pointer' }}>
                   {tag}
                 </button>
               ))}
@@ -181,7 +181,7 @@ export default function StrategiesPage() {
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '16px' }}>
               {filtered.map(s => (
-                <div key={s.slug} className="strat-card" onClick={() => setSelected(s.slug)} style={{ background: '#0D0D0D', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '16px', padding: '24px' }}>
+                <div key={s.slug} className="strat-card" onClick={() => setSelected(s.slug)} style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '16px', padding: '24px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
                     <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: `${s.color}20`, border: `1px solid ${s.color}40`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'DM Mono, monospace', fontSize: '9px', color: s.color, fontWeight: 600, flexShrink: 0 }}>{s.avatar}</div>
                     <div>
@@ -226,7 +226,7 @@ export default function StrategiesPage() {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px', marginBottom: '32px' }}>
             {[['Win Rate', strategy.stats.winRate], ['R:R Avg', strategy.stats.rr], ['Frequency', strategy.stats.trades], ['Type', strategy.stats.type]].map(([label, val]) => (
-              <div key={label} style={{ background: '#0D0D0D', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '10px', padding: '14px', textAlign: 'center' }}>
+              <div key={label} style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '10px', padding: '14px', textAlign: 'center' }}>
                 <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.6)', letterSpacing: '0.1em', marginBottom: '6px' }}>{label}</div>
                 <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '24px', color: strategy.color }}>{val}</div>
               </div>
@@ -253,7 +253,7 @@ export default function StrategiesPage() {
 
           <div style={{ marginTop: '40px', padding: '24px', background: 'rgba(212,168,67,0.04)', border: '1px solid rgba(212,168,67,0.22)', borderRadius: '12px', textAlign: 'center' }}>
             <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '14px', marginBottom: '16px', fontWeight: 300 }}>Practice this strategy with our daily challenges</p>
-            <Link href="/practice" style={{ display: 'inline-block', padding: '12px 28px', background: 'linear-gradient(135deg,#D4A843,#8A6B28)', borderRadius: '8px', color: 'black', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.1em', fontWeight: 600 }}>
+            <Link href="/practice" style={{ display: 'inline-block', padding: '12px 28px', background: 'linear-gradient(135deg,#E8C547,#8A6B28)', borderRadius: '8px', color: 'black', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.1em', fontWeight: 600 }}>
               START DAILY PRACTICE →
             </Link>
           </div>

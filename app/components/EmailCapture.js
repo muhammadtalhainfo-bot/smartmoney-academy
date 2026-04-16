@@ -37,18 +37,18 @@ export default function EmailCapture() {
   }
 
   return (
-    <section style={{ padding: '80px 24px', borderTop: '1px solid rgba(212,168,67,0.75)', borderBottom: '1px solid rgba(212,168,67,0.75)', background: 'rgba(212,168,67,0.02)', position: 'relative', overflow: 'hidden' }}>
+    <section style={{ padding: '80px 24px', borderTop: '1px solid rgba(232,197,71,0.95)', borderBottom: '1px solid rgba(232,197,71,0.95)', background: 'rgba(212,168,67,0.02)', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 600px 300px at 50% 50%, rgba(212,168,67,0.04) 0%, transparent 70%)', pointerEvents: 'none' }} />
       <div style={{ maxWidth: '560px', margin: '0 auto', textAlign: 'center', position: 'relative' }}>
 
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.8)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.15em', color: '#D4A843', marginBottom: '24px' }}>
-          <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#D4A843', display: 'inline-block', animation: 'pulse 2s infinite' }} />
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', borderRadius: '100px', border: '1px solid #E8C547', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.15em', color: '#E8C547', marginBottom: '24px' }}>
+          <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#E8C547', display: 'inline-block', animation: 'pulse 2s infinite' }} />
           FREE UPDATES · NO SPAM
         </div>
 
         <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 'clamp(36px, 7vw, 64px)', color: 'white', lineHeight: 1, marginBottom: '16px', letterSpacing: '0.02em' }}>
           STAY AHEAD OF<br />
-          <span style={{ background: 'linear-gradient(135deg, #8A6B28 0%, #D4A843 40%, #F0C96A 60%, #D4A843 80%, #8A6B28 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>THE MARKET</span>
+          <span style={{ background: 'linear-gradient(135deg, #8A6B28 0%, #E8C547 40%, #F0C96A 60%, #E8C547 80%, #8A6B28 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>THE MARKET</span>
         </h2>
 
         <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '15px', lineHeight: 1.7, marginBottom: '32px', fontWeight: 300 }}>
@@ -68,12 +68,12 @@ export default function EmailCapture() {
                 onChange={e => { setEmail(e.target.value); setStatus('idle'); setMsg(''); }}
                 onKeyDown={e => e.key === 'Enter' && handleSubmit()}
                 placeholder="your@email.com"
-                style={{ flex: 1, padding: '14px 18px', background: 'rgba(255,255,255,0.04)', border: `1px solid ${status === 'error' ? 'rgba(248,113,113,0.4)' : 'rgba(212,168,67,0.75)'}`, borderRadius: '10px', color: 'white', fontSize: '14px', fontFamily: 'DM Mono, monospace', outline: 'none', letterSpacing: '0.05em' }}
+                style={{ flex: 1, padding: '14px 18px', background: 'rgba(255,255,255,0.04)', border: `1px solid ${status === 'error' ? 'rgba(248,113,113,0.4)' : 'rgba(232,197,71,0.95)'}`, borderRadius: '10px', color: 'white', fontSize: '14px', fontFamily: 'DM Mono, monospace', outline: 'none', letterSpacing: '0.05em' }}
               />
               <button
                 onClick={handleSubmit}
                 disabled={status === 'loading'}
-                style={{ padding: '14px 24px', background: status === 'loading' ? 'rgba(212,168,67,0.8)' : 'linear-gradient(135deg,#D4A843,#8A6B28)', border: 'none', borderRadius: '10px', color: 'black', fontFamily: 'DM Mono, monospace', fontSize: '12px', fontWeight: 600, letterSpacing: '0.1em', cursor: status === 'loading' ? 'not-allowed' : 'pointer', whiteSpace: 'nowrap', transition: 'opacity 0.2s' }}
+                style={{ padding: '14px 24px', background: status === 'loading' ? '#E8C547' : 'linear-gradient(135deg,#E8C547,#8A6B28)', border: 'none', borderRadius: '10px', color: 'black', fontFamily: 'DM Mono, monospace', fontSize: '12px', fontWeight: 600, letterSpacing: '0.1em', cursor: status === 'loading' ? 'not-allowed' : 'pointer', whiteSpace: 'nowrap', transition: 'opacity 0.2s' }}
               >
                 {status === 'loading' ? '...' : 'NOTIFY ME'}
               </button>

@@ -73,7 +73,7 @@ const BROKERS = [
   {
     name: 'IC Markets',
     logo: '📊',
-    color: '#D4A843',
+    color: '#E8C547',
     desc: 'Institutional-grade liquidity. Lowest latency execution for scalpers and day traders.',
     commission: 'Up to $400 per referral',
     spread: 'From 0.0 pips (Raw)',
@@ -96,7 +96,7 @@ const TOOLS = [
   {
     name: 'ICT Mentorship (Official)',
     logo: '🎓',
-    color: '#D4A843',
+    color: '#E8C547',
     desc: "Michael Huddleston's official YouTube channel. Free content — use alongside ICT Flow.",
     commission: 'Free resource',
     price: 'Free on YouTube',
@@ -112,11 +112,11 @@ export default function ResourcesPage() {
     <div style={{ minHeight: '100vh', background: '#080808', color: 'white', fontFamily: "'DM Sans', sans-serif" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
-        :root { --gold: #D4A843; --gold-light: #F0C96A; --gold-dim: #8A6B28; --border: rgba(212,168,67,0.22); }
+        :root { --gold: #E8C547; --gold-light: #F0C96A; --gold-dim: #8A6B28; --border: rgba(212,168,67,0.22); }
         .card-hover { transition: all 0.25s; cursor: pointer; }
         .card-hover:hover { transform: translateY(-3px); border-color: rgba(212,168,67,0.35) !important; }
         .tab-btn { transition: all 0.2s; }
-        .shine { background: linear-gradient(135deg, #8A6B28 0%, #D4A843 40%, #F0C96A 60%, #D4A843 80%, #8A6B28 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .shine { background: linear-gradient(135deg, #8A6B28 0%, #E8C547 40%, #F0C96A 60%, #E8C547 80%, #8A6B28 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .font-display { font-family: 'Bebas Neue', sans-serif; }
         .font-mono-c { font-family: 'DM Mono', monospace; }
       `}</style>
@@ -127,8 +127,8 @@ export default function ResourcesPage() {
       <section style={{ padding: '80px 24px 60px', textAlign: 'center', borderBottom: '1px solid var(--border)', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 700px 300px at 50% 100%, rgba(212,168,67,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '700px', margin: '0 auto', position: 'relative' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 16px', borderRadius: '100px', border: '1px solid var(--border)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.15em', color: '#D4A843', marginBottom: '24px' }}>
-            <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#D4A843', display: 'inline-block' }} />
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 16px', borderRadius: '100px', border: '1px solid var(--border)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.15em', color: '#E8C547', marginBottom: '24px' }}>
+            <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#E8C547', display: 'inline-block' }} />
             AFFILIATE RESOURCES
           </div>
           <h1 className="font-display shine" style={{ fontSize: 'clamp(52px, 10vw, 96px)', lineHeight: 1, marginBottom: '20px' }}>
@@ -137,7 +137,7 @@ export default function ResourcesPage() {
           <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '16px', fontWeight: 300, lineHeight: 1.7, maxWidth: '500px', margin: '0 auto 12px' }}>
             Every link below is an affiliate link. If you sign up through here, we earn a commission at no extra cost to you — it's how we keep this academy free.
           </p>
-          <p style={{ color: 'rgba(212,168,67,0.8)', fontSize: '12px', fontFamily: 'DM Mono, monospace', letterSpacing: '0.1em' }}>
+          <p style={{ color: '#E8C547', fontSize: '12px', fontFamily: 'DM Mono, monospace', letterSpacing: '0.1em' }}>
             ⚠️ TRADING INVOLVES RISK — ONLY USE CAPITAL YOU CAN AFFORD TO LOSE
           </p>
         </div>
@@ -147,7 +147,7 @@ export default function ResourcesPage() {
       <section style={{ position: 'sticky', top: '64px', zIndex: 30, background: 'rgba(8,8,8,0.97)', backdropFilter: 'blur(20px)', borderBottom: '1px solid var(--border)', padding: '0 24px' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'flex', gap: '0' }}>
           {[['prop', 'Prop Firms'], ['brokers', 'Brokers'], ['tools', 'Tools & Platforms']].map(([key, label]) => (
-            <button key={key} className="tab-btn" onClick={() => setActiveTab(key)} style={{ padding: '16px 24px', background: 'none', border: 'none', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', cursor: 'pointer', color: activeTab === key ? '#D4A843' : 'rgba(255,255,255,0.7)', borderBottom: activeTab === key ? '2px solid #D4A843' : '2px solid transparent', marginBottom: '-1px' }}>
+            <button key={key} className="tab-btn" onClick={() => setActiveTab(key)} style={{ padding: '16px 24px', background: 'none', border: 'none', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', cursor: 'pointer', color: activeTab === key ? '#E8C547' : 'rgba(255,255,255,0.7)', borderBottom: activeTab === key ? '2px solid #E8C547' : '2px solid transparent', marginBottom: '-1px' }}>
               {label}
             </button>
           ))}
@@ -166,7 +166,7 @@ export default function ResourcesPage() {
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(480px, 1fr))', gap: '20px' }}>
               {PROP_FIRMS.map((firm) => (
-                <a key={firm.name} href={firm.link} target="_blank" rel="noopener noreferrer" className="card-hover" style={{ textDecoration: 'none', display: 'block', background: '#0D0D0D', border: '1px solid var(--border)', borderRadius: '16px', padding: '28px', position: 'relative', overflow: 'hidden' }}>
+                <a key={firm.name} href={firm.link} target="_blank" rel="noopener noreferrer" className="card-hover" style={{ textDecoration: 'none', display: 'block', background: '#111111', border: '1px solid var(--border)', borderRadius: '16px', padding: '28px', position: 'relative', overflow: 'hidden' }}>
                   <div style={{ position: 'absolute', top: 0, right: 0, width: '200px', height: '200px', background: `radial-gradient(circle, ${firm.color}08 0%, transparent 70%)`, pointerEvents: 'none' }} />
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -214,7 +214,7 @@ export default function ResourcesPage() {
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(440px, 1fr))', gap: '20px' }}>
               {BROKERS.map((broker) => (
-                <a key={broker.name} href={broker.link} target="_blank" rel="noopener noreferrer" className="card-hover" style={{ textDecoration: 'none', display: 'block', background: '#0D0D0D', border: '1px solid var(--border)', borderRadius: '16px', padding: '28px', position: 'relative', overflow: 'hidden' }}>
+                <a key={broker.name} href={broker.link} target="_blank" rel="noopener noreferrer" className="card-hover" style={{ textDecoration: 'none', display: 'block', background: '#111111', border: '1px solid var(--border)', borderRadius: '16px', padding: '28px', position: 'relative', overflow: 'hidden' }}>
                   <div style={{ position: 'absolute', top: 0, right: 0, width: '200px', height: '200px', background: `radial-gradient(circle, ${broker.color}08 0%, transparent 70%)`, pointerEvents: 'none' }} />
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
                     <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: `${broker.color}15`, border: `1px solid ${broker.color}30`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px' }}>{broker.logo}</div>
@@ -248,7 +248,7 @@ export default function ResourcesPage() {
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(440px, 1fr))', gap: '20px' }}>
               {TOOLS.map((tool) => (
-                <a key={tool.name} href={tool.link} target="_blank" rel="noopener noreferrer" className="card-hover" style={{ textDecoration: 'none', display: 'block', background: '#0D0D0D', border: '1px solid var(--border)', borderRadius: '16px', padding: '28px', position: 'relative', overflow: 'hidden' }}>
+                <a key={tool.name} href={tool.link} target="_blank" rel="noopener noreferrer" className="card-hover" style={{ textDecoration: 'none', display: 'block', background: '#111111', border: '1px solid var(--border)', borderRadius: '16px', padding: '28px', position: 'relative', overflow: 'hidden' }}>
                   <div style={{ position: 'absolute', top: 0, right: 0, width: '200px', height: '200px', background: `radial-gradient(circle, ${tool.color}08 0%, transparent 70%)`, pointerEvents: 'none' }} />
                   {tool.highlight && (
                     <div style={{ position: 'absolute', top: '16px', right: '16px', background: `${tool.color}20`, border: `1px solid ${tool.color}40`, borderRadius: '6px', padding: '4px 10px', fontFamily: 'DM Mono, monospace', fontSize: '10px', color: tool.color, letterSpacing: '0.1em' }}>{tool.highlight}</div>
@@ -277,9 +277,9 @@ export default function ResourcesPage() {
         )}
 
         {/* DISCLAIMER */}
-        <div style={{ marginTop: '64px', padding: '24px', background: 'rgba(212,168,67,0.03)', border: '1px solid rgba(212,168,67,0.75)', borderRadius: '12px' }}>
+        <div style={{ marginTop: '64px', padding: '24px', background: 'rgba(212,168,67,0.03)', border: '1px solid rgba(232,197,71,0.95)', borderRadius: '12px' }}>
           <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, letterSpacing: '0.05em' }}>
-            <span style={{ color: 'rgba(212,168,67,0.8)' }}>DISCLAIMER:</span> This page contains affiliate links. ICT Flow may earn a commission when you sign up through these links at no additional cost to you. All products listed are ones we genuinely recommend for ICT traders. Trading financial instruments involves significant risk of loss and is not suitable for all investors. Past performance is not indicative of future results. This is not financial advice.
+            <span style={{ color: '#E8C547' }}>DISCLAIMER:</span> This page contains affiliate links. ICT Flow may earn a commission when you sign up through these links at no additional cost to you. All products listed are ones we genuinely recommend for ICT traders. Trading financial instruments involves significant risk of loss and is not suitable for all investors. Past performance is not indicative of future results. This is not financial advice.
           </p>
         </div>
       </div>

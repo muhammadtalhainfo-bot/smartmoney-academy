@@ -39,16 +39,16 @@ export default function AboutPage() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
         .font-display { font-family: 'Bebas Neue', sans-serif; }
-        .shine { background: linear-gradient(135deg, #8A6B28 0%, #D4A843 40%, #F0C96A 60%, #D4A843 80%, #8A6B28 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .shine { background: linear-gradient(135deg, #8A6B28 0%, #E8C547 40%, #F0C96A 60%, #E8C547 80%, #8A6B28 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
       `}</style>
 
       <Navbar active="/about" />
 
       {/* HERO */}
-      <section style={{ padding: '80px 24px 60px', textAlign: 'center', borderBottom: '1px solid rgba(212,168,67,0.75)', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ padding: '80px 24px 60px', textAlign: 'center', borderBottom: '1px solid rgba(232,197,71,0.95)', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 700px 400px at 50% 100%, rgba(212,168,67,0.05) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '700px', margin: '0 auto', position: 'relative' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.75)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.15em', color: '#D4A843', marginBottom: '24px' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '5px 14px', borderRadius: '100px', border: '1px solid rgba(232,197,71,0.95)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.15em', color: '#E8C547', marginBottom: '24px' }}>
             OUR MISSION
           </div>
           <h1 className="font-display" style={{ fontSize: 'clamp(52px, 9vw, 96px)', lineHeight: 1, marginBottom: '24px' }}>
@@ -75,7 +75,7 @@ export default function AboutPage() {
 
       {/* STORY */}
       <section style={{ maxWidth: '700px', margin: '0 auto', padding: '80px 24px' }}>
-        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.8)', letterSpacing: '0.2em', marginBottom: '20px' }}>THE STORY</div>
+        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#E8C547', letterSpacing: '0.2em', marginBottom: '20px' }}>THE STORY</div>
         <h2 className="font-display" style={{ fontSize: '48px', color: 'white', marginBottom: '32px', lineHeight: 1 }}>
           WHY WE <span className="shine">BUILT THIS</span>
         </h2>
@@ -89,7 +89,7 @@ export default function AboutPage() {
           <p>
             We're traders who got tired of seeing beginners pay $300+ for information that should be free. ICT himself gives his content away on YouTube. We just organized it into a proper learning path.
           </p>
-          <p style={{ color: '#D4A843', fontStyle: 'italic' }}>
+          <p style={{ color: '#E8C547', fontStyle: 'italic' }}>
             "Stop trying to predict. Start reading the algorithm." — ICT
           </p>
         </div>
@@ -125,10 +125,10 @@ export default function AboutPage() {
             Join 500+ traders learning to think like smart money. Free forever.
           </p>
           <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/courses" style={{ padding: '14px 32px', background: 'linear-gradient(135deg,#D4A843,#8A6B28)', borderRadius: '10px', color: 'black', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600 }}>
+            <Link href="/courses" style={{ padding: '14px 32px', background: 'linear-gradient(135deg,#E8C547,#8A6B28)', borderRadius: '10px', color: 'black', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600 }}>
               VIEW CURRICULUM →
             </Link>
-            <Link href="/auth" style={{ padding: '14px 32px', background: 'transparent', borderRadius: '10px', color: 'rgba(255,255,255,0.6)', border: '1px solid rgba(255,255,255,0.2)', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em' }}>
+            <Link href="/auth" style={{ padding: '14px 32px', background: 'transparent', borderRadius: '10px', color: 'rgba(255,255,255,0.6)', border: '1px solid rgba(255,255,255,0.6)', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em' }}>
               CREATE ACCOUNT
             </Link>
           </div>

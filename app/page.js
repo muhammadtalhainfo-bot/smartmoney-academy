@@ -90,13 +90,13 @@ export default function HomePage() {
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap');
         
         :root {
-          --gold: #D4A843;
+          --gold: #E8C547;
           --gold-light: #F0C96A;
           --gold-dim: #8A6B28;
           --bg: #080808;
           --bg2: #0F0F0F;
           --bg3: #141414;
-          --border: rgba(212,168,67,0.75);
+          --border: rgba(232,197,71,0.95);
         }
 
         * { box-sizing: border-box; }
@@ -116,8 +116,8 @@ export default function HomePage() {
         }
 
         /* Gold glow */
-        .glow-gold { box-shadow: 0 0 40px rgba(212,168,67,0.75), 0 0 80px rgba(212,168,67,0.05); }
-        .glow-gold-text { text-shadow: 0 0 30px rgba(212,168,67,0.75); }
+        .glow-gold { box-shadow: 0 0 40px rgba(232,197,71,0.95), 0 0 80px rgba(212,168,67,0.05); }
+        .glow-gold-text { text-shadow: 0 0 30px rgba(232,197,71,0.95); }
 
         /* Ticker */
         @keyframes ticker {
@@ -142,17 +142,17 @@ export default function HomePage() {
         /* Card hover */
         .course-card {
           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          border: 1px solid rgba(212,168,67,0.75);
+          border: 1px solid rgba(232,197,71,0.95);
         }
         .course-card:hover {
-          border-color: #D4A843;
+          border-color: #E8C547;
           transform: translateY(-4px);
           box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(212,168,67,0.22);
         }
 
         /* Gold button */
         .btn-gold {
-          background: linear-gradient(135deg, #D4A843 0%, #F0C96A 50%, #D4A843 100%);
+          background: linear-gradient(135deg, #E8C547 0%, #F0C96A 50%, #E8C547 100%);
           background-size: 200% 200%;
           transition: all 0.3s ease;
           color: #080808;
@@ -161,7 +161,7 @@ export default function HomePage() {
         .btn-gold:hover {
           background-position: right center;
           transform: translateY(-2px);
-          box-shadow: 0 8px 30px rgba(212,168,67,0.75);
+          box-shadow: 0 8px 30px rgba(232,197,71,0.95);
         }
 
         /* Grid lines bg */
@@ -183,7 +183,7 @@ export default function HomePage() {
         .stat-value {
           font-family: 'Bebas Neue', sans-serif;
           letter-spacing: 0.05em;
-          background: linear-gradient(135deg, #F0C96A, #D4A843);
+          background: linear-gradient(135deg, #F0C96A, #E8C547);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -191,7 +191,7 @@ export default function HomePage() {
 
         /* Separator line */
         .gold-line {
-          background: linear-gradient(90deg, transparent, #D4A843, transparent);
+          background: linear-gradient(90deg, transparent, #E8C547, transparent);
           height: 1px;
         }
       `}</style>
@@ -201,12 +201,12 @@ export default function HomePage() {
         <div className="flex ticker-track whitespace-nowrap">
           {[...ticker, ...ticker].map((item, i) => (
             <span key={i} className="inline-flex items-center gap-3 px-6 font-mono text-xs">
-              <span className="text-[#D4A843] font-medium">{item.pair}</span>
+              <span className="text-[#E8C547] font-medium">{item.pair}</span>
               <span className="text-white">{item.price}</span>
               <span className={item.up ? 'text-emerald-400' : 'text-red-400'}>
                 {item.up ? '▲' : '▼'} {item.change}
               </span>
-              <span className="text-gray-300">·</span>
+              <span className="text-gray-200">·</span>
             </span>
           ))}
         </div>
@@ -237,12 +237,12 @@ export default function HomePage() {
         <h1 className="fade-up delay-2 font-display text-center leading-none mb-6" style={{ fontSize: 'clamp(56px, 10vw, 120px)' }}>
           <span className="block text-white">TRADE LIKE</span>
           <span className="block glow-gold-text" style={{
-            background: 'linear-gradient(135deg, #8A6B28 0%, #D4A843 30%, #F0C96A 50%, #D4A843 70%, #8A6B28 100%)',
+            background: 'linear-gradient(135deg, #8A6B28 0%, #E8C547 30%, #F0C96A 50%, #E8C547 70%, #8A6B28 100%)',
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text'
           }}>INSTITUTIONS</span>
         </h1>
 
-        <p className="fade-up delay-3 text-gray-300 text-lg max-w-xl mx-auto mb-10 leading-relaxed" style={{ fontWeight: 300 }}>
+        <p className="fade-up delay-3 text-gray-200 text-lg max-w-xl mx-auto mb-10 leading-relaxed" style={{ fontWeight: 300 }}>
           Master ICT — the methodology used by banks, hedge funds, and professional traders to move markets. Every concept. Zero fluff.
         </p>
 
@@ -250,7 +250,7 @@ export default function HomePage() {
           <Link href="/foundations" className="btn-gold px-8 py-4 rounded-xl text-base font-mono tracking-wide uppercase">
             Begin Your Journey →
           </Link>
-          <Link href="/glossary" className="px-8 py-4 rounded-xl text-base font-mono tracking-wide uppercase border border-[var(--border)] text-gray-300 hover:border-[var(--gold)] hover:text-[var(--gold)] transition-all">
+          <Link href="/glossary" className="px-8 py-4 rounded-xl text-base font-mono tracking-wide uppercase border border-[var(--border)] text-gray-200 hover:border-[var(--gold)] hover:text-[var(--gold)] transition-all">
             ICT Glossary
           </Link>
         </div>
@@ -260,7 +260,7 @@ export default function HomePage() {
           {STATS.map((s, i) => (
             <div key={i} className="text-center">
               <div className="stat-value text-4xl">{s.value}</div>
-              <div className="font-mono text-xs text-gray-300 tracking-widest uppercase mt-1">{s.label}</div>
+              <div className="font-mono text-xs text-gray-200 tracking-widest uppercase mt-1">{s.label}</div>
             </div>
           ))}
         </div>
@@ -276,10 +276,10 @@ export default function HomePage() {
             <div>
               <div className="font-mono text-xs text-[var(--gold)] tracking-widest uppercase mb-4">// What is ICT</div>
               <h2 className="font-display text-5xl text-white mb-6 leading-tight">THE ALGORITHM<br/>RUNS THE MARKET</h2>
-              <p className="text-gray-300 leading-relaxed mb-6" style={{ fontWeight: 300 }}>
+              <p className="text-gray-200 leading-relaxed mb-6" style={{ fontWeight: 300 }}>
                 ICT (Inner Circle Trader) is Michael Huddleston's complete methodology for understanding how the Interbank Price Delivery Algorithm (IPDA) moves markets. It explains exactly why price moves — not what happened, but what was engineered to happen.
               </p>
-              <p className="text-gray-300 leading-relaxed" style={{ fontWeight: 300 }}>
+              <p className="text-gray-200 leading-relaxed" style={{ fontWeight: 300 }}>
                 Banks don't react to news. They create the moves that retail traders react to. ICT teaches you to stop being the liquidity — and start following the institutions that consume it.
               </p>
             </div>
@@ -294,7 +294,7 @@ export default function HomePage() {
                   <span className="text-2xl flex-shrink-0">{item.icon}</span>
                   <div>
                     <p className="font-semibold text-white text-sm mb-1">{item.title}</p>
-                    <p className="text-gray-300 text-xs leading-relaxed">{item.desc}</p>
+                    <p className="text-gray-200 text-xs leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -310,7 +310,7 @@ export default function HomePage() {
           <div className="text-center mb-14">
             <div className="font-mono text-xs text-[var(--gold)] tracking-widest uppercase mb-4">// Curriculum</div>
             <h2 className="font-display text-6xl text-white mb-4">WHAT YOU'LL LEARN</h2>
-            <p className="text-gray-300 max-w-lg mx-auto text-sm" style={{ fontWeight: 300 }}>
+            <p className="text-gray-200 max-w-lg mx-auto text-sm" style={{ fontWeight: 300 }}>
               28+ modules, 80+ lessons. Built from ICT's YouTube channel — updated through the 2026 Mentorship.
             </p>
           </div>
@@ -328,9 +328,9 @@ export default function HomePage() {
                     </span>
                   </div>
                   <h3 className="font-semibold text-white mb-2">{c.title}</h3>
-                  <p className="text-gray-300 text-xs leading-relaxed mb-4" style={{ fontWeight: 300 }}>{c.desc}</p>
+                  <p className="text-gray-200 text-xs leading-relaxed mb-4" style={{ fontWeight: 300 }}>{c.desc}</p>
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-[10px] text-[#D4A843]">{c.lessons} LESSONS</span>
+                    <span className="font-mono text-[10px] text-[#E8C547]">{c.lessons} LESSONS</span>
                     <span className="text-[var(--gold)] text-sm">→</span>
                   </div>
                 </div>
@@ -355,14 +355,14 @@ export default function HomePage() {
             {[
               { time: '8PM–12AM', zone: 'Asian', role: 'ACCUMULATION', desc: 'Build Asian Range', color: 'rgba(99,102,241,0.1)', border: 'rgba(99,102,241,0.3)', text: '#818CF8' },
               { time: '2AM–5AM', zone: 'London', role: 'MANIPULATION', desc: 'Judas Swing / Stop Hunt', color: 'rgba(239,68,68,0.1)', border: 'rgba(239,68,68,0.3)', text: '#F87171' },
-              { time: '7AM–12PM', zone: 'New York AM', role: 'DISTRIBUTION', desc: 'Real Directional Move', color: 'rgba(212,168,67,0.75)', border: 'rgba(212,168,67,0.8)', text: '#D4A843' },
+              { time: '7AM–12PM', zone: 'New York AM', role: 'DISTRIBUTION', desc: 'Real Directional Move', color: 'rgba(232,197,71,0.95)', border: '#E8C547', text: '#E8C547' },
               { time: '10AM–12PM', zone: 'London Close', role: 'REVERSAL', desc: 'Profit Taking / Fade', color: 'rgba(16,185,129,0.1)', border: 'rgba(16,185,129,0.3)', text: '#34D399' },
             ].map((s, i) => (
               <div key={i} className="rounded-xl p-4 border text-center" style={{ background: s.color, borderColor: s.border }}>
                 <div className="font-mono text-[10px] tracking-widest mb-2" style={{ color: s.text }}>{s.role}</div>
                 <div className="font-semibold text-white text-sm mb-1">{s.zone}</div>
-                <div className="font-mono text-[10px] text-gray-300 mb-2">{s.time} EST</div>
-                <div className="text-xs text-gray-300" style={{ fontWeight: 300 }}>{s.desc}</div>
+                <div className="font-mono text-[10px] text-gray-200 mb-2">{s.time} EST</div>
+                <div className="text-xs text-gray-200" style={{ fontWeight: 300 }}>{s.desc}</div>
               </div>
             ))}
           </div>
@@ -372,23 +372,23 @@ export default function HomePage() {
       {/* ── QUOTE ── */}
       <section className="relative z-10 px-6 py-24 text-center diagonal-accent">
         <div className="max-w-3xl mx-auto">
-          <div className="font-mono text-xs text-[#D4A843] tracking-widest uppercase mb-8">// ICT on Trading</div>
+          <div className="font-mono text-xs text-[#E8C547] tracking-widest uppercase mb-8">// ICT on Trading</div>
           <blockquote className="font-display text-3xl md:text-5xl text-white leading-tight mb-8">
             "STOP TRYING TO PREDICT.<br/>
             <span style={{ color: 'var(--gold)' }}>START READING THE ALGORITHM."</span>
           </blockquote>
-          <p className="font-mono text-xs text-gray-300 tracking-widest">— MICHAEL J. HUDDLESTON (ICT)</p>
+          <p className="font-mono text-xs text-gray-200 tracking-widest">— MICHAEL J. HUDDLESTON (ICT)</p>
         </div>
       </section>
 
       {/* ── CTA ── */}
       <section className="relative z-10 px-6 py-24 bg-[var(--bg2)]">
         <div className="max-w-2xl mx-auto text-center">
-          <div className="p-px rounded-2xl glow-gold" style={{ background: 'linear-gradient(135deg, rgba(212,168,67,0.8), transparent, rgba(212,168,67,0.8))' }}>
+          <div className="p-px rounded-2xl glow-gold" style={{ background: 'linear-gradient(135deg, #E8C547, transparent, #E8C547)' }}>
             <div className="bg-[var(--bg3)] rounded-2xl p-12">
               <div className="font-mono text-xs text-[var(--gold)] tracking-widest uppercase mb-4">// Begin Now</div>
               <h2 className="font-display text-5xl text-white mb-4">READY TO THINK<br/>LIKE SMART MONEY?</h2>
-              <p className="text-gray-300 mb-8 text-sm leading-relaxed" style={{ fontWeight: 300 }}>
+              <p className="text-gray-200 mb-8 text-sm leading-relaxed" style={{ fontWeight: 300 }}>
                 Join thousands of traders who stopped guessing and started reading institutional footprints. Free access to all beginner modules.
               </p>
               <Link href="/courses" className="btn-gold inline-block px-10 py-4 rounded-xl font-mono text-sm tracking-widest uppercase">

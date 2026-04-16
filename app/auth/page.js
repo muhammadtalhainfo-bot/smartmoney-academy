@@ -102,8 +102,8 @@ function AuthPageInner() {
     <div style={{ minHeight: '100vh', background: '#080808', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'DM Sans', sans-serif", padding: '24px' }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap');
-        .auth-input { background: #141414; border: 1px solid rgba(212,168,67,0.8); border-radius: 10px; color: #F5F5F5; padding: 12px 16px; font-size: 15px; font-family: 'DM Sans', sans-serif; outline: none; width: 100%; transition: border-color 0.2s; }
-        .auth-input:focus { border-color: #D4A843; }
+        .auth-input { background: #141414; border: 1px solid #E8C547; border-radius: 10px; color: #F5F5F5; padding: 12px 16px; font-size: 15px; font-family: 'DM Sans', sans-serif; outline: none; width: 100%; transition: border-color 0.2s; }
+        .auth-input:focus { border-color: #E8C547; }
         .auth-input::placeholder { color: rgba(255,255,255,0.55); }
       `}</style>
 
@@ -126,7 +126,7 @@ function AuthPageInner() {
             {['Login', 'Sign Up'].map((tab, i) => (
               <button key={tab} onClick={() => { setIsLogin(i === 0); setError(''); setSuccess(''); }}
                 style={{ flex: 1, padding: '10px', borderRadius: '9px', border: 'none', cursor: 'pointer', fontFamily: 'DM Mono', fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase', transition: 'all 0.2s',
-                  background: isLogin === (i === 0) ? 'linear-gradient(135deg, #D4A843, #F0C96A)' : 'transparent',
+                  background: isLogin === (i === 0) ? 'linear-gradient(135deg, #E8C547, #F0C96A)' : 'transparent',
                   color: isLogin === (i === 0) ? '#080808' : 'rgba(255,255,255,0.7)',
                   fontWeight: isLogin === (i === 0) ? '700' : '400',
                 }}>
@@ -174,7 +174,7 @@ function AuthPageInner() {
             {isLogin && !showForgot && (
               <div style={{ textAlign: 'right', marginTop: '-4px' }}>
                 <button onClick={() => { setShowForgot(true); setError(''); }}
-                  style={{ background: 'none', border: 'none', color: '#D4A843', fontFamily: 'DM Mono', fontSize: '11px', cursor: 'pointer', letterSpacing: '0.05em', padding: 0 }}>
+                  style={{ background: 'none', border: 'none', color: '#E8C547', fontFamily: 'DM Mono', fontSize: '11px', cursor: 'pointer', letterSpacing: '0.05em', padding: 0 }}>
                   Forgot password?
                 </button>
               </div>
@@ -182,22 +182,22 @@ function AuthPageInner() {
 
             {/* Forgot Password Panel */}
             {showForgot && (
-              <div style={{ background: 'rgba(212,168,67,0.05)', border: '1px solid rgba(212,168,67,0.75)', borderRadius: '12px', padding: '18px' }}>
-                <div style={{ fontFamily: 'DM Mono', fontSize: '10px', color: '#D4A843', marginBottom: '12px', letterSpacing: '0.12em' }}>// RESET PASSWORD</div>
+              <div style={{ background: 'rgba(212,168,67,0.05)', border: '1px solid rgba(232,197,71,0.95)', borderRadius: '12px', padding: '18px' }}>
+                <div style={{ fontFamily: 'DM Mono', fontSize: '10px', color: '#E8C547', marginBottom: '12px', letterSpacing: '0.12em' }}>// RESET PASSWORD</div>
                 {forgotSent ? (
                   <div style={{ color: '#34D399', fontFamily: 'DM Sans', fontSize: '13px' }}>✓ Reset link sent! Check your email.</div>
                 ) : (
                   <>
                     <input value={forgotEmail} onChange={e => setForgotEmail(e.target.value)}
                       placeholder="Enter your email" type="email"
-                      style={{ width: '100%', background: '#080808', border: '1px solid rgba(212,168,67,0.8)', borderRadius: '8px', padding: '10px 14px', color: 'white', fontFamily: 'DM Sans', fontSize: '14px', marginBottom: '10px', boxSizing: 'border-box', outline: 'none' }} />
+                      style={{ width: '100%', background: '#080808', border: '1px solid #E8C547', borderRadius: '8px', padding: '10px 14px', color: 'white', fontFamily: 'DM Sans', fontSize: '14px', marginBottom: '10px', boxSizing: 'border-box', outline: 'none' }} />
                     <div style={{ display: 'flex', gap: '8px' }}>
                       <button onClick={handleForgotPassword}
-                        style={{ flex: 1, background: 'linear-gradient(135deg, #D4A843, #F0C96A)', color: '#080808', border: 'none', borderRadius: '8px', padding: '10px', fontFamily: 'DM Mono', fontSize: '11px', fontWeight: 700, cursor: 'pointer' }}>
+                        style={{ flex: 1, background: 'linear-gradient(135deg, #E8C547, #F0C96A)', color: '#080808', border: 'none', borderRadius: '8px', padding: '10px', fontFamily: 'DM Mono', fontSize: '11px', fontWeight: 700, cursor: 'pointer' }}>
                         SEND RESET LINK
                       </button>
                       <button onClick={() => { setShowForgot(false); setForgotSent(false); setForgotEmail(''); }}
-                        style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '8px', padding: '10px 14px', color: 'rgba(255,255,255,0.7)', fontFamily: 'DM Mono', fontSize: '11px', cursor: 'pointer' }}>
+                        style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.6)', borderRadius: '8px', padding: '10px 14px', color: 'rgba(255,255,255,0.7)', fontFamily: 'DM Mono', fontSize: '11px', cursor: 'pointer' }}>
                         CANCEL
                       </button>
                     </div>
@@ -212,7 +212,7 @@ function AuthPageInner() {
 
             {/* Submit */}
             <button onClick={handleAuth} disabled={loading}
-              style={{ background: 'linear-gradient(135deg, #D4A843, #F0C96A)', color: '#080808', border: 'none', borderRadius: '12px', padding: '14px', fontFamily: 'DM Mono', fontSize: '13px', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', cursor: loading ? 'not-allowed' : 'pointer', opacity: loading ? 0.7 : 1, marginTop: '4px' }}>
+              style={{ background: 'linear-gradient(135deg, #E8C547, #F0C96A)', color: '#080808', border: 'none', borderRadius: '12px', padding: '14px', fontFamily: 'DM Mono', fontSize: '13px', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', cursor: loading ? 'not-allowed' : 'pointer', opacity: loading ? 0.7 : 1, marginTop: '4px' }}>
               {loading ? 'Please wait...' : isLogin ? 'Login →' : 'Create Account →'}
             </button>
 
@@ -232,7 +232,7 @@ export default function AuthPage() {
   return (
     <Suspense fallback={
       <div style={{ minHeight: '100vh', background: '#080808', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ fontFamily: 'DM Mono, monospace', color: 'rgba(212,168,67,0.75)', fontSize: '12px', letterSpacing: '0.2em' }}>LOADING...</div>
+        <div style={{ fontFamily: 'DM Mono, monospace', color: 'rgba(232,197,71,0.95)', fontSize: '12px', letterSpacing: '0.2em' }}>LOADING...</div>
       </div>
     }>
       <AuthPageInner />

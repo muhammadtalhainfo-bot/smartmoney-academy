@@ -22,7 +22,7 @@ export default function Error({ error, reset }) {
       <button
         onClick={reset}
         style={{
-          background: 'linear-gradient(135deg, #D4A843, #F0C96A)',
+          background: 'linear-gradient(135deg, #E8C547, #F0C96A)',
           color: '#080808',
           border: 'none',
           borderRadius: '8px',

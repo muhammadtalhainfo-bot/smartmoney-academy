@@ -59,7 +59,7 @@ export default function AuthGuard({ children }) {
 
   if (!ready) return (
     <div className="min-h-screen bg-[#080808] flex items-center justify-center">
-      <div style={{ fontFamily: "'DM Mono', monospace", color: 'rgba(212,168,67,0.75)', fontSize: '12px', letterSpacing: '0.2em' }}>
+      <div style={{ fontFamily: "'DM Mono', monospace", color: 'rgba(232,197,71,0.95)', fontSize: '12px', letterSpacing: '0.2em' }}>
         VERIFYING AUTHENTICATION...
       </div>
     </div>

@@ -79,7 +79,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#D4A843" />
+        <meta name="theme-color" content="#E8C547" />
         <link rel="manifest" href="/manifest.json" />
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-HRGZYFXQ5W"></script>
         <script dangerouslySetInnerHTML={{ __html: `

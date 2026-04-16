@@ -6,14 +6,14 @@ import { createClient } from '@/lib/supabase';
 const ADMIN_PASSWORD = 'sma_admin_2026';
 
 // ─── DESIGN TOKENS ───────────────────────────────────────────────────────────
-const G = '#D4A843';
+const G = '#E8C547';
 const G2 = '#F0C96A';
 const BG = '#060608';
 const S1 = '#0C0C10';
 const S2 = '#111118';
 const S3 = '#16161E';
-const BORDER = 'rgba(212,168,67,0.75)';
-const BORDER2 = 'rgba(212,168,67,0.8)';
+const BORDER = 'rgba(232,197,71,0.95)';
+const BORDER2 = '#E8C547';
 
 const css = {
   card: { background: S2, border: `1px solid ${BORDER}`, borderRadius: '12px', padding: '20px' },
@@ -115,7 +115,7 @@ const StatCard = ({ icon, value, label, sub }) => (
     <div style={{ fontSize: '22px', marginBottom: '8px' }}>{icon}</div>
     <div style={{ ...css.bebas, fontSize: '38px', color: G, lineHeight: 1 }}>{value}</div>
     <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(255,255,255,0.7)', textTransform: 'uppercase', marginTop: '6px' }}>{label}</div>
-    {sub && <div style={{ ...css.mono, fontSize: '9px', color: `rgba(212,168,67,0.75)`, marginTop: '4px' }}>{sub}</div>}
+    {sub && <div style={{ ...css.mono, fontSize: '9px', color: `rgba(232,197,71,0.95)`, marginTop: '4px' }}>{sub}</div>}
   </div>
 );
 
@@ -202,7 +202,7 @@ function DashboardSection({ users, emails, trades, proUsers, loading, onRefresh 
       } />
 
       {loading ? (
-        <div style={{ textAlign: 'center', padding: '60px', ...css.mono, fontSize: '12px', color: `rgba(212,168,67,0.75)` }}>LOADING DATA...</div>
+        <div style={{ textAlign: 'center', padding: '60px', ...css.mono, fontSize: '12px', color: `rgba(232,197,71,0.95)` }}>LOADING DATA...</div>
       ) : (
         <>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '14px', marginBottom: '24px' }}>
@@ -215,7 +215,7 @@ function DashboardSection({ users, emails, trades, proUsers, loading, onRefresh 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
             {/* Top Users */}
             <div style={css.card}>
-              <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.15em' }}>// TOP USERS BY XP</div>
+              <div style={{ ...css.mono, fontSize: '10px', color: `#E8C547`, marginBottom: '14px', letterSpacing: '0.15em' }}>// TOP USERS BY XP</div>
               {topUsers.length === 0 ? (
                 <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.85)', textAlign: 'center', padding: '20px' }}>No users yet</div>
               ) : topUsers.map((u, i) => (
@@ -230,7 +230,7 @@ function DashboardSection({ users, emails, trades, proUsers, loading, onRefresh 
 
             {/* Recent Emails */}
             <div style={css.card}>
-              <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.15em' }}>// RECENT EMAIL LEADS</div>
+              <div style={{ ...css.mono, fontSize: '10px', color: `#E8C547`, marginBottom: '14px', letterSpacing: '0.15em' }}>// RECENT EMAIL LEADS</div>
               {recentEmails.length === 0 ? (
                 <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.85)', textAlign: 'center', padding: '20px' }}>No email signups yet</div>
               ) : recentEmails.map((e, i) => (
@@ -245,7 +245,7 @@ function DashboardSection({ users, emails, trades, proUsers, loading, onRefresh 
 
           {/* Quick Links */}
           <div style={{ ...css.card, marginTop: '16px' }}>
-            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.15em' }}>// QUICK LINKS — LIVE SITE</div>
+            <div style={{ ...css.mono, fontSize: '10px', color: `#E8C547`, marginBottom: '14px', letterSpacing: '0.15em' }}>// QUICK LINKS — LIVE SITE</div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
               {['/', '/courses', '/blog', '/pricing', '/glossary', '/practice', '/leaderboard', '/dashboard'].map(href => (
                 <a key={href} href={href} target="_blank" rel="noopener noreferrer"
@@ -306,7 +306,7 @@ function UsersSection({ users, supabase, onReload }) {
             <thead>
               <tr>
                 {['Username', 'Email', 'XP', 'Streak', 'Plan', 'Joined', 'Actions'].map(h => (
-                  <th key={h} style={{ ...css.mono, fontSize: '9px', color: `rgba(212,168,67,0.75)`, padding: '8px 12px', textAlign: 'left', borderBottom: `1px solid ${BORDER}`, textTransform: 'uppercase', whiteSpace: 'nowrap' }}>{h}</th>
+                  <th key={h} style={{ ...css.mono, fontSize: '9px', color: `rgba(232,197,71,0.95)`, padding: '8px 12px', textAlign: 'left', borderBottom: `1px solid ${BORDER}`, textTransform: 'uppercase', whiteSpace: 'nowrap' }}>{h}</th>
                 ))}
               </tr>
             </thead>
@@ -319,7 +319,7 @@ function UsersSection({ users, supabase, onReload }) {
                   <td style={{ padding: '10px 12px', fontSize: '13px' }}>{u.streak || 0}🔥</td>
                   <td style={{ padding: '10px 12px' }}>
                     <button onClick={() => togglePro(u)} style={{
-                      background: u.is_pro ? 'rgba(52,211,153,0.1)' : 'rgba(212,168,67,0.75)',
+                      background: u.is_pro ? 'rgba(52,211,153,0.1)' : 'rgba(232,197,71,0.95)',
                       border: `1px solid ${u.is_pro ? 'rgba(52,211,153,0.3)' : BORDER2}`,
                       borderRadius: '5px', padding: '3px 10px',
                       color: u.is_pro ? '#34D399' : G,
@@ -421,7 +421,7 @@ function BlogSection({ supabase }) {
         {/* Sidebar */}
         <div>
           <div style={{ ...css.card, marginBottom: '16px' }}>
-            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.12em' }}>PUBLISH SETTINGS</div>
+            <div style={{ ...css.mono, fontSize: '10px', color: `#E8C547`, marginBottom: '14px', letterSpacing: '0.12em' }}>PUBLISH SETTINGS</div>
             <FieldGroup label="Status">
               <div style={{ display: 'flex', gap: '8px' }}>
                 {['Published', 'Draft'].map(s => (
@@ -454,7 +454,7 @@ function BlogSection({ supabase }) {
           </div>
 
           <div style={{ ...css.card, marginBottom: '16px' }}>
-            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.12em' }}>COVER IMAGE</div>
+            <div style={{ ...css.mono, fontSize: '10px', color: `#E8C547`, marginBottom: '14px', letterSpacing: '0.12em' }}>COVER IMAGE</div>
             <FieldGroup label="Image URL">
               <Input value={form.image} onChange={e => setForm({ ...form, image: e.target.value })} placeholder="/images/fvg.png or https://..." />
             </FieldGroup>
@@ -465,7 +465,7 @@ function BlogSection({ supabase }) {
           </div>
 
           <div style={{ ...css.card, marginBottom: '16px' }}>
-            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.12em' }}>SEO META TAGS</div>
+            <div style={{ ...css.mono, fontSize: '10px', color: `#E8C547`, marginBottom: '14px', letterSpacing: '0.12em' }}>SEO META TAGS</div>
             <FieldGroup label="Meta Title (leave blank to use post title)">
               <Input value={form.meta_title || ''} onChange={e => setForm({ ...form, meta_title: e.target.value })} placeholder="Custom SEO title..." />
             </FieldGroup>
@@ -510,7 +510,7 @@ function BlogSection({ supabase }) {
                 {p.featured && <span style={{ ...css.mono, fontSize: '9px', color: G, marginRight: '8px' }}>★ FEATURED</span>}
                 {p.title}
               </div>
-              <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.75)` }}>{p.category} · {p.read_time} · /{p.slug}</div>
+              <div style={{ ...css.mono, fontSize: '10px', color: `rgba(232,197,71,0.95)` }}>{p.category} · {p.read_time} · /{p.slug}</div>
             </div>
             <div style={{ display: 'flex', gap: '8px', flexShrink: 0, alignItems: 'center' }}>
               <button onClick={() => togglePub(p)} style={{
@@ -554,7 +554,7 @@ function CoursesSection({ supabase }) {
     <div>
       <SectionHeader title={`COURSE MODULES (${modules.length})`} />
       <div style={{ ...css.card, padding: '14px 18px', marginBottom: '16px', background: 'rgba(212,168,67,0.04)' }}>
-        <div style={{ ...css.mono, fontSize: '11px', color: `#D4A843` }}>
+        <div style={{ ...css.mono, fontSize: '11px', color: `#E8C547` }}>
           ℹ️ Course modules are defined in your <code style={{ color: G }}>app/courses/page.js</code> source file. Changes here show a live preview. To make them permanent, apply the same changes to your source file and push to GitHub.
         </div>
       </div>
@@ -599,7 +599,7 @@ function CoursesSection({ supabase }) {
             ) : (
               <div style={{ ...css.card, display: 'flex', alignItems: 'center', gap: '14px', padding: '12px 18px' }}>
                 <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: `${G}18`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', flexShrink: 0 }}>{m.emoji}</div>
-                <div style={{ ...css.mono, fontSize: '11px', color: `rgba(212,168,67,0.75)`, width: '28px', flexShrink: 0 }}>{m.module}</div>
+                <div style={{ ...css.mono, fontSize: '11px', color: `rgba(232,197,71,0.95)`, width: '28px', flexShrink: 0 }}>{m.module}</div>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontSize: '14px', fontWeight: 600, marginBottom: '3px' }}>{m.title}</div>
                   <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(255,255,255,0.7)' }}>{m.lessons} lessons · {m.duration} · {m.tag}</div>
@@ -628,7 +628,7 @@ function PagesSection() {
     <div>
       <SectionHeader title="SITE PAGES" />
       <div style={{ ...css.card, padding: '14px 18px', marginBottom: '16px', background: 'rgba(212,168,67,0.04)' }}>
-        <div style={{ ...css.mono, fontSize: '11px', color: `#D4A843` }}>
+        <div style={{ ...css.mono, fontSize: '11px', color: `#E8C547` }}>
           ℹ️ All pages are React/Next.js files. Select a page below to see its file location and open it in the live site.
         </div>
       </div>
@@ -639,7 +639,7 @@ function PagesSection() {
             onClick={() => setSelected(selected === p.href ? null : p.href)}>
             <div style={{ flex: 1 }}>
               <div style={{ fontWeight: 600, fontSize: '14px', marginBottom: '2px' }}>{p.label}</div>
-              <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.75)` }}>{p.href}</div>
+              <div style={{ ...css.mono, fontSize: '10px', color: `rgba(232,197,71,0.95)` }}>{p.href}</div>
               <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.7)', marginTop: '3px' }}>{p.desc}</div>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
@@ -651,7 +651,7 @@ function PagesSection() {
 
       {selected && (
         <div style={{ ...css.card, marginTop: '16px', border: `1px solid ${BORDER2}` }}>
-          <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '10px', letterSpacing: '0.12em' }}>PAGE FILE LOCATION</div>
+          <div style={{ ...css.mono, fontSize: '10px', color: `#E8C547`, marginBottom: '10px', letterSpacing: '0.12em' }}>PAGE FILE LOCATION</div>
           <div style={{ background: S1, borderRadius: '8px', padding: '14px', ...css.mono, fontSize: '13px', color: G }}>
             app{selected === '/' ? '/page.js' : `${selected}/page.js`}
           </div>
@@ -785,7 +785,7 @@ function MediaSection() {
     <div>
       <SectionHeader title="MEDIA LIBRARY" />
       <div style={{ ...css.card, padding: '14px 18px', marginBottom: '16px', background: 'rgba(212,168,67,0.04)' }}>
-        <div style={{ ...css.mono, fontSize: '11px', color: `#D4A843` }}>
+        <div style={{ ...css.mono, fontSize: '11px', color: `#E8C547` }}>
           ℹ️ These are the static images available in your project. To add new images, place them in the <code style={{ color: G }}>/public/images/</code> folder and push to GitHub.
         </div>
       </div>
@@ -823,7 +823,7 @@ function CategoriesSection({ supabase }) {
           { title: 'Glossary Categories', items: GLOSSARY_CATS, color: G },
         ].map(group => (
           <div key={group.title} style={css.card}>
-            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.12em' }}>{group.title.toUpperCase()}</div>
+            <div style={{ ...css.mono, fontSize: '10px', color: `#E8C547`, marginBottom: '14px', letterSpacing: '0.12em' }}>{group.title.toUpperCase()}</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {group.items.map(item => (
                 <div key={item} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '8px 12px', background: S3, borderRadius: '7px' }}>
@@ -873,7 +873,7 @@ function PricingSection({ supabase }) {
       <Toast msg={msg} />
 
       <div style={{ ...css.card, padding: '14px 18px', marginBottom: '16px', background: 'rgba(212,168,67,0.04)' }}>
-        <div style={{ ...css.mono, fontSize: '11px', color: `#D4A843` }}>
+        <div style={{ ...css.mono, fontSize: '11px', color: `#E8C547` }}>
           ℹ️ Pricing data lives in <code style={{ color: G }}>app/pricing/page.js</code>. Stripe prices are set in your Stripe dashboard and linked via environment variables.
         </div>
       </div>
@@ -881,7 +881,7 @@ function PricingSection({ supabase }) {
       {/* Prices */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
         <div style={css.card}>
-          <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.12em' }}>MONTHLY PRICE (USD)</div>
+          <div style={{ ...css.mono, fontSize: '10px', color: `#E8C547`, marginBottom: '14px', letterSpacing: '0.12em' }}>MONTHLY PRICE (USD)</div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <div style={{ fontSize: '24px', color: G, fontWeight: 700 }}>$</div>
             <Input value={monthlyPrice} onChange={e => setMonthlyPrice(e.target.value)} style={{ fontSize: '28px', fontWeight: 700, color: G, width: '120px' }} />
@@ -889,7 +889,7 @@ function PricingSection({ supabase }) {
           </div>
         </div>
         <div style={css.card}>
-          <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.12em' }}>ANNUAL PRICE (USD)</div>
+          <div style={{ ...css.mono, fontSize: '10px', color: `#E8C547`, marginBottom: '14px', letterSpacing: '0.12em' }}>ANNUAL PRICE (USD)</div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <div style={{ fontSize: '24px', color: '#34D399', fontWeight: 700 }}>$</div>
             <Input value={annualPrice} onChange={e => setAnnualPrice(e.target.value)} style={{ fontSize: '28px', fontWeight: 700, color: '#34D399', width: '120px' }} />
@@ -905,7 +905,7 @@ function PricingSection({ supabase }) {
           { plan: 'pro', label: 'PRO PLAN FEATURES', features: proFeatures, color: G },
         ].map(({ plan, label, features, color }) => (
           <div key={plan} style={css.card}>
-            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.12em' }}>{label}</div>
+            <div style={{ ...css.mono, fontSize: '10px', color: `#E8C547`, marginBottom: '14px', letterSpacing: '0.12em' }}>{label}</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '12px' }}>
               {features.map((f, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 10px', background: S3, borderRadius: '7px' }}>
@@ -964,7 +964,7 @@ function SEOSection({ supabase }) {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
         <div>
           <div style={{ ...css.card, marginBottom: '16px' }}>
-            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.12em' }}>GLOBAL SITE META</div>
+            <div style={{ ...css.mono, fontSize: '10px', color: `#E8C547`, marginBottom: '14px', letterSpacing: '0.12em' }}>GLOBAL SITE META</div>
             <FieldGroup label="Site Name"><Input value={form.site_name} onChange={e => setForm({ ...form, site_name: e.target.value })} /></FieldGroup>
             <FieldGroup label="Site Tagline"><Input value={form.site_tagline} onChange={e => setForm({ ...form, site_tagline: e.target.value })} /></FieldGroup>
             <FieldGroup label="Default Meta Description"><Textarea value={form.meta_description} onChange={e => setForm({ ...form, meta_description: e.target.value })} rows={3} /></FieldGroup>
@@ -975,19 +975,19 @@ function SEOSection({ supabase }) {
 
         <div>
           <div style={{ ...css.card, marginBottom: '16px' }}>
-            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.12em' }}>SOCIAL & OG</div>
+            <div style={{ ...css.mono, fontSize: '10px', color: `#E8C547`, marginBottom: '14px', letterSpacing: '0.12em' }}>SOCIAL & OG</div>
             <FieldGroup label="OG Image URL (used for link previews)"><Input value={form.og_image} onChange={e => setForm({ ...form, og_image: e.target.value })} /></FieldGroup>
             <FieldGroup label="Twitter/X Handle"><Input value={form.twitter_handle} onChange={e => setForm({ ...form, twitter_handle: e.target.value })} placeholder="@yourhandle" /></FieldGroup>
           </div>
 
           <div style={{ ...css.card, marginBottom: '16px' }}>
-            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.12em' }}>ANALYTICS & VERIFICATION</div>
+            <div style={{ ...css.mono, fontSize: '10px', color: `#E8C547`, marginBottom: '14px', letterSpacing: '0.12em' }}>ANALYTICS & VERIFICATION</div>
             <FieldGroup label="Google Analytics ID"><Input value={form.google_analytics} onChange={e => setForm({ ...form, google_analytics: e.target.value })} placeholder="G-XXXXXXXXXX" /></FieldGroup>
             <FieldGroup label="Google Site Verification"><Input value={form.google_site_verify} onChange={e => setForm({ ...form, google_site_verify: e.target.value })} /></FieldGroup>
           </div>
 
           <div style={{ ...css.card, marginBottom: '16px', background: 'rgba(212,168,67,0.04)' }}>
-            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '10px', letterSpacing: '0.12em' }}>SITEMAP STATUS</div>
+            <div style={{ ...css.mono, fontSize: '10px', color: `#E8C547`, marginBottom: '10px', letterSpacing: '0.12em' }}>SITEMAP STATUS</div>
             <div style={{ ...css.mono, fontSize: '12px', color: '#34D399', marginBottom: '4px' }}>✓ Dynamic sitemap active</div>
             <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.7)' }}>app/sitemap.js — auto-generates for all pages & lessons</div>
             <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" style={{ ...css.mono, fontSize: '11px', color: G, display: 'block', marginTop: '8px' }}>View sitemap.xml ↗</a>
@@ -1011,7 +1011,7 @@ function NavSection() {
     <div>
       <SectionHeader title="NAVIGATION MANAGER" />
       <div style={{ ...css.card, padding: '14px 18px', marginBottom: '16px', background: 'rgba(212,168,67,0.04)' }}>
-        <div style={{ ...css.mono, fontSize: '11px', color: `#D4A843` }}>
+        <div style={{ ...css.mono, fontSize: '11px', color: `#E8C547` }}>
           ℹ️ Navigation is defined in <code style={{ color: G }}>app/components/Navbar.js</code>. Edit that file to add, remove, or reorder nav items.
         </div>
       </div>
@@ -1019,13 +1019,13 @@ function NavSection() {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
         {[{ label: 'MAIN NAV (always visible)', items: MAIN }, { label: '"MORE" DROPDOWN', items: MORE }].map(group => (
           <div key={group.label} style={css.card}>
-            <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.12em' }}>{group.label}</div>
+            <div style={{ ...css.mono, fontSize: '10px', color: `#E8C547`, marginBottom: '14px', letterSpacing: '0.12em' }}>{group.label}</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {group.items.map(([href, label], i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '8px 12px', background: S3, borderRadius: '7px' }}>
                   <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(255,255,255,0.55)', width: '18px' }}>{i + 1}</div>
                   <div style={{ flex: 1, fontSize: '13px' }}>{label}</div>
-                  <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.75)` }}>{href}</div>
+                  <div style={{ ...css.mono, fontSize: '10px', color: `rgba(232,197,71,0.95)` }}>{href}</div>
                 </div>
               ))}
             </div>
@@ -1068,7 +1068,7 @@ function NotificationsSection() {
       <SectionHeader title="PUSH NOTIFICATIONS" />
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
         <div style={css.card}>
-          <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '16px', letterSpacing: '0.12em' }}>SEND TO ALL USERS</div>
+          <div style={{ ...css.mono, fontSize: '10px', color: `#E8C547`, marginBottom: '16px', letterSpacing: '0.12em' }}>SEND TO ALL USERS</div>
           <Toast msg={status.text} type={status.type} />
           <FieldGroup label="Notification Title *">
             <Input value={title} onChange={e => setTitle(e.target.value)} placeholder="e.g. New Module Released!" />
@@ -1086,7 +1086,7 @@ function NotificationsSection() {
 
         {/* Preview */}
         <div>
-          <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.8)`, marginBottom: '14px', letterSpacing: '0.12em' }}>PREVIEW</div>
+          <div style={{ ...css.mono, fontSize: '10px', color: `#E8C547`, marginBottom: '14px', letterSpacing: '0.12em' }}>PREVIEW</div>
           <div style={{ background: S3, borderRadius: '16px', padding: '16px', maxWidth: '320px' }}>
             <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
               <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: `${G}20`, border: `1px solid ${BORDER2}`, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px' }}>📈</div>
@@ -1150,7 +1150,7 @@ export default function AdminPage() {
         input[type=checkbox] { accent-color: ${G}; }
         ::-webkit-scrollbar { width: 4px; height: 4px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: rgba(212,168,67,0.8); border-radius: 2px; }
+        ::-webkit-scrollbar-thumb { background: #E8C547; border-radius: 2px; }
       `}</style>
 
       {/* BG grid */}
@@ -1160,7 +1160,7 @@ export default function AdminPage() {
       <div style={{ ...css.card, width: '100%', maxWidth: '380px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
         <img src="/ictflow-symbol.svg" alt="ICT Flow" style={{ width: "52px", height: "52px", borderRadius: "14px", margin: "0 auto 18px", display: "block" }} />
         <div style={{ ...css.bebas, fontSize: '30px', color: 'white', marginBottom: '4px', letterSpacing: '0.04em' }}>ADMIN CONSOLE</div>
-        <div style={{ ...css.mono, fontSize: '10px', color: `rgba(212,168,67,0.75)`, marginBottom: '24px', letterSpacing: '0.15em' }}>ICT FLOW — RESTRICTED ACCESS</div>
+        <div style={{ ...css.mono, fontSize: '10px', color: `rgba(232,197,71,0.95)`, marginBottom: '24px', letterSpacing: '0.15em' }}>ICT FLOW — RESTRICTED ACCESS</div>
 
         <input type="password" placeholder="Enter admin password" value={pass}
           onChange={e => { setPass(e.target.value); setError(''); }}
@@ -1186,7 +1186,7 @@ export default function AdminPage() {
         input[type=checkbox] { accent-color: ${G}; }
         ::-webkit-scrollbar { width: 4px; height: 4px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: rgba(212,168,67,0.8); border-radius: 2px; }
+        ::-webkit-scrollbar-thumb { background: #E8C547; border-radius: 2px; }
         select option { background: #111118; }
         button:hover { opacity: 0.88; }
         a:hover { opacity: 0.8; }
@@ -1207,7 +1207,7 @@ export default function AdminPage() {
           {!sidebarCollapsed && (
             <div>
               <div style={{ ...css.bebas, fontSize: '16px', color: 'white', lineHeight: 1, letterSpacing: '0.04em' }}>ICT FLOW</div>
-              <div style={{ ...css.mono, fontSize: '8px', color: `rgba(212,168,67,0.75)`, letterSpacing: '0.1em' }}>ADMIN</div>
+              <div style={{ ...css.mono, fontSize: '8px', color: `rgba(232,197,71,0.95)`, letterSpacing: '0.1em' }}>ADMIN</div>
             </div>
           )}
           <button onClick={() => setSidebarCollapsed(!sidebarCollapsed)} style={{ marginLeft: 'auto', background: 'none', border: 'none', color: 'rgba(255,255,255,0.6)', cursor: 'pointer', fontSize: '14px', flexShrink: 0 }}>
