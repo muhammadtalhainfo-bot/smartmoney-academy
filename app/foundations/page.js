@@ -1,13 +1,9 @@
-'use client';\nexport const metadata = {
-  title: 'Trading Foundations | ICT Flow',
-  description: 'Learn trading basics before ICT concepts. Markets, risk management, and psychology fundamentals.',
-  alternates: {
-    canonical: 'https://ictflow.com/foundations',
+'use client';
   },
 };
 
-
-import { useState, useEffect } from 'react';\nimport { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
