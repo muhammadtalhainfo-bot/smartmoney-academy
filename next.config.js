@@ -2,6 +2,7 @@
 const nextConfig = {
   experimental: {
     optimizePackageImports: ['react', 'react-dom'],
+    modern: true,
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
