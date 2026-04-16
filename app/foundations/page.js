@@ -1,5 +1,13 @@
-'use client';
-import { useState, useEffect } from 'react';
+'use client';\nexport const metadata = {
+  title: 'Trading Foundations | ICT Flow',
+  description: 'Learn trading basics before ICT concepts. Markets, risk management, and psychology fundamentals.',
+  alternates: {
+    canonical: 'https://ictflow.com/foundations',
+  },
+};
+
+
+import { useState, useEffect } from 'react';\nimport { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
@@ -247,6 +255,10 @@ export default function FoundationsPage() {
   const [completed, setCompleted] = useState([]);
 
   useEffect(() => {
+    // Remove welcome param from URL for SEO consistency
+    if (window.location.search.includes('welcome=')) {
+      window.history.replaceState({}, '', '/foundations');
+    }
     const saved = localStorage.getItem('foundations_completed');
     if (saved) setCompleted(JSON.parse(saved));
   }, []);
