@@ -2,6 +2,9 @@ import "./globals.css";
 import CookieBanner from '@/app/components/CookieBanner';
 
 export const metadata = {
+  alternates: {
+    canonical: 'https://ictflow.com/',
+  },
   metadataBase: new URL('https://ictflow.com'),
   title: {
     default: 'ICT Flow — Free ICT & Smart Money Concepts Trading Education',
