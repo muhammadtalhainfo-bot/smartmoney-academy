@@ -37,3 +37,28 @@ select option { background: #141414; }
 .testimonial-text {
   color: #ffffff !important;
 }
+
+
+/* === ACCESSIBILITY CONTRAST FIXES === */
+/* Fix yellow/gold text on light backgrounds */
+.text-gold-contrast {
+  color: #B8860B !important; /* Darker gold for light bg */
+}
+
+/* For session map cards with yellow bg - use dark text */
+.session-card-gold {
+  background: rgba(232, 197, 71, 0.95);
+  color: #1a1a1a !important; /* Dark text on gold bg */
+}
+
+.session-card-gold h3,
+.session-card-gold p,
+.session-card-gold span,
+.session-card-gold div {
+  color: #1a1a1a !important;
+}
+
+/* Fix light gray text */
+.text-gray-fix {
+  color: #f0f0f0 !important;
+}
