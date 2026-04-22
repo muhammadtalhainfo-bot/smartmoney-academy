@@ -43,6 +43,14 @@ function renderContent(content) {
   return null;
 }
 
+export async function generateMetadata({ params }) {
+  return {
+    alternates: {
+      canonical: `https://ictflow.com/blog/${params.slug}`,
+    },
+  };
+}
+
 export default function BlogPost({ params }) {
   const resolvedParams = use(params);
   const slug = resolvedParams ? resolvedParams.slug : null;

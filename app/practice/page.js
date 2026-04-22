@@ -410,6 +410,7 @@ export default function PracticePage() {
 
   return (
     <div className="min-h-screen bg-[#080808] text-white" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+      <h1 className="font-display text-4xl md:text-6xl text-white mb-8 text-center">Practice</h1>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap');
         .font-display { font-family: 'Bebas Neue', sans-serif; }

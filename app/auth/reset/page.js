@@ -24,6 +24,7 @@ export default function ResetPasswordPage() {
 
   return (
     <div style={{ minHeight: '100vh', background: '#080808', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px', fontFamily: 'DM Sans, sans-serif' }}>
+      <h1 className="font-display text-4xl md:text-6xl text-white mb-8 text-center">Reset Password</h1>
       <style>{'@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap");'}</style>
       <div style={{ background: '#111111', border: '1px solid rgba(232,197,71,0.95)', borderRadius: '20px', padding: '40px', width: '100%', maxWidth: '420px' }}>
         <img src="/ictflow-symbol.svg" alt="ICT Flow" style={{ width: '48px', height: '48px', borderRadius: '12px', display: 'block', margin: '0 auto 20px' }} />

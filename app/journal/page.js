@@ -242,6 +242,7 @@ function TradeForm({ initial, onSave, onCancel }) {
       display: 'flex', alignItems: 'flex-start', justifyContent: 'center',
       overflowY: 'auto', padding: '20px',
     }}>
+      <h1 className="font-display text-4xl md:text-6xl text-white mb-8 text-center">Trading Journal</h1>
       <div style={{
         background: C.bg1, border: `1px solid ${C.border}`, borderRadius: '18px',
         width: '100%', maxWidth: '820px', padding: '32px', position: 'relative',

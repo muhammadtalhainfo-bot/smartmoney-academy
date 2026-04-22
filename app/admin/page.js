@@ -197,6 +197,7 @@ function DashboardSection({ users, emails, trades, proUsers, loading, onRefresh 
 
   return (
     <div>
+      <h1 className="font-display text-4xl md:text-6xl text-white mb-8 text-center">Admin Dashboard</h1>
       <SectionHeader title="SITE OVERVIEW" action={
         <button onClick={onRefresh} style={{ ...css.btnGhost }}>↻ Refresh</button>
       } />

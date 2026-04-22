@@ -100,6 +100,7 @@ function AuthPageInner() {
 
   return (
     <div style={{ minHeight: '100vh', background: '#080808', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'DM Sans', sans-serif", padding: '24px' }}>
+      <h1 className="font-display text-4xl md:text-6xl text-white mb-8 text-center">Sign In</h1>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap');
         .auth-input { background: #141414; border: 1px solid #E8C547; border-radius: 10px; color: #F5F5F5; padding: 12px 16px; font-size: 15px; font-family: 'DM Sans', sans-serif; outline: none; width: 100%; transition: border-color 0.2s; }
