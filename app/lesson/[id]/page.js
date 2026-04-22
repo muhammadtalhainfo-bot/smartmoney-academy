@@ -1654,14 +1654,6 @@ function Quiz({ questions, lessonId }) {
 }
 
 // ─── Main page ───────────────────────────────────────────────────
-export async function generateMetadata({ params }) {
-  return {
-    alternates: {
-      canonical: `https://ictflow.com/lesson/${params.id}`,
-    },
-  };
-}
-
 export default function LessonPage({ params }) {
   const router = useRouter();
 
