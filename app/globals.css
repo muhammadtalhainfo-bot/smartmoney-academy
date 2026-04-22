@@ -12,3 +12,28 @@ body {
 ::-webkit-scrollbar-thumb { background: rgba(212,168,67,0.2); border-radius: 4px; }
 
 select option { background: #141414; }
+
+
+/* === ACCESSIBILITY CONTRAST FIXES === */
+/* Fix light gray text on light backgrounds */
+.text-gray-200 {
+  color: #f5f5f5 !important; /* was #e5e7eb, too light */
+}
+
+/* Fix yellow/gold text - ensure dark background behind it */
+.gold-text-fix {
+  background: rgba(0, 0, 0, 0.75);
+  padding: 4px 10px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+/* Ensure all small text is readable */
+.text-xs {
+  color: #f0f0f0 !important;
+}
+
+/* Fix testimonial card text */
+.testimonial-text {
+  color: #ffffff !important;
+}
