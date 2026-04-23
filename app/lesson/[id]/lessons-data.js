@@ -61,7 +61,7 @@ export const LESSONS_EXTRA = {
     duration: '18 min read',
     category: 'Analysis',
     imageCaption: 'The Draw on Liquidity is always the next unmitigated liquidity pool  - -  price is magnetically drawn toward it',
-    intro: "The Draw on Liquidity (DOL) is the concept that separates traders who anticipate from traders who react. While retail traders wonder "where will price go?" after it has already moved, ICT traders identify the next liquidity target BEFORE price reaches it. This is not prediction  - -  it is understanding the algorithmic sequence that governs all price delivery.",
+    intro: "The Draw on Liquidity (DOL) is the concept that separates traders who anticipate from traders who react. While retail traders wonder where will price go? after it has already moved, ICT traders identify the next liquidity target BEFORE price reaches it. This is not prediction  - -  it is understanding the algorithmic sequence that governs all price delivery.",
     sections: [
       {
         title: 'What Is the Draw on Liquidity?',
