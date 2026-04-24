@@ -21,6 +21,20 @@ const ALL_MODULES = [
   { id: 12, title: 'ICT 2024 Mentorship', lessons: 8, emoji: '🆕', level: 'Advanced' },
   { id: 13, title: 'SMC Concepts', lessons: 6, emoji: '💼', level: 'Beginner' },
   { id: 14, title: 'Top-Down Analysis', lessons: 5, emoji: '🔭', level: 'Intermediate' },
+  { id: 15, title: 'Daily Bias Framework', lessons: 6, emoji: '🧭', level: 'Intermediate' },
+  { id: 16, title: 'Draw on Liquidity', lessons: 5, emoji: '🎯', level: 'Intermediate' },
+  { id: 17, title: 'Dealing Ranges & PD Arrays', lessons: 5, emoji: '📐', level: 'Intermediate' },
+  { id: 18, title: 'Institutional Order Flow', lessons: 7, emoji: '🏦', level: 'Advanced' },
+  { id: 19, title: 'Session Timing & Market Hours', lessons: 5, emoji: '⏰', level: 'Beginner' },
+  { id: 20, title: 'Narrative Building', lessons: 6, emoji: '📖', level: 'Advanced' },
+  { id: 21, title: 'Quarterly Theory & Seasonal Tendencies', lessons: 5, emoji: '📅', level: 'Advanced' },
+  { id: 22, title: 'Liquidity Voids & Gaps', lessons: 5, emoji: '🕳️', level: 'Intermediate' },
+  { id: 23, title: 'Time & Price Theory', lessons: 5, emoji: '⌚', level: 'Advanced' },
+  { id: 24, title: 'Turtle Soup & Stop Hunts', lessons: 5, emoji: '🐢', level: 'Intermediate' },
+  { id: 25, title: 'Judas Swing & AMD Deep Dive', lessons: 6, emoji: '⚡', level: 'Advanced' },
+  { id: 26, title: 'Balanced Price Range (BPR)', lessons: 5, emoji: '⚖️', level: 'Advanced' },
+  { id: 27, title: 'Execution & Trade Management', lessons: 6, emoji: '🎯', level: 'Advanced' },
+  { id: 28, title: 'Backtesting & Model Development', lessons: 5, emoji: '🔬', level: 'Advanced' },
 ];
 
 const LEVEL_RANKS = ['Novice', 'Apprentice', 'Practitioner', 'Analyst', 'Strategist', 'Institutional'];
