@@ -875,6 +875,17 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
 // Merge in new lessons (15-28)
 const ALL_LESSONS = { ...LESSONS, ...LESSONS_EXTRA };
 
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  const lesson = ALL_LESSONS[parseInt(id)];
+  if (!lesson) return {};
+  return {
+    title: `${lesson.title} | ICT Flow`,
+    description: lesson.intro ? lesson.intro.slice(0, 155) : `Learn ${lesson.title} in ICT Flow trading education`,
+    alternates: { canonical: `https://ictflow.com/lesson/${id}` },
+  };
+}
+
 // ─── Level badge styles ──────────────────────────────────────────
 const LEVEL_STYLE = {
   Beginner: 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20',
