@@ -102,10 +102,10 @@ export const LESSONS_EXTRA = {
     id: 17,
     title: 'Dealing Ranges & PD Arrays',
     subtitle: 'The Full PD Array Matrix  --  Every Institutional Zone Ranked by Strength',
-    level: 'Intermediate',
-    duration: '22 min read',
-    category: 'PD Arrays',
-    imageCaption: 'The PD Array Matrix ranks every institutional zone from most powerful (Breaker) to least (SIBI/BISI)',
+    level: `Intermediate`,
+    duration: `22 min read`,
+    category: `PD Arrays`,
+    imageCaption: `The PD Array Matrix ranks every institutional zone from most powerful (Breaker) to least (SIBI/BISI)`,
     intro: `PD Arrays  --  Price Delivery Arrays  --  are the institutional zones on your chart where the algorithm is programmed to deliver price and create reactions. Understanding which arrays exist, how to rank them by strength, and how to use them in order of priority is what separates advanced ICT practitioners from beginners who draw random boxes and call them Order Blocks.`,
     sections: [
       {
@@ -637,10 +637,10 @@ export const LESSONS_EXTRA = {
     id: 28,
     title: 'Backtesting & Model Development',
     subtitle: 'No Edge Can Be Trusted Until It Has Been Proven Across Hundreds of Historical Setups',
-    level: 'Advanced',
-    duration: '22 min read',
-    category: 'Strategy',
-    imageCaption: 'The backtesting process: 100+ historical trades → statistical analysis → defined model → forward test → live trading',
+    level: `Advanced`,
+    duration: `22 min read`,
+    category: `Strategy`,
+    imageCaption: `The backtesting process: 100+ historical trades → statistical analysis → defined model → forward test → live trading`,
     intro: `The most dangerous phrase in trading is "I think this setup works." ICT traders do not think  --  they know, because they have tested their setup across hundreds of historical occurrences and measured the results statistically. Backtesting is not busywork. It is the process that transforms a set of interesting concepts into a provable, statistical edge  --  the foundation of consistent profitability.`,
     sections: [
       {
