@@ -191,6 +191,41 @@ const MODULES = [
     topics: ["Why Most Traders Skip This and Fail", "Setting Up a Proper Backtesting Environment", "What to Record in Every Backtest", "Sample Size — Minimum for Statistical Significance", "Turning Results Into a Defined Model", "Forward Testing Your Model on Demo"],
     isNew: true,
   },
+  {
+    id: 29, module: "29", title: "Risk Management Fundamentals", level: "Beginner", tag: "ICT",
+    lessons: 5, duration: "18 min", emoji: "🛡️", image: "/modules/module-01.webp",
+    desc: "Risk management is the single most important skill in trading. Master the 1% rule, R:R ratios, stop placement, and loss limits before placing a single trade.",
+    topics: ["Why Risk Management Beats Strategy", "The 1% Rule & When to Break It", "Risk-to-Reward Ratio Explained", "Stop Loss Placement for ICT", "Daily, Weekly & Monthly Loss Limits"],
+    isNew: true,
+  },
+  {
+    id: 30, module: "30", title: "Advanced Risk Management & Position Sizing", level: "Intermediate", tag: "ICT",
+    lessons: 5, duration: "22 min", emoji: "📐", image: "/modules/module-02.webp",
+    desc: "Go beyond the basics — Kelly Criterion, correlation risk, drawdown recovery, and the psychology of protecting capital like a professional trader.",
+    topics: ["The Kelly Criterion for ICT Traders", "Correlation Risk: The Hidden Account Killer", "Drawdown Recovery Strategies", "Position Sizing for Different Account Sizes", "The Psychology of Risk"],
+    isNew: true,
+  },
+  {
+    id: 201, module: "201", title: "ICT for NAS100 & US30 (Indices)", level: "Intermediate", tag: "ICT",
+    lessons: 4, duration: "28 min", emoji: "📈", image: "/modules/module-09.webp",
+    desc: "Stock indices offer cleaner ICT structure and larger moves than forex. Learn the opening range strategy, index-specific killzones, and position sizing for NAS100 and US30.",
+    topics: ["Why Indices Are Better for ICT", "NAS100 vs US30: Key Differences", "The Index Opening Range Strategy", "Index-Specific Risk Management"],
+    isNew: true,
+  },
+  {
+    id: 202, module: "202", title: "ICT for Gold (XAU/USD)", level: "Intermediate", tag: "ICT",
+    lessons: 3, duration: "24 min", emoji: "🥇", image: "/modules/module-10.webp",
+    desc: "Gold is the ultimate safe-haven asset. Understand what drives gold, how to adapt ICT killzones, and how to trade the high-probability safe-haven setup.",
+    topics: ["What Drives Gold Prices", "Gold-Specific ICT Adaptations", "The Gold Safe-Haven Setup"],
+    isNew: true,
+  },
+  {
+    id: 301, module: "301", title: "ICT for Crypto: Bitcoin & Ethereum", level: "Intermediate", tag: "ICT",
+    lessons: 4, duration: "22 min", emoji: "₿", image: "/modules/module-11.webp",
+    desc: "Apply ICT concepts to 24/7 crypto markets. Learn crypto killzones, leverage rules, Bitcoin halving cycle strategy, and whale accumulation patterns.",
+    topics: ["Why ICT Works Better in Crypto", "Adapting Killzones for Crypto", "Crypto-Specific Risk Management", "The Bitcoin Halving Cycle Strategy"],
+    isNew: true,
+  },
 ];
 
 const FILTERS = ['All', 'Beginner', 'Intermediate', 'Advanced', 'ICT', 'ICT & SMC', 'SMC', '2024', 'New'];

@@ -683,4 +683,215 @@ export const LESSONS_EXTRA = {
     prevLesson: { id: 27, title: `Execution & Trade Management` },
   },
 
+
+  29: {
+    id: 29,
+    title: `Risk Management Fundamentals`,
+    subtitle: `The #1 Reason Traders Fail (And How to Avoid It)`,
+    level: `Beginner`,
+    duration: `18 min read`,
+    category: `Risk Management`,
+    imageCaption: `Risk management is not optional -- it is the foundation that separates professional traders from gamblers`,
+    intro: `Risk management is the single most important skill in trading. You can have the best ICT strategy, the perfect entry model, and flawless market structure analysis -- but without proper risk management, you will eventually blow your account. This lesson covers the core principles that every ICT trader must master before placing a single trade.`,
+    sections: [
+      {
+        title: `Why Risk Management Matters More Than Strategy`,
+        content: `Most traders spend 90% of their time learning entry strategies and 10% on risk management. Professional traders do the opposite.\n\nTHE MATHEMATICS OF RUIN:\nIf you risk 10% per trade and have a 50% win rate, you have a 99.9% chance of blowing your account within 50 trades. If you risk 2% per trade with the same win rate, your risk of ruin drops to less than 1%.\n\nTHE COMPOUNDING EFFECT:\nA trader who risks 1% per trade and wins 3R per trade needs only a 30% win rate to be profitable. A trader who risks 5% per trade needs a 60% win rate just to break even.\n\nTHE PSYCHOLOGICAL IMPACT:\nLosing 20% of your account requires a 25% gain just to break even. Losing 50% requires a 100% gain. The deeper the drawdown, the harder the recovery.`,
+        highlight: `📌 Risk management is not about avoiding losses -- it is about ensuring that no single loss (or series of losses) can destroy your account.`,
+      },
+      {
+        title: `The 1% Rule (And When to Break It)`,
+        content: `The 1% rule states that you should never risk more than 1% of your total account balance on any single trade.\n\nCALCULATING POSITION SIZE:\nAccount Balance: $10,000\nRisk Per Trade: 1% = $100\nStop Loss Distance: 20 pips\nPip Value: $10 per pip (standard lot)\nPosition Size: $100 / (20 pips x $1 per pip) = 0.5 mini lots\n\nWHEN TO USE 0.5%:\n- During your first 3 months of live trading\n- When trading a new strategy\n- During high-volatility periods (NFP week, FOMC)\n- When your win rate is below 40%\n\nWHEN TO USE 2%:\n- After 6 months of consistent profitability\n- When your win rate is above 50%\n- During your best-performing sessions (e.g., NY AM)\n\nNEVER EXCEED 2%:\nEven professional ICT traders with 5+ years of experience rarely risk more than 2% per trade.`,
+        highlight: `📌 Start with 0.5% risk per trade for your first month. Only increase to 1% after 30 profitable trades. Never exceed 2% regardless of your confidence level.`,
+      },
+      {
+        title: `Risk-to-Reward Ratio (R:R)`,
+        content: `The risk-to-reward ratio measures how much you stand to gain relative to how much you risk. ICT traders should aim for a minimum of 1:3.\n\nUNDERSTANDING R:R:\n1:1 R:R -- You risk $100 to make $100. Need 50% win rate to break even.\n1:2 R:R -- You risk $100 to make $200. Need 33% win rate to break even.\n1:3 R:R -- You risk $100 to make $300. Need 25% win rate to break even. The ICT standard.\n1:5 R:R -- You risk $100 to make $500. Need 17% win rate to break even.\n\nHOW ICT NATURALLY CREATES HIGH R:R:\nICT concepts are designed for high risk-to-reward trades:\n- Order Blocks provide precise entries with tight stops\n- Fair Value Gaps show exactly where price is inefficient\n- Liquidity sweeps create low-risk entry points\n- Dealing ranges show where price is likely to deliver\n\nEXAMPLE ICT SETUP:\nEntry: Bullish Order Block in discount\nStop Loss: Below the OB (15 pips)\nTake Profit: Previous Day High (60 pips)\nR:R Ratio: 1:4\n\nWith a 1:4 R:R, you can lose 3 trades and win 1 trade and still be profitable.`,
+        highlight: `📌 Never take a trade with less than 1:3 risk-to-reward. If the setup does not offer at least 3R, wait for a better setup.`,
+      },
+      {
+        title: `Stop Loss Placement for ICT Traders`,
+        content: `Where you place your stop loss is as important as where you enter. A poorly placed stop is an invitation for the algorithm to hunt you.\n\nTHE GOLDEN RULE:\nYour stop loss should be placed at a level where, if hit, your trade idea is proven wrong. Not at a random number. Not at a fixed pip distance. At the structural level that invalidates your setup.\n\nSTOP LOSS RULES BY SETUP:\n\nOrder Block Entry:\n- Bullish OB: Stop below the OB low (plus 2-3 pips buffer)\n- Bearish OB: Stop above the OB high (plus 2-3 pips buffer)\n\nFair Value Gap Entry:\n- Bullish FVG: Stop below the FVG (the low of the first candle)\n- Bearish FVG: Stop above the FVG (the high of the first candle)\n\nLiquidity Sweep Entry:\n- Stop below the sweep low (bullish) or above the sweep high (bearish)\n\nTHE BUFFER RULE:\nAlways add a 2-5 pip buffer to your stop loss. The algorithm often hunts stops by 1-2 pips before reversing. A small buffer prevents being stopped out on perfect setups.`,
+        highlight: `📌 Your stop loss is your 'I am wrong' price. If price hits your stop, you should be glad -- it saved you from a bigger loss. Never move your stop loss further away after entering a trade.`,
+      },
+      {
+        title: `Daily, Weekly & Monthly Loss Limits`,
+        content: `Professional traders have hard loss limits. When they hit their limit, they stop trading for the day.\n\nDAILY LOSS LIMIT: 3% of account\n- If you lose 3% in one day, you stop trading\n- This means 3 losing trades at 1% risk each\n\nWEEKLY LOSS LIMIT: 6% of account\n- If you lose 6% in one week, you stop until Monday\n\nMONTHLY LOSS LIMIT: 10% of account\n- If you lose 10% in one month, you stop and review\n\nTHE 3-STRIKE RULE:\nIf you lose 3 trades in a row, stop trading for the day. Three consecutive losses indicate:\n- Your bias is wrong\n- Market conditions have changed\n- You are not reading price action correctly\n\nTHE WINNING STREAK RULE:\nIf you win 3 trades in a row, consider stopping or reducing risk to 0.5%. Winning streaks can create overconfidence, which leads to sloppy entries and larger losses.`,
+        highlight: `📌 The market will be here tomorrow. Your account might not be. Protect your capital above all else.`,
+      },
+    ],
+    quiz: [
+      { q: `What is the maximum recommended risk per trade for a beginner ICT trader?`, options: ['5%', '2%', '1%', '0.5%'], answer: 3 },
+      { q: `What is the minimum Risk-to-Reward ratio for an ICT setup?`, options: ['1:1', '1:2', '1:3', '1:5'], answer: 2 },
+      { q: `Where should you place your stop loss on a bullish Order Block entry?`, options: ['10 pips below entry', 'Below the OB low', 'At the previous day low', 'At breakeven'], answer: 1 },
+      { q: `What should you do after 3 consecutive losing trades?`, options: ['Increase position size to recover', 'Stop trading for the day', 'Switch to a different strategy', 'Trade a different pair'], answer: 1 },
+    ],
+    nextLesson: { id: 30, title: `Advanced Risk Management` },
+    prevLesson: { id: 28, title: `Backtesting & Model Development` },
+  },
+
+  30: {
+    id: 30,
+    title: `Advanced Risk Management & Position Sizing`,
+    subtitle: `How Professional ICT Traders Protect Capital in All Market Conditions`,
+    level: `Intermediate`,
+    duration: `22 min read`,
+    category: `Risk Management`,
+    imageCaption: `Professional traders treat risk management as a science, not an afterthought`,
+    intro: `Once you understand the basics of the 1% rule and stop loss placement, it is time to master advanced risk management techniques. This lesson covers position sizing formulas, correlation risk, drawdown recovery strategies, and the psychological aspects of managing money like a professional ICT trader.`,
+    sections: [
+      {
+        title: `The Kelly Criterion for ICT Traders`,
+        content: `The Kelly Criterion is a mathematical formula used to determine the optimal size of a series of bets. Professional traders use a fractional version for safety.\n\nTHE FORMULA:\nf = (bp - q) / b\nWhere: f = fraction of bankroll to risk, b = average win amount (R multiple), p = probability of winning (win rate), q = probability of losing (1 - p)\n\nEXAMPLE CALCULATION:\nWin Rate: 45% (p = 0.45), Average Win: 3R (b = 3)\nf = (3 x 0.45 - 0.55) / 3 = 0.80 / 3 = 0.267 or 26.7%\n\nTHE FRACTIONAL KELLY:\nNever risk the full Kelly percentage. Professional ICT traders use:\n- Quarter Kelly: 26.7% / 4 = 6.7% (too high for forex)\n- Eighth Kelly: 26.7% / 8 = 3.3% (acceptable for high-confidence setups)\n- Sixteenth Kelly: 26.7% / 16 = 1.7% (standard for most ICT setups)\n\nWHEN TO USE KELLY:\n- After 100+ tracked trades with stable win rate and R:R\n- Never use Kelly until you have at least 3 months of data\n- Never risk more than 2% regardless of what the formula suggests`,
+        highlight: `📌 The Kelly Criterion is powerful but dangerous. Always use fractional Kelly (1/8 or 1/16) and never risk more than 2% per trade regardless of what the formula suggests.`,
+      },
+      {
+        title: `Correlation Risk: The Hidden Account Killer`,
+        content: `Correlation risk is when you take multiple trades that move in the same direction, effectively increasing your risk without realizing it.\n\nHIGH CORRELATION PAIRS:\nEURUSD & GBPUSD: 85-90% correlated\nEURUSD & AUDUSD: 70-75% correlated\nNAS100 & US30: 80-85% correlated\nXAUUSD & EURUSD: 60-70% correlated (inverse USD)\n\nTHE CORRELATION TRAP:\nYou risk 1% on EURUSD long + 1% on GBPUSD long.\nYou think your total risk is 2%.\nREALITY: Because these pairs are 85% correlated, your actual risk is closer to 1.85%. Both will likely stop out together.\n\nCORRELATION RULES:\nRule 1: Never trade more than 2 correlated pairs simultaneously\nRule 2: If trading correlated pairs, reduce risk to 0.5% each\nRule 3: Diversify with uncorrelated pairs (e.g., EURUSD + USDJPY + XAUUSD)\n\nSAFE PAIR COMBINATIONS:\n- EURUSD + USDJPY + XAUUSD\n- GBPUSD + AUDUSD + NAS100\n\nAVOID:\n- EURUSD + GBPUSD + AUDUSD (all correlated)\n- NAS100 + US30 + SPX500 (all indices)`,
+        highlight: `📌 Trading 3 correlated pairs at 1% each is NOT 3% risk -- it is effectively 2.5-2.8% risk because they move together. Always diversify with uncorrelated markets.`,
+      },
+      {
+        title: `Drawdown Recovery Strategies`,
+        content: `Drawdown is the peak-to-trough decline in your account. Every trader experiences drawdown. How you handle it determines your longevity.\n\nPHASE 1: NORMAL DRAWDOWN (0-5%)\nAction: Continue normal trading, review recent trades\nRisk: Reduce to 0.75% per trade until recovery\n\nPHASE 2: MODERATE DRAWDOWN (5-10%)\nAction: Reduce risk to 0.5%, trade only A+ setups\nBreak: Take 2-3 days off to reset mentally\n\nPHASE 3: SEVERE DRAWDOWN (10-20%)\nAction: STOP trading immediately\nReset: Paper trade for 2 weeks before returning to live\nRisk: Return at 0.25% until account recovers to -5%\n\nTHE RECOVERY FORMULA:\nTo recover from a 20% drawdown, you need a 25% gain.\nTo recover from a 50% drawdown, you need a 100% gain.\n\nThis is why protecting your account is exponentially more important than making profits.`,
+        highlight: `📌 A 50% drawdown requires a 100% gain to recover. A 20% drawdown requires only 25%. The math is brutal -- never let drawdown exceed 10%.`,
+      },
+      {
+        title: `Position Sizing for Different Account Sizes`,
+        content: `Your position sizing strategy should evolve as your account grows.\n\nSMALL ACCOUNTS ($1,000 - $5,000):\nRisk: 1-2% per trade. Trade micro lots (0.01) to allow wider stops.\nGoal: Build consistency, not profits. Reach $10,000 through compound growth.\n\nMEDIUM ACCOUNTS ($5,000 - $25,000):\nRisk: 1% per trade. Focus: Maintain 1:3 R:R minimum.\nGoal: Steady 3-5% monthly returns.\n\nLARGE ACCOUNTS ($25,000 - $100,000):\nRisk: 0.5-1% per trade. Split entries into 2-3 smaller orders.\nGoal: 2-4% monthly returns.\n\nPROFESSIONAL ACCOUNTS ($100,000+):\nRisk: 0.25-0.5% per trade. Trade as if it is a $10,000 account.\nGoal: 1-3% monthly returns.\n\nTHE COMPOUNDING MATH:\n$10,000 account, 3% monthly return:\nYear 1: $14,258\nYear 2: $20,328\nYear 3: $29,004\nYear 5: $59,092\nYear 10: $348,912\n\nThis is with only 3% monthly returns. Most ICT traders aim for 5-8% with proper execution.`,
+        highlight: `📌 A $10,000 account compounding at 5% monthly becomes $186,000 in 5 years. The key is consistency, not chasing huge returns.`,
+      },
+      {
+        title: `The Psychology of Risk`,
+        content: `Risk management is 80% psychological and 20% mathematical.\n\nTHE FEAR OF LOSS:\nHumans feel losses 2.5x more intensely than equivalent gains. This causes:\n- Moving stop losses to avoid realizing a loss\n- Closing winning trades too early to secure profits\n- Revenge trading after losses\n- Avoiding valid setups due to recent losses\n\nTHE GREED TRAP:\nAfter a winning streak, traders often:\n- Increase position size (I am on fire!)\n- Take lower-quality setups\n- Remove stop losses\n\nTHE SOLUTION -- THE ROBOT RULE:\nBefore every trade, ask yourself: Would a robot take this trade?\nA robot does not have emotions. It follows rules:\n- Is the setup an A+ setup? Yes/No\n- Is the R:R at least 1:3? Yes/No\n- Is the risk 1% or less? Yes/No\n- Is my bias confirmed? Yes/No\n\nIf any answer is No, do not take the trade. No exceptions.`,
+        highlight: `📌 The best trade is often the one you do not take. Missing a trade costs nothing. Taking a bad trade costs money, confidence, and account equity.`,
+      },
+    ],
+    quiz: [
+      { q: `What is the maximum recommended risk for a $50,000 account?`, options: ['2%', '1%', '0.5%', '0.25%'], answer: 2 },
+      { q: `If you trade EURUSD and GBPUSD simultaneously, what should your risk be per pair?`, options: ['1% each (2% total)', '0.5% each (effective 1% total)', '2% each (4% total)', '0.25% each'], answer: 1 },
+      { q: `How much gain is needed to recover from a 30% drawdown?`, options: ['30%', '43%', '50%', '60%'], answer: 1 },
+      { q: `What should you do during a 10-20% drawdown?`, options: ['Increase risk to recover faster', 'Stop trading and review', 'Trade more pairs to diversify', 'Switch to a new strategy'], answer: 1 },
+    ],
+    nextLesson: { id: 201, title: `ICT for NAS100 & US30` },
+    prevLesson: { id: 29, title: `Risk Management Fundamentals` },
+  },
+
+  201: {
+    id: 201,
+    title: `ICT for NAS100 & US30: Complete Index Trading Guide`,
+    subtitle: `How to Apply Smart Money Concepts to Stock Indices`,
+    level: `Intermediate`,
+    duration: `28 min read`,
+    category: `Indices`,
+    imageCaption: `Indices move differently than forex -- understand the nuances to profit consistently`,
+    intro: `Stock indices like NAS100 (Nasdaq) and US30 (Dow Jones) are among the most popular instruments for ICT traders. They offer larger moves, cleaner structure, and more predictable institutional behavior than forex pairs. This module teaches you how to adapt ICT concepts specifically for indices.`,
+    sections: [
+      {
+        title: `Why Indices Are Better for ICT`,
+        content: `Indices have advantages that make them ideal for ICT trading:\n\n1. CLEANER STRUCTURE\nIndices follow institutional order flow more precisely than forex because they are driven by a basket of stocks rather than interbank flows. The structure is often cleaner, with more obvious PD arrays.\n\n2. LARGER MOVES\nNAS100 regularly moves 200-500 points per day. A single ICT setup can yield 3-5R easily. Compare to EURUSD which moves 50-100 pips.\n\n3. PREDICTABLE SESSIONS\nIndices trade only during US market hours (9:30AM-4PM EST). No overnight gaps, no Asian session confusion.\n\n4. LESS NOISE\nIndices are driven by earnings, economic data, and institutional flows -- more predictable than forex central bank interventions.\n\n5. NO SWAP FEES\nMost brokers charge lower or no swap fees on index CFDs.\n\nThe Trade-offs:\n- Higher margin requirements\n- Wider spreads during low volume\n- Gap risk on market open\n- Correlated to overall market sentiment\n\nFor ICT traders with $5K+ accounts, indices are often more profitable than forex.`,
+        highlight: `📌 Indices offer cleaner ICT structure, larger moves, and predictable sessions. Ideal for traders with $5K+ accounts.`,
+      },
+      {
+        title: `NAS100 vs US30: Key Differences`,
+        content: `Both indices follow ICT principles but have distinct personalities.\n\nNAS100 (Nasdaq-100):\n- Tech-heavy (Apple, Microsoft, Tesla, Nvidia)\n- More volatile -- 200-500 point daily ranges\n- Reacts strongly to tech earnings and Fed policy\n- Cleaner FVGs and Order Blocks\n- Best for: Scalping, day trading, aggressive ICT strategies\n- Killzone: 9:30-10:30AM EST and 2:00-3:00PM EST\n\nUS30 (Dow Jones):\n- Industrial-heavy (Boeing, Goldman Sachs)\n- Less volatile -- 100-300 point daily ranges\n- More stable structure, easier for beginners\n- Best for: Swing trading, conservative ICT strategies\n- Killzone: 9:30-10:30AM EST and 1:00-2:00PM EST\n\nWhich Should You Trade?\n- Beginners: Start with US30 (slower, more forgiving)\n- Experienced: Trade NAS100 (larger moves, more profit)\n- Advanced: Trade both using SMT divergence between them\n\nCorrelation Note: NAS100 and US30 are 85%+ correlated. Use SMT divergence to choose the stronger index. Never risk 1% on both simultaneously.`,
+        highlight: `📌 NAS100 = volatile, tech-driven, larger profits. US30 = stable, industrial, beginner-friendly.`,
+      },
+      {
+        title: `The Index Opening Range Strategy`,
+        content: `The first 30 minutes of the US market open (9:30-10:00AM EST) sets the tone for the entire day.\n\nPRE-MARKET (8:00-9:30AM EST):\n- Mark the overnight high and low (pre-market range)\n- Identify the daily bias from the 4H/Daily chart\n- Note key PD arrays from previous days\n- Check economic calendar for 8:30AM or 10:00AM news\n\nFIRST 5 MINUTES (9:30-9:35AM EST):\n- Do NOT trade immediately\n- Let the initial volatility settle\n- Mark the opening range high and low\n\nTHE SETUP (9:35-10:00AM EST):\n- Wait for price to return to a PD array (OB, FVG, or Breaker)\n- Confirm alignment with daily bias\n- Enter in premium (short) or discount (long)\n- Stop beyond the opening range extreme\n- Target the nearest liquidity pool (BSL or SSL)\n\nEXAMPLE -- Bullish Bias:\n- Pre-market low = 15,200, high = 15,350\n- 9:30 open = 15,280 (gap up)\n- 9:35 pullback to 15,250 (FVG fill)\n- Entry: 15,250 (discount zone)\n- Stop: 15,180 (below pre-market low)\n- Target 1: 15,350 (pre-market high -- 1:3 R:R)\n- Target 2: 15,450 (next BSL -- 1:5 R:R)`,
+        highlight: `📌 The 9:30-10:00AM opening range is the highest-probability ICT setup for indices. Master this before adding complexity.`,
+      },
+      {
+        title: `Index-Specific Risk Management`,
+        content: `Indices require stricter risk management than forex due to larger moves and gap risk.\n\nPOSITION SIZING:\nFormula: Risk $ / (Stop distance in points x Point value)\n\nNAS100 Example:\n- Account: $20,000, Risk: 1% = $200\n- Stop: 100 points, Point value: $1 per point (micro contract)\n- Position size: $200 / (100 x $1) = 2 micro contracts\n\nUS30 Example:\n- Account: $20,000, Risk: 1% = $200\n- Stop: 80 points, Point value: $0.50 per point (micro)\n- Position size: $200 / (80 x $0.50) = 5 micro contracts\n\nGAP RISK MANAGEMENT:\n1. Never hold positions overnight unless you accept gap risk\n2. Reduce position size by 50% before earnings season\n3. Close all positions before 3-day weekends\n\nVOLATILITY ADJUSTMENT:\nDuring high volatility (earnings, Fed days):\n- Reduce risk to 0.5% per trade, widen stops by 50%\n\nDuring low volatility (holiday weeks):\n- Reduce risk to 0.5%, consider not trading at all`,
+        highlight: `📌 Indices need 50% smaller position sizes than forex due to larger moves. Never risk more than 1% per index trade.`,
+      },
+    ],
+    quiz: [
+      { q: `Which index is more volatile?`, options: ['US30', 'NAS100', 'Both the same', 'Depends on the day'], answer: 1 },
+      { q: `What is the most important killzone for indices?`, options: ['3AM EST', '9:30AM EST', '2PM EST', '8PM EST'], answer: 1 },
+      { q: `How correlated are NAS100 and US30?`, options: ['50%', '70%', '85%+', '30%'], answer: 2 },
+      { q: `What should you do before earnings season?`, options: ['Increase size', 'Reduce size by 50%', 'Trade normally', 'Only trade NAS100'], answer: 1 },
+    ],
+    nextLesson: { id: 202, title: `ICT for Gold (XAU/USD)` },
+    prevLesson: { id: 30, title: `Advanced Risk Management` },
+  },
+
+  202: {
+    id: 202,
+    title: `ICT for Gold (XAU/USD): Safe Haven Trading`,
+    subtitle: `How Smart Money Moves Gold and How to Trade It`,
+    level: `Intermediate`,
+    duration: `24 min read`,
+    category: `Commodities`,
+    imageCaption: `Gold follows ICT principles but with unique characteristics driven by safe-haven flows`,
+    intro: `Gold (XAU/USD) is the ultimate safe-haven asset. When markets crash, gold rises. When inflation fears spike, gold rises. Understanding how institutional money flows into gold is essential for ICT traders who want to diversify beyond forex and indices.`,
+    sections: [
+      {
+        title: `What Drives Gold Prices`,
+        content: `Gold moves based on factors very different from forex pairs.\n\n1. SAFE-HAVEN FLOWS\nWhen stocks crash or geopolitical tensions rise, institutions move money into gold. This creates aggressive bullish displacement with little retracement.\n\n2. USD INVERSE CORRELATION\nGold and USD are 80%+ negatively correlated. When DXY rises, gold usually falls. ICT traders must check DXY bias before trading gold.\n\n3. INFLATION EXPECTATIONS\nWhen inflation data surprises to the upside, gold rallies as investors hedge purchasing power.\n\n4. CENTRAL BANK BUYING\nCentral banks (China, Russia, Turkey) are the largest gold buyers. Their purchases create long-term bullish structure.\n\n5. REAL YIELDS\nWhen real yields fall, gold rises. When real yields rise, gold falls.\n\nICT Relevance: Gold institutional flows are MORE predictable than forex because they are driven by macro events. PD arrays on gold are respected more consistently than on EURUSD.`,
+        highlight: `📌 Gold is driven by safe-haven flows, USD inverse correlation, inflation, and central bank buying. More predictable than forex.`,
+      },
+      {
+        title: `Gold-Specific ICT Adaptations`,
+        content: `ICT works on gold but requires adjustments.\n\n1. LARGER MOVES\nGold moves 20-50 pips per day normally. During news, it moves 100+ pips in minutes. Your stops must be wider.\n\n2. ASIAN SESSION MATTERS\nUnlike forex where Asian session is quiet, gold often makes its biggest moves during Asian hours (Chinese central bank activity).\n\n3. LONDON OPEN IS KEY\nThe London fix at 10:00AM GMT is when gold prices are set for the day. Creates predictable volatility.\n\n4. FVGs ARE MASSIVE\nGold FVGs are often 5-10 pips wide. Do not expect tight entries like forex.\n\n5. ORDER BLOCKS ARE RELIABLE\nGold OBs on daily/4H timeframes produce 50-100 pip moves consistently.\n\nBest Gold Killzones:\n- London Open: 3:00-4:00AM EST\n- London Fix: 5:00-6:00AM EST\n- NY Open: 8:30-9:30AM EST\n- NY Power Hour: 2:00-3:00PM EST\n- Asian Session: 8:00PM-12:00AM EST (for overnight holds)`,
+        highlight: `📌 Gold needs wider stops, respects Asian session, and has massive FVGs. London fix at 10AM GMT is the key time.`,
+      },
+      {
+        title: `The Gold Safe-Haven Setup`,
+        content: `This is the highest-probability ICT setup for gold. It triggers during market crashes or geopolitical crises.\n\nCONTEXT (Daily/4H):\n- Stock market is selling off (S&P 500 down 1%+) OR\n- Geopolitical tensions are rising OR\n- Inflation data surprised to the upside\n- DXY is weakening (below key support)\n\nSTRUCTURE (1H/4H):\n- Gold is in bullish market structure (HH/HL)\n- Price is in discount zone of daily dealing range\n- BSL is visible above recent highs\n- SSL has been swept recently\n\nENTRY (15M/5M):\n- Wait for price to return to a bullish PD array\n- Enter during London or NY killzone\n- Stop below the PD array (usually 15-25 pips)\n- Target the nearest BSL (usually 3-5R)\n\nEXAMPLE:\n- Entry: $1,920 at daily OB\n- Stop: $1,895 (25 pips below FVG)\n- Target 1: $1,970 (BSL -- 2R)\n- Target 2: $2,000 (next BSL -- 3.2R)\n\nThis setup triggers 3-5 times per year but produces 5-10R each time.`,
+        highlight: `📌 The safe-haven setup triggers 3-5x per year but produces 5-10R each time. The highest-probability gold trade.`,
+      },
+    ],
+    quiz: [
+      { q: `What is gold inversely correlated with?`, options: ['EURUSD', 'USD (DXY)', 'Oil', 'Stocks'], answer: 1 },
+      { q: `When is the London Gold Fix?`, options: ['8AM GMT', '10AM GMT', '12PM GMT', '2PM GMT'], answer: 1 },
+      { q: `How wide are typical gold FVGs?`, options: ['1-2 pips', '5-10 pips', '20-30 pips', '50+ pips'], answer: 1 },
+      { q: `What drives gold during safe-haven events?`, options: ['London only', 'NY only', 'Asian session', 'Aggressive institutional buying at any time'], answer: 3 },
+    ],
+    nextLesson: { id: 301, title: `ICT for Crypto: Bitcoin & Ethereum` },
+    prevLesson: { id: 201, title: `ICT for NAS100 & US30` },
+  },
+
+  301: {
+    id: 301,
+    title: `ICT for Crypto Trading: Bitcoin & Ethereum`,
+    subtitle: `Applying Smart Money Concepts to Cryptocurrency Markets`,
+    level: `Intermediate`,
+    duration: `22 min read`,
+    category: `Crypto`,
+    imageCaption: `Crypto markets run 24/7 -- ICT concepts work even better without session boundaries`,
+    intro: `Cryptocurrency markets never close. They run 24/7, 365 days a year. This creates unique opportunities for ICT traders -- no killzone limitations, no session gaps, and massive volatility. But crypto also has unique risks: exchange hacks, regulatory news, and extreme leverage. This module teaches you how to apply ICT safely in crypto markets.`,
+    sections: [
+      {
+        title: `Why ICT Works Even Better in Crypto`,
+        content: `Crypto markets have advantages that make them ideal for ICT trading:\n\n1. 24/7 MARKET\nNo session boundaries. ICT setups form at any time -- you can trade when your schedule allows.\n\n2. CLEANER STRUCTURE\nCrypto is driven by retail sentiment and whale accumulation. The structure is often cleaner than forex.\n\n3. MASSIVE MOVES\nBitcoin moves 5-10% per day regularly. Ethereum moves 8-15%. A single ICT setup can produce 5-10R easily.\n\n4. NO SWAP FEES\nMost crypto exchanges do not charge overnight fees.\n\nThe Trade-offs:\n- Extreme volatility (20% moves in hours)\n- Exchange risk (hacks, freezes, bankruptcies)\n- Regulatory risk (sudden bans or restrictions)\n- Emotional trading (crypto attracts gamblers)\n\nFor ICT traders with strong risk management, crypto offers opportunities that forex cannot match.`,
+        highlight: `📌 Crypto runs 24/7 with cleaner structure and massive moves. Ideal for ICT traders with strong risk management. Max 5x leverage.`,
+      },
+      {
+        title: `Adapting ICT Killzones for Crypto`,
+        content: `Crypto never sleeps, but institutional activity still clusters at specific times.\n\nBTC/ETH Killzones:\n\n1. ASIAN SESSION (8:00PM-12:00AM EST)\n- Chinese and Korean institutional activity\n- Often sets the daily direction\n- Best for: Swing entries, daily bias determination\n\n2. LONDON SESSION (3:00-5:00AM EST)\n- European institutional flows\n- High volume, clean structure\n- Best for: Day trading, scalping\n\n3. NEW YORK SESSION (9:30AM-4:00PM EST)\n- US institutional and ETF flows\n- Highest volume of the day\n- Best for: Day trading, momentum plays\n\nCrypto-Specific Timing:\n- Bitcoin halving events: Massive volatility, avoid trading 1 week before/after\n- Monthly options expiry (last Friday): Expect volatility 24 hours before\n- ETF approval/denial news: 20-30% moves in minutes\n- Fed announcements: Crypto reacts strongly to macro news\n\nICT works on crypto at ANY time -- but the highest-probability setups still cluster around the traditional sessions.`,
+        highlight: `📌 Crypto killzones: Asian (8PM-12AM), London (3-5AM), NY (9:30AM-4PM). Trade when YOUR schedule allows.`,
+      },
+      {
+        title: `Crypto-Specific Risk Management`,
+        content: `Crypto risk management is MORE important than forex due to extreme volatility.\n\nLEVERAGE RULES:\n- NEVER use more than 5x leverage for ICT trading\n- 3x leverage is recommended for beginners\n- 10x+ leverage is gambling, not trading\n- Remember: 10x leverage + 10% move = 100% gain OR 100% loss\n\nSTOP LOSS RULES:\n- Bitcoin: 3-5% stop minimum\n- Ethereum: 4-6% stop minimum\n- Altcoins: 8-12% stop minimum (more volatile)\n- Never use fixed pip stops -- use percentage stops\n\nEXCHANGE RISK:\n- Use reputable exchanges (Binance, Coinbase, Kraken)\n- Never keep more than 50% of capital on an exchange\n- Use hardware wallets for long-term holds\n- Enable 2FA on all accounts\n- Diversify across 2-3 exchanges\n\nThe Golden Rule for Crypto: If a 20% move against you would cause emotional distress, your position size is too large. Size down until you are comfortable with the worst-case scenario.`,
+        highlight: `📌 Max 5x leverage. Bitcoin stops: 3-5%. Ethereum: 4-6%. Altcoins: 8-12%. Never keep 100% on one exchange.`,
+      },
+      {
+        title: `The Bitcoin Halving Cycle Strategy`,
+        content: `Bitcoin halving occurs every 4 years and is the most predictable macro event in crypto.\n\nThe Halving Cycle:\n\n1. PRE-HALVING (12-18 months before)\n- Bitcoin accumulates in a range\n- Smart money quietly builds positions\n- ICT play: Buy discount zones, hold for 6+ months\n\n2. HALVING EVENT (April 2024, next: 2028)\n- Mining rewards cut in half\n- Supply shock begins\n- ICT play: Avoid trading 1 week before/after. Wait for structure to form.\n\n3. POST-HALVING BULL RUN (6-18 months after)\n- Supply reduction drives price up\n- Retail FOMO kicks in\n- ICT play: Trade bullish setups in premium with trailing stops\n\n4. BEAR MARKET (12-24 months after peak)\n- Price drops 70-85% from peak\n- ICT play: Short premium zones. Wait for accumulation before buying.\n\nThis cycle has repeated 3 times. It will repeat again. ICT traders who understand the cycle profit massively.`,
+        highlight: `📌 Bitcoin halving cycle: Accumulation -> Halving -> Bull Run -> Bear Market. Trade each phase with different ICT strategies.`,
+      },
+    ],
+    quiz: [
+      { q: `What is the maximum recommended leverage for crypto ICT?`, options: ['10x', '5x', '20x', '50x'], answer: 1 },
+      { q: `When does Bitcoin halving occur?`, options: ['Every year', 'Every 2 years', 'Every 4 years', 'Every 6 years'], answer: 2 },
+      { q: `What is the best session for crypto swing entries?`, options: ['London', 'NY', 'Asian', 'Weekend'], answer: 2 },
+      { q: `What percentage stop is recommended for Bitcoin?`, options: ['1-2%', '3-5%', '8-10%', '15-20%'], answer: 1 },
+    ],
+    nextLesson: null,
+    prevLesson: { id: 202, title: `ICT for Gold (XAU/USD)` },
+  },
+
 };

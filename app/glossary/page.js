@@ -87,6 +87,22 @@ const TERMS = [
   { term: "Weekly Profiles", full: "ICT Weekly Range Profiles", cat: "ICT", def: "ICT's 5 weekly price delivery patterns: Classic, Consolidation, Expansion, Reversal, and Balanced. Used to predict which day creates the weekly high/low." },
   { term: "2022 Model", full: "ICT 2022 Trading Model", cat: "ICT", def: "ICT's 5-step trade framework: ① HTF Bias → ② Draw on Liquidity → ③ Wait for Killzone → ④ LTF Entry (Judas → ChoCH → FVG/OB) → ⑤ Trade Management. Most comprehensive ICT trade plan." },
   { term: "2024 Mentorship", full: "ICT 2024 Mentorship Concepts", cat: "ICT", def: "ICT's latest teaching: New Day Opening Gap, Asian Range Strategy, post-7 AM price delivery, and macro-level time analysis refinements." },
+
+  { term: "Accumulation", full: "Accumulation Phase", cat: "ICT", def: "First phase of AMD where smart money quietly builds positions. Price moves sideways collecting orders from uncertain retail traders before the real directional move begins." },
+  { term: "Algorithm", full: "Trading Algorithm / IPDA", cat: "ICT", def: "Programmed logic driving price movement. IPDA refers to how institutional computers manage liquidity and deliver price to specific targets on a schedule." },
+  { term: "Balanced Price Range", full: "BPR", cat: "ICT", def: "When two opposing FVGs overlap, creating a consolidation zone that precedes explosive moves. Extremely high-confluence reaction zone." },
+  { term: "CE", full: "Consequent Encroachment", cat: "ICT", def: "The exact 50% midpoint level of a Fair Value Gap. The highest-probability entry point within any FVG -- often where precise LTF entries are taken." },
+  { term: "Dealing Range", full: "Dealing Range / DR", cat: "ICT", def: "Price range between significant swing high and low. Exists at every timeframe, nested inside each other. Defines premium (above 50%) and discount (below 50%) zones." },
+  { term: "Distribution", full: "Distribution Phase", cat: "ICT", def: "Third phase of AMD where smart money sells positions to retail traders. Creates FOMO and lures retail into buying at highs just before a reversal." },
+  { term: "ERL", full: "External Range Liquidity", cat: "ICT", def: "Liquidity sitting outside the current dealing range -- above swing highs (BSL) or below swing lows (SSL). The ultimate institutional target and primary draw on liquidity." },
+  { term: "IFVG", full: "Implied Fair Value Gap", cat: "ICT", def: "An inverted FVG that forms opposite to displacement direction. Often signals a manipulation trap. A fully violated FVG becomes an IFVG -- polarity flips." },
+  { term: "IPDA", full: "Interbank Price Delivery Algorithm", cat: "ICT", def: "The algorithmic system banks use to manage price movement and liquidity distribution. Foundation of all ICT theory -- price is delivered on a schedule, not randomly." },
+  { term: "IRL", full: "Internal Range Liquidity", cat: "ICT", def: "Liquidity sitting inside the current dealing range -- unmitigated FVGs, OBs, and gaps. IRL is the entry zone; ERL is the target." },
+  { term: "MMBM", full: "Market Maker Buy Model", cat: "ICT", def: "ICT complete bullish trade framework: accumulate, manipulate (sweep SSL), then rally to BSL. Used to read the full weekly and daily narrative before entering." },
+  { term: "MMSM", full: "Market Maker Sell Model", cat: "ICT", def: "ICT complete bearish trade framework: accumulate, manipulate (sweep BSL), then decline to SSL. The mirror image of MMBM." },
+  { term: "Reclaimed OB", full: "Reclaimed Order Block", cat: "ICT", def: "An Order Block initially violated by price that price then returns to and reclaims back inside. When reclaimed, it reasserts its original institutional role." },
+  { term: "TGIF Setup", full: "TGIF (Thank God It's Friday)", cat: "ICT", def: "Friday price action that reveals the true weekly delivery direction. Price often reverses Friday to close the week at an extreme, setting up the following Monday." },
+  { term: "Vacuum Block", full: "Vacuum Block", cat: "ICT", def: "An area where price moves rapidly due to lack of opposing orders. Similar to a liquidity void -- price passes through these zones without meaningful retracement." },
 ];
 
 const CATS = ['All', 'ICT', 'SMC', 'ICT & SMC'];
