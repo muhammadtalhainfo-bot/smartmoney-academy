@@ -894,4 +894,143 @@ export const LESSONS_EXTRA = {
     prevLesson: { id: 202, title: `ICT for Gold (XAU/USD)` },
   },
 
+
+  101: {
+    id: 101,
+    title: `Risk Management Fundamentals`,
+    subtitle: `Why Risk Management is More Important Than Your Strategy`,
+    level: `Beginner`,
+    duration: `18 min read`,
+    category: `Risk Management`,
+    imageCaption: `Professional traders focus on protecting capital first, profits second`,
+    intro: `Risk management is the foundation of every successful trading career. Without proper risk controls, even the best ICT strategy will eventually blow your account. This lesson teaches you the non-negotiable rules that separate profitable traders from those who fail.`,
+    sections: [
+      {
+        title: `The #1 Rule: Protect Your Capital`,
+        content: `The single most important rule in trading is this: never risk more than you can afford to lose on a single trade. Professional traders treat their trading account like a business -- they protect the capital at all costs.\n\nHere is why most traders fail:\n\n1. They risk 5-10% per trade, thinking they need to go big to make money\n2. They have no stop loss, hoping the market will come back\n3. They revenge trade after losses, doubling position sizes\n4. They trade without a plan, making emotional decisions\n\nThe mathematics of drawdown are brutal:\n\n- Risk 10% per trade = 10 consecutive losses = account destroyed\n- Risk 5% per trade = 10 consecutive losses = 60% drawdown (need 150% gain to recover)\n- Risk 2% per trade = 10 consecutive losses = 18% drawdown (need 22% gain to recover)\n- Risk 1% per trade = 10 consecutive losses = 9.5% drawdown (need 10.5% gain to recover)\n\nThe difference between 2% and 5% risk is the difference between a recoverable setback and account destruction.`,
+        highlight: `📌 Risk 1-2% per trade maximum. This single rule separates professionals from gamblers.`,
+      },
+      {
+        title: `Position Sizing: The Formula`,
+        content: `Position sizing is how you calculate exactly how many lots to trade based on your stop loss distance and account size.\n\nThe Formula:\nPosition Size = (Account Risk $) / (Stop Loss in Pips x Pip Value)\n\nExample:\n- Account: $10,000\n- Risk per trade: 1% = $100\n- Stop loss: 20 pips on EURUSD\n- Pip value: $10 per standard lot\n\nPosition Size = $100 / (20 x $10) = 0.5 standard lots = 5 mini lots\n\nNever guess your position size. Always calculate it before entering the trade. Most trading platforms have position size calculators -- use them every single time.`,
+        highlight: `📌 Calculate position size BEFORE every trade. Never trade based on feeling.`,
+      },
+      {
+        title: `The Risk-Reward Ratio (R:R)`,
+        content: `The risk-reward ratio measures how much you stand to gain versus how much you risk.\n\nMinimum Acceptable R:R: ICT traders should aim for a minimum 1:3 risk-reward ratio. This means risking $100 to make $300.\n\nWhy 1:3?\n\nWith a 1:3 R:R, you can be wrong 70% of the time and still be profitable:\n- 30% win rate x $300 profit = $9,000\n- 70% loss rate x $100 loss = $7,000\n- Net profit: $2,000 on 100 trades\n\nCompare to a 1:1 R:R with 50% win rate:\n- 50% win rate x $100 profit = $5,000\n- 50% loss rate x $100 loss = $5,000\n- Net profit: $0 (you break even after commissions)\n\nNever take a trade with less than 1:2 R:R unless it is a high-probability setup with multiple confluences.`,
+        highlight: `📌 Minimum 1:3 R:R for standard setups. Only accept 1:2 for A+ confluence setups.`,
+      },
+      {
+        title: `Setting Stop Losses Like a Pro`,
+        content: `Your stop loss is your insurance policy. It is not a suggestion -- it is a hard rule.\n\nWhere to Place Stops (ICT Method):\n1. Beyond the nearest PD Array (Order Block, FVG, Breaker)\n2. Above or below the inducement level (not the swing high or low)\n3. Beyond the dealing range equilibrium for swing trades\n4. At the invalidation point of your setup -- where your thesis is proven wrong\n\nCommon Stop Loss Mistakes:\n- Placing stops at obvious round numbers (retail traders cluster here)\n- Using a fixed 20-pip stop for every trade (ignores market structure)\n- Moving stops further away when price approaches (emotional decision)\n- Removing stops entirely just this once (account killer)\n\nThe Golden Rule: Your stop loss should be placed at the technical invalidation of your setup. If you need a 50-pip stop for your setup to be valid, use 50 pips. Never force a stop to fit a predetermined risk amount -- adjust your position size instead.`,
+        highlight: `📌 Place stops at technical invalidation, not at random distances. Adjust position size, not stop distance.`,
+      },
+      {
+        title: `Daily, Weekly & Monthly Loss Limits`,
+        content: `Professional traders have circuit breakers -- automatic rules that stop them from trading when things go wrong.\n\nRecommended Loss Limits:\n- Daily Loss Limit: 3% of account\n- Weekly Loss Limit: 5% of account\n- Monthly Loss Limit: 10% of account\n\nWhen you hit your daily limit:\n1. Stop trading immediately\n2. Close all positions\n3. Step away from the charts\n4. Review your trades in your journal\n5. Do not trade again until tomorrow\n\nThe 3-Trade Rule: If you lose 3 trades in a row, stop trading for the day. Three consecutive losses usually means your read on the market is wrong today, market conditions have changed, or you are trading emotionally rather than technically. Step away. Come back tomorrow with fresh eyes.`,
+        highlight: `📌 3% daily loss limit. 3 consecutive losses = stop for the day. Protect your capital above all else.`,
+      },
+    ],
+    quiz: [
+      { q: `What is the maximum recommended risk per trade?`, options: ['5%', '2%', '10%', '1%'], answer: 1 },
+      { q: `What is the minimum acceptable Risk-Reward ratio for an ICT setup?`, options: ['1:1', '1:2', '1:3', '1:5'], answer: 2 },
+      { q: `What should you do after 3 consecutive losses?`, options: ['Increase position size', 'Stop trading for the day', 'Switch to a different strategy', 'Trade a different pair'], answer: 1 },
+      { q: `Where should you place your stop loss?`, options: ['At a round number', 'At technical invalidation', '20 pips away always', 'Wherever you feel comfortable'], answer: 1 },
+    ],
+    nextLesson: { id: 102, title: `Advanced Position Sizing & Portfolio Heat` },
+    prevLesson: { id: 30, title: `Advanced Risk Management` },
+  },
+
+  102: {
+    id: 102,
+    title: `Advanced Position Sizing & Portfolio Heat`,
+    subtitle: `Managing Multiple Positions and Correlated Risk`,
+    level: `Intermediate`,
+    duration: `22 min read`,
+    category: `Risk Management`,
+    imageCaption: `Portfolio heat measures your total market exposure at any given moment`,
+    intro: `Once you master single-trade risk management, the next level is managing multiple positions simultaneously. This lesson covers portfolio heat, correlated pairs, and advanced position sizing techniques used by professional ICT traders.`,
+    sections: [
+      {
+        title: `Portfolio Heat: Total Account Exposure`,
+        content: `Portfolio heat is the total percentage of your account at risk across ALL open positions at any moment.\n\nThe Rule: Never exceed 6% portfolio heat. This means if you have 3 positions open each risking 2%, your total heat is 6% -- the maximum.\n\nWhy 6%?\n- 6% heat = 5 consecutive losing days of max heat = 30% drawdown (recoverable)\n- 10% heat = 5 consecutive losing days = 50% drawdown (very difficult to recover)\n- 15% heat = 5 consecutive losing days = 75% drawdown (account essentially destroyed)\n\nPortfolio Heat Calculation:\nPosition 1: 2% risk\nPosition 2: 1.5% risk\nPosition 3: 2% risk\nTotal Heat: 5.5% (Under 6% limit)\n\nIf you want to add Position 4, you must reduce risk on existing positions or wait for one to close.`,
+        highlight: `📌 Maximum 6% portfolio heat across all open positions. Never exceed this limit.`,
+      },
+      {
+        title: `Correlated Pairs: Hidden Risk`,
+        content: `Trading multiple correlated pairs simultaneously increases your risk without you realizing it.\n\nHighly Correlated Pairs (Move Together):\n- EURUSD & GBPUSD (90%+ correlation)\n- AUDUSD & NZDUSD (85%+ correlation)\n- US30 & NAS100 (80%+ correlation)\n\nThe Danger: If you take 2% risk on EURUSD and 2% risk on GBPUSD, your effective risk is nearly 4% because both pairs will likely move in the same direction.\n\nThe Solution:\n1. Only trade one pair from each correlation group at a time\n2. If trading correlated pairs, halve the risk on each (1% + 1% = 2% effective)\n3. Use SMT divergence to confirm which pair is leading\n4. Diversify across uncorrelated markets (forex + indices + commodities)\n\nICT traders use correlated pairs for confirmation, not for doubling exposure.`,
+        highlight: `📌 Trading EURUSD + GBPUSD simultaneously = nearly double risk. Treat correlated pairs as one position.`,
+      },
+      {
+        title: `Scaling In and Out of Positions`,
+        content: `Scaling is the art of adding to winning positions or reducing losing ones -- done correctly, it amplifies profits while protecting capital.\n\nScaling INTO Winners (Pyramiding):\n1. Enter initial position at 1% risk\n2. Move stop to breakeven when price reaches 1:1 R:R\n3. Add second position at 0.5% risk when new setup forms in profit direction\n4. Trail stops on all positions to lock in profits\n\nRules for Scaling In:\n- Only add to winners, never losers\n- Each new position must have its own stop loss\n- Total heat must stay under 6%\n- Move stops to breakeven before adding\n\nScaling OUT of Positions (Partial Closes):\n1. Close 50% at 1:2 R:R (covers risk, guarantees profit)\n2. Move stop to breakeven on remaining 50%\n3. Close 25% at 1:3 R:R\n4. Let final 25% run with trailing stop`,
+        highlight: `📌 Scale into winners, never losers. Close 50% at 1:2 R:R, let the rest run with a trailing stop.`,
+      },
+      {
+        title: `The Kelly Criterion for Optimal Risk`,
+        content: `The Kelly Criterion is a mathematical formula used by professional traders to determine the optimal percentage of capital to risk on each trade.\n\nThe Formula:\nKelly % = (Win Rate x Average Win) - (Loss Rate x Average Loss) / Average Win\n\nExample:\n- Win rate: 40%, Average win: $300 (3R), Average loss: $100 (1R)\n- Kelly % = (0.40 x 300) - (0.60 x 100) / 300\n- Kelly % = 120 - 60 / 300 = 0.20 = 20%\n\nWARNING: Full Kelly is extremely aggressive. Professional traders use Half Kelly or Quarter Kelly:\n- Full Kelly: 20% per trade (dangerous)\n- Half Kelly: 10% per trade (aggressive)\n- Quarter Kelly: 5% per trade (conservative, sustainable)\n\nFor ICT traders with 30-40% win rates and 1:3 R:R, Quarter Kelly is appropriate. However, most ICT mentors recommend the simpler 1-2% rule for consistency and psychological comfort.`,
+        highlight: `📌 Use Quarter Kelly (25% of full Kelly) for sustainable growth. Never use full Kelly -- it causes massive drawdowns.`,
+      },
+      {
+        title: `Risk Management Checklist`,
+        content: `Before EVERY trade, run through this checklist. Do not deviate.\n\nPRE-TRADE CHECKLIST:\n- Identified the daily bias (bullish/bearish/neutral)\n- Found a valid PD Array in premium/discount zone\n- Confirmed killzone timing (London/NY/Asian)\n- Placed stop loss at technical invalidation\n- Calculated position size for 1-2% risk\n- Verified R:R is minimum 1:2 (preferably 1:3+)\n- Checked portfolio heat (under 6% total)\n- Checked correlated pairs (not doubling risk)\n- Set take profit targets (1:2, 1:3, 1:5)\n- Written trade plan in journal\n\nPOST-TRADE CHECKLIST:\n- Recorded entry, exit, and result in journal\n- Noted what worked and what did not\n- Identified any emotional decisions\n- Updated win rate and average R:R statistics\n- Reviewed if setup followed ICT rules perfectly\n\nThis checklist takes 30 seconds but saves accounts. Professional traders treat it as non-negotiable.`,
+        highlight: `📌 The 30-second pre-trade checklist that separates professional traders from amateurs. Never skip it.`,
+      },
+    ],
+    quiz: [
+      { q: `What is the maximum recommended portfolio heat?`, options: ['3%', '6%', '10%', '15%'], answer: 1 },
+      { q: `Which pairs are highly correlated?`, options: ['EURUSD & USDJPY', 'EURUSD & GBPUSD', 'AUDUSD & USDCAD', 'XAUUSD & EURUSD'], answer: 1 },
+      { q: `When should you scale into a position?`, options: ['When it is losing', 'When it is winning at breakeven', 'At the very start', 'Never'], answer: 1 },
+      { q: `What percentage of a position should you close at 1:2 R:R?`, options: ['25%', '50%', '75%', '100%'], answer: 1 },
+    ],
+    nextLesson: { id: 103, title: `The Psychology of Risk` },
+    prevLesson: { id: 101, title: `Risk Management Fundamentals` },
+  },
+
+  103: {
+    id: 103,
+    title: `The Psychology of Risk`,
+    subtitle: `Mastering Emotions, Discipline, and Consistency`,
+    level: `Intermediate`,
+    duration: `20 min read`,
+    category: `Risk Management`,
+    imageCaption: `Trading is 80% psychology and 20% strategy`,
+    intro: `Even with perfect technical analysis, poor psychology will destroy your account. This lesson covers the mental game of trading -- the emotions, biases, and discipline required to execute your ICT strategy consistently.`,
+    sections: [
+      {
+        title: `The Four Deadly Emotions`,
+        content: `Every trader faces four emotions that destroy accounts. Recognizing them is the first step to controlling them.\n\n1. FEAR\nSymptoms: Hesitating to enter valid setups, closing winners too early, moving stops closer to entry\nSolution: Reduce risk to 1%, backtest your strategy to build confidence, trade on demo until consistent\n\n2. GREED\nSymptoms: Taking subpar setups, increasing position size after wins, removing take profits hoping for bigger gains\nSolution: Stick to your plan, set automatic take profits, remember that consistent small wins beat occasional big wins\n\n3. REVENGE\nSymptoms: Trading immediately after a loss with larger size, taking low-quality setups to make it back\nSolution: Implement the 3-trade loss rule, walk away after losses, remember that tomorrow is a new day\n\n4. HOPE\nSymptoms: Moving stops further away, removing stops entirely, adding to losing positions\nSolution: Pre-define every exit before entry, treat stops as non-negotiable, accept that being wrong is part of trading\n\nThese four emotions are why 90% of traders fail. Master them and you are already ahead of the majority.`,
+        highlight: `📌 Fear, Greed, Revenge, Hope -- the four account killers. Recognize them before they cost you money.`,
+      },
+      {
+        title: `Cognitive Biases in Trading`,
+        content: `Cognitive biases are mental shortcuts that distort your perception of the market. Every trader has them -- professionals recognize and counteract them.\n\n1. Confirmation Bias: You seek information that confirms your existing belief and ignore information that contradicts it.\nSolution: Force yourself to find 3 reasons why your trade idea is WRONG before entering.\n\n2. Recency Bias: You overweight recent events and assume they will continue.\nSolution: Track your statistics over 100+ trades, not 5. One week means nothing.\n\n3. Anchoring Bias: You fixate on your entry price and make decisions relative to it.\nSolution: Your entry price is irrelevant after you enter. Only current market structure matters.\n\n4. Sunk Cost Fallacy: You continue holding a losing trade because you have already invested time in it.\nSolution: Every moment is a new decision. Past time invested is irrelevant -- only future probability matters.`,
+        highlight: `📌 Confirmation, Recency, Anchoring, Sunk Cost -- the four biases that distort your market read. Know them.`,
+      },
+      {
+        title: `Building Trading Discipline`,
+        content: `Discipline is not motivation. Motivation is temporary. Discipline is a system that works regardless of how you feel.\n\nThe Discipline System:\n\n1. CREATE NON-NEGOTIABLE RULES\nWrite your rules down. Post them next to your monitor:\n- I only trade during killzones\n- I risk maximum 2% per trade\n- I never move my stop loss further away\n- I stop after 3 consecutive losses\n- I only take A+ setups with 3+ confluences\n\n2. USE CHECKLISTS\nEvery pilot uses a checklist before every flight. Every trader should use a checklist before every trade. It removes decision-making from emotion and puts it into process.\n\n3. SET PHYSICAL BOUNDARIES\n- Trade from a dedicated space\n- Set a timer for trading sessions (2-3 hours max)\n- Step away from the screen between trades\n\n4. REVIEW WEEKLY\nEvery Sunday, review your week: trades taken, win rate, average R:R, rule violations, emotions. This weekly review builds self-awareness, which is the foundation of discipline.`,
+        highlight: `📌 Discipline is a system, not a feeling. Create rules, use checklists, set boundaries, and review weekly.`,
+      },
+      {
+        title: `The Winning Mindset`,
+        content: `Professional traders think differently than amateurs. Here is how to adopt the winning mindset.\n\n1. PROCESS OVER OUTCOME\nAmateurs focus on: Did I win or lose this trade?\nProfessionals focus on: Did I follow my process perfectly?\nYou cannot control the outcome of any single trade. You CAN control whether you followed your plan.\n\n2. PROBABILITY MINDSET\nA 40% win rate with 1:3 R:R is highly profitable over 100 trades. But it means you lose 60% of the time. Accept that losses are part of the system. A single loss does not mean your strategy is broken.\n\n3. DETACHMENT\nAfter you enter a trade, it is no longer yours. The market owns it. Set your stops and targets, then walk away. The best trades often work when you are not watching.\n\n4. LONG-TERM THINKING\nTrading is a career, not a lottery. A 3% monthly return compounds to 43% annually. That beats nearly every investment in the world. Do not rush. Slow and steady wins.`,
+        highlight: `📌 Focus on process, not outcome. Accept losses as part of the system. Think in years, not days.`,
+      },
+      {
+        title: `Creating Your Trading Routine`,
+        content: `Consistency comes from routine. Here is the daily routine of professional ICT traders.\n\nPRE-MARKET (30 minutes before your killzone):\n1. Check economic calendar for high-impact news\n2. Mark key levels on higher timeframes (daily, 4H)\n3. Identify the daily bias (bullish/bearish/neutral)\n4. Note the nearest liquidity pools (BSL/SSL)\n5. Set alerts at key PD arrays\n\nDURING TRADING (2-3 hours max):\n1. Wait for price to reach your predetermined zone\n2. Confirm setup with checklist (3+ confluences)\n3. Calculate position size and place trade\n4. Set stop loss and take profits immediately\n5. Step away from the screen\n\nPOST-MARKET (15 minutes after session):\n1. Record all trades in journal\n2. Screenshot charts of setups (winners and losers)\n3. Note any emotional decisions or rule violations\n4. Update statistics spreadsheet\n\nWEEKLY REVIEW (Sunday evening):\n1. Review all trades from the week\n2. Calculate win rate, average R:R, total P&L\n3. Identify patterns in winning and losing trades\n4. Study 5 charts where you missed opportunities`,
+        highlight: `📌 The routine: Pre-market preparation -> Disciplined execution -> Post-market review -> Weekly analysis. Consistency creates consistency.`,
+      },
+    ],
+    quiz: [
+      { q: `Which emotion causes you to close winners too early?`, options: ['Greed', 'Fear', 'Revenge', 'Hope'], answer: 1 },
+      { q: `What is confirmation bias?`, options: ['Seeking info that confirms your existing belief', 'Recent events affecting decisions', 'Fixating on entry price', 'Continuing losing trades'], answer: 0 },
+      { q: `How should you judge your trading performance?`, options: ['By profit and loss only', 'By whether you followed your process', 'By win rate alone', 'By number of trades taken'], answer: 1 },
+      { q: `What is the maximum recommended trading session length?`, options: ['1 hour', '2-3 hours', '6 hours', 'All day'], answer: 1 },
+    ],
+    nextLesson: { id: 29, title: `Risk Management Fundamentals (Applied)` },
+    prevLesson: { id: 102, title: `Advanced Position Sizing & Portfolio Heat` },
+  },
+
 };

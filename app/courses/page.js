@@ -192,6 +192,27 @@ const MODULES = [
     isNew: true,
   },
   {
+    id: 101, module: "101", title: "Risk Management: Core Principles", level: "Beginner", tag: "ICT",
+    lessons: 5, duration: "18 min", emoji: "🛡️", image: "/modules/module-03.webp",
+    desc: "The 5 core risk management rules every ICT trader must master. Position sizing formula, R:R ratios, stop loss placement, loss limits, and the daily checklist that protects your account.",
+    topics: ["The #1 Rule: Protect Your Capital", "Position Sizing Formula", "The Risk-Reward Ratio", "Stop Loss Placement", "Daily, Weekly & Monthly Loss Limits"],
+    isNew: true,
+  },
+  {
+    id: 102, module: "102", title: "Advanced Position Sizing & Portfolio Heat", level: "Intermediate", tag: "ICT",
+    lessons: 5, duration: "22 min", emoji: "📐", image: "/modules/module-04.webp",
+    desc: "Master portfolio heat, correlated pairs, scaling in and out, and the Kelly Criterion. The advanced risk layer that professional ICT traders use to manage multiple positions.",
+    topics: ["Portfolio Heat: Total Account Exposure", "Correlated Pairs: Hidden Risk", "Scaling In and Out of Positions", "The Kelly Criterion for Optimal Risk", "Risk Management Checklist"],
+    isNew: true,
+  },
+  {
+    id: 103, module: "103", title: "The Psychology of Risk", level: "Intermediate", tag: "ICT",
+    lessons: 5, duration: "20 min", emoji: "🧠", image: "/modules/module-05.webp",
+    desc: "Trading is 80% psychology. Master the four deadly emotions, cognitive biases, building discipline, the winning mindset, and creating a daily trading routine that produces consistency.",
+    topics: ["The Four Deadly Emotions", "Cognitive Biases in Trading", "Building Trading Discipline", "The Winning Mindset", "Creating Your Trading Routine"],
+    isNew: true,
+  },
+  {
     id: 29, module: "29", title: "Risk Management Fundamentals", level: "Beginner", tag: "ICT",
     lessons: 5, duration: "18 min", emoji: "🛡️", image: "/modules/module-01.webp",
     desc: "Risk management is the single most important skill in trading. Master the 1% rule, R:R ratios, stop placement, and loss limits before placing a single trade.",

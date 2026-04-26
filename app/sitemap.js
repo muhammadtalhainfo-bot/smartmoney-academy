@@ -27,7 +27,7 @@ export default function sitemap() {
 
   const lessonPages = [
     ...Array.from({ length: 28 }, (_, i) => i + 1),
-    29, 30, 201, 202, 301
+    29, 30, 101, 102, 103, 201, 202, 301
   ].map(id => ({
     url: `${BASE}/lesson/${id}`,
     lastModified: now,
