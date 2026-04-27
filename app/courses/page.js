@@ -609,7 +609,7 @@ export default function CoursesPage() {
                 <p className="text-gray-200 text-xs" style={{ fontWeight: 300 }}>Start here. No prior knowledge required.</p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {filtered.filter(m => m.level === 'Beginner').sort((a,b) => parseInt(a.module)-parseInt(b.module)).map((mod, i) => <ModuleCard key={mod.id} mod={mod} index={i} />)}
+                {filtered.filter(m => m.level === 'Beginner').sort((a, b) => parseInt(a.module) - parseInt(b.module)).map((mod, i) => <ModuleCard key={mod.id} mod={mod} index={i} />)}
               </div>
             </div>
           )}
@@ -622,7 +622,7 @@ export default function CoursesPage() {
                 <p className="text-gray-200 text-xs" style={{ fontWeight: 300 }}>Entry models, sessions, and PD arrays in depth.</p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {filtered.filter(m => m.level === 'Intermediate').sort((a,b) => parseInt(a.module)-parseInt(b.module)).map((mod, i) => <ModuleCard key={mod.id} mod={mod} index={i} />)}
+                {filtered.filter(m => m.level === 'Intermediate').sort((a, b) => parseInt(a.module) - parseInt(b.module)).map((mod, i) => <ModuleCard key={mod.id} mod={mod} index={i} />)}
               </div>
             </div>
           )}
@@ -635,7 +635,7 @@ export default function CoursesPage() {
                 <div className="text-white font-semibold text-lg">Smart Money Concepts</div>
                 <div className="text-sm mt-1" style={{ color: 'rgba(255,255,255,0.7)' }}>Community-built framework derived from ICT — great companion to the main curriculum.</div>
               </div>
-              {filtered.filter(m => m.level === 'SMC').sort((a,b) => parseInt(a.module)-parseInt(b.module)).map((mod, i) => <ModuleCard key={mod.id} mod={mod} index={i} />)}
+              {filtered.filter(m => m.level === 'SMC').sort((a, b) => parseInt(a.module) - parseInt(b.module)).map((mod, i) => <ModuleCard key={mod.id} mod={mod} index={i} />)}
             </div>
           )}
 
@@ -647,7 +647,7 @@ export default function CoursesPage() {
                 <p className="text-gray-200 text-xs" style={{ fontWeight: 300 }}>Market Maker Models, IPDA, SMT, and 2024 concepts.</p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {filtered.filter(m => m.level === 'Advanced').sort((a,b) => parseInt(a.module)-parseInt(b.module)).map((mod, i) => <ModuleCard key={mod.id} mod={mod} index={i} />)}
+                {filtered.filter(m => m.level === 'Advanced').sort((a, b) => parseInt(a.module) - parseInt(b.module)).map((mod, i) => <ModuleCard key={mod.id} mod={mod} index={i} />)}
               </div>
             </div>
           )}
@@ -655,7 +655,7 @@ export default function CoursesPage() {
           {/* Filtered (non-level) results */}
           {!['All', 'Beginner', 'Intermediate', 'Advanced'].includes(activeFilter) && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {filtered.map((mod, i) => <ModuleCard key={mod.id} mod={mod} index={i} />)}
+              {filtered.sort((a, b) => parseInt(a.module) - parseInt(b.module)).map((mod, i) => <ModuleCard key={mod.id} mod={mod} index={i} />)}
             </div>
           )}
 
