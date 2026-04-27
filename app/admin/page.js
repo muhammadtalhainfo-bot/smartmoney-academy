@@ -77,6 +77,15 @@ const ALL_MODULES = [
   { id: 26, module: '26', title: 'Balanced Price Range (BPR)',     level: 'Advanced',     tag: 'ICT',      lessons: 5,  duration: '48 min', emoji: '⚖️' },
   { id: 27, module: '27', title: 'Execution & Trade Management',   level: 'Advanced',     tag: 'ICT',      lessons: 6,  duration: '58 min', emoji: '🎯' },
   { id: 28, module: '28', title: 'Backtesting & Model Development',level: 'Advanced',     tag: 'ICT',      lessons: 5,  duration: '50 min', emoji: '🔬' },
+  // Extended Lessons
+  { id: 29,  module: '29', title: 'Risk Management Fundamentals',            level: 'Beginner',     tag: 'ICT',         lessons: 5, duration: '40 min', emoji: '🛡️' },
+  { id: 30,  module: '30', title: 'Advanced Risk Management & Position Sizing', level: 'Advanced',  tag: 'ICT',         lessons: 5, duration: '48 min', emoji: '⚖️' },
+  { id: 101, module: 'F1', title: 'Risk Management Fundamentals (Foundations)', level: 'Beginner',  tag: 'Foundations', lessons: 5, duration: '35 min', emoji: '🛡️' },
+  { id: 102, module: 'F2', title: 'Advanced Position Sizing & Portfolio Heat',  level: 'Intermediate', tag: 'Foundations', lessons: 5, duration: '40 min', emoji: '📐' },
+  { id: 103, module: 'F3', title: 'The Psychology of Risk',                    level: 'Intermediate', tag: 'Foundations', lessons: 5, duration: '38 min', emoji: '🧠' },
+  { id: 201, module: 'A1', title: 'ICT for NAS100 & US30: Index Trading',      level: 'Intermediate', tag: 'Indices',     lessons: 5, duration: '44 min', emoji: '📈' },
+  { id: 202, module: 'A2', title: 'ICT for Gold (XAU/USD): Safe Haven Trading',level: 'Intermediate', tag: 'Gold',        lessons: 5, duration: '40 min', emoji: '🥇' },
+  { id: 301, module: 'C1', title: 'ICT for Crypto: Bitcoin & Ethereum',        level: 'Intermediate', tag: 'Crypto',      lessons: 5, duration: '42 min', emoji: '₿'  },
 ];
 
 const NAV_PAGES = [
@@ -90,7 +99,7 @@ const NAV_PAGES = [
   { href: '/pricing',     label: 'Pricing',           desc: 'Free vs Pro plans' },
   { href: '/about',       label: 'About',             desc: 'About the platform' },
   { href: '/resources',   label: 'Resources',         desc: 'External trading resources' },
-  { href: '/journal',     label: 'Journal',           desc: 'Trade journal (Pro only)' },
+  { href: '/journal',     label: 'Journal',           desc: 'Trade journal (Free for all users)' },
   { href: '/dashboard',   label: 'Dashboard',         desc: 'User progress dashboard' },
   { href: '/leaderboard', label: 'Leaderboard',       desc: 'Community XP leaderboard' },
   { href: '/certificate', label: 'Certificate',       desc: 'Completion certificate' },
@@ -112,6 +121,7 @@ const TABS = [
   { id: 'seo',           label: 'SEO',             icon: '🔍', group: 'settings' },
   { id: 'pricing',       label: 'Pricing',         icon: '💰', group: 'settings' },
   { id: 'nav',           label: 'Navigation',      icon: '🗺️', group: 'settings' },
+  { id: 'journal',       label: 'Journal Settings',icon: '📓', group: 'settings' },
 ];
 
 const GROUPS = [
@@ -1090,6 +1100,137 @@ function NotificationsSection() {
 // ═══════════════════════════════════════════════════════════════════════════════
 // MAIN ADMIN COMPONENT
 // ═══════════════════════════════════════════════════════════════════════════════
+// ─── JOURNAL SETTINGS SECTION ────────────────────────────────────────────────
+function JournalSection({ supabase }) {
+  const PAIRS_DEF     = ['XAUUSD','NAS100','EURUSD','GBPUSD','US30','USDJPY','GBPJPY','AUDUSD','USDCAD','BTCUSD','SP500','USOIL'];
+  const SESSIONS_DEF  = ['NY AM','London','Asia','NY PM','London Close','Overlap'];
+  const SETUPS_DEF    = ['ICT Silver Bullet','Order Block','Fair Value Gap','BOS Retest','Liquidity Sweep','AMD / PO3','SMT Divergence','Breaker Block','Mitigation Block','OTE Zone','NWOG / NDOG','Turtle Soup','Unicorn Model','2022 ICT Model'];
+  const MISTAKES_DEF  = ['Moved Stop Loss','Closed Early (Fear)','FOMO Entry','Revenge Trade','No HTF Confirmation','Oversized Position','Wrong Session','Chased Price','Ignored Structure','Random Entry','Held Too Long','Skipped A+ Setup'];
+  const RULES_DEF     = ['HTF Bias confirmed','Killzone / Session correct','Setup matches playbook','Min 2:1 R:R','Risk ≤ 1%','No active news','Waited for confirmation'];
+  const [pairs, setPairs]       = useState(PAIRS_DEF);
+  const [sessions, setSessions] = useState(SESSIONS_DEF);
+  const [setups, setSetups]     = useState(SETUPS_DEF);
+  const [mistakes, setMistakes] = useState(MISTAKES_DEF);
+  const [rules, setRules]       = useState(RULES_DEF);
+  const [newItem, setNewItem]   = useState({ pairs:'', sessions:'', setups:'', mistakes:'', rules:'' });
+  const [stats, setStats]       = useState({ total:0, wins:0, users:0 });
+  const [msg, setMsg]           = useState({ text:'', type:'success' });
+  const [saving, setSaving]     = useState(false);
+
+  useEffect(() => {
+    Promise.all([
+      supabase.from('trades').select('*', { count:'exact', head:true }),
+      supabase.from('trades').select('result').eq('result','Win'),
+      supabase.from('trades').select('user_id'),
+    ]).then(([{ count }, { data: wins }, { data: all }]) => {
+      setStats({ total: count||0, wins:(wins||[]).length, users: new Set((all||[]).map(t=>t.user_id)).size });
+    });
+    supabase.from('site_settings').select('value').eq('key','journal_config').single()
+      .then(({ data }) => {
+        if (data?.value) {
+          const c = data.value;
+          if (c.pairs)    setPairs(c.pairs);
+          if (c.sessions) setSessions(c.sessions);
+          if (c.setups)   setSetups(c.setups);
+          if (c.mistakes) setMistakes(c.mistakes);
+          if (c.rules)    setRules(c.rules);
+        }
+      });
+  }, [supabase]);
+
+  const save = async () => {
+    setSaving(true);
+    const { error } = await supabase.from('site_settings').upsert({ key:'journal_config', value:{pairs,sessions,setups,mistakes,rules} }, { onConflict:'key' });
+    if (error) setMsg({ text:'Error: '+error.message, type:'error' });
+    else setMsg({ text:'✓ Saved! Copy the constants below into app/journal/page.js to persist across deploys.', type:'success' });
+    setSaving(false);
+    setTimeout(() => setMsg({ text:'', type:'success' }), 8000);
+  };
+
+  const ListEditor = ({ label, field, items, setItems }) => {
+    const add = () => { if (!newItem[field].trim()) return; setItems(p=>[...p, newItem[field].trim()]); setNewItem(p=>({...p,[field]:''})); };
+    const remove = i => setItems(p=>p.filter((_,idx)=>idx!==i));
+    const move = (i,dir) => { const a=[...items]; const j=i+dir; if(j<0||j>=a.length)return; [a[i],a[j]]=[a[j],a[i]]; setItems(a); };
+    return (
+      <div style={{ ...css.card, marginBottom:'16px' }}>
+        <div style={{ ...css.mono, fontSize:'10px', color:G, marginBottom:'14px', letterSpacing:'0.12em' }}>
+          {label.toUpperCase()} <span style={{ color:'rgba(255,255,255,0.4)', marginLeft:'8px' }}>{items.length} items</span>
+        </div>
+        <div style={{ display:'flex', flexWrap:'wrap', gap:'8px', marginBottom:'12px' }}>
+          {items.map((item,i) => (
+            <div key={i} style={{ display:'flex', alignItems:'center', gap:'4px', background:S3, border:`1px solid ${BORDER}`, borderRadius:'7px', padding:'4px 8px 4px 10px' }}>
+              <span style={{ fontSize:'12px' }}>{item}</span>
+              <button onClick={()=>move(i,-1)} style={{ background:'none',border:'none',color:'rgba(255,255,255,0.3)',cursor:'pointer',fontSize:'12px',padding:'0 2px' }}>↑</button>
+              <button onClick={()=>move(i,1)}  style={{ background:'none',border:'none',color:'rgba(255,255,255,0.3)',cursor:'pointer',fontSize:'12px',padding:'0 2px' }}>↓</button>
+              <button onClick={()=>remove(i)}  style={{ background:'none',border:'none',color:'#F87171',cursor:'pointer',fontSize:'14px',padding:'0 0 0 4px' }}>×</button>
+            </div>
+          ))}
+        </div>
+        <div style={{ display:'flex', gap:'8px' }}>
+          <Input value={newItem[field]} onChange={e=>setNewItem(p=>({...p,[field]:e.target.value}))}
+            placeholder={`Add new ${label.toLowerCase()}...`} style={{ flex:1 }}
+            onKeyDown={e=>e.key==='Enter'&&add()} />
+          <button onClick={add} style={{ ...css.btn, padding:'10px 18px' }}>ADD</button>
+        </div>
+      </div>
+    );
+  };
+
+  const winRate = stats.total > 0 ? ((stats.wins/stats.total)*100).toFixed(1) : 0;
+  return (
+    <div>
+      <SectionHeader title="JOURNAL SETTINGS" />
+      <div style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:'14px', marginBottom:'24px' }}>
+        <StatCard icon="📓" value={stats.total}  label="Total Trades Logged" />
+        <StatCard icon="✅" value={stats.wins}    label="Winning Trades" />
+        <StatCard icon="👥" value={stats.users}   label="Traders Using Journal" />
+        <StatCard icon="📊" value={`${winRate}%`} label="Platform Win Rate" />
+      </div>
+      <InfoBox>ℹ️ Journal is now 100% FREE — no paywall. Logged-in users get full Supabase persistence. Anonymous visitors see a public SEO landing with sign-up CTA. Edit lists below to customize the trade form options.</InfoBox>
+      <Toast msg={msg.text} type={msg.type} />
+      <div style={{ ...css.card, marginBottom:'16px', borderColor:'rgba(52,211,153,0.3)' }}>
+        <div style={{ ...css.mono, fontSize:'10px', color:'#34D399', marginBottom:'14px', letterSpacing:'0.12em' }}>ACCESS SETTINGS</div>
+        <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'16px' }}>
+          <div style={{ padding:'14px', background:'rgba(52,211,153,0.06)', borderRadius:'10px', border:'1px solid rgba(52,211,153,0.15)' }}>
+            <div style={{ fontSize:'13px', fontWeight:600, color:'#34D399', marginBottom:'4px' }}>✓ FREE for all users</div>
+            <div style={{ fontSize:'12px', color:'rgba(255,255,255,0.6)' }}>Journal is public. Logged-in users get full data. Anonymous visitors see public landing with CTA.</div>
+          </div>
+          <div style={{ padding:'14px', background:S3, borderRadius:'10px' }}>
+            <div style={{ fontSize:'13px', fontWeight:600, marginBottom:'4px' }}>Data stored in:</div>
+            <div style={{ ...css.mono, fontSize:'11px', color:G }}>supabase → trades table</div>
+            <div style={{ fontSize:'11px', color:'rgba(255,255,255,0.5)', marginTop:'4px' }}>User-isolated via RLS (user_id column)</div>
+          </div>
+        </div>
+      </div>
+      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'16px' }}>
+        <div>
+          <ListEditor label="Trading Pairs" field="pairs" items={pairs} setItems={setPairs} />
+          <ListEditor label="Sessions" field="sessions" items={sessions} setItems={setSessions} />
+          <ListEditor label="Trading Rules" field="rules" items={rules} setItems={setRules} />
+        </div>
+        <div>
+          <ListEditor label="ICT Setups" field="setups" items={setups} setItems={setSetups} />
+          <ListEditor label="Mistakes / Leaks" field="mistakes" items={mistakes} setItems={setMistakes} />
+        </div>
+      </div>
+      <div style={{ ...css.card, marginTop:'16px' }}>
+        <div style={{ ...css.mono, fontSize:'10px', color:G, marginBottom:'14px', letterSpacing:'0.12em' }}>EXPORT CONSTANTS — copy into app/journal/page.js</div>
+        <pre style={{ background:S1, borderRadius:'8px', padding:'14px', fontSize:'11px', color:'rgba(255,255,255,0.7)', overflow:'auto', maxHeight:'200px', fontFamily:'DM Mono,monospace', lineHeight:1.6 }}>
+{`const PAIRS = ${JSON.stringify(pairs)};
+const SESSIONS = ${JSON.stringify(sessions)};
+const SETUPS = ${JSON.stringify(setups)};
+const MISTAKES = ${JSON.stringify(mistakes)};
+const RULES = ${JSON.stringify(rules)};`}
+        </pre>
+      </div>
+      <button onClick={save} disabled={saving} style={{ ...css.btn, padding:'14px 28px', marginTop:'16px', fontSize:'12px' }}>
+        {saving ? 'SAVING...' : '💾 SAVE JOURNAL CONFIG'}
+      </button>
+    </div>
+  );
+}
+
+
 export default function AdminPage() {
   const [authed, setAuthed] = useState(false);
   const [pass, setPass] = useState('');
@@ -1245,6 +1386,7 @@ export default function AdminPage() {
         {activeTab === 'seo'           && <SEOSection supabase={supabase} />}
         {activeTab === 'pricing'       && <PricingSection />}
         {activeTab === 'nav'           && <NavSection />}
+        {activeTab === 'journal'       && <JournalSection supabase={supabase} />}
       </div>
     </div>
   );

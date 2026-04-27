@@ -1,6 +1,5 @@
 'use client';
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import AuthGuard from '@/app/components/AuthGuard';
 import { createClient } from '@/lib/supabase';
 
 // ─── CONSTANTS ────────────────────────────────────────────────────────────────
@@ -1236,6 +1235,94 @@ function Progress({ trades, stats }) {
   );
 }
 
+
+// ─── PUBLIC LANDING PAGE (unauthenticated) ────────────────────────────────────
+function JournalLanding() {
+  const features = [
+    { icon: '📋', title: 'Full Trade Logging', desc: 'Log entry, SL, TP, R:R, P&L, session, setup, emotions and rule checklist for every trade.' },
+    { icon: '📊', title: 'Deep Analytics', desc: 'Win rate by session, setup, symbol, day of week, emotion state, and monthly P&L breakdown.' },
+    { icon: '🧠', title: 'Psychology Tracker', desc: 'Track emotions pre/during/post trade. Identify FOMO, revenge trading, and discipline leaks.' },
+    { icon: '✦', title: 'AI Coach', desc: 'Get blunt, data-driven feedback from an AI that analyzes your actual trade data — not generic advice.' },
+    { icon: '📅', title: 'Trade Calendar', desc: 'See every trading day color-coded by win/loss. Identify your best and worst weeks at a glance.' },
+    { icon: '📈', title: 'Progress Goals', desc: 'Track progress toward 65% win rate, 2.5R average, and consistency score goals over time.' },
+  ];
+  const stats = [
+    { value: '14', label: 'ICT Setups tracked' },
+    { value: '12', label: 'Forex & crypto pairs' },
+    { value: '7', label: 'Built-in rule checks' },
+    { value: '100%', label: 'Free, forever' },
+  ];
+  return (
+    <div style={{ minHeight: '100vh', background: C.bg, color: C.text, fontFamily: "'DM Sans', sans-serif" }}>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+        * { box-sizing: border-box; } body { margin: 0; background: ${C.bg}; } button:hover { opacity: 0.85; } a { color: ${C.gold}; text-decoration: none; }
+      `}</style>
+      <div style={{ maxWidth: '900px', margin: '0 auto', padding: '80px 24px 60px', textAlign: 'center' }}>
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: C.gold + '12', border: '1px solid ' + C.gold + '30', borderRadius: '20px', padding: '6px 16px', marginBottom: '28px' }}>
+          <span style={{ fontSize: '12px', color: C.gold, fontFamily: 'DM Mono, monospace', letterSpacing: '0.1em' }}>✦ 100% FREE · NO CREDIT CARD · NO ADS</span>
+        </div>
+        <h1 style={{ fontSize: '52px', fontWeight: 800, color: C.text, lineHeight: 1.1, margin: '0 0 20px', letterSpacing: '-1px' }}>
+          The Best <span style={{ color: C.gold }}>Free</span> Trading Journal<br />for ICT Traders
+        </h1>
+        <p style={{ fontSize: '18px', color: C.text2, lineHeight: 1.7, margin: '0 auto 36px', maxWidth: '620px' }}>
+          Log every trade, track your win rate and R:R, analyze your psychology, and get AI coaching insights. Built specifically for ICT & Smart Money Concepts traders. Completely free.
+        </p>
+        <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <a href="/auth" style={{ background: 'linear-gradient(135deg,' + C.gold + ',' + C.gold2 + ')', color: '#07090E', borderRadius: '12px', padding: '14px 32px', fontFamily: 'DM Mono, monospace', fontSize: '13px', fontWeight: 700, letterSpacing: '0.08em' }}>START FREE JOURNAL →</a>
+          <a href="/courses" style={{ background: 'transparent', border: '1px solid ' + C.border2, color: C.text2, borderRadius: '12px', padding: '14px 24px', fontFamily: 'DM Mono, monospace', fontSize: '12px' }}>← Back to Courses</a>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px', background: C.border, borderRadius: '14px', overflow: 'hidden', marginTop: '56px' }}>
+          {stats.map((s, i) => (
+            <div key={i} style={{ background: C.bg1, padding: '24px 16px', textAlign: 'center' }}>
+              <div style={{ fontSize: '32px', fontWeight: 800, color: C.gold, fontFamily: 'DM Mono, monospace' }}>{s.value}</div>
+              <div style={{ fontSize: '12px', color: C.text3, marginTop: '4px' }}>{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div style={{ maxWidth: '900px', margin: '0 auto', padding: '0 24px 80px' }}>
+        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+          <h2 style={{ fontSize: '28px', fontWeight: 700, color: C.text, margin: '0 0 8px' }}>Everything you need to build your edge</h2>
+          <p style={{ fontSize: '15px', color: C.text3, margin: 0 }}>No paywalls. No locked features. All tools available immediately after free signup.</p>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '48px' }}>
+          {features.map((f, i) => (
+            <div key={i} style={{ background: C.bg1, border: '1px solid ' + C.border, borderRadius: '14px', padding: '24px' }}>
+              <div style={{ fontSize: '28px', marginBottom: '12px' }}>{f.icon}</div>
+              <div style={{ fontSize: '15px', fontWeight: 700, color: C.text, marginBottom: '8px' }}>{f.title}</div>
+              <div style={{ fontSize: '13px', color: C.text3, lineHeight: 1.65 }}>{f.desc}</div>
+            </div>
+          ))}
+        </div>
+        <div style={{ background: C.gold + '08', border: '1px solid ' + C.gold + '20', borderRadius: '16px', padding: '32px', textAlign: 'center', marginBottom: '48px' }}>
+          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: C.gold, letterSpacing: '0.12em', marginBottom: '12px' }}>BUILT FOR ICT TRADERS</div>
+          <h3 style={{ fontSize: '22px', fontWeight: 700, color: C.text, margin: '0 0 12px' }}>ICT setups pre-loaded. No manual setup needed.</h3>
+          <p style={{ fontSize: '14px', color: C.text2, margin: '0 0 20px', lineHeight: 1.65 }}>Order Blocks, FVGs, Silver Bullet, AMD/PO3, Liquidity Sweeps, OTE Zone, SMT Divergence, Turtle Soup, and 6 more ICT setups already tagged and ready to track.</p>
+          <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '8px' }}>
+            {['ICT Silver Bullet','Order Block','Fair Value Gap','BOS Retest','Liquidity Sweep','AMD / PO3','SMT Divergence','OTE Zone'].map(s => (
+              <span key={s} style={{ background: C.bg2, border: '1px solid ' + C.border2, color: C.text3, borderRadius: '20px', padding: '5px 12px', fontSize: '11px', fontFamily: 'DM Mono, monospace' }}>{s}</span>
+            ))}
+          </div>
+        </div>
+        <div style={{ textAlign: 'center' }}>
+          <h3 style={{ fontSize: '24px', fontWeight: 700, color: C.text, margin: '0 0 12px' }}>Ready to stop losing trades to the same mistakes?</h3>
+          <p style={{ fontSize: '15px', color: C.text3, margin: '0 0 28px' }}>Create a free account and start logging your first trade in under 2 minutes.</p>
+          <a href="/auth" style={{ display: 'inline-block', background: 'linear-gradient(135deg,' + C.gold + ',' + C.gold2 + ')', color: '#07090E', borderRadius: '12px', padding: '15px 36px', fontFamily: 'DM Mono, monospace', fontSize: '13px', fontWeight: 700, letterSpacing: '0.08em' }}>CREATE FREE ACCOUNT →</a>
+          <div style={{ fontSize: '12px', color: C.text3, marginTop: '12px', fontFamily: 'DM Mono, monospace' }}>No credit card · No paywall · Takes 60 seconds</div>
+        </div>
+      </div>
+      <div style={{ maxWidth: '900px', margin: '0 auto', padding: '0 24px 60px' }}>
+        <div style={{ background: C.bg1, border: '1px solid ' + C.border, borderRadius: '16px', padding: '40px' }}>
+          <h2 style={{ fontSize: '22px', fontWeight: 700, color: C.text, margin: '0 0 16px' }}>Why use a trading journal?</h2>
+          <p style={{ fontSize: '14px', color: C.text2, lineHeight: 1.75, margin: '0 0 16px' }}>A trading journal is the single most powerful tool for improving your trading performance. Without a journal, you are flying blind — repeating the same mistakes, trading the same losing sessions, and never knowing which setups actually work for you versus which ones are costing you money.</p>
+          <p style={{ fontSize: '14px', color: C.text2, lineHeight: 1.75, margin: '0 0 16px' }}>The ICT Flow free trading journal tracks every variable that matters: your entry and exit prices, risk-to-reward ratio, profit and loss, the session you traded in, the setup you used, your emotional state before and after, and whether you followed your rules. Over time, the data tells you exactly where your edge is — and exactly where you are leaking.</p>
+          <p style={{ fontSize: '14px', color: C.text2, lineHeight: 1.75, margin: 0 }}>Most professional traders have 8–12 quality setups per month. The journal helps you identify those setups and eliminate the low-quality trades that destroy your monthly performance. Combined with the AI Coach feature, you get actionable feedback on your specific data — not generic trading advice.</p>
+        </div>
+      </div>
+    </div>
+  );
+}
 // ─── MAIN PAGE ────────────────────────────────────────────────────────────────
 const sanitizeInput = (str) => {
   if (typeof str !== 'string') return str;
@@ -1248,13 +1335,15 @@ export default function JournalPage() {
   const [showForm, setShowForm] = useState(false);
   const [editTrade, setEditTrade] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(undefined);
   const supabase = createClient();
 
   const load = useCallback(async () => {
     setLoading(true);
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) { setLoading(false); return; }
-    const { data } = await supabase.from('trades').select('*').eq('user_id', user.id).order('date', { ascending: false });
+    const { data: { user: u } } = await supabase.auth.getUser();
+    setUser(u || null);
+    if (!u) { setLoading(false); return; }
+    const { data } = await supabase.from('trades').select('*').eq('user_id', u.id).order('date', { ascending: false });
     if (data) setTrades(data.map(t => ({
       ...t,
       setup: Array.isArray(t.setup) ? t.setup : (t.concepts || []),
@@ -1269,10 +1358,10 @@ export default function JournalPage() {
   useEffect(() => { load(); }, [load]);
 
   const save = async (form) => {
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return;
+    const { data: { user: u } } = await supabase.auth.getUser();
+    if (!u) return;
     const payload = {
-      user_id: user.id,
+      user_id: u.id,
       date: form.date, pair: form.pair, direction: form.direction, session: form.session,
       entry: form.entry || null, sl: form.sl || null, tp: form.tp || null,
       exit: form.exit || null, rr: form.rr || null, pnl: form.pnl || null,
@@ -1333,8 +1422,17 @@ export default function JournalPage() {
     a { color: ${C.gold}; }
   `;
 
+  if (user === undefined) return (
+    <div style={{ minHeight: '100vh', background: C.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <style>{globalStyles}</style>
+      <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '12px', color: C.text3 }}>Loading...</div>
+    </div>
+  );
+
+  if (user === null) return <JournalLanding />;
+
   return (
-    <AuthGuard>
+    <>
       <style>{globalStyles}</style>
 
       <div style={{ display: 'flex', minHeight: '100vh', background: C.bg }}>
@@ -1419,6 +1517,6 @@ export default function JournalPage() {
           onCancel={() => { setShowForm(false); setEditTrade(null); }}
         />
       )}
-    </AuthGuard>
+    </>
   );
 }
