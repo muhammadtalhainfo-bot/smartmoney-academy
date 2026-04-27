@@ -50,13 +50,34 @@ export default function PricingPage() {
       const priceId = annual
         ? process.env.NEXT_PUBLIC_STRIPE_YEARLY_PRICE
         : process.env.NEXT_PUBLIC_STRIPE_MONTHLY_PRICE;
+
+      if (!priceId) {
+        alert('Payment system is being configured. Please try again soon.');
+        setCheckoutLoading(false);
+        return;
+      }
+
+      // Get logged-in user email from Supabase
+      const { createClient } = await import('@/lib/supabase');
+      const supabase = createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+
+      if (!user?.email) {
+        window.location.href = '/auth?next=/pricing';
+        return;
+      }
+
       const res = await fetch('/api/create-checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ priceId }),
+        body: JSON.stringify({ priceId, email: user.email }),
       });
       const data = await res.json();
-      if (data.url) window.location.href = data.url;
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert(data.error || 'Something went wrong. Please try again.');
+      }
     } catch (e) {
       alert('Something went wrong. Please try again.');
     }
