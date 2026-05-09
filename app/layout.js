@@ -9,6 +9,9 @@ export const metadata = {
   },
   description: 'Master ICT (Inner Circle Trader) and Smart Money Concepts for free. Learn market structure, liquidity, fair value gaps, order blocks, killzones and more. 36 modules, 192+ lessons.',
   keywords: ['ICT trading', 'Smart Money Concepts', 'Inner Circle Trader', 'market structure', 'fair value gap', 'order blocks', 'liquidity', 'NAS100', 'forex trading', 'prop firm', 'trading education', 'free trading course', 'ICT mentorship', 'silver bullet strategy', 'AMD model'],
+  alternates: {
+    canonical: 'https://ictflow.com',
+  },
   authors: [{ name: 'ICT Flow' }],
   creator: 'ICT Flow',
   icons: {
@@ -54,16 +57,20 @@ const jsonLd = {
   '@type': 'EducationalOrganization',
   name: 'ICT Flow',
   url: 'https://ictflow.com',
-  description: 'Free ICT and Smart Money Concepts trading education platform. 36 modules, 192+ lessons.',
+  description: 'Free ICT and Smart Money Concepts trading education platform. 36 modules, 192+ lessons covering Market Structure, Liquidity, FVGs, Order Blocks, AMD, IPDA and more.',
   educationalCredentialAwarded: 'ICT Trading Certificate',
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'ICT Trading Courses',
     itemListElement: [
-      { '@type': 'Course', name: 'Market Structure', description: 'Learn HH/HL, BOS, ChoCH, MSS', provider: { '@type': 'Organization', name: 'ICT Flow' } },
-      { '@type': 'Course', name: 'Liquidity Concepts', description: 'Stop hunts, BSL/SSL, equal highs/lows', provider: { '@type': 'Organization', name: 'ICT Flow' } },
-      { '@type': 'Course', name: 'Fair Value Gaps', description: 'BISI, SIBI, CE, BPR', provider: { '@type': 'Organization', name: 'ICT Flow' } },
-      { '@type': 'Course', name: 'Order Blocks', description: 'OB, Breaker, Mitigation', provider: { '@type': 'Organization', name: 'ICT Flow' } },
+      { '@type': 'Course', name: 'Market Structure', description: 'HH/HL, BOS, ChoCH, MSS — the foundation of ICT', provider: { '@type': 'Organization', name: 'ICT Flow' } },
+      { '@type': 'Course', name: 'Liquidity Concepts', description: 'Stop hunts, BSL/SSL, equal highs and lows', provider: { '@type': 'Organization', name: 'ICT Flow' } },
+      { '@type': 'Course', name: 'Fair Value Gaps (FVG)', description: 'BISI, SIBI, Consequent Encroachment, BPR', provider: { '@type': 'Organization', name: 'ICT Flow' } },
+      { '@type': 'Course', name: 'Order Blocks', description: 'OB, Breaker Blocks, Mitigation Blocks', provider: { '@type': 'Organization', name: 'ICT Flow' } },
+      { '@type': 'Course', name: 'Killzones & Macro Times', description: 'London, New York, Silver Bullet windows', provider: { '@type': 'Organization', name: 'ICT Flow' } },
+      { '@type': 'Course', name: 'Power of Three (AMD)', description: 'Accumulate, Manipulate, Distribute daily model', provider: { '@type': 'Organization', name: 'ICT Flow' } },
+      { '@type': 'Course', name: 'ICT Entry Models', description: '2022 Model, Unicorn, Silver Bullet setups', provider: { '@type': 'Organization', name: 'ICT Flow' } },
+      { '@type': 'Course', name: 'Premium & Discount Arrays', description: 'PD Array Matrix, dealing ranges, OTE', provider: { '@type': 'Organization', name: 'ICT Flow' } },
     ],
   },
   sameAs: [
