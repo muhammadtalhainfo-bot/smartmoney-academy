@@ -1,8 +1,7 @@
 // v2
 'use client';
-import { useState, use, useEffect } from 'react';
+import { useState, use } from 'react';
 import { LESSONS_EXTRA } from './lessons-data';
-import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase';
 import Link from 'next/link';
 
@@ -1009,34 +1008,7 @@ function Quiz({ questions, lessonId }) {
 
 // ─── Main page ───────────────────────────────────────────────────
 export default function LessonPage({ params }) {
-  const router = useRouter();
-
-  const [authReady, setAuthReady] = useState(false);
-
-  useEffect(() => {
-    const supabase = createClient();
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session) {
-        setAuthReady(true);
-      } else {
-        supabase.auth.refreshSession().then(({ data: { session: s } }) => {
-          if (s) {
-            setAuthReady(true);
-          } else {
-            router.push('/auth?redirect=' + encodeURIComponent(window.location.pathname));
-          }
-        });
-      }
-    });
-  }, []);
-
-  if (!authReady) return (
-    <div className="min-h-screen bg-[#080808] flex items-center justify-center">
-      <div style={{ fontFamily: "'DM Mono', monospace", color: 'rgba(212,168,67,0.5)', fontSize: '12px', letterSpacing: '0.2em' }}>
-        LOADING...
-      </div>
-    </div>
-  );
+  // Lessons are fully public — no auth required for reading
   const { id } = use(params);
   const lessonId = Number.parseInt(id, 10) || 1;
   const moduleDiagramSrc = `/modules/module-${String(lessonId).padStart(2, '0')}.webp`;

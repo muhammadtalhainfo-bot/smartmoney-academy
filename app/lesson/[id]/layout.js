@@ -1,3 +1,13 @@
+// Pre-render all lesson pages as static HTML at build time
+// This makes Google read the full lesson content, not a JS loading shell
+export function generateStaticParams() {
+  const ids = [
+    ...Array.from({ length: 28 }, (_, i) => i + 1),
+    29, 30, 101, 102, 103, 201, 202, 301,
+  ];
+  return ids.map(id => ({ id: String(id) }));
+}
+
 const LESSONS_META = {
   // ── Beginner (IDs 1–6) ──────────────────────────────────────────
   1:  { title: 'Market Structure', description: 'Learn ICT Market Structure — HH/HL, BOS, ChoCH and MSS. Understand how price creates trends, breaks structure, and signals reversals. The foundation of every ICT trade setup.' },
