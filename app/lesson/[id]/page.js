@@ -885,6 +885,16 @@ const LEVEL_STYLE = {
 // ─── Section component ───────────────────────────────────────────
 function Section({ section, index, diagramSrc, diagramAlt }) {
   const [open, setOpen] = useState(index === 0);
+
+  // Share function
+  const handleShare = (platform) => {
+    const url = typeof window !== 'undefined' ? window.location.href : '';
+    const text = `Learning ICT for FREE on ICT Flow — ${lesson?.title || 'ICT Trading Education'}. No paywall, no BS. 28 modules completely free.`;
+    if (platform === 'twitter') window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
+    if (platform === 'whatsapp') window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`, '_blank');
+    if (platform === 'copy') { navigator.clipboard.writeText(url); alert('Link copied!'); }
+  };
+
   return (
     <div className="border border-[rgba(212,168,67,0.1)] rounded-xl overflow-hidden mb-4">
       <button
@@ -1053,6 +1063,19 @@ export default function LessonPage({ params }) {
             <span className="font-mono-custom text-xs text-gray-500">🏷 {lesson.category}</span>
           </div>
           <h1 className="font-display text-5xl md:text-7xl text-white mb-4 leading-none">{lesson.title.toUpperCase()}</h1>
+          {/* Share Bar */}
+          <div style={{ display:'flex', alignItems:'center', gap:'10px', marginTop:'16px', marginBottom:'8px', flexWrap:'wrap' }}>
+            <span style={{ fontFamily:'DM Mono,monospace', fontSize:'10px', color:'rgba(255,255,255,0.3)', letterSpacing:'0.12em' }}>SHARE FREE:</span>
+            <button onClick={() => handleShare('twitter')} style={{ padding:'6px 14px', borderRadius:'8px', border:'1px solid rgba(29,161,242,0.3)', background:'rgba(29,161,242,0.08)', color:'#1DA1F2', fontFamily:'DM Mono,monospace', fontSize:'10px', cursor:'pointer', letterSpacing:'0.08em' }}>
+              𝕏 Twitter
+            </button>
+            <button onClick={() => handleShare('whatsapp')} style={{ padding:'6px 14px', borderRadius:'8px', border:'1px solid rgba(37,211,102,0.3)', background:'rgba(37,211,102,0.08)', color:'#25D366', fontFamily:'DM Mono,monospace', fontSize:'10px', cursor:'pointer', letterSpacing:'0.08em' }}>
+              WhatsApp
+            </button>
+            <button onClick={() => handleShare('copy')} style={{ padding:'6px 14px', borderRadius:'8px', border:'1px solid rgba(232,197,71,0.3)', background:'rgba(232,197,71,0.06)', color:'#E8C547', fontFamily:'DM Mono,monospace', fontSize:'10px', cursor:'pointer', letterSpacing:'0.08em' }}>
+              Copy Link
+            </button>
+          </div>
           <p className="text-gray-400 text-lg" style={{ fontWeight: 300 }}>{lesson.subtitle}</p>
         </div>
 
