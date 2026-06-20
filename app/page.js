@@ -3,20 +3,9 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import EmailCapture from '@/app/components/EmailCapture';
-import Testimonials from '@/app/components/Testimonials';
 import Footer from '@/app/components/Footer';
 
-// ─── Animated ticker data ───────────────────────────────────────
 const FINNHUB_KEY = 'd704rgpr01qtb4r9fvmgd704rgpr01qtb4r9fvn0';
-const SYMBOLS = [
-  { pair: 'BTCUSD', finnhub: 'BINANCE:BTCUSDT' },
-  { pair: 'ETHUSD', finnhub: 'BINANCE:ETHUSDT' },
-  { pair: 'BNBUSDT', finnhub: 'BINANCE:BNBUSDT' },
-  { pair: 'NAS100', finnhub: 'NASDAQ:QQQ' },
-  { pair: 'SPX500', finnhub: 'OANDA:SPX500_USD' },
-  { pair: 'EURUSD', finnhub: 'OANDA:EUR_USD' },
-  { pair: 'XAUUSD', finnhub: 'OANDA:XAU_USD' },
-];
 const DEFAULT_TICKER = [
   { pair: 'EURUSD', price: '1.08432', change: '+0.12%', up: true },
   { pair: 'XAUUSD', price: '2,341.50', change: '+0.84%', up: true },
@@ -40,366 +29,401 @@ const COURSES = [
   { id: 10, emoji: '🔀', title: 'SMT Divergence', level: 'Advanced', lessons: 4, desc: 'Smart Money Technique — catch institutional divergence before moves.' },
   { id: 11, emoji: '🤖', title: 'IPDA & CRT', level: 'Advanced', lessons: 5, desc: 'The algorithm itself — IPDA data ranges and Candle Range Theory.' },
   { id: 12, emoji: '🆕', title: 'ICT 2024 Mentorship', level: 'Advanced', lessons: 8, desc: 'Venom Model, Propulsion Blocks, Quarterly Shifts — newest ICT concepts.' },
-  { id: 13, emoji: '💼', title: 'SMC — Smart Money Concepts', level: 'SMC', lessons: 6, desc: 'Community-built framework derived from ICT — structure, OBs, FVGs.' },
-  { id: 14, emoji: '🔭', title: 'Top-Down Analysis', level: 'Intermediate', lessons: 5, desc: 'Multi-timeframe methodology — from Monthly bias to 1-minute entry.' },
-];
-
-const STATS = [
-  { value: '82+', label: 'ICT Concepts' },
-  { value: '28', label: 'Modules' },
-  { value: '80+', label: 'Lessons' },
-  { value: '2026', label: 'Updated' },
 ];
 
 const LEVEL_STYLE = {
-  Beginner: 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20',
-  Intermediate: 'text-amber-400 bg-amber-400/10 border-amber-400/20',
-  Advanced: 'text-red-400 bg-red-400/10 border-red-400/20',
+  Beginner: { color: '#34D399', bg: 'rgba(52,211,153,0.08)', border: 'rgba(52,211,153,0.2)' },
+  Intermediate: { color: '#E8C547', bg: 'rgba(232,197,71,0.08)', border: 'rgba(232,197,71,0.2)' },
+  Advanced: { color: '#F87171', bg: 'rgba(248,113,113,0.08)', border: 'rgba(248,113,113,0.2)' },
 };
 
-export default function HomePage() {
-  const [menuOpen, setMenuOpen] = React.useState(false);
-  const [ticker, setTicker] = React.useState(DEFAULT_TICKER);
+const COMPARISON = [
+  { feature: 'Market Structure (BOS, ChoCH)', us: true, them: '$97+' },
+  { feature: 'Liquidity & Stop Hunt Theory', us: true, them: '$97+' },
+  { feature: 'Fair Value Gaps (FVG)', us: true, them: '$147+' },
+  { feature: 'Order Blocks & Breakers', us: true, them: '$147+' },
+  { feature: 'Killzones & Macro Times', us: true, them: 'Paid Tier' },
+  { feature: 'AMD / Power of Three', us: true, them: 'Paid Tier' },
+  { feature: 'ICT Entry Models', us: true, them: '$297+' },
+  { feature: 'IPDA & Algorithm Theory', us: true, them: '$297+' },
+  { feature: 'Trade Journal', us: true, them: 'Not Included' },
+  { feature: '80+ Term Glossary', us: true, them: 'Not Included' },
+  { feature: 'Practice Quizzes', us: true, them: 'Not Included' },
+  { feature: 'ICT 2024 Updates', us: true, them: 'Extra Cost' },
+];
 
-  React.useEffect(() => {
+const STEPS = [
+  { num: '01', title: 'Start with Foundations', desc: 'New to trading? Begin with Trading Foundations — what markets are, how sessions work, risk basics. No jargon.', href: '/foundations', cta: 'Start Foundations' },
+  { num: '02', title: 'Study the ICT Modules', desc: '28 modules from Market Structure to Advanced IPDA. Each lesson has examples, quizzes, and real chart context.', href: '/courses', cta: 'Browse Modules' },
+  { num: '03', title: 'Practice & Apply', desc: 'Use the Trade Journal to log trades. Take daily quizzes to test your knowledge. Track progress on your dashboard.', href: '/journal', cta: 'Open Journal' },
+];
+
+const TESTIMONIALS = [
+  { name: 'Ahmed K.', handle: '@ahmedfx_trades', initials: 'AK', color: '#6366F1', text: 'Finally understood FVGs after 2 years of confusion. Module 3 alone changed how I see every chart. This is cleaner than anything on YouTube.', tag: 'Fair Value Gaps' },
+  { name: 'Sarah M.', handle: '@sarahtrades_nx', initials: 'SM', color: '#EC4899', text: 'Passed my FTMO challenge after going through the killzones and AMD modules. The session timing breakdowns are incredibly detailed. This is genuinely free?', tag: 'FTMO Passed ✓' },
+  { name: 'Daniel R.', handle: '@danielr_ict', initials: 'DR', color: '#10B981', text: 'I\'ve paid for multiple trading courses. ICT Flow covers more ICT content for free than courses I paid $300+ for. The order blocks module is exceptional.', tag: 'Saved $300+' },
+  { name: 'Umar F.', handle: '@umarforex', initials: 'UF', color: '#F59E0B', text: 'The trade journal feature is underrated. Being able to tag ICT concepts on each trade and see my win rate by concept completely changed how I review.', tag: 'Trade Journal' },
+  { name: 'James T.', handle: '@jtrades_smc', initials: 'JT', color: '#3B82F6', text: 'Started as a complete beginner in January. By March I was consistently identifying daily bias. The progression from beginner to advanced is perfectly structured.', tag: 'Beginner → Consistent' },
+  { name: 'Fatima A.', handle: '@fatimatrading', initials: 'FA', color: '#E8C547', text: 'The ICT glossary alone is worth bookmarking. 80+ terms with clear definitions. I used to Google every term during ICT videos — now I just check the glossary.', tag: 'ICT Glossary' },
+];
+
+export default function HomePage() {
+  const [ticker, setTicker] = useState(DEFAULT_TICKER);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    setVisible(true);
     async function fetchPrices() {
       try {
         const res = await fetch('/api/ticker');
         const json = await res.json();
-        if (json.data && json.data.length > 0) setTicker(json.data);
+        if (json.data?.length > 0) setTicker(json.data);
       } catch(e) {}
     }
     fetchPrices();
     const interval = setInterval(fetchPrices, 60000);
     return () => clearInterval(interval);
   }, []);
-  const [tick, setTick] = useState(0);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    setVisible(true);
-    const t = setInterval(() => setTick(n => n + 1), 2800);
-    return () => clearInterval(t);
-  }, []);
 
   return (
-    <div className="min-h-screen bg-[#080808] text-white overflow-x-hidden" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-
-      {/* ── Google Fonts ── */}
+    <div style={{ minHeight: '100vh', background: '#080808', color: 'white', overflowX: 'hidden', fontFamily: "'DM Sans', sans-serif" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap');
-        
-        :root {
-          --gold: #E8C547;
-          --gold-light: #F0C96A;
-          --gold-dim: #8A6B28;
-          --bg: #080808;
-          --bg2: #0F0F0F;
-          --bg3: #141414;
-          --border: rgba(232,197,71,0.95);
-        }
-
+        :root { --gold: #E8C547; --gold2: #F0C96A; --gold-dim: #8A6B28; --bg2: #0F0F0F; --bg3: #141414; --border: rgba(232,197,71,0.15); }
         * { box-sizing: border-box; }
-
         .font-display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.02em; }
         .font-mono { font-family: 'DM Mono', monospace; }
-
-        /* Noise overlay */
-        body::before {
-          content: '';
-          position: fixed;
-          inset: 0;
-          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-          pointer-events: none;
-          z-index: 0;
-          opacity: 0.4;
-        }
-
-        /* Gold glow */
-        .glow-gold { box-shadow: 0 0 40px rgba(232,197,71,0.95), 0 0 80px rgba(212,168,67,0.05); }
-        .glow-gold-text { text-shadow: 0 0 30px rgba(232,197,71,0.95); }
-
-        /* Ticker */
-        @keyframes ticker {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
+        body { overflow-x: hidden; }
+        body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events:none; z-index:0; opacity:0.4; }
+        @keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
         .ticker-track { animation: ticker 30s linear infinite; }
         .ticker-track:hover { animation-play-state: paused; }
-
-        /* Fade in */
-        @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(24px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .fade-up { animation: fadeUp 0.7s ease forwards; opacity: 0; }
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.25s; }
-        .delay-3 { animation-delay: 0.4s; }
-        .delay-4 { animation-delay: 0.55s; }
-        .delay-5 { animation-delay: 0.7s; }
-
-        /* Card hover */
-        .course-card {
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          border: 1px solid rgba(232,197,71,0.95);
-        }
-        .course-card:hover {
-          border-color: #E8C547;
-          transform: translateY(-4px);
-          box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(212,168,67,0.22);
-        }
-
-        /* Gold button */
-        .btn-gold {
-          background: linear-gradient(135deg, #E8C547 0%, #F0C96A 50%, #E8C547 100%);
-          background-size: 200% 200%;
-          transition: all 0.3s ease;
-          color: #080808;
-          font-weight: 700;
-        }
-        .btn-gold:hover {
-          background-position: right center;
-          transform: translateY(-2px);
-          box-shadow: 0 8px 30px rgba(232,197,71,0.95);
-        }
-
-        /* Grid lines bg */
-        body { overflow-x: hidden; }
-        .grid-bg {
-          background-image:
-            linear-gradient(rgba(212,168,67,0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(212,168,67,0.03) 1px, transparent 1px);
-          background-size: 60px 60px;
-        }
-
-        /* Diagonal accent */
-        .diagonal-accent {
-          background: linear-gradient(135deg, transparent 49.5%, rgba(212,168,67,0.06) 49.5%, rgba(212,168,67,0.06) 50.5%, transparent 50.5%);
-          background-size: 80px 80px;
-        }
-
-        /* Stat counter */
-        .stat-value {
-          font-family: 'Bebas Neue', sans-serif;
-          letter-spacing: 0.05em;
-          background: linear-gradient(135deg, #F0C96A, #E8C547);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-
-        /* Separator line */
-        .gold-line {
-          background: linear-gradient(90deg, transparent, #E8C547, transparent);
-          height: 1px;
-        }
+        @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+        .fade-up { animation: fadeUp 0.6s ease forwards; opacity:0; }
+        .d1{animation-delay:0.1s} .d2{animation-delay:0.25s} .d3{animation-delay:0.4s} .d4{animation-delay:0.55s} .d5{animation-delay:0.7s}
+        .grid-bg { background-image: linear-gradient(rgba(212,168,67,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(212,168,67,0.03) 1px, transparent 1px); background-size: 60px 60px; }
+        .btn-gold { background: linear-gradient(135deg, #E8C547 0%, #F0C96A 50%, #E8C547 100%); background-size:200% 200%; color:#080808; font-weight:700; transition:all 0.3s ease; }
+        .btn-gold:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(232,197,71,0.35); }
+        .card-hover { transition: all 0.25s ease; border: 1px solid rgba(232,197,71,0.12); }
+        .card-hover:hover { border-color: rgba(232,197,71,0.4); transform:translateY(-3px); box-shadow:0 16px 40px rgba(0,0,0,0.4); }
+        .gold-text { background: linear-gradient(135deg, #D4A843 0%, #E8C547 40%, #F0C96A 60%, #E8C547 80%, #D4A843 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .gold-glow { box-shadow: 0 0 40px rgba(232,197,71,0.12), 0 0 80px rgba(212,168,67,0.05); }
+        @media (max-width: 768px) { .hide-mob { display:none!important; } }
+        @media (min-width: 769px) { .show-mob { display:none!important; } }
       `}</style>
 
-      {/* ── LIVE TICKER ── */}
-      <div className="relative z-10 border-b border-[var(--border)] bg-[#0A0A0A] py-2 overflow-hidden">
-        <div className="flex ticker-track whitespace-nowrap">
+      {/* ── TICKER ── */}
+      <div style={{ position:'relative', zIndex:10, borderBottom:'1px solid rgba(232,197,71,0.12)', background:'#050505', padding:'10px 0', overflow:'hidden' }}>
+        <div className="ticker-track" style={{ display:'flex', whiteSpace:'nowrap' }}>
           {[...ticker, ...ticker].map((item, i) => (
-            <span key={i} className="inline-flex items-center gap-3 px-6 font-mono text-xs">
-              <span className="text-[#E8C547] font-medium">{item.pair}</span>
-              <span className="text-white">{item.price}</span>
-              <span className={item.up ? 'text-emerald-400' : 'text-red-400'}>
-                {item.up ? '▲' : '▼'} {item.change}
-              </span>
-              <span className="text-gray-200">·</span>
+            <span key={i} style={{ display:'inline-flex', alignItems:'center', gap:'10px', padding:'0 24px', fontFamily:'DM Mono,monospace', fontSize:'11px' }}>
+              <span style={{ color:'#E8C547', fontWeight:500 }}>{item.pair}</span>
+              <span style={{ color:'rgba(255,255,255,0.85)' }}>{item.price}</span>
+              <span style={{ color: item.up ? '#34D399' : '#F87171' }}>{item.up ? '▲' : '▼'} {item.change}</span>
+              <span style={{ color:'rgba(255,255,255,0.15)' }}>·</span>
             </span>
           ))}
         </div>
       </div>
 
-      {/* ── NAVBAR ── */}
       <Navbar active="/" />
 
-            {/* ── HERO ── */}
-      <section className="relative z-10 grid-bg diagonal-accent min-h-[88vh] flex flex-col items-center justify-center text-center px-6 py-24">
+      {/* ── HERO ── */}
+      <section className="grid-bg" style={{ position:'relative', zIndex:10, minHeight:'90vh', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', textAlign:'center', padding:'80px 24px' }}>
+        <div style={{ position:'absolute', top:'35%', left:'50%', transform:'translate(-50%,-50%)', width:'min(700px,90vw)', height:'min(700px,90vw)', background:'radial-gradient(circle, rgba(212,168,67,0.1) 0%, transparent 65%)', pointerEvents:'none' }} />
 
-        {/* Background radial glow */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div style={{
-            position: 'absolute', top: '30%', left: '50%', transform: 'translate(-50%, -50%)',
-            width: 'min(600px, 90vw)', height: 'min(600px, 90vw)',
-            background: 'radial-gradient(circle, rgba(212,168,67,0.22) 0%, transparent 70%)',
-          }} />
+        {/* Live badge */}
+        <div className="fade-up d1" style={{ display:'inline-flex', alignItems:'center', gap:'8px', padding:'6px 16px', borderRadius:'100px', border:'1px solid rgba(232,197,71,0.3)', background:'rgba(232,197,71,0.04)', marginBottom:'28px' }}>
+          <span style={{ width:7, height:7, borderRadius:'50%', background:'#E8C547', display:'inline-block', animation:'pulse 2s infinite' }} />
+          <span style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'#E8C547', letterSpacing:'0.15em' }}>FREE ICT & SMART MONEY EDUCATION</span>
         </div>
 
-        {/* Badge */}
-        <div className={`fade-up delay-1 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--border)] bg-[var(--bg2)] mb-8`}>
-          <span className="w-2 h-2 rounded-full bg-[var(--gold)] animate-pulse" />
-          <span className="font-mono text-xs text-[var(--gold)] tracking-widest uppercase">ICT & Smart Money Concepts</span>
-        </div>
-
-        {/* Main heading */}
-        <h1 className="fade-up delay-2 font-display text-center leading-none mb-6" style={{ fontSize: 'clamp(56px, 10vw, 120px)' }}>
-          <span className="block text-white">TRADE LIKE</span>
-          <span className="block glow-gold-text" style={{
-            background: 'linear-gradient(135deg, #8A6B28 0%, #E8C547 30%, #F0C96A 50%, #E8C547 70%, #8A6B28 100%)',
-            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text'
-          }}>INSTITUTIONS</span>
+        <h1 className="fade-up d2 font-display" style={{ fontSize:'clamp(60px, 11vw, 130px)', lineHeight:0.9, marginBottom:'24px' }}>
+          <span style={{ display:'block', color:'white' }}>STOP PAYING</span>
+          <span className="gold-text" style={{ display:'block' }}>$300 COURSES</span>
         </h1>
 
-        <p className="fade-up delay-3 text-gray-200 text-lg max-w-xl mx-auto mb-10 leading-relaxed" style={{ fontWeight: 300 }}>
-          Master ICT — the methodology used by banks, hedge funds, and professional traders to move markets. Every concept. Zero fluff.
+        <p className="fade-up d3" style={{ color:'rgba(255,255,255,0.6)', fontSize:'clamp(15px, 2vw, 18px)', maxWidth:'520px', lineHeight:1.7, marginBottom:'12px', fontWeight:300 }}>
+          Master ICT in full — Market Structure, Liquidity, FVGs, Order Blocks, IPDA, AMD and 28 more modules.
+          <strong style={{ color:'rgba(255,255,255,0.9)', fontWeight:500 }}> Completely free. No paywall. No tricks.</strong>
         </p>
 
-        <div className="fade-up delay-4 flex flex-col sm:flex-row gap-4 justify-center mb-16">
-          <Link href="/foundations" className="btn-gold px-8 py-4 rounded-xl text-base font-mono tracking-wide uppercase">
-            Begin Your Journey →
+        <p className="fade-up d3" style={{ color:'rgba(232,197,71,0.7)', fontFamily:'DM Mono,monospace', fontSize:'11px', letterSpacing:'0.12em', marginBottom:'36px' }}>
+          JOIN 500+ TRADERS LEARNING RIGHT NOW
+        </p>
+
+        <div className="fade-up d4" style={{ display:'flex', flexWrap:'wrap', gap:'12px', justifyContent:'center', marginBottom:'56px' }}>
+          <Link href="/lesson/1" className="btn-gold" style={{ padding:'16px 32px', borderRadius:'12px', fontFamily:'DM Mono,monospace', fontSize:'12px', letterSpacing:'0.12em', textTransform:'uppercase', textDecoration:'none', display:'inline-block' }}>
+            Start Lesson 1 — Free →
           </Link>
-          <Link href="/glossary" className="px-8 py-4 rounded-xl text-base font-mono tracking-wide uppercase border border-[var(--border)] text-gray-200 hover:border-[var(--gold)] hover:text-[var(--gold)] transition-all">
-            ICT Glossary
+          <Link href="/courses" style={{ padding:'16px 32px', borderRadius:'12px', fontFamily:'DM Mono,monospace', fontSize:'12px', letterSpacing:'0.12em', textTransform:'uppercase', textDecoration:'none', border:'1px solid rgba(232,197,71,0.3)', color:'rgba(255,255,255,0.7)', transition:'all 0.2s', display:'inline-block' }}
+            onMouseOver={e=>{e.currentTarget.style.borderColor='#E8C547';e.currentTarget.style.color='#E8C547'}}
+            onMouseOut={e=>{e.currentTarget.style.borderColor='rgba(232,197,71,0.3)';e.currentTarget.style.color='rgba(255,255,255,0.7)'}}>
+            View All 28 Modules
           </Link>
         </div>
 
-        {/* Stats bar */}
-        <div className="fade-up delay-5 flex items-center justify-center gap-12 flex-wrap">
-          {STATS.map((s, i) => (
-            <div key={i} className="text-center">
-              <div className="stat-value text-4xl">{s.value}</div>
-              <div className="font-mono text-xs text-gray-200 tracking-widest uppercase mt-1">{s.label}</div>
+        {/* Stats */}
+        <div className="fade-up d5" style={{ display:'flex', gap:'48px', flexWrap:'wrap', justifyContent:'center' }}>
+          {[['28', 'ICT Modules'], ['80+', 'Lessons'], ['$0', 'Cost'], ['2026', 'Updated']].map(([v, l]) => (
+            <div key={l} style={{ textAlign:'center' }}>
+              <div className="font-display gold-text" style={{ fontSize:'42px' }}>{v}</div>
+              <div style={{ fontFamily:'DM Mono,monospace', fontSize:'10px', color:'rgba(255,255,255,0.4)', letterSpacing:'0.15em', textTransform:'uppercase', marginTop:'4px' }}>{l}</div>
             </div>
           ))}
         </div>
 
-        {/* Gold line */}
-        <div className="absolute bottom-0 left-0 right-0 gold-line opacity-50" />
+        <div style={{ position:'absolute', bottom:0, left:0, right:0, height:'1px', background:'linear-gradient(90deg, transparent, rgba(232,197,71,0.3), transparent)' }} />
       </section>
 
-      {/* ── WHAT IS ICT ── */}
-      <section className="relative z-10 px-6 py-24 bg-[var(--bg2)]">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div>
-              <div className="font-mono text-xs text-[var(--gold)] tracking-widest uppercase mb-4">// What is ICT</div>
-              <h2 className="font-display text-5xl text-white mb-6 leading-tight">THE ALGORITHM<br/>RUNS THE MARKET</h2>
-              <p className="text-gray-200 leading-relaxed mb-6" style={{ fontWeight: 300 }}>
-                ICT (Inner Circle Trader) is Michael Huddleston's complete methodology for understanding how the Interbank Price Delivery Algorithm (IPDA) moves markets. It explains exactly why price moves — not what happened, but what was engineered to happen.
-              </p>
-              <p className="text-gray-200 leading-relaxed" style={{ fontWeight: 300 }}>
-                Banks don't react to news. They create the moves that retail traders react to. ICT teaches you to stop being the liquidity — and start following the institutions that consume it.
-              </p>
-            </div>
-            <div className="space-y-4">
-              {[
-                { icon: '🎯', title: 'Liquidity First', desc: 'Every move is engineered to sweep stop-losses. Identify BSL/SSL before entering.' },
-                { icon: '⏰', title: 'Time is the Edge', desc: 'Killzones and Macro times are when the algorithm delivers. Outside them — random noise.' },
-                { icon: '📊', title: 'Premium vs Discount', desc: 'Institutions only buy in discount (below 50% Fib) and sell in premium. Never buy the top.' },
-                { icon: '🔱', title: 'AMD Daily Script', desc: 'Every day: Accumulate (Asian) → Manipulate/Judas (London) → Distribute (NY AM).' },
-              ].map((item, i) => (
-                <div key={i} className="flex gap-4 p-4 rounded-xl border border-[var(--border)] bg-[var(--bg3)] hover:border-[var(--gold-dim)] transition-colors">
-                  <span className="text-2xl flex-shrink-0">{item.icon}</span>
-                  <div>
-                    <p className="font-semibold text-white text-sm mb-1">{item.title}</p>
-                    <p className="text-gray-200 text-xs leading-relaxed">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+      {/* ── WHY FREE ── */}
+      <section style={{ position:'relative', zIndex:10, background:'#0A0A0A', borderBottom:'1px solid rgba(232,197,71,0.1)', padding:'48px 24px' }}>
+        <div style={{ maxWidth:'900px', margin:'0 auto' }}>
+          <div style={{ textAlign:'center', marginBottom:'32px' }}>
+            <span style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'rgba(232,197,71,0.6)', letterSpacing:'0.15em' }}>// WHY IS IT FREE?</span>
           </div>
-        </div>
-      </section>
-
-      {/* ── COURSES ── */}
-      <section className="relative z-10 px-6 py-24 grid-bg">
-        <div className="max-w-6xl mx-auto">
-
-          <div className="text-center mb-14">
-            <div className="font-mono text-xs text-[var(--gold)] tracking-widest uppercase mb-4">// Curriculum</div>
-            <h2 className="font-display text-6xl text-white mb-4">WHAT YOU'LL LEARN</h2>
-            <p className="text-gray-200 max-w-lg mx-auto text-sm" style={{ fontWeight: 300 }}>
-              28+ modules, 80+ lessons. Built from ICT's YouTube channel — updated through the 2026 Mentorship.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
-            {COURSES.map((c, i) => (
-              <Link key={c.id} href={`/lesson/${c.id}`}>
-                <div className="course-card h-full p-5 rounded-2xl bg-[var(--bg2)] cursor-pointer">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl border border-[var(--border)]" style={{ background: 'rgba(212,168,67,0.05)' }}>
-                      {c.emoji}
-                    </div>
-                    <span className={`px-2 py-1 rounded-md text-[10px] font-mono border ${LEVEL_STYLE[c.level]}`}>
-                      {c.level}
-                    </span>
-                  </div>
-                  <h3 className="font-semibold text-white mb-2">{c.title}</h3>
-                  <p className="text-gray-200 text-xs leading-relaxed mb-4" style={{ fontWeight: 300 }}>{c.desc}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-[10px] text-[#E8C547]">{c.lessons} LESSONS</span>
-                    <span className="text-[var(--gold)] text-sm">→</span>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          <div className="text-center">
-            <Link href="/courses" className="btn-gold inline-flex items-center gap-3 px-8 py-4 rounded-xl font-mono text-sm tracking-wider uppercase">
-              View All 28 Modules →
-            </Link>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ── DAILY SCHEDULE STRIP ── */}
-      <section className="relative z-10 border-y border-[var(--border)] bg-[var(--bg2)] overflow-hidden">
-        <div className="max-w-6xl mx-auto px-6 py-12">
-          <div className="font-mono text-xs text-[var(--gold)] tracking-widest uppercase text-center mb-8">// ICT Daily Session Map</div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))', gap:'16px' }}>
             {[
-              { time: '8PM–12AM', zone: 'Asian', role: 'ACCUMULATION', desc: 'Build Asian Range', color: 'rgba(99,102,241,0.1)', border: 'rgba(99,102,241,0.3)', text: '#818CF8' },
-              { time: '2AM–5AM', zone: 'London', role: 'MANIPULATION', desc: 'Judas Swing / Stop Hunt', color: 'rgba(239,68,68,0.1)', border: 'rgba(239,68,68,0.3)', text: '#F87171' },
-              { time: '7AM–12PM', zone: 'New York AM', role: 'DISTRIBUTION', desc: 'Real Directional Move', color: 'rgba(232,197,71,0.95)', border: '#E8C547', text: '#E8C547' },
-              { time: '10AM–12PM', zone: 'London Close', role: 'REVERSAL', desc: 'Profit Taking / Fade', color: 'rgba(16,185,129,0.1)', border: 'rgba(16,185,129,0.3)', text: '#34D399' },
-            ].map((s, i) => (
-              <div key={i} className="rounded-xl p-4 border text-center" style={{ background: s.color, borderColor: s.border }}>
-                <div className="font-mono text-[10px] tracking-widest mb-2" style={{ color: s.text }}>{s.role}</div>
-                <div className="font-semibold text-white text-sm mb-1">{s.zone}</div>
-                <div className="font-mono text-[10px] text-gray-200 mb-2">{s.time} EST</div>
-                <div className="text-xs text-gray-200" style={{ fontWeight: 300 }}>{s.desc}</div>
+              { icon:'📖', title:'Knowledge should be free', desc:'ICT himself shared 1,000+ hours of content for free on YouTube. We built the structured platform he never built.' },
+              { icon:'🏦', title:'We earn from prop firm referrals', desc:'If you use FTMO or other prop firms through our Resources page, we earn a referral fee. You pay nothing extra.' },
+              { icon:'⚡', title:'Pro plan for serious traders', desc:'Advanced traders can unlock extra tools with Pro. But every lesson, every module? Always free.' },
+            ].map((item, i) => (
+              <div key={i} className="card-hover" style={{ padding:'20px', borderRadius:'14px', background:'rgba(232,197,71,0.02)' }}>
+                <div style={{ fontSize:'22px', marginBottom:'10px' }}>{item.icon}</div>
+                <div style={{ fontWeight:600, fontSize:'14px', color:'white', marginBottom:'6px' }}>{item.title}</div>
+                <div style={{ fontSize:'13px', color:'rgba(255,255,255,0.5)', lineHeight:1.6, fontWeight:300 }}>{item.desc}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── QUOTE ── */}
-      <section className="relative z-10 px-6 py-24 text-center diagonal-accent">
-        <div className="max-w-3xl mx-auto">
-          <div className="font-mono text-xs text-[#E8C547] tracking-widest uppercase mb-8">// ICT on Trading</div>
-          <blockquote className="font-display text-3xl md:text-5xl text-white leading-tight mb-8">
-            "STOP TRYING TO PREDICT.<br/>
-            <span style={{ color: 'var(--gold)' }}>START READING THE ALGORITHM."</span>
-          </blockquote>
-          <p className="font-mono text-xs text-gray-200 tracking-widest">— MICHAEL J. HUDDLESTON (ICT)</p>
+      {/* ── HOW IT WORKS ── */}
+      <section style={{ position:'relative', zIndex:10, padding:'96px 24px', background:'#080808' }}>
+        <div style={{ maxWidth:'960px', margin:'0 auto' }}>
+          <div style={{ textAlign:'center', marginBottom:'56px' }}>
+            <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'rgba(232,197,71,0.6)', letterSpacing:'0.15em', marginBottom:'12px' }}>// HOW IT WORKS</div>
+            <h2 className="font-display" style={{ fontSize:'clamp(40px, 7vw, 72px)', color:'white', lineHeight:1 }}>THREE STEPS TO<span className="gold-text"> ICT</span></h2>
+          </div>
+          <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(260px, 1fr))', gap:'24px' }}>
+            {STEPS.map((s, i) => (
+              <div key={i} className="card-hover" style={{ padding:'28px', borderRadius:'16px', background:'#0F0F0F', position:'relative', overflow:'hidden' }}>
+                <div className="font-display" style={{ fontSize:'80px', color:'rgba(232,197,71,0.04)', position:'absolute', top:'-10px', right:'16px', lineHeight:1, userSelect:'none' }}>{s.num}</div>
+                <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'rgba(232,197,71,0.7)', letterSpacing:'0.15em', marginBottom:'12px' }}>STEP {s.num}</div>
+                <h3 style={{ fontWeight:600, fontSize:'17px', color:'white', marginBottom:'10px' }}>{s.title}</h3>
+                <p style={{ fontSize:'13px', color:'rgba(255,255,255,0.5)', lineHeight:1.7, fontWeight:300, marginBottom:'20px' }}>{s.desc}</p>
+                <Link href={s.href} style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'#E8C547', textDecoration:'none', letterSpacing:'0.1em', textTransform:'uppercase', display:'inline-flex', alignItems:'center', gap:'6px' }}>
+                  {s.cta} →
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <section className="relative z-10 px-6 py-24 bg-[var(--bg2)]">
-        <div className="max-w-2xl mx-auto text-center">
-          <div className="p-px rounded-2xl glow-gold" style={{ background: 'linear-gradient(135deg, #E8C547, transparent, #E8C547)' }}>
-            <div className="bg-[var(--bg3)] rounded-2xl p-12">
-              <div className="font-mono text-xs text-[var(--gold)] tracking-widest uppercase mb-4">// Begin Now</div>
-              <h2 className="font-display text-5xl text-white mb-4">READY TO THINK<br/>LIKE SMART MONEY?</h2>
-              <p className="text-gray-200 mb-8 text-sm leading-relaxed" style={{ fontWeight: 300 }}>
-                Join thousands of traders who stopped guessing and started reading institutional footprints. Free access to all beginner modules.
-              </p>
-              <Link href="/courses" className="btn-gold inline-block px-10 py-4 rounded-xl font-mono text-sm tracking-widest uppercase">
-                Start For Free →
+      {/* ── VS PAID COURSES ── */}
+      <section style={{ position:'relative', zIndex:10, padding:'96px 24px', background:'#0A0A0A', borderTop:'1px solid rgba(232,197,71,0.08)', borderBottom:'1px solid rgba(232,197,71,0.08)' }}>
+        <div style={{ maxWidth:'760px', margin:'0 auto' }}>
+          <div style={{ textAlign:'center', marginBottom:'48px' }}>
+            <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'rgba(232,197,71,0.6)', letterSpacing:'0.15em', marginBottom:'12px' }}>// THE COMPARISON</div>
+            <h2 className="font-display" style={{ fontSize:'clamp(36px, 6vw, 64px)', color:'white', lineHeight:1, marginBottom:'12px' }}>
+              WHY PAY <span className="gold-text">$300</span><br/>FOR THIS?
+            </h2>
+            <p style={{ fontSize:'14px', color:'rgba(255,255,255,0.45)', fontWeight:300 }}>Everything below is free on ICT Flow. Zero credit card required.</p>
+          </div>
+
+          <div style={{ border:'1px solid rgba(232,197,71,0.15)', borderRadius:'20px', overflow:'hidden' }}>
+            {/* Header */}
+            <div style={{ display:'grid', gridTemplateColumns:'1fr 140px 140px', background:'rgba(232,197,71,0.05)', borderBottom:'1px solid rgba(232,197,71,0.12)', padding:'14px 20px' }}>
+              <div style={{ fontFamily:'DM Mono,monospace', fontSize:'10px', color:'rgba(255,255,255,0.4)', letterSpacing:'0.1em' }}>FEATURE</div>
+              <div style={{ fontFamily:'DM Mono,monospace', fontSize:'10px', color:'#E8C547', letterSpacing:'0.1em', textAlign:'center' }}>ICT FLOW</div>
+              <div style={{ fontFamily:'DM Mono,monospace', fontSize:'10px', color:'rgba(255,255,255,0.4)', letterSpacing:'0.1em', textAlign:'center' }}>PAID COURSES</div>
+            </div>
+            {COMPARISON.map((row, i) => (
+              <div key={i} style={{ display:'grid', gridTemplateColumns:'1fr 140px 140px', padding:'13px 20px', borderBottom: i < COMPARISON.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none', background: i % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.01)' }}>
+                <div style={{ fontSize:'13px', color:'rgba(255,255,255,0.7)', fontWeight:300 }}>{row.feature}</div>
+                <div style={{ textAlign:'center' }}>
+                  <span style={{ color:'#34D399', fontSize:'15px', fontWeight:600 }}>✓ Free</span>
+                </div>
+                <div style={{ textAlign:'center', fontFamily:'DM Mono,monospace', fontSize:'11px', color:'rgba(248,113,113,0.8)' }}>{row.them}</div>
+              </div>
+            ))}
+            {/* Total row */}
+            <div style={{ display:'grid', gridTemplateColumns:'1fr 140px 140px', padding:'16px 20px', background:'rgba(232,197,71,0.04)', borderTop:'1px solid rgba(232,197,71,0.15)' }}>
+              <div className="font-display" style={{ fontSize:'18px', color:'white', letterSpacing:'0.05em' }}>TOTAL COST</div>
+              <div style={{ textAlign:'center' }}>
+                <span className="font-display gold-text" style={{ fontSize:'24px' }}>$0</span>
+              </div>
+              <div style={{ textAlign:'center', fontFamily:'DM Mono,monospace', fontSize:'13px', color:'rgba(248,113,113,0.9)', fontWeight:600 }}>$300–500+</div>
+            </div>
+          </div>
+
+          <div style={{ textAlign:'center', marginTop:'32px' }}>
+            <Link href="/lesson/1" className="btn-gold" style={{ padding:'14px 32px', borderRadius:'12px', fontFamily:'DM Mono,monospace', fontSize:'12px', letterSpacing:'0.12em', textTransform:'uppercase', textDecoration:'none', display:'inline-block' }}>
+              Start For Free — No Card Needed →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── COURSES ── */}
+      <section className="grid-bg" style={{ position:'relative', zIndex:10, padding:'96px 24px' }}>
+        <div style={{ maxWidth:'1100px', margin:'0 auto' }}>
+          <div style={{ textAlign:'center', marginBottom:'56px' }}>
+            <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'rgba(232,197,71,0.6)', letterSpacing:'0.15em', marginBottom:'12px' }}>// CURRICULUM</div>
+            <h2 className="font-display" style={{ fontSize:'clamp(40px, 7vw, 72px)', color:'white', lineHeight:1, marginBottom:'12px' }}>WHAT YOU'LL LEARN</h2>
+            <p style={{ fontSize:'14px', color:'rgba(255,255,255,0.45)', fontWeight:300 }}>28+ modules. Built from ICT's YouTube — updated through 2026.</p>
+          </div>
+
+          <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(280px, 1fr))', gap:'16px', marginBottom:'40px' }}>
+            {COURSES.map((c) => {
+              const ls = LEVEL_STYLE[c.level] || LEVEL_STYLE.Advanced;
+              return (
+                <Link key={c.id} href={`/lesson/${c.id}`} style={{ textDecoration:'none' }}>
+                  <div className="card-hover" style={{ padding:'20px', borderRadius:'16px', background:'#0F0F0F', height:'100%', display:'flex', flexDirection:'column', cursor:'pointer' }}>
+                    <div style={{ display:'flex', alignItems:'flex-start', justifyContent:'space-between', marginBottom:'14px' }}>
+                      <div style={{ width:44, height:44, borderRadius:'12px', background:'rgba(232,197,71,0.06)', border:'1px solid rgba(232,197,71,0.12)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'20px', flexShrink:0 }}>
+                        {c.emoji}
+                      </div>
+                      <span style={{ padding:'3px 10px', borderRadius:'6px', fontSize:'10px', fontFamily:'DM Mono,monospace', color:ls.color, background:ls.bg, border:`1px solid ${ls.border}` }}>
+                        {c.level}
+                      </span>
+                    </div>
+                    <h3 style={{ fontWeight:600, fontSize:'15px', color:'white', marginBottom:'6px' }}>{c.title}</h3>
+                    <p style={{ fontSize:'12px', color:'rgba(255,255,255,0.45)', lineHeight:1.6, fontWeight:300, flex:1 }}>{c.desc}</p>
+                    <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginTop:'14px', paddingTop:'12px', borderTop:'1px solid rgba(255,255,255,0.05)' }}>
+                      <span style={{ fontFamily:'DM Mono,monospace', fontSize:'10px', color:'rgba(232,197,71,0.6)', letterSpacing:'0.08em' }}>{c.lessons} LESSONS</span>
+                      <span style={{ color:'#E8C547', fontSize:'14px' }}>→</span>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+          <div style={{ textAlign:'center' }}>
+            <Link href="/courses" className="btn-gold" style={{ padding:'14px 32px', borderRadius:'12px', fontFamily:'DM Mono,monospace', fontSize:'12px', letterSpacing:'0.12em', textTransform:'uppercase', textDecoration:'none', display:'inline-block' }}>
+              View All 28 Modules →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SESSION MAP ── */}
+      <section style={{ position:'relative', zIndex:10, borderTop:'1px solid rgba(232,197,71,0.08)', borderBottom:'1px solid rgba(232,197,71,0.08)', background:'#0A0A0A', padding:'72px 24px' }}>
+        <div style={{ maxWidth:'960px', margin:'0 auto' }}>
+          <div style={{ textAlign:'center', marginBottom:'40px' }}>
+            <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'rgba(232,197,71,0.6)', letterSpacing:'0.15em', marginBottom:'10px' }}>// ICT DAILY BLUEPRINT</div>
+            <h2 className="font-display" style={{ fontSize:'clamp(32px, 5vw, 56px)', color:'white' }}>EVERY DAY FOLLOWS THIS SCRIPT</h2>
+          </div>
+          <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(200px, 1fr))', gap:'12px' }}>
+            {[
+              { time:'8PM–12AM EST', zone:'Asian', phase:'ACCUMULATION', desc:'Price builds the Asian Range. Highs and lows become the liquidity targets.', color:'#6366F1', bg:'rgba(99,102,241,0.06)' },
+              { time:'2AM–5AM EST', zone:'London', phase:'MANIPULATION', desc:'Judas Swing. Price sweeps Asian high or low, trapping retail.', color:'#F87171', bg:'rgba(248,113,113,0.06)' },
+              { time:'7AM–12PM EST', zone:'New York AM', phase:'DISTRIBUTION', desc:'The real directional move. Highest probability ICT setups happen here.', color:'#E8C547', bg:'rgba(232,197,71,0.06)' },
+              { time:'10AM–12PM EST', zone:'London Close', phase:'REVERSAL', desc:'Banks close books. Profit taking creates reliable counter-moves.', color:'#34D399', bg:'rgba(52,211,153,0.06)' },
+            ].map((s, i) => (
+              <div key={i} className="card-hover" style={{ padding:'20px', borderRadius:'14px', background:s.bg, textAlign:'center' }}>
+                <div style={{ fontFamily:'DM Mono,monospace', fontSize:'9px', letterSpacing:'0.15em', color:s.color, marginBottom:'8px' }}>{s.phase}</div>
+                <div style={{ fontWeight:700, fontSize:'15px', color:'white', marginBottom:'4px' }}>{s.zone}</div>
+                <div style={{ fontFamily:'DM Mono,monospace', fontSize:'9px', color:'rgba(255,255,255,0.35)', marginBottom:'10px' }}>{s.time}</div>
+                <div style={{ fontSize:'12px', color:'rgba(255,255,255,0.5)', lineHeight:1.6, fontWeight:300 }}>{s.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── DISCORD CTA ── */}
+      <section style={{ position:'relative', zIndex:10, padding:'96px 24px', background:'#080808' }}>
+        <div style={{ maxWidth:'700px', margin:'0 auto' }}>
+          <div className="gold-glow" style={{ border:'1px solid rgba(232,197,71,0.2)', borderRadius:'24px', padding:'56px 40px', textAlign:'center', background:'linear-gradient(135deg, rgba(232,197,71,0.04) 0%, rgba(8,8,8,0) 100%)' }}>
+            <div style={{ fontSize:'48px', marginBottom:'16px' }}>💬</div>
+            <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'rgba(232,197,71,0.6)', letterSpacing:'0.15em', marginBottom:'16px' }}>// COMMUNITY</div>
+            <h2 className="font-display" style={{ fontSize:'clamp(36px, 6vw, 60px)', color:'white', lineHeight:1, marginBottom:'16px' }}>
+              JOIN THE<span className="gold-text"> DISCORD</span>
+            </h2>
+            <p style={{ color:'rgba(255,255,255,0.5)', fontSize:'14px', lineHeight:1.7, fontWeight:300, marginBottom:'32px' }}>
+              Daily market analysis. Live trade reviews. ICT concept discussions. 500+ traders sharing setups and helping each other grow.
+            </p>
+            <div style={{ display:'flex', flexWrap:'wrap', gap:'12px', justifyContent:'center' }}>
+              <a href="https://discord.gg/bh2YK6vF" target="_blank" rel="noopener noreferrer" className="btn-gold" style={{ padding:'14px 28px', borderRadius:'12px', fontFamily:'DM Mono,monospace', fontSize:'12px', letterSpacing:'0.12em', textTransform:'uppercase', textDecoration:'none', display:'inline-block' }}>
+                Join Discord — Free →
+              </a>
+              <Link href="/lesson/1" style={{ padding:'14px 28px', borderRadius:'12px', fontFamily:'DM Mono,monospace', fontSize:'12px', letterSpacing:'0.12em', textTransform:'uppercase', textDecoration:'none', border:'1px solid rgba(232,197,71,0.25)', color:'rgba(255,255,255,0.6)', display:'inline-block' }}>
+                Start Learning
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      <Testimonials />
+      {/* ── QUOTE ── */}
+      <section style={{ position:'relative', zIndex:10, padding:'80px 24px', textAlign:'center', borderTop:'1px solid rgba(232,197,71,0.08)', background:'#0A0A0A' }}>
+        <div style={{ maxWidth:'800px', margin:'0 auto' }}>
+          <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'rgba(232,197,71,0.5)', letterSpacing:'0.15em', marginBottom:'28px' }}>// ICT</div>
+          <blockquote className="font-display" style={{ fontSize:'clamp(28px, 5vw, 52px)', color:'white', lineHeight:1.2, marginBottom:'20px' }}>
+            "STOP TRYING TO PREDICT.<br />
+            <span className="gold-text">START READING THE ALGORITHM."</span>
+          </blockquote>
+          <p style={{ fontFamily:'DM Mono,monospace', fontSize:'10px', color:'rgba(255,255,255,0.3)', letterSpacing:'0.2em' }}>— MICHAEL J. HUDDLESTON (ICT)</p>
+        </div>
+      </section>
+
+      {/* ── TESTIMONIALS ── */}
+      <section style={{ position:'relative', zIndex:10, padding:'96px 24px', borderTop:'1px solid rgba(232,197,71,0.08)' }}>
+        <div style={{ maxWidth:'1100px', margin:'0 auto' }}>
+          <div style={{ textAlign:'center', marginBottom:'56px' }}>
+            <div style={{ display:'inline-flex', alignItems:'center', gap:'6px', padding:'5px 14px', borderRadius:'100px', border:'1px solid rgba(232,197,71,0.2)', background:'rgba(232,197,71,0.04)', fontFamily:'DM Mono,monospace', fontSize:'10px', color:'#E8C547', letterSpacing:'0.12em', marginBottom:'20px' }}>
+              ★★★★★ STUDENT RESULTS
+            </div>
+            <h2 className="font-display" style={{ fontSize:'clamp(40px, 7vw, 72px)', color:'white', lineHeight:1 }}>
+              TRADERS ARE<span className="gold-text"> WINNING</span>
+            </h2>
+          </div>
+          <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(310px, 1fr))', gap:'16px' }}>
+            {TESTIMONIALS.map((t, i) => (
+              <div key={i} className="card-hover" style={{ padding:'24px', borderRadius:'16px', background:'#111', display:'flex', flexDirection:'column', gap:'14px' }}>
+                <div style={{ color:'#E8C547', fontSize:'13px', letterSpacing:'3px' }}>★★★★★</div>
+                <p style={{ color:'rgba(255,255,255,0.65)', fontSize:'13px', lineHeight:1.75, fontWeight:300, flex:1 }}>"{t.text}"</p>
+                <div style={{ display:'inline-flex', alignSelf:'flex-start', padding:'3px 10px', borderRadius:'4px', background:`${t.color}12`, border:`1px solid ${t.color}22`, fontFamily:'DM Mono,monospace', fontSize:'10px', color:t.color, letterSpacing:'0.06em' }}>
+                  {t.tag}
+                </div>
+                <div style={{ display:'flex', alignItems:'center', gap:'10px', paddingTop:'12px', borderTop:'1px solid rgba(255,255,255,0.05)' }}>
+                  <div style={{ width:36, height:36, borderRadius:'50%', background:`${t.color}18`, border:`1px solid ${t.color}35`, display:'flex', alignItems:'center', justifyContent:'center', fontFamily:'Bebas Neue,sans-serif', fontSize:'14px', color:t.color, flexShrink:0 }}>
+                    {t.initials}
+                  </div>
+                  <div>
+                    <div style={{ fontSize:'13px', color:'white', fontWeight:500 }}>{t.name}</div>
+                    <div style={{ fontFamily:'DM Mono,monospace', fontSize:'10px', color:'rgba(255,255,255,0.35)' }}>{t.handle}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── FINAL CTA ── */}
+      <section style={{ position:'relative', zIndex:10, padding:'96px 24px', background:'#0A0A0A', borderTop:'1px solid rgba(232,197,71,0.08)' }}>
+        <div style={{ maxWidth:'640px', margin:'0 auto', textAlign:'center' }}>
+          <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'rgba(232,197,71,0.6)', letterSpacing:'0.15em', marginBottom:'16px' }}>// BEGIN NOW</div>
+          <h2 className="font-display" style={{ fontSize:'clamp(40px, 7vw, 72px)', color:'white', lineHeight:1, marginBottom:'16px' }}>
+            READY TO THINK<br /><span className="gold-text">LIKE SMART MONEY?</span>
+          </h2>
+          <p style={{ color:'rgba(255,255,255,0.45)', fontSize:'14px', lineHeight:1.7, fontWeight:300, marginBottom:'36px' }}>
+            Join 500+ traders who stopped guessing and started reading institutional footprints. 28 modules. 80+ lessons. $0 forever.
+          </p>
+          <div style={{ display:'flex', flexWrap:'wrap', gap:'12px', justifyContent:'center' }}>
+            <Link href="/lesson/1" className="btn-gold" style={{ padding:'16px 36px', borderRadius:'12px', fontFamily:'DM Mono,monospace', fontSize:'13px', letterSpacing:'0.12em', textTransform:'uppercase', textDecoration:'none', display:'inline-block' }}>
+              Start Lesson 1 Now — Free →
+            </Link>
+            <Link href="/glossary" style={{ padding:'16px 28px', borderRadius:'12px', fontFamily:'DM Mono,monospace', fontSize:'12px', letterSpacing:'0.12em', textTransform:'uppercase', textDecoration:'none', border:'1px solid rgba(232,197,71,0.2)', color:'rgba(255,255,255,0.55)', display:'inline-block' }}>
+              ICT Glossary
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <EmailCapture />
       <Footer />
     </div>
