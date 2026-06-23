@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "health:check": "bash scripts/project-health-check.sh"
   },
   "dependencies": {
     "@stripe/stripe-js": "^8.9.0",
