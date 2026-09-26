@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
+import { createClient } from '@/lib/supabase';
 
 const TOOLS = [
   {
@@ -231,7 +232,20 @@ const styles = `
 export default function ToolsPage() {
   const [activeTool, setActiveTool] = useState('checklist');
   const [checked, setChecked] = useState({});
+  const [isPro, setIsPro] = useState(false);
+  const [proLoading, setProLoading] = useState(true);
   const tool = TOOLS.find(t => t.id === activeTool);
+
+  useEffect(() => {
+    let mounted = true;
+    const supabase = createClient();
+    supabase.auth.getUser().then(async ({ data: { user } }) => {
+      if (!user) { if (mounted) setProLoading(false); return; }
+      const { data: profile } = await supabase.from('profiles').select('is_pro').eq('id', user.id).maybeSingle();
+      if (mounted) { setIsPro(profile?.is_pro === true); setProLoading(false); }
+    }).catch(() => { if (mounted) setProLoading(false); });
+    return () => { mounted = false; };
+  }, []);
 
   const toggleCheck = (key) => {
     setChecked(prev => ({ ...prev, [key]: !prev[key] }));
@@ -266,7 +280,7 @@ export default function ToolsPage() {
             {TOOLS.map(t => (
               <button
                 key={t.id}
-                onClick={() => { setActiveTool(t.id); setChecked({}); }}
+                onClick={() => { if (t.id === 'plan' && !isPro) return; setActiveTool(t.id); setChecked({}); }}
                 style={{
                   padding: '10px 20px',
                   borderRadius: '10px',
@@ -280,10 +294,24 @@ export default function ToolsPage() {
                   transition: 'all 0.2s',
                 }}
               >
-                {t.emoji} {t.title}
+                {t.emoji} {t.title}{t.id === 'plan' && ' · PRO'}
               </button>
             ))}
           </div>
+
+          {activeTool === 'plan' && !proLoading && !isPro ? (
+            <div style={{ padding: '48px 28px', marginBottom: '28px', textAlign: 'center', background: 'linear-gradient(135deg, rgba(212,168,67,0.08), rgba(212,168,67,0.02))', border: '1px solid rgba(232,197,71,0.35)', borderRadius: '16px' }}>
+              <div style={{ fontSize: '34px', marginBottom: '12px' }}>🔒</div>
+              <div className="font-mono-c" style={{ fontSize: '10px', letterSpacing: '2px', color: '#E8C547', marginBottom: '10px' }}>// PRO TOOL</div>
+              <h2 className="font-display" style={{ fontSize: '38px', color: 'white', marginBottom: '10px' }}>ICT TRADING PLAN TEMPLATE</h2>
+              <p style={{ color: 'rgba(255,255,255,0.55)', maxWidth: '520px', margin: '0 auto 24px', lineHeight: 1.7, fontSize: '14px' }}>
+                The checklist stays free. The full professional trading-plan template is included with Pro access, together with the advanced curriculum and ad-free experience.
+              </p>
+              <Link href="/pricing" style={{ display: 'inline-block', padding: '13px 26px', borderRadius: '10px', background: 'linear-gradient(135deg,#E8C547,#F0C96A)', color: '#080808', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em' }}>
+                UNLOCK PRO — $19/MONTH →
+              </Link>
+            </div>
+          ) : null}
 
           {/* TOOL HEADER */}
           <div style={{ background: '#0D0D0D', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '16px', padding: '28px 32px', marginBottom: '28px' }}>
@@ -373,7 +401,7 @@ export default function ToolsPage() {
             </div>
           )}
 
-          {activeTool === 'plan' && (
+          {activeTool === 'plan' && isPro && (
             <div style={{ marginTop: '16px', padding: '20px 24px', background: 'rgba(212,168,67,0.05)', border: '1px solid rgba(212,168,67,0.1)', borderRadius: '12px', textAlign: 'center' }}>
               <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.7 }}>
                 Print this plan, fill it out by hand, and post it next to your monitor.<br />
