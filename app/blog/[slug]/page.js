@@ -4,6 +4,7 @@ import { use } from 'react';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 import { POSTS } from '../posts';
+import AdSlot from '@/app/components/AdSlot';
 
 function renderContent(content) {
   if (typeof content === 'string') {
@@ -91,6 +92,8 @@ export default function BlogPost({ params }) {
         {post.description && (
           <p style={{ fontSize: '17px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.8, fontWeight: 300, marginBottom: '32px', borderLeft: '3px solid #E8C547', paddingLeft: '20px' }}>{post.description}</p>
         )}
+
+        <AdSlot />
 
         <div>{renderContent(post.content)}</div>
 
