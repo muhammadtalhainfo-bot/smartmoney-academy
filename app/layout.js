@@ -86,6 +86,7 @@ export default function RootLayout({ children }) {
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#E8C547" />
+        <meta name="google-adsense-account" content="ca-pub-4615893071983318" />
         <link rel="manifest" href="/manifest.json" />
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-HRGZYFXQ5W"></script>
         <script dangerouslySetInnerHTML={{ __html: `
