@@ -560,7 +560,7 @@ export default function MentorshipPage() {
               {['All', ...ALL_TAGS].map(tag => (
                 <button key={tag} onClick={() => setActiveTag(tag)}
                   className="tag-pill"
-                  style={{ background: activeTag === tag ? 'rgba(232,197,71,0.95)' : 'transparent', border: `1px solid ${activeTag === tag ? 'rgba(232,197,71,0.95)' : 'rgba(255,255,255,0.18)'}`, borderRadius: '99px', padding: '4px 10px', ...mono, fontSize: '10px', color: activeTag === tag ? '#E8C547' : '#808080', letterSpacing: '0.06em' }}>
+                  style={{ background: activeTag === tag ? 'rgba(232,197,71,0.95)' : 'transparent', border: `1px solid ${activeTag === tag ? 'rgba(232,197,71,0.95)' : 'rgba(255,255,255,0.18)'}`, borderRadius: '99px', padding: '4px 10px', ...mono, fontSize: '10px', color: activeTag === tag ? '#080808' : '#A6A6A6', letterSpacing: '0.06em' }}>
                   {tag}
                 </button>
               ))}
@@ -608,7 +608,7 @@ export default function MentorshipPage() {
                         <div style={{ flex: 1, minWidth: 0 }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '4px' }}>
                             <span style={{ fontSize: '14px', fontWeight: 600, color: 'white' }}>{ep.title}</span>
-                            {isMustWatch && <span style={{ ...mono, fontSize: '9px', background: 'rgba(232,197,71,0.95)', color: '#E8C547', padding: '2px 6px', borderRadius: '4px', letterSpacing: '0.08em' }}>MUST WATCH</span>}
+                            {isMustWatch && <span style={{ ...mono, fontSize: '9px', background: 'rgba(232,197,71,0.95)', color: '#080808', padding: '2px 6px', borderRadius: '4px', letterSpacing: '0.08em' }}>MUST WATCH</span>}
                           </div>
                           <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
                             <span style={{ ...mono, fontSize: '10px', color: '#808080' }}>{ep.duration}</span>

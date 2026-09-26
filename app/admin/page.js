@@ -90,7 +90,7 @@ const ALL_MODULES = [
 
 const NAV_PAGES = [
   { href: '/',            label: 'Home',              desc: 'Landing page' },
-  { href: '/courses',     label: 'Courses',           desc: '28 modules listing' },
+  { href: '/courses',     label: 'Courses',           desc: '38 modules listing' },
   { href: '/glossary',    label: 'Glossary',          desc: 'ICT/SMC terms (75+)' },
   { href: '/practice',    label: 'Practice',          desc: 'Quiz practice questions' },
   { href: '/strategies',  label: 'Strategies',        desc: 'ICT strategy breakdowns' },
@@ -936,7 +936,7 @@ function SEOSection({ supabase }) {
 // ─── PRICING SECTION ──────────────────────────────────────────────────────────
 function PricingSection() {
   const [freeFeatures, setFreeFeatures] = useState(['Modules 1–3 (Market Structure, Liquidity, FVG)', 'ICT Glossary (75+ terms)', 'Basic practice questions', 'Trade Journal']);
-  const [proFeatures, setProFeatures] = useState(['Everything in Free', 'All 28 modules unlocked', 'AI-generated daily challenges', 'Certificate of completion', 'Discord community access', 'Weekly market breakdown', 'Priority support', 'Early access to new modules', 'Cancel anytime']);
+  const [proFeatures, setProFeatures] = useState(['Everything in Free', 'All 38 modules unlocked', 'AI-generated daily challenges', 'Certificate of completion', 'Discord community access', 'Weekly market breakdown', 'Priority support', 'Early access to new modules', 'Cancel anytime']);
   const [monthlyPrice, setMonthlyPrice] = useState('19');
   const [annualPrice, setAnnualPrice] = useState('149');
   const [newFeature, setNewFeature] = useState('');

@@ -78,7 +78,7 @@ export default function CertificatePage() {
                 YOUR <span className="shine">PROGRESS</span>
               </h1>
               <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '15px', fontWeight: 300 }}>
-                Complete all 28 modules to earn your certificate.
+                Complete all 38 modules to earn your certificate.
               </p>
             </div>
 
@@ -139,7 +139,7 @@ export default function CertificatePage() {
               <div style={{ fontFamily: 'Georgia, serif', fontSize: '14px', color: '#666', marginBottom: '24px', lineHeight: 1.8 }}>
                 has successfully completed the<br />
                 <strong style={{ color: '#1a1a1a' }}>ICT & Smart Money Concepts Curriculum</strong><br />
-                comprising all 28 modules and 80+ lessons
+                comprising all 38 modules and 203+ lessons
               </div>
 
               <div style={{ display: 'flex', justifyContent: 'center', gap: '32px', marginBottom: '32px' }}>

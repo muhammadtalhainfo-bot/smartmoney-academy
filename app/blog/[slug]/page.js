@@ -4,6 +4,7 @@ import { use } from 'react';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 import { POSTS } from '../posts';
+import AdSlot from '@/app/components/AdSlot';
 
 function renderContent(content) {
   if (typeof content === 'string') {
@@ -92,11 +93,13 @@ export default function BlogPost({ params }) {
           <p style={{ fontSize: '17px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.8, fontWeight: 300, marginBottom: '32px', borderLeft: '3px solid #E8C547', paddingLeft: '20px' }}>{post.description}</p>
         )}
 
+        <AdSlot />
+
         <div>{renderContent(post.content)}</div>
 
         <div style={{ marginTop: '64px', padding: '32px', background: '#111111', border: '1px solid rgba(212,168,67,0.22)', borderRadius: '16px', textAlign: 'center' }}>
           <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '28px', color: 'white', marginBottom: '8px' }}>READY TO APPLY THIS?</div>
-          <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px', marginBottom: '24px' }}>14 free ICT modules. Structured learning. Zero fluff.</p>
+          <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px', marginBottom: '24px' }}>38 free ICT modules. Structured learning. Zero fluff.</p>
           <Link href="/courses" style={{ background: 'linear-gradient(135deg,#E8C547,#F0C96A)', color: '#080808', padding: '12px 32px', borderRadius: '8px', fontFamily: 'DM Mono, monospace', fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textDecoration: 'none' }}>
             START LEARNING FREE
           </Link>

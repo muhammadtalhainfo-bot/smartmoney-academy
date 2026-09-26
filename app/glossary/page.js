@@ -309,7 +309,6 @@ export default function GlossaryPage() {
 
       {/* ── FOOTER ── */}
       <Footer />
-    <Footer />
     </div>
   );
 }

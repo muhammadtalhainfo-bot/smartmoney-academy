@@ -14,6 +14,7 @@ export default function sitemap() {
     [`${BASE}/glossary`,    0.85, 'monthly'],
     [`${BASE}/strategies`,  0.8,  'monthly'],
     [`${BASE}/practice`,    0.8,  'monthly'],
+    [`${BASE}/journal`,      0.8,  'monthly'],
     [`${BASE}/pricing`,     0.8,  'monthly'],
     [`${BASE}/resources`,   0.7,  'monthly'],
     [`${BASE}/tools`,       0.75, 'monthly'],
@@ -26,8 +27,8 @@ export default function sitemap() {
   }))
 
   const lessonPages = [
-    ...Array.from({ length: 28 }, (_, i) => i + 1),
-    29, 30, 101, 102, 103, 201, 202, 301
+    ...Array.from({ length: 32 }, (_, i) => i + 1),
+    101, 102, 103, 201, 202, 301
   ].map(id => ({
     url: `${BASE}/lesson/${id}`,
     lastModified: now,

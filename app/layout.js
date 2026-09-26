@@ -7,11 +7,9 @@ export const metadata = {
     default: 'ICT Flow — Free ICT & Smart Money Concepts Trading Education',
     template: '%s | ICT Flow',
   },
-  description: 'Master ICT (Inner Circle Trader) and Smart Money Concepts for free. Learn market structure, liquidity, fair value gaps, order blocks, killzones and more. 36 modules, 192+ lessons.',
+  description: 'Study ICT and Smart Money Concepts with a structured 38-module curriculum covering market structure, liquidity, fair value gaps, order blocks, timing, execution and risk management. 203+ lessons.',
   keywords: ['ICT trading', 'Smart Money Concepts', 'Inner Circle Trader', 'market structure', 'fair value gap', 'order blocks', 'liquidity', 'NAS100', 'forex trading', 'prop firm', 'trading education', 'free trading course', 'ICT mentorship', 'silver bullet strategy', 'AMD model'],
-  alternates: {
-    canonical: 'https://ictflow.com',
-  },
+  alternates: { canonical: 'https://ictflow.com' },
   authors: [{ name: 'ICT Flow' }],
   creator: 'ICT Flow',
   icons: {
@@ -29,13 +27,13 @@ export const metadata = {
     url: 'https://ictflow.com',
     siteName: 'ICT Flow',
     title: 'ICT Flow — Free ICT Trading Education',
-    description: 'Master ICT & Smart Money Concepts for free. 36 modules, 192+ lessons. Learn to trade like institutions.',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ICT Flow — Trade Like Institutions' }],
+    description: 'Structured ICT & Smart Money Concepts education. 38 modules and 203+ lessons covering concepts, practice and risk-aware execution.',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ICT Flow — Structured ICT Trading Education' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'ICT Flow — Free ICT Trading Education',
-    description: 'Master ICT & Smart Money Concepts for free. 36 modules, 192+ lessons.',
+    description: 'Study ICT & Smart Money Concepts with a 38-module curriculum and 203+ lessons. Start with the first three modules free.',
     images: ['/og-image.png'],
     creator: '@riskfirsttrad',
   },
@@ -57,8 +55,7 @@ const jsonLd = {
   '@type': 'EducationalOrganization',
   name: 'ICT Flow',
   url: 'https://ictflow.com',
-  description: 'Free ICT and Smart Money Concepts trading education platform. 36 modules, 192+ lessons covering Market Structure, Liquidity, FVGs, Order Blocks, AMD, IPDA and more.',
-  educationalCredentialAwarded: 'ICT Trading Certificate',
+  description: 'Structured ICT and Smart Money Concepts education with 38 modules and 203+ lessons covering market structure, liquidity, execution, risk management and related trading frameworks.',
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'ICT Trading Courses',
@@ -87,6 +84,7 @@ export default function RootLayout({ children }) {
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#E8C547" />
+        <meta name="google-adsense-account" content="ca-pub-4615893071983318" />
         <link rel="manifest" href="/manifest.json" />
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-HRGZYFXQ5W"></script>
         <script dangerouslySetInnerHTML={{ __html: `
@@ -97,10 +95,14 @@ export default function RootLayout({ children }) {
   'user_id': typeof window !== 'undefined' && window.__USER_ID__ ? window.__USER_ID__ : undefined
 });
         ` }} />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        {process.env.NEXT_PUBLIC_ADSENSE_CLIENT ? (
+          <script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_CLIENT}`}
+            crossOrigin="anonymous"
+          />
+        ) : null}
         <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer />
         <script dangerouslySetInnerHTML={{ __html: `
           window.OneSignalDeferred = window.OneSignalDeferred || [];
@@ -114,11 +116,11 @@ export default function RootLayout({ children }) {
           });
         ` }} />
         <link rel="preconnect" href="https://api.onesignal.com" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" media="print" onLoad="this.media='all'" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-</head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
       <body>
         <main id="main-content">{children}</main>
         <CookieBanner />

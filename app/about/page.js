@@ -6,7 +6,7 @@ import Footer from '@/app/components/Footer';
 const STATS = [
   { value: '28', label: 'ICT Modules' },
   { value: '80+', label: 'Lessons Built' },
-  { value: '500+', label: 'Students Enrolled' },
+  { value: '36', label: 'Modules' },
   { value: '100%', label: 'Free to Start' },
 ];
 
@@ -18,13 +18,13 @@ const VALUES = [
   },
   {
     icon: '🏦',
-    title: 'Institutional Thinking',
-    desc: 'We teach how smart money actually moves markets — not retail indicators or lagging signals.',
+    title: 'Framework-Based Thinking',
+    desc: 'We teach how ICT/SMC frameworks interpret institutional-style price behavior, structure and liquidity.',
   },
   {
     icon: '🆓',
-    title: 'Free Forever',
-    desc: 'The core curriculum stays free. We believe financial education should be accessible to everyone.',
+    title: 'Free Starting Point',
+    desc: 'The first three modules are free. Pro access is optional for the full curriculum and additional tools.',
   },
   {
     icon: '🎯',
@@ -56,7 +56,7 @@ export default function AboutPage() {
             <span className="shine">INSTITUTIONS</span>
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '17px', lineHeight: 1.8, fontWeight: 300, maxWidth: '560px', margin: '0 auto' }}>
-            ICT Flow was built with one goal: make ICT and Smart Money Concepts accessible to every trader — regardless of background or budget. No $500 courses. No gatekeeping. Just the cleanest ICT education on the internet, free.
+            ICT Flow was built to make ICT and Smart Money Concepts easier to study through a structured curriculum, practice tools and progress tracking. The first three modules are free to explore; deeper access is optional.
           </p>
         </div>
       </section>
@@ -87,7 +87,7 @@ export default function AboutPage() {
             We built ICT Flow to be that resource — a structured, progressive curriculum that takes a complete beginner from market structure basics all the way to advanced IPDA theory and trade management. Built from ICT's official YouTube content and mentorship material.
           </p>
           <p>
-            We're traders who got tired of seeing beginners pay $300+ for information that should be free. ICT himself gives his content away on YouTube. We just organized it into a proper learning path.
+            The platform is designed around a simple idea: organized study beats scattered information. We combine ICT/SMC concepts with structured lessons, quizzes, journaling and review tools in one place.
           </p>
           <p style={{ color: '#E8C547', fontStyle: 'italic' }}>
             "Stop trying to predict. Start reading the algorithm." — ICT
@@ -122,7 +122,7 @@ export default function AboutPage() {
         <div style={{ maxWidth: '500px', margin: '0 auto' }}>
           <h2 className="font-display shine" style={{ fontSize: '52px', lineHeight: 1, marginBottom: '16px' }}>START LEARNING TODAY</h2>
           <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '15px', marginBottom: '32px', fontWeight: 300 }}>
-            Join 500+ traders learning to think like smart money. Free forever.
+            Study 38 structured modules covering ICT and Smart Money Concepts. Start with the first three modules free.
           </p>
           <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/courses" style={{ padding: '14px 32px', background: 'linear-gradient(135deg,#E8C547,#8A6B28)', borderRadius: '10px', color: 'black', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600 }}>

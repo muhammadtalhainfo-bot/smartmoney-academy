@@ -13,7 +13,7 @@ export default function PrivacyPage() {
       <div style={{ maxWidth: '800px', margin: '0 auto', padding: '60px 24px' }}>
         <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#E8C547', letterSpacing: '0.2em', marginBottom: '12px' }}>// Legal</div>
         <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '56px', color: 'white', marginBottom: '8px', letterSpacing: '0.05em' }}>PRIVACY POLICY</h1>
-        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.6)', marginBottom: '48px' }}>Last updated: March 2026</div>
+        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.6)', marginBottom: '48px' }}>Last updated: September 2026</div>
                 <div style={{ marginBottom: '40px' }}>
           <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '28px', color: '#E8C547', marginBottom: '12px', letterSpacing: '0.05em' }}>Information We Collect</h2>
           <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: '1.8', fontSize: '15px' }}>We collect your email address and name when you create an account. We also collect trade journal data you voluntarily enter, lesson completion data, and XP progress. We do not collect payment card details — these are handled securely by Stripe.</p>
@@ -29,6 +29,10 @@ export default function PrivacyPage() {
         <div style={{ marginBottom: '40px' }}>
           <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '28px', color: '#E8C547', marginBottom: '12px', letterSpacing: '0.05em' }}>Third Party Services</h2>
           <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: '1.8', fontSize: '15px' }}>We use Supabase (database), Stripe (payments), Vercel (hosting), and OneSignal (push notifications). Each has their own privacy policy.</p>
+        </div>
+        <div style={{ marginBottom: '40px' }}>
+          <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '28px', color: '#E8C547', marginBottom: '12px', letterSpacing: '0.05em' }}>Google Advertising</h2>
+          <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: '1.8', fontSize: '15px' }}>If advertising is enabled, Google and its advertising partners may use cookies or similar technologies to serve and measure ads, including ads based on prior visits to this or other websites. Users can manage personalized advertising through <a href="https://adssettings.google.com/" target="_blank" rel="noreferrer">Google Ads Settings</a>. We may use Google AdSense on eligible pages after Google approves the site.</p>
         </div>
         <div style={{ marginBottom: '40px' }}>
           <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '28px', color: '#E8C547', marginBottom: '12px', letterSpacing: '0.05em' }}>Your Rights</h2>
