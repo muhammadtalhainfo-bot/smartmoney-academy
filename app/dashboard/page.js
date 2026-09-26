@@ -1,41 +1,11 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 import { createClient } from '@/lib/supabase';
-
-const ALL_MODULES = [
-  { id: 1, title: 'Market Structure', lessons: 6, emoji: '📊', level: 'Beginner' },
-  { id: 2, title: 'Liquidity Concepts', lessons: 5, emoji: '💧', level: 'Beginner' },
-  { id: 3, title: 'Fair Value Gaps', lessons: 5, emoji: '🎯', level: 'Beginner' },
-  { id: 4, title: 'Order Blocks', lessons: 6, emoji: '🧱', level: 'Intermediate' },
-  { id: 5, title: 'Killzones & Macros', lessons: 4, emoji: '⏰', level: 'Intermediate' },
-  { id: 6, title: 'Power of Three (AMD)', lessons: 5, emoji: '🔱', level: 'Intermediate' },
-  { id: 7, title: 'Premium & Discount', lessons: 4, emoji: '📐', level: 'Intermediate' },
-  { id: 8, title: 'ICT Entry Models', lessons: 7, emoji: '🎲', level: 'Intermediate' },
-  { id: 9, title: 'Market Maker Models', lessons: 5, emoji: '🏦', level: 'Advanced' },
-  { id: 10, title: 'SMT Divergence', lessons: 4, emoji: '🔀', level: 'Advanced' },
-  { id: 11, title: 'IPDA & CRT', lessons: 5, emoji: '🤖', level: 'Advanced' },
-  { id: 12, title: 'ICT 2024 Mentorship', lessons: 8, emoji: '🆕', level: 'Advanced' },
-  { id: 13, title: 'SMC Concepts', lessons: 6, emoji: '💼', level: 'Beginner' },
-  { id: 14, title: 'Top-Down Analysis', lessons: 5, emoji: '🔭', level: 'Intermediate' },
-  { id: 15, title: 'Daily Bias Framework', lessons: 6, emoji: '🧭', level: 'Intermediate' },
-  { id: 16, title: 'Draw on Liquidity', lessons: 5, emoji: '🎯', level: 'Intermediate' },
-  { id: 17, title: 'Dealing Ranges & PD Arrays', lessons: 5, emoji: '📐', level: 'Intermediate' },
-  { id: 18, title: 'Institutional Order Flow', lessons: 7, emoji: '🏦', level: 'Advanced' },
-  { id: 19, title: 'Session Timing & Market Hours', lessons: 5, emoji: '⏰', level: 'Beginner' },
-  { id: 20, title: 'Narrative Building', lessons: 6, emoji: '📖', level: 'Advanced' },
-  { id: 21, title: 'Quarterly Theory & Seasonal Tendencies', lessons: 5, emoji: '📅', level: 'Advanced' },
-  { id: 22, title: 'Liquidity Voids & Gaps', lessons: 5, emoji: '🕳️', level: 'Intermediate' },
-  { id: 23, title: 'Time & Price Theory', lessons: 5, emoji: '⌚', level: 'Advanced' },
-  { id: 24, title: 'Turtle Soup & Stop Hunts', lessons: 5, emoji: '🐢', level: 'Intermediate' },
-  { id: 25, title: 'Judas Swing & AMD Deep Dive', lessons: 6, emoji: '⚡', level: 'Advanced' },
-  { id: 26, title: 'Balanced Price Range (BPR)', lessons: 5, emoji: '⚖️', level: 'Advanced' },
-  { id: 27, title: 'Execution & Trade Management', lessons: 6, emoji: '🎯', level: 'Advanced' },
-  { id: 28, title: 'Backtesting & Model Development', lessons: 5, emoji: '🔬', level: 'Advanced' },
-];
+import { MODULES as ALL_MODULES } from '@/lib/curriculum';
 
 const LEVEL_RANKS = ['Novice', 'Apprentice', 'Practitioner', 'Analyst', 'Strategist', 'Institutional'];
 
@@ -61,9 +31,28 @@ export default function DashboardPage() {
   const [completions, setCompletions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('overview');
+  const supabase = useMemo(() => createClient(), []);
+
+  const updateStreak = useCallback(async (userId, prof) => {
+    if (!prof) return;
+    const today = new Date().toISOString().split('T')[0];
+    const lastActive = prof.last_active;
+    if (lastActive === today) return;
+
+    const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+    const newStreak = lastActive === yesterday ? (prof.streak || 0) + 1 : 1;
+    const longestStreak = Math.max(newStreak, prof.longest_streak || 0);
+
+    await supabase.from('profiles').update({
+      streak: newStreak,
+      longest_streak: longestStreak,
+      last_active: today,
+    }).eq('id', userId);
+
+    setProfile(p => ({ ...p, streak: newStreak, longest_streak: longestStreak, last_active: today }));
+  }, [supabase]);
 
   useEffect(() => {
-    const supabase = createClient();
     let isMounted = true;
     async function loadData() {
       try {
@@ -108,26 +97,7 @@ export default function DashboardPage() {
     });
 
     return () => { isMounted = false; subscription?.unsubscribe(); };
-  }, [router]);
-
-  async function updateStreak(userId, prof) {
-    if (!prof) return;
-    const today = new Date().toISOString().split('T')[0];
-    const lastActive = prof.last_active;
-    if (lastActive === today) return;
-
-    const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
-    const newStreak = lastActive === yesterday ? (prof.streak || 0) + 1 : 1;
-    const longestStreak = Math.max(newStreak, prof.longest_streak || 0);
-
-    await supabase.from('profiles').update({
-      streak: newStreak,
-      longest_streak: longestStreak,
-      last_active: today,
-    }).eq('id', userId);
-
-    setProfile(p => ({ ...p, streak: newStreak, longest_streak: longestStreak, last_active: today }));
-  }
+  }, [router, supabase, updateStreak]);
 
   async function handleSignOut() {
     await supabase.auth.signOut();
@@ -234,7 +204,7 @@ export default function DashboardPage() {
           {[
             { label: 'Day Streak', value: profile?.streak || 0, icon: '🔥', sub: `Best: ${profile?.longest_streak || 0}`, highlight: true },
             { label: 'Lessons Done', value: completedLessons, icon: '📖', sub: `of ${totalLessons} total` },
-            { label: 'Modules Done', value: completedModuleIds.length, icon: '✅', sub: `of 28 modules` },
+            { label: 'Modules Done', value: completedModuleIds.length, icon: '✅', sub: `of 38 modules` },
             { label: 'Total XP', value: xp.toLocaleString(), icon: '⚡', sub: `${xpToNext - xp} to next rank` },
           ].map((s, i) => (
             <div key={i} className={`card p-5 ${s.highlight ? 'border-[rgba(232,197,71,0.95)]' : ''}`} style={s.highlight ? { background: 'rgba(212,168,67,0.04)' } : {}}>

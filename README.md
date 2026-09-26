@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ICT Flow
 
-## Getting Started
+ICT Flow is a Next.js trading-education platform built around a structured ICT / Smart Money Concepts curriculum, practice tools, a trade journal, quizzes, authentication, optional Pro access, and market-data integrations.
 
-First, run the development server:
+## Current project state
+
+- **38 modules**
+- **203+ lesson units**
+- First three modules available free; optional Pro access for the full curriculum and additional tools
+- Responsive dark/gold UI with accessibility focus states
+- Structured lesson metadata, sitemap and static route generation
+- Conditional Google AdSense loader + dynamic `/ads.txt`
+- Supabase authentication/data
+- Stripe checkout for Pro access
+- Finnhub market ticker, with **no fake fallback prices** when the API is not configured
+
+## Local development
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Production validation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Before publishing, run:
 
-## Learn More
+```bash
+npm ci
+npm run lint
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+Then smoke-test the important routes and authenticated flows. See `PUBLISH_CHECKLIST.md` for the full release checklist.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Environment variables
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Use `.env.example` as the template. Never commit real secrets.
 
-## Deploy on Vercel
+Server-only credentials include the Supabase service key, Finnhub API key, Stripe secret/webhook secrets, and OneSignal REST key. The AdSense client ID is public and is safe to expose through `NEXT_PUBLIC_ADSENSE_CLIENT`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## AdSense
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Set:
+
+```text
+NEXT_PUBLIC_ADSENSE_CLIENT=ca-pub-XXXXXXXXXXXXXXXX
+```
+
+After the site is approved and deployed with that value, the app will load the AdSense script and generate the appropriate first-party Google line at `/ads.txt`.
+
+AdSense account/site approval, ad serving settings, and regional consent configuration are controlled in the Google account and cannot be completed from source code alone.
+
+## Security
+
+The previous project archive contained a Finnhub credential in source. That credential has been removed from active source. **Rotate/revoke the exposed credential before using the revised project in production.**

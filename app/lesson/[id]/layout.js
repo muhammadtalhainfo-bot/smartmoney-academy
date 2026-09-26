@@ -1,9 +1,10 @@
+import { MODULES } from '@/lib/curriculum';
 // Pre-render all lesson pages as static HTML at build time
 // This makes Google read the full lesson content, not a JS loading shell
 export function generateStaticParams() {
   const ids = [
-    ...Array.from({ length: 28 }, (_, i) => i + 1),
-    29, 30, 101, 102, 103, 201, 202, 301,
+    ...Array.from({ length: 32 }, (_, i) => i + 1),
+    101, 102, 103, 201, 202, 301,
   ];
   return ids.map(id => ({ id: String(id) }));
 }
@@ -50,7 +51,9 @@ const LESSONS_META = {
   // ── Instrument Specific (IDs 201, 202, 301) ──────────────────────
   201: { title: 'ICT for NAS100 & US30 (Indices)', description: 'Apply ICT and Smart Money Concepts to stock indices. Learn index-specific killzones, opening range strategy and position sizing for NAS100 and US30 trading.' },
   202: { title: 'ICT for Gold (XAU/USD)', description: 'Gold is the ultimate safe-haven asset. Understand what drives gold, how to apply ICT killzones and how to trade the high-probability safe-haven setup on XAU/USD.' },
-  301: { title: 'ICT for Crypto: Bitcoin & Ethereum', description: 'Apply ICT concepts to 24/7 crypto markets. Learn crypto killzones, leverage rules, Bitcoin cycle strategy and whale accumulation patterns for BTC and ETH trading.' },
+  301: { title: 'ICT for Crypto: Bitcoin & Ethereum', description: 'Apply ICT concepts to 24/7 crypto markets. Learn crypto-specific timing, leverage and execution risks, and how to adapt your existing framework to BTC and ETH.' },
+  31: { title: 'Trade Review & Journal Process', description: 'Build a structured trading journal, review trades with R-multiples and MAE/MFE, classify process errors, and turn repeated observations into testable rule changes.' },
+  32: { title: 'Macro, News & Execution Risk', description: 'Learn how scheduled economic events can affect volatility, spreads and slippage, and build a news-aware no-trade and re-entry process.' },
 };
 
 export async function generateMetadata({ params }) {
@@ -61,7 +64,9 @@ export async function generateMetadata({ params }) {
     return { robots: { index: false, follow: false } };
   }
 
-  const paddedId = String(id).padStart(2, '0');
+  const numericId = Number(id);
+  const moduleRecord = MODULES.find((module) => module.id === numericId);
+  const socialImage = moduleRecord?.image || '/og-image.png';
 
   return {
     title: `${meta.title} — ICT Trading Education`,
@@ -74,14 +79,14 @@ export async function generateMetadata({ params }) {
       description: meta.description,
       url: `https://ictflow.com/lesson/${id}`,
       siteName: 'ICT Flow',
-      images: [{ url: `/modules/module-${paddedId}.png`, width: 1200, height: 630, alt: `${meta.title} — ICT Concept` }],
+      images: [{ url: socialImage, width: 1200, height: 630, alt: `${meta.title} — ICT Concept` }],
       type: 'article',
     },
     twitter: {
       card: 'summary_large_image',
       title: `${meta.title} | ICT Flow`,
       description: meta.description,
-      images: [`/modules/module-${paddedId}.png`],
+      images: [socialImage],
     },
   };
 }

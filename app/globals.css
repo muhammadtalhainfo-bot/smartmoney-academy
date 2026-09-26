@@ -62,3 +62,37 @@ select option { background: #141414; }
 .text-gray-fix {
   color: #f0f0f0 !important;
 }
+:root {
+  color-scheme: dark;
+  --if-bg: #070707;
+  --if-surface: #0c0c0c;
+  --if-border: rgba(255,255,255,0.09);
+  --if-gold: #e8c547;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--if-bg);
+}
+
+::selection {
+  background: rgba(232,197,71,0.24);
+  color: #fff;
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 2px solid var(--if-gold);
+  outline-offset: 3px;
+}
+
+
+
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -6,7 +6,7 @@ import Footer from '@/app/components/Footer';
 
 const FREE_FEATURES = [
   { text: 'Modules 1–3 (Market Structure, Liquidity, FVG)', included: true },
-  { text: 'ICT Glossary (75+ terms)', included: true },
+  { text: 'ICT Glossary (97+ terms)', included: true },
   { text: 'Basic practice questions', included: true },
   { text: 'Trade Journal', included: true },
   { text: 'Modules 4–14 (Advanced curriculum)', included: false },
@@ -19,7 +19,7 @@ const FREE_FEATURES = [
 
 const PRO_FEATURES = [
   { text: 'Everything in Free', included: true },
-  { text: 'All 28 modules unlocked', included: true },
+  { text: 'All 38 modules unlocked', included: true },
   
   { text: 'AI-generated daily challenges', included: true },
   { text: 'Certificate of completion', included: true },
@@ -35,7 +35,7 @@ const FAQS = [
   { q: 'What payment methods do you accept?', a: 'We accept all major credit/debit cards and PayPal. Payments are processed securely via Stripe.' },
   { q: 'Can I cancel anytime?', a: 'Absolutely. Cancel with one click from your dashboard. No questions asked, no cancellation fees.' },
   { q: 'Is this suitable for complete beginners?', a: 'Yes. The curriculum starts from zero — market structure basics — and progressively builds to advanced ICT models. No prior trading knowledge needed.' },
-  { q: 'What is ICT / Smart Money Concepts?', a: "ICT (Inner Circle Trader) is a trading methodology developed by Michael Huddleston that focuses on how institutional money moves markets. It's one of the most popular trading approaches in 2024–2025." },
+  { q: 'What is ICT / Smart Money Concepts?', a: "ICT (Inner Circle Trader) is a trading methodology associated with Michael Huddleston. It uses concepts such as market structure, liquidity, price imbalance and time-based market analysis." },
   { q: 'Do I get lifetime access?', a: 'Pro is a monthly or annual subscription. As long as your subscription is active, you have full access including all future modules added.' },
 ];
 
@@ -181,7 +181,7 @@ export default function PricingPage() {
             </div>
           )}
           <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '13px', marginBottom: '28px', lineHeight: 1.6 }}>
-            Full access to everything. Trade smarter, faster, with institutional precision.
+            Full curriculum access plus tools for deeper study, testing and review.
           </p>
 
           <button style={{ display: 'block', width: '100%', textAlign: 'center', padding: '15px', borderRadius: '10px', border: 'none', background: 'linear-gradient(135deg,#E8C547,#8A6B28)', color: 'black', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600, cursor: 'pointer', marginBottom: '28px', transition: 'opacity 0.2s' }}
@@ -205,7 +205,7 @@ export default function PricingPage() {
       {/* SOCIAL PROOF */}
       <section style={{ borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '40px 24px', background: 'rgba(255,255,255,0.01)' }}>
         <div style={{ maxWidth: '900px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '32px', textAlign: 'center' }}>
-          {[['500+', 'Active Students'], ['28', 'ICT Modules'], ['75+', 'Glossary Terms'], ['Free', 'To Start']].map(([val, label]) => (
+          {[['Open', 'Learning Community'], ['36', 'ICT Modules'], ['97+', 'Glossary Terms'], ['Free', 'To Start']].map(([val, label]) => (
             <div key={label}>
               <div className="font-display shine" style={{ fontSize: '48px', lineHeight: 1 }}>{val}</div>
               <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.65)', letterSpacing: '0.15em', marginTop: '6px' }}>{label}</div>

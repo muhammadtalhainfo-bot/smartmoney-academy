@@ -3,6 +3,7 @@
 import { useState, use } from 'react';
 import { LESSONS_EXTRA } from './lessons-data';
 import { createClient } from '@/lib/supabase';
+import { MODULES } from '@/lib/curriculum';
 import Link from 'next/link';
 
 // ─── Real chart images from web ──────────────────────────────────
@@ -886,14 +887,6 @@ const LEVEL_STYLE = {
 function Section({ section, index, diagramSrc, diagramAlt }) {
   const [open, setOpen] = useState(index === 0);
 
-  // Share function
-  const handleShare = (platform) => {
-    const url = typeof window !== 'undefined' ? window.location.href : '';
-    const text = `Learning ICT for FREE on ICT Flow — ${lesson?.title || 'ICT Trading Education'}. No paywall, no BS. 28 modules completely free.`;
-    if (platform === 'twitter') window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
-    if (platform === 'whatsapp') window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`, '_blank');
-    if (platform === 'copy') { navigator.clipboard.writeText(url); alert('Link copied!'); }
-  };
 
   return (
     <div className="border border-[rgba(212,168,67,0.1)] rounded-xl overflow-hidden mb-4">
@@ -1021,8 +1014,17 @@ export default function LessonPage({ params }) {
   // Lessons are fully public — no auth required for reading
   const { id } = use(params);
   const lessonId = Number.parseInt(id, 10) || 1;
-  const moduleDiagramSrc = `/modules/module-${String(lessonId).padStart(2, '0')}.webp`;
   const lesson = ALL_LESSONS[lessonId] || ALL_LESSONS[1];
+  const curriculumModule = MODULES.find((module) => module.id === lessonId);
+  const moduleDiagramSrc = curriculumModule?.image || '/images/market-structure.webp';
+
+  const handleShare = (platform) => {
+    const url = typeof window !== 'undefined' ? window.location.href : '';
+    const text = `Studying ICT on ICT Flow — ${lesson.title}. Structured lessons, quizzes and practice tools.`;
+    if (platform === 'twitter') window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
+    if (platform === 'whatsapp') window.open(`https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`, '_blank', 'noopener,noreferrer');
+    if (platform === 'copy' && navigator?.clipboard) navigator.clipboard.writeText(url);
+  };
 
   const page = (
     <div className="min-h-screen bg-[#080808] text-white" style={{ fontFamily: "'DM Sans', sans-serif" }}>

@@ -1,10 +1,10 @@
 export const metadata = {
-  title: 'About ICT Flow — Free ICT Trading Education for Everyone',
-  description: 'ICT Flow is a free trading education platform built to make ICT and Smart Money Concepts accessible to every trader worldwide. No gatekeeping. No upsells. Just education.',
+  title: 'About ICT Flow — Structured ICT Trading Education',
+  description: 'ICT Flow is a trading education platform built to make ICT and Smart Money Concepts easier to study. The first three modules are free, with optional Pro access for the full curriculum and tools.',
   alternates: { canonical: 'https://ictflow.com/about' },
   openGraph: {
     title: 'About ICT Flow',
-    description: 'Free ICT and Smart Money Concepts education for every trader. 28 modules, 80+ lessons. No gatekeeping.',
+    description: 'Structured ICT and Smart Money Concepts education with 38 modules and 203+ lessons. Start with the first three modules free.',
     url: 'https://ictflow.com/about',
     siteName: 'ICT Flow',
     images: [{ url: 'https://ictflow.com/og-image.png', width: 1200, height: 630, alt: 'About ICT Flow' }],
@@ -13,7 +13,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'About ICT Flow',
-    description: 'Free ICT and Smart Money Concepts education. 28 modules, no gatekeeping.',
+    description: 'Structured ICT and Smart Money Concepts education. 38 modules, 203+ lessons, with a free starting path.',
     images: ['https://ictflow.com/og-image.png'],
     creator: '@riskfirsttrad',
   },

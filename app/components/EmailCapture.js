@@ -82,7 +82,7 @@ export default function EmailCapture() {
               <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(248,113,113,0.8)', letterSpacing: '0.05em' }}>{msg}</p>
             )}
             <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.85)', letterSpacing: '0.08em', marginTop: '12px' }}>
-              JOIN 500+ TRADERS · UNSUBSCRIBE ANYTIME
+              JOIN THE ICT FLOW COMMUNITY · UNSUBSCRIBE ANYTIME
             </p>
           </>
         )}

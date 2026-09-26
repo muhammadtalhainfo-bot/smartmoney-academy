@@ -1,7 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
 
-const GA4_SECRET = '${api_secret}';
-const GA4_ID = 'G-HRGZYFXQ5W';
 
 export const runtime = 'nodejs';
 
