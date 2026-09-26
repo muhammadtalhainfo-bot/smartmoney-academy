@@ -32,7 +32,7 @@ const PRO_FEATURES = [
 
 const FAQS = [
   { q: 'Can I try before I pay?', a: 'Yes — the first 3 modules are completely free with no credit card required. Sign up and start learning immediately.' },
-  { q: 'What payment methods do you accept?', a: 'We accept all major credit/debit cards and PayPal. Payments are processed securely via Stripe.' },
+  { q: 'What payment methods do you accept?', a: 'Payments are processed securely through Stripe. The checkout page shows the payment methods currently available for your region and plan.' },
   { q: 'Can I cancel anytime?', a: 'Absolutely. Cancel with one click from your dashboard. No questions asked, no cancellation fees.' },
   { q: 'Is this suitable for complete beginners?', a: 'Yes. The curriculum starts from zero — market structure basics — and progressively builds to advanced ICT models. No prior trading knowledge needed.' },
   { q: 'What is ICT / Smart Money Concepts?', a: "ICT (Inner Circle Trader) is a trading methodology associated with Michael Huddleston. It uses concepts such as market structure, liquidity, price imbalance and time-based market analysis." },
@@ -205,7 +205,7 @@ export default function PricingPage() {
       {/* SOCIAL PROOF */}
       <section style={{ borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '40px 24px', background: 'rgba(255,255,255,0.01)' }}>
         <div style={{ maxWidth: '900px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '32px', textAlign: 'center' }}>
-          {[['Open', 'Learning Community'], ['36', 'ICT Modules'], ['97+', 'Glossary Terms'], ['Free', 'To Start']].map(([val, label]) => (
+          {[['Open', 'Learning Community'], ['38', 'ICT Modules'], ['97+', 'Glossary Terms'], ['Free', 'To Start']].map(([val, label]) => (
             <div key={label}>
               <div className="font-display shine" style={{ fontSize: '48px', lineHeight: 1 }}>{val}</div>
               <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.65)', letterSpacing: '0.15em', marginTop: '6px' }}>{label}</div>
