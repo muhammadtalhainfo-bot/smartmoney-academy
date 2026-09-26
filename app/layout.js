@@ -7,7 +7,7 @@ export const metadata = {
     default: 'ICT Flow — Free ICT & Smart Money Concepts Trading Education',
     template: '%s | ICT Flow',
   },
-  description: 'Study ICT and Smart Money Concepts with a structured 38-module curriculum covering market structure, liquidity, fair value gaps, order blocks, timing, execution and risk management. 203+ lessons.',
+  description: 'Study ICT and Smart Money Concepts with a structured 32-module curriculum covering market structure, liquidity, fair value gaps, order blocks, timing, execution and risk management. 203+ lessons.',
   keywords: ['ICT trading', 'Smart Money Concepts', 'Inner Circle Trader', 'market structure', 'fair value gap', 'order blocks', 'liquidity', 'NAS100', 'forex trading', 'prop firm', 'trading education', 'free trading course', 'ICT mentorship', 'silver bullet strategy', 'AMD model'],
   alternates: {
     canonical: 'https://ictflow.com',
@@ -29,13 +29,13 @@ export const metadata = {
     url: 'https://ictflow.com',
     siteName: 'ICT Flow',
     title: 'ICT Flow — Free ICT Trading Education',
-    description: 'Structured ICT & Smart Money Concepts education. 38 modules and 203+ lessons covering concepts, practice and risk-aware execution.',
+    description: 'Structured ICT & Smart Money Concepts education. 32 modules and 203+ lessons covering concepts, practice and risk-aware execution.',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ICT Flow — Structured ICT Trading Education' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'ICT Flow — Free ICT Trading Education',
-    description: 'Study ICT & Smart Money Concepts with a 38-module curriculum and 203+ lessons. Start with the first three modules free.',
+    description: 'Study ICT & Smart Money Concepts with a 32-module curriculum and 203+ lessons. Start with the first three modules free.',
     images: ['/og-image.png'],
     creator: '@riskfirsttrad',
   },
@@ -57,7 +57,7 @@ const jsonLd = {
   '@type': 'EducationalOrganization',
   name: 'ICT Flow',
   url: 'https://ictflow.com',
-  description: 'Structured ICT and Smart Money Concepts education with 38 modules and 203+ lessons covering market structure, liquidity, execution, risk management and related trading frameworks.',
+  description: 'Structured ICT and Smart Money Concepts education with 32 modules and 203+ lessons covering market structure, liquidity, execution, risk management and related trading frameworks.',
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'ICT Trading Courses',
