@@ -173,7 +173,7 @@ export default function StrategiesPage() {
           <section style={{ maxWidth: '1100px', margin: '0 auto', padding: '32px 24px' }}>
             <div style={{ display: 'flex', gap: '8px', marginBottom: '32px', flexWrap: 'wrap' }}>
               {ALL_TAGS.map(tag => (
-                <button key={tag} onClick={() => setActiveTag(tag)} style={{ padding: '8px 18px', borderRadius: '100px', border: `1px solid ${activeTag === tag ? '#E8C547' : 'rgba(255,255,255,0.6)'}`, background: activeTag === tag ? 'rgba(232,197,71,0.95)' : 'transparent', color: activeTag === tag ? '#E8C547' : 'rgba(255,255,255,0.85)', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.1em', cursor: 'pointer' }}>
+                <button key={tag} onClick={() => setActiveTag(tag)} style={{ padding: '8px 18px', borderRadius: '100px', border: `1px solid ${activeTag === tag ? '#E8C547' : 'rgba(255,255,255,0.6)'}`, background: activeTag === tag ? 'rgba(232,197,71,0.95)' : 'transparent', color: activeTag === tag ? '#080808' : 'rgba(255,255,255,0.90)', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.1em', cursor: 'pointer' }}>
                   {tag}
                 </button>
               ))}

@@ -96,3 +96,17 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     scroll-behavior: auto !important;
   }
 }
+
+/* === PREMIUM CONTRAST BASELINE === */
+/* Keep secondary copy readable over the dark grid without flattening deliberate accents. */
+body {
+  text-rendering: optimizeLegibility;
+}
+
+.if-readable {
+  color: #c7c7c7 !important;
+}
+
+.if-muted {
+  color: #a9a9a9 !important;
+}

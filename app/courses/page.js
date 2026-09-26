@@ -67,7 +67,7 @@ function ModuleCard({ mod, index }) {
               width: '26px', height: '26px', borderRadius: '7px',
               background: 'rgba(232,197,71,0.95)', border: '1px solid rgba(232,197,71,0.95)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontFamily: 'Bebas Neue, sans-serif', fontSize: '11px', color: '#E8C547', letterSpacing: '0.05em',
+              fontFamily: 'Bebas Neue, sans-serif', fontSize: '11px', color: '#080808', letterSpacing: '0.05em',
             }}>IF</div>
             <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', letterSpacing: '0.2em', color: 'rgba(232,197,71,0.95)', textTransform: 'uppercase' }}>
               Module {mod.module}
