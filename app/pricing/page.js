@@ -5,11 +5,11 @@ import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 
 const FREE_FEATURES = [
-  { text: 'Modules 1–3 (Market Structure, Liquidity, FVG)', included: true },
+  { text: 'All 38 modules and 203+ lessons', included: true },
   { text: 'ICT Glossary (97+ terms)', included: true },
   { text: 'Basic practice questions', included: true },
   { text: 'Trade Journal', included: true },
-  { text: 'Modules 4–14 (Advanced curriculum)', included: false },
+  { text: 'Advanced curriculum is free — Pro is for premium tools and extras', included: false },
   
   { text: 'AI-generated daily challenges', included: false },
   { text: 'Certificate of completion', included: false },
@@ -26,17 +26,18 @@ const PRO_FEATURES = [
   { text: 'Discord community access', included: true },
   { text: 'Weekly market breakdown', included: true },
   { text: 'Priority support', included: true },
+  { text: 'Ad-free learning experience', included: true },
   { text: 'Early access to new modules', included: true },
   { text: 'Cancel anytime', included: true },
 ];
 
 const FAQS = [
-  { q: 'Can I try before I pay?', a: 'Yes — the first 3 modules are completely free with no credit card required. Sign up and start learning immediately.' },
+  { q: 'Can I try before I pay?', a: 'Yes — all 38 modules are free with no credit card required. Sign up and start learning immediately.' },
   { q: 'What payment methods do you accept?', a: 'Payments are processed securely through Stripe. The checkout page shows the payment methods currently available for your region and plan.' },
   { q: 'Can I cancel anytime?', a: 'Absolutely. Cancel with one click from your dashboard. No questions asked, no cancellation fees.' },
   { q: 'Is this suitable for complete beginners?', a: 'Yes. The curriculum starts from zero — market structure basics — and progressively builds to advanced ICT models. No prior trading knowledge needed.' },
   { q: 'What is ICT / Smart Money Concepts?', a: "ICT (Inner Circle Trader) is a trading methodology associated with Michael Huddleston. It uses concepts such as market structure, liquidity, price imbalance and time-based market analysis." },
-  { q: 'Do I get lifetime access?', a: 'Pro is a monthly or annual subscription. As long as your subscription is active, you have full access including all future modules added.' },
+  { q: 'Do I get lifetime access?', a: 'Pro is a monthly or annual subscription. As long as your subscription is active, you get the premium tools, community features and ad-free experience included in the plan.' },
 ];
 
 export default function PricingPage() {
@@ -118,7 +119,7 @@ export default function PricingPage() {
             <span style={{ color: 'white' }}>TRADING EDGE</span>
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '16px', lineHeight: 1.7, fontWeight: 300, marginBottom: '40px' }}>
-            Start free. Upgrade when you're ready. No hidden fees, no lock-ins.
+            All 38 modules are free. Upgrade when you want premium tools, community and an ad-free experience.
           </p>
 
           {/* BILLING TOGGLE */}
