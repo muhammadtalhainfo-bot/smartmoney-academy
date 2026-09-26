@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300" width="500" height="300">
+  <rect width="500" height="300" fill="#080808"/>
+  <defs><radialGradient id="g22" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#D4A843" stop-opacity="0.07"/><stop offset="100%" stop-color="#080808" stop-opacity="0"/></radialGradient></defs>
+  <rect width="500" height="300" fill="url(#g22)"/>
+  <line x1="0" y1="60" x2="500" y2="60" stroke="#D4A843" stroke-width="0.3" opacity="0.08"/>
+  <line x1="0" y1="120" x2="500" y2="120" stroke="#D4A843" stroke-width="0.3" opacity="0.08"/>
+  <line x1="0" y1="180" x2="500" y2="180" stroke="#D4A843" stroke-width="0.3" opacity="0.08"/>
+  <line x1="0" y1="240" x2="500" y2="240" stroke="#D4A843" stroke-width="0.3" opacity="0.08"/>
+  <line x1="100" y1="0" x2="100" y2="300" stroke="#D4A843" stroke-width="0.3" opacity="0.08"/>
+  <line x1="200" y1="0" x2="200" y2="300" stroke="#D4A843" stroke-width="0.3" opacity="0.08"/>
+  <line x1="300" y1="0" x2="300" y2="300" stroke="#D4A843" stroke-width="0.3" opacity="0.08"/>
+  <line x1="400" y1="0" x2="400" y2="300" stroke="#D4A843" stroke-width="0.3" opacity="0.08"/>
+  <rect x="1" y="1" width="498" height="298" fill="none" stroke="#D4A843" stroke-width="0.5" opacity="0.15" rx="2"/>
+  <rect x="20" y="20" width="50" height="22" fill="rgba(212,168,67,0.12)" stroke="#D4A843" stroke-width="0.8" rx="3"/>
+  <text x="45" y="35" text-anchor="middle" font-size="10" font-family="monospace" fill="#D4A843" font-weight="bold" letter-spacing="1">MOD 22</text>
+  <rect x="78" y="20" width="36" height="22" fill="rgba(52,211,153,0.12)" stroke="#34D399" stroke-width="0.8" rx="3"/>
+  <text x="96" y="35" text-anchor="middle" font-size="10" font-family="monospace" fill="#34D399" font-weight="bold">NEW</text>
+  <g transform="translate(0,20)"><line x1="100" y1="120" x2="400" y2="120" stroke="#D4A843" stroke-width="1.5" opacity="0.4"/><line x1="100" y1="180" x2="400" y2="180" stroke="#D4A843" stroke-width="1.5" opacity="0.4"/><rect x="130" y="120" width="240" height="60" fill="rgba(212,168,67,0.06)" stroke="#D4A843" stroke-width="1" stroke-dasharray="5,4" rx="2"/><text x="250" y="154" text-anchor="middle" font-size="11" fill="#D4A843" opacity="0.6" font-family="monospace">LIQUIDITY VOID</text><line x1="100" y1="95" x2="200" y2="95" stroke="#34D399" stroke-width="2" opacity="0.7"/><line x1="300" y1="205" x2="400" y2="205" stroke="#EF4444" stroke-width="2" opacity="0.7"/><text x="150" y="110" text-anchor="middle" font-size="9" fill="#34D399" opacity="0.6" font-family="monospace">NWOG</text><text x="350" y="220" text-anchor="middle" font-size="9" fill="#EF4444" opacity="0.6" font-family="monospace">NDOG</text></g>
+  <rect x="0" y="220" width="500" height="80" fill="rgba(8,8,8,0.92)"/>
+  <line x1="20" y1="222" x2="480" y2="222" stroke="#D4A843" stroke-width="0.5" opacity="0.3"/>
+  <text x="28" y="252" font-size="22" font-family="serif">🕳️</text>
+  <text x="60" y="248" font-size="14" font-family="Arial Black, sans-serif" fill="white" font-weight="bold" letter-spacing="-0.3">Liquidity Voids & Gaps</text>
+  <text x="60" y="268" font-size="10" font-family="monospace" fill="#D4A843" opacity="0.7" letter-spacing="0.5">ICT · INTERMEDIATE · 5 LESSONS</text>
+  <text x="480" y="292" text-anchor="end" font-size="9" font-family="monospace" fill="#D4A843" opacity="0.3" letter-spacing="1">ICTFLOW.COM</text>
+</svg>

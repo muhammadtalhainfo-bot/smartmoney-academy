@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="22" fill="#080808"/>
+  <rect x="3" y="3" width="94" height="94" rx="20" fill="none" stroke="#D4A843" stroke-width="3"/>
+  <text x="50" y="58" font-family="Arial Black, sans-serif" font-size="42" font-weight="900" fill="#D4A843" text-anchor="middle">IF</text>
+  <polyline points="20,72 35,58 50,65 65,45 80,50" fill="none" stroke="#D4A843" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

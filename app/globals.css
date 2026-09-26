@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+body {
+  background: #080808;
+  color: #ededed;
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #0A0A0A; }
+::-webkit-scrollbar-thumb { background: rgba(212,168,67,0.2); border-radius: 4px; }
+
+select option { background: #141414; }
+
+
+/* === ACCESSIBILITY CONTRAST FIXES === */
+/* Fix light gray text on light backgrounds */
+.text-gray-200 {
+  color: #f5f5f5 !important; /* was #e5e7eb, too light */
+}
+
+/* Fix yellow/gold text - ensure dark background behind it */
+.gold-text-fix {
+  background: rgba(0, 0, 0, 0.75);
+  padding: 4px 10px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+/* Ensure all small text is readable */
+.text-xs {
+  color: #f0f0f0 !important;
+}
+
+/* Fix testimonial card text */
+.testimonial-text {
+  color: #ffffff !important;
+}
+
+
+/* === ACCESSIBILITY CONTRAST FIXES === */
+/* Fix yellow/gold text on light backgrounds */
+.text-gold-contrast {
+  color: #B8860B !important; /* Darker gold for light bg */
+}
+
+/* For session map cards with yellow bg - use dark text */
+.session-card-gold {
+  background: rgba(232, 197, 71, 0.95);
+  color: #1a1a1a !important; /* Dark text on gold bg */
+}
+
+.session-card-gold h3,
+.session-card-gold p,
+.session-card-gold span,
+.session-card-gold div {
+  color: #1a1a1a !important;
+}
+
+/* Fix light gray text */
+.text-gray-fix {
+  color: #f0f0f0 !important;
+}
+:root {
+  color-scheme: dark;
+  --if-bg: #070707;
+  --if-surface: #0c0c0c;
+  --if-border: rgba(255,255,255,0.09);
+  --if-gold: #e8c547;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--if-bg);
+}
+
+::selection {
+  background: rgba(232,197,71,0.24);
+  color: #fff;
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 2px solid var(--if-gold);
+  outline-offset: 3px;
+}
+
+
