@@ -270,7 +270,7 @@ export default function ToolsPage() {
             <span style={{ color: '#D4A843' }}>TOOLS</span>
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '15px', maxWidth: '480px', margin: '0 auto', lineHeight: 1.6 }}>
-            Professional checklists and templates used by disciplined ICT traders. Free. No signup required.
+            Professional trading tools for disciplined ICT study. The core checklist is free; the full trading-plan template is a Pro tool.
           </p>
         </section>
 
