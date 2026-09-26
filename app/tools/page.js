@@ -342,7 +342,7 @@ export default function ToolsPage() {
           </div>
 
           {/* SECTIONS */}
-          {tool.sections.map((section, si) => (
+          {!(activeTool === 'plan' && !isPro) && tool.sections.map((section, si) => (
             <div key={si} style={{ marginBottom: '24px', background: '#0A0A0A', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '14px', overflow: 'hidden' }}>
               <div style={{ padding: '16px 24px', background: 'rgba(212,168,67,0.05)', borderBottom: '1px solid rgba(212,168,67,0.08)' }}>
                 <span className="font-mono-c" style={{ fontSize: '11px', letterSpacing: '2px', color: '#D4A843', textTransform: 'uppercase' }}>
