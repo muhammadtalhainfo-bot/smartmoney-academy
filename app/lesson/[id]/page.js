@@ -1088,6 +1088,8 @@ export default function LessonPage({ params }) {
 
 
 
+        <AdSlot />
+
         {/* ── Module Banner Image ── */}
         <div className="mb-8 rounded-2xl overflow-hidden border border-[var(--border)]" style={{ background: '#0F0F0F' }}>
           <img
