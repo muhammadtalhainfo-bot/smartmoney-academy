@@ -14,6 +14,7 @@ export default function sitemap() {
     [`${BASE}/glossary`,    0.85, 'monthly'],
     [`${BASE}/strategies`,  0.8,  'monthly'],
     [`${BASE}/practice`,    0.8,  'monthly'],
+    [`${BASE}/journal`,      0.8,  'monthly'],
     [`${BASE}/pricing`,     0.8,  'monthly'],
     [`${BASE}/resources`,   0.7,  'monthly'],
     [`${BASE}/tools`,       0.75, 'monthly'],
