@@ -4,9 +4,9 @@ import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 
 const STATS = [
-  { value: '28', label: 'ICT Modules' },
-  { value: '80+', label: 'Lessons Built' },
-  { value: '36', label: 'Modules' },
+  { value: '38', label: 'ICT Modules' },
+  { value: '203+', label: 'Lessons Built' },
+  { value: '97+', label: 'Glossary Terms' },
   { value: '100%', label: 'Free to Start' },
 ];
 
@@ -24,7 +24,7 @@ const VALUES = [
   {
     icon: '🆓',
     title: 'Free Starting Point',
-    desc: 'The first three modules are free. Pro access is optional for the full curriculum and additional tools.',
+    desc: 'All 38 modules and 203+ lessons are free. Pro adds premium tools, community features and an ad-free experience.',
   },
   {
     icon: '🎯',
@@ -56,7 +56,7 @@ export default function AboutPage() {
             <span className="shine">INSTITUTIONS</span>
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '17px', lineHeight: 1.8, fontWeight: 300, maxWidth: '560px', margin: '0 auto' }}>
-            ICT Flow was built to make ICT and Smart Money Concepts easier to study through a structured curriculum, practice tools and progress tracking. The first three modules are free to explore; deeper access is optional.
+            ICT Flow was built to make ICT and Smart Money Concepts easier to study through a structured curriculum, practice tools and progress tracking. All 38 modules and 203+ lessons are available free; Pro adds premium tools and extras.
           </p>
         </div>
       </section>
@@ -122,7 +122,7 @@ export default function AboutPage() {
         <div style={{ maxWidth: '500px', margin: '0 auto' }}>
           <h2 className="font-display shine" style={{ fontSize: '52px', lineHeight: 1, marginBottom: '16px' }}>START LEARNING TODAY</h2>
           <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '15px', marginBottom: '32px', fontWeight: 300 }}>
-            Study 38 structured modules covering ICT and Smart Money Concepts. Start with the first three modules free.
+            Study all 38 structured modules covering ICT and Smart Money Concepts. Start free, then upgrade only if you want the premium tools and ad-free experience.
           </p>
           <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/courses" style={{ padding: '14px 32px', background: 'linear-gradient(135deg,#E8C547,#8A6B28)', borderRadius: '10px', color: 'black', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600 }}>
