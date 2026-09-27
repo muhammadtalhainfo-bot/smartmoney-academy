@@ -33,7 +33,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'ICT Flow — Free ICT Trading Education',
-    description: 'Study ICT & Smart Money Concepts with a 38-module curriculum and 203+ lessons. Start with the first three modules free.',
+    description: 'Study ICT & Smart Money Concepts with a structured 38-module curriculum and 203+ lessons. All core lessons are free; Pro adds premium tools and an ad-free experience.',
     images: ['/og-image.png'],
     creator: '@riskfirsttrad',
   },
