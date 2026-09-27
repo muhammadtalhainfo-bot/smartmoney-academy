@@ -5,6 +5,7 @@ import { LESSONS_EXTRA } from './lessons-data';
 import { createClient } from '@/lib/supabase';
 import { MODULES } from '@/lib/curriculum';
 import Link from 'next/link';
+import AdSlot from '@/app/components/AdSlot';
 
 // ─── Real chart images from web ──────────────────────────────────
 
