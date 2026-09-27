@@ -783,7 +783,7 @@ function BannersSection({ supabase }) {
             </FieldGroup>
           </div>
           <FieldGroup label="Banner Text *">
-            <Input value={form.text} onChange={e => setForm({ ...form, text: e.target.value })} placeholder="e.g. 🎉 New modules released! Lessons 15-28 are now live." />
+            <Input value={form.text} onChange={e => setForm({ ...form, text: e.target.value })} placeholder="e.g. 🎉 New ICT lessons and modules are now live." />
           </FieldGroup>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
             <FieldGroup label="CTA Button Text">
@@ -921,7 +921,7 @@ function SEOSection({ supabase }) {
           </div>
           <div style={{ ...css.card, marginBottom: '16px', background: 'rgba(52,211,153,0.04)' }}>
             <div style={{ ...css.mono, fontSize: '10px', color: '#34D399', marginBottom: '8px' }}>✓ Sitemap Status</div>
-            <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.6)' }}>Dynamic sitemap active — auto-generates for all 28 lessons + pages</div>
+            <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.6)' }}>Dynamic sitemap active — auto-generates for all curriculum lessons + pages</div>
             <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" style={{ ...css.mono, fontSize: '11px', color: G, display: 'block', marginTop: '8px' }}>View sitemap.xml ↗</a>
           </div>
           <button onClick={save} disabled={saving} style={{ ...css.btn, width: '100%', padding: '14px' }}>
@@ -935,7 +935,7 @@ function SEOSection({ supabase }) {
 
 // ─── PRICING SECTION ──────────────────────────────────────────────────────────
 function PricingSection() {
-  const [freeFeatures, setFreeFeatures] = useState(['Modules 1–3 (Market Structure, Liquidity, FVG)', 'ICT Glossary (75+ terms)', 'Basic practice questions', 'Trade Journal']);
+  const [freeFeatures, setFreeFeatures] = useState(['All 38 modules and 203+ lessons', 'ICT Glossary (97+ terms)', 'Basic practice questions', 'Trade Journal']);
   const [proFeatures, setProFeatures] = useState(['Everything in Free', 'All 38 modules unlocked', 'AI-generated daily challenges', 'Certificate of completion', 'Discord community access', 'Weekly market breakdown', 'Priority support', 'Early access to new modules', 'Cancel anytime']);
   const [monthlyPrice, setMonthlyPrice] = useState('19');
   const [annualPrice, setAnnualPrice] = useState('149');
@@ -1070,7 +1070,7 @@ function NotificationsSection() {
           <div style={{ ...css.mono, fontSize: '10px', color: G, marginBottom: '16px', letterSpacing: '0.12em' }}>SEND TO ALL USERS</div>
           <Toast msg={status.text} type={status.type} />
           <FieldGroup label="Title *"><Input value={title} onChange={e => setTitle(e.target.value)} placeholder="New Module Released!" /></FieldGroup>
-          <FieldGroup label="Message *"><Textarea value={msg} onChange={e => setMsg(e.target.value)} placeholder="ICT lessons 15-28 are now live. Start learning!" rows={4} /></FieldGroup>
+          <FieldGroup label="Message *"><Textarea value={msg} onChange={e => setMsg(e.target.value)} placeholder="New ICT lessons and modules are live. Start learning!" rows={4} /></FieldGroup>
           <FieldGroup label="Link URL (optional)"><Input value={url} onChange={e => setUrl(e.target.value)} placeholder="/courses" /></FieldGroup>
           <button onClick={send} disabled={sending} style={{ ...css.btn, width: '100%', padding: '14px' }}>
             {sending ? 'SENDING...' : '🔔 SEND PUSH NOTIFICATION'}
