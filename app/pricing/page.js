@@ -57,9 +57,10 @@ export default function PricingPage() {
       // Get logged-in user email from Supabase
       const { createClient } = await import('@/lib/supabase');
       const supabase = createClient();
-      const { data: { user } } = await supabase.auth.getUser();
+      const { data: { session } } = await supabase.auth.getSession();
+      const user = session?.user;
 
-      if (!user?.email) {
+      if (!user?.email || !session?.access_token) {
         window.location.href = '/auth?next=/pricing';
         return;
       }
@@ -67,7 +68,7 @@ export default function PricingPage() {
       const res = await fetch('/api/create-checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ priceId, email: user.email }),
+        body: JSON.stringify({ priceId, accessToken: session.access_token }),
       });
       const data = await res.json();
       if (data.url) {
