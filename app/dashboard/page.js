@@ -191,11 +191,18 @@ export default function DashboardPage() {
                 {currentRank} · {xp} XP · {profile?.streak || 0} day streak
               </p>
             </div>
-            <Link href="/courses">
-              <div className="px-6 py-3 rounded-xl font-mono-c text-sm tracking-wider uppercase font-bold cursor-pointer" style={{ background: 'linear-gradient(135deg, #E8C547, #F0C96A)', color: '#080808' }}>
-                Continue Learning →
-              </div>
-            </Link>
+            <div className="flex items-center gap-3 flex-wrap">
+              <Link href="/courses">
+                <div className="px-6 py-3 rounded-xl font-mono-c text-sm tracking-wider uppercase font-bold cursor-pointer" style={{ background: 'linear-gradient(135deg, #E8C547, #F0C96A)', color: '#080808' }}>
+                  Continue Learning →
+                </div>
+              </Link>
+              {profile?.is_pro && profile?.stripe_customer_id ? (
+                <a href="/api/create-portal" className="px-5 py-3 rounded-xl font-mono-c text-xs tracking-wider uppercase font-bold" style={{ border: '1px solid rgba(232,197,71,0.35)', color: '#E8C547', textDecoration: 'none' }}>
+                  Manage Pro →
+                </a>
+              ) : null}
+            </div>
           </div>
         </div>
 
