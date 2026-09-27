@@ -221,7 +221,7 @@ function AuthPageInner() {
         </div>
 
         <p style={{ textAlign: 'center', marginTop: '24px', fontFamily: 'DM Mono', fontSize: '11px', color: 'rgba(255,255,255,0.55)' }}>
-          Free access to all beginner modules
+          Free access to all 38 modules
         </p>
 
       </div>
