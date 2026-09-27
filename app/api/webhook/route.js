@@ -45,9 +45,19 @@ export async function POST(req) {
     if (event.type === 'checkout.session.completed') {
       const session = event.data.object;
       const email = session.customer_email || session.customer_details?.email || session.metadata?.email;
-      if (!email) return Response.json({ received: true });
+      const metadataUserId = session.metadata?.user_id;
 
-      const user = await findUserByEmail(supabase, email);
+      let user = null;
+      if (metadataUserId) {
+        user = await supabase.auth.admin.getUserById(metadataUserId).then(({ data, error }) => {
+          if (error) throw error;
+          return data?.user || null;
+        });
+      }
+
+      if (!user && email) {
+        user = await findUserByEmail(supabase, email);
+      }
       if (!user) return Response.json({ received: true });
 
       let active = true;
