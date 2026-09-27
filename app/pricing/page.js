@@ -9,8 +9,6 @@ const FREE_FEATURES = [
   { text: 'ICT Glossary (97+ terms)', included: true },
   { text: 'Basic practice questions', included: true },
   { text: 'Trade Journal', included: true },
-  { text: 'Advanced curriculum is free — Pro is for premium tools and extras', included: false },
-  
   { text: 'AI-generated daily challenges', included: false },
   { text: 'Certificate of completion', included: false },
   { text: 'Discord community access', included: false },
@@ -19,8 +17,6 @@ const FREE_FEATURES = [
 
 const PRO_FEATURES = [
   { text: 'Everything in Free', included: true },
-  { text: 'All 38 modules unlocked', included: true },
-  
   { text: 'AI-generated daily challenges', included: true },
   { text: 'Certificate of completion', included: true },
   { text: 'Discord community access', included: true },
@@ -182,7 +178,7 @@ export default function PricingPage() {
             </div>
           )}
           <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '13px', marginBottom: '28px', lineHeight: 1.6 }}>
-            Full curriculum access plus tools for deeper study, testing and review.
+            Premium tools, community features and an ad-free study experience for deeper study and review.
           </p>
 
           <button style={{ display: 'block', width: '100%', textAlign: 'center', padding: '15px', borderRadius: '10px', border: 'none', background: 'linear-gradient(135deg,#E8C547,#8A6B28)', color: 'black', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600, cursor: 'pointer', marginBottom: '28px', transition: 'opacity 0.2s' }}
