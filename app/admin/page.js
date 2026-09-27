@@ -1,8 +1,7 @@
 'use client';
 import { useState, useEffect, useCallback } from 'react';
 import { createClient } from '@/lib/supabase';
-
-const ADMIN_PASSWORD = 'sma_admin_2026';
+import { getAdminSession, loginAdmin, logoutAdmin } from './actions';
 
 const G = '#E8C547';
 const G2 = '#F0C96A';
@@ -1246,6 +1245,16 @@ export default function AdminPage() {
 
   const supabase = createClient();
 
+  useEffect(() => {
+    let mounted = true;
+    getAdminSession().then(({ ok }) => {
+      if (!mounted) return;
+      setAuthed(ok);
+      if (ok) loadData();
+    });
+    return () => { mounted = false; };
+  }, [loadData]);
+
   const loadData = useCallback(async () => {
     setLoading(true);
     const [{ data: usersData }, { data: emailsData }, { count }] = await Promise.all([
@@ -1259,9 +1268,16 @@ export default function AdminPage() {
     setLoading(false);
   }, [supabase]);
 
-  const login = () => {
-    if (pass === ADMIN_PASSWORD) { setAuthed(true); loadData(); }
-    else setError('Incorrect password');
+  const login = async () => {
+    setError('');
+    const result = await loginAdmin(pass);
+    if (result.ok) {
+      setAuthed(true);
+      setPass('');
+      loadData();
+    } else {
+      setError(result.error || 'Admin login failed.');
+    }
   };
 
   const GLOBAL_STYLES = `
@@ -1364,7 +1380,7 @@ export default function AdminPage() {
             <span>🌐</span>
             {!sidebarCollapsed && <span style={{ ...css.mono, fontSize: '10px' }}>VIEW SITE ↗</span>}
           </a>
-          <button onClick={() => setAuthed(false)}
+          <button onClick={async () => { await logoutAdmin(); setAuthed(false); }}
             style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 10px', borderRadius: '8px', border: 'none', background: 'transparent', color: 'rgba(248,113,113,0.6)', cursor: 'pointer', justifyContent: sidebarCollapsed ? 'center' : 'flex-start' }}>
             <span>🚪</span>
             {!sidebarCollapsed && <span style={{ ...css.mono, fontSize: '10px' }}>LOGOUT</span>}
