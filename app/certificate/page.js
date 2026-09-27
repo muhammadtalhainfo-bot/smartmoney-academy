@@ -92,7 +92,7 @@ export default function CertificatePage() {
                 <div style={{ height: '100%', width: `${progress}%`, background: 'linear-gradient(90deg,#8A6B28,#E8C547)', borderRadius: '100px', transition: 'width 0.5s' }} />
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '10px' }}>
-                {Array.from({ length: 28 }, (_, i) => (
+                {Array.from({ length: 38 }, (_, i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', borderRadius: '8px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)' }}>
                     <span style={{ fontSize: '14px' }}>{i < completed ? '✅' : '⬜'}</span>
                     <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: i < completed ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.55)' }}>MODULE {String(i + 1).padStart(2, '0')}</span>
@@ -143,7 +143,7 @@ export default function CertificatePage() {
               </div>
 
               <div style={{ display: 'flex', justifyContent: 'center', gap: '32px', marginBottom: '32px' }}>
-                {[['28', 'Modules'], ['80+', 'Lessons'], [profile?.xp || 0, 'XP Earned']].map(([val, label]) => (
+                {[['38', 'Modules'], ['203+', 'Lessons'], [profile?.xp || 0, 'XP Earned']].map(([val, label]) => (
                   <div key={label} style={{ textAlign: 'center' }}>
                     <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '32px', color: '#E8C547' }}>{val}</div>
                     <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#999', letterSpacing: '0.15em' }}>{label}</div>
