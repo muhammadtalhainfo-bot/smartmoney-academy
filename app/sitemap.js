@@ -1,3 +1,4 @@
+import { MODULES } from './lib/curriculum'
 import { POSTS } from './blog/posts'
 
 const BASE = 'https://ictflow.com'
@@ -26,10 +27,7 @@ export default function sitemap() {
     url, priority, changeFrequency, lastModified: now,
   }))
 
-  const lessonPages = [
-    ...Array.from({ length: 32 }, (_, i) => i + 1),
-    101, 102, 103, 201, 202, 301
-  ].map(id => ({
+  const lessonPages = MODULES.map(({ id }) => ({
     url: `${BASE}/lesson/${id}`,
     lastModified: now,
     changeFrequency: 'monthly',
