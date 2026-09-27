@@ -1245,16 +1245,6 @@ export default function AdminPage() {
 
   const supabase = createClient();
 
-  useEffect(() => {
-    let mounted = true;
-    getAdminSession().then(({ ok }) => {
-      if (!mounted) return;
-      setAuthed(ok);
-      if (ok) loadData();
-    });
-    return () => { mounted = false; };
-  }, [loadData]);
-
   const loadData = useCallback(async () => {
     setLoading(true);
     const [{ data: usersData }, { data: emailsData }, { count }] = await Promise.all([
@@ -1267,6 +1257,16 @@ export default function AdminPage() {
     if (count !== null) setTrades(count);
     setLoading(false);
   }, [supabase]);
+
+  useEffect(() => {
+    let mounted = true;
+    getAdminSession().then(({ ok }) => {
+      if (!mounted) return;
+      setAuthed(ok);
+      if (ok) loadData();
+    });
+    return () => { mounted = false; };
+  }, [loadData]);
 
   const login = async () => {
     setError('');
