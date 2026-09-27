@@ -1,4 +1,4 @@
-import { MODULES } from './lib/curriculum'
+import { MODULES } from '../lib/curriculum'
 import { POSTS } from './blog/posts'
 
 const BASE = 'https://ictflow.com'
