@@ -6,14 +6,13 @@ import { createClient } from '@/lib/supabase';
 import Footer from '@/app/components/Footer';
 import { MODULES } from '@/lib/curriculum';
 
-const TOTAL_MODULES = 38;
+const TOTAL_MODULES = MODULES.length;
 
 export default function CertificatePage() {
   const [user, setUser] = useState(null);
   const [completed, setCompleted] = useState(0);
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [printed, setPrinted] = useState(false);
 
   useEffect(() => {
     async function load() {
