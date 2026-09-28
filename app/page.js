@@ -147,7 +147,7 @@ export default function HomePage() {
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))', gap:'16px' }}>
             {[
               { icon:'📖', title:'Knowledge, organized', desc:'ICT and SMC concepts are widely available in fragmented formats. ICT Flow turns them into a structured study path with practice and review tools.' },
-              { icon:'🏦', title:'We earn from prop firm referrals', desc:'If you use FTMO or other prop firms through our Resources page, we earn a referral fee. You pay nothing extra.' },
+
               { icon:'⚡', title:'Pro plan for serious traders', desc:'Advanced traders can unlock extra tools with Pro. But every lesson, every module? Always free.' },
             ].map((item, i) => (
               <div key={i} className="card-hover" style={{ padding:'20px', borderRadius:'14px', background:'rgba(232,197,71,0.02)' }}>
