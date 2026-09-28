@@ -106,6 +106,81 @@ export const SEO_PAGES = [
     related:['ict-risk-management','fair-value-gap-trading','ict-silver-bullet','ict-market-structure']
   },
   {
+    slug:'ict-2022-model',
+    title:'ICT 2022 Model Explained: A Practical Guide',
+    meta:'Learn the core ideas commonly associated with the ICT 2022 model, including liquidity, displacement, market structure and FVG-based execution.',
+    category:'Models',
+    description:'A practical, test-focused introduction to the ICT 2022 model.',
+    intro:'The ICT 2022 model is a trading model associated with the ICT methodology. Explanations can vary, so this guide focuses on the commonly described sequence and emphasizes defining each condition before backtesting.',
+    sections:[
+      ['Core idea','A commonly taught sequence combines directional context, a liquidity event, a market-structure shift or displacement, and an entry around a Fair Value Gap or related price-delivery concept.'],
+      ['Define the liquidity event','Decide in advance which high or low qualifies as the liquidity reference. Avoid changing the reference after seeing the outcome.'],
+      ['Define the entry','Write down the exact confirmation, FVG condition, stop placement and target before testing. This turns a visual idea into a repeatable model.'],
+      ['Backtest before risking capital','Record every qualifying setup across a fixed sample. Measure win rate, average R, drawdown and rule adherence rather than judging the model from a few attractive examples.'],
+    ],
+    related:['ict-market-structure','ict-liquidity','fair-value-gap-trading','how-to-backtest-ict']
+  },
+  {
+    slug:'ict-vs-smc',
+    title:'ICT vs SMC: What Is the Difference?',
+    meta:'Compare ICT and Smart Money Concepts terminology, overlap, differences in teaching style, and how traders can define their own rules.',
+    category:'Beginners',
+    description:'Understand where ICT and SMC concepts overlap and where terminology can differ.',
+    intro:'ICT and Smart Money Concepts (SMC) share many chart concepts, including liquidity, market structure, order blocks and Fair Value Gaps. The labels and exact rules can differ between educators, so terminology should not be treated as universal.',
+    sections:[
+      ['Where they overlap','Both communities commonly discuss liquidity, structure, imbalances, order blocks and price reactions around significant highs and lows.'],
+      ['Why terminology differs','Terms such as BOS, CHOCH, MSS and order block can have different definitions depending on the educator. A written trading plan should define the version being tested.'],
+      ['ICT-specific terminology','ICT education includes a broader vocabulary around concepts such as Killzones, Silver Bullet, IPDA and specific time-and-price models.'],
+      ['How to study both','Learn the definition used by your chosen source, then test the rule consistently. Avoid mixing definitions from multiple educators without documenting the change.'],
+    ],
+    related:['what-is-ict-trading','ict-market-structure','ict-order-block','how-to-backtest-ict']
+  },
+  {
+    slug:'ict-trading-plan',
+    title:'How to Build an ICT Trading Plan',
+    meta:'Create a structured ICT trading plan covering markets, sessions, bias, entry rules, risk limits, journaling and review.',
+    category:'Process',
+    description:'Turn ICT concepts into a written and testable trading plan.',
+    intro:'An ICT trading plan should convert concepts into explicit decisions: what you trade, when you trade, what qualifies as a setup, how much you risk and when you stay out.',
+    sections:[
+      ['Choose your market and session','Limit the initial test to a defined instrument, session and timeframe. Narrow rules make performance easier to measure.'],
+      ['Define the setup','Write the required context, liquidity condition, confirmation, entry trigger, invalidation and target. Avoid discretionary phrases that cannot be measured.'],
+      ['Set risk rules','Define maximum risk per trade, daily loss limits, maximum simultaneous exposure and conditions that require stopping for the day.'],
+      ['Review and improve','Journal every eligible setup, including skipped trades. Change one rule at a time and validate the change on a new sample before adopting it.'],
+    ],
+    related:['what-is-ict-trading','ict-risk-management','how-to-backtest-ict','ict-2022-model']
+  },
+  {
+    slug:'nas100-ict-strategy',
+    title:'NAS100 ICT Trading: A Framework for Studying the Index',
+    meta:'Learn how traders apply ICT concepts to NAS100, including session timing, liquidity, volatility and risk considerations.',
+    category:'Markets',
+    description:'An educational framework for studying NAS100 with ICT concepts.',
+    intro:'NAS100 is an index instrument that can exhibit substantial intraday movement. ICT concepts can be applied to it, but instrument behavior, broker specifications, spreads and execution conditions should be included in any test.',
+    sections:[
+      ['Start with context','Mark higher-timeframe structure, significant highs and lows, and the liquidity areas relevant to the session you plan to trade.'],
+      ['Use session timing','Choose a specific New York or other session window and keep it fixed during testing. Session definitions should account for New York daylight-saving changes.'],
+      ['Account for volatility','Large moves can increase slippage and stop distance requirements. Position size should be calculated from the predefined monetary risk and stop distance.'],
+      ['Test the exact rules','Do not assume an ICT setup behaves identically across markets. Compare NAS100 results separately from forex, gold or crypto results.'],
+    ],
+    related:['ict-liquidity','ict-market-structure','ict-risk-management','how-to-backtest-ict']
+  },
+  {
+    slug:'xauusd-ict-trading',
+    title:'XAUUSD ICT Trading: Gold, Sessions and Risk',
+    meta:'Learn how traders study gold with ICT concepts, including liquidity, session timing, volatility and position sizing.',
+    category:'Markets',
+    description:'An educational guide to applying ICT concepts to XAUUSD.',
+    intro:'XAUUSD refers to gold priced in US dollars. Gold can experience sharp intraday moves, so applying an ICT framework requires attention to volatility, execution and risk as well as chart structure.',
+    sections:[
+      ['Map the important levels','Mark higher-timeframe highs and lows, liquidity references and relevant price-delivery zones before looking for an entry.'],
+      ['Study the session','Choose a defined session window and record how the setup behaves during that period. Do not assume a model transfers unchanged between sessions.'],
+      ['Control position size','Calculate position size from your maximum monetary risk and the distance to invalidation. Gold volatility can make fixed lot sizes inappropriate.'],
+      ['Keep a separate sample','Track XAUUSD results separately so its behavior does not get mixed with results from other instruments.'],
+    ],
+    related:['ict-liquidity','ict-risk-management','how-to-backtest-ict','ict-silver-bullet']
+  },
+  {
     slug:'ict-risk-management',
     title:'ICT Trading Risk Management: Position Size, Stops and R-Multiples',
     meta:'Learn the risk-management principles that should sit underneath any ICT trading plan, including position sizing, invalidation, R-multiples and drawdown control.',
