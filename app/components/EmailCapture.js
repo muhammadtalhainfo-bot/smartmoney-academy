@@ -8,7 +8,8 @@ export default function EmailCapture() {
   const [msg, setMsg] = useState('');
 
   async function handleSubmit() {
-    if (!email || !email.includes('@')) {
+    const normalizedEmail = email.trim().toLowerCase();
+    if (!normalizedEmail || !normalizedEmail.includes('@') || normalizedEmail.length > 254) {
       setMsg('Enter a valid email.');
       setStatus('error');
       return;
@@ -16,7 +17,7 @@ export default function EmailCapture() {
     setStatus('loading');
     try {
       const supabase = createClient();
-      const { error } = await supabase.from('email_signups').insert({ email: email.trim().toLowerCase() });
+      const { error } = await supabase.from('email_signups').insert({ email: normalizedEmail });
       if (error) {
         if (error.code === '23505') {
           setMsg("You're already on the list!");
@@ -68,6 +69,7 @@ export default function EmailCapture() {
                 onChange={e => { setEmail(e.target.value); setStatus('idle'); setMsg(''); }}
                 onKeyDown={e => e.key === 'Enter' && handleSubmit()}
                 placeholder="your@email.com"
+                maxLength={254}
                 style={{ flex: 1, padding: '14px 18px', background: 'rgba(255,255,255,0.04)', border: `1px solid ${status === 'error' ? 'rgba(248,113,113,0.4)' : 'rgba(232,197,71,0.95)'}`, borderRadius: '10px', color: 'white', fontSize: '14px', fontFamily: 'DM Mono, monospace', outline: 'none', letterSpacing: '0.05em' }}
               />
               <button
