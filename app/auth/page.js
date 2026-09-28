@@ -46,8 +46,15 @@ function AuthPageInner() {
     setError('');
     setSuccess('');
 
+    const normalizedEmail = email.trim().toLowerCase();
+    if (!normalizedEmail || normalizedEmail.length > 254) {
+      setError('Enter a valid email address');
+      setLoading(false);
+      return;
+    }
+
     if (isLogin) {
-      const { data: loginData, error } = await supabase.auth.signInWithPassword({ email, password });
+      const { data: loginData, error } = await supabase.auth.signInWithPassword({ email: normalizedEmail, password });
       if (error) {
         setError(error.message);
       } else if (loginData?.session) {
@@ -60,12 +67,18 @@ function AuthPageInner() {
         setError('Login failed. Please try again.');
       }
     } else {
+      const normalizedUsername = username.trim();
+      if (!normalizedUsername) {
+        setError('Choose a username');
+        setLoading(false);
+        return;
+      }
       const { data: signUpData, error } = await supabase.auth.signUp({ 
-        email, 
+        email: normalizedEmail, 
         password,
         options: {
           emailRedirectTo: window.location.origin + '/auth/callback',
-          data: { username: username.trim() }
+          data: { username: normalizedUsername }
         }
       });
       if (error) {
@@ -74,15 +87,15 @@ function AuthPageInner() {
         setError('An account with this email already exists. Please log in instead.');
       } else {
         // Save username to profiles immediately
-        if (username && signUpData?.user) {
+        if (normalizedUsername && signUpData?.user) {
           await supabase.from('profiles').upsert({ 
             id: signUpData.user.id, 
-            username: username.trim() 
+            username: normalizedUsername 
           }, { onConflict: 'id' });
         }
         trackSignUp('email');
         // Auto sign in — no email confirmation required
-        const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
+        const { error: signInError } = await supabase.auth.signInWithPassword({ email: normalizedEmail, password });
         if (signInError) {
           // If auto sign in fails (email confirmation required), show friendly message
           setSuccess('Account created! Please check your email to confirm your account, then log in.');
