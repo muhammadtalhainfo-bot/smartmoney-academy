@@ -52,79 +52,51 @@ export const metadata = {
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'EducationalOrganization',
-  name: 'ICT Flow',
-  url: 'https://ictflow.com',
-  description: 'Structured ICT and Smart Money Concepts education with 38 modules and 203+ lessons covering market structure, liquidity, execution, risk management and related trading frameworks.',
-  hasOfferCatalog: {
-    '@type': 'OfferCatalog',
-    name: 'ICT Trading Courses',
-    itemListElement: [
-      { '@type': 'Course', name: 'Market Structure', description: 'HH/HL, BOS, ChoCH, MSS — the foundation of ICT', provider: { '@type': 'Organization', name: 'ICT Flow' } },
-      { '@type': 'Course', name: 'Liquidity Concepts', description: 'Stop hunts, BSL/SSL, equal highs and lows', provider: { '@type': 'Organization', name: 'ICT Flow' } },
-      { '@type': 'Course', name: 'Fair Value Gaps (FVG)', description: 'BISI, SIBI, Consequent Encroachment, BPR', provider: { '@type': 'Organization', name: 'ICT Flow' } },
-      { '@type': 'Course', name: 'Order Blocks', description: 'OB, Breaker Blocks, Mitigation Blocks', provider: { '@type': 'Organization', name: 'ICT Flow' } },
-      { '@type': 'Course', name: 'Killzones & Macro Times', description: 'London, New York, Silver Bullet windows', provider: { '@type': 'Organization', name: 'ICT Flow' } },
-      { '@type': 'Course', name: 'Power of Three (AMD)', description: 'Accumulate, Manipulate, Distribute daily model', provider: { '@type': 'Organization', name: 'ICT Flow' } },
-      { '@type': 'Course', name: 'ICT Entry Models', description: '2022 Model, Unicorn, Silver Bullet setups', provider: { '@type': 'Organization', name: 'ICT Flow' } },
-      { '@type': 'Course', name: 'Premium & Discount Arrays', description: 'PD Array Matrix, dealing ranges, OTE', provider: { '@type': 'Organization', name: 'ICT Flow' } },
-    ],
-  },
-  sameAs: [
-    'https://x.com/riskfirsttrad',
-    'https://youtube.com/@smart_money_academy0',
-    'https://www.tiktok.com/@smart.money.academy',
-    'https://discord.gg/bh2YK6vF',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://ictflow.com/#organization',
+      name: 'ICT Flow',
+      url: 'https://ictflow.com',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://ictflow.com/favicon-96x96.png',
+      },
+      sameAs: [
+        'https://x.com/riskfirsttrad',
+        'https://youtube.com/@smart_money_academy0',
+        'https://www.tiktok.com/@smart.money.academy',
+        'https://discord.gg/bh2YK6vF',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://ictflow.com/#website',
+      name: 'ICT Flow',
+      url: 'https://ictflow.com',
+      publisher: { '@id': 'https://ictflow.com/#organization' },
+      inLanguage: 'en-US',
+    },
+    {
+      '@type': 'EducationalOrganization',
+      '@id': 'https://ictflow.com/#educational-organization',
+      name: 'ICT Flow',
+      url: 'https://ictflow.com',
+      description: 'Structured ICT and Smart Money Concepts education with 38 modules and 203+ lessons covering market structure, liquidity, execution, risk management and related trading frameworks.',
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'ICT Trading Courses',
+        itemListElement: [
+          { '@type': 'Course', name: 'Market Structure', description: 'HH/HL, BOS, ChoCH, MSS and market structure foundations', provider: { '@type': 'Organization', name: 'ICT Flow' } },
+          { '@type': 'Course', name: 'Liquidity Concepts', description: 'BSL, SSL, equal highs and lows, and liquidity analysis', provider: { '@type': 'Organization', name: 'ICT Flow' } },
+          { '@type': 'Course', name: 'Fair Value Gaps', description: 'BISI, SIBI, Consequent Encroachment and imbalance concepts', provider: { '@type': 'Organization', name: 'ICT Flow' } },
+          { '@type': 'Course', name: 'Order Blocks', description: 'Order Blocks, Breakers and Mitigation Blocks', provider: { '@type': 'Organization', name: 'ICT Flow' } },
+          { '@type': 'Course', name: 'Killzones & Macro Times', description: 'London, New York and Silver Bullet timing concepts', provider: { '@type': 'Organization', name: 'ICT Flow' } },
+          { '@type': 'Course', name: 'Power of Three (AMD)', description: 'Accumulation, Manipulation and Distribution framework', provider: { '@type': 'Organization', name: 'ICT Flow' } },
+          { '@type': 'Course', name: 'ICT Entry Models', description: '2022 Model, Unicorn and related entry frameworks', provider: { '@type': 'Organization', name: 'ICT Flow' } },
+          { '@type': 'Course', name: 'Premium & Discount Arrays', description: 'Dealing ranges, premium/discount and PD array concepts', provider: { '@type': 'Organization', name: 'ICT Flow' } },
+        ],
+      },
+    },
   ],
 };
-
-export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#E8C547" />
-        <meta name="google-adsense-account" content="ca-pub-4615893071983318" />
-        <link rel="manifest" href="/manifest.json" />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-HRGZYFXQ5W"></script>
-        <script dangerouslySetInnerHTML={{ __html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-HRGZYFXQ5W', {
-  'user_id': typeof window !== 'undefined' && window.__USER_ID__ ? window.__USER_ID__ : undefined
-});
-        ` }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-        {process.env.NEXT_PUBLIC_ADSENSE_CLIENT ? (
-          <script
-            async
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_CLIENT}`}
-            crossOrigin="anonymous"
-          />
-        ) : null}
-        <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer />
-        <script dangerouslySetInnerHTML={{ __html: `
-          window.OneSignalDeferred = window.OneSignalDeferred || [];
-          OneSignalDeferred.push(async function(OneSignal) {
-            await OneSignal.init({
-              appId: "7091f3f0-0cf1-4afa-9587-0c3040b520c7",
-              notifyButton: { enable: true },
-              allowLocalhostAsSecureOrigin: false,
-              serviceWorkerPath: "/OneSignalSDKWorker.js",
-            });
-          });
-        ` }} />
-        <link rel="preconnect" href="https://api.onesignal.com" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      </head>
-      <body>
-        <main id="main-content">{children}</main>
-        <CookieBanner />
-      </body>
-    </html>
-  );
-}
