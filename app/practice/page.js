@@ -6,7 +6,7 @@ import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 
 // ─── Daily Challenge Questions ────────────────────────────────────
-// 30 questions rotated daily (index = day of year % 30 * 5, take 5)
+// 460-question bank rotated into 92 daily sets of 5 (index = day of year % 92)
 const ALL_QUESTIONS = [
   // SET 1 — Market Structure
   {
