@@ -1,11 +1,11 @@
 {
-  "name": "ICT Flow - Free ICT Trading Education",
+  "name": "ICT Flow — ICT & Smart Money Education",
   "short_name": "ICT Flow",
-  "description": "Master ICT and Smart Money Concepts for free",
+  "description": "Structured ICT and Smart Money Concepts trading education with 38 modules, 203+ lessons and practical tools.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#080808",
-  "theme_color": "#D4A843",
+  "theme_color": "#E8C547",
   "icons": [
     {
       "src": "/favicon-96x96.png",
