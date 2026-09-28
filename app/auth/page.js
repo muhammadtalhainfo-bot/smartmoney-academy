@@ -18,7 +18,18 @@ function AuthPageInner() {
   const [forgotSent, setForgotSent] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
-  const redirectTo = searchParams?.get('redirect') || '/dashboard';
+  const requestedRedirect = searchParams?.get('redirect') || '';
+  function safeRedirect(value, fallback = '/dashboard') {
+    if (!value || !value.startsWith('/') || value.startsWith('//') || value.includes('\\')) return fallback;
+    try {
+      const target = new URL(value, window.location.origin);
+      if (target.origin !== window.location.origin) return fallback;
+      return `${target.pathname}${target.search}${target.hash}`;
+    } catch {
+      return fallback;
+    }
+  }
+  const redirectTo = safeRedirect(requestedRedirect);
 
   const handleGoogle = async () => {
     trackEvent('login_started', { method: 'google' });
@@ -78,7 +89,7 @@ function AuthPageInner() {
         } else {
           const { data: { session: signupSession } } = await supabase.auth.getSession();
           if (signupSession?.user?.id) setUserId(signupSession.user.id);
-          const redirect = new URLSearchParams(window.location.search).get('redirect') || null;
+          const redirect = safeRedirect(new URLSearchParams(window.location.search).get('redirect'), '');
           await new Promise(r => setTimeout(r, 500));
           if (redirect) {
             router.push(redirect);
