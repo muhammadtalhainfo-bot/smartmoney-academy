@@ -8,7 +8,7 @@ export function generateStaticParams() {
 const LESSONS_META = {
   // ── Beginner (IDs 1–6) ──────────────────────────────────────────
   1:  { title: 'Market Structure', description: 'Learn ICT Market Structure — HH/HL, BOS, ChoCH and MSS. Understand how price creates trends, breaks structure, and signals reversals. The foundation of every ICT trade setup.' },
-  2:  { title: 'Liquidity Concepts', description: 'Study how ICT describes liquidity, including BSL/SSL, equal highs and lows, and the framework interpretation of how price may interact with areas where orders cluster.' },
+  2:  { title: 'Liquidity Concepts', description: 'Understand why price really moves in ICT — stop hunts, BSL/SSL, equal highs and lows, and how smart money uses retail orders as fuel before delivering price.' },
   3:  { title: 'Fair Value Gaps (FVG)', description: 'Master Fair Value Gaps — the most-traded ICT concept. Learn BISI, SIBI, Consequent Encroachment and how 3-candle imbalances act as magnetic price entry zones.' },
   4:  { title: 'Order Blocks', description: 'Learn the ICT Order Block concept, including how the framework interprets these zones, plus Breakers and Mitigation Blocks.' },
   5:  { title: 'Killzones & Macro Times', description: 'Study ICT Killzones and Macro Times, including the London, New York AM, Silver Bullet and Asian Range concepts.' },
@@ -25,13 +25,13 @@ const LESSONS_META = {
   // ── Intermediate continued (IDs 15–25) ──────────────────────────
   15: { title: 'Daily Bias Framework', description: 'Master the daily bias framework — determining market direction before the session opens using monthly, weekly and daily timeframe alignment. The most critical ICT decision.' },
   16: { title: 'Draw on Liquidity', description: 'Understand the ICT Draw on Liquidity — where price is going before it arrives. Learn ERL vs IRL, how to identify your DOL and why this separates ICT traders from everyone else.' },
-  17: { title: 'Dealing Ranges & PD Arrays', description: 'Study the ICT PD Array Matrix and how traders use multiple price-delivery concepts as confluence when planning entries and targets.' },
+  17: { title: 'Dealing Ranges & PD Arrays', description: 'Master the full ICT PD Array Matrix — every institutional zone ranked by strength. Learn how to stack PD arrays for confluence and prioritize entries and targets.' },
   18: { title: 'Institutional Order Flow', description: 'Study institutional-order-flow concepts and the ICT interpretation of accumulation, manipulation and distribution, while separating the framework from independently verified claims about institutional execution.' },
   19: { title: 'Session Timing & Market Hours', description: 'The clock is as important as the chart. Learn ICT session timing — Asian, London, New York — and why when you trade matters as much as what setup you take.' },
-  20: { title: 'Narrative Building', description: 'Learn to build an ICT trade narrative from higher-timeframe context toward lower-timeframe execution conditions.' },
+  20: { title: 'Narrative Building', description: 'Learn to construct the complete trade story before price moves — the highest-level ICT skill. Build narratives from monthly bias down to 1-minute entry precision.' },
   21: { title: 'Quarterly Theory & Seasonal Tendencies', description: 'Markets breathe in quarterly cycles. Learn Q1 accumulation, Q2 manipulation, Q3 distribution and Q4 reversal — the macro rhythm that transforms your directional bias.' },
   22: { title: 'Liquidity Voids & Gaps', description: 'Understand liquidity voids, inefficiencies and opening gaps — the invisible zones price is magnetically drawn to fill. Learn NWOGs, NDOGs and void fill patterns.' },
-  23: { title: 'Time & Price Theory', description: 'Study the ICT view of time and price, including how session timing and price levels are combined when analyzing a setup.' },
+  23: { title: 'Time & Price Theory', description: 'Price and time are inseparable. The algorithm delivers price to specific levels at specific times. Master the time dimension of ICT and trade both axes simultaneously.' },
   24: { title: 'Turtle Soup & Stop Hunts', description: 'Learn the Turtle Soup pattern and the ICT interpretation of false breakouts, liquidity and potential reversals.' },
   25: { title: 'Judas Swing & AMD Deep Dive', description: 'The Judas Swing dissected — how the false move traps retail traders and how to position against it every session. A complete AMD deep dive with real trade examples.' },
   // ── Advanced (IDs 26–28) ─────────────────────────────────────────
@@ -45,7 +45,7 @@ const LESSONS_META = {
   102: { title: 'Advanced Position Sizing & Portfolio Heat', description: 'Master portfolio heat, correlated pairs scaling and the Kelly Criterion — the advanced risk layer that professional ICT traders use to manage multiple positions.' },
   103: { title: 'The Psychology of Risk', description: 'Trading is 80% psychology. Master the four deadly emotions, cognitive biases, building discipline and the winning mindset that produces daily trading consistency.' },
   // ── Instrument Specific (IDs 201, 202, 301) ──────────────────────
-  201: { title: 'ICT for NAS100 & US30 (Indices)', description: 'Apply ICT and Smart Money Concepts to stock indices, including session timing, opening-range ideas and position-sizing considerations for NAS100 and US30.' },
+  201: { title: 'ICT for NAS100 & US30 (Indices)', description: 'Apply ICT and Smart Money Concepts to stock indices. Learn index-specific killzones, opening range strategy and position sizing for NAS100 and US30 trading.' },
   202: { title: 'ICT for Gold (XAU/USD)', description: 'Apply ICT concepts to XAU/USD while considering gold's market characteristics, session timing and position-sizing considerations.' },
   301: { title: 'ICT for Crypto: Bitcoin & Ethereum', description: 'Apply ICT concepts to 24/7 crypto markets. Learn crypto-specific timing, leverage and execution risks, and how to adapt your existing framework to BTC and ETH.' },
   31: { title: 'Trade Review & Journal Process', description: 'Build a structured trading journal, review trades with R-multiples and MAE/MFE, classify process errors, and turn repeated observations into testable rule changes.' },
