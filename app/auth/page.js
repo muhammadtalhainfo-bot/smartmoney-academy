@@ -3,7 +3,7 @@ import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase';
-import { trackLogin, trackSignUp, setUserId } from '@/lib/analytics';
+import { trackEvent, trackLogin, trackSignUp, setUserId } from '@/lib/analytics';
 function AuthPageInner() {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
@@ -21,6 +21,7 @@ function AuthPageInner() {
   const redirectTo = searchParams?.get('redirect') || '/dashboard';
 
   const handleGoogle = async () => {
+    trackEvent('login_started', { method: 'google' });
     const supabase = createClient();
     await supabase.auth.signInWithOAuth({
       provider: 'google',
@@ -39,6 +40,8 @@ function AuthPageInner() {
       if (error) {
         setError(error.message);
       } else if (loginData?.session) {
+        trackLogin('email');
+        setUserId(loginData.session.user.id);
         // Session confirmed — wait for storage then redirect
         await new Promise(r => setTimeout(r, 600));
         router.replace(redirectTo);
@@ -66,12 +69,15 @@ function AuthPageInner() {
             username: username.trim() 
           }, { onConflict: 'id' });
         }
+        trackSignUp('email');
         // Auto sign in — no email confirmation required
         const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
         if (signInError) {
           // If auto sign in fails (email confirmation required), show friendly message
           setSuccess('Account created! Please check your email to confirm your account, then log in.');
         } else {
+          const { data: { session: signupSession } } = await supabase.auth.getSession();
+          if (signupSession?.user?.id) setUserId(signupSession.user.id);
           const redirect = new URLSearchParams(window.location.search).get('redirect') || null;
           await new Promise(r => setTimeout(r, 500));
           if (redirect) {
