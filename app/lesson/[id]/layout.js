@@ -87,6 +87,47 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default function LessonLayout({ children }) {
-  return children;
+export default async function LessonLayout({ children, params }) {
+  const { id } = await params;
+  const numericId = Number(id);
+  const meta = LESSONS_META[numericId];
+
+  if (!meta) return children;
+
+  const canonical = `https://ictflow.com/lesson/${id}`;
+  const moduleRecord = MODULES.find((module) => module.id === numericId);
+  const image = moduleRecord?.image
+    ? (moduleRecord.image.startsWith('http') ? moduleRecord.image : `https://ictflow.com${moduleRecord.image}`)
+    : 'https://ictflow.com/og-image.png';
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: meta.title,
+    description: meta.description,
+    image: [image],
+    author: {
+      '@type': 'Organization',
+      name: 'ICT Flow',
+      url: 'https://ictflow.com/about',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'ICT Flow',
+      url: 'https://ictflow.com',
+      logo: { '@type': 'ImageObject', url: 'https://ictflow.com/favicon-96x96.png' },
+    },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+    url: canonical,
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {children}
+    </>
+  );
 }
