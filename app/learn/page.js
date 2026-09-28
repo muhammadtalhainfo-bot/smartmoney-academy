@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import Navbar from '@/app/components/Navbar'
+import Footer from '@/app/components/Footer'
 import { SEO_PAGES } from './seo-data'
 
 export const metadata = {
@@ -28,7 +30,9 @@ export default function LearnHub() {
   }
 
   return (
-    <main style={{minHeight:'100vh',background:'#080808',color:'#fff',fontFamily:"'DM Sans',sans-serif",padding:'64px 24px'}}>
+    <>
+      <Navbar active="/learn" />
+      <main style={{minHeight:'100vh',background:'#080808',color:'#fff',fontFamily:"'DM Sans',sans-serif",padding:'64px 24px'}}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
@@ -55,6 +59,8 @@ export default function LearnHub() {
           ))}
         </section>
       </div>
-    </main>
+      </main>
+      <Footer />
+    </>
   )
 }
