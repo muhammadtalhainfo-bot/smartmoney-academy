@@ -3,6 +3,7 @@
 import { useState, use } from 'react';
 import { LESSONS_EXTRA } from './lessons-data';
 import { createClient } from '@/lib/supabase';
+import { trackLessonStart, trackLessonComplete, trackShare } from '@/lib/analytics';
 import { MODULES } from '@/lib/curriculum';
 import Link from 'next/link';
 import AdSlot from '@/app/components/AdSlot';
@@ -962,6 +963,8 @@ function Quiz({ questions, lessonId }) {
         <button
           onClick={async () => {
             setSubmitted(true);
+            const sc = questions.filter((q, i) => answers[i] === q.answer).length;
+            trackLessonComplete(lessonId, document.title, sc);
             try {
               const supabase = createClient();
               const { data: { session } } = await supabase.auth.getSession();
@@ -976,7 +979,6 @@ function Quiz({ questions, lessonId }) {
                       { onConflict: 'user_id,lesson_id' }
                     );
                 }
-                const sc = questions.filter((q, i) => answers[i] === q.answer).length;
                 const xpEarned = sc === questions.length ? 70 : 20;
                 const { data: profile } = await supabase.from('profiles').select('xp').eq('id', user.id).single();
                 const currentXP = profile?.xp || 0;
@@ -1019,8 +1021,13 @@ export default function LessonPage({ params }) {
   const curriculumModule = MODULES.find((module) => module.id === lessonId);
   const moduleDiagramSrc = curriculumModule?.image || '/images/market-structure.webp';
 
+  useEffect(() => {
+    trackLessonStart(lessonId, lesson.title);
+  }, [lessonId, lesson.title]);
+
   const handleShare = (platform) => {
     const url = typeof window !== 'undefined' ? window.location.href : '';
+    trackShare(platform, 'lesson', lessonId);
     const text = `Studying ICT on ICT Flow — ${lesson.title}. Structured lessons, quizzes and practice tools.`;
     if (platform === 'twitter') window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
     if (platform === 'whatsapp') window.open(`https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`, '_blank', 'noopener,noreferrer');
