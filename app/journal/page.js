@@ -1001,38 +1001,10 @@ function AICoach({ trades, stats }) {
     };
 
     try {
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
+      const res = await fetch('/api/ai-coach', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 1000,
-          messages: [{
-            role: 'user',
-            content: `You are an elite trading coach — brutally honest, data-driven, zero fluff. Analyze this trader's journal data and give 4 specific, actionable insights.
-
-Trading Stats:
-- Trades: ${summary.total}, Win Rate: ${summary.winRate}%, Avg R:R: ${summary.avgRR}
-- Net P&L: $${summary.netPnl}, Max Drawdown: -$${summary.maxDD}
-- Expectancy: ${summary.expectancy}R per trade
-- Consistency Score: ${summary.consistencyScore}/100
-- Top Mistakes: ${summary.topMistakes || 'None logged'}
-- Best Session: ${summary.bestSession}, Worst: ${summary.worstSession}
-- Best Setup: ${summary.bestSetup}
-- Emotion vs WR: ${summary.emotionWinRates || 'No data'}
-
-Recent Trades:
-${summary.recentTrades}
-
-Respond with exactly 4 insights as JSON:
-{"insights": [
-  {"type": "strength|weakness|pattern|action", "title": "short title", "body": "2-3 sentences, specific, blunt, data-referenced. No generic advice.", "priority": "high|medium|low"},
-  ...
-]}
-
-Only JSON. No preamble. Reference actual numbers from the data.`
-          }],
-        }),
+        body: JSON.stringify({ summary }),
       });
 
       const data = await res.json();
