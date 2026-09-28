@@ -115,15 +115,13 @@ export default function DashboardPage() {
   }
 
   // Computed stats
-  const totalLessons = ALL_MODULES.reduce((a, m) => a + m.lessons, 0);
   const totalModules = ALL_MODULES.length;
-  const completedLessons = completions.length;
-  const completedModuleIds = ALL_MODULES
-    .filter(m => {
-      const modCompletions = completions.filter(c => c.module_id === m.id);
-      return modCompletions.length >= m.lessons;
-    })
-    .map(m => m.id);
+  const completedModuleIds = [...new Set(
+    completions
+      .map(c => Number(c.lesson_id))
+      .filter(id => ALL_MODULES.some(m => m.id === id))
+  )];
+  const completedModules = completedModuleIds.length;
   const overallPct = Math.round((completedModuleIds.length / totalModules) * 100);
   const xp = profile?.xp || 0;
   const rankIndex = Math.min(Math.floor(xp / 500), LEVEL_RANKS.length - 1);
@@ -200,8 +198,8 @@ export default function DashboardPage() {
         <div className="fade-up grid grid-cols-2 md:grid-cols-4 gap-4 mb-8" style={{ animationDelay: '0.1s' }}>
           {[
             { label: 'Day Streak', value: profile?.streak || 0, icon: '🔥', sub: `Best: ${profile?.longest_streak || 0}`, highlight: true },
-            { label: 'Lessons Done', value: completedLessons, icon: '📖', sub: `of ${totalLessons} total` },
-            { label: 'Modules Done', value: completedModuleIds.length, icon: '✅', sub: `of 38 modules` },
+            { label: 'Modules Done', value: completedModules, icon: '📖', sub: `of ${totalModules} total` },
+            
             { label: 'Total XP', value: xp.toLocaleString(), icon: '⚡', sub: `${xpToNext - xp} to next rank` },
           ].map((s, i) => (
             <div key={i} className={`card p-5 ${s.highlight ? 'border-[rgba(232,197,71,0.95)]' : ''}`} style={s.highlight ? { background: 'rgba(212,168,67,0.04)' } : {}}>
@@ -239,9 +237,9 @@ export default function DashboardPage() {
                   </div>
                   <div>
                     <div className="font-display text-3xl text-white mb-1">{completedModuleIds.length} / {totalModules} Modules</div>
-                    <div className="text-gray-200 text-sm" style={{ fontWeight: 300 }}>{completedLessons} of {totalLessons} lessons completed</div>
+                    <div className="text-gray-200 text-sm" style={{ fontWeight: 300 }}>{completedModules} of {totalModules} modules completed</div>
                     <div className="mt-3 progress-bar-bg h-2 w-48">
-                      <div className="progress-bar-fill h-2" style={{ width: `${(completedLessons / totalLessons) * 100}%` }} />
+                      <div className="progress-bar-fill h-2" style={{ width: `${overallPct}%` }} />
                     </div>
                   </div>
                 </div>
@@ -267,25 +265,25 @@ export default function DashboardPage() {
                 </div>
               </div>
 
-              {/* Recent lessons */}
+              {/* Recent module completions */}
               <div className="card p-6">
-                <div className="font-mono-c text-xs tracking-widest uppercase mb-5" style={{ color: '#E8C547' }}>// Recent Lessons</div>
+                <div className="font-mono-c text-xs tracking-widest uppercase mb-5" style={{ color: '#E8C547' }}>// Recent Modules</div>
                 {recentCompletions.length === 0 ? (
                   <div className="text-center py-8">
-                    <p className="font-mono-c text-xs" style={{ color: '#A8A8A8' }}>No lessons completed yet</p>
-                    <Link href="/courses" className="inline-block mt-3 font-mono-c text-xs" style={{ color: '#E8C547' }}>Start your first lesson →</Link>
+                    <p className="font-mono-c text-xs" style={{ color: '#A8A8A8' }}>No modules completed yet</p>
+                    <Link href="/courses" className="inline-block mt-3 font-mono-c text-xs" style={{ color: '#E8C547' }}>Start your first module →</Link>
                   </div>
                 ) : (
                   <div className="space-y-3">
                     {recentCompletions.map((c, i) => {
-                      const mod = ALL_MODULES.find(m => m.id === c.module_id);
+                      const mod = ALL_MODULES.find(m => m.id === Number(c.lesson_id));
                       return (
                         <Link key={i} href={`/lesson/${c.lesson_id}`}>
                           <div className="flex items-center justify-between p-4 rounded-xl border transition-all hover:border-[rgba(232,197,71,0.95)] cursor-pointer mb-2" style={{ borderColor: 'rgba(212,168,67,0.22)', background: '#141414' }}>
                             <div className="flex items-center gap-3">
                               <div className="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style={{ background: 'rgba(212,168,67,0.22)' }}>{mod?.emoji || '📖'}</div>
                               <div>
-                                <div className="font-medium text-white text-sm">{mod?.title || `Lesson ${c.lesson_id}`}</div>
+                                <div className="font-medium text-white text-sm">{mod?.title || `Module ${c.lesson_id}`}</div>
                                 <div className="font-mono-c text-[10px]" style={{ color: '#E8C547' }}>{new Date(c.completed_at).toLocaleDateString()}</div>
                               </div>
                             </div>
