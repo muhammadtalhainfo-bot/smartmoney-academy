@@ -7,6 +7,13 @@ export const metadata = {
   title: 'ICT Trading Guides: FVG, Liquidity, Order Blocks & More',
   description: 'Free, practical ICT and Smart Money Concepts trading guides covering market structure, liquidity, fair value gaps, order blocks, Silver Bullet and risk management.',
   alternates: { canonical: 'https://ictflow.com/learn' },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'ICT Trading Guides | ICT Flow',
+    description: 'Free guides to ICT and Smart Money Concepts, from market structure and liquidity to FVGs, order blocks and Silver Bullet.',
+    images: ['https://ictflow.com/og-image.png'],
+    creator: '@riskfirsttrad',
+  },
   openGraph: {
     title: 'ICT Trading Guides | ICT Flow',
     description: 'Free guides to ICT and Smart Money Concepts, from market structure and liquidity to FVGs, order blocks and Silver Bullet.',
