@@ -13,7 +13,7 @@ const STRATEGIES = [
     color: '#E8C547',
     tags: ['Forex', 'Indices'],
     description: 'A precision intraday strategy using three specific one-hour windows. Requires a liquidity sweep followed by a 1-minute FVG entry. Consistent 3:1+ risk-reward with tight stops.',
-    stats: { winRate: '62%', rr: '3.2:1', trades: 'Daily', type: 'Intraday' },
+    stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Daily', type: 'Intraday' },
     content: [
       { heading: 'Overview', text: 'The Silver Bullet is ICT\'s most structured intraday model. It operates in three specific windows: 3-4 AM EST, 10-11 AM EST, and 2-3 PM EST. Within each window, you wait for a liquidity sweep followed by displacement and a 1-minute FVG entry.' },
       { heading: 'Entry Conditions', items: ['Liquidity sweep of session high or low must occur first', 'A displacement candle creates a 1-minute FVG', 'Enter inside the FVG — ideally at the 50% midpoint', 'Stop loss below the sweep wick (bullish) or above (bearish)', 'Target: next opposing liquidity pool'] },
@@ -30,7 +30,7 @@ const STRATEGIES = [
     color: '#8B5CF6',
     tags: ['Forex', 'Indices', 'Futures'],
     description: 'Trade the three-phase daily cycle: Accumulation (Asia), Manipulation (London Judas Swing), Distribution (NY real move). Enter after the Judas Swing confirms with a ChoCH.',
-    stats: { winRate: '58%', rr: '4.1:1', trades: 'Daily', type: 'Intraday' },
+    stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Daily', type: 'Intraday' },
     content: [
       { heading: 'Overview', text: 'The AMD model describes how institutional money moves price every day. Asia accumulates liquidity, London manipulates (Judas Swing), and New York distributes in the true direction. Trading the distribution phase after confirmed manipulation is the core of this strategy.' },
       { heading: 'Setup Rules', items: ['Identify the daily bias from HTF analysis (bullish or bearish)', 'Wait for London session to create the Judas Swing', 'Judas Swing sweeps the Asian session high or low', 'Drop to 5M or 1M — wait for ChoCH confirming reversal', 'Enter in the true direction with an FVG or OB entry', 'Target: daily draw on liquidity (opposing session high/low)'] },
@@ -46,7 +46,7 @@ const STRATEGIES = [
     color: '#10B981',
     tags: ['Forex', 'Indices', 'Crypto'],
     description: 'Enter at the 62-79% Fibonacci retracement (Optimal Trade Entry) after a liquidity sweep and market structure shift. Works on all timeframes with clear invalidation.',
-    stats: { winRate: '55%', rr: '3.5:1', trades: 'Swing/Intraday', type: 'Multi-TF' },
+    stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Swing/Intraday', type: 'Multi-TF' },
     content: [
       { heading: 'Overview', text: 'The OTE (Optimal Trade Entry) model enters trades at the 62-79% Fibonacci retracement of a prior swing. Combined with a liquidity sweep, market structure shift, and discount/premium analysis, it provides one of the best risk-reward entries in ICT.' },
       { heading: 'Setup Steps', items: ['Identify a significant swing high to low (bullish setup = low to high)', 'Apply Fibonacci from swing low to swing high', 'Wait for price to retrace to the 62-79% zone', 'Look for an OB or FVG within the OTE zone', 'Confirm with LTF ChoCH inside the OTE zone', 'Enter at the OTE — stop below the swing low'] },
@@ -61,7 +61,7 @@ const STRATEGIES = [
     color: '#3B82F6',
     tags: ['Forex', 'Indices', 'Futures'],
     description: 'Wait for a liquidity sweep of a key level, then enter at the nearest Fair Value Gap created by the displacement candle. Simple, structured, high-probability setup.',
-    stats: { winRate: '60%', rr: '2.8:1', trades: 'Daily', type: 'Intraday' },
+    stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Daily', type: 'Intraday' },
     content: [
       { heading: 'Overview', text: 'This is the most fundamental ICT entry model. A liquidity sweep clears the stops, displacement creates an FVG, and price returns to fill the FVG before continuing. The sweep + FVG combination is the backbone of ICT trading.' },
       { heading: 'Entry Conditions', items: ['Key liquidity level identified (equal highs/lows, swing points)', 'Price sweeps the level with a clear wick or close beyond', 'Displacement candle moves rapidly away — creating an FVG', 'Price retraces into the FVG', 'Enter at FVG — ideally at the 50% midpoint', 'Stop beyond the sweep wick'] },
@@ -76,7 +76,7 @@ const STRATEGIES = [
     color: '#EF4444',
     tags: ['Forex', 'Indices'],
     description: 'Trade the flip of a failed order block. When an OB fails and price trades through it, re-enter at the breaker block for the continuation move. High RR with clear invalidation.',
-    stats: { winRate: '52%', rr: '4.5:1', trades: 'Swing', type: 'Swing' },
+    stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Swing', type: 'Swing' },
     content: [
       { heading: 'Overview', text: 'A breaker block forms when a prior order block fails — price completely trades through it. The failed OB now acts as the opposite bias. A bearish OB that fails becomes a bullish breaker, and vice versa. These levels often produce the sharpest reactions.' },
       { heading: 'Setup Rules', items: ['Identify a prior OB that was completely violated by price', 'Mark the breaker zone (same as the original OB body)', 'Wait for price to return to the breaker zone', 'Look for LTF confirmation (ChoCH or FVG at breaker)', 'Enter at the breaker — stop beyond the breaker zone', 'Target: next major liquidity or OB in the direction'] },
@@ -91,7 +91,7 @@ const STRATEGIES = [
     color: '#F59E0B',
     tags: ['Forex', 'Indices', 'Futures'],
     description: 'Fade false breakouts by entering opposite to a liquidity sweep. When price makes a new high/low then immediately reverses, enter the reversal with the next liquidity pool as target.',
-    stats: { winRate: '56%', rr: '3.0:1', trades: 'Daily', type: 'Counter-trend' },
+    stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Daily', type: 'Counter-trend' },
     content: [
       { heading: 'Overview', text: 'The Turtle Soup is a counter-trend strategy that trades against false breakouts. When price makes a new high or low but immediately reverses, it signals that the breakout was a liquidity sweep — not a real continuation. This reversal often produces fast, high-RR moves.' },
       { heading: 'Entry Conditions', items: ['Price makes a new swing high or low (breakout)', 'Price immediately reverses — closing back inside the range', 'Displacement candle in the opposite direction', 'Enter on the first pullback after the displacement', 'Stop beyond the false breakout wick', 'Target: opposite end of the range + liquidity beyond'] },
@@ -106,9 +106,9 @@ const STRATEGIES = [
     color: '#14B8A6',
     tags: ['Forex', 'Indices'],
     description: 'Use Smart Money Technique divergence between correlated pairs (EURUSD/GBPUSD or NAS100/SP500) to confirm reversals at key ICT levels. Adds confluence to any setup.',
-    stats: { winRate: '64%', rr: '2.9:1', trades: 'Daily', type: 'Confirmation' },
+    stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Daily', type: 'Confirmation' },
     content: [
-      { heading: 'Overview', text: 'SMT Divergence occurs when two correlated instruments fail to confirm each other\'s move. When EURUSD makes a new low but GBPUSD does not, it signals bullish divergence — institutional strength in EURUSD. This divergence at a key ICT level (OB, FVG, OTE) creates very high probability setups.' },
+      { heading: 'Overview', text: 'SMT Divergence occurs when two correlated instruments fail to confirm each other\'s move. When EURUSD makes a new low but GBPUSD does not, it signals bullish divergence — institutional strength in EURUSD. This divergence at a key ICT level (OB, FVG, OTE) can provide additional confluence, but its effectiveness should be evaluated with your own testing.' },
       { heading: 'How to Use SMT', items: ['Open two correlated charts side by side (EURUSD + GBPUSD or NAS100 + SP500)', 'Mark the same swing highs and lows on both', 'Look for divergence: one makes a new high/low, the other does not', 'The stronger instrument (that did NOT make new extremes) is your buy/sell', 'Combine with OB, FVG, or OTE at the divergence level', 'Enter on the stronger instrument with LTF confirmation'] },
       { heading: 'Correlated Pairs', items: ['EURUSD ↔ GBPUSD (USD base pairs)', 'NAS100 ↔ S&P500 (US indices)', 'AUDUSD ↔ NZDUSD (commodity currencies)', 'XAUUSD ↔ DXY (inverse — gold vs dollar)'] },
     ],
@@ -121,9 +121,9 @@ const STRATEGIES = [
     color: '#6366F1',
     tags: ['Forex', 'Indices', 'Futures'],
     description: 'Use the 12 AM EST candle open as a key reference level. Price often returns to the midnight open during the trading day. Trade rejections and sweeps of this level.',
-    stats: { winRate: '57%', rr: '2.5:1', trades: 'Daily', type: 'Level-based' },
+    stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Daily', type: 'Level-based' },
     content: [
-      { heading: 'Overview', text: 'The Midnight Open (12 AM EST) is a key ICT reference level. The algorithm frequently returns to this level during the trading day, creating predictable reactions. Combined with session analysis, this level provides clear entry and exit points.' },
+      { heading: 'Overview', text: 'The Midnight Open (12 AM EST) is a key ICT reference level. Some traders use this level as a reference during the trading day; its usefulness should be evaluated with your own testing. Combined with session analysis, this level provides clear entry and exit points.' },
       { heading: 'How to Trade It', items: ['Mark the 12 AM EST candle open price at the start of each day', 'Price above midnight open = bullish bias for the day', 'Price below midnight open = bearish bias for the day', 'Look for price to sweep the midnight open and reverse', 'Or look for price to consolidate above/below and break with momentum', 'Use killzone timing for entries'] },
       { heading: 'Combining with Other Concepts', text: 'The midnight open is most powerful when it aligns with an FVG, OB, or OTE zone. A midnight open that sits inside a daily bullish FVG, for example, creates extremely strong confluence for a buy.' },
     ],
@@ -161,10 +161,10 @@ export default function StrategiesPage() {
                 ICT STRATEGY LIBRARY
               </div>
               <h1 className="font-display" style={{ fontSize: 'clamp(48px, 8vw, 80px)', lineHeight: 1, marginBottom: '12px' }}>
-                <span style={{ color: 'white' }}>PROVEN </span><span className="shine">STRATEGIES</span>
+                <span style={{ color: 'white' }}>ICT </span><span className="shine">STRATEGIES</span>
               </h1>
               <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '15px', fontWeight: 300 }}>
-                Skip the guesswork. Start with ready-made ICT strategy playbooks with clear entry rules, risk management, and examples.
+                Skip the guesswork. Start with structured ICT strategy playbooks with entry rules, risk management, and examples. Performance figures are not presented as independently verified results.
               </p>
             </div>
           </section>
