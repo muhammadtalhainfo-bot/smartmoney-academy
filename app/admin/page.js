@@ -90,7 +90,7 @@ const ALL_MODULES = [
 const NAV_PAGES = [
   { href: '/',            label: 'Home',              desc: 'Landing page' },
   { href: '/courses',     label: 'Courses',           desc: '38 modules listing' },
-  { href: '/glossary',    label: 'Glossary',          desc: 'ICT/SMC terms (75+)' },
+  { href: '/glossary',    label: 'Glossary',          desc: 'ICT/SMC terms (97+)' },
   { href: '/practice',    label: 'Practice',          desc: 'Quiz practice questions' },
   { href: '/strategies',  label: 'Strategies',        desc: 'ICT strategy breakdowns' },
   { href: '/mentorship',  label: 'Mentorship',        desc: '2022 ICT Mentorship sessions' },
