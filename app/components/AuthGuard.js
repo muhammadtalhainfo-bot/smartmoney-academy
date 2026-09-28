@@ -25,7 +25,6 @@ export default function AuthGuard({ children }) {
         if (refreshedSession) {
           setReady(true);
         } else {
-          localStorage.setItem('redirectAfterLogin', pathname);
           router.replace('/auth');
         }
       } catch (err) {
