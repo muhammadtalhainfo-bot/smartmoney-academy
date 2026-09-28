@@ -1348,7 +1348,7 @@ export default function JournalPage() {
     };
 
     if (editTrade?.id) {
-      await supabase.from('trades').update(payload).eq('id', editTrade.id);
+      await supabase.from('trades').update(payload).eq('id', editTrade.id).eq('user_id', u.id);
     } else {
       await supabase.from('trades').insert(payload);
     }
@@ -1360,7 +1360,7 @@ export default function JournalPage() {
 
   const del = async (id) => {
     if (!confirm('Delete this trade? This cannot be undone.')) return;
-    await supabase.from('trades').delete().eq('id', id);
+    await supabase.from('trades').delete().eq('id', id).eq('user_id', u.id);
     load();
   };
 
