@@ -254,7 +254,14 @@ export default function FoundationsPage() {
       window.history.replaceState({}, '', '/foundations');
     }
     const saved = localStorage.getItem('foundations_completed');
-    if (saved) setCompleted(JSON.parse(saved));
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) setCompleted(parsed);
+      } catch {
+        localStorage.removeItem('foundations_completed');
+      }
+    }
   }, []);
 
   const toggleCompleted = (id) => {
