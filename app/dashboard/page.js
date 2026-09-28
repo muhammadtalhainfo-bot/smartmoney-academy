@@ -24,7 +24,6 @@ function CircleProgress({ pct, size = 90, stroke = 7, color = '#E8C547' }) {
 }
 
 export default function DashboardPage() {
-  const [menuOpen, setMenuOpen] = React.useState(false);
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [profile, setProfile] = useState(null);
@@ -166,15 +165,6 @@ export default function DashboardPage() {
 
       {/* NAV */}
       <Navbar active="/dashboard" />
-      {/* ── MOBILE MENU ── */}
-      {menuOpen && (
-        <div style={{ position: 'fixed', inset: 0, zIndex: 50, background: 'rgba(8,8,8,0.98)', backdropFilter: 'blur(20px)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '32px' }}>
-          <button onClick={() => setMenuOpen(false)} style={{ position: 'absolute', top: '24px', right: '24px', background: 'none', border: 'none', color: '#E8C547', fontSize: '28px', cursor: 'pointer' }}>✕</button>
-          {[['/', 'Home'], ['/courses', 'Courses'],  ['/glossary', 'Glossary'], ['/practice', 'Practice'], ['/journal', 'Journal'], ['/dashboard', 'Dashboard']].map(([href, label]) => (
-            <a key={href} href={href} onClick={() => setMenuOpen(false)} style={{ fontFamily: 'DM Mono, monospace', fontSize: '24px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)', textDecoration: 'none' }}>{label}</a>
-          ))}
-        </div>
-      )}
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-10">
 
