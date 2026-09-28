@@ -7,13 +7,13 @@ export async function GET(request) {
   const code = searchParams.get('code')
   const requestedNext = searchParams.get('next') ?? '/dashboard'
   const safeNext = (() => {
-    if (!requestedNext.startsWith('/') || requestedNext.startsWith('//') || requestedNext.includes('\\\\')) {
+    if (!requestedNext.startsWith('/') || requestedNext.startsWith('//') || requestedNext.includes('\\')) {
       return '/dashboard'
     }
     try {
       const target = new URL(requestedNext, origin)
       if (target.origin !== origin) return '/dashboard'
-      return \`${target.pathname}${target.search}${target.hash}\`
+      return `${target.pathname}${target.search}${target.hash}`
     } catch {
       return '/dashboard'
     }
