@@ -195,4 +195,125 @@ export const SEO_PAGES = [
     ],
     related:['how-to-backtest-ict','what-is-ict-trading','ict-market-structure','fair-value-gap-trading']
   },
+  {
+    slug:'ict-killzones',
+    title:'ICT Killzones Explained: London, New York and Session Timing',
+    meta:'Learn how ICT Killzones organize analysis around market sessions and how to test time-based setups.',
+    category:'Sessions',
+    description:'Understand ICT Killzones and how session timing fits into a testable trading process.',
+    intro:'ICT Killzones are defined time windows used in the ICT methodology to focus attention on liquidity, volatility and execution. A time window is a filter, not a guarantee that a setup will occur.',
+    sections:[
+      ['What is an ICT Killzone?','A Killzone is a defined period on the trading clock used to focus analysis and execution. Write the timezone and daylight-saving convention into the trading plan.'],
+      ['London and New York','Traders often study London and New York activity because these sessions can produce meaningful changes in liquidity and volatility. Define the exact window rather than relying on a vague session label.'],
+      ['Combine timing with price','A Killzone should be combined with predefined market context, liquidity references and entry conditions. Entering simply because the clock reached a certain time is not a complete strategy.'],
+      ['Backtest the window','Fix the instrument, timezone, session, setup, stop and target. Record every qualifying occurrence instead of selecting only attractive historical examples.'],
+    ],
+    related:['ict-liquidity','ict-silver-bullet','how-to-backtest-ict','ict-risk-management']
+  },
+  {
+    slug:'ict-displacement',
+    title:'ICT Displacement Explained: What Traders Look For',
+    meta:'Learn how displacement is described in ICT trading and how to turn the concept into testable rules.',
+    category:'Core Concepts',
+    description:'A practical explanation of displacement within an ICT trading framework.',
+    intro:'Displacement is commonly used in ICT education to describe a decisive price move with notable expansion in range or momentum. Traders may study it as evidence of strong price movement, but the definition must be tested.',
+    sections:[
+      ['What displacement means','There is no single universal numerical threshold. Traders may define displacement using candle range, consecutive closes, speed or an imbalance. Fix your definition before testing.'],
+      ['Displacement and FVGs','A strong move can create a Fair Value Gap, which is why ICT traders often study displacement and FVGs together. An FVG does not guarantee a later reaction.'],
+      ['Displacement after liquidity','One common sequence is a liquidity event followed by displacement and then a retracement toward a price-delivery area. Treat this as a hypothesis to test.'],
+      ['Make it measurable','Define the minimum candle characteristics, timeframe, session, entry trigger and invalidation. Do not change the definition after seeing the result.'],
+    ],
+    related:['fair-value-gap-trading','ict-liquidity','ict-market-structure','how-to-backtest-ict']
+  },
+  {
+    slug:'ict-ote',
+    title:'ICT Optimal Trade Entry (OTE): Fibonacci Retracement Guide',
+    meta:'Learn how OTE is commonly described in ICT trading and how to test Fibonacci-based entry rules.',
+    category:'Core Concepts',
+    description:'Understand the ICT OTE concept and how to test Fibonacci-based entry rules.',
+    intro:'Optimal Trade Entry, commonly abbreviated OTE, is an ICT concept using a Fibonacci retracement range to identify a preferred area for a potential entry. The zone is a planning framework, not proof of a reversal.',
+    sections:[
+      ['What is OTE?','OTE is commonly associated with the 62%–79% Fibonacci retracement area of a selected price swing. The exact swing and levels should be fixed before testing.'],
+      ['Choose the dealing leg','Define whether the range comes from a displacement leg, a specific high-to-low move or another objective rule.'],
+      ['Use OTE with context','Traders may combine OTE with structure, liquidity, displacement or an order block. Confluence does not remove market risk.'],
+      ['Backtest the rule','Record the exact range, entry zone, stop, target, timeframe and session. Test consecutive examples rather than only charts where price respected the zone.'],
+    ],
+    related:['ict-market-structure','ict-liquidity','ict-order-block','how-to-backtest-ict']
+  },
+  {
+    slug:'ict-smt-divergence',
+    title:'ICT SMT Divergence Explained: Correlated Markets and Confirmation',
+    meta:'Learn the ICT SMT divergence concept, how traders compare correlated instruments, and how to define it objectively.',
+    category:'Advanced Concepts',
+    description:'A practical guide to SMT divergence and correlated-market analysis.',
+    intro:'SMT divergence is an ICT concept that compares the price behavior of two markets considered related. Traders study differences in significant highs or lows as contextual information.',
+    sections:[
+      ['What SMT divergence means','A commonly described example is one correlated market making a new high while another fails to make a corresponding high, or the inverse at lows.'],
+      ['Why correlation matters','Correlation is not constant. Two markets can move together during one period and diverge during another, so the relationship should be tested rather than assumed.'],
+      ['SMT is not a complete trade','An SMT observation does not define entry, stop or target by itself. Traders may combine it with liquidity, structure and an execution model.'],
+      ['How to test SMT','Define the pair, timeframe, swing rule, maximum time difference and entry trigger. Record false signals as well as successful examples.'],
+    ],
+    related:['ict-market-structure','ict-liquidity','how-to-backtest-ict','ict-risk-management']
+  },
+  {
+    slug:'ict-power-of-three',
+    title:'ICT Power of Three (AMD) Explained',
+    meta:'Learn the ICT Power of Three framework—Accumulation, Manipulation and Distribution—and how to study it without treating it as guaranteed.',
+    category:'Models',
+    description:'Understand the AMD framework and how to turn it into a testable market hypothesis.',
+    intro:'Power of Three, often shortened to AMD, describes Accumulation, Manipulation and Distribution. ICT traders use the model to organize ideas about how price may behave around a range or session.',
+    sections:[
+      ['Accumulation','Accumulation is commonly used to describe a period where price develops within a range before a larger move. It is an interpretation, not direct evidence of who is accumulating orders.'],
+      ['Manipulation','Manipulation refers to a move beyond a visible high or low interpreted as a false break or liquidity event. Not every breakout is a manipulation phase.'],
+      ['Distribution','Distribution is the directional phase some AMD interpretations expect after the range and liquidity event. Markets can remain range-bound or behave differently.'],
+      ['How to study AMD','Define the range, reference high/low, sweep rule and directional confirmation. Backtest the complete sequence rather than labeling it after the outcome.'],
+    ],
+    related:['ict-liquidity','ict-market-structure','ict-killzones','how-to-backtest-ict']
+  },
+  {
+    slug:'ict-breaker-block',
+    title:'ICT Breaker Block Explained: From Failed Order Block to New Role',
+    meta:'Learn how breaker blocks are described in ICT trading and how they relate to failed order blocks and market structure.',
+    category:'Advanced Concepts',
+    description:'A practical explanation of breaker blocks within the ICT framework.',
+    intro:'A breaker block is commonly described as an area that changes role after a prior order-block idea fails and price breaks through it. Traders study the area within a broader market-structure sequence.',
+    sections:[
+      ['The basic idea','A commonly taught breaker sequence begins with an order-block reference, a move through that area that invalidates the original expectation, and later use of the area from the opposite side.'],
+      ['Why structure matters','Define which swing has broken and what qualifies as a meaningful structural change. Otherwise failed zones can be relabeled after the fact.'],
+      ['Breaker and liquidity','Some traders combine breaker blocks with a liquidity sweep or other context. Treat the combination as a hypothesis with measurable conditions.'],
+      ['Backtest it','Record the original zone, invalidation event, retest condition, stop, target and session. Include failed retests in the sample.'],
+    ],
+    related:['ict-order-block','ict-market-structure','ict-liquidity','how-to-backtest-ict']
+  },
+  {
+    slug:'ict-mitigation-block',
+    title:'ICT Mitigation Block Explained: A Practical Framework',
+    meta:'Learn how mitigation blocks are described in ICT trading and how to define the concept objectively.',
+    category:'Advanced Concepts',
+    description:'Understand the mitigation block concept without treating it as a guaranteed support or resistance level.',
+    intro:'Mitigation block is a term used in ICT and SMC education for a price area that traders believe can become relevant when an earlier directional idea is being unwound or invalidated. Definitions vary.',
+    sections:[
+      ['The concept','A mitigation block is generally studied around a prior price area after a directional move or structural change. It is an interpretation, not direct evidence of a specific institution closing an order.'],
+      ['Define the reference','Decide which candle, range or swing qualifies. If the reference changes from chart to chart, the idea becomes difficult to test.'],
+      ['Use market context','Liquidity, structure and displacement can provide context for a mitigation-block hypothesis. Avoid treating the zone as an automatic entry signal.'],
+      ['Create a repeatable test','Fix the timeframe, reference rule, retest condition, invalidation, target and session. Track both successful and unsuccessful interactions.'],
+    ],
+    related:['ict-order-block','ict-market-structure','ict-liquidity','how-to-backtest-ict']
+  },
+  {
+    slug:'ict-premium-discount',
+    title:'ICT Premium and Discount: Dealing Range Explained',
+    meta:'Learn how ICT traders divide a dealing range into premium and discount, how equilibrium is used, and how to test the framework.',
+    category:'Core Concepts',
+    description:'Understand premium, discount and equilibrium within an ICT dealing range.',
+    intro:'Premium and discount are terms used in ICT education to describe where price sits within a defined dealing range. The framework can organize directional ideas and preferred entry areas.',
+    sections:[
+      ['Define the dealing range','A dealing range needs an objective high and low. Its midpoint or equilibrium divides the range into upper and lower halves.'],
+      ['Premium and discount','The upper portion is commonly called premium and the lower portion discount. Some ICT traders use the distinction to prefer short ideas in premium and long ideas in discount when other conditions align.'],
+      ['Equilibrium is not a signal','The midpoint is a reference level, not proof that price will reverse there. A strong trend can continue through equilibrium.'],
+      ['Test the full rule','Specify range selection, directional filter, entry condition, stop and target. Compare results with and without the premium/discount filter.'],
+    ],
+    related:['ict-market-structure','ict-order-block','ict-risk-management','how-to-backtest-ict']
+  },
+
 ]
