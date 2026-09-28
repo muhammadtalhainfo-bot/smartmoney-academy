@@ -1216,13 +1216,13 @@ function JournalLanding() {
     { icon: '🧠', title: 'Psychology Tracker', desc: 'Track emotions pre/during/post trade. Identify FOMO, revenge trading, and discipline leaks.' },
     { icon: '✦', title: 'AI Coach', desc: 'Get blunt, data-driven feedback from an AI that analyzes your actual trade data — not generic advice.' },
     { icon: '📅', title: 'Trade Calendar', desc: 'See every trading day color-coded by win/loss. Identify your best and worst weeks at a glance.' },
-    { icon: '📈', title: 'Progress Goals', desc: 'Track progress toward 65% win rate, 2.5R average, and consistency score goals over time.' },
+    { icon: '📈', title: 'Progress Goals', desc: 'Track progress toward the goals you define for your own trading process.' },
   ];
   const stats = [
     { value: '14', label: 'ICT Setups tracked' },
     { value: '12', label: 'Forex & crypto pairs' },
     { value: '7', label: 'Built-in rule checks' },
-    { value: '100%', label: 'Free, forever' },
+    { value: 'Free', label: 'To use' },
   ];
   return (
     <div style={{ minHeight: '100vh', background: C.bg, color: C.text, fontFamily: "'DM Sans', sans-serif" }}>
@@ -1232,10 +1232,10 @@ function JournalLanding() {
       `}</style>
       <div style={{ maxWidth: '900px', margin: '0 auto', padding: '80px 24px 60px', textAlign: 'center' }}>
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: C.gold + '12', border: '1px solid ' + C.gold + '30', borderRadius: '20px', padding: '6px 16px', marginBottom: '28px' }}>
-          <span style={{ fontSize: '12px', color: C.gold, fontFamily: 'DM Mono, monospace', letterSpacing: '0.1em' }}>✦ 100% FREE · NO CREDIT CARD · NO ADS</span>
+          <span style={{ fontSize: '12px', color: C.gold, fontFamily: 'DM Mono, monospace', letterSpacing: '0.1em' }}>✦ FREE TO USE · NO CREDIT CARD</span>
         </div>
         <h1 style={{ fontSize: '52px', fontWeight: 800, color: C.text, lineHeight: 1.1, margin: '0 0 20px', letterSpacing: '-1px' }}>
-          The Best <span style={{ color: C.gold }}>Free</span> Trading Journal<br />for ICT Traders
+          Free <span style={{ color: C.gold }}>Trading</span> Journal<br />for ICT Traders
         </h1>
         <p style={{ fontSize: '18px', color: C.text2, lineHeight: 1.7, margin: '0 auto 36px', maxWidth: '620px' }}>
           Log every trade, track your win rate and R:R, analyze your psychology, and get AI coaching insights. Built specifically for ICT & Smart Money Concepts traders. Completely free.
