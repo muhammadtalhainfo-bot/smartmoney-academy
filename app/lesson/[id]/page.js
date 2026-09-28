@@ -1,6 +1,6 @@
 // v2
 'use client';
-import { useState, use } from 'react';
+import { useState, use, useEffect } from 'react';
 import { LESSONS_EXTRA } from './lessons-data';
 import { createClient } from '@/lib/supabase';
 import { trackLessonStart, trackLessonComplete, trackShare } from '@/lib/analytics';
