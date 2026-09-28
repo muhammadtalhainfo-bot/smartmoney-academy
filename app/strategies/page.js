@@ -29,13 +29,13 @@ const STRATEGIES = [
     avatar: 'ICT',
     color: '#8B5CF6',
     tags: ['Forex', 'Indices', 'Futures'],
-    description: 'Trade the three-phase daily cycle: Accumulation (Asia), Manipulation (London Judas Swing), Distribution (NY real move). Enter after the Judas Swing confirms with a ChoCH.',
+    description: 'Study the three-phase AMD framework: Accumulation, Manipulation, and Distribution. The framework can be used to organize session context and test entry conditions around liquidity and market structure.',
     stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Daily', type: 'Intraday' },
     content: [
-      { heading: 'Overview', text: 'The AMD model is an ICT framework for interpreting a recurring three-phase price sequence. Asia accumulates liquidity, London manipulates (Judas Swing), and New York distributes in the true direction. Trading the distribution phase after confirmed manipulation is the core of this strategy.' },
-      { heading: 'Setup Rules', items: ['Identify the daily bias from HTF analysis (bullish or bearish)', 'Wait for London session to create the Judas Swing', 'Judas Swing sweeps the Asian session high or low', 'Drop to 5M or 1M — wait for ChoCH confirming reversal', 'Enter in the true direction with an FVG or OB entry', 'Target: daily draw on liquidity (opposing session high/low)'] },
-      { heading: 'Risk Management', items: ['Use a predefined risk limit per trade that fits the account and tested strategy', 'Stop beyond the Judas Swing wick', 'Move to break-even at 1:1', 'Manage exits according to the tested trade plan rather than assuming a fixed reward target'] },
-      { heading: 'What to Avoid', items: ['Do not trade during NY lunch (12-1:30 PM EST)', 'Do not enter before the Judas Swing is confirmed complete', 'Do not trade against the HTF daily bias'] },
+      { heading: 'Overview', text: 'The AMD model is an ICT framework for interpreting a recurring three-phase price sequence. Traders may use accumulation, manipulation (including the Judas Swing), and distribution as a framework for organizing session observations and testing trade conditions.' },
+      { heading: 'Setup Rules', items: ['Identify the daily bias from HTF analysis (bullish or bearish)', 'Wait for London session to create the Judas Swing', 'Look for a sweep of the Asian session high or low', 'Drop to 5M or 1M — wait for ChoCH confirming reversal', 'Enter in the selected direction with an FVG or OB entry', 'Target: a predefined draw on liquidity from the tested trade plan'] },
+      { heading: 'Risk Management', items: ['Use a predefined risk limit per trade that fits the account and tested strategy', 'Place the stop beyond the setup invalidation point', 'Manage break-even decisions according to the tested trade plan', 'Manage exits according to the tested trade plan rather than assuming a fixed reward target'] },
+      { heading: 'What to Avoid', items: ['Be cautious during low-liquidity periods such as NY lunch', 'Do not enter before the setup conditions are confirmed', 'Avoid trades that conflict with the higher-timeframe context unless the plan explicitly allows them'] },
     ],
   },
   {
@@ -49,8 +49,8 @@ const STRATEGIES = [
     stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Swing/Intraday', type: 'Multi-TF' },
     content: [
       { heading: 'Overview', text: 'The OTE (Optimal Trade Entry) model enters trades at the 62-79% Fibonacci retracement of a prior swing. Combined with a liquidity sweep, market structure shift, and discount/premium analysis, it can provide a clearly defined risk-reward framework when the setup conditions align.' },
-      { heading: 'Setup Steps', items: ['Identify a significant swing high to low (bullish setup = low to high)', 'Apply Fibonacci from swing low to swing high', 'Wait for price to retrace to the 62-79% zone', 'Look for an OB or FVG within the OTE zone', 'Confirm with LTF ChoCH inside the OTE zone', 'Enter at the OTE — stop below the swing low'] },
-      { heading: 'Key Levels', items: ['50% = Equilibrium (neutral — not ideal entry)', '62% = Start of OTE zone', '70.5% = Golden pocket', '79% = End of OTE zone', 'Beyond 79% = Setup is weakening'] },
+      { heading: 'Setup Steps', items: ['Identify a significant swing high to low (bullish setup = low to high)', 'Apply Fibonacci from swing low to swing high', 'Wait for price to retrace to the 62-79% zone', 'Look for an OB or FVG within the OTE zone', 'Confirm with LTF ChoCH inside the OTE zone', 'Define invalidation relative to the swing structure'] },
+      { heading: 'Key Levels', items: ['50% = Equilibrium (neutral — not ideal entry)', '62% = Start of OTE zone', '70.5% = Golden pocket', '79% = End of OTE zone', 'Beyond 79% = Reassess the setup rather than assuming automatic invalidation'] },
     ],
   },
   {
@@ -120,12 +120,12 @@ const STRATEGIES = [
     avatar: 'SMA',
     color: '#6366F1',
     tags: ['Forex', 'Indices', 'Futures'],
-    description: 'Use the 12 AM EST candle open as a key reference level. Price often returns to the midnight open during the trading day. Trade rejections and sweeps of this level.',
+    description: 'Use the 12 AM EST candle open as a key reference level. Some traders study whether price revisits the midnight open during the trading day. Trade rejections and sweeps of this level.',
     stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Daily', type: 'Level-based' },
     content: [
       { heading: 'Overview', text: 'The Midnight Open (12 AM EST) is a key ICT reference level. Some traders use this level as a reference during the trading day; its usefulness should be evaluated with your own testing. Combined with session analysis, this level provides clear entry and exit points.' },
-      { heading: 'How to Trade It', items: ['Mark the 12 AM EST candle open price at the start of each day', 'Price above midnight open = bullish bias for the day', 'Price below midnight open = bearish bias for the day', 'Look for price to sweep the midnight open and reverse', 'Or look for price to consolidate above/below and break with momentum', 'Use killzone timing for entries'] },
-      { heading: 'Combining with Other Concepts', text: 'Some traders give the midnight open more weight when it aligns with an FVG, OB, or OTE zone. A midnight open that sits inside a daily bullish FVG, for example, creates extremely strong confluence for a buy.' },
+      { heading: 'How to Trade It', items: ['Mark the 12 AM EST candle open price at the start of each day', 'Use price relative to the midnight open as one contextual input rather than a standalone bias rule', 'Use price relative to the midnight open as one contextual input rather than a standalone bias rule', 'Look for price to sweep the midnight open and reverse', 'Or look for price to consolidate above/below and break with momentum', 'Use killzone timing for entries'] },
+      { heading: 'Combining with Other Concepts', text: 'Some traders give the midnight open more weight when it aligns with an FVG, OB, or OTE zone. A midnight open that sits inside a daily bullish FVG, for example, can provide additional confluence for a buy setup.' },
     ],
   },
 ];
