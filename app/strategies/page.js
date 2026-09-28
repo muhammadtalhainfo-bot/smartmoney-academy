@@ -12,12 +12,12 @@ const STRATEGIES = [
     avatar: 'ICT',
     color: '#E8C547',
     tags: ['Forex', 'Indices'],
-    description: 'A precision intraday strategy using three specific one-hour windows. Requires a liquidity sweep followed by a 1-minute FVG entry. Consistent 3:1+ risk-reward with tight stops.',
+    description: 'A precision intraday strategy using three specific one-hour windows. Requires a liquidity sweep followed by a 1-minute FVG entry. Uses defined risk-reward rules with tight invalidation.',
     stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Daily', type: 'Intraday' },
     content: [
       { heading: 'Overview', text: 'The Silver Bullet is ICT\'s most structured intraday model. It operates in three specific windows: 3-4 AM EST, 10-11 AM EST, and 2-3 PM EST. Within each window, you wait for a liquidity sweep followed by displacement and a 1-minute FVG entry.' },
       { heading: 'Entry Conditions', items: ['Liquidity sweep of session high or low must occur first', 'A displacement candle creates a 1-minute FVG', 'Enter inside the FVG — ideally at the 50% midpoint', 'Stop loss below the sweep wick (bullish) or above (bearish)', 'Target: next opposing liquidity pool'] },
-      { heading: 'Best Instruments', text: 'NAS100, S&P500, EURUSD, GBPUSD, XAUUSD. Works best on highly liquid instruments where the algorithm is most consistent.' },
+      { heading: 'Best Instruments', text: 'NAS100, S&P500, EURUSD, GBPUSD, XAUUSD. It is commonly studied on liquid instruments; test suitability on your chosen market.' },
       { heading: 'Time Windows', items: ['3:00-4:00 AM EST — London session (optional)', '10:00-11:00 AM EST — Primary NY macro window', '2:00-3:00 PM EST — Afternoon session'] },
       { heading: 'Rules', items: ['No trade if no liquidity sweep occurs in the window', 'One trade per window maximum', 'Do not carry trades between windows', 'If target not reached by end of window, manage manually'] },
     ],
@@ -32,7 +32,7 @@ const STRATEGIES = [
     description: 'Trade the three-phase daily cycle: Accumulation (Asia), Manipulation (London Judas Swing), Distribution (NY real move). Enter after the Judas Swing confirms with a ChoCH.',
     stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Daily', type: 'Intraday' },
     content: [
-      { heading: 'Overview', text: 'The AMD model describes how institutional money moves price every day. Asia accumulates liquidity, London manipulates (Judas Swing), and New York distributes in the true direction. Trading the distribution phase after confirmed manipulation is the core of this strategy.' },
+      { heading: 'Overview', text: 'The AMD model is an ICT framework for interpreting a recurring three-phase price sequence. Asia accumulates liquidity, London manipulates (Judas Swing), and New York distributes in the true direction. Trading the distribution phase after confirmed manipulation is the core of this strategy.' },
       { heading: 'Setup Rules', items: ['Identify the daily bias from HTF analysis (bullish or bearish)', 'Wait for London session to create the Judas Swing', 'Judas Swing sweeps the Asian session high or low', 'Drop to 5M or 1M — wait for ChoCH confirming reversal', 'Enter in the true direction with an FVG or OB entry', 'Target: daily draw on liquidity (opposing session high/low)'] },
       { heading: 'Risk Management', items: ['Risk 1% per trade maximum', 'Stop beyond the Judas Swing wick', 'Move to break-even at 1:1', 'Scale out at 2:1, let remainder run to 4:1+'] },
       { heading: 'What to Avoid', items: ['Do not trade during NY lunch (12-1:30 PM EST)', 'Do not enter before the Judas Swing is confirmed complete', 'Do not trade against the HTF daily bias'] },
@@ -48,7 +48,7 @@ const STRATEGIES = [
     description: 'Enter at the 62-79% Fibonacci retracement (Optimal Trade Entry) after a liquidity sweep and market structure shift. Works on all timeframes with clear invalidation.',
     stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Swing/Intraday', type: 'Multi-TF' },
     content: [
-      { heading: 'Overview', text: 'The OTE (Optimal Trade Entry) model enters trades at the 62-79% Fibonacci retracement of a prior swing. Combined with a liquidity sweep, market structure shift, and discount/premium analysis, it provides one of the best risk-reward entries in ICT.' },
+      { heading: 'Overview', text: 'The OTE (Optimal Trade Entry) model enters trades at the 62-79% Fibonacci retracement of a prior swing. Combined with a liquidity sweep, market structure shift, and discount/premium analysis, it can provide a clearly defined risk-reward framework when the setup conditions align.' },
       { heading: 'Setup Steps', items: ['Identify a significant swing high to low (bullish setup = low to high)', 'Apply Fibonacci from swing low to swing high', 'Wait for price to retrace to the 62-79% zone', 'Look for an OB or FVG within the OTE zone', 'Confirm with LTF ChoCH inside the OTE zone', 'Enter at the OTE — stop below the swing low'] },
       { heading: 'Key Levels', items: ['50% = Equilibrium (neutral — not ideal entry)', '62% = Start of OTE zone', '70.5% = Golden pocket', '79% = End of OTE zone', 'Beyond 79% = Setup is weakening'] },
     ],
@@ -60,10 +60,10 @@ const STRATEGIES = [
     avatar: 'SMA',
     color: '#3B82F6',
     tags: ['Forex', 'Indices', 'Futures'],
-    description: 'Wait for a liquidity sweep of a key level, then enter at the nearest Fair Value Gap created by the displacement candle. Simple, structured, high-probability setup.',
+    description: 'Wait for a liquidity sweep of a key level, then enter at the nearest Fair Value Gap created by the displacement candle. A simple, structured setup; its effectiveness should be evaluated with your own testing.',
     stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Daily', type: 'Intraday' },
     content: [
-      { heading: 'Overview', text: 'This is the most fundamental ICT entry model. A liquidity sweep clears the stops, displacement creates an FVG, and price returns to fill the FVG before continuing. The sweep + FVG combination is the backbone of ICT trading.' },
+      { heading: 'Overview', text: 'This is a commonly taught ICT-style entry model. A liquidity sweep clears the stops, displacement creates an FVG, and price returns to fill the FVG before continuing. The sweep + FVG combination is one framework used in ICT-style trading.' },
       { heading: 'Entry Conditions', items: ['Key liquidity level identified (equal highs/lows, swing points)', 'Price sweeps the level with a clear wick or close beyond', 'Displacement candle moves rapidly away — creating an FVG', 'Price retraces into the FVG', 'Enter at FVG — ideally at the 50% midpoint', 'Stop beyond the sweep wick'] },
       { heading: 'Filters', items: ['Only take in direction of HTF bias', 'FVG must be in discount (for buys) or premium (for sells)', 'Best results during killzone hours', 'Avoid taking if FVG is too small (less than 5 pips for forex)'] },
     ],
@@ -78,9 +78,9 @@ const STRATEGIES = [
     description: 'Trade the flip of a failed order block. When an OB fails and price trades through it, re-enter at the breaker block for the continuation move. High RR with clear invalidation.',
     stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Swing', type: 'Swing' },
     content: [
-      { heading: 'Overview', text: 'A breaker block forms when a prior order block fails — price completely trades through it. The failed OB now acts as the opposite bias. A bearish OB that fails becomes a bullish breaker, and vice versa. These levels often produce the sharpest reactions.' },
+      { heading: 'Overview', text: 'A breaker block forms when a prior order block fails — price completely trades through it. The failed OB now acts as the opposite bias. A bearish OB that fails becomes a bullish breaker, and vice versa. These levels can produce reactions that traders may choose to study.' },
       { heading: 'Setup Rules', items: ['Identify a prior OB that was completely violated by price', 'Mark the breaker zone (same as the original OB body)', 'Wait for price to return to the breaker zone', 'Look for LTF confirmation (ChoCH or FVG at breaker)', 'Enter at the breaker — stop beyond the breaker zone', 'Target: next major liquidity or OB in the direction'] },
-      { heading: 'Why It Works', text: 'The breaker represents a failed institutional attempt — their orders were absorbed. When price returns to this level, the market remembers the failure and typically accelerates away from it.' },
+      { heading: 'Why It Works', text: 'The breaker is interpreted as a failed prior price structure. Traders may study how price behaves when it revisits the level.' },
     ],
   },
   {
@@ -93,7 +93,7 @@ const STRATEGIES = [
     description: 'Fade false breakouts by entering opposite to a liquidity sweep. When price makes a new high/low then immediately reverses, enter the reversal with the next liquidity pool as target.',
     stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Daily', type: 'Counter-trend' },
     content: [
-      { heading: 'Overview', text: 'The Turtle Soup is a counter-trend strategy that trades against false breakouts. When price makes a new high or low but immediately reverses, it signals that the breakout was a liquidity sweep — not a real continuation. This reversal often produces fast, high-RR moves.' },
+      { heading: 'Overview', text: 'The Turtle Soup is a counter-trend strategy that trades against false breakouts. When price makes a new high or low but immediately reverses, it signals that the breakout was a liquidity sweep — not a real continuation. This reversal can produce fast moves, but outcomes vary by market and conditions.' },
       { heading: 'Entry Conditions', items: ['Price makes a new swing high or low (breakout)', 'Price immediately reverses — closing back inside the range', 'Displacement candle in the opposite direction', 'Enter on the first pullback after the displacement', 'Stop beyond the false breakout wick', 'Target: opposite end of the range + liquidity beyond'] },
       { heading: 'Best Market Conditions', items: ['Ranging markets with clear equal highs/lows', 'Just before major session opens (pre-London, pre-NY)', 'When higher TF structure suggests reversal is due'] },
     ],
@@ -125,7 +125,7 @@ const STRATEGIES = [
     content: [
       { heading: 'Overview', text: 'The Midnight Open (12 AM EST) is a key ICT reference level. Some traders use this level as a reference during the trading day; its usefulness should be evaluated with your own testing. Combined with session analysis, this level provides clear entry and exit points.' },
       { heading: 'How to Trade It', items: ['Mark the 12 AM EST candle open price at the start of each day', 'Price above midnight open = bullish bias for the day', 'Price below midnight open = bearish bias for the day', 'Look for price to sweep the midnight open and reverse', 'Or look for price to consolidate above/below and break with momentum', 'Use killzone timing for entries'] },
-      { heading: 'Combining with Other Concepts', text: 'The midnight open is most powerful when it aligns with an FVG, OB, or OTE zone. A midnight open that sits inside a daily bullish FVG, for example, creates extremely strong confluence for a buy.' },
+      { heading: 'Combining with Other Concepts', text: 'Some traders give the midnight open more weight when it aligns with an FVG, OB, or OTE zone. A midnight open that sits inside a daily bullish FVG, for example, creates extremely strong confluence for a buy.' },
     ],
   },
 ];
