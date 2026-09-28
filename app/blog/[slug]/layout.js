@@ -1,5 +1,9 @@
 import { POSTS } from '../posts';
 
+export function generateStaticParams() {
+  return POSTS.filter((post) => post?.slug).map(({ slug }) => ({ slug }));
+}
+
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const post = POSTS.find((item) => item?.slug === slug);
