@@ -58,10 +58,7 @@ const jsonLd = {
       '@id': 'https://ictflow.com/#organization',
       name: 'ICT Flow',
       url: 'https://ictflow.com',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://ictflow.com/favicon-96x96.png',
-      },
+      logo: { '@type': 'ImageObject', url: 'https://ictflow.com/favicon-96x96.png' },
       sameAs: [
         'https://x.com/riskfirsttrad',
         'https://youtube.com/@smart_money_academy0',
@@ -100,3 +97,54 @@ const jsonLd = {
     },
   ],
 };
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#E8C547" />
+        <meta name="google-adsense-account" content="ca-pub-4615893071983318" />
+        <link rel="manifest" href="/manifest.json" />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-HRGZYFXQ5W"></script>
+        <script dangerouslySetInnerHTML={{ __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-HRGZYFXQ5W', {
+  'user_id': typeof window !== 'undefined' && window.__USER_ID__ ? window.__USER_ID__ : undefined
+});
+        ` }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        {process.env.NEXT_PUBLIC_ADSENSE_CLIENT ? (
+          <script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_CLIENT}`}
+            crossOrigin="anonymous"
+          />
+        ) : null}
+        <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer />
+        <script dangerouslySetInnerHTML={{ __html: `
+          window.OneSignalDeferred = window.OneSignalDeferred || [];
+          OneSignalDeferred.push(async function(OneSignal) {
+            await OneSignal.init({
+              appId: "7091f3f0-0cf1-4afa-9587-0c3040b520c7",
+              notifyButton: { enable: true },
+              allowLocalhostAsSecureOrigin: false,
+              serviceWorkerPath: "/OneSignalSDKWorker.js",
+            });
+          });
+        ` }} />
+        <link rel="preconnect" href="https://api.onesignal.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
+      <body>
+        <main id="main-content">{children}</main>
+        <CookieBanner />
+      </body>
+    </html>
+  );
+}
