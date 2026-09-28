@@ -2533,14 +2533,14 @@ export const POSTS = [
   {
     slug: 'common-ict-mistakes',
     title: '15 Mistakes That Destroy ICT Trading Accounts (And How to Avoid Them)',
-    description: '90% of ICT traders fail because of these 15 mistakes. Learn them, avoid them, and join the 10% who succeed.',
+    description: 'These 15 common mistakes can undermine ICT trading practice. Learn how to recognize them, manage risk, and build a more consistent process.',
     category: 'Education',
     readTime: '16 min read',
     date: 'April 25, 2026',
     image: '/images/market-structure.png',
     featured: false,
     content: [
-      { type: 'intro', text: 'ICT is not a magic system. It is a framework for reading institutional order flow. But most traders use it wrong. After analyzing hundreds of ICT traders, we have identified the 15 mistakes that destroy accounts. If you make even 5 of these, you will fail.' },
+      { type: 'intro', text: 'ICT is not a magic system. It is a framework for studying price, liquidity, timing, and execution. Traders can misuse any framework, so this guide focuses on common process and risk-management mistakes rather than claiming a fixed failure rate or a guaranteed outcome.' },
       { type: 'heading', text: 'Mistake 1: Trading Without Daily Bias' },
       { type: 'paragraph', text: 'Trading against the daily bias is like swimming against a river. Before looking at any setup, determine daily bias. Above midnight open = bullish bias (look for longs). Below midnight open = bearish bias (look for shorts). Rule: if you cannot clearly state the daily bias in one sentence, do not trade.' },
       { type: 'heading', text: 'Mistake 2: Ignoring Killzones' },
