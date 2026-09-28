@@ -1,5 +1,6 @@
 import { MODULES } from '../lib/curriculum'
 import { POSTS } from './blog/posts'
+import { SEO_PAGES } from './learn/seo-data'
 
 const BASE = 'https://ictflow.com'
 
@@ -27,6 +28,13 @@ export default function sitemap() {
     url, priority, changeFrequency, lastModified: now,
   }))
 
+  const learnPages = SEO_PAGES.map(({ slug }) => ({
+    url: `${BASE}/learn/${slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  }))
+
   const lessonPages = MODULES.map(({ id }) => ({
     url: `${BASE}/lesson/${id}`,
     lastModified: now,
@@ -43,5 +51,5 @@ export default function sitemap() {
       priority: 0.7,
     }))
 
-  return [...staticPages, ...lessonPages, ...blogPages]
+  return [...staticPages, learnPages.length ? { url: `${BASE}/learn`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 } : null, ...learnPages, ...lessonPages, ...blogPages].filter(Boolean)
 }
