@@ -14,8 +14,13 @@ export async function POST(req) {
     }
 
     const { title, message } = await req.json();
-    if (!title?.trim()) return Response.json({ error: 'Missing title' }, { status: 400 });
-    if (!message?.trim()) return Response.json({ error: 'Missing message' }, { status: 400 });
+    const cleanTitle = typeof title === 'string' ? title.trim() : '';
+    const cleanMessage = typeof message === 'string' ? message.trim() : '';
+    if (!cleanTitle) return Response.json({ error: 'Missing title' }, { status: 400 });
+    if (!cleanMessage) return Response.json({ error: 'Missing message' }, { status: 400 });
+    if (cleanTitle.length > 100 || cleanMessage.length > 2000) {
+      return Response.json({ error: 'Notification content is too long.' }, { status: 413 });
+    }
 
     const response = await fetch('https://api.onesignal.com/notifications', {
       method: 'POST',
@@ -26,8 +31,8 @@ export async function POST(req) {
       body: JSON.stringify({
         app_id: '7091f3f0-0cf1-4afa-9587-0c3040b520c7',
         included_segments: ['All'],
-        headings: { en: title.trim() },
-        contents: { en: message.trim() },
+        headings: { en: cleanTitle },
+        contents: { en: cleanMessage },
         url: 'https://ictflow.com',
       }),
     });
