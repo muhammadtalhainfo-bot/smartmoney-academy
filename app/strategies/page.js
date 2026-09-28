@@ -15,7 +15,7 @@ const STRATEGIES = [
     description: 'A precision intraday strategy using three specific one-hour windows. Requires a liquidity sweep followed by a 1-minute FVG entry. Uses defined risk-reward rules with tight invalidation.',
     stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Daily', type: 'Intraday' },
     content: [
-      { heading: 'Overview', text: 'The Silver Bullet is ICT\'s most structured intraday model. It operates in three specific windows: 3-4 AM EST, 10-11 AM EST, and 2-3 PM EST. Within each window, you wait for a liquidity sweep followed by displacement and a 1-minute FVG entry.' },
+      { heading: 'Overview', text: 'The Silver Bullet is an ICT intraday model with defined time windows and setup conditions. It operates in three specific windows: 3-4 AM EST, 10-11 AM EST, and 2-3 PM EST. Within each window, you wait for a liquidity sweep followed by displacement and a 1-minute FVG entry.' },
       { heading: 'Entry Conditions', items: ['Liquidity sweep of session high or low must occur first', 'A displacement candle creates a 1-minute FVG', 'Enter inside the FVG — ideally at the 50% midpoint', 'Stop loss below the sweep wick (bullish) or above (bearish)', 'Target: next opposing liquidity pool'] },
       { heading: 'Best Instruments', text: 'NAS100, S&P500, EURUSD, GBPUSD, XAUUSD. It is commonly studied on liquid instruments; test suitability on your chosen market.' },
       { heading: 'Time Windows', items: ['3:00-4:00 AM EST — London session (optional)', '10:00-11:00 AM EST — Primary NY macro window', '2:00-3:00 PM EST — Afternoon session'] },
@@ -34,7 +34,7 @@ const STRATEGIES = [
     content: [
       { heading: 'Overview', text: 'The AMD model is an ICT framework for interpreting a recurring three-phase price sequence. Asia accumulates liquidity, London manipulates (Judas Swing), and New York distributes in the true direction. Trading the distribution phase after confirmed manipulation is the core of this strategy.' },
       { heading: 'Setup Rules', items: ['Identify the daily bias from HTF analysis (bullish or bearish)', 'Wait for London session to create the Judas Swing', 'Judas Swing sweeps the Asian session high or low', 'Drop to 5M or 1M — wait for ChoCH confirming reversal', 'Enter in the true direction with an FVG or OB entry', 'Target: daily draw on liquidity (opposing session high/low)'] },
-      { heading: 'Risk Management', items: ['Risk 1% per trade maximum', 'Stop beyond the Judas Swing wick', 'Move to break-even at 1:1', 'Scale out at 2:1, let remainder run to 4:1+'] },
+      { heading: 'Risk Management', items: ['Use a predefined risk limit per trade that fits the account and tested strategy', 'Stop beyond the Judas Swing wick', 'Move to break-even at 1:1', 'Manage exits according to the tested trade plan rather than assuming a fixed reward target'] },
       { heading: 'What to Avoid', items: ['Do not trade during NY lunch (12-1:30 PM EST)', 'Do not enter before the Judas Swing is confirmed complete', 'Do not trade against the HTF daily bias'] },
     ],
   },
