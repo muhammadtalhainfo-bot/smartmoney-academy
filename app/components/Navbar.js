@@ -20,6 +20,7 @@ const MORE_NAV = [
   ['/tools', 'Tools'],
   ['/resources', 'Resources'],
   ['/blog', 'Blog'],
+  ['/learn', 'ICT Guides'],
   ['https://discord.gg/bh2YK6vF', 'Discord 💬'],
   ['/pricing', 'Pricing'],
   ['/about', 'About'],
