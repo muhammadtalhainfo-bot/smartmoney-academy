@@ -344,7 +344,6 @@ export default function DashboardPage() {
                 {(() => {
                   const nextModule = ALL_MODULES.find(m => !completedModuleIds.includes(m.id));
                   if (!nextModule) return <p className="font-mono-c text-xs text-center py-4" style={{ color: '#34D399' }}>🏆 All modules complete!</p>;
-                  const modCompletions = completions.filter(c => c.module_id === nextModule.id).length;
                   return (
                     <Link href={`/lesson/${nextModule.id}`}>
                       <div className="p-4 rounded-xl border cursor-pointer transition-all hover:border-[#E8C547]" style={{ borderColor: 'rgba(232,197,71,0.95)', background: 'rgba(212,168,67,0.03)' }}>
@@ -356,9 +355,9 @@ export default function DashboardPage() {
                           </div>
                         </div>
                         <div className="progress-bar-bg h-1.5 mb-2">
-                          <div className="h-1.5 rounded-full" style={{ width: `${(modCompletions / nextModule.lessons) * 100}%`, background: '#E8C547' }} />
+                          <div className="h-1.5 rounded-full" style={{ width: '0%', background: '#E8C547' }} />
                         </div>
-                        <div className="font-mono-c text-[10px]" style={{ color: '#808080' }}>{modCompletions} / {nextModule.lessons} lessons</div>
+                        <div className="font-mono-c text-[10px]" style={{ color: '#808080' }}>Not started · 0% complete</div>
                       </div>
                     </Link>
                   );
@@ -373,8 +372,7 @@ export default function DashboardPage() {
           <div className="fade-up grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {ALL_MODULES.map((mod) => {
               const isComplete = completedModuleIds.includes(mod.id);
-              const modCompletions = completions.filter(c => c.module_id === mod.id).length;
-              const pct = isComplete ? 100 : Math.round((modCompletions / mod.lessons) * 100);
+              const pct = isComplete ? 100 : 0;
               return (
                 <Link key={mod.id} href={`/lesson/${mod.id}`}>
                   <div className="card card-hover p-5 cursor-pointer h-full">
@@ -392,8 +390,8 @@ export default function DashboardPage() {
                       <div className="h-1.5 rounded-full" style={{ width: `${pct}%`, background: isComplete ? '#34D399' : '#E8C547', transition: 'width 0.7s ease' }} />
                     </div>
                     <div className="flex justify-between">
-                      <span className="font-mono-c text-[10px]" style={{ color: isComplete ? '#34D399' : modCompletions > 0 ? '#E8C547' : '#E4E4E7' }}>
-                        {isComplete ? 'Complete' : modCompletions > 0 ? `${modCompletions}/${mod.lessons} lessons` : 'Not started'}
+                      <span className="font-mono-c text-[10px]" style={{ color: isComplete ? '#34D399' : '#E4E4E7' }}>
+                        {isComplete ? 'Complete' : 'Not started'}
                       </span>
                       <span className="font-mono-c text-[10px]" style={{ color: '#A8A8A8' }}>{pct}%</span>
                     </div>
