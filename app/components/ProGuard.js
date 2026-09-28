@@ -22,7 +22,6 @@ export default function ProGuard({ children }) {
         if (!isMounted) return;
 
         if (!user) {
-          localStorage.setItem('redirectAfterLogin', pathname);
           router.push('/auth');
           return;
         }
