@@ -30,7 +30,7 @@ In an uptrend, price creates Higher Highs (HH) and Higher Lows (HL). Each new pu
 
 In a downtrend, price creates Lower Highs (LH) and Lower Lows (LL). Each rally stops lower than the last. Each drop goes deeper. Sellers are in full control.
 
-This sounds simple — and it is. But 90% of retail traders don't actually use this properly. They try to buy in downtrends and sell in uptrends and wonder why they keep losing.`,
+This sounds simple — and it is. Many retail traders struggle to apply this consistently. They try to buy in downtrends and sell in uptrends and wonder why they keep losing.`,
         highlight: '📌 Rule #1: Only take buy setups in bullish structure. Only take sell setups in bearish structure. Never fight the structure.',
       },
       {
@@ -127,7 +127,7 @@ When price approaches BSL from below, institutions use it to SELL into. They let
 
 You'll recognize BSL as: Equal Highs (EQH) on a chart, previous day/week highs, obvious resistance levels that everyone is watching, and round numbers like 1.1000 or 2000 on Gold.
 
-The pattern is always the same: price approaches the BSL level, spikes above it briefly to trigger the stops, then immediately reverses. ICT calls this the "stop hunt" or "liquidity sweep."`,
+A common liquidity-sweep example is price approaching BSL, briefly trading above it, then potentially reversing. ICT calls this the "stop hunt" or "liquidity sweep."`,
         highlight: '📌 Every time you see price spike above an obvious high and immediately reverse — that was a BSL sweep. Institutions just filled their sells.',
       },
       {
@@ -167,7 +167,7 @@ Step 4 — After the sweep, wait for a ChoCH or BOS to the upside on the LTF. Th
 
 Step 5 — Enter from a nearby FVG or OB that forms after the sweep/ChoCH.
 
-The most powerful ICT setups always follow the pattern: Liquidity Sweep → Structure Shift → Entry from PD Array. This is the core of the 2022 Model, Silver Bullet, and virtually every other ICT entry model.`,
+A commonly studied ICT sequence is Liquidity Sweep → Structure Shift → Entry from a PD Array. This is the core of the 2022 Model, Silver Bullet, and virtually every other ICT entry model.`,
         highlight: '📌 The setup: SSL Sweep (fake breakdown) → Bullish ChoCH → Buy from FVG/OB. This is the cleanest ICT trade there is.',
       },
     ],
@@ -188,7 +188,7 @@ The most powerful ICT setups always follow the pattern: Liquidity Sweep → Stru
     duration: '16 min read',
     category: 'PD Arrays',
     imageCaption: 'A bullish FVG: gap between candle 1 high and candle 3 low — price returns to fill it',
-    intro: `If you could only learn one ICT concept, the Fair Value Gap (FVG) would be the best choice. It is the most consistently predictive pattern in the entire methodology, it appears on every timeframe, every instrument, and it works because it's based on a fundamental truth about how markets function: price hates imbalance and will always return to fill it.`,
+    intro: `Fair Value Gap (FVG) is a core ICT concept and a useful framework to study price imbalance. Traders study FVGs across timeframes and instruments as areas of price imbalance; how price reacts when it revisits an FVG should be evaluated in context.`,
     sections: [
       {
         title: 'What Is a Fair Value Gap?',
@@ -211,7 +211,7 @@ Bearish FVG is the mirror: Candle 3's HIGH is below Candle 1's LOW after a large
 
 Think of it this way: imagine you're at an auction and the bidding jumps from $100 to $150 in one instant. Someone missed their chance to bid at $120. The market comes back to that $110-$130 zone to let them transact. That's the FVG.
 
-For ICT traders, this means FVGs are extremely high-probability support/resistance zones — not because they're "magic levels" but because the algorithm is literally programmed to return to them for order completion. This is why FVGs work far more consistently than traditional support/resistance.`,
+For ICT traders, FVGs can serve as potential areas of interest or confluence. Their usefulness should be evaluated with market context and personal testing rather than assumed to outperform other forms of analysis.`,
         highlight: '📌 FVGs aren\'t just patterns — they represent unfilled institutional orders. The algorithm returns to complete them. This is why they work.',
       },
       {
@@ -287,7 +287,7 @@ Risk:Reward is typically 1:3 or better on FVG trades.`,
     duration: '22 min read',
     category: 'PD Arrays',
     imageCaption: 'Bullish OB: last bearish candle before a strong bullish move — institutions bought here',
-    intro: `Order Blocks (OBs) are the most powerful price delivery array in the ICT methodology. While the FVG shows you WHERE price moved fast, the Order Block shows you exactly WHERE the institution placed their original order. It's the footprint left behind by a bank or hedge fund as they accumulated their position — and price always returns to these zones to offer more fill at the same price.`,
+    intro: `Order Blocks (OBs) are a major price-delivery concept in the ICT methodology. While the FVG shows you WHERE price moved fast, the Order Block shows you exactly WHERE the institution placed their original order. It's the footprint left behind by a bank or hedge fund as they accumulated their position — and traders study how price may react when it revisits these zones.`,
     sections: [
       {
         title: 'What Is an Order Block?',
@@ -346,7 +346,7 @@ Order Block = WHERE institutions entered (the candle they used to build their po
 
 Fair Value Gap = WHERE price moved too fast and left an imbalance. It's about price inefficiency.
 
-The most powerful setups in ICT combine both: an OB that also contains an FVG within it. ICT calls this a "confluence" zone. When an Order Block and FVG overlap, you have both institutional interest AND price imbalance at the same level — extremely high probability.
+The most powerful setups in ICT combine both: an OB that also contains an FVG within it. ICT calls this a "confluence" zone. When an Order Block and FVG overlap, traders may treat the combination as additional confluence; its effectiveness should be tested rather than assumed.
 
 How to determine which to use:
 • OBs are better for swing trades and higher timeframe setups
@@ -387,7 +387,7 @@ There are four main Killzones, each serving a specific role in the daily narrati
       {
         title: 'The Four Killzones',
         content: `Asian Killzone (8:00 PM – 12:00 AM EST):
-Role: ACCUMULATION. Price consolidates and builds the Asian Range. This is where smart money quietly accumulates positions. The high and low of the Asian session = critical levels. Price almost always comes back to sweep one of these levels during London or New York. Mark them every single day.
+Role: ACCUMULATION. Price consolidates and builds the Asian Range. This is where smart money quietly accumulates positions. The high and low of the Asian session = critical levels. Price may revisit or sweep one of these levels during London or New York. Mark them every single day.
 
 London Killzone (2:00 AM – 5:00 AM EST):
 Role: MANIPULATION / JUDAS SWING. This is where the fake move happens. London will often sweep one side of the Asian range first (the Judas Swing) — tricking retail into a trade — before reversing hard in the true direction. This is ICT's "don't trade the first 15 minutes of London" rule. The sweep of Asian high/low during this window = a liquidity grab signal.
@@ -522,7 +522,7 @@ Monthly AMD:
 
 This means you can apply the AMD framework to weekly charts to determine which DIRECTION the week will ultimately close in. If you see the weekly sweep a key low on Tuesday — that's your weekly Judas Swing. Expect the week to close bullish.
 
-ICT specifically notes that TUESDAY is the most common day for the weekly Judas Swing. The highest probability weekly move is: sweep lows/highs on Tuesday, reverse and distribute Thursday into Friday.`,
+ICT specifically notes that TUESDAY is the most common day for the weekly Judas Swing. One ICT framework describes Tuesday as a common day for a weekly Judas Swing, followed by distribution later in the week; treat this as a framework to test, not a guarantee.`,
         highlight: '📌 Weekly AMD: Monday = accumulate. Tuesday = Judas Swing (usually). Thursday-Friday = real directional move. This works with remarkable consistency.',
       },
     ],
@@ -682,7 +682,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
       },
       {
         title: 'Daily Analysis — The Session Narrative',
-        content: `DAILY ANALYSIS PROCESS:\n\nStep 1 — PREVIOUS DAY LEVELS:\nMark previous day's high (PDH), low (PDL), and close. Most important levels for current day.\n\nStep 2 — NEW YORK MIDNIGHT OPEN (NWOG):\nMidnight New York open (12:00 AM EST) is a critical reference.\n• Price ABOVE NWOG = bullish bias for the day\n• Price BELOW NWOG = bearish bias\nThis single rule has a very high success rate.\n\nStep 3 — OPENING GAP:\nIf today's open gaps above or below yesterday's close — that gap is a magnet. Price almost always fills a daily opening gap.\n\nStep 4 — DAILY FVGs and OBs:\nMark any unfilled FVGs and unmitigated OBs on the daily chart.\n\nStep 5 — DAILY BIAS STATEMENT:\nWrite a one-sentence bias: "Today is BULLISH. Price is above NWOG. Daily structure is HH/HL. I am looking for BUYS only — targeting SSL at [level] with target of [PDH]."\n\nThis single sentence prevents wrong-direction trades all day.`,
+        content: `DAILY ANALYSIS PROCESS:\n\nStep 1 — PREVIOUS DAY LEVELS:\nMark previous day's high (PDH), low (PDL), and close. Most important levels for current day.\n\nStep 2 — NEW YORK MIDNIGHT OPEN (NWOG):\nMidnight New York open (12:00 AM EST) is a critical reference.\n• Price ABOVE NWOG = bullish bias for the day\n• Price BELOW NWOG = bearish bias\nTreat this as a reference rather than a standalone probability claim.\n\nStep 3 — OPENING GAP:\nIf today's open gaps above or below yesterday's close — that gap is a magnet. Daily opening gaps can act as reference levels; whether they fill depends on market conditions.\n\nStep 4 — DAILY FVGs and OBs:\nMark any unfilled FVGs and unmitigated OBs on the daily chart.\n\nStep 5 — DAILY BIAS STATEMENT:\nWrite a one-sentence bias: "Today is BULLISH. Price is above NWOG. Daily structure is HH/HL. I am looking for BUYS only — targeting SSL at [level] with target of [PDH]."\n\nThis single sentence prevents wrong-direction trades all day.`,
         highlight: '📌 The New York Midnight Open (12:00 AM EST) is ICT\'s most important daily reference. Above NWOG = bullish. Below NWOG = bearish. This prevents most directional errors.',
       },
       {
@@ -724,13 +724,13 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
       },
       {
         title: 'The Four Delivery Arrays — PDARRA',
-        content: `PDARRA describes the specific price levels the algorithm uses as delivery targets:\n\n1. CONSEQUENT ENCROACHMENT (CE):\nThe 50% midpoint of any FVG. The algorithm ALWAYS targets the CE of every FVG before continuing. Most consistent behavior in any market.\n\n2. IOFED (Institutional Order Flow Entry Drill):\nThe zone where institutions re-enter during retracement — the OTE zone (62-79% Fibonacci). Algorithm returns here to offer institutions another entry.\n\n3. INVERSION FAIR VALUE GAP (IFVG):\nA FVG that has been "inverted" — former bullish FVG now used as resistance, former bearish FVG now used as support. Algorithm always references these inverted zones.\n\n4. BALANCED PRICE RANGE (BPR):\nThe overlap between a bearish FVG above and a bullish FVG below. Algorithm frequently returns here before continuing the primary move.\n\nPRACTICAL APPLICATION:\nWhen CE, OTE zone, OB, and IFVG all appear at the same price level — that is maximum conviction. All four arrays confirming one zone is the closest thing to a guaranteed reaction you will find.`,
+        content: `PDARRA describes the specific price levels the algorithm uses as delivery targets:\n\n1. CONSEQUENT ENCROACHMENT (CE):\nThe 50% midpoint of any FVG. Within this framework, CE is a reference point traders may monitor when studying FVG behavior.\n\n2. IOFED (Institutional Order Flow Entry Drill):\nThe zone where institutions re-enter during retracement — the OTE zone (62-79% Fibonacci). Algorithm returns here to offer institutions another entry.\n\n3. INVERSION FAIR VALUE GAP (IFVG):\nA FVG that has been "inverted" — former bullish FVG now used as resistance, former bearish FVG now used as support. Algorithm always references these inverted zones.\n\n4. BALANCED PRICE RANGE (BPR):\nThe overlap between a bearish FVG above and a bullish FVG below. Algorithm frequently returns here before continuing the primary move.\n\nPRACTICAL APPLICATION:\nWhen CE, OTE zone, OB, and IFVG all appear at the same price level — that is maximum conviction. Multiple forms of confluence can increase a trader's confidence, but they do not guarantee a reaction.`,
         highlight: '📌 Four delivery arrays: CE (FVG midpoint), IOFED (OTE zone), IFVG (inverted FVG), BPR (balanced price range). Multiple arrays at one level = maximum conviction.',
       },
       {
         title: 'Time and Price — The Algorithmic Clock',
-        content: `THE MIDNIGHT OPEN CYCLE:\nThe algorithm resets at midnight EST. The midnight price becomes the day's anchor. The algorithm delivers price away from this anchor and often returns to it before close.\n\nTHE QUARTERLY SHIFT:\nEvery quarter (January, April, July, October), the algorithm shifts its macro delivery bias. Mark the first trading day of each quarter — often coincides with significant reversals.\n\nTHE NEW WEEK OPENING GAP (NWOG):\nSunday's open vs. Friday's close. If there is a gap — the algorithm WILL fill it during the week with extremely high probability (ICT claims 85%+). Mark the NWOG every Sunday.\n\nTHE NEW MONTH OPENING GAP (NMOG):\nSame principle monthly. The first trading day creates an anchor. Price frequently returns to test this level before the month's primary move.\n\nFRACTAL TIME:\nJust as price structure is fractal, time structure is fractal. The AMD pattern over a day also plays out over a week (Monday accumulate, Tuesday manipulate, Thursday-Friday distribute) and over a quarter.`,
-        highlight: '📌 Time is as important as price. Mark Midnight Open, NWOG, and NMOG every week. These are where the algorithm resets. Gaps ALWAYS get filled. Always.',
+        content: `THE MIDNIGHT OPEN CYCLE:\nThe algorithm resets at midnight EST. The midnight price becomes the day's anchor. The algorithm delivers price away from this anchor and often returns to it before close.\n\nTHE QUARTERLY SHIFT:\nEvery quarter (January, April, July, October), the algorithm shifts its macro delivery bias. Mark the first trading day of each quarter — often coincides with significant reversals.\n\nTHE NEW WEEK OPENING GAP (NWOG):\nSunday's open vs. Friday's close. If there is a gap — the framework describes the gap as a potential weekly reference; any stated historical probability should be independently verified before relying on it. Mark the NWOG every Sunday.\n\nTHE NEW MONTH OPENING GAP (NMOG):\nSame principle monthly. The first trading day creates an anchor. Price frequently returns to test this level before the month's primary move.\n\nFRACTAL TIME:\nJust as price structure is fractal, time structure is fractal. The AMD pattern over a day also plays out over a week (Monday accumulate, Tuesday manipulate, Thursday-Friday distribute) and over a quarter.`,
+        highlight: '📌 Time is as important as price. Mark Midnight Open, NWOG, and NMOG every week. These are where the algorithm resets. Gaps can fill, but a fill is not guaranteed.',
       },
       {
         title: 'The Five Algorithmic Patterns',
