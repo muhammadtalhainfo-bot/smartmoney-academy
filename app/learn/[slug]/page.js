@@ -38,6 +38,16 @@ export default async function SEOGuide({ params }) {
     author:{'@type':'Organization',name:'ICT Flow',url:'https://ictflow.com'},
     publisher:{'@type':'Organization',name:'ICT Flow',url:'https://ictflow.com'},
     isPartOf:{'@type':'WebSite',name:'ICT Flow',url:'https://ictflow.com'},
+  };
+
+  const breadcrumbSchema = {
+    '@context':'https://schema.org',
+    '@type':'BreadcrumbList',
+    itemListElement:[
+      {'@type':'ListItem',position:1,name:'ICT Flow',item:'https://ictflow.com'},
+      {'@type':'ListItem',position:2,name:'ICT Trading Guides',item:'https://ictflow.com/learn'},
+      {'@type':'ListItem',position:3,name:page.title,item:`https://ictflow.com/learn/${page.slug}`},
+    ],
   }
 
   return (
@@ -85,6 +95,7 @@ export default async function SEOGuide({ params }) {
         </section>
 
         <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema)}} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(breadcrumbSchema)}} />
       </article>
     </main>
   )
