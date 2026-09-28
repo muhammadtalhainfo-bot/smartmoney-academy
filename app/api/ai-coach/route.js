@@ -4,6 +4,27 @@ import { NextResponse } from 'next/server';
 
 export const runtime = 'nodejs';
 
+const RATE_WINDOW_MS = 10 * 60 * 1000;
+const RATE_LIMIT = 10;
+const rateBuckets = new Map();
+
+function rateLimited(userId) {
+  const now = Date.now();
+  const recent = (rateBuckets.get(userId) || []).filter((time) => now - time < RATE_WINDOW_MS);
+  if (recent.length >= RATE_LIMIT) {
+    rateBuckets.set(userId, recent);
+    return true;
+  }
+  recent.push(now);
+  rateBuckets.set(userId, recent);
+  if (rateBuckets.size > 5000) {
+    for (const [key, times] of rateBuckets) {
+      if (!times.some((time) => now - time < RATE_WINDOW_MS)) rateBuckets.delete(key);
+    }
+  }
+  return false;
+}
+
 const ALLOWED_KEYS = [
   'total', 'winRate', 'avgRR', 'expectancy', 'netPnl', 'maxDD',
   'consistencyScore', 'topMistakes', 'bestSession', 'worstSession',
@@ -39,6 +60,9 @@ export async function POST(req) {
     const { data: { user }, error: authError } = await supabase.auth.getUser();
     if (authError || !user) {
       return NextResponse.json({ error: 'Authentication required' }, { status: 401 });
+    }
+    if (rateLimited(user.id)) {
+      return NextResponse.json({ error: 'AI Coach rate limit reached. Try again later.' }, { status: 429 });
     }
 
     const body = await req.json();
