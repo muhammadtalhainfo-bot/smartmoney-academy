@@ -17,12 +17,12 @@
 
 ## Required environment variables
 
-Copy `.env.example` into your deployment environment and fill the values you actually use:
+The repository does not commit real secrets. Add these variables directly in Vercel (or your deployment provider) and fill only the values you actually use:
 
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 - `SUPABASE_SERVICE_KEY` (server-only)
-- `FINNHUB_API_KEY` (server-only)
+- `FINNHUB_API_KEY` (server-only, only if market data is enabled)
 - `STRIPE_SECRET_KEY`
 - `STRIPE_WEBHOOK_SECRET`
 - `NEXT_PUBLIC_STRIPE_MONTHLY_PRICE`
@@ -30,6 +30,9 @@ Copy `.env.example` into your deployment environment and fill the values you act
 - `NEXT_PUBLIC_APP_URL`
 - `ONESIGNAL_REST_API_KEY` (server-only)
 - `NEXT_PUBLIC_ADSENSE_CLIENT`
+- `NEXT_PUBLIC_ADSENSE_SLOT` (the ad slot ID used by `AdSlot.js`)
+- `ANTHROPIC_API_KEY` (server-only, required for Journal AI Coach)
+- `ADMIN_PASSWORD` (server-only, required for admin login)
 
 `NEXT_PUBLIC_ADSENSE_CLIENT` should be the AdSense publisher/client value, for example `ca-pub-1234567890123456`.
 
