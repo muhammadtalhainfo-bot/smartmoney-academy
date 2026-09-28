@@ -47,7 +47,7 @@ async function fetchTickerData() {
 export async function GET() {
   try {
     const data = await fetchTickerData();
-    return Response.json({ data, timestamp: new Date().toISOString() }, {\n      headers: { 'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=300' },\n    });
+    return Response.json({ data, timestamp: new Date().toISOString() });
   } catch {
     return Response.json({ data: [], timestamp: new Date().toISOString() });
   }
