@@ -78,7 +78,7 @@ export default function CertificatePage() {
                 YOUR <span className="shine">PROGRESS</span>
               </h1>
               <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '15px', fontWeight: 300 }}>
-                Complete all 38 modules to earn your certificate.
+                Complete all 14 modules to earn your certificate.
               </p>
             </div>
 
@@ -92,7 +92,7 @@ export default function CertificatePage() {
                 <div style={{ height: '100%', width: `${progress}%`, background: 'linear-gradient(90deg,#8A6B28,#E8C547)', borderRadius: '100px', transition: 'width 0.5s' }} />
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '10px' }}>
-                {Array.from({ length: 38 }, (_, i) => (
+                {Array.from({ length: TOTAL_MODULES }, (_, i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', borderRadius: '8px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)' }}>
                     <span style={{ fontSize: '14px' }}>{i < completed ? '✅' : '⬜'}</span>
                     <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: i < completed ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.55)' }}>MODULE {String(i + 1).padStart(2, '0')}</span>
@@ -139,7 +139,7 @@ export default function CertificatePage() {
               <div style={{ fontFamily: 'Georgia, serif', fontSize: '14px', color: '#666', marginBottom: '24px', lineHeight: 1.8 }}>
                 has successfully completed the<br />
                 <strong style={{ color: '#1a1a1a' }}>ICT & Smart Money Concepts Curriculum</strong><br />
-                comprising all 38 modules and 203+ lessons
+                comprising all 14 modules and 203+ lessons
               </div>
 
               <div style={{ display: 'flex', justifyContent: 'center', gap: '32px', marginBottom: '32px' }}>
