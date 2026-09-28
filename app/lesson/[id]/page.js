@@ -397,7 +397,7 @@ Role: DISTRIBUTION. The real, sustained directional move. This is where institut
 
 London Close Killzone (10:00 AM – 12:00 PM EST):
 Role: REVERSAL / PROFIT TAKING. As London banks close their books, they take profits on positions opened during the London Killzone. This creates a reliable retracement or reversal of the NY AM move. ICT traders either close positions here or look for a fade trade.`,
-        highlight: '📌 London = fake out (Judas). NY AM = real move. This two-step pattern (manipulation then distribution) happens almost every trading day.',
+        highlight: '📌 London = fake out (Judas). NY AM = real move. This two-step pattern is commonly taught within the AMD framework; its occurrence and usefulness should be evaluated across the market and session being studied.',
       },
       {
         title: 'ICT Macro Times',
@@ -455,8 +455,8 @@ This simple framework alone — just trading the Asian range sweep + reversal �
     intro: `The Power of Three (PO3) — also known as AMD (Accumulate, Manipulate, Distribute) — is ICT's model for how every single trading day is engineered by institutional participants. Once you understand this three-act script, you will stop being confused by price action and start reading the daily narrative with clarity. Most losing days happen because traders fight this structure instead of flowing with it.`,
     sections: [
       {
-        title: 'The Three Acts of Every Trading Day',
-        content: `ICT says every trading day follows a three-act structure, each corresponding to a specific session:
+        title: 'The Three Acts of a Trading Day',
+        content: `The AMD framework describes a three-phase structure that traders may use to organize a session narrative:
 
 ACT 1 — ACCUMULATION (Asian Session, 8 PM – 12 AM EST):
 Institutions quietly build positions. Price consolidates in a tight range. Don't trade here — there's no direction, just noise. But DO mark the range because the high and low become critical levels for the next two acts.
@@ -598,8 +598,8 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
       },
       {
         title: 'Entry Model 2: The Order Block Entry',
-        content: `The Order Block entry is used when price returns to the last opposing candle before a strong move.\n\nTHE SEQUENCE:\nStep 1 — Identify the OB: the last bearish candle before the bullish displacement\nStep 2 — Mark the OB zone: high and low of that candle\nStep 3 — Wait for price to pull back INTO the OB during a killzone\nStep 4 — Look for LTF BOS or FVG forming within the OB\nStep 5 — Enter at the 50% of the OB candle\nStep 6 — Stop: below the bottom of the OB\nStep 7 — Target: Next liquidity pool\n\nOB REFINEMENT: The most precise OB entry is the first return (mitigation). Once mitigated, the OB loses power. If price sweeps through — exit immediately.`,
-        highlight: '📌 OB entries are highest quality on the FIRST return (mitigation). Enter at 50% of the OB candle. Stop below the OB. If price sweeps through — exit.',
+        content: `The Order Block entry is used when price returns to the last opposing candle before a strong move.\n\nTHE SEQUENCE:\nStep 1 — Identify the OB: the last bearish candle before the bullish displacement\nStep 2 — Mark the OB zone: high and low of that candle\nStep 3 — Wait for price to pull back INTO the OB during a killzone\nStep 4 — Look for LTF BOS or FVG forming within the OB\nStep 5 — Enter at the 50% of the OB candle\nStep 6 — Stop: below the bottom of the OB\nStep 7 — Target: Next liquidity pool\n\nOB REFINEMENT: Traders often study the first return to an Order Block as a potential mitigation entry; test this condition against your own data rather than assuming it has universal priority. If price sweeps through — exit immediately.`,
+        highlight: '📌 📌 Some ICT traders prioritize the first return to an OB. Define the entry, invalidation and management rules in advance and validate them with historical data.',
       },
       {
         title: 'Entry Model 3: The Silver Bullet',
@@ -855,8 +855,8 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
       },
       {
         title: 'Backtesting — Validate Before Risking Money',
-        content: `Before trading live, validate your plan through backtesting — reviewing historical data and marking every instance where your entry criteria triggers.\n\nHOW TO BACKTEST AN ICT PLAN:\n\nStep 1 — Choose a tool:\nTradingView's replay function (free) is the best option for manual backtesting.\n\nStep 2 — Set the timeframe:\nGo back 6-12 months on NAS100. Start the replay.\n\nStep 3 — Apply your checklist:\nFor every day, perform top-down analysis. When 10 AM arrives, watch for the Silver Bullet sequence.\n\nStep 4 — Record every trade:\nEntry price, stop, target, outcome, R:R achieved, all criteria present?\n\nStep 5 — After 100 trades, analyze:\n• Win rate: above 40% with 2:1 R:R = profitable\n• Average R on winners\n• Maximum consecutive losses\n• Most common failure modes\n\nStep 6 — Refine and retest:\nTighten criteria that most often appear in losers. Retest 50 more trades.\n\nMINIMUM: 100 backtested trades before any live trading. Non-negotiable.`,
-        highlight: '📌 Backtest 100 trades before going live. Use TradingView replay. Record every triggered trade. Analyze win rate, R:R, and failure patterns. Only trade live after 100 backtested trades.',
+        content: `Before trading live, validate your plan through backtesting — reviewing historical data and marking every instance where your entry criteria triggers.\n\nHOW TO BACKTEST AN ICT PLAN:\n\nStep 1 — Choose a tool:\nTradingView's replay function (free) is the best option for manual backtesting.\n\nStep 2 — Set the timeframe:\nGo back 6-12 months on NAS100. Start the replay.\n\nStep 3 — Apply your checklist:\nFor every day, perform top-down analysis. When 10 AM arrives, watch for the Silver Bullet sequence.\n\nStep 4 — Record every trade:\nEntry price, stop, target, outcome, R:R achieved, all criteria present?\n\nStep 5 — After 100 trades, analyze:\n• Evaluate win rate together with average win/loss size and expectancy; profitability depends on the full distribution of outcomes and costs.\n• Average R on winners\n• Maximum consecutive losses\n• Most common failure modes\n\nStep 6 — Refine and retest:\nTighten criteria that most often appear in losers. Retest 50 more trades.\n\nUse a sufficiently large, relevant sample before risking meaningful capital; there is no universal trade-count threshold that guarantees validation.`,
+        highlight: '📌 Backtest a meaningful sample before going live. Use replay, record every eligible trade, and review win rate, R:R, drawdown, and failure patterns before risking meaningful capital.',
       },
       {
         title: 'Your 12-Month Roadmap',
