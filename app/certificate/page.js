@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import { createClient } from '@/lib/supabase';
 import Footer from '@/app/components/Footer';
+import { MODULES } from '@/lib/curriculum';
 
 const TOTAL_MODULES = 38;
 
@@ -33,7 +34,8 @@ export default function CertificatePage() {
         .eq('id', user.id)
         .single();
 
-      setCompleted((completions || []).length);
+      const completedModuleIds = new Set((completions || []).map(c => Number(c.lesson_id)).filter(id => MODULES.some(m => m.id === id)));
+      setCompleted(completedModuleIds.size);
       setProfile(prof);
       setLoading(false);
     }
