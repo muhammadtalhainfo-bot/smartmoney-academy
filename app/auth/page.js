@@ -170,7 +170,7 @@ function AuthPageInner() {
 {!isLogin && (
               <div>
                 <label style={{ fontFamily: 'DM Mono', fontSize: '10px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', display: 'block', marginBottom: '8px' }}>Username</label>
-                <input className="auth-input" type="text" placeholder="your_trader_name" value={username} onChange={e => setUsername(e.target.value)} />
+                <input className="auth-input" type="text" placeholder="your_trader_name" value={username} maxLength={30} onChange={e => setUsername(e.target.value)} />
               </div>
             )}
               <input className="auth-input" type="email" placeholder="you@example.com" value={email} onChange={e => setEmail(e.target.value)} />
