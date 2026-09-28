@@ -1,7 +1,6 @@
 'use client';
 import { MODULES } from '@/lib/curriculum';
-import { createClient } from '@/lib/supabase';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
@@ -181,21 +180,6 @@ export default function CoursesPage() {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const [activeFilter, setActiveFilter] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
-  const [completedIds, setCompletedIds] = useState([]);
-
-  useEffect(() => {
-    async function loadProgress() {
-      const supabase = createClient();
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session) return;
-      const { data } = await supabase
-        .from('lesson_completions')
-        .select('lesson_id')
-        .eq('user_id', session.user.id);
-      if (data) setCompletedIds(data.map(d => d.lesson_id));
-    }
-    loadProgress();
-  }, []);
 
   const filtered = MODULES.filter(m => {
     const q = searchTerm.trim().toLowerCase();
