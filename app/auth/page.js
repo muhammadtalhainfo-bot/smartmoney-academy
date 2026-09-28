@@ -104,10 +104,11 @@ function AuthPageInner() {
   };
 
   const handleForgotPassword = async () => {
-    if (!forgotEmail) { setError('Enter your email first'); return; }
+    const normalizedForgotEmail = forgotEmail.trim().toLowerCase();
+    if (!normalizedForgotEmail || normalizedForgotEmail.length > 254) { setError('Enter a valid email address'); return; }
     setLoading(true);
     const supabase = createClient();
-    const { error } = await supabase.auth.resetPasswordForEmail(forgotEmail, {
+    const { error } = await supabase.auth.resetPasswordForEmail(normalizedForgotEmail, {
       redirectTo: 'https://ictflow.com/auth/reset',
     });
     setLoading(false);
