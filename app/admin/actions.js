@@ -6,8 +6,8 @@ import crypto from 'node:crypto';
 const COOKIE_NAME = 'ictflow_admin_session';
 const SESSION_TTL = 8 * 60 * 60;
 
-function tokenFor(secret) {
-  return crypto.createHmac('sha256', secret).update('ictflow-admin-v1').digest('hex');
+function tokenFor(secret, issuedAt) {
+  return `${issuedAt}.${crypto.createHmac('sha256', secret).update(`ictflow-admin-v1:${issuedAt}`).digest('hex')}`;
 }
 
 function sameSecret(a, b) {
@@ -27,7 +27,8 @@ export async function loginAdmin(password) {
   }
 
   const store = await cookies();
-  store.set(COOKIE_NAME, tokenFor(secret), {
+  const issuedAt = Math.floor(Date.now() / 1000);
+  store.set(COOKIE_NAME, tokenFor(secret, issuedAt), {
     httpOnly: true,
     secure: true,
     sameSite: 'lax',
@@ -44,7 +45,13 @@ export async function getAdminSession() {
 
   const store = await cookies();
   const value = store.get(COOKIE_NAME)?.value || '';
-  return { ok: sameSecret(value, tokenFor(secret)) };
+  const [issuedAtText, signature] = value.split('.');
+  const issuedAt = Number(issuedAtText);
+  const now = Math.floor(Date.now() / 1000);
+  if (!Number.isSafeInteger(issuedAt) || !signature || issuedAt > now || now - issuedAt > SESSION_TTL) {
+    return { ok: false };
+  }
+  return { ok: sameSecret(value, tokenFor(secret, issuedAt)) };
 }
 
 export async function logoutAdmin() {
@@ -53,7 +60,7 @@ export async function logoutAdmin() {
     httpOnly: true,
     secure: true,
     sameSite: 'lax',
-    path: '/admin',
+    path: '/',
     maxAge: 0,
   });
 }
