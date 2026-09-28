@@ -31,7 +31,7 @@ export async function loginAdmin(password) {
     httpOnly: true,
     secure: true,
     sameSite: 'lax',
-    path: '/admin',
+    path: '/',
     maxAge: SESSION_TTL,
   });
 
