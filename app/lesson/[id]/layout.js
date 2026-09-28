@@ -8,7 +8,7 @@ export function generateStaticParams() {
 const LESSONS_META = {
   // ── Beginner (IDs 1–6) ──────────────────────────────────────────
   1:  { title: 'Market Structure', description: 'Learn ICT Market Structure — HH/HL, BOS, ChoCH and MSS. Understand how price creates trends, breaks structure, and signals reversals. The foundation of every ICT trade setup.' },
-  2:  { title: 'Liquidity Concepts', description: 'Study how ICT describes liquidity, including BSL/SSL, equal highs and lows, and the framework's interpretation of how price may interact with areas where orders cluster.' },
+  2:  { title: 'Liquidity Concepts', description: 'Study how ICT describes liquidity, including BSL/SSL, equal highs and lows, and the framework interpretation of how price may interact with areas where orders cluster.' },
   3:  { title: 'Fair Value Gaps (FVG)', description: 'Master Fair Value Gaps — the most-traded ICT concept. Learn BISI, SIBI, Consequent Encroachment and how 3-candle imbalances act as magnetic price entry zones.' },
   4:  { title: 'Order Blocks', description: 'Learn the ICT Order Block concept, including how the framework interprets these zones, plus Breakers and Mitigation Blocks.' },
   5:  { title: 'Killzones & Macro Times', description: 'Study ICT Killzones and Macro Times, including the London, New York AM, Silver Bullet and Asian Range concepts.' },
