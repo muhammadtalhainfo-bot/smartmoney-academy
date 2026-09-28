@@ -8,6 +8,24 @@ import ModuleBanner from '@/app/components/ModuleBanner';
 
 const CATEGORIES = ['All', 'Beginner', 'Intermediate', 'Advanced', 'Strategy', 'Psychology', 'News', 'Analysis'];
 
+const blogSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'ICT Trading Blog',
+  description: 'ICT trading articles, strategy guides and educational insights from ICT Flow.',
+  url: 'https://ictflow.com/blog',
+  isPartOf: { '@type': 'WebSite', name: 'ICT Flow', url: 'https://ictflow.com' },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: POSTS.map((post, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: post.title,
+      url: `https://ictflow.com/blog/${post.slug}`,
+    })),
+  },
+};
+
 export default function BlogPage() {
   const [active, setActive] = useState('All');
 
@@ -36,6 +54,7 @@ export default function BlogPage() {
       `}</style>
 
       <Navbar active="/blog" />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }} />
 
       <section style={{ padding: '64px 24px 40px', borderBottom: '1px solid rgba(232,197,71,0.95)' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', textAlign: 'center' }}>
