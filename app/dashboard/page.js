@@ -125,7 +125,7 @@ export default function DashboardPage() {
     })
     .map(m => m.id);
   const overallPct = Math.round((completedModuleIds.length / totalModules) * 100);
-  const xp = profile?.total_xp || 0;
+  const xp = profile?.xp || 0;
   const rankIndex = Math.min(Math.floor(xp / 500), LEVEL_RANKS.length - 1);
   const currentRank = LEVEL_RANKS[rankIndex];
   const nextRank = LEVEL_RANKS[rankIndex + 1] || 'MAX';
