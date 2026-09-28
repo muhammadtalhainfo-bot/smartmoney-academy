@@ -245,19 +245,21 @@ export default function DashboardPage() {
                 </div>
                 <div className="space-y-3">
                   {[
-                    { label: 'Beginner Track', ids: [1,2,3,13], color: '#34D399' },
-                    { label: 'Intermediate Track', ids: [4,5,6,7,8,14], color: '#E8C547' },
-                    { label: 'Advanced Track', ids: [9,10,11,12], color: '#F87171' },
+                    { label: 'Beginner Track', level: 'Beginner', color: '#34D399' },
+                    { label: 'Intermediate Track', level: 'Intermediate', color: '#E8C547' },
+                    { label: 'Advanced Track', level: 'Advanced', color: '#F87171' },
+                    { label: 'SMC Track', level: 'SMC', color: '#FB923C' },
                   ].map((track) => {
-                    const done = track.ids.filter(id => completedModuleIds.includes(id)).length;
+                    const trackIds = ALL_MODULES.filter(m => m.level === track.level).map(m => m.id);
+                    const done = trackIds.filter(id => completedModuleIds.includes(id)).length;
                     return (
                       <div key={track.label}>
                         <div className="flex justify-between mb-1.5">
                           <span className="font-mono-c text-xs" style={{ color: track.color }}>{track.label}</span>
-                          <span className="font-mono-c text-xs" style={{ color: '#808080' }}>{done}/{track.ids.length}</span>
+                          <span className="font-mono-c text-xs" style={{ color: '#808080' }}>{done}/{trackIds.length}</span>
                         </div>
                         <div className="progress-bar-bg h-1.5">
-                          <div className="h-1.5 rounded-full" style={{ width: `${(done / track.ids.length) * 100}%`, background: track.color, transition: 'width 1s ease' }} />
+                          <div className="h-1.5 rounded-full" style={{ width: `${(done / trackIds.length) * 100}%`, background: track.color, transition: 'width 1s ease' }} />
                         </div>
                       </div>
                     );
