@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'ICT & SMC Glossary — 80+ Trading Terms Defined',
+  title: 'ICT & SMC Glossary — 97+ Trading Terms Defined',
   description: 'The complete ICT and Smart Money Concepts glossary. Every term explained clearly — FVG, OB, BOS, ChoCH, AMD, IPDA, MSS, PD Array, BSL, SSL and 97+ more.',
   alternates: { canonical: 'https://ictflow.com/glossary' },
   openGraph: {
@@ -12,8 +12,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ICT Glossary — 80+ Terms | ICT Flow',
-    description: 'Every ICT and SMC term explained. FVG, OB, BOS, ChoCH, AMD, IPDA and 70+ more.',
+    title: 'ICT Glossary — 97+ Terms | ICT Flow',
+    description: 'Every ICT and SMC term explained. FVG, OB, BOS, ChoCH, AMD, IPDA and 97+ more.',
     images: ['https://ictflow.com/og-image.png'],
     creator: '@riskfirsttrad',
   },
