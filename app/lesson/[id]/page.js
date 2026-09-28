@@ -20,7 +20,7 @@ const LESSONS = {
     duration: '18 min read',
     category: 'Foundation',
     imageCaption: 'BOS vs ChoCH — the two most critical market structure signals in ICT',
-    intro: `Before you can trade ICT, you need to understand one thing: price is not random. It moves in a very specific, structured way — and once you learn to read that structure, you will never look at a chart the same way again. Market structure is the foundation of everything in ICT. It tells you the direction price is going, when that direction is changing, and when a new move is starting.`,
+    intro: `Before you can trade ICT, you need to understand one thing: price can exhibit recurring patterns and structure. Learning to read those patterns can provide a framework for interpreting charts. Market structure is the foundation of everything in ICT. It tells you the direction price is going, when that direction is changing, and when a new move is starting.`,
     sections: [
       {
         title: 'What Is Market Structure?',
@@ -31,13 +31,13 @@ In an uptrend, price creates Higher Highs (HH) and Higher Lows (HL). Each new pu
 In a downtrend, price creates Lower Highs (LH) and Lower Lows (LL). Each rally stops lower than the last. Each drop goes deeper. Sellers are in full control.
 
 This sounds simple — and it is. Many retail traders struggle to apply this consistently. They try to buy in downtrends and sell in uptrends and wonder why they keep losing.`,
-        highlight: '📌 Rule #1: Only take buy setups in bullish structure. Only take sell setups in bearish structure. Never fight the structure.',
+        highlight: '📌 Rule #1: Some traders filter setups by higher-timeframe structure; test whether this filter improves your results.',
       },
       {
         title: 'Break of Structure (BOS)',
         content: `A Break of Structure (BOS) happens when price breaks through the most recent swing high (in an uptrend) or swing low (in a downtrend). It confirms that the current trend is continuing.
 
-Here's how to identify a Bullish BOS: Price is in an uptrend (HH, HL sequence). Price pulls back, creates a new Higher Low. Then price pushes up and breaks above the last Higher High. That break above the previous swing high = BOS. This confirms the uptrend is still active and you should be looking for buys.
+Here's how to identify a Bullish BOS: Price is in an uptrend (HH, HL sequence). Price pulls back, creates a new Higher Low. Then price pushes up and breaks above the last Higher High. That break above the previous swing high = BOS. This can support a continuation interpretation; any directional trade should still follow a defined, tested plan.
 
 Bearish BOS is the opposite: price breaks below the most recent swing low, confirming continuation of the downtrend.
 
@@ -48,7 +48,7 @@ The BOS is not your entry signal — it's your confirmation that the trend is st
         title: 'Change of Character (ChoCH / MSS)',
         content: `This is where it gets powerful. A Change of Character (ChoCH) — also called a Market Structure Shift (MSS) — is the signal that the trend is REVERSING.
 
-In a downtrend, price is making LH and LL. Then suddenly, price shoots up and breaks above the most recent Lower High. That break = ChoCH. It means buyers have stepped in aggressively enough to break the bearish structure. The downtrend may be over.
+In a downtrend, price is making LH and LL. Then suddenly, price shoots up and breaks above the most recent Lower High. That break = ChoCH. It means buyers have stepped in aggressively enough to break the bearish structure. This can be an early sign that the prior downtrend may be weakening or changing.
 
 In an uptrend, if price breaks below the most recent Higher Low in one aggressive move — that's a bearish ChoCH. Sellers just took control.
 
@@ -56,7 +56,7 @@ The key difference between BOS and ChoCH is direction:
 • BOS breaks in the direction of the current trend = continuation
 • ChoCH breaks AGAINST the current trend = potential reversal
 
-This is the concept ICT traders use to "catch the turn" — the moment smart money switches from accumulation to distribution.`,
+This is one framework ICT traders use to study potential turning points; interpretations about institutional positioning are not directly observable from price alone.`,
         highlight: '📌 ChoCH = The first warning sign that trend is reversing. Don\'t jump in immediately — wait for confirmation and a PD Array to enter from.',
       },
       {
@@ -69,7 +69,7 @@ Internal Structure (the smaller movements WITHIN the external swings) — these 
 
 For example, you might be looking at a 1-hour bullish trend (external structure). Inside that, on the 5-minute chart, you'll see a mini downtrend creating the pullback. When that internal bearish structure shifts to bullish (internal ChoCH on 5min) — THAT is your precise entry trigger.
 
-This concept of nesting structure inside structure is what separates ICT from basic technical analysis.`,
+This nested view is one way ICT traders distinguish higher-timeframe context from lower-timeframe execution.`,
         highlight: '📌 Higher Timeframe = Bias. Lower Timeframe = Entry. Never enter based on HTF signals alone — drill down for precision.',
       },
       {
@@ -84,8 +84,8 @@ Step 3 — When price pulls back, drop to the 15-minute or 5-minute chart. Watch
 
 Step 4 — After LTF ChoCH, look for a PD Array (FVG, OB, etc.) nearby to enter from. Set your stop below the swing low that caused the ChoCH.
 
-This is a complete top-down analysis framework. Every ICT trade starts here.`,
-        highlight: '📌 The trade entry is on the LOWER timeframe, but the bias comes from the HIGHER timeframe. This is non-negotiable in ICT.',
+This is one possible top-down analysis framework; traders can adapt the timeframes and rules to their instrument and tested plan.`,
+        highlight: '📌 The trade entry is on the LOWER timeframe, but the bias comes from the HIGHER timeframe. This is a commonly emphasized ICT guideline; traders should test the timeframes and rules that fit their plan.',
       },
     ],
     quiz: [
@@ -113,7 +113,7 @@ This is a complete top-down analysis framework. Every ICT trade starts here.`,
 
 Think about it this way. A hedge fund wants to buy 10,000 lots of EURUSD. They can't just hit the buy button — there aren't enough sellers at one price level to fill an order that large without moving the market against them. So what do they do? They engineer a move DOWN to where retail traders' stop-losses are sitting. Those stop-losses trigger as market sell orders — and the institution buys every single one of them. That's their fill. Then price reverses and shoots up.
 
-This is the entire game. Every major move starts with a liquidity hunt.`,
+This is a central ICT interpretation of liquidity; not every market move needs to be explained by a liquidity hunt.`,
         highlight: '📌 Banks don\'t react to price — they engineer price to reach liquidity. Every major reversal is preceded by a stop hunt.',
       },
       {
@@ -128,7 +128,7 @@ When price approaches BSL from below, institutions use it to SELL into. They let
 You'll recognize BSL as: Equal Highs (EQH) on a chart, previous day/week highs, obvious resistance levels that everyone is watching, and round numbers like 1.1000 or 2000 on Gold.
 
 A common liquidity-sweep example is price approaching BSL, briefly trading above it, then potentially reversing. ICT calls this the "stop hunt" or "liquidity sweep."`,
-        highlight: '📌 Every time you see price spike above an obvious high and immediately reverse — that was a BSL sweep. Institutions just filled their sells.',
+        highlight: '📌 Every time you see price spike above an obvious high and immediately reverse — that may be interpreted as a BSL sweep; institutional order flow cannot be confirmed from the chart alone.',
       },
       {
         title: 'Sell-Side Liquidity (SSL)',
@@ -137,7 +137,7 @@ A common liquidity-sweep example is price approaching BSL, briefly trading above
 • Sell-stop orders from breakout sellers are resting
 • Equal lows, swing lows, support levels
 
-Institutions use SSL to BUY from. They push price down below obvious support (triggering retail stops), fill their massive buy orders from those panicking sellers, then reverse price upward.
+ICT teachings commonly interpret sell-side liquidity as an area where buy-side orders may be filled; actual participant intent is not directly observable. They push price down below obvious support (triggering retail stops), fill their massive buy orders from those panicking sellers, then reverse price upward.
 
 You'll identify SSL as: Equal Lows (EQL), previous day/week lows, obvious support levels, and round numbers below current price.
 
@@ -148,9 +148,9 @@ The key insight: when you place your stop-loss below "support," you are literall
         title: 'Equal Highs & Equal Lows (EQH / EQL)',
         content: `Equal Highs (EQH) and Equal Lows (EQL) are among the most powerful liquidity signals on any chart. When price creates two or more highs/lows at almost the same price level, it creates a massive pool of stops — because every retail trader can see it, and most will place their stops just beyond it.
 
-This is actually a trap set by smart money. They WANT price to look like it's double-topping or double-bottoming. Retail sells the double top and buys the double bottom. Their stops cluster just beyond those levels. Then institutions sweep through, collect all that liquidity, and drive price in the opposite direction.
+ICT teachings may interpret visible equal highs/lows as liquidity areas; calling them deliberate traps is an interpretation rather than a directly verified mechanism. They WANT price to look like it's double-topping or double-bottoming. Retail sells the double top and buys the double bottom. Their stops cluster just beyond those levels. Then institutions sweep through, collect all that liquidity, and drive price in the opposite direction.
 
-In ICT terminology: EQH = resting BSL above. EQL = resting SSL below. When you see equal highs or lows on your chart, your thought should be: "Price will probably come here to sweep this before the real move."`,
+In ICT terminology: EQH = resting BSL above. EQL = resting SSL below. When you see equal highs or lows on your chart, your thought should be: "Some traders watch these levels for potential sweeps, but a sweep or reversal is not guaranteed."`,
         highlight: '📌 Equal Highs and Equal Lows are not resistance/support — they are LIQUIDITY MAGNETS. Expect a sweep before major moves.',
       },
       {
@@ -168,7 +168,7 @@ Step 4 — After the sweep, wait for a ChoCH or BOS to the upside on the LTF. Th
 Step 5 — Enter from a nearby FVG or OB that forms after the sweep/ChoCH.
 
 A commonly studied ICT sequence is Liquidity Sweep → Structure Shift → Entry from a PD Array. This is the core of the 2022 Model, Silver Bullet, and virtually every other ICT entry model.`,
-        highlight: '📌 The setup: SSL Sweep (fake breakdown) → Bullish ChoCH → Buy from FVG/OB. This is the cleanest ICT trade there is.',
+        highlight: '📌 Example setup: SSL sweep → bullish structure shift → FVG/OB entry. Treat this as a testable setup, not a guaranteed or universally superior trade.',
       },
     ],
     quiz: [
@@ -203,16 +203,16 @@ Here's how to identify a Bullish FVG:
 If Candle 3's low is ABOVE Candle 1's high — there is a gap where price skipped. That gap is the FVG. Price passed through it so fast that buyers and sellers couldn't meet there. The market is "imbalanced" in that zone.
 
 Bearish FVG is the mirror: Candle 3's HIGH is below Candle 1's LOW after a large bearish displacement candle.`,
-        highlight: '📌 The FVG is the gap between Candle 1\'s high and Candle 3\'s low (bullish). Mark it on your chart — price WILL return to this zone.',
+        highlight: '📌 The FVG is the gap between Candle 1\'s high and Candle 3\'s low (bullish). Mark it on your chart — price may revisit this zone; revisit frequency and reaction should be tested.',
       },
       {
         title: 'Why Does Price Return to FVGs?',
-        content: `Price returns to FVGs because of the mechanics of how large institutional orders get filled. When a bank places a massive order, it creates a displacement move — price moves so fast that many orders can't get filled at those levels. The algorithm is programmed to return to these inefficiencies to allow full order completion.
+        content: `Price returns to FVGs because of the mechanics of how large institutional orders get filled. When a bank places a massive order, it creates a displacement move — price moves so fast that many orders can't get filled at those levels. The Some ICT teachings describe this as an algorithmic explanation, but it is not a directly verified mechanism.
 
-Think of it this way: imagine you're at an auction and the bidding jumps from $100 to $150 in one instant. Someone missed their chance to bid at $120. The market comes back to that $110-$130 zone to let them transact. That's the FVG.
+Think of it this way: imagine you're at an auction and the bidding jumps from $100 to $150 in one instant. Someone missed their chance to bid at $120. A market may revisit prior prices, but the auction analogy does not establish why any specific FVG will be revisited. That's the FVG.
 
 For ICT traders, FVGs can serve as potential areas of interest or confluence. Their usefulness should be evaluated with market context and personal testing rather than assumed to outperform other forms of analysis.`,
-        highlight: '📌 FVGs aren\'t just patterns — they represent unfilled institutional orders. The algorithm returns to complete them. This is why they work.',
+        highlight: '📌 FVGs aren\'t just patterns — they represent unfilled institutional orders. Some ICT teachings use an algorithmic explanation for FVG behavior, but the mechanism and performance should be treated as a hypothesis to test.',
       },
       {
         title: 'Bullish vs Bearish FVG',
@@ -220,16 +220,16 @@ For ICT traders, FVGs can serve as potential areas of interest or confluence. Th
 • Forms during a bullish displacement (large upward candle)
 • Located BELOW current price after the move
 • Price comes back down into this zone = retracement
-• In a bullish bias, this is a HIGH-PROBABILITY buy zone
+• In a bullish bias, this can be a potential buy area when supported by a tested setup
 • Entry: wait for price to enter the FVG, look for a reaction candle
 
 Bearish FVG (Sell from here in a bearish bias):
 • Forms during a bearish displacement (large downward candle)
 • Located ABOVE current price after the move
 • Price comes back up into this zone = retracement
-• In a bearish bias, this is a HIGH-PROBABILITY sell zone
+• In a bearish bias, this can be a potential sell area when supported by a tested setup
 
-The key rule: ONLY use bullish FVGs for buys when your HTF bias is bullish. ONLY use bearish FVGs for sells in bearish bias. Using an FVG against the HTF bias is one of the most common mistakes ICT beginners make.`,
+A common filtering rule is to align FVG direction with higher-timeframe bias; test whether this improves your setup quality. Using an FVG against the HTF bias is one of the most common mistakes ICT beginners make.`,
         highlight: '📌 FVG direction must match your HTF bias. A bullish FVG in a bearish structure is NOT a buy signal — it\'s a trap.',
       },
       {
@@ -240,7 +240,7 @@ Consequent Encroachment (CE): The 50% midpoint of the FVG. Often the deepest pri
 
 Inverse FVG (IFVG): When an FVG gets fully filled and price passes through it — the FVG "inverts" its polarity. A bullish FVG that gets completely filled becomes a bearish resistance zone on re-test.
 
-Balanced Price Range (BPR): When a bullish FVG and bearish FVG overlap on different timeframes, creating an exceptionally strong zone that is twice as powerful as a single FVG.
+Balanced Price Range (BPR): When a bullish FVG and bearish FVG overlap on different timeframes, creating an exceptionally strong zone that is a higher-confluence zone in this framework; any performance difference should be tested.
 
 1st Presented FVG: In any displacement, the FIRST FVG that forms is the most important. ICT specifically targets the first one because it is closest to where the institutional order was placed.
 
@@ -266,7 +266,7 @@ Step 6 — Stop Loss. Below the low of the FVG (for bullish trades). This invali
 
 Step 7 — Target. The next liquidity pool above (BSL, previous high, etc.).
 
-Risk:Reward is typically 1:3 or better on FVG trades.`,
+Risk/reward outcomes vary by setup and market; use the target and stop rules defined by your tested plan.`,
         highlight: '📌 The cleanest entry in ICT: SSL Sweep → Bullish Displacement → FVG forms → Price returns to FVG → Enter long at CE.',
       },
     ],
@@ -729,7 +729,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
       },
       {
         title: 'Time and Price — The Algorithmic Clock',
-        content: `THE MIDNIGHT OPEN CYCLE:\nThe algorithm resets at midnight EST. The midnight price becomes the day's anchor. The algorithm delivers price away from this anchor and often returns to it before close.\n\nTHE QUARTERLY SHIFT:\nEvery quarter (January, April, July, October), the algorithm shifts its macro delivery bias. Mark the first trading day of each quarter — often coincides with significant reversals.\n\nTHE NEW WEEK OPENING GAP (NWOG):\nSunday's open vs. Friday's close. If there is a gap — the framework describes the gap as a potential weekly reference; any stated historical probability should be independently verified before relying on it. Mark the NWOG every Sunday.\n\nTHE NEW MONTH OPENING GAP (NMOG):\nSame principle monthly. The first trading day creates an anchor. Price frequently returns to test this level before the month's primary move.\n\nFRACTAL TIME:\nJust as price structure is fractal, time structure is fractal. The AMD pattern over a day also plays out over a week (Monday accumulate, Tuesday manipulate, Thursday-Friday distribute) and over a quarter.`,
+        content: `THE MIDNIGHT OPEN CYCLE:\nThe some ICT teachings describe a reset/reference point around midnight New York time. The midnight price becomes the day's anchor. The algorithm delivers price away from this anchor and often returns to it before close.\n\nTHE QUARTERLY SHIFT:\nEvery quarter (January, April, July, October), the algorithm shifts its macro delivery bias. Mark the first trading day of each quarter — often coincides with significant reversals.\n\nTHE NEW WEEK OPENING GAP (NWOG):\nSunday's open vs. Friday's close. If there is a gap — the framework describes the gap as a potential weekly reference; any stated historical probability should be independently verified before relying on it. Mark the NWOG every Sunday.\n\nTHE NEW MONTH OPENING GAP (NMOG):\nSame principle monthly. The first trading day creates an anchor. Price frequently returns to test this level before the month's primary move.\n\nFRACTAL TIME:\nJust as price structure is fractal, time structure is fractal. The AMD pattern over a day also plays out over a week (Monday accumulate, Tuesday manipulate, Thursday-Friday distribute) and over a quarter.`,
         highlight: '📌 Time is as important as price. Mark Midnight Open, NWOG, and NMOG every week. These are where the algorithm resets. Gaps can fill, but a fill is not guaranteed.',
       },
       {
@@ -752,7 +752,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     duration: '21 min read',
     category: 'Risk Management',
     imageCaption: 'Risk management is the difference between a successful trader and a blown account — ICT\'s rules are non-negotiable',
-    intro: `ICT has said it repeatedly: "Risk management is the only thing that matters." You can have the best entry model in the world, but without proper risk management, you will blow your account. This is not a cliché — it is a mathematical certainty.`,
+    intro: `ICT has said it repeatedly: "Risk management is the only thing that matters." You can have the best entry model in the world, but without proper risk management, you will blow your account. This is a risk-management principle supported by the arithmetic of losses and position sizing, but the specific rule should be adapted to the account and strategy.`,
     sections: [
       {
         title: 'The Math of Survival',
@@ -860,8 +860,8 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
       },
       {
         title: 'Your 12-Month Roadmap',
-        content: `MONTHS 1-2 — BACKTESTING:\n• Backtest 100 Silver Bullet trades on NAS100\n• Journal every trade in a spreadsheet\n• Analyze results and refine entry criteria\n• Goal: understand your plan's statistical edge\n\nMONTHS 3-4 — PAPER TRADING (DEMO):\n• Trade the plan live on demo account\n• Same size, same rules as real money\n• Identify your psychological weak points\n• Goal: 50 consecutive trades following ALL rules\n\nMONTHS 5-6 — MICRO LIVE ACCOUNT:\n• Real money but very small size (0.25% risk)\n• Real money reveals what demo could not\n• Do not increase size until 50 trades completed with all rules\n• Goal: build emotional resilience with real stakes\n\nMONTHS 7-9 — SMALL LIVE ACCOUNT:\n• If profitable on micro → scale to 0.5% risk\n• Strict journaling continues\n• Monthly performance review\n• Goal: consistent monthly profitability\n\nMONTHS 10-12 — STANDARD ACCOUNT:\n• Scale to 1% risk per trade\n• Continue exact same plan that produced results\n• Resist adding new strategies\n• Goal: 3 consecutive profitable months\n\nThe journey is longer than most traders accept. Those who follow this path consistently succeed. Those who skip steps consistently fail.`,
-        highlight: '📌 12-month path: backtest (1-2) → demo (3-4) → micro live (5-6) → small live (7-9) → standard (10-12). Skip steps = skip results. The path is the shortcut.',
+        content: `MONTHS 1-2 — BACKTESTING:\n• Backtest 100 Silver Bullet trades on NAS100\n• Journal every trade in a spreadsheet\n• Analyze results and refine entry criteria\n• Goal: understand your plan's statistical edge\n\nMONTHS 3-4 — PAPER TRADING (DEMO):\n• Trade the plan live on demo account\n• Same size, same rules as real money\n• Identify your psychological weak points\n• Goal: 50 consecutive trades following ALL rules\n\nMONTHS 5-6 — MICRO LIVE ACCOUNT:\n• Real money but very small size (0.25% risk)\n• Real money reveals what demo could not\n• Do not increase size until 50 trades completed with all rules\n• Goal: build emotional resilience with real stakes\n\nMONTHS 7-9 — SMALL LIVE ACCOUNT:\n• If profitable on micro → scale to 0.5% risk\n• Strict journaling continues\n• Monthly performance review\n• Goal: consistent monthly profitability\n\nMONTHS 10-12 — STANDARD ACCOUNT:\n• Scale to 1% risk per trade\n• Continue exact same plan that produced results\n• Resist adding new strategies\n• Goal: 3 consecutive profitable months\n\nThis process can require substantial practice and review; the appropriate pace varies by trader and strategy. Following a structured process can improve consistency, but no roadmap guarantees success, and skipping a step does not guarantee failure.`,
+        highlight: '📌 12-month path: backtest (1-2) → demo (3-4) → micro live (5-6) → small live (7-9) → standard (10-12). Skipping steps can reduce the quality of your testing; there is no guaranteed shortcut to consistent results.',
       },
     ],
     quiz: [
