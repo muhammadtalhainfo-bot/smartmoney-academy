@@ -457,6 +457,36 @@ export default function CoursesPage() {
         </div>
       </section>
 
+      {/* ── SEO LEARNING HUB ── */}
+      <section className="relative z-10 px-6 py-16 border-t" style={{ borderColor: 'var(--border)', background: '#090909' }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-8">
+            <div className="font-mono-c text-xs tracking-widest uppercase mb-2" style={{ color: '#E8C547' }}>Free ICT Guides</div>
+            <h2 className="font-display text-5xl text-white mb-3">MASTER THE CORE CONCEPTS</h2>
+            <p className="text-gray-200 text-sm max-w-2xl" style={{ fontWeight: 300, lineHeight: 1.7 }}>
+              Use these focused guides alongside the curriculum to understand the terminology, build testable rules, and connect concepts across modules.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+            {[
+              ['What Is ICT Trading?', '/learn/what-is-ict-trading'],
+              ['ICT Market Structure', '/learn/ict-market-structure'],
+              ['ICT Liquidity', '/learn/ict-liquidity'],
+              ['Fair Value Gap Trading', '/learn/fair-value-gap-trading'],
+              ['ICT Order Blocks', '/learn/ict-order-block'],
+              ['ICT Silver Bullet', '/learn/ict-silver-bullet'],
+              ['How to Backtest ICT', '/learn/how-to-backtest-ict'],
+              ['ICT Risk Management', '/learn/ict-risk-management'],
+            ].map(([title, href]) => (
+              <Link key={href} href={href} className="rounded-xl p-4 transition-all hover:border-[#E8C547]" style={{ border: '1px solid rgba(232,197,71,0.16)', background: '#0D0D0D', textDecoration: 'none' }}>
+                <span className="text-white text-sm font-medium">{title}</span>
+                <span className="block mt-2 text-xs" style={{ color: '#E8C547' }}>Read guide →</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── BOTTOM CTA ── */}
       <section className="relative z-10 px-6 py-16 border-t" style={{ borderColor: 'var(--border)', background: '#0A0A0A' }}>
         <div className="max-w-2xl mx-auto text-center">
