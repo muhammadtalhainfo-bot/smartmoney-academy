@@ -40,6 +40,48 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default function BlogPostLayout({ children }) {
-  return children;
+export default async function BlogPostLayout({ children, params }) {
+  const { slug } = await params;
+  const post = POSTS.find((item) => item?.slug === slug);
+
+  if (!post) return children;
+
+  const canonical = `https://ictflow.com/blog/${post.slug}`;
+  const published = post.date ? new Date(post.date).toISOString() : undefined;
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.description,
+    image: [post.image
+      ? (post.image.startsWith('http') ? post.image : `https://ictflow.com${post.image}`)
+      : 'https://ictflow.com/og-image.png'],
+    datePublished: published,
+    dateModified: published,
+    author: {
+      '@type': 'Organization',
+      name: 'ICT Flow',
+      url: 'https://ictflow.com/about',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'ICT Flow',
+      url: 'https://ictflow.com',
+      logo: { '@type': 'ImageObject', url: 'https://ictflow.com/favicon-96x96.png' },
+    },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+    articleSection: post.category,
+    url: canonical,
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {children}
+    </>
+  );
 }
