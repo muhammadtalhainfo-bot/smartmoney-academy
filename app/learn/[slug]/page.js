@@ -77,7 +77,11 @@ export default async function SEOGuide({ params }) {
               return related ? <Link key={slug} href={`/learn/${slug}`} style={{color:'#E8C547',border:'1px solid rgba(232,197,71,.25)',padding:'10px 14px',borderRadius:8,textDecoration:'none'}}>{related.title}</Link> : null
             })}
           </div>
-          <p style={{marginTop:24}}><Link href="/courses" style={{color:'#E8C547'}}>Explore the full 38-module curriculum →</Link></p>
+          <div style={{display:'flex',flexWrap:'wrap',gap:10,marginTop:24}}>
+            <Link href="/courses" style={{color:'#E8C547',border:'1px solid rgba(232,197,71,.3)',padding:'11px 15px',borderRadius:8,textDecoration:'none'}}>Explore 38 Modules →</Link>
+            <Link href="/tools" style={{color:'#E8C547',border:'1px solid rgba(232,197,71,.3)',padding:'11px 15px',borderRadius:8,textDecoration:'none'}}>Free Trading Tools →</Link>
+            <Link href="/glossary" style={{color:'#E8C547',border:'1px solid rgba(232,197,71,.3)',padding:'11px 15px',borderRadius:8,textDecoration:'none'}}>ICT Glossary →</Link>
+          </div>
         </section>
 
         <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema)}} />
