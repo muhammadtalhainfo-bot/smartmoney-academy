@@ -304,6 +304,34 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── FREE SEO GUIDES ── */}
+      <section style={{ position:'relative', zIndex:10, padding:'80px 24px', background:'#0A0A0A', borderTop:'1px solid rgba(232,197,71,0.08)' }}>
+        <div style={{ maxWidth:'1100px', margin:'0 auto' }}>
+          <div style={{ display:'flex', alignItems:'flex-end', justifyContent:'space-between', gap:'20px', flexWrap:'wrap', marginBottom:'28px' }}>
+            <div>
+              <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'rgba(232,197,71,0.6)', letterSpacing:'0.15em', marginBottom:'10px' }}>// FREE ICT GUIDES</div>
+              <h2 className="font-display" style={{ fontSize:'clamp(36px, 5vw, 58px)', color:'white', lineHeight:1 }}>LEARN THE <span className="gold-text">CORE CONCEPTS</span></h2>
+            </div>
+            <Link href="/learn" style={{ color:'#E8C547', fontFamily:'DM Mono,monospace', fontSize:'11px', letterSpacing:'0.1em', textDecoration:'none', textTransform:'uppercase' }}>View all guides →</Link>
+          </div>
+          <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(220px, 1fr))', gap:'12px' }}>
+            {[
+              ['What Is ICT Trading?', '/learn/what-is-ict-trading'],
+              ['Market Structure', '/learn/ict-market-structure'],
+              ['Liquidity & Sweeps', '/learn/ict-liquidity'],
+              ['Fair Value Gaps', '/learn/fair-value-gap-trading'],
+              ['Order Blocks', '/learn/ict-order-block'],
+              ['ICT 2022 Model', '/learn/ict-2022-model'],
+            ].map(([title, href]) => (
+              <Link key={href} href={href} className="card-hover" style={{ padding:'18px', borderRadius:'14px', background:'#0F0F0F', textDecoration:'none' }}>
+                <div style={{ color:'white', fontSize:'14px', fontWeight:600, lineHeight:1.4 }}>{title}</div>
+                <div style={{ color:'#E8C547', fontFamily:'DM Mono,monospace', fontSize:'9px', letterSpacing:'0.12em', marginTop:'10px', textTransform:'uppercase' }}>Read guide →</div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── DISCORD CTA ── */}
       <section style={{ position:'relative', zIndex:10, padding:'96px 24px', background:'#080808' }}>
         <div style={{ maxWidth:'700px', margin:'0 auto' }}>
