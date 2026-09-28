@@ -5,7 +5,19 @@ import { NextResponse } from 'next/server'
 export async function GET(request) {
   const { searchParams, origin } = new URL(request.url)
   const code = searchParams.get('code')
-  const next = searchParams.get('next') ?? '/dashboard'
+  const requestedNext = searchParams.get('next') ?? '/dashboard'
+  const safeNext = (() => {
+    if (!requestedNext.startsWith('/') || requestedNext.startsWith('//') || requestedNext.includes('\\\\')) {
+      return '/dashboard'
+    }
+    try {
+      const target = new URL(requestedNext, origin)
+      if (target.origin !== origin) return '/dashboard'
+      return \`${target.pathname}${target.search}${target.hash}\`
+    } catch {
+      return '/dashboard'
+    }
+  })()
 
   if (code) {
     const cookieStore = await cookies()
