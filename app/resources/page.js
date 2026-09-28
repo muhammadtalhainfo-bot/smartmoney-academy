@@ -168,10 +168,6 @@ export default function ResourcesPage() {
                         <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: firm.tagColor, letterSpacing: '0.15em' }}>{firm.tag}</div>
                       </div>
                     </div>
-                    <div style={{ background: `${firm.color}15`, border: `1px solid ${firm.color}30`, borderRadius: '8px', padding: '6px 12px', textAlign: 'right' }}>
-                      <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.1em', marginBottom: '2px' }}>COMMISSION</div>
-                      <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '12px', color: firm.color, fontWeight: 500 }}>{firm.commission}</div>
-                    </div>
                   </div>
                   <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '14px', lineHeight: 1.6, marginBottom: '20px' }}>{firm.desc}</p>
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '20px' }}>
@@ -213,8 +209,8 @@ export default function ResourcesPage() {
                     <div className="font-display" style={{ fontSize: '26px', color: 'white', letterSpacing: '0.05em' }}>{broker.name}</div>
                   </div>
                   <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '14px', lineHeight: 1.6, marginBottom: '20px' }}>{broker.desc}</p>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', marginBottom: '20px' }}>
-                    {[['Commission', broker.commission], ['Spreads', broker.spread], ['Platforms', broker.platforms]].map(([label, val]) => (
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '20px' }}>
+                    {[['Spreads', broker.spread], ['Platforms', broker.platforms]].map(([label, val]) => (
                       <div key={label} style={{ background: 'rgba(255,255,255,0.03)', borderRadius: '8px', padding: '10px 14px' }}>
                         <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.65)', letterSpacing: '0.1em', marginBottom: '4px' }}>{label}</div>
                         <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.8)', fontWeight: 500 }}>{val}</div>
@@ -251,7 +247,7 @@ export default function ResourcesPage() {
                   </div>
                   <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '14px', lineHeight: 1.6, marginBottom: '20px' }}>{tool.desc}</p>
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '20px' }}>
-                    {[['Commission', tool.commission], ['Pricing', tool.price]].map(([label, val]) => (
+                    {[['Pricing', tool.price]].map(([label, val]) => (
                       <div key={label} style={{ background: 'rgba(255,255,255,0.03)', borderRadius: '8px', padding: '10px 14px' }}>
                         <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.65)', letterSpacing: '0.1em', marginBottom: '4px' }}>{label}</div>
                         <div style={{ fontSize: '13px', color: 'rgba(255,255,255,0.8)', fontWeight: 500 }}>{val}</div>
@@ -271,7 +267,7 @@ export default function ResourcesPage() {
         {/* DISCLAIMER */}
         <div style={{ marginTop: '64px', padding: '24px', background: 'rgba(212,168,67,0.03)', border: '1px solid rgba(232,197,71,0.95)', borderRadius: '12px' }}>
           <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, letterSpacing: '0.05em' }}>
-            <span style={{ color: '#E8C547' }}>DISCLAIMER:</span> This page lists external resources for educational convenience. ICT Flow does not receive referral commissions from these links. Provider terms, pricing, and availability can change. Trading financial instruments involves significant risk of loss and is not suitable for all investors. Past performance is not indicative of future results. This is not financial advice.
+            <span style={{ color: '#E8C547' }}>DISCLAIMER:</span> This page lists external resources for educational convenience. ICT Flow does not receive payments from these links. Provider terms, pricing, and availability can change. Trading financial instruments involves significant risk of loss and is not suitable for all investors. Past performance is not indicative of future results. This is not financial advice.
           </p>
         </div>
       </div>
