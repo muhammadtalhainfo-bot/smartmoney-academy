@@ -591,7 +591,7 @@ export default function PracticePage() {
             {/* XP earned */}
             <div className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-[#E8C547] bg-[rgba(212,168,67,0.05)] mb-6">
               <span className="text-xl">⚡</span>
-              <span className="font-display text-2xl" style={{ color: '#E8C547' }}>+{xpEarned} XP</span>
+              <span className="font-display text-2xl" style={{ color: '#E8C547' }}>+{xpEarned} Practice XP</span>
               <span className="font-mono-custom text-xs text-gray-200">earned</span>
             </div>
 
