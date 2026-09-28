@@ -85,7 +85,7 @@ const ALL_QUESTIONS = [
     question: 'You see two consecutive candles with almost identical highs. What does ICT call this formation?',
     options: ['Double Top — bearish reversal', 'Equal Highs (EQH) — Buy-Side Liquidity resting above', 'Order Block — institutional demand', 'Fair Value Gap — imbalance in price'],
     answer: 1,
-    explanation: 'Two or more candles with identical highs form Equal Highs (EQH). ICT sees these as a pool of Buy-Side Liquidity — retail traders have stop losses just above those equal highs. The algorithm is highly likely to sweep above them before making the true directional move.',
+    explanation: 'Two or more candles with identical highs form Equal Highs (EQH). ICT sees these as a pool of Buy-Side Liquidity — retail traders have stop losses just above those equal highs. A liquidity-sweep interpretation is one possible scenario; the subsequent direction should be confirmed rather than assumed.',
     lesson: 2,
   },
   {
@@ -96,7 +96,7 @@ const ALL_QUESTIONS = [
     question: 'The HTF is bullish. Price sweeps below a cluster of equal lows (SSL) and immediately reverses upward strongly. What is the correct ICT interpretation?',
     options: ['This is a breakdown — go short', 'The SSL sweep was the Judas Swing — now look for buys', 'Wait for another confirmation — this could be a false signal', 'The equal lows are now support — place stop below them'],
     answer: 1,
-    explanation: 'When HTF is bullish and price sweeps SSL (equal lows), this is the algorithm collecting liquidity to fuel the upward move. The sweep IS the signal. After the SSL sweep with a bullish HTF, look for a displacement up and enter long — this is a textbook ICT buy setup.',
+    explanation: 'When HTF is bullish and price sweeps SSL (equal lows), this is the algorithm collecting liquidity to fuel the upward move. A sweep can be treated as a setup condition rather than proof of direction. After an SSL sweep, look for displacement and confirmation that match the trading plan before considering an entry.',
     lesson: 2,
   },
   {
@@ -175,7 +175,7 @@ const ALL_QUESTIONS = [
     question: 'What is a Balanced Price Range (BPR)?',
     options: ['When price stays flat for an extended period', 'The overlap between a Bearish FVG above and a Bullish FVG below — a highly contested zone', 'A zone where buy and sell orders are equal', 'The range between the daily high and low'],
     answer: 1,
-    explanation: 'A BPR forms when a Bearish FVG above and a Bullish FVG below overlap — creating a zone where price was delivered in both directions. This overlap is a "balanced" area of price. The algorithm frequently returns to BPRs before continuing the primary move, making them powerful support/resistance zones.',
+    explanation: 'A BPR forms when a Bearish FVG above and a Bullish FVG below overlap — creating a zone where price was delivered in both directions. This overlap is a "balanced" area of price. Some traders study whether price revisits BPRs as potential reaction areas; their usefulness should be evaluated with market-specific testing.',
     lesson: 3,
   },
 
@@ -232,7 +232,7 @@ const ALL_QUESTIONS = [
     question: 'What is an OB + FVG confluence entry and why is it the highest quality ICT setup?',
     options: ['It\'s when an OB and FVG are on opposite sides of price — they cancel each other out', 'When a FVG forms WITHIN the range of an OB — both arrays confirm the same zone, creating maximum institutional evidence', 'When an OB appears on the same candle as an FVG', 'It is not a recognized ICT concept'],
     answer: 1,
-    explanation: 'When a FVG forms within the body of an Order Block, both arrays are confirming the same price zone. The OB shows WHERE institutions placed orders. The FVG shows the SPEED at which they executed (fast enough to leave an imbalance). Two forms of institutional evidence at one level = highest quality entry. Add premium/discount alignment and you have a complete setup.',
+    explanation: 'When a FVG forms within the body of an Order Block, both arrays are confirming the same price zone. The OB shows WHERE institutions placed orders. The FVG shows the SPEED at which they executed (fast enough to leave an imbalance). Overlapping concepts can provide confluence, but confluence does not by itself establish a higher-quality or profitable entry. Add premium/discount alignment and you have a complete setup.',
     lesson: 4,
   },
 
@@ -245,7 +245,7 @@ const ALL_QUESTIONS = [
     question: 'What are the four main ICT Killzones and their approximate times (EST)?',
     options: ['Asian 12-2AM, London 3-5AM, NY AM 9:30-11AM, NY PM 1:30-3PM', 'Pre-market 4-6AM, Open 9-11AM, Midday 12-2PM, Close 3-4PM', 'Sydney 5-7PM, Tokyo 7-9PM, London 3-5AM, NY 8-10AM', 'Midnight, 6AM, Noon, 6PM — every 6 hours'],
     answer: 0,
-    explanation: 'The four ICT Killzones: Asian (12-2 AM EST) — accumulation/consolidation. London (3-5 AM EST) — often the Judas Swing. NY AM (9:30-11 AM EST) — highest volume, best setups. NY PM (1:30-3 PM EST) — secondary session, less reliable. Only trade during these windows.',
+    explanation: 'The four ICT Killzones: Asian (12-2 AM EST) — accumulation/consolidation. London (3-5 AM EST) — often the Judas Swing. NY AM (9:30-11 AM EST) is a commonly studied high-activity window for indices. NY PM (1:30-3 PM EST) is another session window; session suitability varies by instrument and strategy.',
     lesson: 5,
   },
   {
@@ -256,7 +256,7 @@ const ALL_QUESTIONS = [
     question: 'Which Killzone is considered the HIGHEST quality for NAS100 trading?',
     options: ['Asian session — most liquid', 'London open — most volatile', 'New York AM (9:30-11 AM EST) — highest volume + NYSE open', 'New York PM — after institutions have positioned'],
     answer: 2,
-    explanation: 'The NY AM Killzone (9:30-11 AM EST) is the highest quality for NAS100. It coincides with the NYSE open, maximum institutional participation, and the Silver Bullet 10 AM window. More volume = more institutional activity = cleaner, more reliable ICT setups.',
+    explanation: 'The NY AM Killzone (9:30-11 AM EST) overlaps the U.S. equity-market open and is commonly studied for NAS100. Higher activity does not by itself guarantee cleaner or more reliable setups, so evaluate the window with your own data.',
     lesson: 5,
   },
   {
