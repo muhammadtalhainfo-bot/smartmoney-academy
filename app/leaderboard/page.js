@@ -92,7 +92,7 @@ export default function LeaderboardPage() {
         {/* USER POSITION */}
         {currentUser && userRank && (
           <div style={{ background: 'rgba(212,168,67,0.06)', border: '1px solid #E8C547', borderRadius: '12px', padding: '16px 20px', marginBottom: '24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#E8C547', letterSpacing: '0.1em' }}>YOUR POSITION</div>
+            <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#E8C547', letterSpacing: '0.1em' }}>YOUR TOP-50 POSITION</div>
             <div className="font-display" style={{ fontSize: '32px', color: '#E8C547' }}>#{userRank}</div>
           </div>
         )}
