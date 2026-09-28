@@ -13,7 +13,7 @@ const EPISODES = [
     youtube: null,
     concepts: ["Demo Trading", "Risk Psychology", "Independent Thinking", "Capital Preservation"],
     summary: "Huddleston introduces the 2022 model as an accessible entry point. Establishes the 'demo baller' approach — master the craft on paper before risking real capital. Core philosophy: become an independent earner, not a follower.",
-    keyLesson: "Risk no more than 0.5–1% per trade. Master the model on demo for 100 trades minimum before going live.",
+    keyLesson: "Use a predefined risk limit that fits the account and strategy. Build a sufficiently broad demo sample before risking meaningful capital.",
     tags: ["Psychology", "Foundation"]
   },
   {
@@ -22,8 +22,8 @@ const EPISODES = [
     duration: "2h 45m",
     youtube: null,
     concepts: ["Weekly Bias", "Seasonal Tendencies", "Interest Rate Differentials", "HTF Analysis"],
-    summary: "Introduces the Weekly Bias framework. Learn to project weekly candle expansion based on macro conditions — Fed rate hikes create predictable bearish expansion in November/December historically.",
-    keyLesson: "Always start your analysis on the Weekly chart. Macro drives the directional bias before any intraday setup.",
+    summary: "Introduces the Weekly Bias framework. Learn to study weekly context and macro conditions while recognizing that historical tendencies do not guarantee a particular expansion.",
+    keyLesson: "Start with an appropriate higher-timeframe context before evaluating intraday setups.",
     tags: ["Bias", "HTF Analysis", "Foundation"]
   },
   {
@@ -43,7 +43,7 @@ const EPISODES = [
     youtube: null,
     concepts: ["2-Minute Chart", "8:30 AM Macro", "Stop Hunts", "ES Futures", "Precision Entry"],
     summary: "Practical application of MSS on ES. The 2-minute chart is the precision entry tool. Stop hunts between 8:30–11:00 AM EST are the setup trigger. Displacement after the hunt must leave an FVG to validate.",
-    keyLesson: "The hunt begins at 8:30 AM. After the sweep, wait for displacement and a visible FVG. That's your entry zone.",
+    keyLesson: "Around scheduled releases, observe the sweep/displacement sequence and only consider an FVG entry if it matches the predefined plan.",
     tags: ["Entry Models", "NQ/ES", "Practical"]
   },
   {
@@ -53,7 +53,7 @@ const EPISODES = [
     youtube: null,
     concepts: ["Power of Three", "AMD", "Accumulation", "Manipulation", "Distribution", "Judas Swing"],
     summary: "The daily candle is a structured delivery: Accumulate (Asian), Manipulate/Judas Swing (London), Distribute (NY AM). The Judas Swing traps retail traders before the real move begins.",
-    keyLesson: "Every day runs the same script: fake move first (Judas Swing), real move second. London creates the trap, NY delivers the trend.",
+    keyLesson: "AMD can be studied as a three-phase framework in which a potential manipulation phase precedes a directional move; the sequence and session behavior can vary.",
     tags: ["AMD", "Power of Three", "Foundation"]
   },
   {
@@ -63,7 +63,7 @@ const EPISODES = [
     youtube: null,
     concepts: ["Market Efficiency", "FVG Rebalancing", "Institutional Orders", "Price Spikes"],
     summary: "Algorithm delivers price to give both buyers and sellers fair entries. Inefficiencies (FVGs) occur when price moves too fast and must be rebalanced. Big spikes attract retail orders to engineer liquidity for institutions.",
-    keyLesson: "Price always returns to fill Fair Value Gaps. These are not random — they are algorithmic magnets for rebalancing.",
+    keyLesson: "Some traders study FVG revisits as potential rebalancing behavior; FVGs do not have a universal fill guarantee.",
     tags: ["FVG", "Algorithm", "Theory"]
   },
   {
@@ -93,7 +93,7 @@ const EPISODES = [
     youtube: null,
     concepts: ["1:30 PM Macro", "NY PM Session", "Trend Continuation", "Reversals"],
     summary: "1:30 PM EST Macro often drives significant continuations or reversals in index futures. The PM session is when institutional volatility is injected for afternoon objectives.",
-    keyLesson: "The 1:30 PM macro is a high-probability trigger. Watch for alignment between the AM trend and PM continuation.",
+    keyLesson: "The 1:30 PM macro can be included as a testable session variable; evaluate its behavior and alignment with the AM trend on the market traded.",
     tags: ["Macros", "NQ/ES", "Session Timing"]
   },
   {
@@ -102,7 +102,7 @@ const EPISODES = [
     duration: "2h 30m",
     youtube: null,
     concepts: ["News Events", "8:30 AM Data", "10:00 AM Data", "Stop Runs", "Calendar"],
-    summary: "News events are the engine the algorithm uses to reach HTF objectives. Don't trade the data — observe the stop-run it creates. 8:30 and 10:00 AM releases are the key macro windows.",
+    summary: "Scheduled news can materially affect volatility, spreads, and execution. Traders may choose to avoid entering immediately around releases and study post-event behavior.",
     keyLesson: "Never trade INTO news. Wait for the stop-run the news creates, then look for your setup after the manipulation clears.",
     tags: ["News Trading", "Macros", "Risk Management"]
   },
@@ -113,7 +113,7 @@ const EPISODES = [
     youtube: null,
     concepts: ["Institutional Sponsorship", "Advanced Price Action", "Professional Reading"],
     summary: "Professionals look for Institutional Sponsorship — evidence that smart money is actively supporting a move. Retail traders look for patterns; ICT traders look for algorithmic signatures.",
-    keyLesson: "Before entering any trade, ask: where is the institutional sponsorship? Which side is the algorithm supporting right now?",
+    keyLesson: "Before entering, identify the structural and liquidity evidence supporting the setup and distinguish observations from interpretations about institutional activity.",
     tags: ["Advanced", "Market Structure", "Theory"]
   },
   {
@@ -152,7 +152,7 @@ const EPISODES = [
     duration: "2h 15m",
     youtube: null,
     concepts: ["Live Execution", "Model Validation", "Real-Time Bias"],
-    summary: "Continued live trading demonstrations. Proves the model works in real-time conditions. Focus on the process, not the outcome of any single trade.",
+    summary: "Continued live trading demonstrations can be used to study how the model is applied in real-time; demonstrations do not by themselves establish future performance. Focus on the process, not the outcome of any single trade.",
     keyLesson: "A valid setup that loses is still a valid setup. Process > outcome. Judge your trading on execution quality, not P&L.",
     tags: ["Live Trading", "Psychology", "Advanced"]
   },
@@ -163,7 +163,7 @@ const EPISODES = [
     youtube: null,
     concepts: ["Internal Structure", "1-Minute Chart", "5-Minute Chart", "Multiple Entries"],
     summary: "You don't have to catch the first move. Internal structure on 1M and 5M charts reveals additional entry opportunities throughout the session after the initial AM move.",
-    keyLesson: "Miss the first setup? Look for internal structure shifts in the continuation. There are always secondary entries if you know where to look.",
+    keyLesson: "Miss the first setup? Look for internal structure shifts in the continuation. Additional entries may appear after an initial move, but they are not guaranteed and should meet the same plan criteria.",
     tags: ["Entry Models", "Practical", "Advanced"]
   },
   {
@@ -182,7 +182,7 @@ const EPISODES = [
     duration: "3h 30m",
     youtube: null,
     concepts: ["2022 Model", "Full Framework", "Step by Step", "Checklist"],
-    summary: "THE definitive guide to the 2022 model. Complete sequence: HTF bias → killzone liquidity sweep → LTF MSS with displacement → FVG entry → low-hanging fruit target → HTF draw.",
+    summary: "A step-by-step guide to the 2022 model. Complete sequence: HTF bias → killzone liquidity sweep → LTF MSS with displacement → FVG entry → low-hanging fruit target → HTF draw.",
     keyLesson: "Write this checklist: 1) HTF bias confirmed? 2) Killzone liquidity sweep happened? 3) MSS with displacement? 4) FVG present? All yes = valid setup.",
     tags: ["2022 Model", "Entry Models", "Must Watch"]
   },
@@ -192,8 +192,8 @@ const EPISODES = [
     duration: "3h 00m",
     youtube: null,
     concepts: ["Price Narrative", "Trend End", "Reversals", "HTF Context", "Micro-Scalping Dangers"],
-    summary: "Being at the END of a trend captures the highest-reward reversals. Danger of micro-scalping without HTF context. Every trade must have a narrative — a story of why price should move.",
-    keyLesson: "The best trades are at trend extremes with HTF confluence. Micro-scalping random levels without a narrative is gambling.",
+    summary: "Being at the END of a trend captures the highest-reward reversals. Danger of micro-scalping without HTF context. A trade narrative can state the assumptions and evidence supporting the expected move.",
+    keyLesson: "Trend extremes with higher-timeframe context can be studied as potential reversal areas. Avoid entries that are not supported by the trading plan.",
     tags: ["Theory", "Advanced", "Psychology"]
   },
   {
@@ -273,7 +273,7 @@ const EPISODES = [
     youtube: null,
     concepts: ["Counter Trend", "Reversal Setups", "HTF Targets", "Trend End"],
     summary: "When the higher-timeframe draw on liquidity has been reached, counter-trend setups become valid. These offer the highest reward-to-risk but require confirmed HTF context.",
-    keyLesson: "Counter trend trades are only valid at HTF premium/discount extremes after a liquidity run. Never fade a trend in the middle of a range.",
+    keyLesson: "Counter-trend setups can be evaluated around higher-timeframe extremes and liquidity events; define invalidation and avoid treating the framework as an absolute rule.",
     tags: ["Reversals", "Advanced", "HTF Analysis"]
   },
   {
@@ -303,7 +303,7 @@ const EPISODES = [
     youtube: null,
     concepts: ["PM Session", "Fed Chair Speeches", "Afternoon Trend", "Volatility Injection"],
     summary: "Central bank chair speeches inject afternoon volatility. Navigate PM session by watching for continuation of AM trend or reversal setups after 1:30 PM macro window.",
-    keyLesson: "Central bank speeches at 2-3 PM EST often create the afternoon's directional move. Be positioned BEFORE the speech, not after.",
+    keyLesson: "Central-bank speeches can change afternoon volatility and direction. Consider the event risk and define whether the plan permits holding positions into the release.",
     tags: ["PM Session", "Macros", "Advanced"]
   },
   {
