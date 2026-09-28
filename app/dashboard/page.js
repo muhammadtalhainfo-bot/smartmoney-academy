@@ -34,11 +34,20 @@ export default function DashboardPage() {
 
   const updateStreak = useCallback(async (userId, prof) => {
     if (!prof) return;
-    const today = new Date().toISOString().split('T')[0];
+    const now = new Date();
+    const toLocalDate = (date) => {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    };
+    const today = toLocalDate(now);
     const lastActive = prof.last_active;
     if (lastActive === today) return;
 
-    const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+    const yesterdayDate = new Date(now);
+    yesterdayDate.setDate(yesterdayDate.getDate() - 1);
+    const yesterday = toLocalDate(yesterdayDate);
     const newStreak = lastActive === yesterday ? (prof.streak || 0) + 1 : 1;
     const longestStreak = Math.max(newStreak, prof.longest_streak || 0);
 
