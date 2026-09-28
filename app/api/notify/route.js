@@ -1,7 +1,14 @@
+import { getAdminSession } from '../../admin/actions';
+
 export const runtime = 'nodejs';
 
 export async function POST(req) {
   try {
+    const session = await getAdminSession();
+    if (!session?.ok) {
+      return Response.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     if (!process.env.ONESIGNAL_REST_API_KEY) {
       return Response.json({ error: 'Notification service not configured' }, { status: 500 });
     }
