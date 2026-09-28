@@ -29,7 +29,7 @@ const TOPICS = [
     id: 3, step: 2, stepName: "Read the Chart",
     title: "Chart Types",
     icon: "📊",
-    explanation: "Line charts show closing prices. Bar charts show OHLC (Open, High, Low, Close). Candlestick charts show the full story of each period visually. ICT traders exclusively use candlestick charts.",
+    explanation: "Line charts show closing prices. Bar charts show OHLC (Open, High, Low, Close). Candlestick charts show the full story of each period visually. Candlestick charts are commonly used by ICT traders.",
     example: "A 15-minute candlestick shows exactly what happened in that 15 minutes: where price opened, where it went highest, lowest, and where it closed.",
     remember: "Always use candlestick charts. They show the most information per candle.",
     color: "#E8C547"
@@ -40,7 +40,7 @@ const TOPICS = [
     icon: "🕯️",
     explanation: "Every candle has a Body (open to close) and Wicks/Shadows (high and low extremes). A green/white candle = closed HIGHER than it opened (bullish). A red/black candle = closed LOWER than it opened (bearish). The wick shows how far price explored beyond the body.",
     example: "A candle opens at 100, rises to 105 (upper wick), drops to 98 (lower wick), and closes at 103. Body = 100-103. Upper wick = 103-105. Lower wick = 98-100.",
-    remember: "Long wicks = liquidity was swept. Strong bodies = directional conviction. Wicks lie — bodies don't.",
+    remember: "Long wicks = liquidity was swept. Strong bodies = directional conviction. Wicks and bodies provide different information; interpret both in context.",
     color: "#F59E0B"
   },
   {
@@ -49,7 +49,7 @@ const TOPICS = [
     icon: "⏱️",
     explanation: "Timeframes determine how much time each candle represents. Monthly (MN), Weekly (W), Daily (D), 4-Hour (H4), 1-Hour (H1), 15-Minute (M15), 5-Minute (M5), 1-Minute (M1). Higher timeframes show the big picture. Lower timeframes show entry precision.",
     example: "A bullish daily candle might contain dozens of bearish 5-minute candles inside it. The daily bias is up, but intraday you'll see pullbacks.",
-    remember: "Always start from the top down. Daily → 4H → 1H → 15M → 5M → 1M. Never look at 1M without knowing the daily bias.",
+    remember: "Always start from the top down. Daily → 4H → 1H → 15M → 5M → 1M. Use higher-timeframe context before relying on lower-timeframe signals.",
     color: "#C084FC"
   },
   {
@@ -66,7 +66,7 @@ const TOPICS = [
     title: "Lots & Position Sizing",
     icon: "📦",
     explanation: "A lot is the standardized unit of trading. Standard Lot = 100,000 units. Mini Lot = 10,000 units. Micro Lot = 1,000 units. Nano Lot = 100 units. Beginners should trade micro lots until consistent.",
-    example: "Account: $1,000. Risk 1% = $10 risk per trade. SL = 20 pips. Pip value at 0.01 lots = $0.10. $10 ÷ (20 × $0.10) = 5 micro lots (0.05 lots).",
+    example: "Account: $1,000. For illustration, a $1,000 account with a 1% predefined risk limit would risk $10 on the trade. SL = 20 pips. Pip value at 0.01 lots = $0.10. $10 ÷ (20 × $0.10) = 5 micro lots (0.05 lots).",
     remember: "NEVER size by feel. Always calculate: Risk Amount ÷ (SL in pips × Pip Value) = Lot Size.",
     color: "#F87171"
   },
@@ -76,7 +76,7 @@ const TOPICS = [
     icon: "⚡",
     explanation: "Leverage lets you control a large position with a small deposit. 1:100 leverage means $1,000 controls $100,000. This amplifies both profits AND losses. High leverage = high risk.",
     example: "With $1,000 and 1:100 leverage, you can open a $100,000 trade. A 1% move = $1,000 gain OR loss. That's your entire account in one trade.",
-    remember: "Leverage is a tool, not a strategy. Use low leverage (1:10 or less) until you're consistently profitable.",
+    remember: "Leverage is a tool, not a strategy. Use leverage conservatively and understand the potential loss before trading live.",
     color: "#F59E0B"
   },
   {
@@ -110,7 +110,7 @@ const TOPICS = [
     id: 12, step: 3, stepName: "Understand Risk",
     title: "Risk-to-Reward Ratio",
     icon: "⚖️",
-    explanation: "R:R compares your potential loss to your potential gain. 1:2 R:R = risk $100 to make $200. Even with a 40% win rate, a 1:2 R:R strategy is profitable. Most ICT setups target minimum 1:3 R:R.",
+    explanation: "R:R compares your potential loss to your potential gain. 1:2 R:R = risk $100 to make $200. A 1:2 R:R setup can be profitable at a 40% win rate in a simplified example before costs, provided the assumptions hold over a sufficiently large sample. Some ICT traders use higher reward-to-risk targets, but there is no universal minimum that applies to every setup.",
     example: "10 trades at 1:2 R:R. Win 4, lose 6. Wins: 4 × $200 = $800. Losses: 6 × $100 = $600. Net profit: $200 with only 40% win rate!",
     remember: "You can be wrong more than you're right and still be profitable. A good R:R is more important than win rate.",
     color: "#34D399"
@@ -119,9 +119,9 @@ const TOPICS = [
     id: 13, step: 3, stepName: "Understand Risk",
     title: "Risk Management (The Most Important Topic)",
     icon: "🔐",
-    explanation: "Risk management is the difference between a trader who survives and one who blows accounts. Risk 1% per trade maximum. Never risk money you cannot afford to lose. Risk management protects your capital so you can trade another day.",
+    explanation: "Risk management is the difference between a trader who survives and one who blows accounts. Set a predefined risk limit that fits your account, strategy, and tolerance; never risk money you cannot afford to lose. Risk management protects your capital so you can trade another day.",
     example: "$10,000 account. 1% risk = $100 max per trade. Even 10 losses in a row only costs $1,000 (10%). Recovery is possible. Risk 10% per trade = 10 losses = account gone.",
-    remember: "Protect the downside first. The upside takes care of itself. A trader who survives long enough will eventually succeed.",
+    remember: "Protect the downside first. The upside takes care of itself. Preserving capital gives you more opportunity to learn and evaluate your process over time.",
     color: "#F87171"
   },
   {
@@ -130,16 +130,16 @@ const TOPICS = [
     icon: "🏦",
     explanation: "Balance = deposited funds + closed P&L. Equity = Balance + open trade P&L (changes in real-time). Margin = collateral held by broker for open trades. Free Margin = Equity - Margin Used. Margin Call = equity too low to hold positions.",
     example: "Balance: $5,000. Open trade losing $200. Equity = $4,800. Broker holds $500 margin. Free margin = $4,300 available for new trades.",
-    remember: "Never let open losses reduce equity below 50% of balance. That's dangerously close to a margin call.",
+    remember: "Monitor equity, margin usage, and broker liquidation rules so open losses do not create an unacceptable risk of forced closure.",
     color: "#C084FC"
   },
   {
     id: 15, step: 2, stepName: "Read the Chart",
     title: "Trading Sessions & Why Time Matters",
     icon: "🕐",
-    explanation: "Markets have 3 main sessions: Asian (8PM-12AM EST), London (2AM-5AM EST), New York AM (7AM-12PM EST). Each session has different volatility and characteristics. The London-NY overlap (7AM-12PM EST) is the highest volume period.",
+    explanation: "Markets have 3 main sessions: Asian (8PM-12AM EST), London (2AM-5AM EST), New York AM (7AM-12PM EST). Each session has different volatility and characteristics. Session activity varies by instrument and market conditions; London-New York overlap is often actively traded.",
     example: "EURUSD barely moves during Asian session. London open at 2AM creates the first big move. NY open at 9:30AM creates peak volatility. This is when ICT setups form.",
-    remember: "Only trade during active sessions. Trading during dead hours (NY lunch, late Asian) gives poor results. Time is part of the edge.",
+    remember: "Only trade during active sessions. Trading during dead hours (NY lunch, late Asian) gives poor results. Time and session context can be useful variables to test in a trading plan.",
     color: "#818CF8"
   },
   {
@@ -156,7 +156,7 @@ const TOPICS = [
     title: "Support & Resistance",
     icon: "🧱",
     explanation: "Support = price level where buying is historically strong (floor). Resistance = price level where selling is historically strong (ceiling). In ICT, these are reframed as liquidity levels — pools of stop-loss orders.",
-    example: "Price bounces off 1.0800 three times. That's strong support. In ICT, we know retail traders have stop losses just BELOW 1.0800. The algorithm targets these stops before reversing.",
+    example: "Price bounces off 1.0800 three times. That's strong support. In ICT, we know retail traders have stop losses just BELOW 1.0800. Some ICT interpretations describe these moves as liquidity sweeps; treat the interpretation as a hypothesis to test.",
     remember: "Traditional S/R exists because of stop orders. ICT traders don't buy support — they wait for the stop hunt BELOW support, then buy the reversal.",
     color: "#F59E0B"
   },
@@ -173,9 +173,9 @@ const TOPICS = [
     id: 19, step: 4, stepName: "Practice Market Structure",
     title: "Liquidity in Simple Language",
     icon: "💧",
-    explanation: "Liquidity = pools of pending orders (stop losses and pending orders). Equal highs and lows are liquidity magnets — retail traders cluster orders there. The algorithm seeks out these pools to fill institutional orders.",
-    example: "Price makes three equal highs at 100. Thousands of retail traders have stop losses at 100.10 (just above). The algorithm briefly pushes above 100 to trigger those stops, then reverses sharply.",
-    remember: "Wherever retail traders place obvious stop losses, the algorithm will eventually go to collect them. This is the engineered liquidity concept.",
+    explanation: "Liquidity = pools of pending orders (stop losses and pending orders). Equal highs and lows are liquidity magnets — retail traders cluster orders there. ICT-style interpretations often describe price as seeking liquidity pools; this is a framework rather than a guaranteed mechanism.",
+    example: "Price makes three equal highs at 100. Thousands of retail traders have stop losses at 100.10 (just above). A possible liquidity-sweep interpretation is that price moves above the level, triggers orders, and then reverses; this should be evaluated from observed price data.",
+    remember: "ICT-style liquidity concepts focus on areas where orders may cluster; a sweep is a potential scenario, not a guaranteed future path.",
     color: "#818CF8"
   },
   {
@@ -227,7 +227,7 @@ const TOPICS = [
     id: 25, step: 6, stepName: "Practice & Review",
     title: "How to Practice (Demo First)",
     icon: "🎯",
-    explanation: "Demo trading = real market conditions, fake money. Use demo for minimum 3 months before live. Complete 100 trades in your strategy before going live. Track every trade in a journal. Screenshot entries and exits.",
+    explanation: "Demo trading = real market conditions, fake money. Use demo practice long enough to evaluate execution, risk, and consistency before risking meaningful capital. Use a sufficiently broad, relevant demo sample before risking meaningful capital; there is no universal trade-count threshold that guarantees readiness. Track every trade in a journal. Screenshot entries and exits.",
     example: "Use TradingView for chart analysis. MT4/MT5 for demo trading. Keep a spreadsheet: date, pair, entry, SL, TP, result, what you saw, what you learned.",
     remember: "Treat demo money like real money. If you don't respect demo, you won't respect live. Practice with discipline or the live market will teach you a painful lesson.",
     color: "#34D399"
@@ -323,7 +323,7 @@ export default function FoundationsPage() {
             <span style={{ display: 'block', background: 'linear-gradient(135deg, #8A6B28, #E8C547, #F0C96A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>FOUNDATIONS</span>
           </h1>
           <p style={{ fontSize: '18px', color: 'rgba(255,255,255,0.6)', maxWidth: '580px', lineHeight: 1.7, fontWeight: 300, marginBottom: '12px' }}>
-            Start from zero. Learn the real basics before touching ICT, SMC, or any advanced strategy. This is the foundation that separates profitable traders from gamblers.
+            Start from zero. Learn the real basics before touching ICT, SMC, or any advanced strategy. This is a foundation for understanding trading mechanics, risk, and disciplined practice.
           </p>
           <p style={{ ...mono, fontSize: '11px', color: 'rgba(232,197,71,0.95)', marginBottom: '36px', letterSpacing: '0.05em' }}>
             Complete this before starting the ICT 2022 Mentorship or any module
@@ -488,13 +488,13 @@ export default function FoundationsPage() {
               "I understand what pips, lots, and leverage mean",
               "I can read a candlestick chart and identify bullish/bearish candles",
               "I always use a stop loss on every trade",
-              "I risk no more than 1% of my account per trade",
+              "I have a predefined risk limit that fits my account and strategy",
               "I understand what support, resistance, and liquidity mean",
               "I know the 3 main trading sessions and their times",
               "I understand what ICT and SMC are conceptually",
               "I know the difference between trending and ranging markets",
               "I understand risk-to-reward ratio and can calculate it",
-              "I commit to demo trading for at least 3 months",
+              "I have practiced my strategy in a sufficiently broad demo sample before risking meaningful capital",
             ].map((item, i) => (
               <div key={i} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', padding: '14px 16px', background: '#111111', border: '1px solid rgba(212,168,67,0.22)', borderRadius: '10px' }}>
                 <div style={{ width: '20px', height: '20px', borderRadius: '50%', border: '1.5px solid #E8C547', flexShrink: 0, marginTop: '1px' }} />
