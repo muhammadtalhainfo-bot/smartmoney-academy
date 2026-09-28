@@ -66,12 +66,13 @@ export async function POST(req) {
         active = ['active', 'trialing'].includes(subscription.status);
       }
 
-      await supabase.from('profiles').upsert({
+      const { error: profileError } = await supabase.from('profiles').upsert({
         id: user.id,
         is_pro: active,
         pro_since: active ? new Date().toISOString() : null,
         stripe_customer_id: typeof session.customer === 'string' ? session.customer : session.customer?.id || null,
       }, { onConflict: 'id' });
+      if (profileError) throw profileError;
     }
 
     if (event.type === 'customer.subscription.created' || event.type === 'customer.subscription.updated') {
@@ -79,7 +80,11 @@ export async function POST(req) {
       const profile = await findProfileByCustomer(supabase, typeof subscription.customer === 'string' ? subscription.customer : subscription.customer?.id);
       if (profile) {
         const active = ['active', 'trialing'].includes(subscription.status);
-        await supabase.from('profiles').update({ is_pro: active }).eq('id', profile.id);
+        const { error: profileError } = await supabase
+          .from('profiles')
+          .update({ is_pro: active })
+          .eq('id', profile.id);
+        if (profileError) throw profileError;
       }
     }
 
@@ -87,7 +92,11 @@ export async function POST(req) {
       const customerId = typeof event.data.object.customer === 'string' ? event.data.object.customer : event.data.object.customer?.id;
       const profile = await findProfileByCustomer(supabase, customerId);
       if (profile) {
-        await supabase.from('profiles').update({ is_pro: false }).eq('id', profile.id);
+        const { error: profileError } = await supabase
+          .from('profiles')
+          .update({ is_pro: false })
+          .eq('id', profile.id);
+        if (profileError) throw profileError;
       }
     }
 
