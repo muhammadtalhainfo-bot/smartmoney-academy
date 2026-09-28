@@ -438,7 +438,14 @@ export default function MentorshipPage() {
 
   useEffect(() => {
     const saved = localStorage.getItem('ict_watched_episodes');
-    if (saved) setWatched(JSON.parse(saved));
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) setWatched(parsed);
+      } catch {
+        localStorage.removeItem('ict_watched_episodes');
+      }
+    }
 
     const supabase = createClient();
     supabase.auth.getSession().then(({ data: { session } }) => {
