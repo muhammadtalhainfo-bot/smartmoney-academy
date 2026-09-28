@@ -37,6 +37,11 @@ function clean(value, max = 2000) {
 
 export async function POST(req) {
   try {
+    const contentLength = Number(req.headers.get('content-length') || 0);
+    if (contentLength > 20_000) {
+      return NextResponse.json({ error: 'Journal summary is too large.' }, { status: 413 });
+    }
+
     if (!process.env.ANTHROPIC_API_KEY || !process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
       return NextResponse.json({ error: 'AI Coach is not configured' }, { status: 503 });
     }
