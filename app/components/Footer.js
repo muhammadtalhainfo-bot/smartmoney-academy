@@ -61,7 +61,7 @@ export default function Footer() {
           {/* LEGAL */}
           <div>
             <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.85)', letterSpacing: '0.15em', marginBottom: '16px' }}>LEGAL</div>
-            {[['/privacy', 'Privacy Policy'], ['/terms', 'Terms of Service'], ['/cookies', 'Cookie Policy'], ['/resources', 'Affiliate Disclosure']].map(([href, label], i) => (
+            {[['/privacy', 'Privacy Policy'], ['/terms', 'Terms of Service'], ['/cookies', 'Cookie Policy']].map(([href, label], i) => (
               <div key={i} style={{ marginBottom: '10px' }}>
                 <Link href={href} style={{ textDecoration: 'none', color: 'rgba(255,255,255,0.65)', fontSize: '13px', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color = '#E8C547'} onMouseOut={e => e.target.style.color = 'rgba(255,255,255,0.65)'}>{label}</Link>
               </div>
