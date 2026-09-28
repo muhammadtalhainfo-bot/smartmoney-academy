@@ -14,8 +14,25 @@ export const metadata = {
 }
 
 export default function LearnHub() {
+  const itemListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'ICT Trading Guides',
+    description: 'Free ICT and Smart Money Concepts educational guides from ICT Flow.',
+    itemListElement: SEO_PAGES.map((page, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: page.title,
+      url: `https://ictflow.com/learn/${page.slug}`,
+    })),
+  }
+
   return (
     <main style={{minHeight:'100vh',background:'#080808',color:'#fff',fontFamily:"'DM Sans',sans-serif",padding:'64px 24px'}}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
       <div style={{maxWidth:1000,margin:'0 auto'}}>
         <Link href="/" style={{color:'#E8C547',textDecoration:'none'}}>← ICT Flow</Link>
         <header style={{margin:'48px 0'}}>
