@@ -1,8 +1,9 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
+import { trackEvent, trackCheckoutStart } from '@/lib/analytics';
 
 const FREE_FEATURES = [
   { text: 'All 38 modules and 203+ lessons', included: true },
@@ -41,9 +42,15 @@ export default function PricingPage() {
   const [openFaq, setOpenFaq] = useState(null);
   const [checkoutLoading, setCheckoutLoading] = useState(false);
 
+  useEffect(() => {
+    trackEvent('pricing_view', { page: 'pricing' });
+  }, []);
+
   async function handleCheckout() {
     setCheckoutLoading(true);
     try {
+      const plan = annual ? 'annual' : 'monthly';
+      trackCheckoutStart(plan);
       const priceId = annual
         ? process.env.NEXT_PUBLIC_STRIPE_YEARLY_PRICE
         : process.env.NEXT_PUBLIC_STRIPE_MONTHLY_PRICE;
