@@ -396,8 +396,9 @@ export default function PracticePage() {
 
   function handleNext() {
     if (current + 1 >= questions.length) {
-      const xp = answers.filter(a => a.correct).length * 20 + (score === questions.length ? 50 : 0);
-      setXpEarned(xp + (selected === q.answer ? 20 : 0));
+      const finalCorrect = answers.filter(a => a.correct).length + (selected === q.answer ? 1 : 0);
+      const xp = finalCorrect * 20 + (finalCorrect === questions.length ? 50 : 0);
+      setXpEarned(xp);
       setDone(true);
     } else {
       setCurrent(c => c + 1);
