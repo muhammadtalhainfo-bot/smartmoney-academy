@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import Navbar from '@/app/components/Navbar'
+import Footer from '@/app/components/Footer'
 import { notFound } from 'next/navigation'
 import { SEO_PAGES } from '../seo-data'
 
@@ -20,6 +22,13 @@ export async function generateMetadata({ params }) {
       url: `https://ictflow.com/learn/${page.slug}`,
       type: 'article',
       siteName: 'ICT Flow',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: page.title,
+      description: page.meta,
+      images: ['https://ictflow.com/og-image.png'],
+      creator: '@riskfirsttrad',
     },
   }
 }
@@ -51,7 +60,9 @@ export default async function SEOGuide({ params }) {
   }
 
   return (
-    <main style={{minHeight:'100vh',background:'#080808',color:'#fff',fontFamily:"'DM Sans',sans-serif",padding:'56px 24px 80px'}}>
+    <>
+      <Navbar active="/learn" />
+      <main style={{minHeight:'100vh',background:'#080808',color:'#fff',fontFamily:"'DM Sans',sans-serif",padding:'56px 24px 80px'}}>
       <article style={{maxWidth:820,margin:'0 auto'}}>
         <Link href="/learn" style={{color:'#E8C547',textDecoration:'none'}}>← All ICT guides</Link>
         <p style={{color:'#E8C547',fontFamily:'DM Mono,monospace',fontSize:11,letterSpacing:2,marginTop:42}}>{page.category}</p>
@@ -98,5 +109,7 @@ export default async function SEOGuide({ params }) {
         <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(breadcrumbSchema)}} />
       </article>
     </main>
+      <Footer />
+    </>
   )
 }
