@@ -12,10 +12,9 @@ const PROP_FIRMS = [
     tag: 'MOST POPULAR',
     tagColor: '#F59E0B',
     desc: 'FTMO offers simulated trading accounts of up to $200,000; current program terms and eligibility apply.',
-    commission: '8–20% per eligible Challenge purchase',
     payout: '80–90% profit split',
     challenge: 'See FTMO for current Challenge pricing',
-    link: 'https://ftmo.com/?affiliates=ictflow',
+    link: 'https://ftmo.com/',
     features: ['2-step evaluation', '10% max drawdown', 'No time limit', 'Bi-weekly payouts'],
   },
   {
@@ -25,10 +24,9 @@ const PROP_FIRMS = [
     tag: 'HIGH PAYOUT',
     tagColor: '#8B5CF6',
     desc: 'Offers evaluation programs and profit-sharing terms that can change; review the provider's current terms before purchasing.',
-    commission: 'See provider for current affiliate terms',
     payout: 'Up to 90% profit split',
     challenge: 'See provider for current Challenge pricing',
-    link: 'https://thefundedtrader.com/?ref=ictflow',
+    link: 'https://thefundedtrader.com/',
     features: ['Standard & Royal plans', 'Unlimited trading days', 'Weekend holding', 'Scaling options vary by program; see provider for current limits'],
   },
   {
@@ -38,10 +36,9 @@ const PROP_FIRMS = [
     tag: 'BEGINNER FRIENDLY',
     tagColor: '#10B981',
     desc: 'Offers evaluation programs and payout terms; rules and pricing should be checked on the provider's current site.',
-    commission: 'See provider for current affiliate terms',
     payout: '80% profit split',
     challenge: 'See provider for current Challenge pricing',
-    link: 'https://e8funding.com/?ref=ictflow',
+    link: 'https://e8funding.com/',
     features: ['1-step option available', 'No minimum trading days', 'Easy scaling plan', 'See provider for current drawdown rules'],
   },
   {
@@ -51,10 +48,9 @@ const PROP_FIRMS = [
     tag: 'FUTURES FOCUS',
     tagColor: '#3B82F6',
     desc: 'A futures-focused evaluation provider with published payout rules; compare its current terms with your requirements.',
-    commission: 'See provider for current affiliate terms',
     payout: '100% first $25K then 90%',
     challenge: 'See provider for current evaluation pricing',
-    link: 'https://apextraderfunding.com/?ref=ictflow',
+    link: 'https://apextraderfunding.com/',
     features: ['1-step evaluation', 'Futures only', '100% first payout', 'Multiple accounts'],
   },
 ];
@@ -65,20 +61,18 @@ const BROKERS = [
     logo: '🌶️',
     color: '#EF4444',
     desc: 'Offers Standard and Razor account structures; spreads and commissions vary by instrument, account type and jurisdiction.',
-    commission: 'See broker for current affiliate terms',
     spread: 'FX Razor spreads start from 0.0 points; see current instrument-specific pricing.',
     platforms: 'MT4, MT5, cTrader',
-    link: 'https://pepperstone.com/?ref=ictflow',
+    link: 'https://pepperstone.com/',
   },
   {
     name: 'IC Markets',
     logo: '📊',
     color: '#E8C547',
     desc: 'Offers multiple account types and trading platforms; execution conditions, spreads and commissions vary by account and jurisdiction.',
-    commission: 'See broker for current affiliate terms',
     spread: 'See broker for current instrument-specific spreads',
     platforms: 'MT4, MT5, cTrader',
-    link: 'https://icmarkets.com/?ref=ictflow',
+    link: 'https://icmarkets.com/',
   },
 ];
 
@@ -88,17 +82,15 @@ const TOOLS = [
     logo: '📈',
     color: '#2962FF',
     desc: 'A charting platform that supports drawing tools, indicators and multi-market analysis.',
-    commission: '$10–$400 per eligible new subscriber',
     price: 'Plans and pricing vary; TradingView currently lists Premium at $59.95/month when billed annually.',
-    link: 'https://www.tradingview.com/?aff_id=ictflow',
-    highlight: 'BEST RECURRING',
+    link: 'https://www.tradingview.com/',
+    highlight: 'CHARTING',
   },
   {
     name: 'ICT Mentorship (Official)',
     logo: '🎓',
     color: '#E8C547',
     desc: "Michael Huddleston's official YouTube channel. Free content — use alongside ICT Flow.",
-    commission: 'Free resource',
     price: 'Free on YouTube',
     link: 'https://youtube.com/@InnerCircleTrader',
     highlight: 'FREE',
@@ -129,13 +121,13 @@ export default function ResourcesPage() {
         <div style={{ maxWidth: '700px', margin: '0 auto', position: 'relative' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 16px', borderRadius: '100px', border: '1px solid var(--border)', background: 'rgba(212,168,67,0.04)', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.15em', color: '#E8C547', marginBottom: '24px' }}>
             <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#E8C547', display: 'inline-block' }} />
-            AFFILIATE RESOURCES
+            TRADING RESOURCES
           </div>
           <h1 className="font-display shine" style={{ fontSize: 'clamp(52px, 10vw, 96px)', lineHeight: 1, marginBottom: '20px' }}>
-            TOOLS THAT PAY
+            TRADING RESOURCES
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '16px', fontWeight: 300, lineHeight: 1.7, maxWidth: '500px', margin: '0 auto 12px' }}>
-            Every link below is an affiliate link. If you sign up through here, we earn a commission at no extra cost to you — it's how we keep this academy free.
+            A collection of external trading platforms and educational resources. Check each provider's current terms, pricing, and availability before using any service.
           </p>
           <p style={{ color: '#E8C547', fontSize: '12px', fontFamily: 'DM Mono, monospace', letterSpacing: '0.1em' }}>
             ⚠️ TRADING INVOLVES RISK — ONLY USE CAPITAL YOU CAN AFFORD TO LOSE
@@ -196,7 +188,7 @@ export default function ResourcesPage() {
                     ))}
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '16px', borderTop: '1px solid var(--border)' }}>
-                    <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.6)', letterSpacing: '0.1em' }}>AFFILIATE LINK</span>
+                    <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.6)', letterSpacing: '0.1em' }}>OFFICIAL LINK</span>
                     <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '12px', color: firm.color, letterSpacing: '0.1em' }}>GET FUNDED →</span>
                   </div>
                 </a>
@@ -230,7 +222,7 @@ export default function ResourcesPage() {
                     ))}
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '16px', borderTop: '1px solid var(--border)' }}>
-                    <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.6)', letterSpacing: '0.1em' }}>AFFILIATE LINK</span>
+                    <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.6)', letterSpacing: '0.1em' }}>OFFICIAL LINK</span>
                     <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '12px', color: broker.color, letterSpacing: '0.1em' }}>OPEN ACCOUNT →</span>
                   </div>
                 </a>
@@ -267,7 +259,7 @@ export default function ResourcesPage() {
                     ))}
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '16px', borderTop: '1px solid var(--border)' }}>
-                    <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.6)', letterSpacing: '0.1em' }}>AFFILIATE LINK</span>
+                    <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.6)', letterSpacing: '0.1em' }}>OFFICIAL LINK</span>
                     <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '12px', color: tool.color, letterSpacing: '0.1em' }}>GET STARTED →</span>
                   </div>
                 </a>
@@ -279,7 +271,7 @@ export default function ResourcesPage() {
         {/* DISCLAIMER */}
         <div style={{ marginTop: '64px', padding: '24px', background: 'rgba(212,168,67,0.03)', border: '1px solid rgba(232,197,71,0.95)', borderRadius: '12px' }}>
           <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, letterSpacing: '0.05em' }}>
-            <span style={{ color: '#E8C547' }}>DISCLAIMER:</span> This page contains affiliate links. ICT Flow may earn a commission when you sign up through these links at no additional cost to you. All products listed are ones we genuinely recommend for ICT traders. Trading financial instruments involves significant risk of loss and is not suitable for all investors. Past performance is not indicative of future results. This is not financial advice.
+            <span style={{ color: '#E8C547' }}>DISCLAIMER:</span> This page lists external resources for educational convenience. ICT Flow does not receive referral commissions from these links. Provider terms, pricing, and availability can change. Trading financial instruments involves significant risk of loss and is not suitable for all investors. Past performance is not indicative of future results. This is not financial advice.
           </p>
         </div>
       </div>
