@@ -971,16 +971,16 @@ function Quiz({ questions, lessonId }) {
       const user = session?.user;
               if (user) {
                 const normalizedLessonId = Number.parseInt(String(lessonId), 10);
-                if (!Number.isNaN(normalizedLessonId)) {
-                  const { error: completionError } = await supabase
-                    .from('lesson_completions')
-                    .insert({ user_id: user.id, lesson_id: normalizedLessonId });
+                if (Number.isNaN(normalizedLessonId)) return;
 
-                  // Only award XP when this lesson is being completed for the first time.
-                  // A duplicate-key error means the completion already exists.
-                  if (completionError && completionError.code !== '23505') return;
-                  if (completionError?.code === '23505') return;
-                }
+                const { error: completionError } = await supabase
+                  .from('lesson_completions')
+                  .insert({ user_id: user.id, lesson_id: normalizedLessonId });
+
+                // Only award XP when this lesson is being completed for the first time.
+                // A duplicate-key error means the completion already exists.
+                if (completionError) return;
+
                 const xpEarned = sc === questions.length ? 70 : 20;
                 const { data: profile } = await supabase.from('profiles').select('xp').eq('id', user.id).single();
                 const currentXP = profile?.xp || 0;
