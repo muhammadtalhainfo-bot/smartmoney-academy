@@ -3,11 +3,11 @@ import { createClient } from '@supabase/supabase-js';
 
 export const runtime = 'nodejs';
 
-function getBaseUrl(req) {
-  const proto = req.headers.get('x-forwarded-proto') || 'http';
-  const host = req.headers.get('x-forwarded-host') || req.headers.get('host');
-  if (host) return `${proto.split(',')[0].trim()}://${host.split(',')[0].trim()}`;
-  return process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+function getBaseUrl() {
+  const configured = process.env.NEXT_PUBLIC_APP_URL?.trim();
+  if (configured) return configured.replace(/\/$/, '');
+  if (process.env.NODE_ENV !== 'production') return 'http://localhost:3000';
+  throw new Error('NEXT_PUBLIC_APP_URL is required in production.');
 }
 
 function allowedPriceIds() {
@@ -48,7 +48,7 @@ export async function POST(req) {
     }
 
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-    const baseUrl = getBaseUrl(req);
+    const baseUrl = getBaseUrl();
     const metadata = { user_id: user.id, email: user.email.toLowerCase() };
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',
