@@ -31,7 +31,7 @@ const TOPICS = [
     icon: "📊",
     explanation: "Line charts show closing prices. Bar charts show OHLC (Open, High, Low, Close). Candlestick charts show the full story of each period visually. Candlestick charts are commonly used by ICT traders.",
     example: "A 15-minute candlestick shows exactly what happened in that 15 minutes: where price opened, where it went highest, lowest, and where it closed.",
-    remember: "Always use candlestick charts. They show the most information per candle.",
+    remember: "Candlestick charts are a useful default because they show open, high, low, and close in one visual.",
     color: "#E8C547"
   },
   {
@@ -49,7 +49,7 @@ const TOPICS = [
     icon: "⏱️",
     explanation: "Timeframes determine how much time each candle represents. Monthly (MN), Weekly (W), Daily (D), 4-Hour (H4), 1-Hour (H1), 15-Minute (M15), 5-Minute (M5), 1-Minute (M1). Higher timeframes show the big picture. Lower timeframes show entry precision.",
     example: "A bullish daily candle might contain dozens of bearish 5-minute candles inside it. The daily bias is up, but intraday you'll see pullbacks.",
-    remember: "Always start from the top down. Daily → 4H → 1H → 15M → 5M → 1M. Use higher-timeframe context before relying on lower-timeframe signals.",
+    remember: "A top-down sequence such as Daily → 4H → 1H → 15M → 5M → 1M is one framework for organizing context; adapt and test the timeframes that fit your strategy. Use higher-timeframe context before relying on lower-timeframe signals.",
     color: "#C084FC"
   },
   {
@@ -67,7 +67,7 @@ const TOPICS = [
     icon: "📦",
     explanation: "A lot is the standardized unit of trading. Standard Lot = 100,000 units. Mini Lot = 10,000 units. Micro Lot = 1,000 units. Nano Lot = 100 units. Beginners should trade micro lots until consistent.",
     example: "Account: $1,000. For illustration, a $1,000 account with a 1% predefined risk limit would risk $10 on the trade. SL = 20 pips. Pip value at 0.01 lots = $0.10. $10 ÷ (20 × $0.10) = 5 micro lots (0.05 lots).",
-    remember: "NEVER size by feel. Always calculate: Risk Amount ÷ (SL in pips × Pip Value) = Lot Size.",
+    remember: "Avoid sizing by feel. Calculate position size from your predefined risk amount and stop distance using the appropriate instrument specification.",
     color: "#F87171"
   },
   {
@@ -103,7 +103,7 @@ const TOPICS = [
     icon: "🛡️",
     explanation: "Stop Loss (SL) = automatic order that closes your trade at a defined loss level. Take Profit (TP) = automatic order that closes at your target. Both are essential. Trading without a stop loss is gambling.",
     example: "Buy EURUSD at 1.0800. SL at 1.0780 (20 pip risk). TP at 1.0860 (60 pip target). R:R = 1:3. If wrong, lose 20 pips. If right, gain 60 pips.",
-    remember: "ALWAYS place a stop loss before entering a trade. No exceptions. No SL = account destruction waiting to happen.",
+    remember: "Consider defining and placing a stop or other explicit loss-control method before entry when appropriate to the strategy. Risk controls should reflect the account and instrument.",
     color: "#F87171"
   },
   {
@@ -202,7 +202,7 @@ const TOPICS = [
     icon: "🧠",
     explanation: "Fear causes early exits. Greed causes held losses. Revenge trading after a loss causes blown accounts. Overconfidence after wins causes oversizing. These emotional patterns destroy more accounts than bad strategies.",
     example: "You win 5 trades. You feel invincible. You 3x your position size. One loss wipes out all 5 wins. This is the classic greed cycle that destroys beginner traders.",
-    remember: "Trade the same size every time regardless of recent wins or losses. Consistency in process creates consistency in results.",
+    remember: "Use a predefined sizing method rather than changing size impulsively after wins or losses; process consistency does not guarantee consistent results.",
     color: "#F87171"
   },
   {
@@ -219,7 +219,7 @@ const TOPICS = [
     title: "Common Beginner Mistakes",
     icon: "🚫",
     explanation: "1) Trading without a stop loss. 2) Risking too much per trade. 3) Trading during low-volume sessions. 4) Chasing price after a big move. 5) Moving stop loss further away when losing. 6) Not keeping a journal. 7) Jumping between strategies constantly.",
-    example: "The biggest killer: moving your SL further away because you 'know' price will come back. This turns a 1% loss into a 5% or 10% loss. Never move SL against you.",
+    example: "The biggest killer: moving your SL further away because you 'know' price will come back. This turns a 1% loss into a 5% or 10% loss. Avoid widening a stop impulsively; if the strategy permits stop adjustments, define the rules before trading.",
     remember: "Your stop loss is your maximum risk. It is sacred. Moving it further away is not a strategy — it is denial.",
     color: "#F87171"
   },
