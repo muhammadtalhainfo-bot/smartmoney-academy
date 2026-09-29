@@ -142,6 +142,7 @@ export default function PracticeClient({ initialQuestions, dateStr }) {
                   return (
                     <button
                       key={i}
+                      aria-pressed={selected === i}
                       onClick={() => handleSelect(i)}
                       disabled={revealed}
                       className={`w-full text-left px-5 py-4 rounded-xl border transition-all flex items-center justify-between gap-3 ${revealed ? '' : 'hover:border-[#E8C547] cursor-pointer'} ${textColor}`}
