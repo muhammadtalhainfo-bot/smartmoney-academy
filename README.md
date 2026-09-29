@@ -9,7 +9,7 @@ ICT Flow is a Next.js trading-education platform built around a structured ICT /
 - All 38 modules and 203+ lessons are free; Pro adds premium tools, community features and an ad-free experience
 - Responsive dark/gold UI with accessibility focus states
 - Structured lesson metadata, sitemap and static route generation
-- Conditional Google AdSense loader + dynamic `/ads.txt`
+- Conditional Google AdSense loader + first-party `/ads.txt`
 - Supabase authentication/data
 - Stripe checkout for Pro access
 - Finnhub market ticker, with **no fake fallback prices** when the API is not configured
