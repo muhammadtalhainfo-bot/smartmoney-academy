@@ -368,7 +368,7 @@ How to determine which to use:
   5: {
     id: 5,
     title: 'Killzones & Macro Times',
-    subtitle: 'Time Is Your Edge — When Institutions Actually Trade',
+    subtitle: 'Time Is Your Edge — Studying Institutional Trading Windows',
     level: 'Intermediate',
     duration: '15 min read',
     category: 'Time & Sessions',
@@ -645,8 +645,8 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
       },
       {
         title: 'Silver Bullet on Different Instruments',
-        content: `NAS100 / US30 (most reliable):\n• 10 AM window is strongest — directly aligns with NYSE options\n• Moves are fast and impulsive\n• Use 1M chart exclusively\n• Targets: 20-50 points on NAS100\n\nEURUSD / GBPUSD:\n• 10 AM works but is slightly less reliable\n• 3 AM London window is MORE reliable for forex\n• Use 1M chart, reference 5M for confirmation\n\nXAUUSD (Gold):\n• Highly algorithmic — responds very well to Silver Bullet\n• Sweeps are sharp (10-20 pip spikes)\n• Displacement is dramatic\n• Requires larger stops — 15-20 pips minimum\n\nKEY ADAPTATION: For slower markets, use 5M FVG instead of 1M. For NAS100, 1M is the execution example used here; traders can test other timeframes. Speed matters on fast instruments.`,
-        highlight: '📌 Silver Bullet works best on NAS100 at 10 AM and EURUSD at 3 AM. Match the window to the instrument for maximum effectiveness.',
+        content: `NAS100 / US30 (common examples):\n• 10 AM window is one example of a commonly studied NY session period\n• Moves are fast and impulsive\n• Use 1M chart exclusively\n• Targets: 20-50 points on NAS100\n\nEURUSD / GBPUSD:\n• 10 AM and 3 AM London windows are commonly studied for forex\n• Compare results by instrument and session\n• Use 1M chart, reference 5M for confirmation\n\nXAUUSD (Gold):\n• Highly algorithmic — responds very well to Silver Bullet\n• Sweeps are sharp (10-20 pip spikes)\n• Displacement is dramatic\n• Requires larger stops — 15-20 pips minimum\n\nKEY ADAPTATION: For slower markets, use 5M FVG instead of 1M. For NAS100, 1M is the execution example used here; traders can test other timeframes. Speed matters on fast instruments.`,
+        highlight: '📌 Some traders emphasize NAS100 around the NY window and EURUSD around London; test the session/instrument combination rather than assuming a universal best window.',
       },
       {
         title: 'The 3 Fatal Silver Bullet Errors',
