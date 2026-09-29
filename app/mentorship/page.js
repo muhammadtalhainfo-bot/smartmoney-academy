@@ -135,7 +135,7 @@ const EPISODES = [
     youtube: null,
     concepts: ["Historical Chart Review", "Pattern Recognition", "Setup Identification"],
     summary: "Pivotal review episode. Historical chart data can be used to study and test the precision entry concepts. Learn to 'reverse engineer' why specific entries were valid using the 2022 model logic.",
-    keyLesson: "Backtest is not optional. Go back 3-6 months and mark every valid setup. Pattern recognition only comes through repetition.",
+    keyLesson: "Backtesting is a useful way to study a strategy. A 3–6 month window can be an example starting point; choose a sample that is relevant to the strategy and market, and recognize that repetition does not guarantee future performance.",
     tags: ["Backtest", "Practical", "Review"]
   },
   {
@@ -175,7 +175,7 @@ const EPISODES = [
     youtube: null,
     concepts: ["Forex", "Currency Pairs", "London Session", "Application"],
     summary: "Applying the 2022 model framework to Forex currency pairs. London killzone as the primary setup window for major pairs like GBPUSD and EURUSD.",
-    keyLesson: "Forex and indices use the same model. The only difference is session timing — London open is your primary window for Forex.",
+    keyLesson: "Forex and indices can share some ICT-style concepts, but their liquidity, volatility, and session behavior can differ. London open is one window this lesson emphasizes for Forex; test suitability by instrument.",
     tags: ["Forex", "Entry Models", "Practical"]
   },
   {
@@ -234,7 +234,7 @@ const EPISODES = [
     duration: "2h 15m",
     youtube: null,
     concepts: ["FOMC", "Fed Events", "Market Conditioning", "PM Session Entry", "High Impact News"],
-    summary: "FOMC events are designed as market-maker conditioning sessions. Unpredictable manipulation often requires sitting out. Wait for PM session after extreme volatility clears before entering.",
+    summary: "FOMC announcements are scheduled macro events that can produce sharp volatility and wider spreads. Avoid assuming a specific manipulation pattern or universal waiting period; use a predefined news-risk plan and reassess once conditions stabilize.",
     keyLesson: "On FOMC days, don't trade the event. Wait 30-60 minutes after the release, let the manipulation clear, then look for your setup in the PM.",
     tags: ["News Trading", "FOMC", "Risk Management"]
   },
@@ -335,7 +335,7 @@ const EPISODES = [
     youtube: null,
     concepts: ["FVG", "ES Precision", "Real Examples", "Pattern Repetition"],
     summary: "Additional E-Mini S&P 500 FVG examples reinforcing the three-criteria framework. The algorithm repeats the same patterns — train your eye to see them instantly.",
-    keyLesson: "The algorithm is repetitive. If you study enough historical examples, you will begin to 'see' where price is going before it gets there.",
+    keyLesson: "This lesson encourages repeated historical study to recognize recurring patterns and test hypotheses; historical patterns do not reliably reveal the next price move.",
     tags: ["FVG", "NQ/ES", "Review"]
   },
   {
