@@ -51,9 +51,9 @@ export async function GET(req) {
       return_url: `${origin}/dashboard`,
     });
 
-    return NextResponse.redirect(portal.url);
+    return NextResponse.redirect(portal.url, { headers: { 'Cache-Control': 'no-store' } });
   } catch (error) {
     console.error('Stripe portal error:', error);
-    return NextResponse.redirect(new URL('/dashboard?billing_error=1', req.url));
+    return NextResponse.redirect(new URL('/dashboard?billing_error=1', req.url), { headers: { 'Cache-Control': 'no-store' } });
   }
 }
