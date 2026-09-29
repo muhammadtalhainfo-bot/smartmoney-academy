@@ -4,6 +4,11 @@ export const runtime = 'nodejs';
 
 export async function POST(req) {
   try {
+    const contentLength = Number(req.headers.get('content-length') || 0);
+    if (contentLength > 25_000) {
+      return Response.json({ error: 'Request too large.' }, { status: 413 });
+    }
+
     const session = await getAdminSession();
     if (!session?.ok) {
       return Response.json({ error: 'Unauthorized' }, { status: 401 });
