@@ -52,6 +52,30 @@ export async function POST(req) {
     }
 
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('stripe_customer_id, is_pro')
+      .eq('id', user.id)
+      .maybeSingle();
+
+    if (profile?.stripe_customer_id) {
+      const subscriptions = await stripe.subscriptions.list({
+        customer: profile.stripe_customer_id,
+        status: 'all',
+        limit: 100,
+      });
+      const hasActiveSubscription = subscriptions.data.some((subscription) =>
+        ['active', 'trialing', 'past_due'].includes(subscription.status)
+      );
+      if (hasActiveSubscription) {
+        return Response.json({
+          error: 'You already have a Pro subscription. Manage it from Billing instead of starting another subscription.',
+          code: 'subscription_exists',
+        }, { status: 409 });
+      }
+    }
+
     const baseUrl = getBaseUrl();
     const metadata = { user_id: user.id, email: user.email.toLowerCase() };
     const session = await stripe.checkout.sessions.create({
