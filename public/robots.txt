@@ -6,5 +6,7 @@ Disallow: /admin
 Disallow: /auth
 Disallow: /auth/reset
 Disallow: /api/
+Disallow: /journal
+Disallow: /certificate
 
 Sitemap: https://ictflow.com/sitemap.xml
