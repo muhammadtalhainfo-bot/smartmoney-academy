@@ -130,7 +130,7 @@ export default function HomePage() {
           {[[String(CURRICULUM_STATS.moduleCount), 'ICT Modules'], [`${CURRICULUM_STATS.lessonCount}+`, 'Lessons'], ['$0', 'Cost'], ['2026', 'Updated']].map(([v, l]) => (
             <div key={l} style={{ textAlign:'center' }}>
               <div className="font-display gold-text" style={{ fontSize:'42px' }}>{v}</div>
-              <div style={{ fontFamily:'DM Mono,monospace', fontSize:'10px', color:'rgba(255,255,255,0.4)', letterSpacing:'0.15em', textTransform:'uppercase', marginTop:'4px' }}>{l}</div>
+              <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'#C5CCD6', letterSpacing:'0.15em', textTransform:'uppercase', marginTop:'4px' }}>{l}</div>
             </div>
           ))}
         </div>
@@ -225,7 +225,7 @@ export default function HomePage() {
                 <div className="card-hover" style={{ padding:'22px', borderRadius:'16px', background:'linear-gradient(145deg, rgba(232,197,71,0.05), rgba(255,255,255,0.01))', height:'100%' }}>
                   <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:'14px' }}>
                     <span style={{ fontFamily:'DM Mono,monospace', fontSize:'9px', letterSpacing:'0.16em', color:'#E8C547' }}>MODULE {m.module}</span>
-                    <span style={{ fontFamily:'DM Mono,monospace', fontSize:'9px', color:'rgba(255,255,255,0.4)' }}>{m.lessons} LESSONS</span>
+                    <span style={{ fontFamily:'DM Mono,monospace', fontSize:'10px', color:'#C5CCD6' }}>{m.lessons} LESSONS</span>
                   </div>
                   <h3 style={{ fontFamily:'Bebas Neue, sans-serif', fontSize:'27px', letterSpacing:'0.03em', color:'white', margin:'0 0 10px' }}>{m.title}</h3>
                   <p style={{ color:'rgba(255,255,255,0.48)', fontSize:'13px', lineHeight:1.7, margin:'0 0 18px' }}>{m.desc}</p>
@@ -243,7 +243,7 @@ export default function HomePage() {
           <div style={{ textAlign:'center', marginBottom:'56px' }}>
             <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'rgba(232,197,71,0.6)', letterSpacing:'0.15em', marginBottom:'12px' }}>// CURRICULUM</div>
             <h2 className="font-display" style={{ fontSize:'clamp(40px, 7vw, 72px)', color:'white', lineHeight:1, marginBottom:'12px' }}>WHAT YOU'LL LEARN</h2>
-            <p style={{ fontSize:'14px', color:'rgba(255,255,255,0.45)', fontWeight:300 }}>38 modules. Structured independently around ICT and SMC concepts, with original explanations and practice.</p>
+            <p style={{ fontSize:'15px', color:'#C5CCD6', fontWeight:300 }}>38 modules. Structured independently around ICT and SMC concepts, with original explanations and practice.</p>
           </div>
 
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(280px, 1fr))', gap:'16px', marginBottom:'40px' }}>
@@ -261,7 +261,7 @@ export default function HomePage() {
                       </span>
                     </div>
                     <h3 style={{ fontWeight:600, fontSize:'15px', color:'white', marginBottom:'6px' }}>{c.title}</h3>
-                    <p style={{ fontSize:'12px', color:'rgba(255,255,255,0.45)', lineHeight:1.6, fontWeight:300, flex:1 }}>{c.desc}</p>
+                    <p style={{ fontSize:'13px', color:'#C5CCD6', lineHeight:1.6, fontWeight:300, flex:1 }}>{c.desc}</p>
                     <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginTop:'14px', paddingTop:'12px', borderTop:'1px solid rgba(255,255,255,0.05)' }}>
                       <span style={{ fontFamily:'DM Mono,monospace', fontSize:'10px', color:'rgba(232,197,71,0.6)', letterSpacing:'0.08em' }}>{c.lessons} LESSONS</span>
                       <span style={{ color:'#E8C547', fontSize:'14px' }}>→</span>
@@ -296,7 +296,7 @@ export default function HomePage() {
               <div key={i} className="card-hover" style={{ padding:'20px', borderRadius:'14px', background:s.bg, textAlign:'center' }}>
                 <div style={{ fontFamily:'DM Mono,monospace', fontSize:'9px', letterSpacing:'0.15em', color:s.color, marginBottom:'8px' }}>{s.phase}</div>
                 <div style={{ fontWeight:700, fontSize:'15px', color:'white', marginBottom:'4px' }}>{s.zone}</div>
-                <div style={{ fontFamily:'DM Mono,monospace', fontSize:'9px', color:'rgba(255,255,255,0.35)', marginBottom:'10px' }}>{s.time}</div>
+                <div style={{ fontFamily:'DM Mono,monospace', fontSize:'10px', color:'#C5CCD6', marginBottom:'10px' }}>{s.time}</div>
                 <div style={{ fontSize:'12px', color:'rgba(255,255,255,0.5)', lineHeight:1.6, fontWeight:300 }}>{s.desc}</div>
               </div>
             ))}
@@ -377,7 +377,7 @@ export default function HomePage() {
           <h2 className="font-display" style={{ fontSize:'clamp(40px, 7vw, 72px)', color:'white', lineHeight:1, marginBottom:'16px' }}>
             READY TO BUILD<br /><span className="gold-text">A STRUCTURED PROCESS?</span>
           </h2>
-          <p style={{ color:'rgba(255,255,255,0.45)', fontSize:'14px', lineHeight:1.7, fontWeight:300, marginBottom:'36px' }}>
+          <p style={{ color:'#C5CCD6', fontSize:'15px', lineHeight:1.7, fontWeight:300, marginBottom:'36px' }}>
             Build a structured trading study process around concepts, practice and review. 38 modules. 203+ lessons. Start free.
           </p>
           <div style={{ display:'flex', flexWrap:'wrap', gap:'12px', justifyContent:'center' }}>
