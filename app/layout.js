@@ -63,7 +63,6 @@ const jsonLd = {
         'https://x.com/riskfirsttrad',
         'https://youtube.com/@smart_money_academy0',
         'https://www.tiktok.com/@smart.money.academy',
-        'https://discord.gg/bh2YK6vF',
       ],
     },
     {
