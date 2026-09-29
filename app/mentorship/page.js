@@ -62,7 +62,7 @@ const EPISODES = [
     duration: "2h 20m",
     youtube: null,
     concepts: ["Market Efficiency", "FVG Rebalancing", "Institutional Orders", "Price Spikes"],
-    summary: "Algorithm delivers price to give both buyers and sellers fair entries. Inefficiencies (FVGs) occur when price moves too fast and must be rebalanced. Big spikes attract retail orders to engineer liquidity for institutions.",
+    summary: "In this ICT-style framework, FVGs are studied as price inefficiencies and potential areas of repricing. Large moves can coincide with liquidity events, but institutional intent cannot be confirmed from a chart alone.",
     keyLesson: "Some traders study FVG revisits as potential rebalancing behavior; FVGs do not have a universal fill guarantee.",
     tags: ["FVG", "Algorithm", "Theory"]
   },
