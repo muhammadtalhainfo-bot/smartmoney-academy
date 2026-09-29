@@ -184,18 +184,18 @@ function AuthPageInner() {
 {!isLogin && (
               <div>
                 <label style={{ fontFamily: 'DM Mono', fontSize: '10px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', display: 'block', marginBottom: '8px' }}>Username</label>
-                <input className="auth-input" type="text" placeholder="your_trader_name" value={username} maxLength={30} onChange={e => setUsername(e.target.value)} />
+                <input id="username" aria-label="Username" className="auth-input" type="text" placeholder="your_trader_name" value={username} maxLength={30} onChange={e => setUsername(e.target.value)} />
               </div>
             )}
-              <input className="auth-input" type="email" placeholder="you@example.com" value={email} onChange={e => setEmail(e.target.value)} />
+              <input id="email" aria-label="Email address" className="auth-input" type="email" placeholder="you@example.com" value={email} onChange={e => setEmail(e.target.value)} />
             </div>
 
             {/* Password */}
             <div>
               <label style={{ fontFamily: 'DM Mono', fontSize: '10px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', display: 'block', marginBottom: '8px' }}>Password</label>
               <div style={{ position: 'relative' }}>
-                <input className="auth-input" type={showPassword ? 'text' : 'password'} placeholder="••••••••" value={password} onChange={e => setPassword(e.target.value)} style={{ paddingRight: '44px' }} />
-                <button type="button" onClick={() => setShowPassword(!showPassword)}
+                <input id="password" aria-label="Password" className="auth-input" type={showPassword ? 'text' : 'password'} placeholder="••••••••" value={password} onChange={e => setPassword(e.target.value)} style={{ paddingRight: '44px' }} />
+                <button type="button" aria-label={showPassword ? 'Hide password' : 'Show password'} onClick={() => setShowPassword(!showPassword)}
                   style={{ position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', fontSize: '16px', color: 'rgba(255,255,255,0.7)', padding: '4px' }}>
                   {showPassword ? '🙈' : '👁️'}
                 </button>
@@ -220,7 +220,7 @@ function AuthPageInner() {
                   <div style={{ color: '#34D399', fontFamily: 'DM Sans', fontSize: '13px' }}>✓ Reset link sent! Check your email.</div>
                 ) : (
                   <>
-                    <input value={forgotEmail} onChange={e => setForgotEmail(e.target.value)}
+                    <input aria-label="Password reset email address" value={forgotEmail} onChange={e => setForgotEmail(e.target.value)}
                       placeholder="Enter your email" type="email"
                       style={{ width: '100%', background: '#080808', border: '1px solid #E8C547', borderRadius: '8px', padding: '10px 14px', color: 'white', fontFamily: 'DM Sans', fontSize: '14px', marginBottom: '10px', boxSizing: 'border-box', outline: 'none' }} />
                     <div style={{ display: 'flex', gap: '8px' }}>
