@@ -11,7 +11,7 @@
 - Added methodology language to lesson pages so ICT/SMC interpretations are clearly presented as frameworks rather than guaranteed market mechanics.
 - Removed the exposed Finnhub API key from source and changed market-data fallback to **no fake prices**.
 - Updated sitemap/static params for the new lesson routes.
-- Added conditional Google AdSense loader and dynamic `/ads.txt` support.
+- Added conditional Google AdSense loader and a first-party `public/ads.txt` file.
 - Updated privacy/cookie language for advertising and Google Ads Settings.
 - Removed outdated module/student/count claims from the active app source.
 
@@ -40,7 +40,7 @@ The repository does not commit real secrets. Add these variables directly in Ver
 
 1. Add `ictflow.com` to your AdSense account and complete Google's site/ownership review.
 2. Enable the ad format(s) you want in AdSense. The project now loads the AdSense script when `NEXT_PUBLIC_ADSENSE_CLIENT` is configured.
-3. Deploy with the publisher ID set. `/ads.txt` will then return the first-party Google ads.txt line automatically.
+3. Deploy with the publisher ID set. The deployed `public/ads.txt` file will serve the first-party Google ads.txt line.
 4. In AdSense Privacy & Messaging, configure the applicable Google-certified consent setup before serving personalized ads to regions where Google requires it.
 5. Keep the Privacy and Cookies pages live and linked from the site footer.
 
