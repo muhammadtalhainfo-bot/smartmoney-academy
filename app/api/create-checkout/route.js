@@ -89,7 +89,7 @@ export async function POST(req) {
       allow_promotion_codes: true,
     });
 
-    return Response.json({ url: session.url, sessionId: session.id });
+    return Response.json({ url: session.url, sessionId: session.id }, { headers: { 'Cache-Control': 'no-store' } });
   } catch (error) {
     console.error('Stripe checkout error:', error);
     return Response.json({ error: 'Failed to create checkout session.' }, { status: 500 });
