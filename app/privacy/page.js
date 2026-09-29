@@ -40,7 +40,7 @@ export default function PrivacyPage() {
         </div>
         <div style={{ marginBottom: '40px' }}>
           <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '28px', color: '#E8C547', marginBottom: '12px', letterSpacing: '0.05em' }}>Contact</h2>
-          <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: '1.8', fontSize: '15px' }}>For privacy concerns, contact us via our Discord server at discord.gg/bh2YK6vF.</p>
+          <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: '1.8', fontSize: '15px' }}>For privacy concerns, please contact the ICT Flow team.</p>
         </div>
       </div>
       <Footer />
