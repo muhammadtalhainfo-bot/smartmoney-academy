@@ -21,6 +21,10 @@ function allowedPriceIds() {
 
 export async function POST(req) {
   try {
+    const contentLength = Number(req.headers.get('content-length') || 0);
+    if (contentLength > 20_000) {
+      return Response.json({ error: 'Request too large.' }, { status: 413 });
+    }
     const body = await req.json().catch(() => ({}));
     const priceId = typeof body.priceId === 'string' ? body.priceId.trim() : '';
     const accessToken = typeof body.accessToken === 'string' ? body.accessToken.trim() : '';
