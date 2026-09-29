@@ -841,7 +841,7 @@ function Sessions({ trades, stats }) {
 
   return (
     <div>
-      <SectionHead title="Session Analytics" sub="Know exactly where your edge lives." />
+      <SectionHead title="Session Analytics" sub="Study where your results have been strongest and weakest." />
 
       <div style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(sessData.length, 3)}, 1fr)`, gap: '12px', marginBottom: '18px' }}>
         {sessData.slice(0, 3).map(s => (
@@ -1179,13 +1179,13 @@ function Progress({ trades, stats }) {
             {stats.winRate < 50 && (
               <div style={{ padding: '12px', background: 'rgba(239,68,68,0.07)', border: `1px solid rgba(239,68,68,0.15)`, borderRadius: '9px' }}>
                 <div style={{ fontSize: '12px', fontWeight: 600, color: C.red, marginBottom: '4px' }}>Win rate below 50%</div>
-                <div style={{ fontSize: '11px', color: C.text3 }}>Stop trading setups with low hit rate. Focus on only your top 2 setups until WR exceeds 55%.</div>
+                <div style={{ fontSize: '11px', color: C.text3 }}>Review setups with low hit rates and consider focusing on the ones that perform better in your sample; avoid treating 55% as a universal threshold.</div>
               </div>
             )}
             {stats.avgRR < 1.5 && (
               <div style={{ padding: '12px', background: 'rgba(201,168,76,0.07)', border: `1px solid rgba(201,168,76,0.15)`, borderRadius: '9px' }}>
                 <div style={{ fontSize: '12px', fontWeight: 600, color: C.gold, marginBottom: '4px' }}>R:R below minimum</div>
-                <div style={{ fontSize: '11px', color: C.text3 }}>Your avg R:R is {fmt(stats.avgRR, 2)}R. Only take trades with minimum 2R setup. No exceptions.</div>
+                <div style={{ fontSize: '11px', color: C.text3 }}>Your avg R:R is {fmt(stats.avgRR, 2)}R. Compare new setups with your tested risk/reward criteria before entering.</div>
               </div>
             )}
             {stats.byMistake['Moved Stop Loss'] >= 3 && (
@@ -1288,7 +1288,7 @@ function JournalLanding() {
         <div style={{ background: C.bg1, border: '1px solid ' + C.border, borderRadius: '16px', padding: '40px' }}>
           <h2 style={{ fontSize: '22px', fontWeight: 700, color: C.text, margin: '0 0 16px' }}>Why use a trading journal?</h2>
           <p style={{ fontSize: '14px', color: C.text2, lineHeight: 1.75, margin: '0 0 16px' }}>A trading journal can be a useful tool for reviewing and improving your trading process. Without a journal, you are flying blind — repeating the same mistakes, trading the same losing sessions, and never knowing which setups actually work for you versus which ones are costing you money.</p>
-          <p style={{ fontSize: '14px', color: C.text2, lineHeight: 1.75, margin: '0 0 16px' }}>The ICT Flow free trading journal tracks every variable that matters: your entry and exit prices, risk-to-reward ratio, profit and loss, the session you traded in, the setup you used, your emotional state before and after, and whether you followed your rules. Over time, the data tells you exactly where your edge is — and exactly where you are leaking.</p>
+          <p style={{ fontSize: '14px', color: C.text2, lineHeight: 1.75, margin: '0 0 16px' }}>The ICT Flow free trading journal tracks every variable that matters: your entry and exit prices, risk-to-reward ratio, profit and loss, the session you traded in, the setup you used, your emotional state before and after, and whether you followed your rules. Over time, the data can help you identify where your results have been strongest and where your process may be leaking.</p>
           <p style={{ fontSize: '14px', color: C.text2, lineHeight: 1.75, margin: 0 }}>There is no universal number of quality setups per month. Use the journal to identify which setups, sessions, and habits work best for your own data and to reduce low-quality trades. Combined with the AI Coach feature, you get actionable feedback on your specific data — not generic trading advice.</p>
         </div>
       </div>
