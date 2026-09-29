@@ -53,7 +53,7 @@ export default function AboutPage() {
           </div>
           <h1 className="font-display" style={{ fontSize: 'clamp(52px, 9vw, 96px)', lineHeight: 1, marginBottom: '24px' }}>
             <span style={{ color: 'white' }}>TRADE LIKE</span><br />
-            <span className="shine">INSTITUTIONS</span>
+            <span className="shine">STRUCTURE</span>
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '17px', lineHeight: 1.8, fontWeight: 300, maxWidth: '560px', margin: '0 auto' }}>
             ICT Flow was built to make ICT and Smart Money Concepts easier to study through a structured curriculum, practice tools and progress tracking. All 38 modules and 203+ lessons are available free; Pro adds premium tools and extras.
