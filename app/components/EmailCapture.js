@@ -69,6 +69,7 @@ export default function EmailCapture() {
           <>
             <div style={{ display: 'flex', gap: '10px', maxWidth: '440px', margin: '0 auto 12px' }}>
               <input
+                aria-label="Email address for ICT Flow updates"
                 type="email"
                 value={email}
                 onChange={e => { setEmail(e.target.value); setStatus('idle'); setMsg(''); }}
