@@ -42,7 +42,14 @@ export async function POST(req) {
 
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
     const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, secret);
+    const contentLength = Number(req.headers.get('content-length') || 0);
+    if (contentLength > 1_000_000) {
+      return Response.json({ error: 'Webhook payload too large' }, { status: 413 });
+    }
     const body = await req.text();
+    if (body.length > 1_000_000) {
+      return Response.json({ error: 'Webhook payload too large' }, { status: 413 });
+    }
     const sig = req.headers.get('stripe-signature');
 
     if (!sig) return Response.json({ error: 'Missing signature' }, { status: 400 });
