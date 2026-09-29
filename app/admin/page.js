@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect, useCallback } from 'react';
-import { createClient } from '@/lib/supabase';
+import { adminDb } from './actions';
 import { getAdminSession, loginAdmin, logoutAdmin } from './actions';
 
 const G = '#E8C547';
@@ -265,7 +265,7 @@ function DashboardSection({ users, emails, trades, proUsers, loading, onRefresh 
 }
 
 // ─── USERS SECTION ────────────────────────────────────────────────────────────
-function UsersSection({ users, supabase, onReload }) {
+function UsersSection({ users, onReload }) {
   const [search, setSearch] = useState('');
   const [filterPro, setFilterPro] = useState('all');
   const [msg, setMsg] = useState('');
@@ -279,7 +279,7 @@ function UsersSection({ users, supabase, onReload }) {
   });
 
   const togglePro = async (u) => {
-    await supabase.from('profiles').update({ is_pro: !u.is_pro }).eq('id', u.id);
+    await adminDb('profile.togglePro', { id: u.id, isPro: !u.is_pro });
     setMsg(`${u.username || 'User'} → ${!u.is_pro ? 'Pro' : 'Free'}`);
     onReload();
     setTimeout(() => setMsg(''), 3000);
@@ -287,7 +287,7 @@ function UsersSection({ users, supabase, onReload }) {
 
   const resetXP = async (u) => {
     if (!confirm(`Reset XP for ${u.username || u.email}?`)) return;
-    await supabase.from('profiles').update({ xp: 0, streak: 0 }).eq('id', u.id);
+    await adminDb('profile.resetXP', { id: u.id });
     setMsg(`XP reset for ${u.username || u.email}`);
     onReload();
     setTimeout(() => setMsg(''), 3000);
@@ -295,7 +295,7 @@ function UsersSection({ users, supabase, onReload }) {
 
   const deleteUser = async (u) => {
     if (!confirm(`Delete user ${u.username || u.email}? Cannot be undone.`)) return;
-    await supabase.from('profiles').delete().eq('id', u.id);
+    await adminDb('profile.delete', { id: u.id });
     onReload();
   };
 
@@ -429,7 +429,7 @@ function AnalyticsSection({ users, emails }) {
 // ─── BLOG SECTION ─────────────────────────────────────────────────────────────
 const EMPTY_POST = { title: '', slug: '', description: '', category: 'Beginner', read_time: '5 min read', date: '', image: '', content: '', featured: false, published: true, sort_order: 0, meta_title: '', meta_desc: '' };
 
-function BlogSection({ supabase }) {
+function BlogSection({ adminDbClient = adminDb }) {
   const [posts, setPosts] = useState([]);
   const [view, setView] = useState('list');
   const [form, setForm] = useState(EMPTY_POST);
@@ -440,7 +440,7 @@ function BlogSection({ supabase }) {
   const [filterCat, setFilterCat] = useState('all');
 
   const load = useCallback(async () => {
-    const { data } = await supabase.from('blog_posts').select('*').order('sort_order', { ascending: true });
+    const { data } = await adminDbClient('blog.list');
     if (data) setPosts(data);
   }, [supabase]);
 
@@ -458,7 +458,7 @@ function BlogSection({ supabase }) {
     setSaving(true);
     const slug = form.slug || form.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
     const date = form.date || new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-    const { error } = await supabase.from('blog_posts').upsert({ ...form, slug, date }, { onConflict: 'slug' });
+    const { error } = await adminDbClient('blog.save', { form: { ...form, slug, date } });
     if (error) setMsg({ text: 'Error: ' + error.message, type: 'error' });
     else { setMsg({ text: '✓ Post saved!', type: 'success' }); load(); setView('list'); setForm(EMPTY_POST); setEditId(null); }
     setSaving(false);
@@ -466,12 +466,12 @@ function BlogSection({ supabase }) {
 
   const del = async (slug) => {
     if (!confirm('Delete this post permanently?')) return;
-    await supabase.from('blog_posts').delete().eq('slug', slug);
+    await adminDbClient('blog.delete', { slug });
     load();
   };
 
   const edit = (p) => { setEditId(p.id); setForm({ ...p }); setView('edit'); setMsg({ text: '', type: 'success' }); };
-  const togglePub = async (p) => { await supabase.from('blog_posts').update({ published: !p.published }).eq('id', p.id); load(); };
+  const togglePub = async (p) => { await adminDbClient('blog.togglePublished', { id: p.id, published: !p.published }); load(); };
 
   const CATS = ['all', 'Beginner', 'Intermediate', 'Advanced', 'Strategy', 'Psychology', 'News', 'Analysis'];
 
@@ -733,7 +733,7 @@ function PagesSection() {
 }
 
 // ─── BANNERS SECTION ──────────────────────────────────────────────────────────
-function BannersSection({ supabase }) {
+function BannersSection({ adminDbClient = adminDb }) {
   const [banners, setBanners] = useState([]);
   const [form, setForm] = useState({ text: '', cta_text: '', cta_url: '', type: 'info', active: true, page: 'all' });
   const [saving, setSaving] = useState(false);
@@ -741,7 +741,7 @@ function BannersSection({ supabase }) {
   const [showForm, setShowForm] = useState(false);
 
   const load = useCallback(async () => {
-    const { data } = await supabase.from('banners').select('*').order('created_at', { ascending: false });
+    const { data } = await adminDbClient('banners.list');
     if (data) setBanners(data);
   }, [supabase]);
 
@@ -750,15 +750,15 @@ function BannersSection({ supabase }) {
   const save = async () => {
     if (!form.text) { setMsg({ text: 'Banner text required', type: 'error' }); return; }
     setSaving(true);
-    const { error } = await supabase.from('banners').insert(form);
+    const { error } = await adminDbClient('banners.insert', { form });
     if (error) setMsg({ text: 'Error: ' + error.message, type: 'error' });
     else { setMsg({ text: '✓ Banner created!', type: 'success' }); load(); setShowForm(false); setForm({ text: '', cta_text: '', cta_url: '', type: 'info', active: true, page: 'all' }); }
     setSaving(false);
     setTimeout(() => setMsg({ text: '', type: 'success' }), 3000);
   };
 
-  const toggle = async (b) => { await supabase.from('banners').update({ active: !b.active }).eq('id', b.id); load(); };
-  const del = async (id) => { if (!confirm('Delete banner?')) return; await supabase.from('banners').delete().eq('id', id); load(); };
+  const toggle = async (b) => { await adminDbClient('banners.toggle', { id: b.id, active: !b.active }); load(); };
+  const del = async (id) => { if (!confirm('Delete banner?')) return; await adminDbClient('banners.delete', { id }); load(); };
 
   const TYPE_COLORS = { info: G, warning: '#FBBF24', success: '#34D399', promo: '#A78BFA' };
 
@@ -868,7 +868,7 @@ function MediaSection() {
 }
 
 // ─── SEO SECTION ──────────────────────────────────────────────────────────────
-function SEOSection({ supabase }) {
+function SEOSection({ adminDbClient = adminDb }) {
   const [form, setForm] = useState({
     site_name: 'ICT Flow',
     site_tagline: 'Master ICT & Smart Money Concepts',
@@ -885,7 +885,7 @@ function SEOSection({ supabase }) {
 
   const save = async () => {
     setSaving(true);
-    const { error } = await supabase.from('site_settings').upsert({ key: 'seo', value: form }, { onConflict: 'key' });
+    const { error } = await adminDbClient('seo.save', { form });
     if (error) setMsg({ text: 'Error: ' + error.message, type: 'error' });
     else setMsg({ text: '✓ SEO settings saved!', type: 'success' });
     setSaving(false);
@@ -1100,7 +1100,7 @@ function NotificationsSection() {
 // MAIN ADMIN COMPONENT
 // ═══════════════════════════════════════════════════════════════════════════════
 // ─── JOURNAL SETTINGS SECTION ────────────────────────────────────────────────
-function JournalSection({ supabase }) {
+function JournalSection({ adminDbClient = adminDb }) {
   const PAIRS_DEF     = ['XAUUSD','NAS100','EURUSD','GBPUSD','US30','USDJPY','GBPJPY','AUDUSD','USDCAD','BTCUSD','SP500','USOIL'];
   const SESSIONS_DEF  = ['NY AM','London','Asia','NY PM','London Close','Overlap'];
   const SETUPS_DEF    = ['ICT Silver Bullet','Order Block','Fair Value Gap','BOS Retest','Liquidity Sweep','AMD / PO3','SMT Divergence','Breaker Block','Mitigation Block','OTE Zone','NWOG / NDOG','Turtle Soup','Unicorn Model','2022 ICT Model'];
@@ -1117,29 +1117,21 @@ function JournalSection({ supabase }) {
   const [saving, setSaving]     = useState(false);
 
   useEffect(() => {
-    Promise.all([
-      supabase.from('trades').select('*', { count:'exact', head:true }),
-      supabase.from('trades').select('result').eq('result','Win'),
-      supabase.from('trades').select('user_id'),
-    ]).then(([{ count }, { data: wins }, { data: all }]) => {
-      setStats({ total: count||0, wins:(wins||[]).length, users: new Set((all||[]).map(t=>t.user_id)).size });
-    });
-    supabase.from('site_settings').select('value').eq('key','journal_config').single()
-      .then(({ data }) => {
-        if (data?.value) {
-          const c = data.value;
-          if (c.pairs)    setPairs(c.pairs);
-          if (c.sessions) setSessions(c.sessions);
-          if (c.setups)   setSetups(c.setups);
-          if (c.mistakes) setMistakes(c.mistakes);
-          if (c.rules)    setRules(c.rules);
-        }
-      });
-  }, [supabase]);
+    adminDbClient('journal.load').then(({ stats: nextStats, config }) => {
+      setStats(nextStats);
+      if (config) {
+        if (config.pairs) setPairs(config.pairs);
+        if (config.sessions) setSessions(config.sessions);
+        if (config.setups) setSetups(config.setups);
+        if (config.mistakes) setMistakes(config.mistakes);
+        if (config.rules) setRules(config.rules);
+      }
+    }).catch((error) => console.error('Journal settings load failed:', error));
+  }, [adminDbClient]);
 
   const save = async () => {
     setSaving(true);
-    const { error } = await supabase.from('site_settings').upsert({ key:'journal_config', value:{pairs,sessions,setups,mistakes,rules} }, { onConflict:'key' });
+    const { error } = await adminDbClient('journal.save', { value: { pairs, sessions, setups, mistakes, rules } });
     if (error) setMsg({ text:'Error: '+error.message, type:'error' });
     else setMsg({ text:'✓ Saved! Copy the constants below into app/journal/page.js to persist across deploys.', type:'success' });
     setSaving(false);
@@ -1243,20 +1235,20 @@ export default function AdminPage() {
   const [trades, setTrades] = useState(0);
   const [proUsers, setProUsers] = useState(0);
 
-  const supabase = createClient();
-
   const loadData = useCallback(async () => {
     setLoading(true);
-    const [{ data: usersData }, { data: emailsData }, { count }] = await Promise.all([
-      supabase.from('profiles').select('*').order('xp', { ascending: false }).limit(500),
-      supabase.from('email_signups').select('*').order('created_at', { ascending: false }),
-      supabase.from('trades').select('*', { count: 'exact', head: true }),
-    ]);
-    if (usersData) { setUsers(usersData); setProUsers(usersData.filter(u => u.is_pro).length); }
-    if (emailsData) setEmails(emailsData);
-    if (count !== null) setTrades(count);
-    setLoading(false);
-  }, [supabase]);
+    try {
+      const { users: usersData, emails: emailsData, trades: tradeCount } = await adminDb('dashboard');
+      setUsers(usersData);
+      setProUsers(usersData.filter(u => u.is_pro).length);
+      setEmails(emailsData);
+      setTrades(tradeCount);
+    } catch (error) {
+      console.error('Admin data load failed:', error);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
     let mounted = true;
@@ -1391,18 +1383,18 @@ export default function AdminPage() {
       {/* ── MAIN CONTENT ─────────────────────────────────────────────────── */}
       <div style={{ flex: 1, overflow: 'auto', padding: '32px 36px', maxWidth: '1300px' }}>
         {activeTab === 'dashboard'     && <DashboardSection users={users} emails={emails} trades={trades} proUsers={proUsers} loading={loading} onRefresh={loadData} />}
-        {activeTab === 'users'         && <UsersSection users={users} supabase={supabase} onReload={loadData} />}
+        {activeTab === 'users'         && <UsersSection users={users} onReload={loadData} />}
         {activeTab === 'analytics'     && <AnalyticsSection users={users} emails={emails} />}
-        {activeTab === 'blog'          && <BlogSection supabase={supabase} />}
+        {activeTab === 'blog'          && <BlogSection />}
         {activeTab === 'courses'       && <CoursesSection />}
         {activeTab === 'pages'         && <PagesSection />}
         {activeTab === 'media'         && <MediaSection />}
-        {activeTab === 'banners'       && <BannersSection supabase={supabase} />}
+        {activeTab === 'banners'       && <BannersSection />}
         {activeTab === 'notifications' && <NotificationsSection />}
-        {activeTab === 'seo'           && <SEOSection supabase={supabase} />}
+        {activeTab === 'seo'           && <SEOSection />}
         {activeTab === 'pricing'       && <PricingSection />}
         {activeTab === 'nav'           && <NavSection />}
-        {activeTab === 'journal'       && <JournalSection supabase={supabase} />}
+        {activeTab === 'journal'       && <JournalSection />}
       </div>
     </div>
   );
