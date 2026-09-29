@@ -1,11 +1,14 @@
 'use server';
 
-import { cookies } from 'next/headers';
+import { cookies, headers } from 'next/headers';
 import crypto from 'node:crypto';
 import { createClient } from '@supabase/supabase-js';
 
 const COOKIE_NAME = 'ictflow_admin_session';
 const SESSION_TTL = 8 * 60 * 60;
+const ADMIN_LOGIN_WINDOW = 15 * 60 * 1000;
+const ADMIN_LOGIN_MAX_FAILURES = 10;
+const adminLoginAttempts = new Map();
 
 function tokenFor(secret, issuedAt) {
   return `${issuedAt}.${crypto.createHmac('sha256', secret).update(`ictflow-admin-v1:${issuedAt}`).digest('hex')}`;
@@ -23,9 +26,31 @@ export async function loginAdmin(password) {
     return { ok: false, error: 'Admin access is not configured on the server.' };
   }
 
+  const headerStore = await headers();
+  const forwarded = headerStore.get('x-forwarded-for') || '';
+  const clientIp = forwarded.split(',')[0].trim() || headerStore.get('x-real-ip') || 'unknown';
+  const nowMs = Date.now();
+  const previous = adminLoginAttempts.get(clientIp);
+  const attempt = previous && nowMs - previous.startedAt < ADMIN_LOGIN_WINDOW
+    ? previous
+    : { startedAt: nowMs, failures: 0 };
+
+  if (attempt.failures >= ADMIN_LOGIN_MAX_FAILURES) {
+    return { ok: false, error: 'Too many failed attempts. Try again later.' };
+  }
+
   if (!sameSecret(password, secret)) {
+    attempt.failures += 1;
+    adminLoginAttempts.set(clientIp, attempt);
+    if (adminLoginAttempts.size > 5000) {
+      for (const [key, value] of adminLoginAttempts) {
+        if (nowMs - value.startedAt >= ADMIN_LOGIN_WINDOW) adminLoginAttempts.delete(key);
+      }
+    }
     return { ok: false, error: 'Incorrect admin password.' };
   }
+
+  adminLoginAttempts.delete(clientIp);
 
   const store = await cookies();
   const issuedAt = Math.floor(Date.now() / 1000);
