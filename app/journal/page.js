@@ -1361,7 +1361,9 @@ export default function JournalPage() {
 
   const del = async (id) => {
     if (!confirm('Delete this trade? This cannot be undone.')) return;
-    await supabase.from('trades').delete().eq('id', id).eq('user_id', u.id);
+    const { data: { user: currentUser } } = await supabase.auth.getUser();
+    if (!currentUser) return;
+    await supabase.from('trades').delete().eq('id', id).eq('user_id', currentUser.id);
     load();
   };
 
