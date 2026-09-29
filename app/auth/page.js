@@ -68,8 +68,13 @@ function AuthPageInner() {
       }
     } else {
       const normalizedUsername = username.trim();
-      if (!normalizedUsername) {
-        setError('Choose a username');
+      if (!normalizedUsername || normalizedUsername.length > 50) {
+        setError('Choose a username up to 50 characters');
+        setLoading(false);
+        return;
+      }
+      if (password.length < 8) {
+        setError('Password must be at least 8 characters');
         setLoading(false);
         return;
       }
