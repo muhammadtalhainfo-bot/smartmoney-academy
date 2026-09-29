@@ -17,7 +17,7 @@ export default function Error({ error, reset }) {
         Something went wrong
       </h2>
       <p style={{ fontFamily: 'DM Sans, sans-serif', color: 'rgba(255,255,255,0.65)', marginBottom: '24px' }}>
-        {error.message || 'An unexpected error occurred'}
+        We could not load this page. Please try again.
       </p>
       <button
         onClick={reset}
