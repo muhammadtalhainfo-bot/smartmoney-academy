@@ -969,22 +969,25 @@ function Quiz({ questions, lessonId }) {
               const supabase = createClient();
               const { data: { session } } = await supabase.auth.getSession();
       const user = session?.user;
-              if (user) {
+              if (user && session?.access_token) {
                 const normalizedLessonId = Number.parseInt(String(lessonId), 10);
                 if (Number.isNaN(normalizedLessonId)) return;
 
-                const { error: completionError } = await supabase
-                  .from('lesson_completions')
-                  .insert({ user_id: user.id, lesson_id: normalizedLessonId });
+                const response = await fetch('/api/lesson-completion', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${session.access_token}`,
+                  },
+                  body: JSON.stringify({
+                    lessonId: normalizedLessonId,
+                    answers: questions.map((_, index) => answers[index]),
+                  }),
+                });
 
-                // Only award XP when this lesson is being completed for the first time.
-                // A duplicate-key error means the completion already exists.
-                if (completionError) return;
-
-                const xpEarned = sc === questions.length ? 70 : 20;
-                const { data: profile } = await supabase.from('profiles').select('xp').eq('id', user.id).single();
-                const currentXP = profile?.xp || 0;
-                await supabase.from('profiles').upsert({ id: user.id, xp: currentXP + xpEarned }, { onConflict: 'id' });
+                if (!response.ok) {
+                  console.error('Lesson completion was not recorded.');
+                }
               }
             } catch(e) {}
           }}
