@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
-import { createClient } from '@/lib/supabase';
 import { MODULES } from '@/lib/curriculum';
 
 const TOTAL_MODULES = MODULES.length;
