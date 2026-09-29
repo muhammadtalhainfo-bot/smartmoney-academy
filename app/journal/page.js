@@ -1,4 +1,5 @@
 'use client';
+// Production build checkpoint
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { createClient } from '@/lib/supabase';
 
