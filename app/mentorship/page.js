@@ -34,7 +34,7 @@ const EPISODES = [
     youtube: null,
     concepts: ["IRL", "MSS", "Displacement", "Relative Equal Highs/Lows", "REH/REL"],
     summary: "Critical distinction between a structure 'break' and a true 'shift'. MSS requires displacement — large energetic candles signaling institutional intent. Algorithm targets REH and REL where dense stop clusters sit.",
-    keyLesson: "A Market Structure Shift is NOT just any break. It must have displacement — strong, fast candles that leave a Fair Value Gap.",
+    keyLesson: "In this ICT-style model, an MSS is distinguished from an ordinary break by displacement; traders can test whether requiring strong candles and an FVG improves their setup definition.",
     tags: ["Market Structure", "Liquidity", "Foundation"]
   },
   {
@@ -43,7 +43,7 @@ const EPISODES = [
     duration: "2h 30m",
     youtube: null,
     concepts: ["2-Minute Chart", "8:30 AM Macro", "Stop Hunts", "ES Futures", "Precision Entry"],
-    summary: "Practical application of MSS on ES. The 2-minute chart is the precision entry tool. Stop hunts between 8:30–11:00 AM EST are the setup trigger. Displacement after the hunt must leave an FVG to validate.",
+    summary: "Practical application of MSS on ES. This lesson uses the 2-minute chart as an execution example. It also studies liquidity events during the 8:30–11:00 AM EST window and uses displacement/FVGs as example confirmation criteria; these are testable conditions, not guarantees.",
     keyLesson: "Around scheduled releases, observe the sweep/displacement sequence and only consider an FVG entry if it matches the predefined plan.",
     tags: ["Entry Models", "NQ/ES", "Practical"]
   },
@@ -283,7 +283,7 @@ const EPISODES = [
     duration: "2h 00m",
     youtube: null,
     concepts: ["Visual Training", "Pattern Recognition", "IPDA Signatures", "No Commentary"],
-    summary: "Unique episode — Huddleston removes verbal commentary. Students must identify IPDA signatures from visual cues alone. Forces independent thinking and pattern internalization.",
+    summary: "Unique episode — Huddleston removes verbal commentary. Students identify the lesson's IPDA-style visual cues independently to practice pattern recognition and hypothesis testing.",
     keyLesson: "Can you identify the setup without being told what it is? This episode tests whether you truly see the market or just follow instructions.",
     tags: ["Training", "Advanced", "Must Watch"]
   },
@@ -314,7 +314,7 @@ const EPISODES = [
     youtube: null,
     concepts: ["FVG Validity", "Liquidity Run Required", "Structure Shift Required", "ES Examples"],
     summary: "Not every FVG is tradeable. Must occur AFTER a liquidity run AND a structure shift to be valid. Quality over quantity — fewer, higher-conviction setups.",
-    keyLesson: "Three requirements for a valid FVG entry: 1) After a liquidity sweep. 2) After an MSS. 3) In the direction of HTF bias. All three must be present.",
+    keyLesson: "This lesson presents three example conditions for an FVG entry: a liquidity sweep, an MSS, and alignment with HTF bias. Treat them as a testable framework rather than universal requirements.",
     tags: ["FVG", "NQ/ES", "Entry Models"]
   },
   {
@@ -354,7 +354,7 @@ const EPISODES = [
     youtube: null,
     concepts: ["PA Review", "Cross-Market", "Setup Consistency"],
     summary: "Continued PA review across multiple market conditions. Emphasizes that the model works across all market environments when applied correctly with HTF context.",
-    keyLesson: "A setup that works in trending markets must also work in ranging markets — if you truly understand the underlying mechanics.",
+    keyLesson: "A robust strategy should be evaluated across both trending and ranging conditions; performance can differ by market regime.",
     tags: ["Review", "Training", "Advanced"]
   },
   {
