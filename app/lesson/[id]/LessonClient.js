@@ -1,3 +1,11 @@
+'use client';
+import { useState, useEffect } from 'react';
+import { createClient } from '@/lib/supabase';
+import { trackLessonStart, trackLessonComplete, trackShare } from '@/lib/analytics';
+import { MODULES } from '@/lib/curriculum';
+import Link from 'next/link';
+import AdSlot from '@/app/components/AdSlot';
+
 
 // ─── Level badge styles ──────────────────────────────────────────
 const LEVEL_STYLE = {
@@ -195,7 +203,7 @@ export default function LessonClient({ lesson, lessonId, moduleDiagramSrc }) {
           <h1 className="font-display text-5xl md:text-7xl text-white mb-4 leading-none">{lesson.title.toUpperCase()}</h1>
           {/* Share Bar */}
           <div style={{ display:'flex', alignItems:'center', gap:'10px', marginTop:'16px', marginBottom:'8px', flexWrap:'wrap' }}>
-            <span style={{ fontFamily:'DM Mono,monospace', fontSize:'10px', color:'rgba(255,255,255,0.3)', letterSpacing:'0.12em' }}>SHARE FREE:</span>
+            <span style={{ fontFamily:'DM Mono,monospace', fontSize:'10px', color:'#B9C1CC', letterSpacing:'0.12em' }}>SHARE FREE:</span>
             <button onClick={() => handleShare('twitter')} style={{ padding:'6px 14px', borderRadius:'8px', border:'1px solid rgba(29,161,242,0.3)', background:'rgba(29,161,242,0.08)', color:'#1DA1F2', fontFamily:'DM Mono,monospace', fontSize:'10px', cursor:'pointer', letterSpacing:'0.08em' }}>
               𝕏 Twitter
             </button>
@@ -286,7 +294,7 @@ export default function LessonClient({ lesson, lessonId, moduleDiagramSrc }) {
                 Next: {lesson.nextLesson.title} →
               </Link>
             )}
-            <Link href="/courses" style={{ padding: '12px 20px', borderRadius: '12px', border: '1px solid rgba(212,168,67,0.2)', color: 'rgba(255,255,255,0.5)', fontFamily: 'DM Mono,monospace', fontSize: '12px', textDecoration: 'none', letterSpacing: '0.08em' }}>
+            <Link href="/courses" style={{ padding: '12px 20px', borderRadius: '12px', border: '1px solid rgba(212,168,67,0.2)', color: '#C5CCD6', fontFamily: 'DM Mono,monospace', fontSize: '12px', textDecoration: 'none', letterSpacing: '0.08em' }}>
               All Modules
             </Link>
           </div>
