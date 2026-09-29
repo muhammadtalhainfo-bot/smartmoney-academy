@@ -348,7 +348,7 @@ export default function CoursesPage() {
                 outline: 'none', fontFamily: 'DM Sans, sans-serif', fontSize: '12px'
               }}
             />
-            <span className="font-mono-c text-xs flex-shrink-0" style={{ color: 'rgba(255,255,255,0.38)' }}>
+            <span className="font-mono-c text-xs flex-shrink-0" style={{ color: '#C5CCD6' }}>
               {filtered.length} shown
             </span>
           </div>
