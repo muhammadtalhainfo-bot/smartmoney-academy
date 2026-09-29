@@ -332,30 +332,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── DISCORD CTA ── */}
-      <section style={{ position:'relative', zIndex:10, padding:'96px 24px', background:'#080808' }}>
-        <div style={{ maxWidth:'700px', margin:'0 auto' }}>
-          <div className="gold-glow" style={{ border:'1px solid rgba(232,197,71,0.2)', borderRadius:'24px', padding:'56px 40px', textAlign:'center', background:'linear-gradient(135deg, rgba(232,197,71,0.04) 0%, rgba(8,8,8,0) 100%)' }}>
-            <div style={{ fontSize:'48px', marginBottom:'16px' }}>💬</div>
-            <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'rgba(232,197,71,0.6)', letterSpacing:'0.15em', marginBottom:'16px' }}>// COMMUNITY</div>
-            <h2 className="font-display" style={{ fontSize:'clamp(36px, 6vw, 60px)', color:'white', lineHeight:1, marginBottom:'16px' }}>
-              JOIN THE<span className="gold-text"> DISCORD</span>
-            </h2>
-            <p style={{ color:'rgba(255,255,255,0.5)', fontSize:'14px', lineHeight:1.7, fontWeight:300, marginBottom:'32px' }}>
-              Market analysis, trade reviews and ICT concept discussions for traders who want a structured place to study and review ideas.
-            </p>
-            <div style={{ display:'flex', flexWrap:'wrap', gap:'12px', justifyContent:'center' }}>
-              <a href="https://discord.gg/bh2YK6vF" target="_blank" rel="noopener noreferrer" className="btn-gold" style={{ padding:'14px 28px', borderRadius:'12px', fontFamily:'DM Mono,monospace', fontSize:'12px', letterSpacing:'0.12em', textTransform:'uppercase', textDecoration:'none', display:'inline-block' }}>
-                Join Discord — Free →
-              </a>
-              <Link href="/lesson/1" style={{ padding:'14px 28px', borderRadius:'12px', fontFamily:'DM Mono,monospace', fontSize:'12px', letterSpacing:'0.12em', textTransform:'uppercase', textDecoration:'none', border:'1px solid rgba(232,197,71,0.25)', color:'rgba(255,255,255,0.6)', display:'inline-block' }}>
-                Start Learning
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ── QUOTE ── */}
       <section style={{ position:'relative', zIndex:10, padding:'80px 24px', textAlign:'center', borderTop:'1px solid rgba(232,197,71,0.08)', background:'#0A0A0A' }}>
         <div style={{ maxWidth:'800px', margin:'0 auto' }}>
