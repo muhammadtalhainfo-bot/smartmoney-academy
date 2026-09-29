@@ -76,7 +76,7 @@ export default function BlogPage() {
                 <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '20px' }}>
                   <div style={{ flex: 1 }}>
                     <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(24px, 3vw, 34px)', color: 'white', lineHeight: 1.05, marginBottom: '12px' }}>{featured.title}</h2>
-                    <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.42)', lineHeight: 1.65, fontWeight: 300 }}>{featured.description}</p>
+                    <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.72)', lineHeight: 1.65, fontWeight: 300 }}>{featured.description}</p>
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '12px', flexShrink: 0 }}>
                     <span style={{ padding: '4px 12px', borderRadius: '100px', border: '1px solid #E8C547', fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#E8C547' }}>FEATURED</span>
@@ -101,8 +101,8 @@ export default function BlogPage() {
                 padding: '6px 14px', borderRadius: '100px',
                 border: '1px solid ' + (active === cat ? '#E8C547' : 'rgba(255,255,255,0.6)'),
                 background: active === cat ? 'rgba(232,197,71,0.95)' : 'transparent',
-                color: active === cat ? '#E8C547' : 'rgba(255,255,255,0.85)',
-                fontFamily: 'DM Mono, monospace', fontSize: '10px', cursor: 'pointer'
+                color: active === cat ? '#080808' : 'rgba(255,255,255,0.85)',
+                fontFamily: 'DM Mono, monospace', fontSize: '11px', cursor: 'pointer'
               }}>
                 {cat}
               </button>
@@ -116,8 +116,8 @@ export default function BlogPage() {
               <div className="card" style={{ background: '#0C0C0C', border: '1px solid rgba(232,197,71,0.95)', borderRadius: '18px', overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ padding: '16px 20px 14px', background: 'linear-gradient(135deg, #111008 0%, #0E0E0E 100%)', borderBottom: '1px solid rgba(212,168,67,0.07)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
-                    <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.28)' }}>ICT Flow Team</span>
-                    <span style={{ padding: '2px 9px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.22)', fontFamily: 'DM Mono, monospace', fontSize: '8px', color: '#E8C547' }}>{post.category}</span>
+                    <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.65)' }}>ICT Flow Team</span>
+                    <span style={{ padding: '2px 9px', borderRadius: '100px', border: '1px solid rgba(212,168,67,0.22)', fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#E8C547' }}>{post.category}</span>
                   </div>
                   <h3 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '20px', color: 'white', lineHeight: 1.1, marginBottom: '10px' }}>{post.title}</h3>
                 </div>
@@ -125,9 +125,9 @@ export default function BlogPage() {
                   <ModuleBanner id={post.slug} title={post.title} label={post.category} width={300} height={140} />
                 </div>
                 <div style={{ padding: '14px 20px 18px', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                  <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.38)', lineHeight: 1.65, fontWeight: 300, marginBottom: '14px', flex: 1 }}>{post.description}</p>
+                  <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.72)', lineHeight: 1.65, fontWeight: 300, marginBottom: '14px', flex: 1 }}>{post.description}</p>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.22)' }}>{post.readTime}</span>
+                    <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.6)' }}>{post.readTime}</span>
                     <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#E8C547' }}>Read</span>
                   </div>
                 </div>
