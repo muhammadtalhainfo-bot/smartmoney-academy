@@ -273,7 +273,7 @@ export default function ToolsPage() {
                           }}>
                             {checked[key] && <span style={{ color: '#080808', fontSize: '12px', fontWeight: 700 }}>✓</span>}
                           </div>
-                          <span style={{ fontSize: '14px', color: checked[key] ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.75)', textDecoration: checked[key] ? 'line-through' : 'none', lineHeight: 1.5, transition: 'all 0.15s' }}>
+                          <span style={{ fontSize: '14px', color: checked[key] ? '#B9C1CC' : 'rgba(255,255,255,0.75)', textDecoration: checked[key] ? 'line-through' : 'none', lineHeight: 1.5, transition: 'all 0.15s' }}>
                             {check}
                           </span>
                         </div>
@@ -295,7 +295,7 @@ export default function ToolsPage() {
             <div style={{ textAlign: 'center', paddingTop: '16px' }}>
               <button
                 onClick={() => setChecked({})}
-                style={{ padding: '10px 24px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', background: 'transparent', color: 'rgba(255,255,255,0.4)', cursor: 'pointer', fontSize: '12px', fontFamily: 'DM Mono, monospace' }}
+                style={{ padding: '10px 24px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', background: 'transparent', color: '#B9C1CC', cursor: 'pointer', fontSize: '12px', fontFamily: 'DM Mono, monospace' }}
               >
                 Reset Checklist
               </button>
