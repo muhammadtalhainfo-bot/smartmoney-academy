@@ -87,3 +87,11 @@ function ResourceGrid({title,subtitle,items,primary}) {
     </div>
   </>;
 }
+
+
+function Info({ label, value }) {
+  return <div style={{background:'rgba(255,255,255,.03)',borderRadius:'8px',padding:'10px 14px'}}>
+    <div style={{fontFamily:'DM Mono,monospace',fontSize:'9px',color:'rgba(255,255,255,.65)',letterSpacing:'.1em',marginBottom:'4px'}}>{label}</div>
+    <div style={{fontSize:'13px',color:'rgba(255,255,255,.8)',fontWeight:500}}>{value}</div>
+  </div>;
+}
