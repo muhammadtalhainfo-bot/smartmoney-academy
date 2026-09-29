@@ -24,18 +24,6 @@ async function customerHasActiveSubscription(stripe, customerId) {
   );
 }
 
-async function customerHasActiveSubscription(stripe, customerId) {
-  if (!customerId) return false;
-  const subscriptions = await stripe.subscriptions.list({
-    customer: customerId,
-    status: 'all',
-    limit: 100,
-  });
-  return subscriptions.data.some((subscription) =>
-    ['active', 'trialing'].includes(subscription.status)
-  );
-}
-
 async function findUserByEmail(supabase, email) {
   if (!email) return null;
   const { data: { users }, error } = await supabase.auth.admin.listUsers();
