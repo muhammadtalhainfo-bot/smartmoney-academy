@@ -17,7 +17,7 @@ const ALL_QUESTIONS = [
     question: 'Price creates a Higher High followed by a Higher Low. What is the current market structure?',
     options: ['Bearish — Lower Lows forming', 'Bullish — HH/HL sequence confirmed', 'Ranging — no clear direction', 'Reversal — trend is changing'],
     answer: 1,
-    explanation: 'A sequence of Higher Highs (HH) and Higher Lows (HL) is the definition of bullish market structure. Buyers are in full control and you should only look for buy setups.',
+    explanation: 'A sequence of Higher Highs (HH) and Higher Lows (HL) is the definition of bullish market structure. HH/HL structure is commonly interpreted as bullish; it can inform a directional bias, while individual setups should still be evaluated.',
     lesson: 1,
   },
   {
@@ -50,7 +50,7 @@ const ALL_QUESTIONS = [
     question: 'You see an Internal BOS on the 15-minute chart but the 4H structure is still bearish. What should you do?',
     options: ['Take a long trade — 15M BOS is your signal', 'Ignore the 15M BOS — only look for sells aligned with 4H bias', 'Wait for the daily chart to confirm', 'Switch to a different instrument'],
     answer: 1,
-    explanation: 'Higher timeframe always wins. If the 4H structure is bearish, an Internal BOS on the 15M is just a counter-trend move — likely a retracement, not a reversal. Only take sells that align with the 4H bearish bias.',
+    explanation: 'Higher-timeframe structure can carry more weight in a multi-timeframe framework. A 15M BOS against a bearish 4H context may be treated as a counter-trend move, but the hierarchy should be tested.',
     lesson: 1,
   },
   {
@@ -118,7 +118,7 @@ const ALL_QUESTIONS = [
     question: 'Price is ranging in a tight consolidation for 3 hours. Equal highs AND equal lows have formed. Which direction will price likely move FIRST according to ICT?',
     options: ['Always sweeps the highs first', 'Always sweeps the lows first', 'Whichever side aligns with the HTF bias will be the TRUE move; the opposite side is swept first (Judas)', 'It is random — consolidations have no predictable sweep direction'],
     answer: 2,
-    explanation: 'In ICT, the Judas Swing principle applies: price sweeps the side OPPOSITE to the true direction first. So if HTF is bullish, price will sweep the lows (SSL) first, then reverse and run to the highs. Identify HTF bias first, then expect the opposite side to be swept before the true move.',
+    explanation: 'In the ICT Judas Swing framework, traders may look for a move opposite the eventual direction before a reversal. The sequence and swept side are not guaranteed, so use HTF context as one input rather than an expectation.',
     lesson: 2,
   },
 
@@ -199,7 +199,7 @@ const ALL_QUESTIONS = [
     question: 'An Order Block has been tested once and held. Price returns for a second test. How should you treat it?',
     options: ['Second test is stronger — higher confidence entry', 'Second test is weaker — the OB is partially mitigated, use caution', 'It makes no difference how many times it\'s been tested', 'Avoid trading second tests completely'],
     answer: 1,
-    explanation: 'Each time an Order Block is tested, some of the institutional orders at that level are filled (mitigated). The FIRST test is the strongest — most orders are still resting there. By the second test, fewer orders remain, making the reaction weaker. The best OB entries are always on the first return (first mitigation).',
+    explanation: 'ICT traders may study first-return behavior around Order Blocks, but the amount of resting institutional liquidity cannot be known from the chart and reaction strength varies. First mitigation is a testable hypothesis, not a universal rule.',
     lesson: 4,
   },
   {
