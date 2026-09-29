@@ -82,7 +82,7 @@ const EPISODES = [
     duration: "3h 10m",
     youtube: null,
     concepts: ["EURUSD", "Forex Application", "Order Flow", "Session Alignment"],
-    summary: "Forex pairs mirror index futures behavioral patterns. EUR/USD application of the 2022 model. The definitive step-by-step: HTF bias → liquidity sweep → LTF MSS → FVG entry.",
+    summary: "Forex pairs mirror index futures behavioral patterns. EUR/USD application of the 2022 model. A structured step-by-step: HTF bias → liquidity sweep → LTF MSS → FVG entry.",
     keyLesson: "Step 1: HTF bias. Step 2: Wait for killzone sweep. Step 3: LTF MSS with displacement. Step 4: Limit order at FVG.",
     tags: ["Forex", "EURUSD", "Entry Models", "Practical"]
   },
@@ -103,7 +103,7 @@ const EPISODES = [
     youtube: null,
     concepts: ["News Events", "8:30 AM Data", "10:00 AM Data", "Stop Runs", "Calendar"],
     summary: "Scheduled news can materially affect volatility, spreads, and execution. Traders may choose to avoid entering immediately around releases and study post-event behavior.",
-    keyLesson: "Never trade INTO news. Wait for the stop-run the news creates, then look for your setup after the manipulation clears.",
+    keyLesson: "Avoid treating news reactions as guaranteed stop-runs. Around scheduled releases, wait for volatility to settle and only trade if the setup matches your predefined plan.",
     tags: ["News Trading", "Macros", "Risk Management"]
   },
   {
@@ -132,7 +132,7 @@ const EPISODES = [
     duration: "2h 45m",
     youtube: null,
     concepts: ["Historical Chart Review", "Pattern Recognition", "Setup Identification"],
-    summary: "Pivotal review episode. Historical chart data proves the precision entry concepts. Learn to 'reverse engineer' why specific entries were valid using the 2022 model logic.",
+    summary: "Pivotal review episode. Historical chart data can be used to study and test the precision entry concepts. Learn to 'reverse engineer' why specific entries were valid using the 2022 model logic.",
     keyLesson: "Backtest is not optional. Go back 3-6 months and mark every valid setup. Pattern recognition only comes through repetition.",
     tags: ["Backtest", "Practical", "Review"]
   },
@@ -203,7 +203,7 @@ const EPISODES = [
     youtube: null,
     concepts: ["London Open", "Midnight Open", "NDOG", "Session Extremes", "Daily Range"],
     summary: "Define the range from NY Midnight Open to London Open. Algorithm reacts to session extremes. Essential for capturing the initial expansion of the daily range during London.",
-    keyLesson: "Mark the New York Midnight Open (12:00 AM EST) on every chart. This is the reference price the algorithm uses for the daily delivery.",
+    keyLesson: "The New York Midnight Open (12:00 AM EST) is an ICT reference level that some traders study alongside daily price delivery; its role should be tested rather than assumed.",
     tags: ["Session Timing", "London", "Foundation"]
   },
   {
@@ -243,7 +243,7 @@ const EPISODES = [
     youtube: null,
     concepts: ["Visual Templates", "Psychology", "Emotional Execution", "Fear of Loss", "Rules"],
     summary: "Visual templates for the 2022 entry model. Fear of losing is what causes the most losses — it leads to early exits and rule violations. Emotional execution is the primary barrier to profitability.",
-    keyLesson: "Your rules must be non-negotiable. Write them down before the session. If the setup isn't there, don't trade. Period.",
+    keyLesson: "Write your rules down before the session and define what qualifies as a setup. If your plan requires a complete checklist, wait when the criteria are not met.",
     tags: ["Psychology", "Entry Models", "Practical"]
   },
   {
@@ -272,7 +272,7 @@ const EPISODES = [
     duration: "2h 10m",
     youtube: null,
     concepts: ["Counter Trend", "Reversal Setups", "HTF Targets", "Trend End"],
-    summary: "When the higher-timeframe draw on liquidity has been reached, counter-trend setups become valid. These offer the highest reward-to-risk but require confirmed HTF context.",
+    summary: "When the higher-timeframe draw on liquidity has been reached, counter-trend setups become valid. These can offer attractive reward-to-risk profiles in some conditions, but outcomes depend on the setup and execution.",
     keyLesson: "Counter-trend setups can be evaluated around higher-timeframe extremes and liquidity events; define invalidation and avoid treating the framework as an absolute rule.",
     tags: ["Reversals", "Advanced", "HTF Analysis"]
   },
