@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { createClient } from '@/lib/supabase';
+
 
 export default function EmailCapture() {
   const [email, setEmail] = useState('');
@@ -16,8 +16,13 @@ export default function EmailCapture() {
     }
     setStatus('loading');
     try {
-      const supabase = createClient();
-      const { error } = await supabase.from('email_signups').insert({ email: normalizedEmail });
+      const res = await fetch('/api/email-capture', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: normalizedEmail }),
+      });
+      const data = await res.json().catch(() => ({}));
+      const error = res.ok ? null : { code: data?.code || 'request_failed' };
       if (error) {
         if (error.code === '23505') {
           setMsg("You're already on the list!");
