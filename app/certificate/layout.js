@@ -2,6 +2,7 @@ export const metadata = {
   title: 'ICT Trading Certificate — ICT Flow',
   description: 'Earn your ICT trading certificate by completing the full ICT Flow curriculum. Proof of your ICT and Smart Money Concepts knowledge — shareable on LinkedIn.',
   alternates: { canonical: 'https://ictflow.com/certificate' },
+  robots: { index: false, follow: false },
   openGraph: {
     title: 'ICT Trading Certificate | ICT Flow',
     description: 'Complete the ICT Flow curriculum and earn your certificate. Shareable on LinkedIn.',
