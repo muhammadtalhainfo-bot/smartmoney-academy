@@ -137,7 +137,7 @@ A common liquidity-sweep example is price approaching BSL, briefly trading above
 • Sell-stop orders from breakout sellers are resting
 • Equal lows, swing lows, support levels
 
-ICT teachings commonly interpret sell-side liquidity as an area where buy-side orders may be filled; actual participant intent is not directly observable. They push price down below obvious support (triggering retail stops), fill their massive buy orders from those panicking sellers, then reverse price upward.
+ICT teachings commonly interpret sell-side liquidity as an area where buy-side orders may be filled. Some ICT explanations describe price moving below obvious lows before reversing, but the chart alone cannot establish that institutions deliberately triggered stops or accumulated positions there.
 
 You'll identify SSL as: Equal Lows (EQL), previous day/week lows, obvious support levels, and round numbers below current price.
 
