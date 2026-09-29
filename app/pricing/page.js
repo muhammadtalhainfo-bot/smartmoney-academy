@@ -12,7 +12,6 @@ const FREE_FEATURES = [
   { text: 'Trade Journal', included: true },
   { text: 'AI-generated daily challenges', included: false },
   { text: 'Certificate of completion', included: false },
-  { text: 'Discord community access', included: false },
   { text: 'Weekly market breakdown', included: false },
 ];
 
@@ -20,7 +19,6 @@ const PRO_FEATURES = [
   { text: 'Everything in Free', included: true },
   { text: 'AI-generated daily challenges', included: true },
   { text: 'Certificate of completion', included: true },
-  { text: 'Discord community access', included: true },
   { text: 'Weekly market breakdown', included: true },
   { text: 'Priority support', included: true },
   { text: 'Ad-free learning experience', included: true },
