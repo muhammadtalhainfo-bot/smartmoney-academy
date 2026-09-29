@@ -31,7 +31,7 @@ export default function Footer() {
               </div>
             </Link>
             <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '13px', lineHeight: 1.7, marginBottom: '16px' }}>
-              Free ICT & Smart Money Concepts education. Trade like institutions.
+              Free ICT & Smart Money Concepts education. Study structured concepts, practice, and review.
             </p>
             <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(212,168,67,0.85)', letterSpacing: '0.1em' }}>
               © {year} ICT FLOW
