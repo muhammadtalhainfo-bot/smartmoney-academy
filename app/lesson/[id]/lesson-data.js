@@ -269,7 +269,7 @@ Risk/reward outcomes vary by setup and market; use the target and stop rules def
   4: {
     id: 4,
     title: 'Order Blocks',
-    subtitle: 'The Institutional Footprint — Where Banks Actually Enter the Market',
+    subtitle: 'An ICT Framework for Studying Potential Institutional Price Zones',
     level: 'Intermediate',
     duration: '22 min read',
     category: 'PD Arrays',
@@ -691,7 +691,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
   },
   11: {
     id: 11,
-    title: 'IPDA & Algorithmic Theory',
+    title: 'IPDA & Price Delivery Frameworks',
     subtitle: 'Understanding the Machine Behind the Market',
     level: 'Advanced',
     duration: '26 min read',
