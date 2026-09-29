@@ -12,6 +12,30 @@ async function findProfileByCustomer(supabase, customerId) {
   return data || null;
 }
 
+async function customerHasActiveSubscription(stripe, customerId) {
+  if (!customerId) return false;
+  const subscriptions = await stripe.subscriptions.list({
+    customer: customerId,
+    status: 'all',
+    limit: 100,
+  });
+  return subscriptions.data.some((subscription) =>
+    ['active', 'trialing'].includes(subscription.status)
+  );
+}
+
+async function customerHasActiveSubscription(stripe, customerId) {
+  if (!customerId) return false;
+  const subscriptions = await stripe.subscriptions.list({
+    customer: customerId,
+    status: 'all',
+    limit: 100,
+  });
+  return subscriptions.data.some((subscription) =>
+    ['active', 'trialing'].includes(subscription.status)
+  );
+}
+
 async function findUserByEmail(supabase, email) {
   if (!email) return null;
   const { data: { users }, error } = await supabase.auth.admin.listUsers();
@@ -75,26 +99,23 @@ export async function POST(req) {
       if (profileError) throw profileError;
     }
 
-    if (event.type === 'customer.subscription.created' || event.type === 'customer.subscription.updated') {
+    if (
+      event.type === 'customer.subscription.created' ||
+      event.type === 'customer.subscription.updated' ||
+      event.type === 'customer.subscription.deleted'
+    ) {
       const subscription = event.data.object;
-      const profile = await findProfileByCustomer(supabase, typeof subscription.customer === 'string' ? subscription.customer : subscription.customer?.id);
+      const customerId = typeof subscription.customer === 'string'
+        ? subscription.customer
+        : subscription.customer?.id;
+      const profile = await findProfileByCustomer(supabase, customerId);
       if (profile) {
-        const active = ['active', 'trialing'].includes(subscription.status);
+        // Recompute from the customer's current Stripe state so an old
+        // subscription cannot revoke Pro while another subscription is active.
+        const active = await customerHasActiveSubscription(stripe, customerId);
         const { error: profileError } = await supabase
           .from('profiles')
           .update({ is_pro: active })
-          .eq('id', profile.id);
-        if (profileError) throw profileError;
-      }
-    }
-
-    if (event.type === 'customer.subscription.deleted') {
-      const customerId = typeof event.data.object.customer === 'string' ? event.data.object.customer : event.data.object.customer?.id;
-      const profile = await findProfileByCustomer(supabase, customerId);
-      if (profile) {
-        const { error: profileError } = await supabase
-          .from('profiles')
-          .update({ is_pro: false })
           .eq('id', profile.id);
         if (profileError) throw profileError;
       }
