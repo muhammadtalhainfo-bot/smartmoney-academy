@@ -1,6 +1,4 @@
-'use client';
 import Link from 'next/link';
-import { use } from 'react';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 import { POSTS } from '../posts';
@@ -44,9 +42,8 @@ function renderContent(content) {
   return null;
 }
 
-export default function BlogPost({ params }) {
-  const resolvedParams = use(params);
-  const slug = resolvedParams ? resolvedParams.slug : null;
+export default async function BlogPost({ params }) {
+  const { slug } = await params;
 
   if (!slug) return <div style={{ minHeight: '100vh', background: '#080808' }} />;
 
