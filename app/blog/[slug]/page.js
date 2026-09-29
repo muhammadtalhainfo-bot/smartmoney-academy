@@ -25,7 +25,7 @@ function renderContent(content) {
         <ul key={i} style={{ marginBottom: '24px', paddingLeft: '0', listStyle: 'none' }}>
           {block.items.map((item, j) => (
             <li key={j} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', marginBottom: '12px', fontSize: '15px', color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, fontWeight: 300 }}>
-              <span style={{ color: '#E8C547', flexShrink: 0, marginTop: '4px' }}<span aria-hidden="true">&bull;</span></span>
+              <span aria-hidden="true" style={{ color: '#E8C547', flexShrink: 0, marginTop: '4px' }}>&bull;</span>
               <span>{item}</span>
             </li>
           ))}
