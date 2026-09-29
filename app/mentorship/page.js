@@ -214,8 +214,8 @@ const EPISODES = [
     duration: "2h 35m",
     youtube: null,
     concepts: ["SMT", "ES vs NQ", "Correlated Assets", "Divergence", "Confirmation"],
-    summary: "ES and NQ used as confluence for each other. SMT Divergence = one asset makes a higher high while the correlated one fails. Confirms institutional selling into rally.",
-    keyLesson: "When NQ makes a new high but ES doesn't (or vice versa), that's SMT divergence — institutions are distributing. Look for reversal setups.",
+    summary: "ES and NQ used as confluence for each other. SMT Divergence = one asset makes a higher high while the correlated one fails. Can be studied as possible divergence; it does not by itself confirm institutional selling.",
+    keyLesson: "When NQ makes a new high but ES doesn't (or vice versa), that's SMT divergence — the divergence may provide additional context for a reversal setup; test it rather than treating it as proof of institutional distribution.",
     tags: ["SMT", "Intermarket", "Advanced"]
   },
   {
