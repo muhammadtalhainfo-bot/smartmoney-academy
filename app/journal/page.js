@@ -33,8 +33,8 @@ const C = {
   purple: '#A855F7',
   cyan:   '#06B6D4',
   text:   '#DDE4F0',
-  text2:  '#7A8EA8',
-  text3:  '#445060',
+  text2:  '#B4BECA',
+  text3:  '#A6AFBB',
 };
 
 // ─── STYLE HELPERS ────────────────────────────────────────────────────────────
@@ -118,7 +118,7 @@ const Bar = ({ pct, color, height = 6 }) => (
 const StatCard = ({ label, value, sub, color = C.gold, accent }) => (
   <div style={{ ...S.card, position: 'relative', overflow: 'hidden' }}>
     {accent && <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '2px', background: accent }} />}
-    <div style={{ ...S.mono, fontSize: '10px', color: C.text3, letterSpacing: '0.12em', marginBottom: '8px' }}>{label}</div>
+    <div style={{ ...S.mono, fontSize: '11px', color: C.text3, letterSpacing: '0.12em', marginBottom: '8px' }}>{label}</div>
     <div style={{ fontSize: '26px', fontWeight: 700, color, lineHeight: 1 }}>{value}</div>
     {sub && <div style={{ fontSize: '11px', color: C.text3, marginTop: '5px' }}>{sub}</div>}
   </div>
@@ -153,7 +153,7 @@ const NavBtn = ({ icon, label, active, badge, onClick }) => (
     background: active ? C.goldDim : 'transparent',
     borderLeft: `2px solid ${active ? C.gold : 'transparent'}`,
     color: active ? C.gold : C.text2,
-    fontFamily: 'DM Mono, monospace', fontSize: '11px', cursor: 'pointer',
+    fontFamily: 'DM Mono, monospace', fontSize: '12px', cursor: 'pointer',
     letterSpacing: '0.05em', marginBottom: '2px', textAlign: 'left',
     transition: 'all 0.15s',
   }}>
@@ -301,7 +301,7 @@ function TradeForm({ initial, onSave, onCancel }) {
                       border: `1px solid ${form.result === r ? C.gold : C.border}`,
                       background: form.result === r ? C.goldDim : C.bg2,
                       color: form.result === r ? C.gold : C.text3,
-                      fontFamily: 'DM Mono, monospace', fontSize: '10px', cursor: 'pointer',
+                      fontFamily: 'DM Mono, monospace', fontSize: '11px', cursor: 'pointer',
                     }}>{r}</button>
                   ))}
                 </div>
@@ -640,7 +640,7 @@ function TradeHistory({ trades, onEdit, onDelete }) {
             <thead>
               <tr style={{ background: C.bg2 }}>
                 {['Grade','Date','Symbol','Dir','Session','Setup','R:R','P&L','Emotion','Rules',''].map(h => (
-                  <th key={h} style={{ ...S.mono, fontSize: '9px', color: C.text3, padding: '10px 14px', textAlign: 'left', whiteSpace: 'nowrap', letterSpacing: '0.12em' }}>{h}</th>
+                  <th key={h} style={{ ...S.mono, fontSize: '10px', color: C.text3, padding: '10px 14px', textAlign: 'left', whiteSpace: 'nowrap', letterSpacing: '0.12em' }}>{h}</th>
                 ))}
               </tr>
             </thead>
@@ -1095,7 +1095,7 @@ function Calendar({ trades }) {
               <div style={{ ...S.mono, fontSize: '10px', color: C.gold, marginBottom: '8px', letterSpacing: '0.1em' }}>{monthName}</div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '2px' }}>
                 {['S','M','T','W','T','F','S'].map((d, i) => (
-                  <div key={i} style={{ fontSize: '8px', color: C.text3, textAlign: 'center', paddingBottom: '3px', fontFamily: 'DM Mono, monospace' }}>{d}</div>
+                  <div key={i} style={{ fontSize: '9px', color: C.text3, textAlign: 'center', paddingBottom: '3px', fontFamily: 'DM Mono, monospace' }}>{d}</div>
                 ))}
                 {Array.from({ length: firstDay }).map((_, i) => <div key={`e${i}`} />)}
                 {Array.from({ length: daysInMonth }, (_, i) => i + 1).map(day => {
@@ -1114,7 +1114,7 @@ function Calendar({ trades }) {
                     <div key={day} title={dayTrades.length > 0 ? `${dayTrades.length} trade(s)` : ''} style={{
                       aspectRatio: '1', borderRadius: '3px', background: bg, border,
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontSize: '7px', fontFamily: 'DM Mono, monospace',
+                      fontSize: '9px', fontFamily: 'DM Mono, monospace',
                       color: dayTrades.length > 0 ? C.text : C.border2,
                     }}>{day}</div>
                   );
