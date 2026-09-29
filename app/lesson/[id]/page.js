@@ -353,7 +353,7 @@ How to determine which to use:
 • FVGs are better for intraday precision entries on 5m/15m
 • When they overlap = your highest confidence entry
 • Always check both before entering any trade`,
-        highlight: '📌 OB + FVG at the same zone = highest probability ICT setup. This confluence is what ICT calls a "sweet spot" entry.',
+        highlight: '📌 OB + FVG overlap can provide additional confluence in an ICT-style setup; it does not guarantee a higher-probability outcome.',
       },
     ],
     quiz: [
@@ -546,8 +546,8 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     sections: [
       {
         title: 'The Core Principle: Price Is Always Relative',
-        content: `Here is the fundamental insight: there is no such thing as an objectively "good" or "bad" price. Price is only good or bad RELATIVE to a range. A price that is cheap in one context is expensive in another.\n\nICT uses the Fibonacci retracement tool not to predict reversal levels — but to define premium and discount zones within any swing range.\n\nHere's how it works:\n• Identify a significant swing low and swing high (or high to low for bearish)\n• Draw a Fibonacci from the swing low to the swing high\n• The 50% level (equilibrium) divides the range in half\n• Everything ABOVE the 50% = Premium Zone (overpriced, only sell here)\n• Everything BELOW the 50% = Discount Zone (underpriced, only buy here)\n\nThis is the most fundamental rule in ICT price delivery:\n• Institutions BUY in discount (below 50%)\n• Institutions SELL in premium (above 50%)\n• Retail traders do the opposite — they buy breakouts (premium) and sell breakdowns (discount)\n\nThis is why retail traders consistently buy the top and sell the bottom. They enter at the worst possible prices while institutions are doing the opposite.`,
-        highlight: '📌 Rule: Only buy in discount (below 50% of a swing range). Only sell in premium (above 50%). This single rule eliminates most bad entries immediately.',
+        content: `Here is the fundamental insight: there is no such thing as an objectively "good" or "bad" price. Price is only good or bad RELATIVE to a range. A price that is cheap in one context is expensive in another.\n\nICT uses the Fibonacci retracement tool not to predict reversal levels — but to define premium and discount zones within any swing range.\n\nHere's how it works:\n• Identify a significant swing low and swing high (or high to low for bearish)\n• Draw a Fibonacci from the swing low to the swing high\n• The 50% level (equilibrium) divides the range in half\n• Everything ABOVE the 50% = Premium Zone (overpriced, only sell here)\n• Everything BELOW the 50% = Discount Zone (underpriced, only buy here)\n\nThis is a commonly taught ICT framing of price relative to a dealing range:\n• Traders may study discount areas (below 50%) for potential long setups\n• Traders may study premium areas (above 50%) for potential short setups\n• Actual order flow and future direction cannot be confirmed from premium/discount location alone\n\nThis is why retail traders consistently buy the top and sell the bottom. They enter at the worst possible prices while institutions are doing the opposite.`,
+        highlight: '📌 Study guideline: Some ICT traders use discount/premium as a directional filter. Treat it as one contextual input and test whether it improves your entries.',
       },
       {
         title: 'The Optimal Trade Entry (OTE)',
