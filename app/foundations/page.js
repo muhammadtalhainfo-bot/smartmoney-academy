@@ -512,7 +512,7 @@ export default function FoundationsPage() {
           <div style={{ ...mono, fontSize: '10px', color: 'rgba(232,197,71,0.95)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '12px' }}>// What's Next</div>
           <h2 className="font-display" style={{ fontSize: '56px', color: 'white', marginBottom: '16px' }}>READY FOR THE REAL THING?</h2>
           <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.85)', maxWidth: '500px', margin: '0 auto 40px', lineHeight: 1.7, fontWeight: 300 }}>
-            You've built the foundation. Now step into the full ICT curriculum and learn how institutions actually move markets.
+            You've built the foundation. Now step into the full ICT curriculum and study how ICT-style frameworks interpret market behavior.
           </p>
           <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/mentorship" className="btn-gold" style={{ padding: '16px 32px', borderRadius: '12px', ...mono, fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>
