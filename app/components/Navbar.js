@@ -21,7 +21,6 @@ const MORE_NAV = [
   ['/resources', 'Resources'],
   ['/blog', 'Blog'],
   ['/learn', 'ICT Guides'],
-  ['https://discord.gg/bh2YK6vF', 'Discord 💬'],
   ['/pricing', 'Pricing'],
   ['/about', 'About'],
 ];
