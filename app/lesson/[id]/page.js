@@ -305,16 +305,16 @@ Bearish Order Block:
 • The OB zone = the body of that last bullish candle
 • Price returns here as resistance
 
-The "significant move" that validates an OB must include: a BOS or ChoCH on the LTF, at least one FVG in the move, and clear displacement (large bodied candles with momentum).`,
+In this ICT-style framework, traders may define an OB confirmation using a BOS/ChoCH, an FVG, and displacement; these are model criteria to test rather than universal validation rules.`,
         highlight: '📌 In ICT terminology, an Order Block is studied as a candle/zone associated with a subsequent displacement move. Claims about unfilled institutional orders should be treated as a theoretical interpretation.',
       },
       {
         title: 'How to Identify a Valid Order Block',
         content: `Not every candle before a move is a valid Order Block. ICT gives specific criteria for validity:
 
-1. The OB must be followed by a displacement move — large bodied candles moving rapidly in one direction, leaving FVGs behind. If the move after the OB was slow and grinding, it's probably not a valid OB.
+1. Some ICT traders look for displacement after an OB, often accompanied by large directional candles and FVGs. A slower move may be treated differently depending on the model; test the rule rather than assume it is universally valid.
 
-2. The move must include a BOS or ChoCH — confirming that structure shifted after the OB candle. This shows institutional intent.
+2. The move must include a BOS or ChoCH — confirming that structure shifted after the OB candle. This is interpreted within the ICT model as evidence of a potential structural shift; institutional intent cannot be confirmed from chart structure alone.
 
 3. Mitigation threshold — once price returns to the OB, it should react within the body of the OB candle. Specifically, ICT says a bullish OB is valid if price holds above the 50% level of the OB candle (the midpoint between open and close).
 
@@ -327,7 +327,7 @@ The "significant move" that validates an OB must include: a BOS or ChoCH on the 
         title: 'Order Block Variations',
         content: `ICT has developed several OB variations over the years:
 
-Breaker Block: An Order Block that FAILED. When price returns to an OB and instead of reversing, it blasts through — that OB is now a Breaker Block. In a bullish scenario: a bearish OB that gets violated to the upside becomes a support zone (breaker). The logic: institutions must defend their original position or take a loss, so they buy MORE at that level.
+Breaker Block: An Order Block that FAILED. When price returns to an OB and instead of reversing, it blasts through — that OB is now a Breaker Block. In a bullish scenario: a bearish OB that gets violated to the upside becomes a support zone (breaker). Within the ICT interpretation, a breaker may be discussed as a former OB that changes role after being violated; the chart alone cannot confirm that institutions defended or added to a position.
 
 Mitigation Block: When an OB is partially filled — price enters the OB but not fully. ICT considers partially mitigated OBs as still valid for future tests.
 
@@ -401,7 +401,7 @@ Role: REVERSAL / PROFIT TAKING. As London banks close their books, they take pro
       },
       {
         title: 'ICT Macro Times',
-        content: `Beyond Killzones, ICT introduced "Macro Times" — precise 20-minute windows WITHIN sessions where the algorithm delivers price with even higher precision. These are effectively mini-Killzones within the larger ones.
+        content: `Beyond Killzones, ICT introduced "Macro Times" — 20-minute windows within sessions that some ICT teachings use as additional timing references; traders can test whether they add useful context.
 
 The key Macro Times (all EST):
 • London Macro 1: 2:33 AM – 3:00 AM
