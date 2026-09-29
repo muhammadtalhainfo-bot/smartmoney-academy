@@ -20,10 +20,7 @@ export const metadata = {
     creator: '@riskfirsttrad',
   },
   alternates: { canonical: 'https://ictflow.com/journal' },
-  robots: {
-    index: true, follow: true,
-    googleBot: { index: true, follow: true, 'max-video-preview': -1, 'max-image-preview': 'large', 'max-snippet': -1 },
-  },
+  robots: { index: false, follow: false },
 };
 
 export default function JournalLayout({ children }) {
