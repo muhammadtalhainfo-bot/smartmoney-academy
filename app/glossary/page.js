@@ -198,6 +198,7 @@ export default function GlossaryPage() {
             <span className="absolute left-4 top-1/2 -translate-y-1/2 font-mono-c text-xs" style={{ color: 'rgba(232,197,71,0.95)' }}>⌕</span>
             <input
               type="text"
+              aria-label="Search glossary terms and definitions"
               placeholder="Search terms, definitions..."
               value={search}
               onChange={e => setSearch(e.target.value)}
@@ -213,6 +214,7 @@ export default function GlossaryPage() {
               <button
                 key={cat}
                 onClick={() => setActiveCat(cat)}
+                aria-pressed={activeCat === cat}
                 className={`filter-btn px-4 py-3 rounded-xl text-xs border tracking-wider uppercase ${activeCat === cat ? 'active' : ''}`}
                 style={activeCat !== cat ? { borderColor: 'rgba(232,197,71,0.95)', color: '#C0C0C0', background: 'transparent' } : {}}
               >
