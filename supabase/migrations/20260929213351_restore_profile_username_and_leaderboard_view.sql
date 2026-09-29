@@ -22,6 +22,7 @@ end;
 $function$;
 
 create or replace view public.leaderboard_profiles
+with (security_barrier = true)
 as
 select id, username, xp, streak
 from public.profiles;
