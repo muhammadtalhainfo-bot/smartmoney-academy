@@ -935,7 +935,7 @@ function SEOSection({ adminDbClient = adminDb }) {
 // ─── PRICING SECTION ──────────────────────────────────────────────────────────
 function PricingSection() {
   const [freeFeatures, setFreeFeatures] = useState(['All 38 modules and 203+ lessons', 'ICT Glossary (97+ terms)', 'Basic practice questions', 'Trade Journal']);
-  const [proFeatures, setProFeatures] = useState(['Everything in Free', 'All 38 modules unlocked', 'AI-generated daily challenges', 'Certificate of completion', 'Discord community access', 'Weekly market breakdown', 'Priority support', 'Early access to new modules', 'Cancel anytime']);
+  const [proFeatures, setProFeatures] = useState(['Everything in Free', 'All 38 modules unlocked', 'AI-generated daily challenges', 'Certificate of completion', 'Weekly market breakdown', 'Priority support', 'Early access to new modules', 'Cancel anytime']);
   const [monthlyPrice, setMonthlyPrice] = useState('19');
   const [annualPrice, setAnnualPrice] = useState('149');
   const [newFeature, setNewFeature] = useState('');
@@ -1009,7 +1009,7 @@ function PricingSection() {
 // ─── NAVIGATION SECTION ───────────────────────────────────────────────────────
 function NavSection() {
   const MAIN = [['/', 'Home'], ['/foundations', 'Trading Foundations'], ['/courses', 'Courses'], ['/glossary', 'Glossary'], ['/dashboard', 'Dashboard']];
-  const MORE = [['/mentorship', '2022 ICT Mentorship'], ['/practice', 'Practice'], ['/journal', 'Journal'], ['/leaderboard', 'Leaderboard'], ['/certificate', 'Certificate'], ['/resources', 'Resources'], ['/blog', 'Blog'], ['https://discord.gg/bh2YK6vF', 'Discord 💬'], ['/pricing', 'Pricing'], ['/about', 'About']];
+  const MORE = [['/mentorship', '2022 ICT Mentorship'], ['/practice', 'Practice'], ['/journal', 'Journal'], ['/leaderboard', 'Leaderboard'], ['/certificate', 'Certificate'], ['/resources', 'Resources'], ['/blog', 'Blog'], ['/pricing', 'Pricing'], ['/about', 'About']];
 
   return (
     <div>
