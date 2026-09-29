@@ -64,12 +64,12 @@ export default function Navbar({ active }) {
           <span style={{ color: 'rgba(232,197,71,0.95)', fontSize: '12px', userSelect: 'none' }}>|</span>
 
           <div style={{ position: 'relative' }}>
-            <button onClick={() => setMoreOpen(!moreOpen)} onBlur={() => setTimeout(() => setMoreOpen(false), 150)}
+            <button aria-expanded={moreOpen} aria-haspopup="menu" aria-label="Open more navigation" onClick={() => setMoreOpen(!moreOpen)} onBlur={() => setTimeout(() => setMoreOpen(false), 150)}
               style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', background: 'none', border: 'none', color: moreOpen ? '#E8C547' : 'rgba(255,255,255,0.6)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px', padding: 0 }}>
               MORE <span style={{ fontSize: '8px', display: 'inline-block', transform: moreOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>▾</span>
             </button>
             {moreOpen && (
-              <div style={{ position: 'absolute', top: 'calc(100% + 12px)', right: 0, background: '#111', border: '1px solid rgba(232,197,71,0.95)', borderRadius: '12px', padding: '8px', minWidth: '200px', zIndex: 50, boxShadow: '0 20px 40px rgba(0,0,0,0.5)' }}>
+              <div role="menu" style={{ position: 'absolute', top: 'calc(100% + 12px)', right: 0, background: '#111', border: '1px solid rgba(232,197,71,0.95)', borderRadius: '12px', padding: '8px', minWidth: '200px', zIndex: 50, boxShadow: '0 20px 40px rgba(0,0,0,0.5)' }}>
                 {MORE_NAV.map(([href, label]) => (
                   <Link key={href} href={href} onClick={() => setMoreOpen(false)}
                     target={href.startsWith('http') ? '_blank' : undefined}
@@ -89,7 +89,7 @@ export default function Navbar({ active }) {
           {isLoggedIn ? 'My Courses' : 'Start Free'}
         </Link>
 
-        <button onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle navigation menu" className="show-mobile" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '4px', display: 'flex', flexDirection: 'column', gap: '5px' }}>
+        <button onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-controls="mobile-navigation" aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'} className="show-mobile" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '4px', display: 'flex', flexDirection: 'column', gap: '5px' }}>
           <span style={{ display: 'block', width: '22px', height: '2px', background: '#E8C547', borderRadius: '2px', transition: 'all 0.3s', transform: menuOpen ? 'rotate(45deg) translate(5px, 5px)' : 'none' }} />
           <span style={{ display: 'block', width: '22px', height: '2px', background: '#E8C547', borderRadius: '2px', transition: 'all 0.3s', opacity: menuOpen ? 0 : 1 }} />
           <span style={{ display: 'block', width: '22px', height: '2px', background: '#E8C547', borderRadius: '2px', transition: 'all 0.3s', transform: menuOpen ? 'rotate(-45deg) translate(5px, -5px)' : 'none' }} />
@@ -97,7 +97,7 @@ export default function Navbar({ active }) {
       </nav>
 
       {menuOpen && (
-        <div style={{ position: 'fixed', inset: 0, zIndex: 50, background: 'rgba(8,8,8,0.98)', backdropFilter: 'blur(20px)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '24px', overflowY: 'auto', padding: '80px 0 40px' }}>
+        <div id="mobile-navigation" role="dialog" aria-label="Mobile navigation" style={{ position: 'fixed', inset: 0, zIndex: 50, background: 'rgba(8,8,8,0.98)', backdropFilter: 'blur(20px)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '24px', overflowY: 'auto', padding: '80px 0 40px' }}>
           <button onClick={() => setMenuOpen(false)} aria-label="Close menu" style={{ position: 'absolute', top: '24px', right: '24px', background: 'none', border: 'none', color: '#E8C547', fontSize: '28px', cursor: 'pointer' }}>✕</button>
           <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '9px', letterSpacing: '0.3em', color: 'rgba(232,197,71,0.95)', textTransform: 'uppercase' }}>// LEARN</div>
           {MAIN_NAV.map(([href, label]) => (
