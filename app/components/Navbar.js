@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const MAIN_NAV = [
   ['/', 'Home'],
@@ -47,7 +48,7 @@ export default function Navbar({ active }) {
       <nav style={{ position: 'sticky', top: 0, zIndex: 40, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 24px', borderBottom: '1px solid rgba(212,168,67,0.22)', background: 'rgba(8,8,8,0.97)', backdropFilter: 'blur(20px)' }}>
 
         <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', flexShrink: 0 }}>
-          <img src="/ictflow-symbol.svg" alt="ICT Flow" style={{ width: '34px', height: '34px', borderRadius: '8px' }} />
+          <Image src="/ictflow-symbol.svg" alt="ICT Flow" width={34} height={34} priority style={{ borderRadius: '8px' }} />
           <div>
             <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '17px', letterSpacing: '0.15em', color: 'white', lineHeight: 1.1 }}>ICT FLOW</div>
             <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '9px', color: '#B8924A', letterSpacing: '0.2em' }}>TRADING EDUCATION</div>
