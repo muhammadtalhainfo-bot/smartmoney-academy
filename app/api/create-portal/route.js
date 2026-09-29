@@ -45,7 +45,8 @@ export async function GET(req) {
     }
 
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-    const origin = new URL(req.url).origin;
+    const configuredOrigin = process.env.NEXT_PUBLIC_APP_URL?.trim()?.replace(/\/$/, '');
+    const origin = configuredOrigin || new URL(req.url).origin;
     const portal = await stripe.billingPortal.sessions.create({
       customer: profile.stripe_customer_id,
       return_url: `${origin}/dashboard`,
