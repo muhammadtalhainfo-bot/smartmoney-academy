@@ -48,11 +48,11 @@ export async function POST(req) {
     const supabase = createClient(url, serviceKey, { auth: { autoRefreshToken: false, persistSession: false } });
     const { error } = await supabase.from('email_signups').insert({ email });
     if (error?.code === '23505') {
-      return Response.json({ ok: true, alreadySubscribed: true });
+      return Response.json({ ok: true, alreadySubscribed: true }, { headers: { 'Cache-Control': 'no-store' } });
     }
     if (error) throw error;
 
-    return Response.json({ ok: true });
+    return Response.json({ ok: true }, { headers: { 'Cache-Control': 'no-store' } });
   } catch (error) {
     console.error('Email capture error:', error);
     return Response.json({ error: 'Unable to subscribe.' }, { status: 500 });
