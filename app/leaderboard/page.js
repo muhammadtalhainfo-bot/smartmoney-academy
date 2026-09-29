@@ -31,7 +31,7 @@ export default function LeaderboardPage() {
 
       // Fetch top 50
       const { data: top } = await supabase
-        .from('profiles')
+        .from('leaderboard_profiles')
         .select('id, username, xp, streak')
         .order('xp', { ascending: false })
         .limit(50);
