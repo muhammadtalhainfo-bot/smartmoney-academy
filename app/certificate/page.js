@@ -172,7 +172,7 @@ export default function CertificatePage() {
             </div>
 
             <div className="no-print" style={{ textAlign: 'center', marginTop: '18px' }}>
-              <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.45)', letterSpacing: '0.12em', marginBottom: '6px' }}>PUBLIC VERIFICATION</div>
+              <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#C5CCD6', letterSpacing: '0.12em', marginBottom: '6px' }}>PUBLIC VERIFICATION</div>
               <a
                 href={certificate?.verificationUrl || '#'}
                 target="_blank"
