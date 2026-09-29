@@ -719,7 +719,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
       },
       {
         title: 'Price Delivery — How the Algorithm Moves Price',
-        content: `THE DELIVERY MECHANISM:\n\nStep 1 — ACCUMULATION:\nWithin the ICT framework, accumulation is described as a possible phase before directional delivery. Asian-session consolidation can be studied as a contextual example; the chart does not confirm an algorithm "loading up."\n\nStep 2 — MANIPULATION:\nWithin the ICT framework, a move opposite the eventual direction may be interpreted as manipulation or a liquidity sweep. The reason for the move and the intentions of participants cannot be confirmed from the chart alone.\n\nStep 3 — DELIVERY:\nThe ICT framework describes a subsequent directional phase toward a potential target, sometimes accompanied by displacement and FVGs. Future delivery and pre-positioned institutional targets are not directly observable.\n\nTHE DELIVERY STYLE:\nPrice is delivered in "legs" with FVGs between them. Each leg creates a FVG. Price returns to fill the FVG (algorithm requires two-sided pricing). After filling, another leg begins.\n\nThis is why you see: impulse → pullback to FVG → impulse → pullback to FVG. The algorithm methodically delivers price leg by leg to its target.`,
+        content: `THE DELIVERY MECHANISM:\n\nStep 1 — ACCUMULATION:\nWithin the ICT framework, accumulation is described as a possible phase before directional delivery. Asian-session consolidation can be studied as a contextual example; the chart does not confirm an algorithm "loading up."\n\nStep 2 — MANIPULATION:\nWithin the ICT framework, a move opposite the eventual direction may be interpreted as manipulation or a liquidity sweep. The reason for the move and the intentions of participants cannot be confirmed from the chart alone.\n\nStep 3 — DELIVERY:\nThe ICT framework describes a subsequent directional phase toward a potential target, sometimes accompanied by displacement and FVGs. Future delivery and pre-positioned institutional targets are not directly observable.\n\nTHE DELIVERY STYLE:\nWithin the ICT-style framework, price can be studied as directional "legs" with FVGs between them. FVG revisits may occur, but they are not guaranteed. This provides a model for observing impulse → pullback → continuation behavior rather than a mechanical description of every market move.`,
         highlight: '📌 The algorithm delivers price in legs, pausing at FVGs for two-sided pricing. FVG revisits can occur, but they are not guaranteed; treat them as a testable behavior rather than a mechanical certainty.',
       },
       {
@@ -831,7 +831,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
   14: {
     id: 14,
     title: 'Building Your ICT Trading Plan',
-    subtitle: 'From Student to Trader — Creating the System That Makes You Consistently Profitable',
+    subtitle: 'From Student to Trader — Building a Structured Trading System',
     level: 'Advanced',
     duration: '23 min read',
     category: 'Strategy',
