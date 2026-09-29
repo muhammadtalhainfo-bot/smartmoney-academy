@@ -324,7 +324,7 @@ const ALL_QUESTIONS = [
     question: 'You\'ve already lost 3% today. A perfect ICT setup appears. What do you do?',
     options: ['Take it — the setup is too good to pass up', 'Take it but reduce size to 0.5%', 'Stop trading for the rest of the day — 3% is an example daily limit used in this question', 'Take it only if it\'s a Silver Bullet setup'],
     answer: 2,
-    explanation: 'ICT\'s maximum daily loss is 3%. Once you hit it — stop trading. No exceptions. "Perfect setups" after hitting your daily limit are your psychology trying to revenge trade. The rule exists specifically for this moment. Protecting tomorrow\'s ability to trade is more important than any single setup.',
+    explanation: 'A 3% maximum daily loss is an example risk-management limit used in this lesson. If a trader adopts a daily loss limit, it should be defined in advance and followed consistently; the appropriate threshold depends on the strategy and risk plan.',
     lesson: 12,
   },
   {
