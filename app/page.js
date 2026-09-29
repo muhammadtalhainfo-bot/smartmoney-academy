@@ -191,7 +191,7 @@ export default function HomePage() {
             <h2 className="font-display" style={{ fontSize:'clamp(38px, 6vw, 70px)', color:'white', lineHeight:1, marginBottom:'14px' }}>
               BUILT FOR <span className="gold-text">DELIBERATE STUDY</span>
             </h2>
-            <p style={{ maxWidth:'680px', margin:'0 auto', fontSize:'14px', lineHeight:1.8, color:'rgba(255,255,255,0.48)', fontWeight:300 }}>
+            <p style={{ maxWidth:'680px', margin:'0 auto', fontSize:'14px', lineHeight:1.8, color:'#C5CCD6', fontWeight:300 }}>
               Less tab-hopping. More structured learning. ICT Flow combines the curriculum, reference material and practice tools in one place.
             </p>
           </div>
@@ -340,7 +340,7 @@ export default function HomePage() {
             "STOP TRYING TO PREDICT.<br />
             <span className="gold-text">START READING THE ALGORITHM."</span>
           </blockquote>
-          <p style={{ fontFamily:'DM Mono,monospace', fontSize:'10px', color:'rgba(255,255,255,0.3)', letterSpacing:'0.2em' }}>— MICHAEL J. HUDDLESTON (ICT)</p>
+          <p style={{ fontFamily:'DM Mono,monospace', fontSize:'10px', color:'#B9C1CC', letterSpacing:'0.2em' }}>— MICHAEL J. HUDDLESTON (ICT)</p>
         </div>
       </section>
 
