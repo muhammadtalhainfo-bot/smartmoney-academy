@@ -111,7 +111,7 @@ This is one possible top-down analysis framework; traders can adapt the timefram
         title: 'What Is Liquidity in ICT?',
         content: `In traditional finance, "liquidity" means how easily an asset can be bought or sold. But in ICT, liquidity has a very specific meaning: it's the pool of stop-loss orders and resting orders that banks need to fill their massive positions.
 
-Think about it this way. A hedge fund wants to buy 10,000 lots of EURUSD. They can't just hit the buy button — there aren't enough sellers at one price level to fill an order that large without moving the market against them. So what do they do? They engineer a move DOWN to where retail traders' stop-losses are sitting. Those stop-losses trigger as market sell orders — and the institution buys every single one of them. That's their fill. Then price reverses and shoots up.
+Think about it this way. For illustration, consider a large EURUSD order. Large orders can face market-impact and liquidity constraints, and an ICT interpretation may describe price moving toward visible liquidity before a reversal. This example is a simplified model, not evidence that institutions deliberately engineer every move or that a reversal must follow.
 
 This is a central ICT interpretation of liquidity; not every market move needs to be explained by a liquidity hunt.`,
         highlight: '📌 ICT commonly interprets liquidity sweeps as potential catalysts around turning points; institutional intent and a required stop hunt cannot be confirmed from price alone.',
@@ -141,12 +141,12 @@ ICT teachings commonly interpret sell-side liquidity as an area where buy-side o
 
 You'll identify SSL as: Equal Lows (EQL), previous day/week lows, obvious support levels, and round numbers below current price.
 
-The key insight: when you place your stop-loss below "support," you are literally placing your money exactly where banks need it to be to fill their positions. Your stop-loss is their liquidity.`,
+A stop-loss can become part of available market liquidity when triggered, but a stop below support is not necessarily being targeted by banks or used to fill an institutional position.`,
         highlight: '📌 SSL is below commonly watched lows and BSL is above commonly watched highs. These levels can be studied for potential liquidity interactions; institutional intent is not directly observable.',
       },
       {
         title: 'Equal Highs & Equal Lows (EQH / EQL)',
-        content: `Equal Highs (EQH) and Equal Lows (EQL) are among the most powerful liquidity signals on any chart. When price creates two or more highs/lows at almost the same price level, it creates a massive pool of stops — because every retail trader can see it, and most will place their stops just beyond it.
+        content: `ICT traders commonly study equal highs and lows as potential liquidity/reference areas. They can attract attention and may coincide with clustered orders, but the size and composition of resting stops cannot be known from the chart alone.
 
 ICT teachings may interpret visible equal highs/lows as liquidity areas; calling them deliberate traps is an interpretation rather than a directly verified mechanism. They WANT price to look like it's double-topping or double-bottoming. Retail sells the double top and buys the double bottom. Their stops cluster just beyond those levels. Then institutions sweep through, collect all that liquidity, and drive price in the opposite direction.
 
@@ -351,8 +351,8 @@ The most powerful setups in ICT combine both: an OB that also contains an FVG wi
 How to determine which to use:
 • OBs are better for swing trades and higher timeframe setups
 • FVGs are better for intraday precision entries on 5m/15m
-• When they overlap = your highest confidence entry
-• Always check both before entering any trade`,
+• When they overlap, some traders treat the area as additional confluence; confidence and performance should be evaluated rather than assumed.
+• Consider both as part of the checklist if your tested strategy uses them.`,
         highlight: '📌 OB + FVG overlap can provide additional confluence in an ICT-style setup; it does not guarantee a higher-probability outcome.',
       },
     ],
@@ -373,7 +373,7 @@ How to determine which to use:
     duration: '15 min read',
     category: 'Time & Sessions',
     imageCaption: 'The four ICT Killzones — Asian, London, New York AM, and London Close',
-    intro: `One of the most underrated secrets in trading is this: WHEN you trade matters more than WHAT you trade. The same setup that works at 9:30 AM New York will fail completely at 2:00 PM. ICT's Killzone framework explains exactly why — and gives you a precise schedule for when the algorithm actually delivers price. Killzones are an ICT time-window framework. Trading outside them is not inherently gambling, and trading inside them does not guarantee a valid setup.`,
+    intro: `One of the most underrated secrets in trading is this: WHEN you trade matters more than WHAT you trade. A setup's behavior can differ across session times; performance should be measured for the specific market and rules rather than assumed to succeed or fail at a particular time. ICT's Killzone framework explains exactly why — and gives you a precise schedule for when the algorithm actually delivers price. Killzones are an ICT time-window framework. Trading outside them is not inherently gambling, and trading inside them does not guarantee a valid setup.`,
     sections: [
       {
         title: 'What Are Killzones?',
@@ -431,7 +431,7 @@ Daily routine:
 4. After the sweep, the real move goes the OTHER way
 5. That gives you your NY AM directional bias
 
-This simple framework alone — just trading the Asian range sweep + reversal — has made many ICT traders consistently profitable.`,
+The Asian-range sweep-and-reversal setup is an example traders may study; reported profitability depends on the trader, market, execution, costs, and rules used.`,
         highlight: '📌 Marking the Asian Range can provide session context. London may sweep one side, both sides, or neither; use the result as one input rather than a guaranteed NY bias.',
       },
     ],
@@ -503,12 +503,12 @@ A Bearish Daily Candle:
 • Long red body = distribution (real bearish move)
 • Close near the low
 
-This means that when you see a daily candle with a long lower wick and bullish body — you're looking at a perfect AMD bullish day: liquidity was grabbed below, then price distributed upward. The daily candle is literally a visual representation of the three acts.`,
+A daily candle with a long lower wick and bullish body can be interpreted through the AMD framework as possible accumulation/manipulation/distribution, but a single candle cannot confirm those underlying events.`,
         highlight: '📌 Wick/body combinations can be used as descriptive context within AMD analysis; they do not by themselves establish a “perfect” AMD day.',
       },
       {
         title: 'AMD on Higher Timeframes',
-        content: `The Power of Three is fractal — it repeats at every timeframe. This is one of the most mind-expanding concepts in ICT:
+        content: `ICT describes PO3/AMD as a fractal framework that can be applied across timeframes; whether the sequence transfers consistently across timeframes is an empirical question.
 
 Weekly AMD:
 • Monday: Accumulation (weekly range starts forming)
@@ -566,7 +566,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
       },
       {
         title: 'Common Mistakes with Premium & Discount',
-        content: `Even traders who understand the concept make critical errors in application:\n\nMistake 1 — Wrong swing selection:\nThe range you draw determines everything. Using the wrong swing high/low gives you the wrong premium/discount zones. Use a recent, meaningful swing that fits the range and timeframe you are analyzing; compare alternative swing selections when testing the framework.\n\nMistake 2 — Ignoring the higher timeframe:\nA lower-timeframe discount signal can conflict with a higher-timeframe premium context. Higher-timeframe context may carry more weight in this framework, but the appropriate hierarchy should be tested.\n\nMistake 3 — Entering at equilibrium:\nThe 50% level is not a buy or sell zone — it's neutral. Many traders try to enter at exactly 50% and get chopped up. The OTE starts at 62% for a reason.\n\nMistake 4 — Abandoning the concept during strong trends:\nIn a very strong uptrend, price sometimes only retraces to the 38.2% or 50% level before continuing. In these cases, the OTE (62-79%) may not be reached. Don't force the framework — if price gives you a clear signal at a shallower retracement with a valid order block, take it.\n\nMistake 5 — No directional bias:\nPremium/discount only works when combined with a directional bias. You must first determine the HTF direction using market structure (bullish or bearish), then identify discount for buys or premium for sells.`,
+        content: `Even traders who understand the concept make critical errors in application:\n\nMistake 1 — Wrong swing selection:\nThe range you draw determines everything. Using the wrong swing high/low gives you the wrong premium/discount zones. Use a recent, meaningful swing that fits the range and timeframe you are analyzing; compare alternative swing selections when testing the framework.\n\nMistake 2 — Ignoring the higher timeframe:\nA lower-timeframe discount signal can conflict with a higher-timeframe premium context. Higher-timeframe context may carry more weight in this framework, but the appropriate hierarchy should be tested.\n\nMistake 3 — Entering at equilibrium:\nThe 50% level is not a buy or sell zone — it's neutral. Many traders try to enter at exactly 50% and get chopped up. The ICT OTE framework commonly uses a 62% starting level; this is a framework convention rather than evidence that 62% is inherently superior.\n\nMistake 4 — Abandoning the concept during strong trends:\nIn a very strong uptrend, price sometimes only retraces to the 38.2% or 50% level before continuing. In these cases, the OTE (62-79%) may not be reached. Don't force the framework — if price gives you a clear signal at a shallower retracement with a valid order block, take it.\n\nMistake 5 — No directional bias:\nWithin this framework, traders often combine premium/discount with a directional context from market structure. The exact sequence and filter can be tested rather than treated as mandatory.`,
         highlight: '📌 The framework is only as good as the swing you draw it on. Always use the most significant, most recent swing high and low that the market is actively referencing.',
       },
     ],
@@ -584,7 +584,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     duration: '25 min read',
     category: 'Execution',
     imageCaption: 'ICT entry models combine liquidity sweeps, displacement, and FVG/OB entries for precision execution',
-    intro: `Having all the concepts in your head means nothing if you don't know HOW to combine them into a concrete trade entry. ICT entry models are the specific, repeatable frameworks that tell you exactly when to pull the trigger. These are not vague ideas — they are precise sequences of events that, when all conditions are met, produce high-probability trade entries.`,
+    intro: `Having all the concepts in your head means nothing if you don't know HOW to combine them into a concrete trade entry. ICT entry models are structured, repeatable frameworks for defining potential entries. Their rules can be precise, but meeting the conditions does not guarantee a high-probability or profitable outcome.`,
     sections: [
       {
         title: 'The Foundation: What Makes a Valid ICT Entry',
@@ -752,7 +752,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     duration: '21 min read',
     category: 'Risk Management',
     imageCaption: 'Risk management is the difference between a successful trader and a blown account — ICT\'s rules are non-negotiable',
-    intro: `ICT has said it repeatedly: "Risk management is the only thing that matters." You can have the best entry model in the world, but without proper risk management, you will blow your account. This is a risk-management principle supported by the arithmetic of losses and position sizing, but the specific rule should be adapted to the account and strategy.`,
+    intro: `Risk management is an important part of trading because position sizing and losses affect account survival. No entry model can guarantee success, and poor risk management can materially increase drawdown. This is a risk-management principle supported by the arithmetic of losses and position sizing, but the specific rule should be adapted to the account and strategy.`,
     sections: [
       {
         title: 'The Math of Survival',
@@ -761,13 +761,13 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
       },
       {
         title: 'Position Sizing Rules',
-        content: `THE CORE RULE: Risk no more than 1% of your account on any single trade.\n\n$10,000 account = maximum $100 loss per trade.\n\nFOR BEGINNERS (first 6 months): Risk 0.25% to 0.5% per trade.\n\nCALCULATING POSITION SIZE:\nFormula: Position Size = (Account × Risk%) ÷ (Stop Distance × Pip Value)\n\nExample for EURUSD on $10,000:\n• Risk: 1% = $100\n• Stop: 20 pips\n• Pip value (1 standard lot): $10/pip\n• Position size = $100 ÷ (20 × $10) = 0.5 lots\n\nAlways calculate position size BEFORE entering. Never guess.\n\nWHY 1% MAXIMUM:\n• 10 consecutive losses at 1% = only 10% drawdown\n• 10 consecutive losses at 2% = 20% drawdown\n• 10 consecutive losses at 5% = 50% drawdown (career-ending)\n\nThe 1% rule isn't about timidity. It's about surviving long enough to develop skill.`,
+        content: `THE CORE RULE: Risk no more than 1% of your account on any single trade.\n\n$10,000 account = maximum $100 loss per trade.\n\nFOR BEGINNERS (first 6 months): Risk 0.25% to 0.5% per trade.\n\nCALCULATING POSITION SIZE:\nFormula: Position Size = (Account × Risk%) ÷ (Stop Distance × Pip Value)\n\nExample for EURUSD on $10,000:\n• Risk: 1% = $100\n• Stop: 20 pips\n• Pip value (1 standard lot): $10/pip\n• Position size = $100 ÷ (20 × $10) = 0.5 lots\n\nAlways calculate position size BEFORE entering. Never guess.\n\nWHY 1% MAXIMUM:\n• 10 consecutive losses at 1% = only 10% drawdown\n• 10 consecutive losses at 2% = 20% drawdown\n• 10 consecutive losses at 5% = 50% drawdown (career-ending)\n\nA 1% cap is one possible risk-management guideline; the appropriate risk limit depends on the account, strategy, leverage, and risk tolerance.`,
         highlight: '📌 Example risk guideline: some traders cap risk around 1% per trade and use lower limits while learning. Calculate position size before entry and adapt the limit to your account and strategy.',
       },
       {
         title: 'Stop Loss Placement',
         content: `RULE 1: Stop goes BEYOND the liquidity pool that was swept.\nIf price swept an SSL before your bullish entry — stop goes below that swept low. The sweep is the invalidation level.\n\nRULE 2: Give sufficient breathing room.\n• Forex: 2-5 pip buffer\n• NAS100: 5-10 point buffer\n\nRULE 3: Stop placement determines position size — NOT the other way around.\nPlace the stop where it SHOULD be (beyond the sweep), then calculate position size based on that distance and your 1% risk rule.\n\nRULE 4: Never move your stop FURTHER away from entry.\nMoving a stop farther from entry increases the potential loss if the stop is eventually hit; predefined risk rules can help prevent unmanaged loss expansion.\n\nRULE 5: Move stop to breakeven ONLY after 1R profit.\nOnce the trade moves 1R in your favor (e.g., 20 pips if stop was 20 pips), move stop to entry. Now you have zero risk with full profit potential.\n\nRED FLAG: If your stop requires risking more than 1% — either reduce position size OR skip the trade entirely.`,
-        highlight: '📌 Stop goes beyond the swept liquidity. Give it buffer. Let stop distance determine position size. NEVER move stop further away. Move to breakeven after 1R.',
+        highlight: '📌 Example risk-management guidance: place the stop at a level that invalidates the trade thesis, size the position from the stop distance, and define in advance whether and when the stop may be adjusted.',
       },
       {
         title: 'Maximum Daily, Weekly, Monthly Loss Rules',
@@ -798,7 +798,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     sections: [
       {
         title: 'The Two Enemies of Trade Management',
-        content: `ENEMY 1 — PREMATURE EXIT (Fear):\nPrice moves in your direction. Profit appears. Fear of "giving it back" causes you to close at 1R when the target is 3R. You watch price continue to your original target without you.\n\nThe cause: You are trading your P&L instead of the chart. The moment you think "I have $200 profit, I don't want to lose it" — you've shifted from objective analysis to emotional decision-making.\n\nENEMY 2 — HOPE TRADE (Denial):\nPrice moves against you. Instead of accepting the planned loss, you move the stop or refuse to exit. The loss grows from 1% to 3% or 5%.\n\nThe cause: Ego. You don't want to be wrong. The market is always right. You are not.\n\nTHE SOLUTION:\nPredetermined, written rules. Followed without exception. Write your exit plan BEFORE entering. Execute it regardless of emotions in the moment.`,
+        content: `ENEMY 1 — PREMATURE EXIT (Fear):\nPrice moves in your direction. Profit appears. Fear of "giving it back" causes you to close at 1R when the target is 3R. You watch price continue to your original target without you.\n\nThe cause: You are trading your P&L instead of the chart. The moment you think "I have $200 profit, I don't want to lose it" — you've shifted from objective analysis to emotional decision-making.\n\nENEMY 2 — HOPE TRADE (Denial):\nPrice moves against you. Instead of accepting the planned loss, you move the stop or refuse to exit. The loss grows from 1% to 3% or 5%.\n\nThe cause: Ego. You don't want to be wrong. The market outcome is the market outcome; a trader's thesis can be wrong without making the trader personally “wrong.”\n\nTHE SOLUTION:\nPredetermined, written rules. Followed without exception. Write your exit plan BEFORE entering. Execute it regardless of emotions in the moment.`,
         highlight: '📌 Two enemies: closing winners early (fear) and holding losers (hope). Rules eliminate both. Write the exit plan BEFORE entry. Execute it regardless of emotions.',
       },
       {
@@ -840,12 +840,12 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     sections: [
       {
         title: 'Why Most Traders Never Build a Plan',
-        content: `The uncomfortable truth: most traders never build a written trading plan. They trade on feel, on memory, on "experience." And they consistently lose money.\n\nWhy traders avoid planning:\n1. It requires confronting what they don't know\n2. It creates accountability — they can no longer blame the market\n3. It requires discipline to follow\n4. It feels like "too much work" when they could just start trading\n\nThese are all fear responses.\n\nIT DEFINES YOUR EDGE:\nA plan forces you to articulate exactly what your edge is and why it works. If you cannot write this down clearly — you don't have an edge. You have hope.\n\nIT MAKES YOU REVIEWABLE:\nWith a written plan, you can review every trade against it. Did you follow the rules? If yes and you lost — the edge will assert itself over time. If no — identify and correct the specific rule you broke.\n\nIT ELIMINATES DECISION FATIGUE:\nEvery decision the plan addresses is one fewer decision under pressure with money at stake. The plan makes decisions in advance. You just execute.`,
+        content: `Many traders benefit from written plans, but the prevalence and performance of traders who do or do not use them varies and should not be generalized without evidence.\n\nWhy traders avoid planning:\n1. It requires confronting what they don't know\n2. It creates accountability — they can no longer blame the market\n3. It requires discipline to follow\n4. It feels like "too much work" when they could just start trading\n\nThese are all fear responses.\n\nIT DEFINES YOUR EDGE:\nA plan forces you to articulate exactly what your edge is and why it works. If you cannot state and test your rationale clearly, it is difficult to distinguish a demonstrated edge from an untested belief.\n\nIT MAKES YOU REVIEWABLE:\nWith a written plan, you can review every trade against it. Did you follow the rules? A rule-following loss does not invalidate a strategy; whether an edge exists should be evaluated across a suitable sample and with costs included. If no — identify and correct the specific rule you broke.\n\nIT ELIMINATES DECISION FATIGUE:\nEvery decision the plan addresses is one fewer decision under pressure with money at stake. The plan makes decisions in advance. You just execute.`,
         highlight: '📌 A written plan creates accountability and eliminates in-the-moment emotional decisions. Without it, you make high-stakes decisions under pressure with no framework. That is gambling.',
       },
       {
         title: 'The 10 Components of a Complete ICT Trading Plan',
-        content: `1. MARKETS TRADED:\nWhich instruments? (e.g., NAS100, EURUSD, XAUUSD only)\nSpecialization beats generalization.\n\n2. TIMEFRAMES:\nAnalysis timeframes + entry timeframe\n(e.g., Weekly/Daily for bias, 4H/1H for structure, 5M/1M for entry)\n\n3. SESSION/KILLZONE:\nWhich killzone exclusively?\n(e.g., NY AM session, 9:30-11:00 AM EST only)\n\n4. ENTRY MODEL:\nWhich specific model(s)?\n(e.g., Silver Bullet 10 AM only)\n\n5. ENTRY CRITERIA CHECKLIST:\nAll conditions that must be true before entry:\n□ HTF bias confirmed\n□ Price in discount/premium\n□ Liquidity swept in killzone\n□ Displacement formed\n□ FVG/OB identified\n□ Entry at array level\n\n6. POSITION SIZING:\nExact formula. Maximum 1% risk.\n\n7. STOP LOSS RULE:\nExactly where stop goes\n\n8. TARGET RULE:\nHow you identify targets (minimum 2:1 R:R)\n\n9. DAILY/WEEKLY LOSS LIMITS:\n3% daily, 5% weekly, 10% monthly\n\n10. JOURNALING REQUIREMENT:\nWhat you record after every trade`,
+        content: `1. MARKETS TRADED:\nWhich instruments? (e.g., NAS100, EURUSD, XAUUSD only)\nFocusing on fewer instruments can simplify testing and execution, but whether specialization is preferable depends on the trader and strategy.\n\n2. TIMEFRAMES:\nAnalysis timeframes + entry timeframe\n(e.g., Weekly/Daily for bias, 4H/1H for structure, 5M/1M for entry)\n\n3. SESSION/KILLZONE:\nWhich killzone exclusively?\n(e.g., NY AM session, 9:30-11:00 AM EST only)\n\n4. ENTRY MODEL:\nWhich specific model(s)?\n(e.g., Silver Bullet 10 AM only)\n\n5. ENTRY CRITERIA CHECKLIST:\nAll conditions that must be true before entry:\n□ HTF bias confirmed\n□ Price in discount/premium\n□ Liquidity swept in killzone\n□ Displacement formed\n□ FVG/OB identified\n□ Entry at array level\n\n6. POSITION SIZING:\nPosition-sizing formula and a predefined risk cap are examples; choose limits appropriate to the account and strategy.\n\n7. STOP LOSS RULE:\nExactly where stop goes\n\n8. TARGET RULE:\nHow you identify targets (minimum 2:1 R:R)\n\n9. DAILY/WEEKLY LOSS LIMITS:\nExample loss limits: 3% daily, 5% weekly, and 10% monthly. These are illustrative thresholds, not universal requirements.\n\n10. JOURNALING REQUIREMENT:\nWhat you record after every trade`,
         highlight: '📌 All 10 components must be in your written plan: markets, timeframes, session, entry model, checklist, position sizing, stop rule, target rule, loss limits, journaling.',
       },
       {
