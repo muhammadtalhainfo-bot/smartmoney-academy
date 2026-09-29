@@ -106,15 +106,21 @@ export default function RootLayout({ children }) {
         <meta name="theme-color" content="#E8C547" />
         <meta name="google-adsense-account" content="ca-pub-4615893071983318" />
         <link rel="manifest" href="/manifest.json" />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-HRGZYFXQ5W"></script>
-        <script dangerouslySetInnerHTML={{ __html: `
+        <Script
+          strategy="lazyOnload"
+          src="https://www.googletagmanager.com/gtag/js?id=G-HRGZYFXQ5W"
+        />
+        <Script
+          id="google-analytics-init"
+          strategy="lazyOnload"
+        >{`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'G-HRGZYFXQ5W', {
-  'user_id': typeof window !== 'undefined' && window.__USER_ID__ ? window.__USER_ID__ : undefined
-});
-        ` }} />
+            'user_id': typeof window !== 'undefined' && window.__USER_ID__ ? window.__USER_ID__ : undefined
+          });
+        `}</Script>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         {process.env.NEXT_PUBLIC_ADSENSE_CLIENT ? (
           <Script
@@ -124,8 +130,11 @@ export default function RootLayout({ children }) {
             crossOrigin="anonymous"
           />
         ) : null}
-        <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer />
-        <script dangerouslySetInnerHTML={{ __html: `
+        <Script
+          src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"
+          strategy="lazyOnload"
+        />
+        <Script id="onesignal-init" strategy="lazyOnload">{`
           window.OneSignalDeferred = window.OneSignalDeferred || [];
           OneSignalDeferred.push(async function(OneSignal) {
             await OneSignal.init({
@@ -135,7 +144,7 @@ export default function RootLayout({ children }) {
               serviceWorkerPath: "/OneSignalSDKWorker.js",
             });
           });
-        ` }} />
+        `}</Script>
         <link rel="preconnect" href="https://api.onesignal.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" />
