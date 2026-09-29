@@ -128,6 +128,8 @@ function ModuleCard({ mod, index }) {
         {/* Topics toggle */}
         <button
           onClick={() => setExpanded(!expanded)}
+          aria-expanded={expanded}
+          aria-controls={`topics-${mod.id}`}
           style={{
             width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
             padding: '9px 13px', borderRadius: '9px',
@@ -145,7 +147,7 @@ function ModuleCard({ mod, index }) {
 
       {/* Topics list */}
       {expanded && (
-        <div style={{ padding: '0 22px 14px', borderTop: '1px solid rgba(212,168,67,0.07)', marginTop: '2px' }}>
+        <div id={`topics-${mod.id}`} style={{ padding: '0 22px 14px', borderTop: '1px solid rgba(212,168,67,0.07)', marginTop: '2px' }}>
           <div style={{ paddingTop: '14px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
             {mod.topics.map((topic, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
