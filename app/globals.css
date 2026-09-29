@@ -72,6 +72,8 @@ select option { background: #141414; }
 /* Common inline styles used by the legacy dark-theme pages. !important is
    intentional here: it lets the global readability system override dim
    inline colors while keeping their layout and component structure intact. */
+[style*="rgba(255,255,255,0.3)"] { color: #9da6b2 !important; }
+[style*="rgba(255,255,255,0.4)"] { color: #aab3bf !important; }
 [style*="rgba(255,255,255,0.55)"] { color: #b9c1cc !important; }
 [style*="rgba(255,255,255,0.65)"] { color: #c5ccd6 !important; }
 [style*="rgba(255,255,255,0.7)"] { color: #d0d6de !important; }
