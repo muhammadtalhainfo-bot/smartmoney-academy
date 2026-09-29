@@ -75,6 +75,7 @@ export async function POST(req) {
       .select('lesson_id')
       .eq('user_id', user.id)
       .eq('lesson_id', lessonId)
+      .limit(1)
       .maybeSingle();
 
     if (existingError) throw existingError;
