@@ -100,126 +100,17 @@ const TOOLS = [
       },
     ],
   },
-  {
-    id: 'plan',
-    emoji: '📋',
-    title: 'ICT Trading Plan Template',
-    subtitle: 'Fill-in-the-blank · 10 Sections · Professional',
-    desc: 'A professional trading plan is your roadmap to consistency. Without it, you are not a trader -- you are a gambler. Fill out this template and post it next to your monitor.',
-    color: '#D4A843',
-    sections: [
-      {
-        title: 'PART 1: TRADER PROFILE',
-        items: [
-          { label: 'YOUR INFORMATION', fields: [
-            'Trading Experience: Beginner (0-1yr) / Intermediate (1-3yr) / Advanced (3+yr)',
-            'Available Capital: $_______________',
-            'Risk Tolerance: Conservative (0.5%) / Moderate (1%) / Aggressive (2%)',
-            'Trading Style: Scalping / Day Trading / Swing Trading',
-            'Available Time: Full-time (6+ hrs) / Part-time (2-4 hrs) / Limited (1-2 hrs)',
-          ]},
-        ],
-      },
-      {
-        title: 'PART 2: MARKET SELECTION',
-        items: [
-          { label: 'INSTRUMENTS I TRADE', fields: [
-            'Primary: Forex / Indices (NAS100, US30) / Gold / Crypto',
-            'Specific pairs: 1. _____________ 2. _____________ 3. _____________',
-            'Pairs I NEVER trade: 1. _____________ 2. _____________',
-          ]},
-        ],
-      },
-      {
-        title: 'PART 3: STRATEGY DEFINITION',
-        items: [
-          { label: 'ENTRY CRITERIA (ALL must be met)', fields: [
-            '1. Daily bias is: _______________',
-            '2. Killzone: _______________',
-            '3. PD Array type: _______________',
-            '4. Premium or Discount: _______________',
-            '5. Minimum confluences required: _____',
-            '6. Maximum risk per trade: _____%',
-          ]},
-          { label: 'EXIT CRITERIA', fields: [
-            'Stop loss placement rule: _______________',
-            'Take profit 1 at R:R: _____',
-            'Take profit 2 at R:R: _____',
-            'Trailing stop rule: _______________',
-          ]},
-        ],
-      },
-      {
-        title: 'PART 4: RISK MANAGEMENT RULES',
-        items: [
-          { label: 'HARD LIMITS', fields: [
-            'Risk per trade: _____%',
-            'Maximum risk per day: _____%',
-            'Maximum risk per week: _____%',
-            'Maximum open positions at once: _____',
-            'Daily loss limit (stop trading after): _____%',
-            'Weekly loss limit: _____%',
-            'Monthly loss limit: _____%',
-            'Consecutive losses before stopping for day: _____',
-          ]},
-        ],
-      },
-      {
-        title: 'PART 5: TRADING SCHEDULE',
-        items: [
-          { label: 'TRADING WINDOWS', fields: [
-            'Trading days: Mon / Tue / Wed / Thu / Fri',
-            'Pre-market analysis time: _____ to _____',
-            'London session: _____ to _____ (local time)',
-            'New York session: _____ to _____ (local time)',
-            'Maximum trading hours per day: _____ hours',
-          ]},
-          { label: 'NO-TRADE CONDITIONS', fields: [
-            'Before high-impact news (30 min): YES / NO',
-            'When daily loss limit is hit: YES / NO',
-            'When 3 consecutive losses occur: YES / NO',
-            'When emotionally compromised: YES / NO',
-          ]},
-        ],
-      },
-      {
-        title: 'PART 6: PSYCHOLOGY RULES',
-        items: [
-          { label: 'PRE-TRADE ROUTINE', fields: [
-            '1. _______________',
-            '2. _______________',
-            '3. _______________',
-          ]},
-          { label: 'AFTER A LOSS', fields: [
-            '1. _______________',
-            '2. _______________',
-          ]},
-          { label: 'ACCOUNTABILITY', fields: [
-            'Trading partner or mentor: _______________',
-            'Check-in frequency: _______________',
-          ]},
-        ],
-      },
-      {
-        title: 'PART 7: GOALS & METRICS',
-        items: [
-          { label: 'MONTHLY PROCESS GOALS', fields: [
-            'Win rate target: _____%',
-            'Average R:R target: _____',
-            'Maximum trades per week: _____',
-            'Journal consistency target: _____%',
-          ]},
-          { label: 'QUARTERLY REVIEW QUESTIONS', fields: [
-            'Did I follow my plan? _____%',
-            'Biggest improvement this quarter: _______________',
-            'Biggest weakness: _______________',
-            'Focus for next quarter: _______________',
-          ]},
-        ],
-      },
-    ],
-  },
+
 ];
+
+const PRO_TOOL = {
+  id: 'plan',
+  emoji: '📋',
+  title: 'ICT Trading Plan Template',
+  subtitle: 'Fill-in-the-blank · 10 Sections · Professional',
+  desc: 'A professional trading plan is your roadmap to consistency. Fill out this template and post it next to your monitor.',
+  color: '#D4A843',
+};
 
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap');
@@ -234,7 +125,8 @@ export default function ToolsPage() {
   const [checked, setChecked] = useState({});
   const [isPro, setIsPro] = useState(false);
   const [proLoading, setProLoading] = useState(true);
-  const tool = TOOLS.find(t => t.id === activeTool);
+  const [planSections, setPlanSections] = useState([]);
+  const tool = activeTool === 'plan' ? { ...PRO_TOOL, sections: planSections } : TOOLS.find(t => t.id === activeTool);
 
   useEffect(() => {
     let mounted = true;
@@ -242,7 +134,16 @@ export default function ToolsPage() {
     supabase.auth.getUser().then(async ({ data: { user } }) => {
       if (!user) { if (mounted) setProLoading(false); return; }
       const { data: profile } = await supabase.from('profiles').select('is_pro').eq('id', user.id).maybeSingle();
-      if (mounted) { setIsPro(profile?.is_pro === true); setProLoading(false); }
+      const pro = profile?.is_pro === true;
+      if (mounted) setIsPro(pro);
+      if (pro) {
+        const response = await fetch('/api/pro-tools/plan', { cache: 'no-store' });
+        if (response.ok) {
+          const data = await response.json();
+          if (mounted) setPlanSections(Array.isArray(data.sections) ? data.sections : []);
+        }
+      }
+      if (mounted) setProLoading(false);
     }).catch(() => { if (mounted) setProLoading(false); });
     return () => { mounted = false; };
   }, []);
@@ -277,7 +178,7 @@ export default function ToolsPage() {
         {/* TOOL TABS */}
         <section style={{ maxWidth: '1000px', margin: '0 auto', padding: '40px 24px' }}>
           <div style={{ display: 'flex', gap: '12px', marginBottom: '40px', flexWrap: 'wrap' }}>
-            {TOOLS.map(t => (
+            {[...TOOLS, PRO_TOOL].map(t => (
               <button
                 key={t.id}
                 onClick={() => { if (t.id === 'plan' && !isPro) return; setActiveTool(t.id); setChecked({}); }}
