@@ -79,7 +79,7 @@ export async function POST(req) {
       .maybeSingle();
 
     if (existingError) throw existingError;
-    if (existing) return Response.json({ ok: true, alreadyCompleted: true, score, xpEarned: 0 });
+    if (existing) return Response.json({ ok: true, alreadyCompleted: true, score, xpEarned: 0 }, { headers: { 'Cache-Control': 'private, no-store' } });
 
     const { error: completionError } = await supabase
       .from('lesson_completions')
@@ -88,7 +88,7 @@ export async function POST(req) {
     if (completionError) throw completionError;
 
     const xp = await addXpSafely(supabase, user.id, xpEarned);
-    return Response.json({ ok: true, alreadyCompleted: false, score, xpEarned, xp });
+    return Response.json({ ok: true, alreadyCompleted: false, score, xpEarned, xp }, { headers: { 'Cache-Control': 'private, no-store' } });
   } catch (error) {
     console.error('Lesson completion error:', error);
     return Response.json({ error: 'Unable to record lesson completion.' }, { status: 500 });
