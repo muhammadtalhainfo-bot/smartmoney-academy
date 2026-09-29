@@ -1,25 +1,4 @@
-alter table public.profiles add column if not exists username text;
-
-update public.profiles
-set username = nullif(trim(name), '')
-where username is null;
-
-create or replace function public.handle_new_user()
-returns trigger
-language plpgsql
-security definer
-set search_path = public, pg_temp
-as $function$
-begin
-  insert into public.profiles (id, name, username)
-  values (
-    new.id,
-    coalesce(new.raw_user_meta_data->>'name', new.raw_user_meta_data->>'username'),
-    nullif(trim(new.raw_user_meta_data->>'username'), '')
-  );
-  return new;
-end;
-$function$;
+drop view if exists public.leaderboard_profiles;
 
 create table public.leaderboard_profiles (
   id uuid primary key references public.profiles(id) on delete cascade,
@@ -29,6 +8,7 @@ create table public.leaderboard_profiles (
 );
 
 alter table public.leaderboard_profiles enable row level security;
+
 revoke all on public.leaderboard_profiles from anon, authenticated;
 grant select on public.leaderboard_profiles to anon, authenticated;
 
@@ -63,7 +43,6 @@ begin
 end;
 $function$;
 
-revoke execute on function public.handle_new_user() from public, anon, authenticated;
 revoke execute on function private.sync_leaderboard_profile() from public, anon, authenticated;
 
 drop trigger if exists sync_leaderboard_profile on public.profiles;
