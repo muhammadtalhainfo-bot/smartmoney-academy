@@ -140,9 +140,9 @@ const ALL_QUESTIONS = [
     difficulty: 'Beginner',
     image: '/images/fvg.png',
     question: 'How do some ICT teachings explain FVG revisits?',
-    options: ['Because retail traders always buy at the gap', 'Because the algorithm requires two-sided pricing — it must return to complete the market order', 'Because FVGs are support/resistance levels', 'FVGs do not always get filled — this is a myth'],
+    options: ['Because retail traders always buy at the gap', 'Because some ICT teachings interpret FVGs as two-sided pricing inefficiencies that may be revisited', 'Because FVGs are support/resistance levels', 'FVGs do not always get filled — this is a myth'],
     answer: 1,
-    explanation: 'ICT\'s explanation: the algorithm operates on two-sided pricing. When a FVG is created, only one side of the market participated (pure buying or pure selling). The algorithm is programmed to return to that zone to offer the other side of the trade — completing the market. This is why FVGs get filled with such high consistency.',
+    explanation: 'One ICT-style explanation treats an FVG as a two-sided pricing inefficiency that may be revisited. This is a model-based interpretation, not evidence that an algorithm must return to every FVG or that every FVG will fill.',
     lesson: 3,
   },
   {
