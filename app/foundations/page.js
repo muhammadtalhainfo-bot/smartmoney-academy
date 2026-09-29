@@ -1,4 +1,5 @@
 'use client';
+// Production build checkpoint
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
