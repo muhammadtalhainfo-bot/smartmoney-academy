@@ -32,33 +32,12 @@ export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState('overview');
   const supabase = useMemo(() => createClient(), []);
 
-  const updateStreak = useCallback(async (userId, prof) => {
-    if (!prof) return;
-    const now = new Date();
-    const toLocalDate = (date) => {
-      const year = date.getFullYear();
-      const month = String(date.getMonth() + 1).padStart(2, '0');
-      const day = String(date.getDate()).padStart(2, '0');
-      return `${year}-${month}-${day}`;
-    };
-    const today = toLocalDate(now);
-    const lastActive = prof.last_active;
-    if (lastActive === today) return;
-
-    const yesterdayDate = new Date(now);
-    yesterdayDate.setDate(yesterdayDate.getDate() - 1);
-    const yesterday = toLocalDate(yesterdayDate);
-    const newStreak = lastActive === yesterday ? (prof.streak || 0) + 1 : 1;
-    const longestStreak = Math.max(newStreak, prof.longest_streak || 0);
-
-    await supabase.from('profiles').update({
-      streak: newStreak,
-      longest_streak: longestStreak,
-      last_active: today,
-    }).eq('id', userId);
-
-    setProfile(p => ({ ...p, streak: newStreak, longest_streak: longestStreak, last_active: today }));
-  }, [supabase]);
+  const updateStreak = useCallback(async () => {
+    const response = await fetch('/api/streak', { method: 'POST', cache: 'no-store' });
+    if (!response.ok) return;
+    const data = await response.json();
+    setProfile(p => p ? { ...p, ...data } : p);
+  }, []);
 
   useEffect(() => {
     let isMounted = true;
@@ -93,7 +72,7 @@ export default function DashboardPage() {
       setCompletions(completionData || []);
 
       // Update streak
-      await updateStreak(user.id, profileData);
+      await updateStreak();
       setLoading(false);
       } catch (err) { console.error('Dashboard error:', err); setLoading(false); }
     }
