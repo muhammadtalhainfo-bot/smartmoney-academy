@@ -45,7 +45,7 @@ const STRATEGIES = [
     avatar: 'ICT',
     color: '#10B981',
     tags: ['Forex', 'Indices', 'Crypto'],
-    description: 'Enter at the 62-79% Fibonacci retracement (Optimal Trade Entry) after a liquidity sweep and market structure shift. Works on all timeframes with clear invalidation.',
+    description: 'Enter at the 62-79% Fibonacci retracement (Optimal Trade Entry) after a liquidity sweep and market structure shift. Can be adapted across timeframes, but suitability should be tested on the chosen market and timeframe.',
     stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Swing/Intraday', type: 'Multi-TF' },
     content: [
       { heading: 'Overview', text: 'The OTE (Optimal Trade Entry) model enters trades at the 62-79% Fibonacci retracement of a prior swing. Combined with a liquidity sweep, market structure shift, and discount/premium analysis, it can provide a clearly defined risk-reward framework when the setup conditions align.' },
@@ -75,7 +75,7 @@ const STRATEGIES = [
     avatar: 'SMA',
     color: '#EF4444',
     tags: ['Forex', 'Indices'],
-    description: 'Trade the flip of a failed order block. When an OB fails and price trades through it, re-enter at the breaker block for the continuation move. High RR with clear invalidation.',
+    description: 'Trade the flip of a failed order block. When an OB fails and price trades through it, re-enter at the breaker block for the continuation move. Uses a defined invalidation point; realized reward-to-risk varies by setup and management.',
     stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Swing', type: 'Swing' },
     content: [
       { heading: 'Overview', text: 'A breaker block forms when a prior order block fails — price completely trades through it. The failed OB now acts as the opposite bias. A bearish OB that fails becomes a bullish breaker, and vice versa. These levels can produce reactions that traders may choose to study.' },
@@ -108,7 +108,7 @@ const STRATEGIES = [
     description: 'Use Smart Money Technique divergence between correlated pairs (EURUSD/GBPUSD or NAS100/SP500) to confirm reversals at key ICT levels. Adds confluence to any setup.',
     stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Daily', type: 'Confirmation' },
     content: [
-      { heading: 'Overview', text: 'SMT Divergence occurs when two correlated instruments fail to confirm each other\'s move. When EURUSD makes a new low but GBPUSD does not, it signals bullish divergence — institutional strength in EURUSD. This divergence at a key ICT level (OB, FVG, OTE) can provide additional confluence, but its effectiveness should be evaluated with your own testing.' },
+      { heading: 'Overview', text: 'SMT Divergence occurs when two correlated instruments fail to confirm each other\'s move. When EURUSD makes a new low but GBPUSD does not, it can be treated as bullish divergence within this framework; it does not by itself establish institutional positioning. This divergence at a key ICT level (OB, FVG, OTE) can provide additional confluence, but its effectiveness should be evaluated with your own testing.' },
       { heading: 'How to Use SMT', items: ['Open two correlated charts side by side (EURUSD + GBPUSD or NAS100 + SP500)', 'Mark the same swing highs and lows on both', 'Look for divergence: one makes a new high/low, the other does not', 'The stronger instrument (that did NOT make new extremes) is your buy/sell', 'Combine with OB, FVG, or OTE at the divergence level', 'Enter on the stronger instrument with LTF confirmation'] },
       { heading: 'Correlated Pairs', items: ['EURUSD ↔ GBPUSD (USD base pairs)', 'NAS100 ↔ S&P500 (US indices)', 'AUDUSD ↔ NZDUSD (commodity currencies)', 'XAUUSD ↔ DXY (inverse — gold vs dollar)'] },
     ],
