@@ -78,7 +78,7 @@ function AuthPageInner() {
         password,
         options: {
           emailRedirectTo: window.location.origin + '/auth/callback',
-          data: { username: normalizedUsername }
+          data: { name: normalizedUsername, username: normalizedUsername }
         }
       });
       if (error) {
@@ -86,13 +86,8 @@ function AuthPageInner() {
       } else if (signUpData?.user?.identities?.length === 0) {
         setError('An account with this email already exists. Please log in instead.');
       } else {
-        // Save username to profiles immediately
-        if (normalizedUsername && signUpData?.user) {
-          await supabase.from('profiles').upsert({ 
-            id: signUpData.user.id, 
-            username: normalizedUsername 
-          }, { onConflict: 'id' });
-        }
+        // The database trigger creates the profile from auth metadata.
+        // Keep the username in the signup metadata so the trigger can store it.
         trackSignUp('email');
         // Auto sign in — no email confirmation required
         const { error: signInError } = await supabase.auth.signInWithPassword({ email: normalizedEmail, password });
