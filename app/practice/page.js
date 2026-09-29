@@ -74,7 +74,7 @@ const ALL_QUESTIONS = [
     question: 'Where does Buy-Side Liquidity (BSL) sit in the market?',
     options: ['Below swing lows where stop losses cluster', 'Above swing highs where stop losses from shorts cluster', 'At the 50% Fibonacci level', 'Inside a Fair Value Gap'],
     answer: 1,
-    explanation: 'Buy-Side Liquidity sits ABOVE swing highs. Traders who are short have their stop losses placed above highs — these stops are buy orders. When price sweeps above a high, it triggers those buy stops, which is the liquidity institutions need to sell into.',
+    explanation: 'Buy-Side Liquidity sits ABOVE swing highs. Traders who are short have their stop losses placed above highs — these stops are buy orders. When price sweeps above a high, it triggers those buy stops, which can create additional market liquidity; the specific participant intent cannot be confirmed from the chart alone.',
     lesson: 2,
   },
   {
