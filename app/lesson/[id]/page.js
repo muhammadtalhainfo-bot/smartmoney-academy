@@ -230,13 +230,13 @@ Bearish FVG (Sell from here in a bearish bias):
 • In a bearish bias, this can be a potential sell area when supported by a tested setup
 
 A common filtering rule is to align FVG direction with higher-timeframe bias; test whether this improves your setup quality. Using an FVG against the HTF bias is one of the most common mistakes ICT beginners make.`,
-        highlight: '📌 FVG direction must match your HTF bias. A bullish FVG in a bearish structure is NOT a buy signal — it\'s a trap.',
+        highlight: '📌 Some traders use HTF alignment as an FVG filter. Treat it as contextual information to test, not a guarantee that opposing setups are traps.',
       },
       {
         title: 'Key FVG Variations to Know',
         content: `ICT has introduced several variations of the FVG concept:
 
-Consequent Encroachment (CE): The 50% midpoint of the FVG. Often the deepest price will fill the FVG before reversing. If price rejects at the CE — that's a valid entry without waiting for a full fill.
+Consequent Encroachment (CE): The 50% midpoint of the FVG. Some ICT traders monitor this midpoint when studying FVG revisits. A reaction there can be treated as a testable entry condition rather than a guaranteed reversal.
 
 Inverse FVG (IFVG): When an FVG gets fully filled and price passes through it — the FVG "inverts" its polarity. A bullish FVG that gets completely filled becomes a bearish resistance zone on re-test.
 
