@@ -26,9 +26,20 @@ async function customerHasActiveSubscription(stripe, customerId) {
 
 async function findUserByEmail(supabase, email) {
   if (!email) return null;
-  const { data: { users }, error } = await supabase.auth.admin.listUsers();
-  if (error) throw error;
-  return users?.find((u) => u.email?.toLowerCase() === email.toLowerCase()) || null;
+  const target = email.toLowerCase();
+  let page = 1;
+  const perPage = 1000;
+
+  while (true) {
+    const { data: { users }, error } = await supabase.auth.admin.listUsers({ page, perPage });
+    if (error) throw error;
+
+    const match = users?.find((u) => u.email?.toLowerCase() === target);
+    if (match) return match;
+    if (!users || users.length < perPage) return null;
+
+    page += 1;
+  }
 }
 
 export async function POST(req) {
