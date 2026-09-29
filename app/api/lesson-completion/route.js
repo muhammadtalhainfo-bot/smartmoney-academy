@@ -85,7 +85,12 @@ export async function POST(req) {
       .from('lesson_completions')
       .insert({ user_id: user.id, lesson_id: lessonId, quiz_score: Math.round((score / answerKey.length) * 100) });
 
-    if (completionError) throw completionError;
+    if (completionError) {
+      if (completionError.code === '23505') {
+        return Response.json({ ok: true, alreadyCompleted: true, score, xpEarned: 0 }, { headers: { 'Cache-Control': 'private, no-store' } });
+      }
+      throw completionError;
+    }
 
     const xp = await addXpSafely(supabase, user.id, xpEarned);
     return Response.json({ ok: true, alreadyCompleted: false, score, xpEarned, xp }, { headers: { 'Cache-Control': 'private, no-store' } });
