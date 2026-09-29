@@ -78,6 +78,7 @@ export async function POST(req) {
 
     const baseUrl = getBaseUrl();
     const metadata = { user_id: user.id, email: user.email.toLowerCase() };
+    const idempotencyKey = `checkout:${user.id}:${priceId}:${Math.floor(Date.now() / 60_000)}`;
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',
       line_items: [{ price: priceId, quantity: 1 }],
@@ -87,7 +88,7 @@ export async function POST(req) {
       metadata,
       subscription_data: { metadata },
       allow_promotion_codes: true,
-    });
+    }, { idempotencyKey });
 
     return Response.json({ url: session.url, sessionId: session.id }, { headers: { 'Cache-Control': 'no-store' } });
   } catch (error) {
