@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import { createClient } from '@/lib/supabase';
-import Footer from '@/app/components/Footer';
 import { MODULES } from '@/lib/curriculum';
 
 const TOTAL_MODULES = MODULES.length;
@@ -17,23 +16,24 @@ export default function CertificatePage() {
 
   useEffect(() => {
     async function load() {
-      const supabase = createClient();
-      const { data: { session } } = await supabase.auth.getSession();
-      const user = session?.user;
-      if (!user) { setLoading(false); return; }
-      setUser(user);
+      try {
+        const response = await fetch('/api/certificate', { cache: 'no-store' });
+        const data = await response.json();
 
-      const response = await fetch('/api/certificate', { cache: 'no-store' });
-      const data = await response.json();
-      if (!response.ok) {
+        if (!response.ok) {
+          setLoading(false);
+          return;
+        }
+
+        setUser({ id: 'authenticated' });
+        setCertificate(data);
+        setCompleted(data.completedCount || 0);
+        setProfile({ username: data.name, xp: data.xp || 0 });
+      } catch (error) {
+        console.error('Certificate page error:', error);
+      } finally {
         setLoading(false);
-        return;
       }
-
-      setCertificate(data);
-      setCompleted(data.completedCount || 0);
-      setProfile({ username: data.name, xp: data.xp || 0 });
-      setLoading(false);
     }
     load();
   }, []);
