@@ -46,7 +46,7 @@ export async function POST() {
       streak: profile.streak || 0,
       longest_streak: profile.longest_streak || 0,
       last_active: profile.last_active,
-    });
+    }, { headers: { 'Cache-Control': 'private, no-store' } });
   }
 
   const yesterdayDate = new Date(now);
@@ -78,5 +78,5 @@ export async function POST() {
     streak: newStreak,
     longest_streak: longestStreak,
     last_active: today,
-  });
+  }, { headers: { 'Cache-Control': 'private, no-store' } });
 }
