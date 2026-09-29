@@ -1,3 +1,4 @@
+import Image from 'next/image';
 'use client';
 import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -143,7 +144,7 @@ function AuthPageInner() {
 
         {/* Logo */}
         <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '40px', textDecoration: 'none', justifyContent: 'center' }}>
-          <img src="/ictflow-symbol.svg" alt="ICT Flow" style={{ width: '40px', height: '40px', borderRadius: '10px' }} />
+          <Image src="/ictflow-symbol.svg" alt="ICT Flow" width={40} height={40} priority style={{ borderRadius: '10px' }} />
           <div>
             <div style={{ fontFamily: 'Bebas Neue', fontSize: '20px', letterSpacing: '0.15em', color: '#F5F5F5' }}>ICT FLOW</div>
             <div style={{ fontFamily: 'DM Mono', fontSize: '9px', color: '#8A6B28', letterSpacing: '0.2em' }}>TRADING EDUCATION</div>
