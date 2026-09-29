@@ -77,7 +77,7 @@ export async function POST(req) {
       if (!user && email) {
         user = await findUserByEmail(supabase, email);
       }
-      if (!user) return Response.json({ received: true });
+      if (!user) return Response.json({ received: true }, { headers: { 'Cache-Control': 'no-store' } });
 
       let active = true;
       if (session.subscription) {
@@ -119,6 +119,6 @@ export async function POST(req) {
     return Response.json({ received: true });
   } catch (err) {
     console.error('Stripe webhook error:', err);
-    return Response.json({ error: 'Webhook failed' }, { status: 500 });
+    return Response.json({ error: 'Webhook failed' }, { status: 500, headers: { 'Cache-Control': 'no-store' } });
   }
 }
