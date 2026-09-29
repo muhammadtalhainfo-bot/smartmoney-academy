@@ -203,7 +203,7 @@ export default function ToolsPage() {
           {activeTool === 'plan' && !proLoading && !isPro ? (
             <div style={{ padding: '48px 28px', marginBottom: '28px', textAlign: 'center', background: 'linear-gradient(135deg, rgba(212,168,67,0.08), rgba(212,168,67,0.02))', border: '1px solid rgba(232,197,71,0.35)', borderRadius: '16px' }}>
               <div style={{ fontSize: '34px', marginBottom: '12px' }}>🔒</div>
-              <div className="font-mono-c" style={{ fontSize: '10px', letterSpacing: '2px', color: '#E8C547', marginBottom: '10px' }}>// PRO TOOL</div>
+              <div className="font-mono-c" style={{ fontSize: '11px', letterSpacing: '2px', color: '#E8C547', marginBottom: '10px' }}>// PRO TOOL</div>
               <h2 className="font-display" style={{ fontSize: '38px', color: 'white', marginBottom: '10px' }}>ICT TRADING PLAN TEMPLATE</h2>
               <p style={{ color: 'rgba(255,255,255,0.55)', maxWidth: '520px', margin: '0 auto 24px', lineHeight: 1.7, fontSize: '14px' }}>
                 The checklist stays free. The full professional trading-plan template is included with Pro access, together with the advanced curriculum and ad-free experience.
@@ -231,7 +231,7 @@ export default function ToolsPage() {
               {activeTool === 'checklist' && (
                 <div style={{ textAlign: 'center', minWidth: '80px' }}>
                   <div style={{ fontSize: '28px', fontWeight: 700, color: tool.color }}>{progress}%</div>
-                  <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', fontFamily: 'DM Mono, monospace' }}>COMPLETE</div>
+                  <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.72)', fontFamily: 'DM Mono, monospace' }}>COMPLETE</div>
                 </div>
               )}
             </div>
@@ -253,7 +253,7 @@ export default function ToolsPage() {
               <div style={{ padding: '20px 24px' }}>
                 {section.items.map((item, ii) => (
                   <div key={ii} style={{ marginBottom: ii < section.items.length - 1 ? '24px' : '0' }}>
-                    <div className="font-mono-c" style={{ fontSize: '10px', letterSpacing: '2px', color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', marginBottom: '12px' }}>
+                    <div className="font-mono-c" style={{ fontSize: '10px', letterSpacing: '2px', color: 'rgba(255,255,255,0.72)', textTransform: 'uppercase', marginBottom: '12px' }}>
                       {item.label}
                     </div>
                     {(item.checks || []).map((check, ci) => {
@@ -319,7 +319,7 @@ export default function ToolsPage() {
           <h2 className="font-display" style={{ fontSize: '48px', color: 'white', marginBottom: '16px' }}>
             START YOUR<br /><span style={{ color: '#D4A843' }}>ICT JOURNEY</span>
           </h2>
-          <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '14px', marginBottom: '28px' }}>
+          <p style={{ color: 'rgba(255,255,255,0.78)', fontSize: '14px', marginBottom: '28px' }}>
             These tools mean nothing without the knowledge behind them. Start with Module 1 free.
           </p>
           <Link href="/lesson/1">
