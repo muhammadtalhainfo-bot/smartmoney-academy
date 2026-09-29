@@ -134,7 +134,7 @@ Only JSON. No preamble.`;
       return NextResponse.json({ error: 'AI Coach returned incomplete data' }, { status: 502 });
     }
 
-    return NextResponse.json({ insights: parsed.insights });
+    return NextResponse.json({ insights: parsed.insights }, { headers: { 'Cache-Control': 'private, no-store' } });
   } catch (error) {
     console.error('AI Coach error:', error);
     return NextResponse.json({ error: 'AI Coach unavailable' }, { status: 500 });
