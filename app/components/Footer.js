@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -24,7 +25,7 @@ export default function Footer() {
           {/* BRAND */}
           <div style={{ gridColumn: 'span 1' }}>
             <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
-              <img src="/ictflow-symbol.svg" alt="ICT Flow" style={{ width: '34px', height: '34px', borderRadius: '8px' }} />
+              <Image src="/ictflow-symbol.svg" alt="ICT Flow" width={34} height={34} style={{ borderRadius: '8px' }} />
               <div>
                 <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '16px', letterSpacing: '0.15em', color: 'white' }}>ICT FLOW</div>
                 <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#B8924A', letterSpacing: '0.2em' }}>ACADEMY</div>
