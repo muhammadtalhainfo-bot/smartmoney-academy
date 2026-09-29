@@ -2,6 +2,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { adminDb } from './actions';
 import { getAdminSession, loginAdmin, logoutAdmin } from './actions';
+import { MODULES as CURRICULUM_MODULES } from '@/lib/curriculum';
 
 const G = '#E8C547';
 const G2 = '#F0C96A';
@@ -47,45 +48,8 @@ const css = {
 };
 
 // ─── STATIC DATA ──────────────────────────────────────────────────────────────
-const ALL_MODULES = [
-  { id: 1,  module: '01', title: 'Market Structure',               level: 'Beginner',     tag: 'ICT',      lessons: 6,  duration: '48 min', emoji: '📊' },
-  { id: 2,  module: '02', title: 'Liquidity Concepts',             level: 'Beginner',     tag: 'ICT',      lessons: 5,  duration: '45 min', emoji: '💧' },
-  { id: 3,  module: '03', title: 'Fair Value Gaps (FVG)',          level: 'Beginner',     tag: 'ICT & SMC',lessons: 5,  duration: '42 min', emoji: '🎯' },
-  { id: 4,  module: '04', title: 'Order Blocks',                   level: 'Intermediate', tag: 'ICT',      lessons: 6,  duration: '52 min', emoji: '🧱' },
-  { id: 5,  module: '05', title: 'Killzones & Macros',             level: 'Intermediate', tag: 'ICT',      lessons: 4,  duration: '38 min', emoji: '⏰' },
-  { id: 6,  module: '06', title: 'Power of Three (AMD)',           level: 'Intermediate', tag: 'ICT',      lessons: 5,  duration: '44 min', emoji: '🔱' },
-  { id: 7,  module: '07', title: 'Premium & Discount',             level: 'Intermediate', tag: 'ICT',      lessons: 4,  duration: '36 min', emoji: '📐' },
-  { id: 8,  module: '08', title: 'ICT Entry Models',               level: 'Intermediate', tag: 'ICT',      lessons: 7,  duration: '60 min', emoji: '🎲' },
-  { id: 9,  module: '09', title: 'Market Maker Models',            level: 'Advanced',     tag: 'ICT',      lessons: 5,  duration: '55 min', emoji: '🏦' },
-  { id: 10, module: '10', title: 'SMT Divergence',                 level: 'Advanced',     tag: 'ICT',      lessons: 4,  duration: '40 min', emoji: '🔀' },
-  { id: 11, module: '11', title: 'IPDA & CRT',                     level: 'Advanced',     tag: 'ICT',      lessons: 5,  duration: '50 min', emoji: '🤖' },
-  { id: 12, module: '12', title: 'ICT 2024 Mentorship',            level: 'Advanced',     tag: '2024',     lessons: 8,  duration: '75 min', emoji: '🆕' },
-  { id: 13, module: '13', title: 'SMC — Smart Money Concepts',     level: 'Beginner',     tag: 'SMC',      lessons: 6,  duration: '50 min', emoji: '💼' },
-  { id: 14, module: '14', title: 'Top-Down Analysis',              level: 'Intermediate', tag: 'ICT',      lessons: 5,  duration: '42 min', emoji: '🔭' },
-  { id: 15, module: '15', title: 'Daily Bias Framework',           level: 'Intermediate', tag: 'ICT',      lessons: 6,  duration: '48 min', emoji: '🧭' },
-  { id: 16, module: '16', title: 'Draw on Liquidity',              level: 'Intermediate', tag: 'ICT',      lessons: 5,  duration: '44 min', emoji: '🎯' },
-  { id: 17, module: '17', title: 'Dealing Ranges & PD Arrays',     level: 'Intermediate', tag: 'ICT',      lessons: 5,  duration: '46 min', emoji: '📐' },
-  { id: 18, module: '18', title: 'Institutional Order Flow',       level: 'Advanced',     tag: 'ICT',      lessons: 7,  duration: '62 min', emoji: '🏦' },
-  { id: 19, module: '19', title: 'Session Timing & Market Hours',  level: 'Beginner',     tag: 'ICT',      lessons: 5,  duration: '40 min', emoji: '⏰' },
-  { id: 20, module: '20', title: 'Narrative Building',             level: 'Advanced',     tag: 'ICT',      lessons: 6,  duration: '55 min', emoji: '📖' },
-  { id: 21, module: '21', title: 'Quarterly Theory & Seasonal',    level: 'Advanced',     tag: 'ICT',      lessons: 5,  duration: '50 min', emoji: '📅' },
-  { id: 22, module: '22', title: 'Liquidity Voids & Gaps',         level: 'Intermediate', tag: 'ICT',      lessons: 5,  duration: '44 min', emoji: '🕳️' },
-  { id: 23, module: '23', title: 'Time & Price Theory',            level: 'Advanced',     tag: 'ICT',      lessons: 5,  duration: '48 min', emoji: '⌚' },
-  { id: 24, module: '24', title: 'Turtle Soup & Stop Hunts',       level: 'Intermediate', tag: 'ICT',      lessons: 5,  duration: '44 min', emoji: '🐢' },
-  { id: 25, module: '25', title: 'Judas Swing & AMD Deep Dive',    level: 'Advanced',     tag: 'ICT',      lessons: 6,  duration: '56 min', emoji: '⚡' },
-  { id: 26, module: '26', title: 'Balanced Price Range (BPR)',     level: 'Advanced',     tag: 'ICT',      lessons: 5,  duration: '48 min', emoji: '⚖️' },
-  { id: 27, module: '27', title: 'Execution & Trade Management',   level: 'Advanced',     tag: 'ICT',      lessons: 6,  duration: '58 min', emoji: '🎯' },
-  { id: 28, module: '28', title: 'Backtesting & Model Development',level: 'Advanced',     tag: 'ICT',      lessons: 5,  duration: '50 min', emoji: '🔬' },
-  // Extended Lessons
-  { id: 29,  module: '29', title: 'Risk Management Fundamentals',            level: 'Beginner',     tag: 'ICT',         lessons: 5, duration: '40 min', emoji: '🛡️' },
-  { id: 30,  module: '30', title: 'Advanced Risk Management & Position Sizing', level: 'Advanced',  tag: 'ICT',         lessons: 5, duration: '48 min', emoji: '⚖️' },
-  { id: 101, module: 'F1', title: 'Risk Management Fundamentals (Foundations)', level: 'Beginner',  tag: 'Foundations', lessons: 5, duration: '35 min', emoji: '🛡️' },
-  { id: 102, module: 'F2', title: 'Advanced Position Sizing & Portfolio Heat',  level: 'Intermediate', tag: 'Foundations', lessons: 5, duration: '40 min', emoji: '📐' },
-  { id: 103, module: 'F3', title: 'The Psychology of Risk',                    level: 'Intermediate', tag: 'Foundations', lessons: 5, duration: '38 min', emoji: '🧠' },
-  { id: 201, module: 'A1', title: 'ICT for NAS100 & US30: Index Trading',      level: 'Intermediate', tag: 'Indices',     lessons: 5, duration: '44 min', emoji: '📈' },
-  { id: 202, module: 'A2', title: 'ICT for Gold (XAU/USD): Safe Haven Trading',level: 'Intermediate', tag: 'Gold',        lessons: 5, duration: '40 min', emoji: '🥇' },
-  { id: 301, module: 'C1', title: 'ICT for Crypto: Bitcoin & Ethereum',        level: 'Intermediate', tag: 'Crypto',      lessons: 5, duration: '42 min', emoji: '₿'  },
-];
+const ALL_MODULES = CURRICULUM_MODULES;
+
 
 const NAV_PAGES = [
   { href: '/',            label: 'Home',              desc: 'Landing page' },
