@@ -284,13 +284,13 @@ export default function HomePage() {
         <div style={{ maxWidth:'960px', margin:'0 auto' }}>
           <div style={{ textAlign:'center', marginBottom:'40px' }}>
             <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'rgba(232,197,71,0.6)', letterSpacing:'0.15em', marginBottom:'10px' }}>// ICT DAILY BLUEPRINT</div>
-            <h2 className="font-display" style={{ fontSize:'clamp(32px, 5vw, 56px)', color:'white' }}>EVERY DAY FOLLOWS THIS SCRIPT</h2>
+            <h2 className="font-display" style={{ fontSize:'clamp(32px, 5vw, 56px)', color:'white' }}>A DAILY ICT-STYLE FRAMEWORK</h2>
           </div>
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(200px, 1fr))', gap:'12px' }}>
             {[
-              { time:'8PM–12AM EST', zone:'Asian', phase:'ACCUMULATION', desc:'Price builds the Asian Range. Highs and lows become the liquidity targets.', color:'#6366F1', bg:'rgba(99,102,241,0.06)' },
-              { time:'2AM–5AM EST', zone:'London', phase:'MANIPULATION', desc:'Judas Swing. Price sweeps Asian high or low, trapping retail.', color:'#F87171', bg:'rgba(248,113,113,0.06)' },
-              { time:'7AM–12PM EST', zone:'New York AM', phase:'DISTRIBUTION', desc:'The real directional move. Highest probability ICT setups happen here.', color:'#E8C547', bg:'rgba(232,197,71,0.06)' },
+              { time:'8PM–12AM EST', zone:'Asian', phase:'ACCUMULATION', desc:'Traders may study the Asian Range as context for session highs, lows and potential liquidity.', color:'#6366F1', bg:'rgba(99,102,241,0.06)' },
+              { time:'2AM–5AM EST', zone:'London', phase:'MANIPULATION', desc:'An opposite-direction move may be studied as a possible Judas Swing or liquidity sweep; participant intent cannot be confirmed from the chart.', color:'#F87171', bg:'rgba(248,113,113,0.06)' },
+              { time:'7AM–12PM EST', zone:'New York AM', phase:'DISTRIBUTION', desc:'Some ICT traders focus on this window for execution; setup quality and outcomes vary by market and day.', color:'#E8C547', bg:'rgba(232,197,71,0.06)' },
               { time:'10AM–12PM EST', zone:'London Close', phase:'REVERSAL', desc:'Activity can change around the close as positions are adjusted; treat the move as a hypothesis, not a guarantee.', color:'#34D399', bg:'rgba(52,211,153,0.06)' },
             ].map((s, i) => (
               <div key={i} className="card-hover" style={{ padding:'20px', borderRadius:'14px', background:s.bg, textAlign:'center' }}>
@@ -399,7 +399,7 @@ export default function HomePage() {
         <div style={{ maxWidth:'640px', margin:'0 auto', textAlign:'center' }}>
           <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'rgba(232,197,71,0.6)', letterSpacing:'0.15em', marginBottom:'16px' }}>// BEGIN NOW</div>
           <h2 className="font-display" style={{ fontSize:'clamp(40px, 7vw, 72px)', color:'white', lineHeight:1, marginBottom:'16px' }}>
-            READY TO THINK<br /><span className="gold-text">LIKE SMART MONEY?</span>
+            READY TO BUILD<br /><span className="gold-text">A STRUCTURED PROCESS?</span>
           </h2>
           <p style={{ color:'rgba(255,255,255,0.45)', fontSize:'14px', lineHeight:1.7, fontWeight:300, marginBottom:'36px' }}>
             Build a structured trading study process around concepts, practice and review. 38 modules. 203+ lessons. Start free.
