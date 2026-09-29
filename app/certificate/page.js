@@ -12,6 +12,7 @@ export default function CertificatePage() {
   const [user, setUser] = useState(null);
   const [completed, setCompleted] = useState(0);
   const [profile, setProfile] = useState(null);
+  const [certificate, setCertificate] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -22,29 +23,27 @@ export default function CertificatePage() {
       if (!user) { setLoading(false); return; }
       setUser(user);
 
-      const { data: completions } = await supabase
-        .from('lesson_completions')
-        .select('lesson_id')
-        .eq('user_id', user.id);
+      const response = await fetch('/api/certificate', { cache: 'no-store' });
+      const data = await response.json();
+      if (!response.ok) {
+        setLoading(false);
+        return;
+      }
 
-      const { data: prof } = await supabase
-        .from('profiles')
-        .select('username, xp')
-        .eq('id', user.id)
-        .single();
-
-      const completedModuleIds = new Set((completions || []).map(c => Number(c.lesson_id)).filter(id => MODULES.some(m => m.id === id)));
-      setCompleted(completedModuleIds.size);
-      setProfile(prof);
+      setCertificate(data);
+      setCompleted(data.completedCount || 0);
+      setProfile({ username: data.name, xp: data.xp || 0 });
       setLoading(false);
     }
     load();
   }, []);
 
   const progress = Math.round((completed / TOTAL_MODULES) * 100);
-  const eligible = completed >= TOTAL_MODULES;
-  const name = profile?.username || user?.email?.split('@')[0] || 'Trader';
-  const date = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  const eligible = Boolean(certificate?.eligible) && completed >= TOTAL_MODULES;
+  const name = certificate?.name || profile?.username || user?.email?.split('@')[0] || 'Trader';
+  const date = certificate?.issuedAt
+    ? new Date(certificate.issuedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+    : '—';
 
   return (
     <div style={{ minHeight: '100vh', background: '#080808', color: 'white', fontFamily: "'DM Sans', sans-serif" }}>
@@ -79,7 +78,7 @@ export default function CertificatePage() {
                 YOUR <span className="shine">PROGRESS</span>
               </h1>
               <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '15px', fontWeight: 300 }}>
-                Complete all 38 modules to earn your certificate.
+                Complete all {TOTAL_MODULES} modules to earn your certificate.
               </p>
             </div>
 
@@ -93,12 +92,17 @@ export default function CertificatePage() {
                 <div style={{ height: '100%', width: `${progress}%`, background: 'linear-gradient(90deg,#8A6B28,#E8C547)', borderRadius: '100px', transition: 'width 0.5s' }} />
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '10px' }}>
-                {Array.from({ length: TOTAL_MODULES }, (_, i) => (
-                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', borderRadius: '8px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)' }}>
-                    <span style={{ fontSize: '14px' }}>{i < completed ? '✅' : '⬜'}</span>
-                    <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: i < completed ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.55)' }}>MODULE {String(i + 1).padStart(2, '0')}</span>
-                  </div>
-                ))}
+                {MODULES.map((module) => {
+                  const done = certificate?.completedModuleIds?.includes(module.id);
+                  return (
+                    <div key={module.id} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', borderRadius: '8px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)' }}>
+                      <span style={{ fontSize: '14px' }}>{done ? '✅' : '⬜'}</span>
+                      <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: done ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.55)' }}>
+                        MODULE {String(module.id).padStart(2, '0')} · {module.title}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
@@ -140,11 +144,11 @@ export default function CertificatePage() {
               <div style={{ fontFamily: 'Georgia, serif', fontSize: '14px', color: '#666', marginBottom: '24px', lineHeight: 1.8 }}>
                 has successfully completed the<br />
                 <strong style={{ color: '#1a1a1a' }}>ICT & Smart Money Concepts Curriculum</strong><br />
-                comprising all 38 modules and 203+ lessons
+                comprising all {TOTAL_MODULES} modules and {certificate?.totalLessons || 203} lessons
               </div>
 
               <div style={{ display: 'flex', justifyContent: 'center', gap: '32px', marginBottom: '32px' }}>
-                {[['38', 'Modules'], ['203+', 'Lessons'], [profile?.xp || 0, 'XP Earned']].map(([val, label]) => (
+                {[[TOTAL_MODULES, 'Modules'], [certificate?.totalLessons || 203, 'Lessons'], [certificate?.xp || profile?.xp || 0, 'XP Earned']].map(([val, label]) => (
                   <div key={label} style={{ textAlign: 'center' }}>
                     <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '32px', color: '#E8C547' }}>{val}</div>
                     <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#999', letterSpacing: '0.15em' }}>{label}</div>
@@ -159,13 +163,25 @@ export default function CertificatePage() {
                 </div>
                 <div style={{ textAlign: 'center' }}>
                   <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#999', letterSpacing: '0.1em', marginBottom: '4px' }}>CREDENTIAL ID</div>
-                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#E8C547' }}>SMA-{user.id.slice(0, 8).toUpperCase()}</div>
+                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#E8C547' }}>{certificate?.credentialId || '—'}</div>
                 </div>
                 <div style={{ textAlign: 'right' }}>
                   <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '20px', color: '#E8C547', letterSpacing: '0.1em' }}>ICT FLOW</div>
                   <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '8px', color: '#999', letterSpacing: '0.15em' }}>ACADEMY</div>
                 </div>
               </div>
+            </div>
+
+            <div className="no-print" style={{ textAlign: 'center', marginTop: '18px' }}>
+              <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.45)', letterSpacing: '0.12em', marginBottom: '6px' }}>PUBLIC VERIFICATION</div>
+              <a
+                href={certificate?.verificationUrl || '#'}
+                target="_blank"
+                rel="noreferrer"
+                style={{ color: '#E8C547', fontFamily: 'DM Mono, monospace', fontSize: '10px', wordBreak: 'break-all' }}
+              >
+                {certificate?.verificationUrl || 'Verification unavailable'}
+              </a>
             </div>
 
             {/* ACTIONS */}
