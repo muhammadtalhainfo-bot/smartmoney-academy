@@ -79,7 +79,7 @@ export async function POST(req) {
       }
       if (!user) return Response.json({ received: true }, { headers: { 'Cache-Control': 'no-store' } });
 
-      let active = true;
+      let active = false;
       if (session.subscription) {
         const subscription = await stripe.subscriptions.retrieve(session.subscription);
         active = ['active', 'trialing'].includes(subscription.status);
