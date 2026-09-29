@@ -42,7 +42,7 @@ Here's how to identify a Bullish BOS: Price is in an uptrend (HH, HL sequence). 
 Bearish BOS is the opposite: price breaks below the most recent swing low, confirming continuation of the downtrend.
 
 The BOS is not your entry signal — it's your confirmation that the trend is still running. Your entry comes from the pullback that follows.`,
-        highlight: '📌 BOS = Trend Continuation. When you see a BOS, the smart money is telling you: the original direction is still valid.',
+        highlight: '📌 BOS is commonly used as a continuation reference in ICT analysis; it does not by itself confirm institutional intent or guarantee continuation.',
       },
       {
         title: 'Change of Character (ChoCH / MSS)',
@@ -70,13 +70,13 @@ Internal Structure (the smaller movements WITHIN the external swings) — these 
 For example, you might be looking at a 1-hour bullish trend (external structure). Inside that, on the 5-minute chart, you'll see a mini downtrend creating the pullback. When that internal bearish structure shifts to bullish (internal ChoCH on 5min) — THAT is your precise entry trigger.
 
 This nested view is one way ICT traders distinguish higher-timeframe context from lower-timeframe execution.`,
-        highlight: '📌 Higher Timeframe = Bias. Lower Timeframe = Entry. Never enter based on HTF signals alone — drill down for precision.',
+        highlight: '📌 Higher-timeframe context can inform bias while lower timeframes can refine entries. Test the exact sequence and rules that fit your strategy.',
       },
       {
         title: 'How to Use Market Structure in a Real Trade',
         content: `Here's the complete workflow:
 
-Step 1 — Check the Daily chart. Is it making HH/HL (bullish) or LH/LL (bearish)? This is your macro bias. Only trade in this direction.
+Step 1 — Check the Daily chart. Is it making HH/HL (bullish) or LH/LL (bearish)? This is your macro bias. Use this as a directional filter if it is part of your tested plan.
 
 Step 2 — Move to the 1-Hour or 4-Hour chart. Confirm the same structure direction. Look for where the last BOS happened to know how deep the pullback could go.
 
@@ -114,7 +114,7 @@ This is one possible top-down analysis framework; traders can adapt the timefram
 Think about it this way. A hedge fund wants to buy 10,000 lots of EURUSD. They can't just hit the buy button — there aren't enough sellers at one price level to fill an order that large without moving the market against them. So what do they do? They engineer a move DOWN to where retail traders' stop-losses are sitting. Those stop-losses trigger as market sell orders — and the institution buys every single one of them. That's their fill. Then price reverses and shoots up.
 
 This is a central ICT interpretation of liquidity; not every market move needs to be explained by a liquidity hunt.`,
-        highlight: '📌 Banks don\'t react to price — they engineer price to reach liquidity. Every major reversal is preceded by a stop hunt.',
+        highlight: '📌 ICT commonly interprets liquidity sweeps as potential catalysts around turning points; institutional intent and a required stop hunt cannot be confirmed from price alone.',
       },
       {
         title: 'Buy-Side Liquidity (BSL)',
@@ -123,7 +123,7 @@ This is a central ICT interpretation of liquidity; not every market move needs t
 • Buy-stop orders from breakout traders are waiting
 • Equal highs or swing highs that everyone can see on the chart
 
-When price approaches BSL from below, institutions use it to SELL into. They let retail breakout buyers push price up, then sell their massive positions to those buyers. After filling, price reverses down sharply.
+Within the ICT framework, traders may study BSL as an area where sell-side liquidity and potential reactions can occur. Actual participant intent and the resulting direction are not directly observable from the chart.
 
 You'll recognize BSL as: Equal Highs (EQH) on a chart, previous day/week highs, obvious resistance levels that everyone is watching, and round numbers like 1.1000 or 2000 on Gold.
 
@@ -142,7 +142,7 @@ ICT teachings commonly interpret sell-side liquidity as an area where buy-side o
 You'll identify SSL as: Equal Lows (EQL), previous day/week lows, obvious support levels, and round numbers below current price.
 
 The key insight: when you place your stop-loss below "support," you are literally placing your money exactly where banks need it to be to fill their positions. Your stop-loss is their liquidity.`,
-        highlight: '📌 SSL is below obvious lows. BSL is above obvious highs. Institutions hunt both — always ask: where are retail stops before entering?',
+        highlight: '📌 SSL is below commonly watched lows and BSL is above commonly watched highs. These levels can be studied for potential liquidity interactions; institutional intent is not directly observable.',
       },
       {
         title: 'Equal Highs & Equal Lows (EQH / EQL)',
@@ -267,7 +267,7 @@ Step 6 — Stop Loss. Below the low of the FVG (for bullish trades). This invali
 Step 7 — Target. The next liquidity pool above (BSL, previous high, etc.).
 
 Risk/reward outcomes vary by setup and market; use the target and stop rules defined by your tested plan.`,
-        highlight: '📌 The cleanest entry in ICT: SSL Sweep → Bullish Displacement → FVG forms → Price returns to FVG → Enter long at CE.',
+        highlight: '📌 A commonly studied ICT sequence is SSL Sweep → Bullish Displacement → FVG → potential entry near CE. Treat it as a testable setup, not a guaranteed outcome.',
       },
     ],
     quiz: [
@@ -295,18 +295,18 @@ Risk/reward outcomes vary by setup and market; use the target and stop rules def
 
 Bullish Order Block:
 • The last BEARISH (red) candle before a significant bullish move
-• At this candle, institutions were buying while retail was selling
+• ICT interpretations may describe this candle as an area of institutional buying; actual participant positioning cannot be confirmed from the candle alone.
 • The OB zone = the body of that last bearish candle (open to close)
 • Price will often return to this zone and find strong support
 
 Bearish Order Block:
 • The last BULLISH (green) candle before a significant bearish move
-• Institutions were selling while retail was buying
+• ICT interpretations may describe this candle as an area of institutional selling; actual participant positioning cannot be confirmed from the candle alone.
 • The OB zone = the body of that last bullish candle
 • Price returns here as resistance
 
 The "significant move" that validates an OB must include: a BOS or ChoCH on the LTF, at least one FVG in the move, and clear displacement (large bodied candles with momentum).`,
-        highlight: '📌 Order Block = the candle where smart money was quietly building their position. Price returns because they left unfilled orders there.',
+        highlight: '📌 In ICT terminology, an Order Block is studied as a candle/zone associated with a subsequent displacement move. Claims about unfilled institutional orders should be treated as a theoretical interpretation.',
       },
       {
         title: 'How to Identify a Valid Order Block',
@@ -373,11 +373,11 @@ How to determine which to use:
     duration: '15 min read',
     category: 'Time & Sessions',
     imageCaption: 'The four ICT Killzones — Asian, London, New York AM, and London Close',
-    intro: `One of the most underrated secrets in trading is this: WHEN you trade matters more than WHAT you trade. The same setup that works at 9:30 AM New York will fail completely at 2:00 PM. ICT's Killzone framework explains exactly why — and gives you a precise schedule for when the algorithm actually delivers price. Trading outside Killzones is gambling. Trading inside them is reading the playbook.`,
+    intro: `One of the most underrated secrets in trading is this: WHEN you trade matters more than WHAT you trade. The same setup that works at 9:30 AM New York will fail completely at 2:00 PM. ICT's Killzone framework explains exactly why — and gives you a precise schedule for when the algorithm actually delivers price. Killzones are an ICT time-window framework. Trading outside them is not inherently gambling, and trading inside them does not guarantee a valid setup.`,
     sections: [
       {
         title: 'What Are Killzones?',
-        content: `Killzones are specific time windows during the trading day when institutional activity is at its highest — when the Interbank Price Delivery Algorithm (IPDA) is most actively delivering price. During these windows, setups are more reliable, moves are more decisive, and liquidity sweeps followed by strong reversals are most likely to occur.
+        content: `Killzones are specific time windows during the trading day when institutional activity is at its highest — when the Interbank Price Delivery Algorithm (IPDA) is most actively delivering price. Some traders study these windows because of observed session behavior and liquidity patterns; reliability and reversal frequency should be evaluated with data for the instrument and rules used.
 
 Outside of Killzones, the market is controlled by retail noise, algorithmic ping-pong, and low-liquidity chop. ICT traders simply don't trade outside these windows — not because of a rule, but because the setups don't carry the same institutional backing.
 
@@ -420,9 +420,9 @@ During these 20-minute windows, ICT says the algorithm "draws to liquidity" — 
         title: 'The Asian Range — Your Daily Map',
         content: `One of the most practical applications of the session framework is marking the Asian Range every single day. Here's why it matters:
 
-The Asian session (8 PM – 12 AM EST) creates a price range — a high and a low. This range represents the consolidated accumulation zone where institutions are quietly building positions.
+The Asian session commonly forms a definable high-low range. ICT traders may interpret this range as an accumulation reference, but institutional positioning cannot be confirmed from the range alone.
 
-During London and New York, institutions NEED to sweep one or both sides of this range to collect liquidity before the real move. This makes the Asian High and Asian Low among the most reliable liquidity targets of the day.
+London and New York sessions can interact with the Asian range. A sweep of one or both sides is not required, and target reliability varies by market and conditions.
 
 Daily routine:
 1. At midnight EST, mark the Asian Range High and Low
@@ -452,7 +452,7 @@ This simple framework alone — just trading the Asian range sweep + reversal �
     duration: '17 min read',
     category: 'Market Mechanics',
     imageCaption: 'AMD: price accumulates in Asia, manipulates (Judas) in London, distributes in New York',
-    intro: `The Power of Three (PO3) — also known as AMD (Accumulate, Manipulate, Distribute) — is ICT's model for how every single trading day is engineered by institutional participants. Once you understand this three-act script, you will stop being confused by price action and start reading the daily narrative with clarity. Most losing days happen because traders fight this structure instead of flowing with it.`,
+    intro: `The Power of Three (PO3), also known as AMD (Accumulate, Manipulate, Distribute), is an ICT framework for interpreting a possible sequence in price delivery; it should not be treated as a description of every trading day. Once you understand this three-act script, you will stop being confused by price action and start reading the daily narrative with clarity. Most losing days happen because traders fight this structure instead of flowing with it.`,
     sections: [
       {
         title: 'The Three Acts of a Trading Day',
@@ -462,11 +462,11 @@ ACT 1 — ACCUMULATION (Asian Session, 8 PM – 12 AM EST):
 Institutions quietly build positions. Price consolidates in a tight range. Don't trade here — there's no direction, just noise. But DO mark the range because the high and low become critical levels for the next two acts.
 
 ACT 2 — MANIPULATION (London Session, 2 AM – 5 AM EST):
-This is the deception phase. Price makes a false move — the "Judas Swing" — in the WRONG direction. If the day is going to be bullish, London will push price DOWN first, sweeping the Asian lows, triggering retail sell orders. Then price reverses. If bearish, London sweeps the Asian highs first. This false move traps retail traders on the wrong side and provides liquidity for institutions to fill their real position.
+In this framework, the manipulation phase can involve a move opposite the eventual directional move; the sequence and direction are not guaranteed. If the day is going to be bullish, London will push price DOWN first, sweeping the Asian lows, triggering retail sell orders. Then price reverses. If bearish, London sweeps the Asian highs first. This false move traps retail traders on the wrong side and provides liquidity for institutions to fill their real position.
 
 ACT 3 — DISTRIBUTION (New York AM, 7 AM – 12 PM EST):
 The real, sustained move. After the Judas Swing is complete, price moves powerfully in the TRUE direction. This is where 80% of the daily range is created. This is where ICT traders make their money — catching Act 3 after identifying Acts 1 and 2.`,
-        highlight: '📌 Never trade the London open blindly. The first move is usually the WRONG direction (Judas). Wait for it to complete, then trade the reversal in NY.',
+        highlight: '📌 Treat the London open and any initial move as context. A Judas-style move can occur, but the first move is not reliably the wrong direction every day.',
       },
       {
         title: 'The Judas Swing in Detail',
@@ -504,7 +504,7 @@ A Bearish Daily Candle:
 • Close near the low
 
 This means that when you see a daily candle with a long lower wick and bullish body — you're looking at a perfect AMD bullish day: liquidity was grabbed below, then price distributed upward. The daily candle is literally a visual representation of the three acts.`,
-        highlight: '📌 Long lower wick + bullish body = perfect AMD bullish day. Long upper wick + bearish body = perfect AMD bearish day. Read every daily candle this way.',
+        highlight: '📌 Wick/body combinations can be used as descriptive context within AMD analysis; they do not by themselves establish a “perfect” AMD day.',
       },
       {
         title: 'AMD on Higher Timeframes',
@@ -735,7 +735,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
       {
         title: 'The Five Algorithmic Patterns',
         content: `PATTERN 1 — THE LIQUIDITY HUNT:\nBefore any significant move, the algorithm sweeps the nearest liquidity pool. Before going up — sweeps lows first. Before going down — sweeps highs first. This occurs on EVERY timeframe.\n\nPATTERN 2 — THE FVG RETURN:\nEvery FVG gets filled. Not always immediately — some take hours, days, weeks. But the algorithm ALWAYS returns to complete two-sided pricing.\n\nPATTERN 3 — THE FALSE BREAKOUT:\nThe algorithm regularly creates false breakouts before reversing. Every "breakout" should be viewed with suspicion until confirmed by significant displacement.\n\nPATTERN 4 — EQUAL HIGHS/LOWS MAGNET:\nWhenever equal highs or lows form — the algorithm is irresistibly drawn to sweep them. Equal highs/lows are like a magnet. Mark them always.\n\nPATTERN 5 — THE ASIAN RANGE BREAK:\nDuring killzones, the algorithm almost always breaks out of the Asian range before the true directional move. The direction of the break is frequently WRONG (Judas). Expect this every day.`,
-        highlight: '📌 Five algorithmic patterns: liquidity hunt before every move, FVG return, false breakout (Judas), equal highs/lows magnetism, Asian range break in wrong direction first.',
+        highlight: '📌 These are five ICT-style patterns to study and test; none should be assumed to occur before every move or on every trading day.',
       },
     ],
     quiz: [
