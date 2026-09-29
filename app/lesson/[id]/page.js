@@ -167,7 +167,7 @@ Step 4 — After the sweep, wait for a ChoCH or BOS to the upside on the LTF. Th
 
 Step 5 — Enter from a nearby FVG or OB that forms after the sweep/ChoCH.
 
-A commonly studied ICT sequence is Liquidity Sweep → Structure Shift → Entry from a PD Array. This is the core of the 2022 Model, Silver Bullet, and virtually every other ICT entry model.`,
+A commonly studied ICT sequence is Liquidity Sweep → Structure Shift → Entry from a PD Array. It appears in several ICT-style models, but individual models and criteria differ.`,
         highlight: '📌 Example setup: SSL sweep → bullish structure shift → FVG/OB entry. Treat this as a testable setup, not a guaranteed or universally superior trade.',
       },
     ],
@@ -346,7 +346,7 @@ Order Block = WHERE institutions entered (the candle they used to build their po
 
 Fair Value Gap = WHERE price moved too fast and left an imbalance. It's about price inefficiency.
 
-The most powerful setups in ICT combine both: an OB that also contains an FVG within it. ICT calls this a "confluence" zone. When an Order Block and FVG overlap, traders may treat the combination as additional confluence; its effectiveness should be tested rather than assumed.
+An OB that overlaps an FVG is one commonly studied ICT confluence pattern; whether it improves outcomes should be tested. ICT calls this a "confluence" zone. When an Order Block and FVG overlap, traders may treat the combination as additional confluence; its effectiveness should be tested rather than assumed.
 
 How to determine which to use:
 • OBs are better for swing trades and higher timeframe setups
@@ -373,16 +373,16 @@ How to determine which to use:
     duration: '15 min read',
     category: 'Time & Sessions',
     imageCaption: 'The four ICT Killzones — Asian, London, New York AM, and London Close',
-    intro: `One of the most underrated secrets in trading is this: WHEN you trade matters more than WHAT you trade. A setup's behavior can differ across session times; performance should be measured for the specific market and rules rather than assumed to succeed or fail at a particular time. ICT's Killzone framework explains exactly why — and gives you a precise schedule for when the algorithm actually delivers price. Killzones are an ICT time-window framework. Trading outside them is not inherently gambling, and trading inside them does not guarantee a valid setup.`,
+    intro: `Session timing can matter alongside setup selection, but neither timing nor setup type should be assumed to dominate across all markets. A setup's behavior can differ across session times; performance should be measured for the specific market and rules rather than assumed to succeed or fail at a particular time. ICT's Killzone framework explains exactly why — and gives you a precise schedule for when the algorithm actually delivers price. Killzones are an ICT time-window framework. Trading outside them is not inherently gambling, and trading inside them does not guarantee a valid setup.`,
     sections: [
       {
         title: 'What Are Killzones?',
-        content: `Killzones are specific time windows during the trading day when institutional activity is at its highest — when the Interbank Price Delivery Algorithm (IPDA) is most actively delivering price. Some traders study these windows because of observed session behavior and liquidity patterns; reliability and reversal frequency should be evaluated with data for the instrument and rules used.
+        content: `Killzones are specific time windows during the trading day when some traders study these windows for changes in activity and liquidity; claims about IPDA activity cannot be directly verified from a chart. Some traders study these windows because of observed session behavior and liquidity patterns; reliability and reversal frequency should be evaluated with data for the instrument and rules used.
 
 Outside of Killzones, the market is controlled by retail noise, algorithmic ping-pong, and low-liquidity chop. ICT traders simply don't trade outside these windows — not because of a rule, but because the setups don't carry the same institutional backing.
 
 There are four main Killzones, each serving a specific role in the daily narrative. Understanding which session is doing what is the key to reading the daily AMD (Accumulate-Manipulate-Distribute) cycle.`,
-        highlight: '📌 The rule is simple: only execute trades during Killzones. Outside of them, you\'re trading retail noise, not institutional flow.',
+        highlight: '📌 Some traders use Killzones as an execution filter; whether to restrict entries to those windows depends on the tested trading plan. Outside of them, you\'re trading retail noise, not institutional flow.',
       },
       {
         title: 'The Four Killzones',
@@ -650,7 +650,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
       },
       {
         title: 'The 3 Fatal Silver Bullet Errors',
-        content: `Error 1 — Trading outside the window:\n"It looks like a Silver Bullet at 9:45 AM" — NO. The window opens at 10:00 AM exactly. Before that, different regime. Outside = invalid.\n\nError 2 — Entering without a sweep:\nA FVG without a preceding liquidity sweep is just random price noise. The sweep gives the FVG its power. No sweep = no trade.\n\nError 3 — Wrong HTF bias:\nTaking a bullish Silver Bullet on a bearish daily = gambling. If the daily is bearish — look for BEARISH Silver Bullets only. HTF context can be given greater weight in this framework, but the hierarchy should be tested.\n\nTRADE MANAGEMENT:\n• Never move stop to breakeven before 1R profit\n• At 1R — move stop to breakeven\n• At target — exit fully\n• ONE loss does not invalidate the model\n\nJOURNALING: Every Silver Bullet trade gets a screenshot of: HTF bias, sweep, displacement, FVG, entry/stop/target. Without journaling, improvement is impossible.`,
+        content: `Error 1 — Trading outside the window:\n"It looks like a Silver Bullet at 9:45 AM" — NO. The window opens at 10:00 AM exactly. Before that, different regime. Outside = invalid.\n\nError 2 — Entering without a sweep:\nA FVG without a preceding liquidity sweep is not automatically invalid; the significance depends on the model and criteria being tested. The sweep gives the FVG its power. No sweep = no trade.\n\nError 3 — Wrong HTF bias:\nTaking a bullish Silver Bullet on a bearish daily = gambling. If the daily is bearish — look for BEARISH Silver Bullets only. HTF context can be given greater weight in this framework, but the hierarchy should be tested.\n\nTRADE MANAGEMENT:\n• Never move stop to breakeven before 1R profit\n• At 1R — move stop to breakeven\n• At target — exit fully\n• ONE loss does not invalidate the model\n\nJOURNALING: Every Silver Bullet trade gets a screenshot of: HTF bias, sweep, displacement, FVG, entry/stop/target. Without journaling, improvement is impossible.`,
         highlight: '📌 Three fatal errors: outside the time window, no sweep before entry, wrong HTF bias. Avoid all three and your strike rate will be above 60%.',
       },
     ],
