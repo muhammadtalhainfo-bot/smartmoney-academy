@@ -222,14 +222,14 @@ function TradeForm({ initial, onSave, onCancel }) {
           const isArr = Array.isArray(form[field]);
           const active = isArr ? form[field].includes(o) : form[field] === o;
           return (
-            <span key={o} onClick={() => isArr ? toggle(field, o) : set(field, o)} style={{
+            <button type="button" key={o} onClick={() => isArr ? toggle(field, o) : set(field, o)} aria-pressed={active} style={{
               padding: '5px 12px', borderRadius: '8px', cursor: 'pointer',
               border: `1px solid ${active ? color : C.border}`,
               background: active ? `${color}14` : C.bg2,
               color: active ? color : C.text3,
               fontFamily: 'DM Mono, monospace', fontSize: '10px',
               transition: 'all 0.12s',
-            }}>{o}</span>
+            }}>{o}</button>
           );
         })}
       </div>
