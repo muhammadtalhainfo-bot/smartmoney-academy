@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { MODULES } from '@/lib/curriculum';
 import { ALL_LESSONS } from './lesson-data';
+import { LESSONS as LEGACY_LESSONS } from './lessons-data';
 import LessonClient from './LessonClient';
 
 export function generateStaticParams() {
@@ -13,7 +14,7 @@ export default async function LessonPage({ params }) {
 
   if (!Number.isSafeInteger(lessonId)) notFound();
 
-  const lesson = ALL_LESSONS[lessonId];
+  const lesson = ALL_LESSONS[lessonId] || LEGACY_LESSONS[lessonId];
   if (!lesson) notFound();
 
   const curriculumModule = MODULES.find((module) => module.id === lessonId);
