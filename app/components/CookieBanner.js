@@ -7,13 +7,19 @@ export default function CookieBanner() {
 
   useEffect(() => {
     const accepted = localStorage.getItem('cookies_accepted');
-    if (!accepted) setShow(true);
+    const declined = localStorage.getItem('cookies_declined');
+    if (!accepted && !declined) setShow(true);
   }, []);
 
-  const accept = () => {
-    localStorage.setItem('cookies_accepted', 'true');
+  const setConsent = (accepted) => {
+    if (accepted) localStorage.setItem('cookies_accepted', 'true');
+    else localStorage.setItem('cookies_declined', 'true');
     setShow(false);
+    window.dispatchEvent(new Event('ictflow-cookie-consent'));
   };
+
+  const accept = () => setConsent(true);
+  const decline = () => setConsent(false);
 
   if (!show) return null;
 
@@ -39,7 +45,7 @@ export default function CookieBanner() {
           fontSize: '11px', fontWeight: 700, cursor: 'pointer',
           letterSpacing: '0.08em', textTransform: 'uppercase'
         }}>Accept</button>
-        <button onClick={() => setShow(false)} style={{
+        <button onClick={decline} style={{
           background: 'transparent', color: 'rgba(255,255,255,0.7)',
           border: '1px solid rgba(255,255,255,0.6)', borderRadius: '8px',
           padding: '8px 16px', fontFamily: 'DM Mono, monospace',
