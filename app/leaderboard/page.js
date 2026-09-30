@@ -72,7 +72,7 @@ export default function LeaderboardPage() {
             <span className="shine">TRADERS</span>
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '15px', fontWeight: 300 }}>
-            Earn XP by completing lessons and daily challenges. Climb the ranks.
+            Earn XP through completed lessons and consistent learning progress. Climb the ranks.
           </p>
         </div>
       </section>
