@@ -124,8 +124,8 @@ const EPISODES = [
     duration: "3h 15m",
     youtube: null,
     concepts: ["Advanced Price Action Theory", "Precision Entries", "LTF Refinement"],
-    summary: "Deep dive into advanced price action theory. How to 'eye' a high-probability setup without indicators. Refining entries from HTF context down to 1-minute execution.",
-    keyLesson: "The goal is to see the setup before it happens — not react to it. Train your eye on historical charts until the patterns are automatic.",
+    summary: "Deep dive into advanced price action theory. How to study a potential setup without indicators. Refining entries from HTF context down to 1-minute execution.",
+    keyLesson: "The goal is to define the setup before it happens rather than react impulsively. Use historical charts to practice identifying the conditions in your plan.",
     tags: ["Advanced", "Entry Models", "Practical"]
   },
   {
@@ -194,7 +194,7 @@ const EPISODES = [
     duration: "3h 00m",
     youtube: null,
     concepts: ["Price Narrative", "Trend End", "Reversals", "HTF Context", "Micro-Scalping Dangers"],
-    summary: "Being at the END of a trend captures the highest-reward reversals. Danger of micro-scalping without HTF context. A trade narrative can state the assumptions and evidence supporting the expected move.",
+    summary: "Trend extremes can be studied as potential reversal areas when higher-timeframe context supports the idea. A trade narrative should state the assumptions and evidence supporting the expected move.",
     keyLesson: "Trend extremes with higher-timeframe context can be studied as potential reversal areas. Avoid entries that are not supported by the trading plan.",
     tags: ["Theory", "Advanced", "Psychology"]
   },
@@ -224,8 +224,8 @@ const EPISODES = [
     duration: "2h 20m",
     youtube: null,
     concepts: ["Tape Reading", "Candle Bodies", "Candle Wicks", "Price Speed", "Characteristics"],
-    summary: "Candle bodies tell the story of where the algorithm wants to go. Wicks represent the liquidity-seeking phase — the damage. Speed and characteristics of movement reveal the next objective.",
-    keyLesson: "Read the candle BODIES not just the wicks. Strong body closes in one direction = algorithm is committed. Wick-heavy candles = liquidity hunting.",
+    summary: "Candle bodies and wicks can be studied as price-action observations. Some ICT-style interpretations associate strong body closes with directional momentum and wicks with rejection or liquidity events; these interpretations should be tested rather than treated as proof of an algorithmic objective.",
+    keyLesson: "Read candle bodies and wicks together. Strong closes can indicate directional momentum, while wick-heavy candles can indicate rejection or a liquidity event; neither observation proves an underlying algorithmic intention.",
     tags: ["Tape Reading", "Advanced", "Price Action"]
   },
   {
@@ -244,7 +244,7 @@ const EPISODES = [
     duration: "2h 50m",
     youtube: null,
     concepts: ["Visual Templates", "Psychology", "Emotional Execution", "Fear of Loss", "Rules"],
-    summary: "Visual templates for the 2022 entry model. Fear of losing is what causes the most losses — it leads to early exits and rule violations. Emotional execution is the primary barrier to profitability.",
+    summary: "Visual templates for the 2022 entry model. Fear of loss can contribute to early exits and rule violations. Emotional discipline is one part of execution quality and should be managed alongside risk, process, and strategy design.",
     keyLesson: "Write your rules down before the session and define what qualifies as a setup. If your plan requires a complete checklist, wait when the criteria are not met.",
     tags: ["Psychology", "Entry Models", "Practical"]
   },
@@ -254,8 +254,8 @@ const EPISODES = [
     duration: "2h 30m",
     youtube: null,
     concepts: ["Daily Rebalance", "Prior Day FVG", "Swing Trading", "Multi-Day Holds"],
-    summary: "Algorithm returns to prior day's Fair Value Gap to rebalance before resuming trend. Critical for swing traders holding across multiple daily candles.",
-    keyLesson: "Before a trend continues, it often retraces to fill the previous day's FVG. This rebalance IS the entry opportunity for swing positions.",
+    summary: "In this ICT-style framework, traders study prior-day Fair Value Gaps as potential rebalance areas before a continuation. The behavior is not guaranteed and should be evaluated with historical testing.",
+    keyLesson: "A continuation may revisit a previous-day FVG in this framework. Treat such a revisit as a potential area to study, not a guaranteed entry opportunity.",
     tags: ["FVG", "Swing Trading", "Theory"]
   },
   {
