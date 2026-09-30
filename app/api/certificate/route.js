@@ -37,8 +37,10 @@ export async function GET() {
     const requiredModuleIds = MODULES.map((module) => module.id);
     const [{ data: completions, error: completionError }, { data: profile, error: profileError }] = await Promise.all([
       supabase.from('lesson_completions').select('lesson_id, completed_at, quiz_score').eq('user_id', user.id),
-      supabase.from('profiles').select('name, username, xp').eq('id', user.id).maybeSingle(),
+      supabase.from('profiles').select('name, username, xp, is_pro').eq('id', user.id).maybeSingle(),
     ]);
+
+    if (profile?.is_pro !== true) return noStore({ error: 'Pro membership required.' }, 403);
 
     if (completionError || profileError) {
       console.error('Certificate data error:', completionError || profileError);
