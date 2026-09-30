@@ -1,4 +1,4 @@
-// 1000 ICT Practice Questions  
+// 460 ICT Practice Questions  
 export const QUESTIONS = [
   {
     "id": 1,
