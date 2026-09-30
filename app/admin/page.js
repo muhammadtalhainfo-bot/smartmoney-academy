@@ -1237,7 +1237,7 @@ export default function AdminPage() {
   };
 
   const GLOBAL_STYLES = `
-    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap');
+
     * { box-sizing: border-box; }
     input, textarea, select { outline: none; color: white; }
     input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.35); }
