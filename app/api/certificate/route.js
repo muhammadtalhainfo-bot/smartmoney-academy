@@ -36,7 +36,7 @@ export async function GET() {
 
     const requiredModuleIds = MODULES.map((module) => module.id);
     const [{ data: completions, error: completionError }, { data: profile, error: profileError }] = await Promise.all([
-      supabase.from('lesson_completions').select('lesson_id, completed_at').eq('user_id', user.id),
+      supabase.from('lesson_completions').select('lesson_id, completed_at, quiz_score').eq('user_id', user.id),
       supabase.from('profiles').select('name, username, xp').eq('id', user.id).maybeSingle(),
     ]);
 
@@ -45,12 +45,13 @@ export async function GET() {
       return noStore({ error: 'Unable to load certificate data.' }, 500);
     }
 
-    const completedIds = new Set((completions || []).map((row) => Number(row.lesson_id)));
+    const passedCompletions = (completions || []).filter((row) => Number(row.quiz_score) >= 70);
+    const completedIds = new Set(passedCompletions.map((row) => Number(row.lesson_id)));
     const completedModuleIds = requiredModuleIds.filter((id) => completedIds.has(id));
     const eligible = completedModuleIds.length === requiredModuleIds.length;
 
     const latestCompletion = (completions || [])
-      .filter((row) => completedIds.has(Number(row.lesson_id)) && row.completed_at)
+       .filter((row) => completedIds.has(Number(row.lesson_id)) && row.completed_at)
       .map((row) => new Date(row.completed_at).getTime())
       .filter(Number.isFinite)
       .reduce((latest, value) => Math.max(latest, value), 0);
