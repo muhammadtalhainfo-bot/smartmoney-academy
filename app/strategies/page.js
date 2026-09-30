@@ -124,7 +124,7 @@ const STRATEGIES = [
     stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Daily', type: 'Level-based' },
     content: [
       { heading: 'Overview', text: 'The Midnight Open (12 AM EST) is a key ICT reference level. Some traders use this level as a reference during the trading day; its usefulness should be evaluated with your own testing. Combined with session analysis, this level provides clear entry and exit points.' },
-      { heading: 'How to Trade It', items: ['Mark the 12 AM EST candle open price at the start of each day', 'Use price relative to the midnight open as one contextual input rather than a standalone bias rule', 'Use price relative to the midnight open as one contextual input rather than a standalone bias rule', 'Look for price to sweep the midnight open and reverse', 'Or look for price to consolidate above/below and break with momentum', 'Use killzone timing for entries'] },
+      { heading: 'How to Trade It', items: ['Mark the 12 AM EST candle open price at the start of each day', 'Use price relative to the midnight open as one contextual input rather than a standalone bias rule', 'Look for price to sweep the midnight open and reverse', 'Or look for price to consolidate above/below and break with momentum', 'Use killzone timing for entries'] },
       { heading: 'Combining with Other Concepts', text: 'Some traders give the midnight open more weight when it aligns with an FVG, OB, or OTE zone. A midnight open that sits inside a daily bullish FVG, for example, can provide additional confluence for a buy setup.' },
     ],
   },
@@ -180,7 +180,7 @@ export default function StrategiesPage() {
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '16px' }}>
               {filtered.map(s => (
-                <div key={s.slug} className="strat-card" onClick={() => setSelected(s.slug)} onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSelected(s.slug); } }} role="button" tabIndex={0} aria-label="Open strategy playbook" style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '16px', padding: '24px' }}>
+                <div key={s.slug} className="strat-card" onClick={() => setSelected(s.slug)} onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSelected(s.slug); } }} role="button" tabIndex={0} aria-label={`Open ${s.title} strategy playbook`} style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '16px', padding: '24px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
                     <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: `${s.color}20`, border: `1px solid ${s.color}40`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'DM Mono, monospace', fontSize: '10px', color: s.color, fontWeight: 600, flexShrink: 0 }}>{s.avatar}</div>
                     <div>
@@ -202,9 +202,9 @@ export default function StrategiesPage() {
                       <span key={tag} style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.82)', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.18)', padding: '3px 8px', borderRadius: '4px', letterSpacing: '0.08em' }}>{tag}</span>
                     ))}
                   </div>
-                  <button style={{ width: '100%', padding: '10px', background: `${s.color}15`, border: `1px solid ${s.color}30`, borderRadius: '8px', color: s.color, fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.1em', cursor: 'pointer' }}>
+                  <span aria-hidden="true" style={{ display: 'block', width: '100%', boxSizing: 'border-box', padding: '10px', background: `${s.color}15`, border: `1px solid ${s.color}30`, borderRadius: '8px', color: s.color, fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.1em', textAlign: 'center' }}>
                     VIEW PLAYBOOK →
-                  </button>
+                  </span>
                 </div>
               ))}
             </div>
@@ -237,11 +237,11 @@ export default function StrategiesPage() {
           {strategy.content.map((block, i) => (
             <div key={i} style={{ marginBottom: '28px' }}>
               <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '24px', color: 'white', letterSpacing: '0.05em', marginBottom: '12px' }}>{block.heading}</h2>
-              {block.text && <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.55)', lineHeight: 1.8, fontWeight: 300 }}>{block.text}</p>}
+              {block.text && <p style={{ fontSize: '14px', color: '#c5ccd6', lineHeight: 1.8, fontWeight: 300 }}>{block.text}</p>}
               {block.items && (
                 <ul style={{ listStyle: 'none', padding: 0 }}>
                   {block.items.map((item, j) => (
-                    <li key={j} style={{ display: 'flex', gap: '10px', marginBottom: '8px', fontSize: '14px', color: 'rgba(255,255,255,0.55)', lineHeight: 1.6 }}>
+                    <li key={j} style={{ display: 'flex', gap: '10px', marginBottom: '8px', fontSize: '14px', color: '#c5ccd6', lineHeight: 1.6 }}>
                       <span style={{ color: strategy.color, flexShrink: 0 }}>→</span><span>{item}</span>
                     </li>
                   ))}
