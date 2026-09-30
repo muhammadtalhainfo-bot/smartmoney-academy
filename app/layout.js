@@ -10,7 +10,10 @@ export const metadata = {
   },
   description: 'Study ICT and Smart Money Concepts with a structured 38-module curriculum covering market structure, liquidity, fair value gaps, order blocks, timing, execution and risk management. 203+ lessons.',
   keywords: ['ICT trading', 'Smart Money Concepts', 'Inner Circle Trader', 'market structure', 'fair value gap', 'order blocks', 'liquidity', 'NAS100', 'forex trading', 'prop firm', 'trading education', 'free trading course', 'ICT mentorship', 'silver bullet strategy', 'AMD model'],
-  alternates: { canonical: 'https://ictflow.com' },
+  alternates: {
+    canonical: 'https://ictflow.com',
+    types: { 'application/rss+xml': 'https://ictflow.com/feed.xml' },
+  },
   authors: [{ name: 'ICT Flow' }],
   creator: 'ICT Flow',
   icons: {
