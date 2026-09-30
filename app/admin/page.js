@@ -898,8 +898,8 @@ function SEOSection({ adminDbClient = adminDb }) {
 
 // ─── PRICING SECTION ──────────────────────────────────────────────────────────
 function PricingSection() {
-  const [freeFeatures, setFreeFeatures] = useState(['All 38 modules and 203+ lessons', 'ICT Glossary (97+ terms)', 'Basic practice questions', 'Trade Journal']);
-  const [proFeatures, setProFeatures] = useState(['Everything in Free', 'All 38 modules unlocked', 'AI-generated daily challenges', 'Certificate of completion', 'Weekly market breakdown', 'Priority support', 'Early access to new modules', 'Cancel anytime']);
+  const [freeFeatures, setFreeFeatures] = useState(['All 38 modules and 203+ lessons', 'ICT Glossary (97+ terms)', 'Daily practice challenges', 'Trade Journal', 'AI trade coaching in the journal']);
+  const [proFeatures, setProFeatures] = useState(['Everything in Free', 'Certificate of completion', 'Professional trading-plan template', 'Ad-free learning experience', 'Cancel anytime']);
   const [monthlyPrice, setMonthlyPrice] = useState('19');
   const [annualPrice, setAnnualPrice] = useState('149');
   const [newFeature, setNewFeature] = useState('');
