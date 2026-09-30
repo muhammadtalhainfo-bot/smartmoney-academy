@@ -2620,7 +2620,7 @@ export const QUESTIONS = [
     "q": "Trading the London-NY overlap (8-11 AM EST) provides:",
     "options": [
       "Low volatility",
-      "The highest probability setups \u2014 two major sessions active simultaneously",
+      "A period when two major sessions overlap, which traders may study for increased activity",
       "Random outcomes",
       "Only forex opportunities"
     ],
