@@ -24,7 +24,7 @@ export function GET() {
       <description>${escapeXml(post.description)}</description>
       <pubDate>${parseDate(post.date)}</pubDate>
       <category>${escapeXml(post.category)}</category>
-    </item>`).join('\\n')
+    </item>`).join('\n')
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
