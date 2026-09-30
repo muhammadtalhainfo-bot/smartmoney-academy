@@ -135,10 +135,10 @@ A stop-loss can become part of available market liquidity when triggered, but a 
         title: 'Equal Highs & Equal Lows (EQH / EQL)',
         content: `ICT traders commonly study equal highs and lows as potential liquidity/reference areas. They can attract attention and may coincide with clustered orders, but the size and composition of resting stops cannot be known from the chart alone.
 
-ICT teachings may interpret visible equal highs/lows as liquidity areas; calling them deliberate traps is an interpretation rather than a directly verified mechanism. They WANT price to look like it's double-topping or double-bottoming. Retail sells the double top and buys the double bottom. Their stops cluster just beyond those levels. Then institutions sweep through, collect all that liquidity, and drive price in the opposite direction.
+ICT teachings may interpret visible equal highs/lows as liquidity areas. Some traders may place stops or entries around these visible levels, but the exact orders present and the intentions of other participants cannot be known from the chart alone. A sweep can occur, but it does not establish who caused it or guarantee a reversal.
 
 In ICT terminology: EQH = resting BSL above. EQL = resting SSL below. When you see equal highs or lows on your chart, your thought should be: "Some traders watch these levels for potential sweeps, but a sweep or reversal is not guaranteed."`,
-        highlight: '📌 Equal Highs and Equal Lows are not resistance/support — they are LIQUIDITY MAGNETS. Expect a sweep before major moves.',
+        highlight: '📌 Equal Highs and Equal Lows can be studied as potential liquidity/reference areas; a sweep or reversal is not guaranteed.',
       },
       {
         title: 'How to Trade Liquidity Sweeps',
