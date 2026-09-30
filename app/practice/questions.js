@@ -1944,7 +1944,7 @@ export const QUESTIONS = [
     "q": "When price returns to an OB for the first time, it is:",
     "options": [
       "Less significant",
-      "Highest probability \u2014 the first test of an OB is often strongest",
+      "A commonly studied first-test condition — test whether it adds value to your rules",
       "Already invalid",
       "Only valid once"
     ],
