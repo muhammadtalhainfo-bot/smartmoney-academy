@@ -43,14 +43,14 @@ export default function ResourcesPage() {
       </div>
     </section>
     <section style={{position:'sticky',top:'64px',zIndex:30,background:'rgba(8,8,8,.97)',backdropFilter:'blur(20px)',borderBottom:'1px solid var(--border)',padding:'0 24px'}}>
-      <div style={{maxWidth:'1100px',margin:'0 auto',display:'flex'}}>
-        {[['prop','Prop Firms'],['brokers','Brokers'],['tools','Tools & Platforms']].map(([key,label])=><button key={key} className="tab-btn" onClick={()=>setActiveTab(key)} style={{padding:'16px 24px',background:'none',border:'none',fontFamily:'DM Mono,monospace',fontSize:'11px',letterSpacing:'.12em',textTransform:'uppercase',cursor:'pointer',color:activeTab===key?'#E8C547':'rgba(255,255,255,.7)',borderBottom:activeTab===key?'2px solid #E8C547':'2px solid transparent',marginBottom:'-1px'}}>{label}</button>)}
+      <div role="tablist" aria-label="Resource categories" style={{maxWidth:'1100px',margin:'0 auto',display:'flex'}}>
+        {[['prop','Prop Firms'],['brokers','Brokers'],['tools','Tools & Platforms']].map(([key,label])=><button key={key} role="tab" aria-selected={activeTab===key} aria-controls={`resource-panel-${key}`} className="tab-btn" onClick={()=>setActiveTab(key)} style={{padding:'16px 24px',background:'none',border:'none',fontFamily:'DM Mono,monospace',fontSize:'11px',letterSpacing:'.12em',textTransform:'uppercase',cursor:'pointer',color:activeTab===key?'#E8C547':'rgba(255,255,255,.7)',borderBottom:activeTab===key?'2px solid #E8C547':'2px solid transparent',marginBottom:'-1px'}}>{label}</button>)}
       </div>
     </section>
     <div style={{maxWidth:'1100px',margin:'0 auto',padding:'48px 24px'}}>
-      {activeTab==='prop' && <ResourceGrid title="PROP TRADING FIRMS" subtitle="Get funded up to $200,000 — trade with their capital, keep the profits" items={PROP_FIRMS} primary="funded"/>}
-      {activeTab==='brokers' && <ResourceGrid title="BROKERS" subtitle="For personal trading — execution conditions and account structures vary" items={BROKERS} primary="account"/>}
-      {activeTab==='tools' && <ResourceGrid title="TOOLS & PLATFORMS" subtitle="Tools and platforms commonly used for charting and trading workflows" items={TOOLS} primary="started"/>}
+      {activeTab==='prop' && <div id="resource-panel-prop" role="tabpanel"><ResourceGrid title="PROP TRADING FIRMS" subtitle="Get funded up to $200,000 — trade with their capital, keep the profits" items={PROP_FIRMS} primary="funded"/></div>}
+      {activeTab==='brokers' && <div id="resource-panel-brokers" role="tabpanel"><ResourceGrid title="BROKERS" subtitle="For personal trading — execution conditions and account structures vary" items={BROKERS} primary="account"/></div>}
+      {activeTab==='tools' && <div id="resource-panel-tools" role="tabpanel"><ResourceGrid title="TOOLS & PLATFORMS" subtitle="Tools and platforms commonly used for charting and trading workflows" items={TOOLS} primary="started"/></div>}
       <div style={{marginTop:'64px',padding:'24px',background:'rgba(212,168,67,.03)',border:'1px solid rgba(232,197,71,.95)',borderRadius:'12px'}}>
         <p style={{fontFamily:'DM Mono,monospace',fontSize:'11px',color:'rgba(255,255,255,.6)',lineHeight:1.8,letterSpacing:'.05em',margin:0}}><span style={{color:'#E8C547'}}>DISCLAIMER:</span> This page lists external resources for educational convenience. ICT Flow does not receive payments from these links. Provider terms, pricing, and availability can change. Trading financial instruments involves significant risk of loss and is not suitable for all investors. Past performance is not indicative of future results. This is not financial advice.</p>
       </div>
