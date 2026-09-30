@@ -165,7 +165,7 @@ export default function LessonClient({ lesson, lessonId, moduleDiagramSrc }) {
   const page = (
     <div className="min-h-screen bg-[#080808] text-white" style={{ fontFamily: "'DM Sans', sans-serif" }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap');
+
         :root { --gold: #D4A843; --gold-light: #F0C96A; --gold-dim: #8A6B28; --bg2: #0F0F0F; --bg3: #141414; --border: rgba(212,168,67,0.15); }
         .font-display { font-family: 'Bebas Neue', sans-serif; }
         .font-mono-custom { font-family: 'DM Mono', monospace; }
