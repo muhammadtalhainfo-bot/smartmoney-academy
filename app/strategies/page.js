@@ -65,7 +65,7 @@ const STRATEGIES = [
     content: [
       { heading: 'Overview', text: 'This is a commonly taught ICT-style entry model. A liquidity sweep clears the stops, displacement creates an FVG, and price returns to fill the FVG before continuing. The sweep + FVG combination is one framework used in ICT-style trading.' },
       { heading: 'Entry Conditions', items: ['Key liquidity level identified (equal highs/lows, swing points)', 'Price sweeps the level with a clear wick or close beyond', 'Displacement candle moves rapidly away — creating an FVG', 'Price retraces into the FVG', 'Enter at FVG — ideally at the 50% midpoint', 'Stop beyond the sweep wick'] },
-      { heading: 'Filters', items: ['Only take in direction of HTF bias', 'FVG must be in discount (for buys) or premium (for sells)', 'Best results during killzone hours', 'Avoid taking if FVG is too small (less than 5 pips for forex)'] },
+      { heading: 'Filters', items: ['Only take in direction of HTF bias', 'FVG must be in discount (for buys) or premium (for sells)', 'Often studied during killzone hours; test whether session timing improves your results', 'Avoid taking if FVG is too small (less than 5 pips for forex)'] },
     ],
   },
   {
