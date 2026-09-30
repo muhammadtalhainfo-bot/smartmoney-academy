@@ -4,6 +4,9 @@ import { MODULES } from '@/lib/curriculum';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
+export const metadata = {
+  robots: { index: false, follow: false },
+};
 
 function adminClient() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
