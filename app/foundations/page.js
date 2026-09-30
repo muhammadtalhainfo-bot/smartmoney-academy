@@ -426,8 +426,19 @@ export default function FoundationsPage() {
                   style={{ background: isDone ? 'rgba(52,211,153,0.03)' : '#111111', border: `1px solid ${isDone ? 'rgba(52,211,153,0.2)' : `${topic.color}20`}`, borderRadius: '16px', overflow: 'hidden' }}>
 
                   {/* Header */}
-                  <div style={{ padding: '18px 22px', display: 'flex', alignItems: 'center', gap: '16px' }}
-                    onClick={() => setExpandedId(isOpen ? null : topic.id)}>
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    aria-expanded={isOpen}
+                    aria-controls={`foundation-topic-${topic.id}-content`}
+                    onClick={() => setExpandedId(isOpen ? null : topic.id)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        setExpandedId(isOpen ? null : topic.id);
+                      }
+                    }}
+                    style={{ padding: '18px 22px', display: 'flex', alignItems: 'center', gap: '16px', cursor: 'pointer' }}>
                     <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: isDone ? 'rgba(52,211,153,0.15)' : `${topic.color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', flexShrink: 0 }}>
                       {isDone ? '✅' : topic.icon}
                     </div>
@@ -449,7 +460,7 @@ export default function FoundationsPage() {
 
                   {/* Expanded */}
                   {isOpen && (
-                    <div style={{ borderTop: '1px solid rgba(212,168,67,0.22)', padding: '24px 22px', background: 'rgba(0,0,0,0.15)' }}>
+                    <div id={`foundation-topic-${topic.id}-content`} style={{ borderTop: '1px solid rgba(212,168,67,0.22)', padding: '24px 22px', background: 'rgba(0,0,0,0.15)' }}>
                       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px', marginBottom: '16px' }}>
                         {/* Explanation */}
                         <div>
