@@ -590,7 +590,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
       },
       {
         title: 'Entry Model 3: The Silver Bullet',
-        content: `The Silver Bullet trades only during specific 60-minute windows:\n• 3:00 AM – 4:00 AM EST (London open)\n• 10:00 AM – 11:00 AM EST (NY AM — most reliable)\n• 2:00 PM – 3:00 PM EST (NY PM — least reliable)\n\nTHE SEQUENCE:\nStep 1 — Wait for the window to open\nStep 2 — HTF must show clear directional bias\nStep 3 — Price sweeps a liquidity level within the window\nStep 4 — A FVG forms on the 1M or 5M after the sweep\nStep 5 — Enter at the 50% of that FVG\nStep 6 — Stop: beyond the sweep\nStep 7 — Target: 2:1 minimum to next liquidity\n\nIf the window closes and no valid setup formed — do NOT trade. Wait for the next window.`,
+        content: `The Silver Bullet trades only during specific 60-minute windows:\n• 3:00 AM – 4:00 AM EST (London open)\n• 10:00 AM – 11:00 AM EST (NY AM — commonly studied)\n• 2:00 PM – 3:00 PM EST (NY PM — commonly studied as a separate window)\n\nTHE SEQUENCE:\nStep 1 — Wait for the window to open\nStep 2 — HTF must show clear directional bias\nStep 3 — Price sweeps a liquidity level within the window\nStep 4 — A FVG forms on the 1M or 5M after the sweep\nStep 5 — Enter at the 50% of that FVG\nStep 6 — Stop: beyond the sweep\nStep 7 — Target: 2:1 minimum to next liquidity\n\nIf the window closes and no valid setup formed — do NOT trade. Wait for the next window.`,
         highlight: '📌 Silver Bullet windows: 3-4 AM, 10-11 AM, 2-3 PM EST. Sweep → displacement → 1M FVG entry. If no setup in the window — no trade. Time discipline is everything.',
       },
       {
