@@ -8,21 +8,18 @@ import { trackEvent, trackCheckoutStart } from '@/lib/analytics';
 const FREE_FEATURES = [
   { text: 'All 38 modules and 203+ lessons', included: true },
   { text: 'ICT Glossary (97+ terms)', included: true },
-  { text: 'Basic practice questions', included: true },
+  { text: 'Daily practice challenges', included: true },
   { text: 'Trade Journal', included: true },
-  { text: 'AI-generated daily challenges', included: false },
+  { text: 'AI trade coaching in the journal', included: true },
   { text: 'Certificate of completion', included: false },
-  { text: 'Weekly market breakdown', included: false },
+  { text: 'Professional trading-plan template', included: false },
 ];
 
 const PRO_FEATURES = [
   { text: 'Everything in Free', included: true },
-  { text: 'AI-generated daily challenges', included: true },
   { text: 'Certificate of completion', included: true },
-  { text: 'Weekly market breakdown', included: true },
-  { text: 'Priority support', included: true },
+  { text: 'Professional trading-plan template', included: true },
   { text: 'Ad-free learning experience', included: true },
-  { text: 'Early access to new modules', included: true },
   { text: 'Cancel anytime', included: true },
 ];
 
