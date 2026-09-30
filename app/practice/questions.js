@@ -1265,10 +1265,10 @@ export const QUESTIONS = [
     "id": 98,
     "topic": "Liquidity",
     "difficulty": "hard",
-    "q": "Why do retail traders get stopped out repeatedly?",
+    "q": "Which factor can contribute to repeated stop-outs?",
     "options": [
       "Bad luck",
-      "They place stops at obvious levels that institutions target",
+      "They place stops at predictable levels that may be exposed to normal price volatility or liquidity events",
       "Broker manipulation",
       "Random markets"
     ],
@@ -4944,7 +4944,7 @@ export const QUESTIONS = [
     "id": 381,
     "topic": "Risk Management",
     "difficulty": "hard",
-    "q": "Why do most retail traders fail?",
+    "q": "Which combination can contribute to retail trading losses?",
     "options": [
       "Bad strategies",
       "Over-leveraging, poor risk management, and emotional trading \u2014 not strategy",
@@ -5519,7 +5519,7 @@ export const QUESTIONS = [
     "q": "What does 'time and price' mean in ICT?",
     "options": [
       "Random concept",
-      "Both the TIME and PRICE level must align for a valid high-probability setup",
+      "Both TIME and PRICE can be studied together when defining a setup",
       "Only price matters",
       "Only time matters"
     ],
@@ -5883,7 +5883,7 @@ export const QUESTIONS = [
     "q": "What is 'edge' in trading?",
     "options": [
       "Technical advantage",
-      "A statistically proven advantage that makes your strategy profitable over time",
+      "A repeatable trading condition that shows positive expectancy in testing, after costs and across a defined sample",
       "Random luck",
       "Single pattern"
     ],
