@@ -113,7 +113,7 @@ const TOPICS = [
     icon: "⚖️",
     explanation: "R:R compares your potential loss to your potential gain. 1:2 R:R = risk $100 to make $200. A 1:2 R:R setup can be profitable at a 40% win rate in a simplified example before costs, provided the assumptions hold over a sufficiently large sample. Some ICT traders use higher reward-to-risk targets, but there is no universal minimum that applies to every setup.",
     example: "10 trades at 1:2 R:R. Win 4, lose 6. Wins: 4 × $200 = $800. Losses: 6 × $100 = $600. Net profit: $200 with only 40% win rate!",
-    remember: "You can be wrong more than you're right and still be profitable. A good R:R is more important than win rate.",
+    remember: "A strategy's expectancy depends on both win rate and average win/loss size, along with costs and execution. R:R by itself does not guarantee profitability.",
     color: "#34D399"
   },
   {
