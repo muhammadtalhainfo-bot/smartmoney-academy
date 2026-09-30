@@ -1,6 +1,6 @@
 import "./globals.css";
 import CookieBanner from '@/app/components/CookieBanner';
-import Script from 'next/script';
+import ThirdPartyScripts from '@/app/components/ThirdPartyScripts';
 
 export const metadata = {
   metadataBase: new URL('https://ictflow.com'),
@@ -106,45 +106,8 @@ export default function RootLayout({ children }) {
         <meta name="theme-color" content="#E8C547" />
         <meta name="google-adsense-account" content="ca-pub-4615893071983318" />
         <link rel="manifest" href="/manifest.json" />
-        <Script
-          strategy="lazyOnload"
-          src="https://www.googletagmanager.com/gtag/js?id=G-HRGZYFXQ5W"
-        />
-        <Script
-          id="google-analytics-init"
-          strategy="lazyOnload"
-        >{`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-HRGZYFXQ5W', {
-            'user_id': typeof window !== 'undefined' && window.__USER_ID__ ? window.__USER_ID__ : undefined
-          });
-        `}</Script>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-        {process.env.NEXT_PUBLIC_ADSENSE_CLIENT ? (
-          <Script
-            strategy="lazyOnload"
-            async
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_CLIENT}`}
-            crossOrigin="anonymous"
-          />
-        ) : null}
-        <Script
-          src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"
-          strategy="lazyOnload"
-        />
-        <Script id="onesignal-init" strategy="lazyOnload">{`
-          window.OneSignalDeferred = window.OneSignalDeferred || [];
-          OneSignalDeferred.push(async function(OneSignal) {
-            await OneSignal.init({
-              appId: "7091f3f0-0cf1-4afa-9587-0c3040b520c7",
-              notifyButton: { enable: true },
-              allowLocalhostAsSecureOrigin: false,
-              serviceWorkerPath: "/OneSignalSDKWorker.js",
-            });
-          });
-        `}</Script>
+        <ThirdPartyScripts />
         <link rel="preconnect" href="https://api.onesignal.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" />
