@@ -12,7 +12,6 @@ export default function PracticeClient({ initialQuestions, dateStr }) {
   const [score, setScore] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [done, setDone] = useState(false);
-  const [xpEarned, setXpEarned] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const q = questions[current];
@@ -34,8 +33,6 @@ export default function PracticeClient({ initialQuestions, dateStr }) {
   function handleNext() {
     if (current + 1 >= questions.length) {
       const finalCorrect = answers.filter(a => a.correct).length + (selected === q.answer ? 1 : 0);
-      const xp = finalCorrect * 20 + (finalCorrect === questions.length ? 50 : 0);
-      setXpEarned(xp);
       setDone(true);
     } else {
       setCurrent(c => c + 1);
@@ -226,12 +223,6 @@ export default function PracticeClient({ initialQuestions, dateStr }) {
               <div className="font-mono-custom text-xs text-gray-200 mt-1">correct</div>
             </div>
 
-            {/* XP earned */}
-            <div className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-[#E8C547] bg-[rgba(212,168,67,0.05)] mb-6">
-              <span className="text-xl">⚡</span>
-              <span className="font-display text-2xl" style={{ color: '#E8C547' }}>+{xpEarned} Practice XP</span>
-              <span className="font-mono-custom text-xs text-gray-200">earned</span>
-            </div>
 
             {/* Performance message */}
             <div className="p-5 rounded-xl border border-[rgba(232,197,71,0.95)] bg-[#0F0F0F] mb-6 text-left">
