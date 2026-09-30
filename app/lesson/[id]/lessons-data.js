@@ -686,7 +686,7 @@ export const LESSONS_EXTRA = {
 
   29: {
     id: 29,
-    title: `Risk Management Fundamentals`,
+    title: `Risk Management: Core Principles`,
     subtitle: `The #1 Reason Traders Fail (And How to Avoid It)`,
     level: `Beginner`,
     duration: `18 min read`,
@@ -778,7 +778,7 @@ export const LESSONS_EXTRA = {
 
   201: {
     id: 201,
-    title: `ICT for NAS100 & US30: Complete Index Trading Guide`,
+    title: `ICT for NAS100 & US30 (Indices)`,
     subtitle: `How to Apply Smart Money Concepts to Stock Indices`,
     level: `Intermediate`,
     duration: `28 min read`,
@@ -819,7 +819,7 @@ export const LESSONS_EXTRA = {
 
   202: {
     id: 202,
-    title: `ICT for Gold (XAU/USD): Safe Haven Trading`,
+    title: `ICT for Gold (XAU/USD)`,
     subtitle: `How Smart Money Moves Gold and How to Trade It`,
     level: `Intermediate`,
     duration: `24 min read`,
@@ -855,7 +855,7 @@ export const LESSONS_EXTRA = {
 
   301: {
     id: 301,
-    title: `ICT for Crypto Trading: Bitcoin & Ethereum`,
+    title: `ICT for Crypto: Bitcoin & Ethereum`,
     subtitle: `Applying Smart Money Concepts to Cryptocurrency Markets`,
     level: `Intermediate`,
     duration: `22 min read`,
