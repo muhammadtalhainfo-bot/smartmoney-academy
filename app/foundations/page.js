@@ -185,7 +185,7 @@ const TOPICS = [
     icon: "🎓",
     explanation: "ICT (Inner Circle Trader) is a trading methodology taught by Michael J. Huddleston. It uses concepts around time, price, liquidity and market structure to frame chart analysis; these concepts should be treated as educational frameworks rather than verified descriptions of how markets are mechanically delivered.",
     example: "Instead of relying only on traditional support/resistance, ICT education studies liquidity, time windows and price-delivery concepts such as Fair Value Gaps and Order Blocks. These are interpretations to test rather than proof of institutional objectives.",
-    remember: "ICT is not magic. It's a framework for understanding WHY price moves, not just WHERE it might go. Start with the 2022 Mentorship after mastering these foundations.",
+    remember: "ICT is a framework for organizing chart observations and hypotheses about price behavior, not a guarantee of why price moves. Start with the 2022 Mentorship after mastering these foundations.",
     color: "#E8C547"
   },
   {
