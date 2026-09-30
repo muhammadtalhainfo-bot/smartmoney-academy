@@ -1027,55 +1027,55 @@ export const QUESTIONS = [
     ],
     "answer": 1
   },
-  {
+    {
     "id": 80,
     "topic": "Liquidity",
     "difficulty": "hard",
-    "q": "ICT's 'draw on liquidity' concept means:",
+    "q": "In ICT terminology, what does 'draw on liquidity' describe?",
     "options": [
       "Random price movement",
-      "Price is always moving toward the next significant liquidity pool",
-      "Price moves randomly",
-      "Volume-based analysis"
+      "A hypothesis about a significant liquidity objective that price may seek",
+      "A volume indicator",
+      "A guaranteed target"
     ],
     "answer": 1
   },
-  {
+    {
     "id": 81,
     "topic": "Liquidity",
     "difficulty": "easy",
-    "q": "When is liquidity most likely to be swept?",
+    "q": "Which conditions can create useful contexts for studying liquidity sweeps?",
     "options": [
-      "During low volatility periods like Asian session",
-      "During high-impact news and session opens (London/NY)",
-      "On weekends",
-      "During lunch hours"
+      "Only low-volatility periods",
+      "Session opens and high-impact news can produce sharp liquidity interactions, but outcomes vary",
+      "Only weekends",
+      "Only lunch hours"
     ],
     "answer": 1
   },
-  {
+    {
     "id": 82,
     "topic": "Liquidity",
     "difficulty": "medium",
-    "q": "What is a 'stop run' followed by a 'reversal'?",
+    "q": "How can a stop run followed by a reversal be described within ICT terminology?",
     "options": [
       "A random event",
-      "Liquidity sweep + displacement \u2014 a high-probability ICT setup",
-      "A news spike",
+      "A liquidity sweep followed by displacement — a setup that can be tested",
+      "A guaranteed reversal",
       "Random volatility"
     ],
     "answer": 1
   },
-  {
+    {
     "id": 83,
     "topic": "Liquidity",
     "difficulty": "hard",
-    "q": "Old lows are targeted because:",
+    "q": "Why do traders often mark old lows when studying liquidity?",
     "options": [
-      "They are support",
-      "Sell stops cluster below old lows \u2014 institutions target this liquidity",
+      "They are guaranteed support",
+      "Potential sell-side liquidity may exist below visible lows",
       "They are random",
-      "Technical traders watch them"
+      "They guarantee a reversal"
     ],
     "answer": 1
   },
@@ -1807,16 +1807,16 @@ export const QUESTIONS = [
     ],
     "answer": 1
   },
-  {
+    {
     "id": 140,
     "topic": "Fair Value Gaps",
     "difficulty": "easy",
-    "q": "What is the 'point of control' within an FVG?",
+    "q": "What is the commonly referenced midpoint of an FVG?",
     "options": [
       "The top of the FVG",
-      "The 50% midpoint of the FVG \u2014 highest probability entry zone",
+      "The 50% midpoint of the FVG, often called Consequent Encroachment (CE)",
       "The bottom of the FVG",
-      "The center wick"
+      "The center wick only"
     ],
     "answer": 1
   },
@@ -4680,16 +4680,16 @@ export const QUESTIONS = [
     ],
     "answer": 1
   },
-  {
+    {
     "id": 361,
     "topic": "Risk Management",
     "difficulty": "easy",
-    "q": "What is the maximum risk per trade ICT recommends?",
+    "q": "Why should a trader define a maximum risk per trade?",
     "options": [
-      "10% of account",
-      "1-2% of account capital per trade",
-      "5% of account",
-      "No limit"
+      "To guarantee profits",
+      "To cap the loss from any single trade and preserve capital",
+      "To increase leverage",
+      "To avoid using a stop loss"
     ],
     "answer": 1
   },
@@ -4706,16 +4706,16 @@ export const QUESTIONS = [
     ],
     "answer": 1
   },
-  {
+    {
     "id": 363,
     "topic": "Risk Management",
     "difficulty": "hard",
-    "q": "What is the minimum RR ICT recommends?",
+    "q": "How should a trader choose a minimum risk-to-reward rule?",
     "options": [
-      "1:1",
-      "At least 2:1 or higher \u2014 aim for 3:1 or more",
-      "5:1 only",
-      "Any RR"
+      "Use a universal number that guarantees profit",
+      "Choose a rule that fits the tested strategy and account for win rate, payoff distribution and costs",
+      "Always use 5:1",
+      "Ignore reward-to-risk"
     ],
     "answer": 1
   },
