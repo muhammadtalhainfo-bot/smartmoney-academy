@@ -602,8 +602,19 @@ export default function MentorshipPage() {
                     <div key={ep.id} className="ep-card" style={{ background: isWatched ? 'rgba(52,211,153,0.03)' : '#111111', borderRadius: '14px', overflow: 'hidden', borderColor: isWatched ? 'rgba(52,211,153,0.15)' : isMustWatch ? '#E8C547' : 'rgba(212,168,67,0.22)' }}>
 
                       {/* Episode header */}
-                      <div style={{ padding: '16px 20px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '16px' }}
-                        onClick={() => setExpandedId(isExpanded ? null : ep.id)}>
+                      <div
+                        role="button"
+                        tabIndex={0}
+                        aria-expanded={isExpanded}
+                        aria-controls={`mentorship-episode-${ep.id}-content`}
+                        onClick={() => setExpandedId(isExpanded ? null : ep.id)}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            setExpandedId(isExpanded ? null : ep.id);
+                          }
+                        }}
+                        style={{ padding: '16px 20px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '16px' }}>
 
                         {/* Episode number */}
                         <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: isWatched ? 'rgba(52,211,153,0.15)' : 'rgba(212,168,67,0.22)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
@@ -641,7 +652,7 @@ export default function MentorshipPage() {
 
                       {/* Expanded content */}
                       {isExpanded && (
-                        <div style={{ borderTop: '1px solid rgba(212,168,67,0.22)', padding: '20px', background: 'rgba(0,0,0,0.2)' }}>
+                        <div id={`mentorship-episode-${ep.id}-content`} style={{ borderTop: '1px solid rgba(212,168,67,0.22)', padding: '20px', background: 'rgba(0,0,0,0.2)' }}>
                           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
                             {/* Summary */}
                             <div>
