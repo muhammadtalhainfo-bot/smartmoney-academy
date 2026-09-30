@@ -284,7 +284,7 @@ Bullish Order Block:
 • The last BEARISH (red) candle before a significant bullish move
 • ICT interpretations may describe this candle as an area of institutional buying; actual participant positioning cannot be confirmed from the candle alone.
 • The OB zone = the body of that last bearish candle (open to close)
-• Price will often return to this zone and find strong support
+• Price may revisit this zone and react, but the response should be treated as a testable outcome rather than an expectation
 
 Bearish Order Block:
 • The last BULLISH (green) candle before a significant bearish move
