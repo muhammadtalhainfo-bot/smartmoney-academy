@@ -173,7 +173,7 @@ export default function DashboardPage() {
                   Continue Learning →
                 </div>
               </Link>
-              {profile?.is_pro && profile?.stripe_customer_id ? (
+              {profile?.is_pro ? (
                 <a href="/api/create-portal" className="px-5 py-3 rounded-xl font-mono-c text-xs tracking-wider uppercase font-bold" style={{ border: '1px solid rgba(232,197,71,0.35)', color: '#E8C547', textDecoration: 'none' }}>
                   Manage Pro →
                 </a>
