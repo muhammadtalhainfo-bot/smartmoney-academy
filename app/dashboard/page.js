@@ -59,7 +59,7 @@ export default function DashboardPage() {
       // Load profile
       const { data: profileData } = await supabase
         .from('profiles')
-        .select('*')
+        .select('id, name, username, xp, streak, longest_streak, is_pro')
         .eq('id', user.id)
         .single();
       setProfile(profileData);
@@ -69,7 +69,7 @@ export default function DashboardPage() {
         .from('lesson_completions')
         .select('*')
         .eq('user_id', user.id);
-      setCompletions(completionData || []);
+      setCompletions((completionData || []).filter((row) => Number(row.quiz_score) >= 70));
 
       // Update streak
       await updateStreak();
