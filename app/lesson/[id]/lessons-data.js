@@ -686,7 +686,7 @@ export const LESSONS_EXTRA = {
 
   29: {
     id: 29,
-    title: `Risk Management: Core Principles`,
+    title: `Risk Management Fundamentals`,
     subtitle: `The #1 Reason Traders Fail (And How to Avoid It)`,
     level: `Beginner`,
     duration: `18 min read`,
@@ -897,7 +897,7 @@ export const LESSONS_EXTRA = {
 
   101: {
     id: 101,
-    title: `Risk Management Fundamentals`,
+    title: `Risk Management: Core Principles`,
     subtitle: `Why Risk Management is More Important Than Your Strategy`,
     level: `Beginner`,
     duration: `18 min read`,
