@@ -56,7 +56,7 @@ const TERMS = [
   { term: "MT", full: "Mean Threshold", cat: "ICT", def: "The 50% midpoint of an Order Block's body (open to close, wicks excluded). Ideal entry level within an OB." },
   { term: "NDOG", full: "New Day Opening Gap", cat: "ICT", def: "The gap between yesterday's close and today's midnight open. Acts as intraday support/resistance. Traders may study whether price revisits or closes this gap as part of their market analysis." },
   { term: "NFP", full: "Non-Farm Payroll", cat: "ICT", def: "Monthly US employment report — highest-impact forex news event. ICT's 'Seek and Destroy Friday' strategy is often tied to NFP Fridays." },
-  { term: "NWOG", full: "New Week Opening Gap", cat: "ICT", def: "The gap between Friday's close and Sunday's open. Major support/resistance. Price frequently seeks to close the NWOG early in the week." },
+  { term: "NWOG", full: "New Week Opening Gap", cat: "ICT", def: "The gap between Friday's close and Sunday's open. Major support/resistance. Some traders study whether price revisits or closes the NWOG early in the week; this behavior is not guaranteed." },
   { term: "OB", full: "Order Block", cat: "ICT & SMC", def: "The last opposing candle before a significant impulse move. Bullish OB = last bearish candle before bullish impulse. Bearish OB = last bullish candle before bearish impulse." },
   { term: "OTE", full: "Optimal Trade Entry", cat: "ICT", def: "The 62%–79% Fibonacci retracement zone — ICT's precise entry model for getting the deepest discount (longs) or highest premium (shorts) within a swing." },
   { term: "PA", full: "Price Action", cat: "ICT & SMC", def: "The raw movement of price over time. Foundation of all ICT analysis — no indicators, only price structure, liquidity, and time." },
