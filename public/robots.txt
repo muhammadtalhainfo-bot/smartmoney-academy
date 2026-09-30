@@ -8,5 +8,6 @@ Disallow: /auth/reset
 Disallow: /api/
 Disallow: /journal
 Disallow: /certificate
+Disallow: /verify
 
 Sitemap: https://ictflow.com/sitemap.xml
