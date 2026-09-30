@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { MODULES } from '@/lib/curriculum';
 import { ALL_LESSONS } from './lesson-data';
-import { LESSONS as LEGACY_LESSONS } from './lessons-data';
+import { LESSONS_EXTRA as LEGACY_LESSONS } from './lessons-data';
 import LessonClient from './LessonClient';
 
 export function generateStaticParams() {
