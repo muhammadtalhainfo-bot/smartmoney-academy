@@ -15,7 +15,7 @@ const STRATEGIES = [
     description: 'A precision intraday strategy using three specific one-hour windows. Requires a liquidity sweep followed by a 1-minute FVG entry. Uses defined risk-reward rules with tight invalidation.',
     stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Daily', type: 'Intraday' },
     content: [
-      { heading: 'Overview', text: 'The Silver Bullet is an ICT intraday model with defined time windows and setup conditions. It operates in three specific windows: 3-4 AM EST, 10-11 AM EST, and 2-3 PM EST. Within each window, you wait for a liquidity sweep followed by displacement and a 1-minute FVG entry.' },
+      { heading: 'Overview', text: 'The Silver Bullet is an ICT intraday model commonly described using specific time windows and setup conditions. Session windows depend on the time-zone convention and daylight-saving period, so verify the applicable New York time before trading. Within each window, you wait for a liquidity sweep followed by displacement and a 1-minute FVG entry.' },
       { heading: 'Entry Conditions', items: ['Liquidity sweep of session high or low must occur first', 'A displacement candle creates a 1-minute FVG', 'Enter inside the FVG — ideally at the 50% midpoint', 'Stop loss below the sweep wick (bullish) or above (bearish)', 'Target: next opposing liquidity pool'] },
       { heading: 'Best Instruments', text: 'NAS100, S&P500, EURUSD, GBPUSD, XAUUSD. It is commonly studied on liquid instruments; test suitability on your chosen market.' },
       { heading: 'Time Windows', items: ['3:00-4:00 AM EST — London session (optional)', '10:00-11:00 AM EST — Primary NY macro window', '2:00-3:00 PM EST — Afternoon session'] },
@@ -32,7 +32,7 @@ const STRATEGIES = [
     description: 'Study the three-phase AMD framework: Accumulation, Manipulation, and Distribution. The framework can be used to organize session context and test entry conditions around liquidity and market structure.',
     stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Daily', type: 'Intraday' },
     content: [
-      { heading: 'Overview', text: 'The AMD model is an ICT framework for interpreting a recurring three-phase price sequence. Traders may use accumulation, manipulation (including the Judas Swing), and distribution as a framework for organizing session observations and testing trade conditions.' },
+      { heading: 'Overview', text: 'The AMD model is an ICT framework for organizing a three-phase price narrative: accumulation, manipulation, and distribution. Traders can use it to structure observations and test trade conditions; it does not establish that every trading day follows the same sequence.' },
       { heading: 'Setup Rules', items: ['Identify the daily bias from HTF analysis (bullish or bearish)', 'Wait for London session to create the Judas Swing', 'Look for a sweep of the Asian session high or low', 'Drop to 5M or 1M — wait for ChoCH confirming reversal', 'Enter in the selected direction with an FVG or OB entry', 'Target: a predefined draw on liquidity from the tested trade plan'] },
       { heading: 'Risk Management', items: ['Use a predefined risk limit per trade that fits the account and tested strategy', 'Place the stop beyond the setup invalidation point', 'Manage break-even decisions according to the tested trade plan', 'Manage exits according to the tested trade plan rather than assuming a fixed reward target'] },
       { heading: 'What to Avoid', items: ['Be cautious during low-liquidity periods such as NY lunch', 'Do not enter before the setup conditions are confirmed', 'Avoid trades that conflict with the higher-timeframe context unless the plan explicitly allows them'] },
@@ -93,7 +93,7 @@ const STRATEGIES = [
     description: 'Fade false breakouts by entering opposite to a liquidity sweep. When price makes a new high/low then immediately reverses, enter the reversal with the next liquidity pool as target.',
     stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Daily', type: 'Counter-trend' },
     content: [
-      { heading: 'Overview', text: 'The Turtle Soup is a counter-trend strategy that trades against false breakouts. When price makes a new high or low but immediately reverses, it signals that the breakout was a liquidity sweep — not a real continuation. This reversal can produce fast moves, but outcomes vary by market and conditions.' },
+      { heading: 'Overview', text: 'The Turtle Soup is a counter-trend strategy that trades against false breakouts. When price makes a new high or low and then reverses, the setup can be interpreted as a potential false breakout or liquidity sweep within this framework; the chart alone cannot establish the underlying cause. This reversal can produce fast moves, but outcomes vary by market and conditions.' },
       { heading: 'Entry Conditions', items: ['Price makes a new swing high or low (breakout)', 'Price immediately reverses — closing back inside the range', 'Displacement candle in the opposite direction', 'Enter on the first pullback after the displacement', 'Stop beyond the false breakout wick', 'Target: opposite end of the range + liquidity beyond'] },
       { heading: 'Best Market Conditions', items: ['Ranging markets with clear equal highs/lows', 'Just before major session opens (pre-London, pre-NY)', 'When higher TF structure suggests reversal is due'] },
     ],
@@ -180,7 +180,7 @@ export default function StrategiesPage() {
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '16px' }}>
               {filtered.map(s => (
-                <div key={s.slug} className="strat-card" onClick={() => setSelected(s.slug)} onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSelected(s.slug); } }} role="button" tabIndex={0} aria-label={`Open ${s.title} strategy playbook`} style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '16px', padding: '24px' }}>
+                <button type="button" key={s.slug} className="strat-card" onClick={() => setSelected(s.slug)} aria-label={`Open ${s.title} strategy playbook`} style={{ width: '100%', textAlign: 'left', color: 'inherit', background: '#111111', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '16px', padding: '24px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
                     <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: `${s.color}20`, border: `1px solid ${s.color}40`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'DM Mono, monospace', fontSize: '10px', color: s.color, fontWeight: 600, flexShrink: 0 }}>{s.avatar}</div>
                     <div>
@@ -205,7 +205,7 @@ export default function StrategiesPage() {
                   <span aria-hidden="true" style={{ display: 'block', width: '100%', boxSizing: 'border-box', padding: '10px', background: `${s.color}15`, border: `1px solid ${s.color}30`, borderRadius: '8px', color: s.color, fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.1em', textAlign: 'center' }}>
                     VIEW PLAYBOOK →
                   </span>
-                </div>
+                </button>
               ))}
             </div>
           </section>
@@ -213,7 +213,7 @@ export default function StrategiesPage() {
       ) : (
         /* PLAYBOOK DETAIL */
         <section style={{ maxWidth: '800px', margin: '0 auto', padding: '40px 24px 80px' }}>
-          <button onClick={() => setSelected(null)} style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.7)', background: 'none', border: 'none', cursor: 'pointer', marginBottom: '32px', letterSpacing: '0.1em' }}>← BACK TO STRATEGIES</button>
+          <button type="button" onClick={() => setSelected(null)} style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.7)', background: 'none', border: 'none', cursor: 'pointer', marginBottom: '32px', letterSpacing: '0.1em' }}>← BACK TO STRATEGIES</button>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '24px' }}>
             <div style={{ width: '52px', height: '52px', borderRadius: '50%', background: `${strategy.color}20`, border: `1px solid ${strategy.color}40`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'DM Mono, monospace', fontSize: '11px', color: strategy.color, fontWeight: 600 }}>{strategy.avatar}</div>
