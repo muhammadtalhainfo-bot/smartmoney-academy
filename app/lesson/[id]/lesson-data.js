@@ -523,7 +523,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
   },
   7: {
     id: 7,
-    title: 'Premium & Discount Arrays',
+    title: 'Premium & Discount',
     subtitle: 'The Price Delivery Framework — Where Institutions Buy and Where They Sell',
     level: 'Intermediate',
     duration: '22 min read',
