@@ -369,7 +369,7 @@ How to determine which to use:
 Outside of Killzones, the market is controlled by retail noise, algorithmic ping-pong, and low-liquidity chop. ICT traders simply don't trade outside these windows — not because of a rule, but because the setups don't carry the same institutional backing.
 
 There are four main Killzones, each serving a specific role in the daily narrative. Understanding which session is doing what is the key to reading the daily AMD (Accumulate-Manipulate-Distribute) cycle.`,
-        highlight: '📌 Some traders use Killzones as an execution filter; whether to restrict entries to those windows depends on the tested trading plan. Outside of them, you\'re trading retail noise, not institutional flow.',
+        highlight: '📌 Some traders use Killzones as an execution filter; whether to restrict entries to those windows depends on the tested trading plan. Outside those windows, market behavior can still occur; whether a session window improves a setup should be tested in the trader\'s own plan.',
       },
       {
         title: 'The Four Killzones',
