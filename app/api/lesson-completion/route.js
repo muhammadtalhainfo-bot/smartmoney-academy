@@ -4,6 +4,8 @@ import { MODULES } from '@/lib/curriculum';
 
 export const runtime = 'nodejs';
 
+const PASS_PERCENT = 70;
+
 function adminClient() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.SUPABASE_SERVICE_KEY;
@@ -70,6 +72,10 @@ export async function POST(req) {
     }
 
     const score = answers.reduce((total, answer, index) => total + (answer === answerKey[index] ? 1 : 0), 0);
+    const scorePercent = Math.round((score / answerKey.length) * 100);
+    if (scorePercent < PASS_PERCENT) {
+      return Response.json({ ok: false, passed: false, score, scorePercent, requiredPercent: PASS_PERCENT, xpEarned: 0 }, { status: 422, headers: { 'Cache-Control': 'private, no-store' } });
+    }
     const xpEarned = score === answerKey.length ? 70 : 20;
 
     const { data: existing, error: existingError } = await supabase
@@ -81,7 +87,7 @@ export async function POST(req) {
       .maybeSingle();
 
     if (existingError) throw existingError;
-    if (existing) return Response.json({ ok: true, alreadyCompleted: true, score, xpEarned: 0 }, { headers: { 'Cache-Control': 'private, no-store' } });
+    if (existing) return Response.json({ ok: true, passed: true, alreadyCompleted: true, score, scorePercent, xpEarned: 0 }, { headers: { 'Cache-Control': 'private, no-store' } });
 
     const { error: completionError } = await supabase
       .from('lesson_completions')
@@ -95,7 +101,7 @@ export async function POST(req) {
     }
 
     const xp = await addXpSafely(supabase, user.id, xpEarned);
-    return Response.json({ ok: true, alreadyCompleted: false, score, xpEarned, xp }, { headers: { 'Cache-Control': 'private, no-store' } });
+    return Response.json({ ok: true, passed: true, alreadyCompleted: false, score, scorePercent, xpEarned, xp }, { headers: { 'Cache-Control': 'private, no-store' } });
   } catch (error) {
     console.error('Lesson completion error:', error);
     return Response.json({ error: 'Unable to record lesson completion.' }, { status: 500 });
