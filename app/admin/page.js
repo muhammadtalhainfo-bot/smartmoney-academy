@@ -800,11 +800,11 @@ function MediaSection() {
   const IMAGES = [
     '/images/market-structure.png', '/images/liquidity.png', '/images/fvg.png',
     '/images/order-blocks.png', '/images/killzones.png', '/images/amd.png', '/images/premium-discount.png',
-    '/modules images/Market structure.png', '/modules images/LIQUIDITY CONCEPTS.png',
-    '/modules images/Fair Value Gaps (FVG).png', '/modules images/ORDER BLOCKS.png',
-    '/modules images/AMD.png', '/modules images/Premium_and_discount.png',
-    '/modules images/SMC.png', '/modules images/IPDA.png', '/modules images/SMT.png',
-    '/modules images/Top down analysis.png', '/modules images/entry model.png',
+    '/modules/module-01.png', '/modules/module-02.png',
+    '/modules/module-03.png', '/modules/module-04.png',
+    '/modules/module-06.png', '/modules/module-07.png',
+    '/modules/module-09.png', '/modules/module-10.png', '/modules/module-11.png',
+    '/modules/module-12.png', '/modules/module-13.png', '/modules/module-14.png',
     '/og-image.png', '/favicon.svg',
   ];
   const [copied, setCopied] = useState('');
