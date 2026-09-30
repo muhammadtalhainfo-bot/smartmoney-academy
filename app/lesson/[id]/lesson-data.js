@@ -366,7 +366,7 @@ How to determine which to use:
         title: 'What Are Killzones?',
         content: `Killzones are specific time windows during the trading day when some traders study these windows for changes in activity and liquidity; claims about IPDA activity cannot be directly verified from a chart. Some traders study these windows because of observed session behavior and liquidity patterns; reliability and reversal frequency should be evaluated with data for the instrument and rules used.
 
-Outside of Killzones, the market is controlled by retail noise, algorithmic ping-pong, and low-liquidity chop. ICT traders simply don't trade outside these windows — not because of a rule, but because the setups don't carry the same institutional backing.
+Outside of Killzones, market behavior can vary in liquidity and activity. Some ICT traders restrict entries to these windows, while others use them as one contextual filter; the choice should be evaluated against a defined trading plan.
 
 There are four main Killzones, each serving a specific role in the daily narrative. Understanding which session is doing what is the key to reading the daily AMD (Accumulate-Manipulate-Distribute) cycle.`,
         highlight: '📌 Some traders use Killzones as an execution filter; whether to restrict entries to those windows depends on the tested trading plan. Outside those windows, market behavior can still occur; whether a session window improves a setup should be tested in the trader\'s own plan.',
