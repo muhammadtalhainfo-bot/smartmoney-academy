@@ -16,12 +16,12 @@ const LESSONS_META = {
   // ── Intermediate (IDs 7–14) ─────────────────────────────────────
   7:  { title: 'Premium & Discount Arrays', description: 'Study premium and discount ranges, equilibrium, OTE, and how traders use Fibonacci-based ranges to frame potential entries.' },
   8:  { title: 'ICT Entry Models', description: 'Study commonly taught ICT entry models including the 2022 Model, Unicorn, and OTE, with emphasis on testable entry rules.' },
-  9:  { title: 'The Silver Bullet Strategy', description: 'Study the ICT Silver Bullet as a time-window model, including commonly cited windows and entry conditions that traders can test.' },
-  10: { title: 'Higher Timeframe Analysis', description: 'Learn the ICT top-down analysis framework — how to read markets from Monthly bias down to 1-minute entry, with emphasis on multi-timeframe context.' },
-  11: { title: 'IPDA & Algorithmic Theory', description: 'Study the IPDA framework, data ranges, weekly draws, and Candle Range Theory, and examine how these concepts are used to interpret price delivery.' },
-  12: { title: 'Risk Management (ICT Style)', description: 'Study ICT-style risk management concepts including risk limits, reward-to-risk ratios, stop placement, and position sizing within a defined trading plan.' },
-  13: { title: 'Trade Management', description: 'Learn how to manage trades after entry — running winners, partial profits, break-even stops and target management within a defined trading plan.' },
-  14: { title: 'Building Your ICT Trading Plan', description: 'Create a complete ICT trading plan — from timeframe selection and session focus to entry models, risk rules and a repeatable review routine.' },
+  9:  { title: 'Market Maker Models', description: 'Study MMBM and MMSM frameworks, False Flag, Seek & Destroy and TGIF concepts as testable multi-day price-behavior models.' },
+  10: { title: 'SMT Divergence', description: 'Study SMT divergence between correlated markets, intermarket comparisons, index SMT and rules for testing divergence as confirmation.' },
+  11: { title: 'IPDA & CRT', description: 'Study IPDA, 20/40/60-day lookbacks, NWOG and NDOG gaps, weekly draws and Candle Range Theory as testable ICT frameworks.' },
+  12: { title: 'ICT 2024 Mentorship', description: 'Study newer ICT concepts including the Venom Model, Propulsion Blocks, Quarterly Shifts, SCOB, QML and weekly profile templates.' },
+  13: { title: 'SMC — Smart Money Concepts', description: 'Study the community SMC framework, including structure, supply and demand, order blocks, CHoCH, BOS, inducement and a rules-based workflow.' },
+  14: { title: 'Top-Down Analysis', description: 'Study multi-timeframe analysis from Monthly and Weekly context through Daily narrative, 4H confirmation and 15M/5M execution.' },
   // ── Intermediate continued (IDs 15–25) ──────────────────────────
   15: { title: 'Daily Bias Framework', description: 'Study daily bias construction using higher-timeframe context, prior-day levels, and session information.' },
   16: { title: 'Draw on Liquidity', description: 'Study the ICT Draw on Liquidity framework, including ERL vs IRL, potential DOL targets, and how traders map objectives before execution.' },
