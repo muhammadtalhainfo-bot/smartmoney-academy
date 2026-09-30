@@ -383,7 +383,7 @@ New York AM Killzone (7:00 AM – 10:00 AM EST) — or 8:30-11:00 AM:
 Role: DISTRIBUTION. The real, sustained directional move. This is where institutional positions that were accumulated in Asia and manipulated in London get DISTRIBUTED. The biggest daily candles form here. The Silver Bullet trade runs entirely within this window (specifically 10:00-11:00 AM EST for the NY AM Silver Bullet).
 
 London Close Killzone (10:00 AM – 12:00 PM EST):
-Role: REVERSAL / PROFIT TAKING. As London banks close their books, they take profits on positions opened during the London Killzone. This creates a reliable retracement or reversal of the NY AM move. ICT traders either close positions here or look for a fade trade.`,
+Role: REVERSAL / PROFIT TAKING. As London banks close their books, they take profits on positions opened during the London Killzone. This can coincide with a retracement or reversal of the NY AM move, but the behavior varies by session and market. ICT traders either close positions here or look for a fade trade.`,
         highlight: '📌 London = fake out (Judas). NY AM = real move. This two-step pattern is commonly taught within the AMD framework; its occurrence and usefulness should be evaluated across the market and session being studied.',
       },
       {
