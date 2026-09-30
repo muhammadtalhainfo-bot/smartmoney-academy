@@ -157,8 +157,8 @@ const TOPICS = [
     title: "Support & Resistance",
     icon: "🧱",
     explanation: "Support = price level where buying is historically strong (floor). Resistance = price level where selling is historically strong (ceiling). In ICT, these are reframed as liquidity levels — pools of stop-loss orders.",
-    example: "Price bounces off 1.0800 three times. That's strong support. In ICT, we know retail traders have stop losses just BELOW 1.0800. Some ICT interpretations describe these moves as liquidity sweeps; treat the interpretation as a hypothesis to test.",
-    remember: "Traditional S/R exists because of stop orders. ICT traders don't buy support — they wait for the stop hunt BELOW support, then buy the reversal.",
+    example: "Price bounces off 1.0800 three times. That may be evidence of a historically watched level. Some ICT interpretations treat nearby highs/lows as potential liquidity areas, but the location and size of resting orders cannot be known from the chart alone.",
+    remember: "Traditional support and resistance can be studied alongside ICT liquidity concepts. Some ICT traders look for a sweep below support before considering a long setup, but a sweep or reversal is not guaranteed.",
     color: "#F59E0B"
   },
   {
@@ -183,8 +183,8 @@ const TOPICS = [
     id: 20, step: 5, stepName: "Move into ICT & SMC",
     title: "What is ICT? (Simple Version)",
     icon: "🎓",
-    explanation: "ICT (Inner Circle Trader) is a methodology by Michael J. Huddleston that teaches traders how the Interbank Price Delivery Algorithm (IPDA) moves markets. It focuses on Time and Price — specific time windows when the algorithm delivers price to specific levels.",
-    example: "Instead of random support/resistance, ICT teaches that price moves to collect liquidity (stops) at specific times (killzones) before delivering to institutional objectives (Fair Value Gaps and Order Blocks).",
+    explanation: "ICT (Inner Circle Trader) is a trading methodology taught by Michael J. Huddleston. It uses concepts around time, price, liquidity and market structure to frame chart analysis; these concepts should be treated as educational frameworks rather than verified descriptions of how markets are mechanically delivered.",
+    example: "Instead of relying only on traditional support/resistance, ICT education studies liquidity, time windows and price-delivery concepts such as Fair Value Gaps and Order Blocks. These are interpretations to test rather than proof of institutional objectives.",
     remember: "ICT is not magic. It's a framework for understanding WHY price moves, not just WHERE it might go. Start with the 2022 Mentorship after mastering these foundations.",
     color: "#E8C547"
   },
