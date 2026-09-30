@@ -14,7 +14,7 @@ const LESSONS_META = {
   5:  { title: 'Killzones & Macro Times', description: 'Study ICT Killzones, macro times, London and New York sessions, Silver Bullet windows, and Asian Range concepts.' },
   6:  { title: 'Power of Three (AMD)', description: 'Study the Power of Three (AMD), its accumulation/manipulation/distribution framework, and the Judas Swing concept.' },
   // ── Intermediate (IDs 7–14) ─────────────────────────────────────
-  7:  { title: 'Premium & Discount Arrays', description: 'Study premium and discount ranges, equilibrium, OTE, and how traders use Fibonacci-based ranges to frame potential entries.' },
+  7:  { title: 'Premium & Discount', description: 'Study premium and discount ranges, equilibrium, OTE, and how traders use Fibonacci-based ranges to frame potential entries.' },
   8:  { title: 'ICT Entry Models', description: 'Study commonly taught ICT entry models including the 2022 Model, Unicorn, and OTE, with emphasis on testable entry rules.' },
   9:  { title: 'Market Maker Models', description: 'Study MMBM and MMSM frameworks, False Flag, Seek & Destroy and TGIF concepts as testable multi-day price-behavior models.' },
   10: { title: 'SMT Divergence', description: 'Study SMT divergence between correlated markets, intermarket comparisons, index SMT and rules for testing divergence as confirmation.' },
