@@ -19,34 +19,6 @@ async function readJson(req) {
   return req.json();
 }
 
-async function addXpSafely(supabase, userId, amount) {
-  for (let attempt = 0; attempt < 4; attempt += 1) {
-    const { data: profile, error: readError } = await supabase
-      .from('profiles')
-      .select('xp')
-      .eq('id', userId)
-      .single();
-
-    if (readError) throw readError;
-
-    const currentXP = Number.isFinite(Number(profile?.xp)) ? Number(profile.xp) : 0;
-    const nextXP = currentXP + amount;
-
-    const { data: updated, error: updateError } = await supabase
-      .from('profiles')
-      .update({ xp: nextXP })
-      .eq('id', userId)
-      .eq('xp', currentXP)
-      .select('xp')
-      .maybeSingle();
-
-    if (updateError) throw updateError;
-    if (updated) return nextXP;
-  }
-
-  throw new Error('XP update conflicted repeatedly; no XP was awarded.');
-}
-
 export async function POST(req) {
   try {
     const authHeader = req.headers.get('authorization') || '';
@@ -78,30 +50,30 @@ export async function POST(req) {
     }
     const xpEarned = score === answerKey.length ? 70 : 20;
 
-    const { data: existing, error: existingError } = await supabase
-      .from('lesson_completions')
-      .select('lesson_id')
-      .eq('user_id', user.id)
-      .eq('lesson_id', lessonId)
-      .limit(1)
-      .maybeSingle();
-
-    if (existingError) throw existingError;
-    if (existing) return Response.json({ ok: true, passed: true, alreadyCompleted: true, score, scorePercent, xpEarned: 0 }, { headers: { 'Cache-Control': 'private, no-store' } });
-
-    const { error: completionError } = await supabase
-      .from('lesson_completions')
-      .insert({ user_id: user.id, lesson_id: lessonId, quiz_score: Math.round((score / answerKey.length) * 100) });
-
-    if (completionError) {
-      if (completionError.code === '23505') {
-        return Response.json({ ok: true, alreadyCompleted: true, score, xpEarned: 0 }, { headers: { 'Cache-Control': 'private, no-store' } });
+    const { data: completionResult, error: completionError } = await supabase.rpc(
+      'complete_lesson_and_award_xp',
+      {
+        p_user_id: user.id,
+        p_lesson_id: lessonId,
+        p_quiz_score: scorePercent,
+        p_xp_earned: xpEarned,
       }
-      throw completionError;
-    }
+    );
 
-    const xp = await addXpSafely(supabase, user.id, xpEarned);
-    return Response.json({ ok: true, passed: true, alreadyCompleted: false, score, scorePercent, xpEarned, xp }, { headers: { 'Cache-Control': 'private, no-store' } });
+    if (completionError) throw completionError;
+
+    const result = Array.isArray(completionResult) ? completionResult[0] : completionResult;
+    if (!result) throw new Error('Completion transaction returned no result.');
+
+    return Response.json({
+      ok: true,
+      passed: true,
+      alreadyCompleted: result.inserted !== true,
+      score,
+      scorePercent,
+      xpEarned: result.inserted === true ? xpEarned : 0,
+      xp: Number(result.xp || 0),
+    }, { headers: { 'Cache-Control': 'private, no-store' } });
   } catch (error) {
     console.error('Lesson completion error:', error);
     return Response.json({ error: 'Unable to record lesson completion.' }, { status: 500 });
