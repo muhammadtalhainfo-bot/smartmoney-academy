@@ -482,7 +482,7 @@ export default function MentorshipPage() {
   return (
     <div style={{ minHeight: '100vh', background: '#080808', color: 'white' }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap');
+
         * { box-sizing: border-box; }
         .font-display { font-family: 'Bebas Neue', sans-serif; }
         .ep-card { transition: all 0.2s ease; border: 1px solid rgba(232,197,71,0.95); }
