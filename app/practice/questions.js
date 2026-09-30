@@ -462,7 +462,7 @@ export const QUESTIONS = [
     "q": "What does 'displacement' tell you about market structure?",
     "options": [
       "Nothing important",
-      "Institutional participation and directional intent",
+      "A possible interpretation of price behavior within the framework",
       "Retail sentiment",
       "News impact"
     ],
@@ -2308,7 +2308,7 @@ export const QUESTIONS = [
     "q": "The OB wick extending below the body (for bullish OB) represents:",
     "options": [
       "The exact entry level",
-      "Aggressive institutional buying / stop hunt below the OB",
+      "A sharp move below an OB that some traders may interpret as a liquidity event",
       "The stop loss level",
       "Irrelevant data"
     ],
