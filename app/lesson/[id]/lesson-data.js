@@ -449,7 +449,7 @@ ACT 1 — ACCUMULATION (Asian Session, 8 PM – 12 AM EST):
 Institutions quietly build positions. Price consolidates in a tight range. Don't trade here — there's no direction, just noise. But DO mark the range because the high and low become critical levels for the next two acts.
 
 ACT 2 — MANIPULATION (London Session, 2 AM – 5 AM EST):
-In this framework, the manipulation phase can involve a move opposite the eventual directional move; the sequence and direction are not guaranteed. If the day is going to be bullish, London will push price DOWN first, sweeping the Asian lows, triggering retail sell orders. Then price reverses. If bearish, London sweeps the Asian highs first. This false move traps retail traders on the wrong side and provides liquidity for institutions to fill their real position.
+In this framework, the manipulation phase can involve a move opposite the eventual directional move; the sequence and direction are not guaranteed. Some ICT explanations describe a bullish example as London first moving below the Asian range and a bearish example as London first moving above it. Treat these as hypotheses to test rather than assuming a fixed sequence, retail positioning, or institutional intent.
 
 ACT 3 — DISTRIBUTION (New York AM, 7 AM – 12 PM EST):
 The real, sustained move. After the Judas Swing is complete, price moves powerfully in the TRUE direction. This is where 80% of the daily range is created. This is where ICT traders make their money — catching Act 3 after identifying Acts 1 and 2.`,
@@ -539,7 +539,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
       {
         title: 'The Optimal Trade Entry (OTE)',
         content: `The Optimal Trade Entry (OTE) is ICT's specific buy/sell zone within the discount or premium area. It is defined by three Fibonacci levels:\n\nFor a BULLISH OTE (buy zone in discount):\n• 62% retracement — start of the OTE zone\n• 70.5% retracement — the deepest sweet spot\n• 79% retracement — the outer limit of the OTE zone\n\nWhen price pulls back into the 62-79% zone after a bullish BOS, you are in the OTE. This is where ICT traders place their buy limit orders.\n\nThese levels are part of the ICT OTE framework. Claims about institutional re-entry or consistent demand at a specific Fibonacci level are theoretical and should be tested rather than treated as established market mechanics.\n\nFor a BEARISH OTE (sell zone in premium):\n• 62% retracement of a swing high to low\n• 70.5% level\n• 79% level\n\nThe OTE is not a guarantee; within the ICT framework it is commonly studied as a potential entry zone, and its performance should be tested. It must be combined with a liquidity sweep, a Fair Value Gap or Order Block, and alignment with the higher timeframe narrative.`,
-        highlight: '📌 The OTE zone is 62%-79% of a Fibonacci retracement. This is where smart money re-enters. This is where YOUR entry should be — not at the breakout.',
+        highlight: '📌 The OTE zone is 62%-79% of a Fibonacci retracement. Within the ICT framework, this zone is commonly studied as a potential entry area rather than evidence that "smart money" is re-entering. Define your entry and invalidation rules in advance and test them rather than assuming the zone should be traded.',
       },
       {
         title: 'Premium and Discount Arrays — The Full Spectrum',
