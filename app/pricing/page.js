@@ -138,7 +138,7 @@ export default function PricingPage() {
       </section>
 
       {/* PRICING CARDS */}
-      <section style={{ maxWidth: '900px', margin: '0 auto', padding: '0 24px 80px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))', gap: '24px', alignItems: 'start' }}>
+      <section style={{ maxWidth: '900px', margin: '0 auto', padding: '0 24px 80px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '24px', alignItems: 'start' }}>
 
         {/* FREE */}
         <div className="card-free" style={{ borderRadius: '20px', padding: '36px' }}>
