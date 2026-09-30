@@ -34,7 +34,7 @@ export default function CookieBanner() {
       boxShadow: '0 8px 32px rgba(0,0,0,0.6)'
     }}>
       <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.8)', margin: 0, flex: 1 }}>
-        We use cookies to improve your experience. By continuing, you agree to our{' '}
+        We use non-essential cookies and third-party services for analytics, advertising, and notifications. Choose Accept or Decline.{' '}
         <Link href="/cookies" style={{ color: '#E8C547', textDecoration: 'underline' }}>Cookie Policy</Link>.
       </p>
       <div style={{ display: 'flex', gap: '8px' }}>
