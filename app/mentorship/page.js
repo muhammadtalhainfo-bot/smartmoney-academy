@@ -54,7 +54,7 @@ const EPISODES = [
     duration: "2h 50m",
     youtube: null,
     concepts: ["Power of Three", "AMD", "Accumulation", "Manipulation", "Distribution", "Judas Swing"],
-    summary: "The daily candle is a structured delivery: Accumulate (Asian), Manipulate/Judas Swing (London), Distribute (NY AM). The Judas Swing traps retail traders before the real move begins.",
+    summary: "The daily candle can be studied as a three-phase delivery framework: Accumulation, Manipulation/Judas Swing, and Distribution. The phases are a model, not a guarantee, and session behavior can vary.",
     keyLesson: "AMD can be studied as a three-phase framework in which a potential manipulation phase precedes a directional move; the sequence and session behavior can vary.",
     tags: ["AMD", "Power of Three", "Foundation"]
   },
