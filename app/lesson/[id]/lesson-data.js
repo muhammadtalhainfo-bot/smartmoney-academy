@@ -327,7 +327,7 @@ Reclaimed OB (2024): If an OB gets swept through but price quickly returns insid
       },
       {
         title: 'Order Block vs Fair Value Gap — Key Differences',
-        content: `Both are high-probability entry zones but they are fundamentally different:
+        content: `Both can be studied as potential entry zones within the framework, but they are fundamentally different:
 
 Order Block = WHERE institutions entered (the candle they used to build their position). It's about position accumulation.
 
@@ -340,7 +340,7 @@ How to determine which to use:
 • FVGs are better for intraday precision entries on 5m/15m
 • When they overlap, some traders treat the area as additional confluence; confidence and performance should be evaluated rather than assumed.
 • Consider both as part of the checklist if your tested strategy uses them.`,
-        highlight: '📌 OB + FVG overlap can provide additional confluence in an ICT-style setup; it does not guarantee a higher-probability outcome.',
+        highlight: '📌 OB + FVG overlap can provide additional confluence in an ICT-style setup; it does not guarantee a better outcome.',
       },
     ],
     quiz: [
@@ -360,7 +360,7 @@ How to determine which to use:
     duration: '15 min read',
     category: 'Time & Sessions',
     imageCaption: 'The four ICT Killzones — Asian, London, New York AM, and London Close',
-    intro: `Session timing can matter alongside setup selection, but neither timing nor setup type should be assumed to dominate across all markets. A setup's behavior can differ across session times; performance should be measured for the specific market and rules rather than assumed to succeed or fail at a particular time. ICT's Killzone framework explains exactly why — and gives you a precise schedule for when the algorithm actually delivers price. Killzones are an ICT time-window framework. Trading outside them is not inherently gambling, and trading inside them does not guarantee a valid setup.`,
+    intro: `Session timing can matter alongside setup selection, but neither timing nor setup type should be assumed to dominate across all markets. A setup's behavior can differ across session times; performance should be measured for the specific market and rules rather than assumed to succeed or fail at a particular time. ICT's Killzone framework provides defined time windows for studying session behavior; it does not establish that an algorithm delivers price on a fixed schedule. Killzones are an ICT time-window framework. Trading outside them is not inherently gambling, and trading inside them does not guarantee a valid setup.`,
     sections: [
       {
         title: 'What Are Killzones?',
@@ -529,7 +529,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     duration: '22 min read',
     category: 'Price Theory',
     imageCaption: 'Premium vs Discount: ICT premium/discount framing: traders study selling in premium and buying in discount relative to a swing range',
-    intro: `One of the most powerful yet overlooked concepts in ICT is this: ICT presents premium/discount as a framework for judging relative price within a defined range. It can be used as contextual information, but it does not determine every institutional transaction or guarantee better entries. The Premium & Discount framework is ICT's answer to the question every trader asks: "Is this a good price to enter?"`,
+    intro: `One important concept in ICT is this: ICT presents premium/discount as a framework for judging relative price within a defined range. It can be used as contextual information, but it does not determine every institutional transaction or guarantee better entries. The Premium & Discount framework is ICT's answer to the question every trader asks: "Is this a good price to enter?"`,
     sections: [
       {
         title: 'The Core Principle: Price Is Always Relative',
@@ -543,7 +543,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
       },
       {
         title: 'Premium and Discount Arrays — The Full Spectrum',
-        content: `Within the premium and discount framework, ICT identifies specific price delivery arrays — zones that have a higher probability of causing a reaction. From most premium to most discount:\n\nPREMIUM ARRAYS (selling opportunities):\n1. Old Highs / Buy-Side Liquidity (BSL) — most premium\n2. Bearish Order Blocks\n3. Bearish Fair Value Gaps (FVGs)\n4. Equilibrium (50%) — the dividing line\n5. Bullish Fair Value Gaps\n6. Bullish Order Blocks\n7. Old Lows / Sell-Side Liquidity (SSL) — most discount\n\nThis spectrum provides a way to organize potential resistance in premium and support in discount; actual reactions vary by instrument, timeframe, and market conditions. Some ICT traders give more attention to range extremes as potential reaction areas, but reversal strength and direction vary by market conditions.\n\nUnderstanding this spectrum can help organize setups by context. An old SSL combined with bullish OB/FVG confluence may be treated as a higher-confluence example within this framework, but it does not establish the highest-quality outcome or guarantee undervaluation.`,
+        content: `Within the premium and discount framework, ICT identifies specific price delivery arrays — zones that the framework treats as potential reaction areas. From most premium to most discount:\n\nPREMIUM ARRAYS (selling opportunities):\n1. Old Highs / Buy-Side Liquidity (BSL) — most premium\n2. Bearish Order Blocks\n3. Bearish Fair Value Gaps (FVGs)\n4. Equilibrium (50%) — the dividing line\n5. Bullish Fair Value Gaps\n6. Bullish Order Blocks\n7. Old Lows / Sell-Side Liquidity (SSL) — most discount\n\nThis spectrum provides a way to organize potential resistance in premium and support in discount; actual reactions vary by instrument, timeframe, and market conditions.\n\nUnderstanding this spectrum can help organize setups by context. An old SSL combined with bullish OB/FVG confluence may be treated as a higher-confluence example within this framework, but it does not establish the highest-quality outcome or guarantee undervaluation.`,
         highlight: '📌 The premium/discount spectrum organizes zones by their position in a range. Extremes can be studied as potential reaction areas, but reversal probability varies with market conditions.',
       },
       {
