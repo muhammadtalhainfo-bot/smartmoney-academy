@@ -7,7 +7,7 @@ export default function PrivacyPage() {
   return (
     <div style={{ minHeight: '100vh', background: '#080808', color: 'white', fontFamily: "'DM Sans', sans-serif" }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap');
+
       `}</style>
       <Navbar />
       <div style={{ maxWidth: '800px', margin: '0 auto', padding: '60px 24px' }}>
