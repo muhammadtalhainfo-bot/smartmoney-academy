@@ -113,7 +113,7 @@ const PRO_TOOL = {
 };
 
 const styles = `
-  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap');
+
   .font-display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.04em; }
   .font-mono-c { font-family: 'DM Mono', monospace; }
   .font-body { font-family: 'DM Sans', sans-serif; }
