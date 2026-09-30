@@ -126,10 +126,10 @@ export default function PricingPage() {
 
           {/* BILLING TOGGLE */}
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '14px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.18)', borderRadius: '100px', padding: '6px 8px' }}>
-            <button onClick={() => setAnnual(false)} style={{ padding: '8px 20px', borderRadius: '100px', border: 'none', cursor: 'pointer', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.1em', transition: 'all 0.2s', background: !annual ? '#E8C547' : 'transparent', color: !annual ? 'black' : 'rgba(255,255,255,0.85)' }}>
+            <button onClick={() => setAnnual(false)} aria-pressed={!annual} style={{ padding: '8px 20px', borderRadius: '100px', border: 'none', cursor: 'pointer', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.1em', transition: 'all 0.2s', background: !annual ? '#E8C547' : 'transparent', color: !annual ? 'black' : 'rgba(255,255,255,0.85)' }}>
               MONTHLY
             </button>
-            <button onClick={() => setAnnual(true)} style={{ padding: '8px 20px', borderRadius: '100px', border: 'none', cursor: 'pointer', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.1em', transition: 'all 0.2s', background: annual ? '#E8C547' : 'transparent', color: annual ? 'black' : 'rgba(255,255,255,0.85)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <button onClick={() => setAnnual(true)} aria-pressed={annual} style={{ padding: '8px 20px', borderRadius: '100px', border: 'none', cursor: 'pointer', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.1em', transition: 'all 0.2s', background: annual ? '#E8C547' : 'transparent', color: annual ? 'black' : 'rgba(255,255,255,0.85)', display: 'flex', alignItems: 'center', gap: '8px' }}>
               ANNUAL
               <span style={{ background: annual ? 'rgba(0,0,0,0.2)' : 'rgba(52,211,153,0.15)', color: annual ? 'black' : '#34D399', fontSize: '9px', padding: '2px 7px', borderRadius: '100px', fontWeight: 600 }}>SAVE {savings}%</span>
             </button>
