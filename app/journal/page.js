@@ -1228,7 +1228,7 @@ function JournalLanding() {
   return (
     <div style={{ minHeight: '100vh', background: C.bg, color: C.text, fontFamily: "'DM Sans', sans-serif" }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+
         * { box-sizing: border-box; } body { margin: 0; background: ${C.bg}; } button:hover { opacity: 0.85; } a { color: ${C.gold}; text-decoration: none; }
       `}</style>
       <div style={{ maxWidth: '900px', margin: '0 auto', padding: '80px 24px 60px', textAlign: 'center' }}>
@@ -1382,7 +1382,7 @@ export default function JournalPage() {
   ];
 
   const globalStyles = `
-    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+
     * { box-sizing: border-box; }
     body { background: ${C.bg}; color: ${C.text}; font-family: 'DM Sans', sans-serif; margin: 0; }
     input, select, textarea { font-family: 'DM Sans', sans-serif; }
