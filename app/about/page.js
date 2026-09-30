@@ -79,7 +79,7 @@ export default function AboutPage() {
         <h2 className="font-display" style={{ fontSize: '48px', color: 'white', marginBottom: '32px', lineHeight: 1 }}>
           WHY WE <span className="shine">BUILT THIS</span>
         </h2>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', color: 'rgba(255,255,255,0.55)', fontSize: '15px', lineHeight: 1.8, fontWeight: 300 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', color: 'rgba(255,255,255,0.75)', fontSize: '15px', lineHeight: 1.8, fontWeight: 300 }}>
           <p>
             When we first discovered ICT's methodology, we spent hundreds of hours scattered across YouTube videos, old forum posts, and paid courses trying to piece it together. There was no single resource that laid it all out clearly.
           </p>
@@ -103,7 +103,7 @@ export default function AboutPage() {
               WHAT WE <span className="shine">STAND FOR</span>
             </h2>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(380px, 1fr))', gap: '20px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 300px), 1fr))', gap: '20px' }}>
             {VALUES.map(v => (
               <div key={v.title} style={{ background: '#111', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '16px', padding: '28px', display: 'flex', gap: '16px' }}>
                 <div style={{ fontSize: '28px', flexShrink: 0 }}>{v.icon}</div>
