@@ -72,7 +72,6 @@ export default async function BlogPost({ params }) {
           src={post.image || '/images/market-structure.png'}
           alt={post.title}
           style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.4 }}
-          onError={e => { e.target.style.display = 'none'; }}
         />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 30%, #080808)' }} />
       </div>
