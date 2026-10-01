@@ -29,7 +29,7 @@ const FAQS = [
   { q: 'Can I cancel anytime?', a: 'Absolutely. Cancel with one click from your dashboard. No questions asked, no cancellation fees.' },
   { q: 'Is this suitable for complete beginners?', a: 'Yes. The curriculum starts from zero — market structure basics — and progressively builds to advanced ICT models. No prior trading knowledge needed.' },
   { q: 'What is ICT / Smart Money Concepts?', a: "ICT (Inner Circle Trader) is a trading methodology associated with Michael Huddleston. It uses concepts such as market structure, liquidity, price imbalance and time-based market analysis." },
-  { q: 'Do I get lifetime access?', a: 'Pro is a monthly or annual subscription. As long as your subscription is active, you get the premium tools, community features and ad-free experience included in the plan.' },
+  { q: 'Do I get lifetime access?', a: 'Pro is a monthly or annual subscription. As long as your subscription is active, you get the premium tools and ad-free experience included in the plan.' },
 ];
 
 export default function PricingPage() {
