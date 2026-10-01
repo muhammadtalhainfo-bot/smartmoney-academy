@@ -19,7 +19,7 @@ function AuthPageInner() {
   const [forgotSent, setForgotSent] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
-  const requestedRedirect = searchParams?.get('redirect') || '';
+  const requestedRedirect = searchParams?.get('redirect') || searchParams?.get('next') || '';
   function safeRedirect(value, fallback = '/dashboard') {
     if (!value || !value.startsWith('/') || value.startsWith('//') || value.includes('\\')) return fallback;
     try {

@@ -29,7 +29,7 @@ const FAQS = [
   { q: 'Can I cancel anytime?', a: 'Absolutely. Cancel with one click from your dashboard. No questions asked, no cancellation fees.' },
   { q: 'Is this suitable for complete beginners?', a: 'Yes. The curriculum starts from zero — market structure basics — and progressively builds to advanced ICT models. No prior trading knowledge needed.' },
   { q: 'What is ICT / Smart Money Concepts?', a: "ICT (Inner Circle Trader) is a trading methodology associated with Michael Huddleston. It uses concepts such as market structure, liquidity, price imbalance and time-based market analysis." },
-  { q: 'Do I get lifetime access?', a: 'Pro is a monthly or annual subscription. As long as your subscription is active, you get the premium tools, community features and ad-free experience included in the plan.' },
+  { q: 'Do I get lifetime access?', a: 'Pro is a monthly or annual subscription. As long as your subscription is active, you get the premium tools and ad-free experience included in the plan.' },
 ];
 
 export default function PricingPage() {
@@ -56,22 +56,17 @@ export default function PricingPage() {
         return;
       }
 
-      // Get logged-in user email from Supabase
-      const { createClient } = await import('@/lib/supabase');
-      const supabase = createClient();
-      const { data: { session } } = await supabase.auth.getSession();
-      const user = session?.user;
-
-      if (!user?.email || !session?.access_token) {
-        window.location.href = '/auth?next=/pricing';
-        return;
-      }
-
       const res = await fetch('/api/create-checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ priceId, accessToken: session.access_token }),
+        body: JSON.stringify({ priceId }),
       });
+
+      if (res.status === 401) {
+        window.location.href = '/auth?redirect=/pricing';
+        return;
+      }
+
       const data = await res.json();
       if (data.url) {
         window.location.href = data.url;
@@ -118,7 +113,7 @@ export default function PricingPage() {
             <span style={{ color: 'white' }}>TRADING EDGE</span>
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '16px', lineHeight: 1.7, fontWeight: 300, marginBottom: '40px' }}>
-            All 38 modules are free. Upgrade when you want premium tools, community and an ad-free experience.
+            All 38 modules are free. Upgrade when you want premium tools and an ad-free experience.
           </p>
 
           {/* BILLING TOGGLE */}
@@ -181,7 +176,7 @@ export default function PricingPage() {
             </div>
           )}
           <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '13px', marginBottom: '28px', lineHeight: 1.6 }}>
-            Premium tools, community features and an ad-free study experience for deeper study and review.
+            Premium tools and an ad-free study experience for deeper study and review.
           </p>
 
           <button style={{ display: 'block', width: '100%', textAlign: 'center', padding: '15px', borderRadius: '10px', border: 'none', background: 'linear-gradient(135deg,#E8C547,#8A6B28)', color: 'black', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600, cursor: 'pointer', marginBottom: '28px', transition: 'opacity 0.2s' }}
