@@ -90,8 +90,7 @@ export default function HomePage() {
             Start Lesson 1 — Free →
           </Link>
           <Link href="/courses" style={{ padding:'16px 32px', borderRadius:'12px', fontFamily:'DM Mono,monospace', fontSize:'12px', letterSpacing:'0.12em', textTransform:'uppercase', textDecoration:'none', border:'1px solid rgba(232,197,71,0.3)', color:'rgba(255,255,255,0.7)', transition:'all 0.2s', display:'inline-block' }}
-            className="hero-outline"
-
+            className="hero-outline">
             Explore 38 Modules
           </Link>
         </div>
