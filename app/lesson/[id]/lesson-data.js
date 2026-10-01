@@ -733,7 +733,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
   },
   12: {
     id: 12,
-    title: 'ICT 2024 Mentorship',
+    title: 'ICT Mentorship — Newer Concepts',
     subtitle: 'Venom, Propulsion Blocks, quarterly shifts and newer ICT concepts',
     level: 'Advanced',
     duration: '75 min',
