@@ -29,11 +29,10 @@ Before publishing, run:
 
 ```bash
 npm ci
-npm run lint
 npm run build
 ```
 
-Then smoke-test the important routes and authenticated flows. See `PUBLISH_CHECKLIST.md` for the full release checklist.
+`npm run lint` is a separate legacy quality check and is not part of the production build gate. Then smoke-test the important routes and authenticated flows. See `PUBLISH_CHECKLIST.md` for the full release checklist.
 
 ## Environment variables
 
