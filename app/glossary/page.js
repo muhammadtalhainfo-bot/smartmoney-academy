@@ -86,7 +86,7 @@ const TERMS = [
   { term: "Venom Model", full: "ICT Venom Trading Model", cat: "ICT", def: "Introduced by ICT in April 2025. An advanced model building on AMD and the 2022 framework with new refinements to entry triggers." },
   { term: "Weekly Profiles", full: "ICT Weekly Range Profiles", cat: "ICT", def: "ICT's 5 weekly price delivery patterns: Classic, Consolidation, Expansion, Reversal, and Balanced. Used as a framework for studying potential weekly price-delivery patterns." },
   { term: "2022 Model", full: "ICT 2022 Trading Model", cat: "ICT", def: "ICT's 5-step trade framework: ① HTF Bias → ② Draw on Liquidity → ③ Wait for Killzone → ④ LTF Entry (Judas → ChoCH → FVG/OB) → ⑤ Trade Management. A five-step ICT trading framework." },
-  { term: "2024 Mentorship", full: "ICT 2024 Mentorship Concepts", cat: "ICT", def: "ICT's latest teaching: New Day Opening Gap, Asian Range Strategy, post-7 AM price delivery, and macro-level time analysis refinements." },
+  { term: "2024 Mentorship", full: "ICT 2024 Mentorship Concepts", cat: "ICT", def: "Historical 2024 mentorship material covering New Day Opening Gap, Asian Range Strategy, post-7 AM price delivery, and macro-level time analysis refinements." },
 
   { term: "Accumulation", full: "Accumulation Phase", cat: "ICT", def: "The first phase of the AMD framework, commonly described as accumulation. Price moves sideways collecting orders from uncertain retail traders before the real directional move begins." },
   { term: "Algorithm", full: "Trading Algorithm / IPDA", cat: "ICT", def: "A theoretical framework used in ICT education to interpret price delivery, liquidity, and time-based behavior." },
