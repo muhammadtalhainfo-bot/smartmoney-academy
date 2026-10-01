@@ -1,5 +1,6 @@
 import Stripe from 'stripe';
-import { createClient } from '@supabase/supabase-js';
+import { createServerClient } from '@supabase/ssr';
+import { cookies } from 'next/headers';
 
 export const runtime = 'nodejs';
 
@@ -27,7 +28,6 @@ export async function POST(req) {
     }
     const body = await req.json().catch(() => ({}));
     const priceId = typeof body.priceId === 'string' ? body.priceId.trim() : '';
-    const accessToken = typeof body.accessToken === 'string' ? body.accessToken.trim() : '';
 
     if (!process.env.STRIPE_SECRET_KEY) {
       return Response.json({ error: 'Payment is not configured.' }, { status: 500 });
@@ -38,17 +38,25 @@ export async function POST(req) {
     if (!priceId || !allowedPriceIds().includes(priceId)) {
       return Response.json({ error: 'Invalid subscription plan.' }, { status: 400 });
     }
-    if (!accessToken) {
-      return Response.json({ error: 'Please sign in before starting Pro.' }, { status: 401 });
-    }
-
-    const supabase = createClient(
+    const cookieStore = await cookies();
+    const supabase = createServerClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+      {
+        cookies: {
+          getAll() { return cookieStore.getAll(); },
+          setAll(cookiesToSet) {
+            try {
+              cookiesToSet.forEach(({ name, value, options }) => cookieStore.set(name, value, options));
+            } catch {}
+          },
+        },
+      }
     );
-    const { data: { user }, error: authError } = await supabase.auth.getUser(accessToken);
+
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
     if (authError || !user?.id || !user.email) {
-      return Response.json({ error: 'Your session is invalid. Please sign in again.' }, { status: 401 });
+      return Response.json({ error: 'Please sign in before starting Pro.' }, { status: 401 });
     }
 
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
