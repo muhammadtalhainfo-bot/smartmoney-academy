@@ -27,7 +27,11 @@ export default function PrivacyPage() {
         </div>
         <div style={{ marginBottom: '40px' }}>
           <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '28px', color: '#E8C547', marginBottom: '12px', letterSpacing: '0.05em' }}>Third Party Services</h2>
-          <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: '1.8', fontSize: '15px' }}>We use Supabase (database and authentication), Stripe (payments), Vercel (hosting), OneSignal (push notifications), and Google Analytics/Google advertising services when enabled. Each provider has its own privacy policy.</p>
+          <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: '1.8', fontSize: '15px' }}>We use Supabase (database and authentication), Stripe (payments), Vercel (hosting), OneSignal (push notifications), Anthropic (AI Coach processing), and Google Analytics/Google advertising services when enabled. Each provider has its own privacy policy.</p>
+        </div>
+        <div style={{ marginBottom: '40px' }}>
+          <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '28px', color: '#E8C547', marginBottom: '12px', letterSpacing: '0.05em' }}>AI Coach</h2>
+          <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: '1.8', fontSize: '15px' }}>When you use AI Coach, selected journal statistics and recent-trade summaries you submit are sent to Anthropic's API to generate educational coaching insights. The AI Coach route only sends the fields selected for analysis; it does not send your Supabase authentication credentials or Stripe payment details.</p>
         </div>
         <div style={{ marginBottom: '40px' }}>
           <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '28px', color: '#E8C547', marginBottom: '12px', letterSpacing: '0.05em' }}>Google Advertising</h2>
