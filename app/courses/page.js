@@ -7,7 +7,7 @@ import Footer from '@/app/components/Footer';
 import ModuleBanner from '@/app/components/ModuleBanner';
 
 
-const FILTERS = ['All', 'Beginner', 'Intermediate', 'Advanced', 'ICT', 'ICT & SMC', 'SMC', '2024', 'New'];
+const FILTERS = ['All', 'Beginner', 'Intermediate', 'Advanced', 'ICT', 'ICT & SMC', 'SMC', 'NEWER', 'New'];
 
 const LEVEL_COLORS = {
   Beginner: { text: '#34D399', bg: 'rgba(52,211,153,0.08)', border: 'rgba(52,211,153,0.2)' },
@@ -19,7 +19,7 @@ const LEVEL_COLORS = {
 const TAG_COLORS = {
   ICT: { text: '#818CF8', bg: 'rgba(129,140,248,0.08)', border: 'rgba(129,140,248,0.2)' },
   SMC: { text: '#FB923C', bg: 'rgba(251,146,60,0.08)', border: 'rgba(251,146,60,0.2)' },
-  '2024': { text: '#34D399', bg: 'rgba(52,211,153,0.08)', border: 'rgba(52,211,153,0.2)' },
+  NEWER: { text: '#34D399', bg: 'rgba(52,211,153,0.08)', border: 'rgba(52,211,153,0.2)' },
   'ICT & SMC': { text: '#C084FC', bg: 'rgba(192,132,252,0.08)', border: 'rgba(192,132,252,0.2)' },
 };
 
@@ -197,9 +197,7 @@ export default function CoursesPage() {
     if (!matchesSearch) return false;
     if (activeFilter === 'All') return true;
     if (['Beginner', 'Intermediate', 'Advanced'].includes(activeFilter)) return m.level === activeFilter;
-    if (activeFilter === 'SMC') return m.tag === 'SMC' || m.tag === 'ICT & SMC';
-    if (activeFilter === '2024') return m.tag === '2024';
-    return m.tag.includes('ICT');
+
   });
 
   const stats = {
