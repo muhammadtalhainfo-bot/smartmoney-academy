@@ -79,7 +79,7 @@ const TERMS = [
   { term: "SSL", full: "Sell Side Liquidity", cat: "ICT & SMC", def: "Clusters of sell-stop orders sitting BELOW price at swing lows, equal lows, PDL, PWL, and round numbers. Within the ICT framework, traders may interpret movement below SSL as a liquidity sweep before a potential reversal." },
   { term: "STH", full: "Short Term High", cat: "ICT", def: "A basic swing high on your trading timeframe. Lowest tier of market structure significance." },
   { term: "STL", full: "Short Term Low", cat: "ICT", def: "A basic swing low on your trading timeframe. Lowest tier of significance." },
-  { term: "Suspension Block", full: "Suspension Block", cat: "ICT", def: "New 2025 ICT concept. Forms when price creates a gap and suspends at a specific price. The suspension price becomes a key future PD Array." },
+  { term: "Suspension Block", full: "Suspension Block", cat: "ICT", def: "A newer ICT concept associated with recent ICT material. Forms when price creates a gap and suspends at a specific price; the suspension price is treated as a potential PD Array." },
   { term: "TGIF", full: "Thank God It's Friday", cat: "ICT", def: "ICT's Friday model — the market typically reverses or retraces the week's move on Fridays. Used as a short-term counter-trend setup." },
   { term: "Turtle Soup", full: "ICT Turtle Soup Strategy", cat: "ICT", def: "A reversal strategy trading the false breakout. Price sweeps a 20-day high/low → fails to hold → enter opposite the sweep direction." },
   { term: "Unicorn Model", full: "ICT Unicorn Model", cat: "ICT", def: "A high-precision entry combining an Order Block and a Fair Value Gap at the same zone. OB = institutional context. FVG = precise entry. The combined concepts are often used as confluence." },
