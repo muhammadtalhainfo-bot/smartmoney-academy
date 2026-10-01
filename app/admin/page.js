@@ -406,7 +406,7 @@ function BlogSection({ adminDbClient = adminDb }) {
   const load = useCallback(async () => {
     const { data } = await adminDbClient('blog.list');
     if (data) setPosts(data);
-  }, [supabase]);
+  }, [adminDbClient]);
 
   useEffect(() => { load(); }, [load]);
 
@@ -707,7 +707,7 @@ function BannersSection({ adminDbClient = adminDb }) {
   const load = useCallback(async () => {
     const { data } = await adminDbClient('banners.list');
     if (data) setBanners(data);
-  }, [supabase]);
+  }, [adminDbClient]);
 
   useEffect(() => { load(); }, [load]);
 
