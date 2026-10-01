@@ -205,7 +205,7 @@ function DashboardSection({ users, emails, trades, proUsers, loading, onRefresh 
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '8px 0', borderBottom: `1px solid ${BORDER}` }}>
                   <div style={{ fontSize: '16px' }}>📧</div>
                   <div style={{ flex: 1, fontSize: '13px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{e.email}</div>
-                  <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(255,255,255,0.4)' }}>{e.created_at ? new Date(e.created_at).toLocaleDateString() : '—'}</div>
+                  <div style={{ ...css.mono, fontSize: '10px', color: '#AAB3BF' }}>{e.created_at ? new Date(e.created_at).toLocaleDateString() : '—'}</div>
                 </div>
               ))}
             </div>
@@ -301,7 +301,7 @@ function UsersSection({ users, onReload }) {
                       ...css.mono, fontSize: '10px', cursor: 'pointer',
                     }}>{u.is_pro ? '✓ PRO' : 'FREE'}</button>
                   </td>
-                  <td style={{ padding: '10px 12px', fontSize: '11px', color: 'rgba(255,255,255,0.4)', whiteSpace: 'nowrap' }}>{u.created_at ? new Date(u.created_at).toLocaleDateString() : '—'}</td>
+                  <td style={{ padding: '10px 12px', fontSize: '11px', color: '#AAB3BF', whiteSpace: 'nowrap' }}>{u.created_at ? new Date(u.created_at).toLocaleDateString() : '—'}</td>
                   <td style={{ padding: '10px 12px', display: 'flex', gap: '6px' }}>
                     <button onClick={() => resetXP(u)} style={{ ...css.btnGhost, padding: '5px 10px', fontSize: '10px' }}>RESET XP</button>
                     <button onClick={() => deleteUser(u)} style={css.btnDanger}>DEL</button>
@@ -309,7 +309,7 @@ function UsersSection({ users, onReload }) {
                 </tr>
               ))}
               {filtered.length === 0 && (
-                <tr><td colSpan={7} style={{ padding: '40px', textAlign: 'center', ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.4)' }}>No users found</td></tr>
+                <tr><td colSpan={7} style={{ padding: '40px', textAlign: 'center', ...css.mono, fontSize: '11px', color: '#AAB3BF' }}>No users found</td></tr>
               )}
             </tbody>
           </table>
@@ -539,7 +539,7 @@ function BlogSection({ adminDbClient = adminDb }) {
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
         {filtered.length === 0 ? (
-          <div style={{ ...css.card, textAlign: 'center', padding: '50px', ...css.mono, fontSize: '12px', color: 'rgba(255,255,255,0.4)' }}>
+          <div style={{ ...css.card, textAlign: 'center', padding: '50px', ...css.mono, fontSize: '12px', color: '#AAB3BF' }}>
             {posts.length === 0 ? 'No blog posts yet. Click NEW POST to write your first article.' : 'No posts match your search.'}
           </div>
         ) : filtered.map(p => (
@@ -764,7 +764,7 @@ function BannersSection({ adminDbClient = adminDb }) {
       )}
 
       {banners.length === 0 ? (
-        <div style={{ ...css.card, textAlign: 'center', padding: '50px', ...css.mono, fontSize: '12px', color: 'rgba(255,255,255,0.4)' }}>
+        <div style={{ ...css.card, textAlign: 'center', padding: '50px', ...css.mono, fontSize: '12px', color: '#AAB3BF' }}>
           No banners yet. Add a site-wide announcement, promo, or alert.
         </div>
       ) : (
@@ -773,7 +773,7 @@ function BannersSection({ adminDbClient = adminDb }) {
             <div key={b.id} style={{ ...css.card, display: 'flex', alignItems: 'center', gap: '14px', padding: '14px 18px', borderLeft: `3px solid ${TYPE_COLORS[b.type] || G}` }}>
               <div style={{ flex: 1 }}>
                 <div style={{ fontSize: '14px', fontWeight: 500, marginBottom: '3px' }}>{b.text}</div>
-                <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(255,255,255,0.4)' }}>
+                <div style={{ ...css.mono, fontSize: '10px', color: '#AAB3BF' }}>
                   {b.type?.toUpperCase()} · Page: {b.page} {b.cta_text && `· CTA: "${b.cta_text}"`}
                 </div>
               </div>
@@ -986,7 +986,7 @@ function NavSection() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
               {group.items.map(([href, label], i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '8px 12px', background: S3, borderRadius: '7px' }}>
-                  <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(255,255,255,0.3)', width: '18px' }}>{i + 1}</div>
+                  <div style={{ ...css.mono, fontSize: '10px', color: '#9DA6B2', width: '18px' }}>{i + 1}</div>
                   <div style={{ flex: 1, fontSize: '13px' }}>{label}</div>
                   <a href={href} target="_blank" rel="noopener noreferrer" style={{ ...css.mono, fontSize: '10px', color: G, textDecoration: 'none' }}>{href} ↗</a>
                 </div>
@@ -1051,7 +1051,7 @@ function NotificationsSection() {
               </div>
             </div>
           </div>
-          <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.4)', marginTop: '14px', lineHeight: 1.6 }}>
+          <div style={{ ...css.mono, fontSize: '11px', color: '#AAB3BF', marginTop: '14px', lineHeight: 1.6 }}>
             Powered by OneSignal. Sends to all users who enabled browser push notifications.
           </div>
         </div>
@@ -1293,7 +1293,7 @@ export default function AdminPage() {
             </div>
           )}
           <button onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-            style={{ marginLeft: 'auto', background: 'none', border: 'none', color: 'rgba(255,255,255,0.4)', cursor: 'pointer', fontSize: '14px', flexShrink: 0 }}>
+            style={{ marginLeft: 'auto', background: 'none', border: 'none', color: '#AAB3BF', cursor: 'pointer', fontSize: '14px', flexShrink: 0 }}>
             {sidebarCollapsed ? '→' : '←'}
           </button>
         </div>
@@ -1303,7 +1303,7 @@ export default function AdminPage() {
           {GROUPS.map(group => (
             <div key={group.id} style={{ marginBottom: '6px' }}>
               {!sidebarCollapsed && (
-                <div style={{ ...css.mono, fontSize: '8px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.15em', padding: '8px 8px 4px', textTransform: 'uppercase' }}>{group.label}</div>
+                <div style={{ ...css.mono, fontSize: '8px', color: '#9DA6B2', letterSpacing: '0.15em', padding: '8px 8px 4px', textTransform: 'uppercase' }}>{group.label}</div>
               )}
               {TABS.filter(t => t.group === group.id).map(tab => (
                 <button key={tab.id} onClick={() => setActiveTab(tab.id)}
