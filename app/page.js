@@ -1,7 +1,6 @@
-'use client';
-import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
+import MarketTicker from '@/app/components/MarketTicker';
 import EmailCapture from '@/app/components/EmailCapture';
 import Footer from '@/app/components/Footer';
 import { MODULES, CURRICULUM_STATS } from '@/lib/curriculum';
@@ -31,20 +30,6 @@ const PLATFORM_HIGHLIGHTS = [
 ];
 
 export default function HomePage() {
-  const [ticker, setTicker] = useState([]);
-  useEffect(() => {
-    async function fetchPrices() {
-      try {
-        const res = await fetch('/api/ticker');
-        const json = await res.json();
-        if (json.data?.length > 0) setTicker(json.data);
-      } catch(e) {}
-    }
-    fetchPrices();
-    const interval = setInterval(fetchPrices, 60000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <div style={{ minHeight: '100vh', background: '#080808', color: 'white', overflowX: 'hidden', fontFamily: "'DM Sans', sans-serif" }}>
       <style>{`
@@ -64,6 +49,7 @@ export default function HomePage() {
         .btn-gold { background: linear-gradient(135deg, #E8C547 0%, #F0C96A 50%, #E8C547 100%); background-size:200% 200%; color:#080808; font-weight:700; transition:all 0.3s ease; }
         .btn-gold:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(232,197,71,0.35); }
         .card-hover { transition: all 0.25s ease; border: 1px solid rgba(232,197,71,0.12); }
+        .hero-outline:hover { border-color:#E8C547!important; color:#E8C547!important; }
         .card-hover:hover { border-color: rgba(232,197,71,0.4); transform:translateY(-3px); box-shadow:0 16px 40px rgba(0,0,0,0.4); }
         .gold-text { background: linear-gradient(135deg, #D4A843 0%, #E8C547 40%, #F0C96A 60%, #E8C547 80%, #D4A843 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
         .gold-glow { box-shadow: 0 0 40px rgba(232,197,71,0.12), 0 0 80px rgba(212,168,67,0.05); }
@@ -71,21 +57,7 @@ export default function HomePage() {
         @media (min-width: 769px) { .show-mob { display:none!important; } }
       `}</style>
 
-      {/* ── TICKER ── */}
-      {ticker.length > 0 && (
-        <div style={{ position:'relative', zIndex:10, borderBottom:'1px solid rgba(232,197,71,0.12)', background:'#050505', padding:'10px 0', overflow:'hidden' }} aria-label="Live market snapshot">
-          <div className="ticker-track" style={{ display:'flex', whiteSpace:'nowrap' }}>
-            {[...ticker, ...ticker].map((item, i) => (
-              <span key={i} style={{ display:'inline-flex', alignItems:'center', gap:'10px', padding:'0 24px', fontFamily:'DM Mono,monospace', fontSize:'11px' }}>
-                <span style={{ color:'#E8C547', fontWeight:500 }}>{item.pair}</span>
-                <span style={{ color:'rgba(255,255,255,0.85)' }}>{item.price}</span>
-                <span style={{ color: item.up ? '#34D399' : '#F87171' }}>{item.up ? '▲' : '▼'} {item.change}</span>
-                <span style={{ color:'rgba(255,255,255,0.15)' }}>·</span>
-              </span>
-            ))}
-          </div>
-        </div>
-      )}
+      <MarketTicker />
 
       <Navbar active="/" />
 
@@ -118,8 +90,7 @@ export default function HomePage() {
             Start Lesson 1 — Free →
           </Link>
           <Link href="/courses" style={{ padding:'16px 32px', borderRadius:'12px', fontFamily:'DM Mono,monospace', fontSize:'12px', letterSpacing:'0.12em', textTransform:'uppercase', textDecoration:'none', border:'1px solid rgba(232,197,71,0.3)', color:'rgba(255,255,255,0.7)', transition:'all 0.2s', display:'inline-block' }}
-            onMouseOver={e=>{e.currentTarget.style.borderColor='#E8C547';e.currentTarget.style.color='#E8C547'}}
-            onMouseOut={e=>{e.currentTarget.style.borderColor='rgba(232,197,71,0.3)';e.currentTarget.style.color='rgba(255,255,255,0.7)'}}>
+            className="hero-outline">
             Explore 38 Modules
           </Link>
         </div>
