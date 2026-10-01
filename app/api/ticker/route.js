@@ -30,10 +30,12 @@ async function fetchTickerData() {
           );
           if (!res.ok) return null;
           const data = await res.json();
-          if (!data.c || data.c === 0) return null;
-          const changePct = (((data.c - data.pc) / data.pc) * 100).toFixed(2);
-          const up = parseFloat(changePct) >= 0;
-          return { pair, price: data.c.toLocaleString('en-US', { maximumFractionDigits: 5 }), change: `${up ? '+' : ''}${changePct}%`, up };
+          const current = Number(data.c);
+          const previous = Number(data.pc);
+          if (!Number.isFinite(current) || !Number.isFinite(previous) || current <= 0 || previous <= 0) return null;
+          const changePct = ((current - previous) / previous) * 100;
+          const up = changePct >= 0;
+          return { pair, price: current.toLocaleString('en-US', { maximumFractionDigits: 5 }), change: `${up ? '+' : ''}${changePct.toFixed(2)}%`, up };
         } catch { return null; }
       })
     );
@@ -44,11 +46,15 @@ async function fetchTickerData() {
   } catch { return []; }
 }
 
+const HEADERS = {
+  'Cache-Control': 'public, max-age=15, s-maxage=60, stale-while-revalidate=30',
+};
+
 export async function GET() {
   try {
     const data = await fetchTickerData();
-    return Response.json({ data, timestamp: new Date().toISOString() });
+    return Response.json({ data, timestamp: new Date().toISOString() }, { headers: HEADERS });
   } catch {
-    return Response.json({ data: [], timestamp: new Date().toISOString() });
+    return Response.json({ data: [], timestamp: new Date().toISOString() }, { headers: HEADERS });
   }
 }
