@@ -40,7 +40,7 @@ export async function GET(req) {
       .eq('id', user.id)
       .maybeSingle();
 
-    if (!profile?.is_pro || !profile?.stripe_customer_id) {
+    if (!profile?.stripe_customer_id) {
       return NextResponse.redirect(new URL('/pricing', req.url));
     }
 
