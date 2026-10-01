@@ -113,7 +113,7 @@ export default function PricingPage() {
             <span style={{ color: 'white' }}>TRADING EDGE</span>
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '16px', lineHeight: 1.7, fontWeight: 300, marginBottom: '40px' }}>
-            All 38 modules are free. Upgrade when you want premium tools, community and an ad-free experience.
+            All 38 modules are free. Upgrade when you want premium tools and an ad-free experience.
           </p>
 
           {/* BILLING TOGGLE */}
@@ -176,7 +176,7 @@ export default function PricingPage() {
             </div>
           )}
           <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '13px', marginBottom: '28px', lineHeight: 1.6 }}>
-            Premium tools, community features and an ad-free study experience for deeper study and review.
+            Premium tools and an ad-free study experience for deeper study and review.
           </p>
 
           <button style={{ display: 'block', width: '100%', textAlign: 'center', padding: '15px', borderRadius: '10px', border: 'none', background: 'linear-gradient(135deg,#E8C547,#8A6B28)', color: 'black', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600, cursor: 'pointer', marginBottom: '28px', transition: 'opacity 0.2s' }}
