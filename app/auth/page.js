@@ -31,13 +31,16 @@ function AuthPageInner() {
     }
   }
   const redirectTo = safeRedirect(requestedRedirect);
+  const signupRedirectTo = safeRedirect(requestedRedirect, '/foundations?welcome=1');
 
   const handleGoogle = async () => {
     trackEvent('login_started', { method: 'google' });
     const supabase = createClient();
     await supabase.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo: window.location.origin + '/auth/callback' }
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(redirectTo)}`,
+      }
     });
   };
 
@@ -83,7 +86,7 @@ function AuthPageInner() {
         email: normalizedEmail, 
         password,
         options: {
-          emailRedirectTo: window.location.origin + '/auth/callback',
+          emailRedirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(signupRedirectTo)}`,
           data: { name: normalizedUsername, username: normalizedUsername }
         }
       });
