@@ -424,7 +424,7 @@ export const POSTS = [
       { type: 'paragraph', text: 'Your DOL becomes your take-profit target before you ever enter a trade. Every trade has both an entry and an exit defined before execution. The entry is in the IRL (FVG or OB at your killzone). The exit is at the DOL — the ERL target that the algorithm is delivering toward. This pre-planned structure is what separates systematic ICT trading from guesswork.' },
       { type: 'highlight', text: 'A single powerful exercise: every week, before the market opens on Monday, identify the weekly DOL — where do you believe price will deliver by Friday? Write it down. Then review your accuracy weekly. Traders who practice DOL identification consistently become dramatically better at reading the market\'s intentions within 60-90 days of dedicated practice.' },
     ],
-  },,
+  },
 
 {
     slug: 'ict-breaker-block-explained',
@@ -1271,7 +1271,7 @@ export const POSTS = [
       ]},
       { type: 'highlight', text: 'Top-down analysis done consistently before every session is the single practice that will improve your trading performance most dramatically. It takes 20-30 minutes. The traders who skip it and react in real-time to the 5-minute chart are the ones providing the liquidity for the traders who completed their analysis first. Do the work.' },
     ],
-  },,
+  },
 
 {
     slug: 'ict-qml-quasimodo-pattern',
@@ -1865,7 +1865,7 @@ export const POSTS = [
       { type: 'paragraph', text: 'Retail traders are trained to buy breakouts — to enter when price is making new highs, which by definition puts them in premium. They are trained to see recent strength as confirmation of direction. But every time a retail trader buys a breakout into premium, an institution is on the other side of that trade, selling their position at expensive prices. The premium and discount framework makes explicit why chasing breakouts is a losing approach: you are buying exactly where institutions are selling.' },
       { type: 'highlight', text: 'One practice that immediately improves trade selection: before every entry, draw the current dealing range on your chart, mark the 50% equilibrium, and ask "is my entry above or below the midpoint?" If you are long and your entry is above the midpoint, you are buying premium — reconsider. If you are long and your entry is below the midpoint, you are buying discount — proceed. This 10-second check will eliminate a large percentage of suboptimal entries.' },
     ],
-  },,
+  },
 
 {
     slug: 'ict-fibonacci-levels-settings',
