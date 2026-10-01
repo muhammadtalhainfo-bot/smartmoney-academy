@@ -421,7 +421,7 @@ export default function CoursesPage() {
             <div className="mb-12">
               <div className="track-header mb-6" style={{ borderLeftColor: 'rgba(248,113,113,0.5)' }}>
                 <div className="font-mono-c text-xs tracking-widest uppercase mb-1" style={{ color: '#F87171' }}>Advanced Track</div>
-                <p className="text-gray-200 text-xs" style={{ fontWeight: 300 }}>Market Maker Models, IPDA, SMT, and 2024 concepts.</p>
+                <p className="text-gray-200 text-xs" style={{ fontWeight: 300 }}>Market Maker Models, IPDA, SMT, and newer mentorship-era concepts.</p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {filtered.filter(m => m.level === 'Advanced').sort((a, b) => parseInt(a.module) - parseInt(b.module)).map((mod, i) => <ModuleCard key={mod.id} mod={mod} index={i} />)}
