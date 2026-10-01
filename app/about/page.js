@@ -24,7 +24,7 @@ const VALUES = [
   {
     icon: '🆓',
     title: 'Free Starting Point',
-    desc: 'All 38 modules and 203+ lessons are free. Pro adds premium tools, community features and an ad-free experience.',
+    desc: 'All 38 modules and 203+ lessons are free. Pro adds premium tools and an ad-free experience.',
   },
   {
     icon: '🎯',
