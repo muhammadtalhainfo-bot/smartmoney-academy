@@ -23,11 +23,11 @@ export default function PrivacyPage() {
         </div>
         <div style={{ marginBottom: '40px' }}>
           <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '28px', color: '#E8C547', marginBottom: '12px', letterSpacing: '0.05em' }}>Data Storage</h2>
-          <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: '1.8', fontSize: '15px' }}>Your data is stored securely on Supabase (PostgreSQL). Trade journal data and lesson progress are tied to your account and accessible only by you.</p>
+          <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: '1.8', fontSize: '15px' }}>Your data is stored securely on Supabase (PostgreSQL). Your account data and trade journal entries are protected by account-level access controls; authorized ICT Flow administrators may access operational data when needed for support, account management, or site operations.</p>
         </div>
         <div style={{ marginBottom: '40px' }}>
           <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '28px', color: '#E8C547', marginBottom: '12px', letterSpacing: '0.05em' }}>Third Party Services</h2>
-          <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: '1.8', fontSize: '15px' }}>We use Supabase (database), Stripe (payments), Vercel (hosting), and OneSignal (push notifications). Each has their own privacy policy.</p>
+          <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: '1.8', fontSize: '15px' }}>We use Supabase (database and authentication), Stripe (payments), Vercel (hosting), OneSignal (push notifications), and Google Analytics/Google advertising services when enabled. Each provider has its own privacy policy.</p>
         </div>
         <div style={{ marginBottom: '40px' }}>
           <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '28px', color: '#E8C547', marginBottom: '12px', letterSpacing: '0.05em' }}>Google Advertising</h2>

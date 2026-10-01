@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
-import { createClient } from '@/lib/supabase';
 
 const EPISODES = [
   {
@@ -436,7 +435,6 @@ export default function MentorshipPage() {
   const [activeTag, setActiveTag] = useState('All');
   const [expandedId, setExpandedId] = useState(null);
   const [watched, setWatched] = useState([]);
-  const [userId, setUserId] = useState(null);
 
   useEffect(() => {
     const saved = localStorage.getItem('ict_watched_episodes');
@@ -449,10 +447,6 @@ export default function MentorshipPage() {
       }
     }
 
-    const supabase = createClient();
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session) setUserId(session.user.id);
-    });
   }, []);
 
   const toggleWatched = (id) => {
