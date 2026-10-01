@@ -126,7 +126,7 @@ function Quiz({ questions, lessonId }) {
             background: Object.keys(answers).length === questions.length
               ? 'linear-gradient(135deg, #D4A843, #F0C96A)'
               : 'rgba(212,168,67,0.1)',
-            color: Object.keys(answers).length === questions.length ? '#080808' : '#8A6B28',
+            color: Object.keys(answers).length === questions.length ? '#080808' : '#E8C547',
             fontWeight: 700,
           }}
         >
