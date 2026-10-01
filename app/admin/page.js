@@ -258,7 +258,7 @@ function UsersSection({ users, onReload }) {
   };
 
   const deleteUser = async (u) => {
-    if (!confirm(`Delete user ${u.username || u.email}? Cannot be undone.`)) return;
+    if (!confirm(`Delete account ${u.username || u.email}? This permanently removes the auth account and linked data.`)) return;
     await adminDb('profile.delete', { id: u.id });
     onReload();
   };
