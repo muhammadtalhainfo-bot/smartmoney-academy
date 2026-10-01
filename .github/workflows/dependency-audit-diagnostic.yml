@@ -1,0 +1,36 @@
+name: Dependency Audit Diagnostic
+
+on:
+  push:
+    branches: [maintenance/next-16-3-8]
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: npm
+      - run: npm ci
+      - name: Audit runtime dependencies
+        run: |
+          npm audit --json > audit.json || true
+          node -e "
+            const a=require('./audit.json');
+            const v=a.vulnerabilities||{};
+            for (const [name,item] of Object.entries(v)) {
+              console.log(JSON.stringify({
+                name,
+                severity:item.severity,
+                isDirect:item.isDirect,
+                via:(item.via||[]).map(x=>typeof x==='string'?x:x.title||x.name||x.source||'advisory'),
+                range:item.range,
+                fix:item.fixAvailable
+              }));
+            }
+          "
