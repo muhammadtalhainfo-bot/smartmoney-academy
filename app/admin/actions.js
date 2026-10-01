@@ -122,8 +122,15 @@ export async function adminDb(action, payload = {}) {
       return supabase.from('profiles').update({ is_pro: payload.isPro === true }).eq('id', payload.id);
     case 'profile.resetXP':
       return supabase.from('profiles').update({ xp: 0, streak: 0 }).eq('id', payload.id);
-    case 'profile.delete':
-      return supabase.from('profiles').delete().eq('id', payload.id);
+    case 'profile.delete': {
+      const userId = typeof payload.id === 'string' ? payload.id.trim() : '';
+      if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(userId)) {
+        throw new Error('Invalid user ID.');
+      }
+      const { error } = await supabase.auth.admin.deleteUser(userId);
+      if (error) throw error;
+      return { ok: true };
+    }
     case 'blog.list':
       return supabase.from('blog_posts').select('*').order('sort_order', { ascending: true });
     case 'blog.save':
