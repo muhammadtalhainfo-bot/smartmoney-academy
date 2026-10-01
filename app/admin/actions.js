@@ -139,28 +139,22 @@ export async function adminDb(action, payload = {}) {
       return supabase.from('blog_posts').delete().eq('slug', payload.slug);
     case 'blog.togglePublished':
       return supabase.from('blog_posts').update({ published: payload.published === true }).eq('id', payload.id);
-    case 'banners.list':
-      return supabase.from('banners').select('*').order('created_at', { ascending: false });
-    case 'banners.insert':
-      return supabase.from('banners').insert(payload.form);
-    case 'banners.toggle':
-      return supabase.from('banners').update({ active: payload.active === true }).eq('id', payload.id);
-    case 'banners.delete':
-      return supabase.from('banners').delete().eq('id', payload.id);
-    case 'seo.save':
-      return supabase.from('site_settings').upsert({ key: 'seo', value: payload.form }, { onConflict: 'key' });
     case 'journal.load': {
-      const [{ count, error: countError }, { data: wins, error: winsError }, { data: all, error: allError }, { data: config, error: configError }] = await Promise.all([
+      const [{ count, error: countError }, { data: wins, error: winsError }, { data: all, error: allError }] = await Promise.all([
         supabase.from('trades').select('*', { count: 'exact', head: true }),
         supabase.from('trades').select('result').eq('result', 'Win'),
         supabase.from('trades').select('user_id'),
-        supabase.from('site_settings').select('value').eq('key', 'journal_config').maybeSingle(),
       ]);
-      if (countError || winsError || allError || configError) throw countError || winsError || allError || configError;
-      return { stats: { total: count || 0, wins: (wins || []).length, users: new Set((all || []).map((t) => t.user_id)).size }, config: config?.value || null };
+      if (countError || winsError || allError) throw countError || winsError || allError;
+      return {
+        stats: {
+          total: count || 0,
+          wins: (wins || []).length,
+          users: new Set((all || []).map((t) => t.user_id)).size,
+        },
+        config: null,
+      };
     }
-    case 'journal.save':
-      return supabase.from('site_settings').upsert({ key: 'journal_config', value: payload.value }, { onConflict: 'key' });
     default:
       throw new Error('Unsupported admin operation.');
   }
