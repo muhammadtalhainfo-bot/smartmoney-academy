@@ -56,22 +56,17 @@ export default function PricingPage() {
         return;
       }
 
-      // Get logged-in user email from Supabase
-      const { createClient } = await import('@/lib/supabase');
-      const supabase = createClient();
-      const { data: { session } } = await supabase.auth.getSession();
-      const user = session?.user;
-
-      if (!user?.email || !session?.access_token) {
-        window.location.href = '/auth?next=/pricing';
-        return;
-      }
-
       const res = await fetch('/api/create-checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ priceId, accessToken: session.access_token }),
+        body: JSON.stringify({ priceId }),
       });
+
+      if (res.status === 401) {
+        window.location.href = '/auth?redirect=/pricing';
+        return;
+      }
+
       const data = await res.json();
       if (data.url) {
         window.location.href = data.url;
