@@ -197,7 +197,10 @@ export default function CoursesPage() {
     if (!matchesSearch) return false;
     if (activeFilter === 'All') return true;
     if (['Beginner', 'Intermediate', 'Advanced'].includes(activeFilter)) return m.level === activeFilter;
-
+    if (activeFilter === 'SMC') return m.tag === 'SMC' || m.tag === 'ICT & SMC';
+    if (activeFilter === 'NEWER') return m.tag === 'NEWER';
+    if (activeFilter === 'New') return m.isNew === true;
+    return m.tag.includes('ICT');
   });
 
   const stats = {
