@@ -192,7 +192,7 @@ function DashboardSection({ users, emails, trades, proUsers, loading, onRefresh 
                   <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(255,255,255,0.5)', width: '18px' }}>#{i + 1}</div>
                   <div style={{ flex: 1, fontSize: '13px' }}>{u.username || u.email?.split('@')[0] || '—'}</div>
                   <div style={{ ...css.mono, fontSize: '11px', color: G }}>{u.xp || 0} XP</div>
-                  <Badge color={u.is_pro ? '#34D399' : '#666'}>{u.is_pro ? 'PRO' : 'FREE'}</Badge>
+                  <Badge color={u.is_pro ? '#34D399' : '#B8B8B8'}>{u.is_pro ? 'PRO' : 'FREE'}</Badge>
                 </div>
               ))}
             </div>
@@ -617,7 +617,7 @@ function CoursesSection() {
                     <Select value={form.level} onChange={e => setForm({ ...form, level: e.target.value })} options={['Beginner', 'Intermediate', 'Advanced', 'SMC']} />
                   </FieldGroup>
                   <FieldGroup label="Tag">
-                    <Select value={form.tag} onChange={e => setForm({ ...form, tag: e.target.value })} options={['ICT', 'ICT & SMC', 'SMC', '2024']} />
+                    <Select value={form.tag} onChange={e => setForm({ ...form, tag: e.target.value })} options={['ICT', 'ICT & SMC', 'SMC', 'NEWER']} />
                   </FieldGroup>
                   <FieldGroup label="Lessons"><Input type="number" value={form.lessons} onChange={e => setForm({ ...form, lessons: parseInt(e.target.value) || 0 })} /></FieldGroup>
                   <FieldGroup label="Duration"><Input value={form.duration} onChange={e => setForm({ ...form, duration: e.target.value })} placeholder="48 min" /></FieldGroup>
