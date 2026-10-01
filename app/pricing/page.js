@@ -200,7 +200,7 @@ export default function PricingPage() {
       {/* SOCIAL PROOF */}
       <section style={{ borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '40px 24px', background: 'rgba(255,255,255,0.01)' }}>
         <div style={{ maxWidth: '900px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '32px', textAlign: 'center' }}>
-          {[['Open', 'Learning Community'], ['38', 'ICT Modules'], ['97+', 'Glossary Terms'], ['Free', 'To Start']].map(([val, label]) => (
+          {[['Free', 'Learning Access'], ['38', 'ICT Modules'], ['97+', 'Glossary Terms'], ['Free', 'To Start']].map(([val, label]) => (
             <div key={label}>
               <div className="font-display shine" style={{ fontSize: '48px', lineHeight: 1 }}>{val}</div>
               <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.65)', letterSpacing: '0.15em', marginTop: '6px' }}>{label}</div>
