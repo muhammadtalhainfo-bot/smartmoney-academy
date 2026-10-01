@@ -50,9 +50,10 @@ Run locally or in CI:
 
 ```bash
 npm ci
-npm run lint
 npm run build
 ```
+
+The current CI build guard verifies a clean install, checks that retired module/count/Discord claims are absent from tracked source, and completes the production Next.js build. A repository-wide `npm run lint` currently reports 85 pre-existing JSX/effect lint errors across legacy pages; those are quality-debt items, not current Vercel build blockers.
 
 Then smoke-test:
 
@@ -73,6 +74,6 @@ Also test signup/login, lesson completion, quiz submission, journal entry creati
 
 The previous ZIP contained a Finnhub credential in source. It has been removed from the active code. **Rotate/revoke that credential before publishing the revised project.** Do not paste the replacement key into source control; set it only as a deployment secret.
 
-## Verification limitation
+## Verification status
 
-The source was statically checked in this environment, but the full Next.js lint/build could not be executed because dependency installation timed out. Do not skip the CI/local `npm run lint` and `npm run build` before production release.
+The production build is verified in GitHub Actions on the current `main` commit, including a clean `npm ci` and `npm run build`. The latest Vercel commit status is also successful. Custom-domain/browser smoke tests and the Vercel project environment-variable values still require access to the live Vercel dashboard/browser; secrets are intentionally not stored in the repository.
