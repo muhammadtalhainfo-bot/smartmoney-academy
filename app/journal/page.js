@@ -1395,6 +1395,16 @@ export default function JournalPage() {
     button { font-family: 'DM Sans', sans-serif; transition: opacity 0.15s; }
     button:hover { opacity: 0.85; }
     a { color: ${C.gold}; }
+    @media (max-width: 760px) {
+      .journal-shell { flex-direction: column; }
+      .journal-sidebar { width: 100% !important; height: auto !important; position: relative !important; top: auto !important; border-right: none !important; border-bottom: 1px solid ${C.border}; }
+      .journal-sidebar-nav { display: flex; overflow-x: auto; gap: 4px; padding: 8px !important; }
+      .journal-sidebar-bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 10px !important; }
+      .journal-sidebar-bottom button { margin-top: 0 !important; }
+      .journal-main { width: 100%; min-width: 0; overflow: visible !important; }
+      .journal-content { padding: 20px 16px !important; }
+      .journal-footer { padding: 16px !important; flex-direction: column; gap: 8px; align-items: flex-start !important; }
+    }
   `;
 
   if (user === undefined) return (
@@ -1410,10 +1420,10 @@ export default function JournalPage() {
     <>
       <style>{globalStyles}</style>
 
-      <div style={{ display: 'flex', minHeight: '100vh', background: C.bg }}>
+      <div className="journal-shell" style={{ display: 'flex', minHeight: '100vh', background: C.bg }}>
 
         {/* ── SIDEBAR ─────────────────────────────────────────────────── */}
-        <div style={{
+        <div className="journal-sidebar" style={{
           width: '220px', background: C.bg1, borderRight: `1px solid ${C.border}`,
           display: 'flex', flexDirection: 'column', position: 'sticky', top: 0, height: '100vh', flexShrink: 0,
         }}>
@@ -1429,7 +1439,7 @@ export default function JournalPage() {
           </div>
 
           {/* Nav */}
-          <div style={{ flex: 1, padding: '12px 10px', overflowY: 'auto' }}>
+          <div className="journal-sidebar-nav" style={{ flex: 1, padding: '12px 10px', overflowY: 'auto' }}>
             {PAGES.map(p => (
               <NavBtn key={p.id} icon={p.icon} label={p.label}
                 active={page === p.id} badge={p.id === 'ai' && mistakeCount > 0 ? mistakeCount : 0}
@@ -1438,7 +1448,7 @@ export default function JournalPage() {
           </div>
 
           {/* Bottom */}
-          <div style={{ padding: '14px 12px', borderTop: `1px solid ${C.border}` }}>
+          <div className="journal-sidebar-bottom" style={{ padding: '14px 12px', borderTop: `1px solid ${C.border}` }}>
             <div style={{ background: C.bg2, border: `1px solid ${C.border}`, borderRadius: '10px', padding: '12px 14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <div>
                 <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: C.text3, letterSpacing: '0.1em' }}>DISCIPLINE SCORE</div>
@@ -1455,8 +1465,8 @@ export default function JournalPage() {
         </div>
 
         {/* ── MAIN ────────────────────────────────────────────────────── */}
-        <div style={{ flex: 1, overflow: 'auto' }}>
-          <div style={{ maxWidth: '1100px', padding: '32px 36px', margin: '0 auto' }}>
+        <div className="journal-main" style={{ flex: 1, overflow: 'auto' }}>
+          <div className="journal-content" style={{ maxWidth: '1100px', padding: '32px 36px', margin: '0 auto' }}>
             {loading ? (
               <div style={{ textAlign: 'center', padding: '100px', fontFamily: 'DM Mono, monospace', fontSize: '12px', color: C.text3 }}>Loading your trades...</div>
             ) : (
@@ -1473,7 +1483,7 @@ export default function JournalPage() {
             )}
           </div>
 
-          <div style={{ borderTop: `1px solid ${C.border}`, padding: '20px 36px', marginTop: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div className="journal-footer" style={{ borderTop: `1px solid ${C.border}`, padding: '20px 36px', marginTop: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: C.text3 }}>
               ICT Flow Journal · {trades.length} trades · Track your edge. Every trade is data.
             </div>
