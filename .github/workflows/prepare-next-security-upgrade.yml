@@ -7,6 +7,8 @@ on:
 permissions:
   contents: write
 
+# Generated lockfile is committed only after the patched dependency builds.
+
 jobs:
   upgrade:
     runs-on: ubuntu-latest
