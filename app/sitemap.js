@@ -2,11 +2,11 @@ import { MODULES } from '../lib/curriculum'
 import { POSTS } from './blog/posts'
 import { SEO_PAGES } from './learn/seo-data'
 
+export const revalidate = 3600
+
 const BASE = 'https://ictflow.com'
 
 export default function sitemap() {
-  const now = new Date().toISOString()
-
   const staticPages = [
     [BASE,                  1.0,  'weekly'],
     [`${BASE}/courses`,     0.9,  'monthly'],
@@ -25,19 +25,17 @@ export default function sitemap() {
     [`${BASE}/terms`,       0.3,  'yearly'],
     [`${BASE}/cookies`,     0.3,  'yearly'],
   ].map(([url, priority, changeFrequency]) => ({
-    url, priority, changeFrequency, lastModified: now,
+    url, priority, changeFrequency,
   }))
 
   const learnPages = SEO_PAGES.map(({ slug }) => ({
     url: `${BASE}/learn/${slug}`,
-    lastModified: now,
     changeFrequency: 'monthly',
     priority: 0.8,
   }))
 
   const lessonPages = MODULES.map(({ id }) => ({
     url: `${BASE}/lesson/${id}`,
-    lastModified: now,
     changeFrequency: 'monthly',
     priority: 0.75,
   }))
@@ -46,10 +44,10 @@ export default function sitemap() {
     .filter(p => p && p.slug)
     .map(p => ({
       url: `${BASE}/blog/${p.slug}`,
-      lastModified: now,
+      lastModified: p.date,
       changeFrequency: 'monthly',
       priority: 0.7,
     }))
 
-  return [...staticPages, learnPages.length ? { url: `${BASE}/learn`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 } : null, ...learnPages, ...lessonPages, ...blogPages].filter(Boolean)
+  return [...staticPages, learnPages.length ? { url: `${BASE}/learn`, changeFrequency: 'weekly', priority: 0.9 } : null, ...learnPages, ...lessonPages, ...blogPages].filter(Boolean)
 }
