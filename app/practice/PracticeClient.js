@@ -176,7 +176,7 @@ export default function PracticeClient({ initialQuestions, dateStr }) {
                   className="w-full py-4 rounded-xl font-mono-custom text-sm tracking-wider uppercase font-bold transition-all"
                   style={{
                     background: selected !== null ? 'linear-gradient(135deg, #E8C547, #F0C96A)' : 'rgba(232,197,71,0.95)',
-                    color: selected !== null ? '#080808' : '#8A6B28',
+                    color: '#080808',
                   }}
                 >
                   {selected === null ? 'Select an answer' : 'Check Answer'}
