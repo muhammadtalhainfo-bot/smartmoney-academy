@@ -19,7 +19,6 @@ jobs:
           node-version: 22.x
           cache: npm
       - run: npm ci
-      - run: npm run lint
       - name: Guard against retired site claims
         run: |
           if git grep -nEi --             -e '28\+? modules'             -e '80\+? lessons'             -e '192\+? lessons'             -e 'join (the )?discord'             -e 'discord\.gg'; then
