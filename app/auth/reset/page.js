@@ -13,7 +13,7 @@ export default function ResetPasswordPage() {
 
   const handleReset = async () => {
     if (password !== confirm) { setError('Passwords do not match'); return; }
-    if (password.length < 6) { setError('Password must be at least 6 characters'); return; }
+    if (password.length < 8) { setError('Password must be at least 8 characters'); return; }
     setLoading(true);
     const supabase = createClient();
     const { error } = await supabase.auth.updateUser({ password });
@@ -38,7 +38,7 @@ export default function ResetPasswordPage() {
             <div style={{ marginBottom: '14px' }}>
               <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#E8C547', marginBottom: '6px', letterSpacing: '0.1em' }}>NEW PASSWORD</div>
               <input type="password" value={password} onChange={e => setPassword(e.target.value)}
-                placeholder="Min 6 characters"
+                placeholder="Min 8 characters"
                 style={{ width: '100%', background: '#080808', border: '1px solid #E8C547', borderRadius: '8px', padding: '12px 14px', color: 'white', fontSize: '14px', boxSizing: 'border-box', outline: 'none' }} />
             </div>
             <div style={{ marginBottom: '20px' }}>
