@@ -7,7 +7,7 @@ export const metadata = {
     title: 'Free Trading Journal — ICT Flow',
     description: 'Log trades, track win rate, R:R & psychology. Get AI coaching insights with a free trading journal for ICT & Smart Money traders.',
     url: 'https://ictflow.com/journal',
-    siteName: 'ICT Flow Academy',
+    siteName: 'ICT Flow',
     images: [{ url: 'https://ictflow.com/og-image.png', width: 1200, height: 630, alt: 'ICT Flow Free Trading Journal' }],
     locale: 'en_US',
     type: 'website',
