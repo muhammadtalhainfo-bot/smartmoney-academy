@@ -9,7 +9,38 @@ function toLocalDate(date) {
   return `${year}-${month}-${day}`;
 }
 
-export async function POST() {
+function dateForTimezone(date, timezone) {
+  if (!timezone) return toLocalDate(date);
+
+  try {
+    const parts = new Intl.DateTimeFormat('en-CA', {
+      timeZone: timezone,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }).formatToParts(date);
+
+    const values = Object.fromEntries(parts
+      .filter(({ type }) => ['year', 'month', 'day'].includes(type))
+      .map(({ type, value }) => [type, value]));
+
+    if (values.year && values.month && values.day) {
+      return `${values.year}-${values.month}-${values.day}`;
+    }
+  } catch {
+    // Invalid or unsupported timezone: fall back to server-local date.
+  }
+
+  return toLocalDate(date);
+}
+
+function previousDate(dateString) {
+  const date = new Date(`${dateString}T00:00:00Z`);
+  date.setUTCDate(date.getUTCDate() - 1);
+  return date.toISOString().slice(0, 10);
+}
+
+export async function POST(req) {
   const cookieStore = await cookies();
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -40,7 +71,9 @@ export async function POST() {
   }
 
   const now = new Date();
-  const today = toLocalDate(now);
+  const timezone = req.headers.get('x-timezone')?.trim() || '';
+  const today = dateForTimezone(now, timezone);
+
   if (profile.last_active === today) {
     return NextResponse.json({
       streak: profile.streak || 0,
@@ -49,9 +82,7 @@ export async function POST() {
     }, { headers: { 'Cache-Control': 'private, no-store' } });
   }
 
-  const yesterdayDate = new Date(now);
-  yesterdayDate.setDate(yesterdayDate.getDate() - 1);
-  const yesterday = toLocalDate(yesterdayDate);
+  const yesterday = previousDate(today);
   const newStreak = profile.last_active === yesterday ? (profile.streak || 0) + 1 : 1;
   const longestStreak = Math.max(newStreak, profile.longest_streak || 0);
 
