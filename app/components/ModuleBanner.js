@@ -307,7 +307,7 @@ const BANNERS = {
     </>
   ),
 
-  '12': ({ w, h }) => (  // ICT 2024 Mentorship — Venom/new concepts
+  '12': ({ w, h }) => (  // ICT Mentorship — newer concepts
     <>
       <GridLines w={w} h={h} spacing={36} opacity={0.03} />
       {/* Quarterly shift boxes */}

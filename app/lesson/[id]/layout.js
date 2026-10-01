@@ -19,7 +19,7 @@ const LESSONS_META = {
   9:  { title: 'Market Maker Models', description: 'Study MMBM and MMSM frameworks, False Flag, Seek & Destroy and TGIF concepts as testable multi-day price-behavior models.' },
   10: { title: 'SMT Divergence', description: 'Study SMT divergence between correlated markets, intermarket comparisons, index SMT and rules for testing divergence as confirmation.' },
   11: { title: 'IPDA & CRT', description: 'Study IPDA, 20/40/60-day lookbacks, NWOG and NDOG gaps, weekly draws and Candle Range Theory as testable ICT frameworks.' },
-  12: { title: 'ICT 2024 Mentorship', description: 'Study newer ICT concepts including the Venom Model, Propulsion Blocks, Quarterly Shifts, SCOB, QML and weekly profile templates.' },
+  12: { title: 'ICT Mentorship — Newer Concepts', description: 'Study newer ICT concepts including the Venom Model, Propulsion Blocks, Quarterly Shifts, SCOB, QML and weekly profile templates.' },
   13: { title: 'SMC — Smart Money Concepts', description: 'Study the community SMC framework, including structure, supply and demand, order blocks, CHoCH, BOS, inducement and a rules-based workflow.' },
   14: { title: 'Top-Down Analysis', description: 'Study multi-timeframe analysis from Monthly and Weekly context through Daily narrative, 4H confirmation and 15M/5M execution.' },
   // ── Intermediate continued (IDs 15–25) ──────────────────────────
