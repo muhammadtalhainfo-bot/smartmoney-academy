@@ -397,7 +397,6 @@ function BlogSection({ adminDbClient = adminDb }) {
   const [view, setView] = useState('list');
   const [form, setForm] = useState(EMPTY_POST);
   const [editId, setEditId] = useState(null);
-  const [saving, setSaving] = useState(false);
   const [msg, setMsg] = useState({ text: '', type: 'success' });
   const [search, setSearch] = useState('');
   const [filterCat, setFilterCat] = useState('all');
@@ -1042,7 +1041,7 @@ const MISTAKES = ${JSON.stringify(mistakes)};
 const RULES = ${JSON.stringify(rules)};`}
         </pre>
       </div>
-      <button onClick={save} disabled={saving} style={{ ...css.btn, padding:'14px 28px', marginTop:'16px', fontSize:'12px' }}>
+      <button onClick={save} style={{ ...css.btn, padding:'14px 28px', marginTop:'16px', fontSize:'12px' }}>
         {saving ? 'SAVING...' : '💾 SAVE JOURNAL CONFIG'}
       </button>
     </div>
