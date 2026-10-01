@@ -33,7 +33,12 @@ export default function DashboardPage() {
   const supabase = useMemo(() => createClient(), []);
 
   const updateStreak = useCallback(async () => {
-    const response = await fetch('/api/streak', { method: 'POST', cache: 'no-store' });
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const response = await fetch('/api/streak', {
+      method: 'POST',
+      cache: 'no-store',
+      headers: timezone ? { 'x-timezone': timezone } : undefined,
+    });
     if (!response.ok) return;
     const data = await response.json();
     setProfile(p => p ? { ...p, ...data } : p);
@@ -183,7 +188,7 @@ export default function DashboardPage() {
         </div>
 
         {/* STATS ROW */}
-        <div className="fade-up grid grid-cols-2 md:grid-cols-4 gap-4 mb-8" style={{ animationDelay: '0.1s' }}>
+        <div className="fade-up grid grid-cols-2 md:grid-cols-3 gap-4 mb-8" style={{ animationDelay: '0.1s' }}>
           {[
             { label: 'Day Streak', value: profile?.streak || 0, icon: '🔥', sub: `Best: ${profile?.longest_streak || 0}`, highlight: true },
             { label: 'Modules Done', value: completedModules, icon: '📖', sub: `of ${totalModules} total` },
