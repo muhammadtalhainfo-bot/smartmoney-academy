@@ -7,8 +7,7 @@ import ModuleBanner from '@/app/components/ModuleBanner';
 
 const CATEGORIES = ['All', 'Beginner', 'Intermediate', 'Advanced', 'Strategy', 'Psychology', 'News', 'Analysis'];
 
-const blogSchema = {
-  '@context'e() {
+export default function BlogIndexClient({ posts }) {
   const [active, setActive] = useState('All');
 
   const allPosts = posts;
@@ -27,8 +26,6 @@ const blogSchema = {
       `}</style>
 
       <Navbar active="/blog" />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }} />
-
       <section style={{ padding: '64px 24px 40px', borderBottom: '1px solid rgba(232,197,71,0.95)' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', textAlign: 'center' }}>
           <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(52px, 8vw, 80px)', lineHeight: 1, marginBottom: '12px' }}>
