@@ -1,6 +1,6 @@
 export const metadata = {
   title: 'ICT Trading Resources — Prop Firms, Brokers & Tools',
-  description: 'Curated external resources for ICT and Smart Money traders, including prop-firm providers, brokers, charting tools, and educational platforms. Terms and pricing can change.'',
+  description: 'Curated external resources for ICT and Smart Money traders, including prop-firm providers, brokers, charting tools, and educational platforms. Terms and pricing can change.',
   keywords: ['prop firms', 'prop firm resources', 'ICT trader resources', 'funded trader program', 'forex brokers', 'TradingView ICT'],
   alternates: { canonical: 'https://ictflow.com/resources' },
   openGraph: {
