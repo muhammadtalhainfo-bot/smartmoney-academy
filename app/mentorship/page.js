@@ -133,7 +133,7 @@ const EPISODES = [
     duration: "2h 45m",
     youtube: null,
     concepts: ["Historical Chart Review", "Pattern Recognition", "Setup Identification"],
-    summary: "Pivotal review episode. Historical chart data can be used to study and test the precision entry concepts. Learn to 'reverse engineer' why specific entries were valid using the 2022 model logic.",
+    summary: "Pivotal review episode. Historical chart data can be used to study and test the precision entry concepts. Review why an entry would satisfy the 2022 model’s stated conditions, while keeping the distinction between a rule match and a profitable outcome.",
     keyLesson: "Backtesting is a useful way to study a strategy. A 3–6 month window can be an example starting point; choose a sample that is relevant to the strategy and market, and recognize that repetition does not guarantee future performance.",
     tags: ["Backtest", "Practical", "Review"]
   },
@@ -154,7 +154,7 @@ const EPISODES = [
     youtube: null,
     concepts: ["Live Execution", "Model Validation", "Real-Time Bias"],
     summary: "Continued live trading demonstrations can be used to study how the model is applied in real-time; demonstrations do not by themselves establish future performance. Focus on the process, not the outcome of any single trade.",
-    keyLesson: "A valid setup that loses is still a valid setup. Process > outcome. Judge your trading on execution quality, not P&L.",
+    keyLesson: "A setup can satisfy the model’s rules and still lose. Evaluate execution quality separately from the trade outcome, and review the evidence and rule adherence rather than using P&L alone.",
     tags: ["Live Trading", "Psychology", "Advanced"]
   },
   {
@@ -293,7 +293,7 @@ const EPISODES = [
     duration: "2h 15m",
     youtube: null,
     concepts: ["Narrow Range Days", "Low Volatility", "SMT Application", "Conservative Targets"],
-    summary: "How to profit during low-volatility narrow range environments using SMT divergence. Reduce targets and position size. Don't expect large expansions on NR days.",
+    summary: "How SMT divergence can be studied during low-volatility narrow-range environments. Consider smaller targets or reduced exposure only when supported by a predefined risk plan; narrow-range days do not guarantee a particular expansion.",
     keyLesson: "On narrow range days, smaller targets win. Don't try to catch 50 points when the daily range is 15. Scale expectations to the environment.",
     tags: ["SMT", "Low Volatility", "Practical"]
   },
@@ -353,7 +353,7 @@ const EPISODES = [
     duration: "2h 35m",
     youtube: null,
     concepts: ["PA Review", "Cross-Market", "Setup Consistency"],
-    summary: "Continued PA review across multiple market conditions. Emphasizes that the model works across all market environments when applied correctly with HTF context.",
+    summary: "Continued price-action review across multiple market conditions. Examines how the model can be applied in different environments while recognizing that market conditions vary and historical examples do not establish universal performance.",
     keyLesson: "A robust strategy should be evaluated across both trending and ranging conditions; performance can differ by market regime.",
     tags: ["Review", "Training", "Advanced"]
   },
