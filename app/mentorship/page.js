@@ -499,7 +499,7 @@ export default function MentorshipPage() {
             <span style={{ color: 'white' }}>ICT 2022 </span>
             <span style={{ background: 'linear-gradient(135deg, #8A6B28, #E8C547, #F0C96A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>MENTORSHIP</span>
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '16px', maxWidth: '640px', lineHeight: 1.7, fontWeight: 300, marginBottom: '32px' }}>
+          <p style={{ color: '#B9C1CC', fontSize: '16px', maxWidth: '640px', lineHeight: 1.7, fontWeight: 300, marginBottom: '32px' }}>
             The complete 41-episode series deconstructed. Every concept, key lesson, and algorithmic framework — organized for systematic mastery of the IPDA.
           </p>
 
