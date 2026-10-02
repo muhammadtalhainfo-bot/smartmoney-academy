@@ -79,7 +79,7 @@ export default async function VerifyPage({ params }) {
                 </div>
               ))}
             </div>
-            <p style={{ color: '#777', fontFamily: "'DM Mono', monospace", fontSize: '10px', marginTop: '22px' }}>
+            <p style={{ color: '#B8C0CC', fontFamily: "'DM Mono', monospace", fontSize: '10px', marginTop: '22px' }}>
               Verification is based on the learner's recorded curriculum completion in ICT Flow.
             </p>
           </>
