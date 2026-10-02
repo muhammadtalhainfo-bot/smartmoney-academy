@@ -43,5 +43,5 @@ export async function GET(request) {
     }
   }
 
-  return NextResponse.redirect(`${origin}/dashboard`, { headers: { 'Cache-Control': 'no-store' } })
+  return NextResponse.redirect(`${origin}/auth?error=authentication_failed`, { headers: { 'Cache-Control': 'no-store' } })
 }
