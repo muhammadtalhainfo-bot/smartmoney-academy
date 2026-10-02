@@ -5,10 +5,10 @@ import { NextResponse } from 'next/server';
 
 export const runtime = 'nodejs';
 
-export async function GET(req) {
+export async function POST(req) {
   try {
     if (!process.env.STRIPE_SECRET_KEY || !process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
-      return NextResponse.redirect(new URL('/pricing?error=payment-not-configured', req.url));
+      return NextResponse.json({ error: 'Payment service is not configured.' }, { status: 503 });
     }
 
     const cookieStore = await cookies();
@@ -31,7 +31,7 @@ export async function GET(req) {
 
     const { data: { user }, error: authError } = await supabase.auth.getUser();
     if (authError || !user) {
-      return NextResponse.redirect(new URL('/auth?next=/dashboard', req.url));
+      return NextResponse.json({ error: 'Authentication required.' }, { status: 401 });
     }
 
     const { data: profile } = await supabase
@@ -41,7 +41,7 @@ export async function GET(req) {
       .maybeSingle();
 
     if (!profile?.is_pro || !profile?.stripe_customer_id) {
-      return NextResponse.redirect(new URL('/pricing', req.url));
+      return NextResponse.json({ error: 'Pro access required.' }, { status: 403 });
     }
 
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -52,9 +52,9 @@ export async function GET(req) {
       return_url: `${origin}/dashboard`,
     });
 
-    return NextResponse.redirect(portal.url, { headers: { 'Cache-Control': 'no-store' } });
+    return NextResponse.json({ url: portal.url }, { headers: { 'Cache-Control': 'no-store' } });
   } catch (error) {
     console.error('Stripe portal error:', error);
-    return NextResponse.redirect(new URL('/dashboard?billing_error=1', req.url), { headers: { 'Cache-Control': 'no-store' } });
+    return NextResponse.json({ error: 'Unable to open billing portal.' }, { status: 502, headers: { 'Cache-Control': 'no-store' } });
   }
 }
