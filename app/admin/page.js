@@ -79,7 +79,6 @@ const TABS = [
   { id: 'courses',       label: 'Modules',         icon: '🎓', group: 'content' },
   { id: 'pages',         label: 'Pages',           icon: '📄', group: 'content' },
   { id: 'media',         label: 'Media',           icon: '🖼️', group: 'content' },
-  { id: 'banners',       label: 'Banners',         icon: '📢', group: 'content' },
   { id: 'notifications', label: 'Push Notify',     icon: '🔔', group: 'content' },
   { id: 'seo',           label: 'SEO',             icon: '🔍', group: 'settings' },
   { id: 'pricing',       label: 'Pricing',         icon: '💰', group: 'settings' },
@@ -205,7 +204,7 @@ function DashboardSection({ users, emails, trades, proUsers, loading, onRefresh 
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '8px 0', borderBottom: `1px solid ${BORDER}` }}>
                   <div style={{ fontSize: '16px' }}>📧</div>
                   <div style={{ flex: 1, fontSize: '13px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{e.email}</div>
-                  <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(255,255,255,0.4)' }}>{e.created_at ? new Date(e.created_at).toLocaleDateString() : '—'}</div>
+                  <div style={{ ...css.mono, fontSize: '10px', color: '#AAB3BF' }}>{e.created_at ? new Date(e.created_at).toLocaleDateString() : '—'}</div>
                 </div>
               ))}
             </div>
@@ -301,7 +300,7 @@ function UsersSection({ users, onReload }) {
                       ...css.mono, fontSize: '10px', cursor: 'pointer',
                     }}>{u.is_pro ? '✓ PRO' : 'FREE'}</button>
                   </td>
-                  <td style={{ padding: '10px 12px', fontSize: '11px', color: 'rgba(255,255,255,0.4)', whiteSpace: 'nowrap' }}>{u.created_at ? new Date(u.created_at).toLocaleDateString() : '—'}</td>
+                  <td style={{ padding: '10px 12px', fontSize: '11px', color: '#AAB3BF', whiteSpace: 'nowrap' }}>{u.created_at ? new Date(u.created_at).toLocaleDateString() : '—'}</td>
                   <td style={{ padding: '10px 12px', display: 'flex', gap: '6px' }}>
                     <button onClick={() => resetXP(u)} style={{ ...css.btnGhost, padding: '5px 10px', fontSize: '10px' }}>RESET XP</button>
                     <button onClick={() => deleteUser(u)} style={css.btnDanger}>DEL</button>
@@ -309,7 +308,7 @@ function UsersSection({ users, onReload }) {
                 </tr>
               ))}
               {filtered.length === 0 && (
-                <tr><td colSpan={7} style={{ padding: '40px', textAlign: 'center', ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.4)' }}>No users found</td></tr>
+                <tr><td colSpan={7} style={{ padding: '40px', textAlign: 'center', ...css.mono, fontSize: '11px', color: '#AAB3BF' }}>No users found</td></tr>
               )}
             </tbody>
           </table>
@@ -398,7 +397,6 @@ function BlogSection({ adminDbClient = adminDb }) {
   const [view, setView] = useState('list');
   const [form, setForm] = useState(EMPTY_POST);
   const [editId, setEditId] = useState(null);
-  const [saving, setSaving] = useState(false);
   const [msg, setMsg] = useState({ text: '', type: 'success' });
   const [search, setSearch] = useState('');
   const [filterCat, setFilterCat] = useState('all');
@@ -406,7 +404,7 @@ function BlogSection({ adminDbClient = adminDb }) {
   const load = useCallback(async () => {
     const { data } = await adminDbClient('blog.list');
     if (data) setPosts(data);
-  }, [supabase]);
+  }, [adminDbClient]);
 
   useEffect(() => { load(); }, [load]);
 
@@ -539,7 +537,7 @@ function BlogSection({ adminDbClient = adminDb }) {
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
         {filtered.length === 0 ? (
-          <div style={{ ...css.card, textAlign: 'center', padding: '50px', ...css.mono, fontSize: '12px', color: 'rgba(255,255,255,0.4)' }}>
+          <div style={{ ...css.card, textAlign: 'center', padding: '50px', ...css.mono, fontSize: '12px', color: '#AAB3BF' }}>
             {posts.length === 0 ? 'No blog posts yet. Click NEW POST to write your first article.' : 'No posts match your search.'}
           </div>
         ) : filtered.map(p => (
@@ -696,105 +694,6 @@ function PagesSection() {
   );
 }
 
-// ─── BANNERS SECTION ──────────────────────────────────────────────────────────
-function BannersSection({ adminDbClient = adminDb }) {
-  const [banners, setBanners] = useState([]);
-  const [form, setForm] = useState({ text: '', cta_text: '', cta_url: '', type: 'info', active: true, page: 'all' });
-  const [saving, setSaving] = useState(false);
-  const [msg, setMsg] = useState({ text: '', type: 'success' });
-  const [showForm, setShowForm] = useState(false);
-
-  const load = useCallback(async () => {
-    const { data } = await adminDbClient('banners.list');
-    if (data) setBanners(data);
-  }, [supabase]);
-
-  useEffect(() => { load(); }, [load]);
-
-  const save = async () => {
-    if (!form.text) { setMsg({ text: 'Banner text required', type: 'error' }); return; }
-    setSaving(true);
-    const { error } = await adminDbClient('banners.insert', { form });
-    if (error) setMsg({ text: 'Error: ' + error.message, type: 'error' });
-    else { setMsg({ text: '✓ Banner created!', type: 'success' }); load(); setShowForm(false); setForm({ text: '', cta_text: '', cta_url: '', type: 'info', active: true, page: 'all' }); }
-    setSaving(false);
-    setTimeout(() => setMsg({ text: '', type: 'success' }), 3000);
-  };
-
-  const toggle = async (b) => { await adminDbClient('banners.toggle', { id: b.id, active: !b.active }); load(); };
-  const del = async (id) => { if (!confirm('Delete banner?')) return; await adminDbClient('banners.delete', { id }); load(); };
-
-  const TYPE_COLORS = { info: G, warning: '#FBBF24', success: '#34D399', promo: '#A78BFA' };
-
-  return (
-    <div>
-      <SectionHeader title="SITE BANNERS" action={
-        <button onClick={() => setShowForm(!showForm)} style={css.btn}>+ NEW BANNER</button>
-      } />
-
-      {showForm && (
-        <div style={{ ...css.card, marginBottom: '16px', border: `1px solid ${BORDER2}` }}>
-          <Toast msg={msg.text} type={msg.type} />
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '12px' }}>
-            <FieldGroup label="Type">
-              <Select value={form.type} onChange={e => setForm({ ...form, type: e.target.value })}
-                options={[{ value: 'info', label: '📢 Info' }, { value: 'warning', label: '⚠️ Warning' }, { value: 'success', label: '✅ Success' }, { value: 'promo', label: '🎉 Promo' }]} />
-            </FieldGroup>
-            <FieldGroup label="Show on Page">
-              <Select value={form.page} onChange={e => setForm({ ...form, page: e.target.value })}
-                options={[{ value: 'all', label: 'All Pages' }, ...NAV_PAGES.map(p => ({ value: p.href, label: p.label }))]} />
-            </FieldGroup>
-          </div>
-          <FieldGroup label="Banner Text *">
-            <Input value={form.text} onChange={e => setForm({ ...form, text: e.target.value })} placeholder="e.g. 🎉 New ICT lessons and modules are now live." />
-          </FieldGroup>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-            <FieldGroup label="CTA Button Text">
-              <Input value={form.cta_text} onChange={e => setForm({ ...form, cta_text: e.target.value })} placeholder="Start Learning" />
-            </FieldGroup>
-            <FieldGroup label="CTA Link">
-              <Input value={form.cta_url} onChange={e => setForm({ ...form, cta_url: e.target.value })} placeholder="/courses" />
-            </FieldGroup>
-          </div>
-          <div style={{ display: 'flex', gap: '10px' }}>
-            <button onClick={save} disabled={saving} style={css.btn}>{saving ? 'SAVING...' : '+ CREATE BANNER'}</button>
-            <button onClick={() => setShowForm(false)} style={css.btnGhost}>CANCEL</button>
-          </div>
-        </div>
-      )}
-
-      {banners.length === 0 ? (
-        <div style={{ ...css.card, textAlign: 'center', padding: '50px', ...css.mono, fontSize: '12px', color: 'rgba(255,255,255,0.4)' }}>
-          No banners yet. Add a site-wide announcement, promo, or alert.
-        </div>
-      ) : (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-          {banners.map(b => (
-            <div key={b.id} style={{ ...css.card, display: 'flex', alignItems: 'center', gap: '14px', padding: '14px 18px', borderLeft: `3px solid ${TYPE_COLORS[b.type] || G}` }}>
-              <div style={{ flex: 1 }}>
-                <div style={{ fontSize: '14px', fontWeight: 500, marginBottom: '3px' }}>{b.text}</div>
-                <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(255,255,255,0.4)' }}>
-                  {b.type?.toUpperCase()} · Page: {b.page} {b.cta_text && `· CTA: "${b.cta_text}"`}
-                </div>
-              </div>
-              <div style={{ display: 'flex', gap: '8px', flexShrink: 0 }}>
-                <button onClick={() => toggle(b)} style={{
-                  background: b.active ? 'rgba(52,211,153,0.1)' : 'rgba(255,255,255,0.05)',
-                  border: `1px solid ${b.active ? 'rgba(52,211,153,0.3)' : BORDER}`,
-                  borderRadius: '6px', padding: '5px 12px',
-                  color: b.active ? '#34D399' : 'rgba(255,255,255,0.4)',
-                  ...css.mono, fontSize: '10px', cursor: 'pointer',
-                }}>{b.active ? '● LIVE' : '○ OFF'}</button>
-                <button onClick={() => del(b.id)} style={css.btnDanger}>DEL</button>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
-
 // ─── MEDIA SECTION ────────────────────────────────────────────────────────────
 function MediaSection() {
   const IMAGES = [
@@ -832,65 +731,33 @@ function MediaSection() {
 }
 
 // ─── SEO SECTION ──────────────────────────────────────────────────────────────
-function SEOSection({ adminDbClient = adminDb }) {
-  const [form, setForm] = useState({
-    site_name: 'ICT Flow',
-    site_tagline: 'Master ICT & Smart Money Concepts',
-    meta_description: 'The most comprehensive ICT & Smart Money Concepts learning platform. Master market structure, liquidity, FVGs, order blocks, and all ICT strategies.',
-    keywords: 'ICT trading, smart money concepts, order blocks, fair value gap, liquidity, market structure, forex trading education',
-    og_image: '/og-image.png',
-    twitter_handle: '@riskfirsttrad',
-    google_analytics: 'G-HRGZYFXQ5W',
-    google_site_verify: 'googlebb5bafc8712b4351',
-    canonical_url: 'https://ictflow.com',
-  });
-  const [msg, setMsg] = useState({ text: '', type: 'success' });
-  const [saving, setSaving] = useState(false);
-
-  const save = async () => {
-    setSaving(true);
-    const { error } = await adminDbClient('seo.save', { form });
-    if (error) setMsg({ text: 'Error: ' + error.message, type: 'error' });
-    else setMsg({ text: '✓ SEO settings saved!', type: 'success' });
-    setSaving(false);
-    setTimeout(() => setMsg({ text: '', type: 'success' }), 3000);
-  };
+function SEOSection() {
+  const items = [
+    ['Global metadata', 'app/layout.js', 'Title, description, canonical, Open Graph, robots, JSON-LD'],
+    ['Sitemap', 'app/sitemap.js', 'Dynamic sitemap with curriculum lesson URLs and blog/guide pages'],
+    ['Robots rules', 'public/robots.txt', 'Crawler exclusions for private/authenticated routes'],
+    ['Blog metadata', 'app/blog/page.js + app/blog/[slug]/layout.js', 'Per-post canonical, article metadata and structured data'],
+  ];
 
   return (
     <div>
-      <SectionHeader title="SEO SETTINGS" />
-      <Toast msg={msg.text} type={msg.type} />
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-        <div>
-          <div style={{ ...css.card, marginBottom: '16px' }}>
-            <div style={{ ...css.mono, fontSize: '10px', color: G, marginBottom: '14px', letterSpacing: '0.12em' }}>GLOBAL META</div>
-            <FieldGroup label="Site Name"><Input value={form.site_name} onChange={e => setForm({ ...form, site_name: e.target.value })} /></FieldGroup>
-            <FieldGroup label="Tagline"><Input value={form.site_tagline} onChange={e => setForm({ ...form, site_tagline: e.target.value })} /></FieldGroup>
-            <FieldGroup label="Default Meta Description"><Textarea value={form.meta_description} onChange={e => setForm({ ...form, meta_description: e.target.value })} rows={3} /></FieldGroup>
-            <FieldGroup label="Keywords"><Textarea value={form.keywords} onChange={e => setForm({ ...form, keywords: e.target.value })} rows={2} /></FieldGroup>
-            <FieldGroup label="Canonical URL"><Input value={form.canonical_url} onChange={e => setForm({ ...form, canonical_url: e.target.value })} /></FieldGroup>
+      <SectionHeader title="SEO STATUS" />
+      <InfoBox>ℹ️ SEO is source-controlled in the repository. This admin panel does not write database-backed SEO settings because the live Supabase project has no site_settings table. Edit the listed files and deploy to change production SEO.</InfoBox>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        {items.map(([label, file, desc]) => (
+          <div key={label} style={{ ...css.card, display: 'flex', alignItems: 'center', gap: '16px' }}>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontWeight: 600, fontSize: '14px', marginBottom: '4px' }}>{label}</div>
+              <div style={{ ...css.mono, fontSize: '10px', color: G, marginBottom: '4px' }}>{file}</div>
+              <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.5 }}>{desc}</div>
+            </div>
           </div>
-        </div>
-        <div>
-          <div style={{ ...css.card, marginBottom: '16px' }}>
-            <div style={{ ...css.mono, fontSize: '10px', color: G, marginBottom: '14px', letterSpacing: '0.12em' }}>SOCIAL & OG</div>
-            <FieldGroup label="OG Image URL"><Input value={form.og_image} onChange={e => setForm({ ...form, og_image: e.target.value })} /></FieldGroup>
-            <FieldGroup label="Twitter/X Handle"><Input value={form.twitter_handle} onChange={e => setForm({ ...form, twitter_handle: e.target.value })} /></FieldGroup>
-          </div>
-          <div style={{ ...css.card, marginBottom: '16px' }}>
-            <div style={{ ...css.mono, fontSize: '10px', color: G, marginBottom: '14px', letterSpacing: '0.12em' }}>ANALYTICS</div>
-            <FieldGroup label="Google Analytics ID"><Input value={form.google_analytics} onChange={e => setForm({ ...form, google_analytics: e.target.value })} /></FieldGroup>
-            <FieldGroup label="Google Site Verify"><Input value={form.google_site_verify} onChange={e => setForm({ ...form, google_site_verify: e.target.value })} /></FieldGroup>
-          </div>
-          <div style={{ ...css.card, marginBottom: '16px', background: 'rgba(52,211,153,0.04)' }}>
-            <div style={{ ...css.mono, fontSize: '10px', color: '#34D399', marginBottom: '8px' }}>✓ Sitemap Status</div>
-            <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.6)' }}>Dynamic sitemap active — auto-generates for all curriculum lessons + pages</div>
-            <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" style={{ ...css.mono, fontSize: '11px', color: G, display: 'block', marginTop: '8px' }}>View sitemap.xml ↗</a>
-          </div>
-          <button onClick={save} disabled={saving} style={{ ...css.btn, width: '100%', padding: '14px' }}>
-            {saving ? 'SAVING...' : '💾 SAVE SEO SETTINGS'}
-          </button>
-        </div>
+        ))}
+      </div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '16px' }}>
+        <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" style={{ ...css.btnGhost, textDecoration: 'none' }}>VIEW SITEMAP ↗</a>
+        <a href="/robots.txt" target="_blank" rel="noopener noreferrer" style={{ ...css.btnGhost, textDecoration: 'none' }}>VIEW ROBOTS ↗</a>
+        <a href="/feed.xml" target="_blank" rel="noopener noreferrer" style={{ ...css.btnGhost, textDecoration: 'none' }}>VIEW RSS ↗</a>
       </div>
     </div>
   );
@@ -986,7 +853,7 @@ function NavSection() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
               {group.items.map(([href, label], i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '8px 12px', background: S3, borderRadius: '7px' }}>
-                  <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(255,255,255,0.3)', width: '18px' }}>{i + 1}</div>
+                  <div style={{ ...css.mono, fontSize: '10px', color: '#9DA6B2', width: '18px' }}>{i + 1}</div>
                   <div style={{ flex: 1, fontSize: '13px' }}>{label}</div>
                   <a href={href} target="_blank" rel="noopener noreferrer" style={{ ...css.mono, fontSize: '10px', color: G, textDecoration: 'none' }}>{href} ↗</a>
                 </div>
@@ -1051,7 +918,7 @@ function NotificationsSection() {
               </div>
             </div>
           </div>
-          <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.4)', marginTop: '14px', lineHeight: 1.6 }}>
+          <div style={{ ...css.mono, fontSize: '11px', color: '#AAB3BF', marginTop: '14px', lineHeight: 1.6 }}>
             Powered by OneSignal. Sends to all users who enabled browser push notifications.
           </div>
         </div>
@@ -1093,12 +960,8 @@ function JournalSection({ adminDbClient = adminDb }) {
     }).catch((error) => console.error('Journal settings load failed:', error));
   }, [adminDbClient]);
 
-  const save = async () => {
-    setSaving(true);
-    const { error } = await adminDbClient('journal.save', { value: { pairs, sessions, setups, mistakes, rules } });
-    if (error) setMsg({ text:'Error: '+error.message, type:'error' });
-    else setMsg({ text:'✓ Saved! Copy the constants below into app/journal/page.js to persist across deploys.', type:'success' });
-    setSaving(false);
+  const save = () => {
+    setMsg({ text:'✓ Preview updated locally. Copy the exported constants below into app/journal/page.js to persist across deploys.', type:'success' });
     setTimeout(() => setMsg({ text:'', type:'success' }), 8000);
   };
 
@@ -1141,7 +1004,7 @@ function JournalSection({ adminDbClient = adminDb }) {
         <StatCard icon="👥" value={stats.users}   label="Traders Using Journal" />
         <StatCard icon="📊" value={`${winRate}%`} label="Platform Win Rate" />
       </div>
-      <InfoBox>ℹ️ Journal is now 100% FREE — no paywall. Logged-in users get full Supabase persistence. Anonymous visitors see a public SEO landing with sign-up CTA. Edit lists below to customize the trade form options.</InfoBox>
+      <InfoBox>ℹ️ Journal is now 100% FREE — no paywall. Logged-in users get full Supabase trade persistence. The option lists below are source-controlled in app/journal/page.js; changes here are a local preview until you copy the exported constants into that file.</InfoBox>
       <Toast msg={msg.text} type={msg.type} />
       <div style={{ ...css.card, marginBottom:'16px', borderColor:'rgba(52,211,153,0.3)' }}>
         <div style={{ ...css.mono, fontSize:'10px', color:'#34D399', marginBottom:'14px', letterSpacing:'0.12em' }}>ACCESS SETTINGS</div>
@@ -1178,7 +1041,7 @@ const MISTAKES = ${JSON.stringify(mistakes)};
 const RULES = ${JSON.stringify(rules)};`}
         </pre>
       </div>
-      <button onClick={save} disabled={saving} style={{ ...css.btn, padding:'14px 28px', marginTop:'16px', fontSize:'12px' }}>
+      <button onClick={save} style={{ ...css.btn, padding:'14px 28px', marginTop:'16px', fontSize:'12px' }}>
         {saving ? 'SAVING...' : '💾 SAVE JOURNAL CONFIG'}
       </button>
     </div>
@@ -1293,7 +1156,7 @@ export default function AdminPage() {
             </div>
           )}
           <button onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-            style={{ marginLeft: 'auto', background: 'none', border: 'none', color: 'rgba(255,255,255,0.4)', cursor: 'pointer', fontSize: '14px', flexShrink: 0 }}>
+            style={{ marginLeft: 'auto', background: 'none', border: 'none', color: '#AAB3BF', cursor: 'pointer', fontSize: '14px', flexShrink: 0 }}>
             {sidebarCollapsed ? '→' : '←'}
           </button>
         </div>
@@ -1303,7 +1166,7 @@ export default function AdminPage() {
           {GROUPS.map(group => (
             <div key={group.id} style={{ marginBottom: '6px' }}>
               {!sidebarCollapsed && (
-                <div style={{ ...css.mono, fontSize: '8px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.15em', padding: '8px 8px 4px', textTransform: 'uppercase' }}>{group.label}</div>
+                <div style={{ ...css.mono, fontSize: '8px', color: '#9DA6B2', letterSpacing: '0.15em', padding: '8px 8px 4px', textTransform: 'uppercase' }}>{group.label}</div>
               )}
               {TABS.filter(t => t.group === group.id).map(tab => (
                 <button key={tab.id} onClick={() => setActiveTab(tab.id)}
@@ -1353,7 +1216,6 @@ export default function AdminPage() {
         {activeTab === 'courses'       && <CoursesSection />}
         {activeTab === 'pages'         && <PagesSection />}
         {activeTab === 'media'         && <MediaSection />}
-        {activeTab === 'banners'       && <BannersSection />}
         {activeTab === 'notifications' && <NotificationsSection />}
         {activeTab === 'seo'           && <SEOSection />}
         {activeTab === 'pricing'       && <PricingSection />}

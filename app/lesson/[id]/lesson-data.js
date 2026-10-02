@@ -737,7 +737,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     subtitle: 'Venom, Propulsion Blocks, quarterly shifts and newer ICT concepts',
     level: 'Advanced',
     duration: '75 min',
-    category: '2024',
+    category: 'NEWER',
     imageCaption: 'Newer ICT concepts can be studied as defined frameworks, but labels and interpretations should be checked against the source material and tested before use.',
     intro: `This module collects newer concepts associated with ICT's 2024-era teaching, including the Venom Model, Propulsion Blocks, Quarterly Shifts, SCOB, QML and weekly profile templates. Because terminology and examples can evolve, treat the source material as the definition of the model and separate documented rules from your own interpretation.`,
     sections: [
