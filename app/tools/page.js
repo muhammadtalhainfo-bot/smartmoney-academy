@@ -62,7 +62,7 @@ const TOOLS = [
         ],
       },
       {
-        title: 'THE NON-NEGOTIABLES',
+        title: 'EXAMPLE HARD RULES',
         items: [
           { label: 'EXAMPLE HARD RULES TO DEFINE IN YOUR PLAN', checks: [
             'Define a maximum risk per trade and do not exceed it',
@@ -108,7 +108,7 @@ const PRO_TOOL = {
   emoji: '📋',
   title: 'ICT Trading Plan Template',
   subtitle: 'Fill-in-the-blank · 10 Sections · Professional',
-  desc: 'A professional trading plan is your roadmap to consistency. Fill out this template and post it next to your monitor.',
+  desc: 'A written trading plan can help turn broad intentions into explicit, testable rules. Fill out this template and keep it available during your review process.',
   color: '#D4A843',
 };
 
@@ -305,9 +305,9 @@ export default function ToolsPage() {
           {activeTool === 'plan' && isPro && (
             <div style={{ marginTop: '16px', padding: '20px 24px', background: 'rgba(212,168,67,0.05)', border: '1px solid rgba(212,168,67,0.1)', borderRadius: '12px', textAlign: 'center' }}>
               <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.7 }}>
-                Print this plan, fill it out by hand, and post it next to your monitor.<br />
-                Read it before every session. Update it monthly as you grow.<br />
-                <span style={{ color: '#D4A843' }}>This plan is your contract with yourself. Break it and you break your account.</span>
+                Print or save this plan, fill it out, and keep it available during your trading review process.<br />
+                Review it before sessions and update it through your documented review process.<br />
+                <span style={{ color: '#D4A843' }}>Use the plan as a written reference; change rules through deliberate review rather than during live trading.</span>
               </p>
             </div>
           )}
