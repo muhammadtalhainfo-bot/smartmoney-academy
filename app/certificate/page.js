@@ -96,7 +96,7 @@ export default function CertificatePage() {
                   return (
                     <div key={module.id} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', borderRadius: '8px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)' }}>
                       <span style={{ fontSize: '14px' }}>{done ? '✅' : '⬜'}</span>
-                      <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: done ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.55)' }}>
+                      <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: done ? '#D0D6DE' : '#B9C1CC' }}>
                         MODULE {String(module.id).padStart(2, '0')} · {module.title}
                       </span>
                     </div>
