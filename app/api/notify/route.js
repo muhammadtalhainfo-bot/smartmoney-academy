@@ -43,7 +43,10 @@ export async function POST(req) {
     });
 
     const data = await response.json();
-    if (!response.ok) return Response.json({ error: 'Failed to send notification', data }, { status: 400 });
+    if (!response.ok) {
+      console.error('OneSignal notification error:', response.status, data);
+      return Response.json({ error: 'Failed to send notification' }, { status: 502 });
+    }
     return Response.json({ success: true, data });
   } catch (err) {
     console.error('Notify error:', err);
