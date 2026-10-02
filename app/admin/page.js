@@ -557,7 +557,7 @@ function BlogSection({ adminDbClient = adminDb }) {
                 background: p.published ? 'rgba(52,211,153,0.1)' : 'rgba(255,255,255,0.05)',
                 border: `1px solid ${p.published ? 'rgba(52,211,153,0.3)' : BORDER}`,
                 borderRadius: '6px', padding: '5px 12px',
-                color: p.published ? '#34D399' : 'rgba(255,255,255,0.4)',
+                color: p.published ? '#34D399' : '#AAB3BF',
                 ...css.mono, fontSize: '10px', cursor: 'pointer',
               }}>{p.published ? '● LIVE' : '○ DRAFT'}</button>
               <a href={`/blog/${p.slug}`} target="_blank" rel="noopener noreferrer" style={{ ...css.btnGhost, padding: '6px 12px', fontSize: '10px', textDecoration: 'none' }}>VIEW ↗</a>
