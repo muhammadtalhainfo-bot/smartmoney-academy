@@ -1,11 +1,11 @@
 export const metadata = {
-  title: 'ICT Trading Resources — Best Prop Firms, Brokers & Tools',
-  description: 'Curated resources for ICT and Smart Money traders — top prop firms (FTMO, The Funded Trader), recommended brokers, charting tools and books every serious trader needs.',
-  keywords: ['best prop firms', 'FTMO review', 'ICT trader resources', 'funded trader program', 'best forex broker ICT', 'TradingView ICT'],
+  title: 'ICT Trading Resources — Prop Firms, Brokers & Tools',
+  description: 'Curated external resources for ICT and Smart Money traders, including prop-firm providers, brokers, charting tools, and educational platforms. Terms and pricing can change.'',
+  keywords: ['prop firms', 'prop firm resources', 'ICT trader resources', 'funded trader program', 'forex brokers', 'TradingView ICT'],
   alternates: { canonical: 'https://ictflow.com/resources' },
   openGraph: {
     title: 'ICT Trading Resources | ICT Flow',
-    description: 'Top prop firms, brokers, and tools for ICT traders. FTMO, The Funded Trader and more.',
+    description: 'External prop-firm, broker, and trading-tool resources for ICT traders. Check each provider for current terms and pricing.',
     url: 'https://ictflow.com/resources',
     siteName: 'ICT Flow',
     images: [{ url: 'https://ictflow.com/og-image.png', width: 1200, height: 630, alt: 'ICT Trading Resources' }],
