@@ -40,7 +40,7 @@ const TERMS = [
   { term: "ITH", full: "Intermediate Term High", cat: "ICT", def: "A swing high positioned between two short-term highs. More significant than STH." },
   { term: "ITL", full: "Intermediate Term Low", cat: "ICT", def: "A swing low positioned between two short-term lows. More significant than STL." },
   { term: "Judas Swing", full: "Judas Swing", cat: "ICT", def: "An ICT-style concept describing a possible directional move during the London Killzone that may sweep Asian-range liquidity before a later move." },
-  { term: "Killzone", full: "ICT Kill Zone", cat: "ICT", def: "4 windows where the algorithm delivers significant price moves. Asian (8PM–12AM), London (2–5AM), NY AM (7–10AM), London Close (10AM–12PM) EST." },
+  { term: "Killzone", full: "ICT Kill Zone", cat: "ICT", def: "Defined time windows used in ICT education to focus analysis and execution. Commonly cited windows include Asian (8PM–12AM), London (2–5AM), NY AM (7–10AM), and London Close (10AM–12PM) New York time; verify the chart timezone and daylight-saving date." },
   { term: "LH", full: "Lower High", cat: "ICT & SMC", def: "Each successive swing high is below the previous — defines a bearish trend structure." },
   { term: "LL", full: "Lower Low", cat: "ICT & SMC", def: "Each successive swing low is below the previous — confirms bearish trend continuation." },
   { term: "LP", full: "Liquidity Pool", cat: "ICT", def: "A cluster of stop-loss orders at a key price level. Common locations: swing highs/lows, equal highs/lows, PDH/PDL, round numbers." },
