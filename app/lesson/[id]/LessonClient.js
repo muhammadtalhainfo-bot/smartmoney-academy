@@ -4,6 +4,7 @@ import { createClient } from '@/lib/supabase';
 import { trackLessonStart, trackLessonComplete, trackShare } from '@/lib/analytics';
 import { MODULES } from '@/lib/curriculum';
 import Link from 'next/link';
+import Image from 'next/image';
 import AdSlot from '@/app/components/AdSlot';
 
 
@@ -228,11 +229,14 @@ export default function LessonClient({ lesson, lessonId, moduleDiagramSrc }) {
 
         {/* ── Module Banner Image ── */}
         <div className="mb-8 rounded-2xl overflow-hidden border border-[var(--border)]" style={{ background: '#0F0F0F' }}>
-          <img
+          <Image
             src={moduleDiagramSrc}
             alt={lesson.title + '  --  ICT concept diagram'}
-            style={{ width: '100%', maxHeight: '380px', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
-            onError={(e) => { e.target.parentElement.style.display = 'none'; }}
+            width={1200}
+            height={380}
+            sizes="(max-width: 768px) 100vw, 896px"
+            style={{ width: '100%', height: '380px', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+            onError={(e) => { e.currentTarget.parentElement.style.display = 'none'; }}
           />
           <div className="px-4 py-3 border-t border-[var(--border)]">
             <p className="font-mono-custom text-xs text-gray-500">{lesson.imageCaption}</p>
