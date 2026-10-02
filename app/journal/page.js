@@ -559,7 +559,7 @@ function Dashboard({ trades, stats, onAdd, onPage }) {
       <div style={S.card}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
           <div style={{ ...S.mono, fontSize: '10px', color: C.text3, letterSpacing: '0.12em' }}>RECENT TRADES</div>
-          <span onClick={() => onPage('trades')} style={{ ...S.mono, fontSize: '10px', color: C.gold, cursor: 'pointer' }}>VIEW ALL →</span>
+          <button type="button" onClick={() => onPage('trades')} style={{ ...S.mono, fontSize: '10px', color: C.gold, cursor: 'pointer', background: 'none', border: 0, padding: 0 }}>VIEW ALL →</button>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           {recent.map((t, i) => {
