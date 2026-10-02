@@ -11,7 +11,7 @@ const LESSONS = {
     sections: [
       {
         title: 'What Is Market Structure?',
-        content: `Market structure is simply the sequence of highs and lows that price creates as it moves. That's it. But the pattern of those highs and lows tells you everything about who is in control — buyers or sellers.
+        content: `Market structure is the sequence of highs and lows that price creates as it moves. Those patterns can help traders describe whether recent price action is making higher highs and higher lows or lower highs and lower lows, but they do not by themselves reveal every participant's intent.
 
 In an uptrend, price creates Higher Highs (HH) and Higher Lows (HL). Each new push up goes higher than the last. Each pullback stops higher than the previous pullback. Buyers are in full control.
 
@@ -96,7 +96,7 @@ This is one possible top-down analysis framework; traders can adapt the timefram
     sections: [
       {
         title: 'What Is Liquidity in ICT?',
-        content: `In traditional finance, "liquidity" means how easily an asset can be bought or sold. But in ICT, liquidity has a very specific meaning: it's the pool of stop-loss orders and resting orders that banks need to fill their massive positions.
+        content: `In traditional finance, "liquidity" means how easily an asset can be bought or sold. In ICT education, liquidity is commonly used to describe areas where stop orders or other resting orders may cluster, such as around visible highs and lows. The location of actual participant orders is not directly observable from a chart.
 
 Think about it this way. For illustration, consider a large EURUSD order. Large orders can face market-impact and liquidity constraints, and an ICT interpretation may describe price moving toward visible liquidity before a reversal. This example is a simplified model, not evidence that institutions deliberately engineer every move or that a reversal must follow.
 
@@ -273,8 +273,8 @@ Risk/reward outcomes vary by setup and market; use the target and stop rules def
     level: 'Intermediate',
     duration: '22 min read',
     category: 'PD Arrays',
-    imageCaption: 'Bullish OB: last bearish candle before a strong bullish move — institutions bought here',
-    intro: `Order Blocks (OBs) are a major price-delivery concept in the ICT methodology. While the FVG shows you WHERE price moved fast, the Order Block shows you exactly WHERE the institution placed their original order. It's the footprint left behind by a bank or hedge fund as they accumulated their position — and traders study how price may react when it revisits these zones.`,
+    imageCaption: 'Bullish OB: last bearish candle before a strong bullish move — an ICT zone studied as a potential reaction area',
+    intro: `Order Blocks (OBs) are a major price-delivery concept in the ICT methodology. While an FVG is used to describe a price imbalance, an Order Block is a chart zone that ICT traders study as a potential area of prior buying or selling. The underlying participant orders and intent cannot be confirmed from the chart alone, so traders should define and test the conditions they use to mark an OB.`,
     sections: [
       {
         title: 'What Is an Order Block?',
@@ -446,13 +446,13 @@ The Asian-range sweep-and-reversal setup is an example traders may study; report
         content: `The AMD framework describes a three-phase structure that traders may use to organize a session narrative:
 
 ACT 1 — ACCUMULATION (Asian Session, 8 PM – 12 AM EST):
-Institutions quietly build positions. Price consolidates in a tight range. Don't trade here — there's no direction, just noise. But DO mark the range because the high and low become critical levels for the next two acts.
+ICT teaching often labels this phase "Accumulation" and studies the Asian range as context for later session analysis. Actual participant positioning cannot be confirmed from the chart, and the session can behave differently across markets and days. Mark the range because its high and low may be useful reference levels.
 
 ACT 2 — MANIPULATION (London Session, 2 AM – 5 AM EST):
 In this framework, the manipulation phase can involve a move opposite the eventual directional move; the sequence and direction are not guaranteed. Some ICT explanations describe a bullish example as London first moving below the Asian range and a bearish example as London first moving above it. Treat these as hypotheses to test rather than assuming a fixed sequence, retail positioning, or institutional intent.
 
 ACT 3 — DISTRIBUTION (New York AM, 7 AM – 12 PM EST):
-The real, sustained move. After the Judas Swing is complete, price moves powerfully in the TRUE direction. This is where 80% of the daily range is created. This is where ICT traders make their money — catching Act 3 after identifying Acts 1 and 2.`,
+ICT teaching often frames this window as "Distribution" after the earlier session phases. Price can expand during New York AM, but the direction, range contribution and usefulness of the pattern vary by market and day. Treat the three-act sequence as a testable framework rather than assuming the first two phases determine the outcome.`,
         highlight: '📌 Treat the London open and any initial move as context. A Judas-style move can occur, but the first move is not reliably the wrong direction every day.',
       },
       {
