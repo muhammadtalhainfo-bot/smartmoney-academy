@@ -2,6 +2,7 @@
 
 import { cookies, headers } from 'next/headers';
 import crypto from 'node:crypto';
+import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
 
 const COOKIE_NAME = 'ictflow_admin_session';
@@ -127,6 +128,36 @@ export async function adminDb(action, payload = {}) {
       if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(userId)) {
         throw new Error('Invalid user ID.');
       }
+
+      const { data: profile, error: profileLookupError } = await supabase
+        .from('profiles')
+        .select('stripe_customer_id')
+        .eq('id', userId)
+        .maybeSingle();
+      if (profileLookupError) throw profileLookupError;
+
+      const customerId = profile?.stripe_customer_id;
+      if (customerId) {
+        const stripeSecret = process.env.STRIPE_SECRET_KEY;
+        if (!stripeSecret) {
+          throw new Error('Stripe is not configured; account deletion is blocked to prevent orphaned billing.');
+        }
+
+        const stripe = new Stripe(stripeSecret);
+        const { data: subscriptions, error: listError } = await stripe.subscriptions.list({
+          customer: customerId,
+          status: 'all',
+          limit: 100,
+        });
+        if (listError) throw listError;
+
+        for (const subscription of subscriptions || []) {
+          if (['active', 'trialing', 'past_due', 'unpaid'].includes(subscription.status)) {
+            await stripe.subscriptions.cancel(subscription.id);
+          }
+        }
+      }
+
       const { error } = await supabase.auth.admin.deleteUser(userId);
       if (error) throw error;
       return { ok: true };
