@@ -185,10 +185,10 @@ function DashboardSection({ users, emails, trades, proUsers, loading, onRefresh 
             <div style={css.card}>
               <div style={{ ...css.mono, fontSize: '10px', color: G, marginBottom: '14px', letterSpacing: '0.15em' }}>// TOP USERS BY XP</div>
               {topUsers.length === 0 ? (
-                <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.5)', textAlign: 'center', padding: '20px' }}>No users yet</div>
+                <div style={{ ...css.mono, fontSize: '11px', color: '#AAB3BF', textAlign: 'center', padding: '20px' }}>No users yet</div>
               ) : topUsers.map((u, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '8px 0', borderBottom: `1px solid ${BORDER}` }}>
-                  <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(255,255,255,0.5)', width: '18px' }}>#{i + 1}</div>
+                  <div style={{ ...css.mono, fontSize: '10px', color: '#AAB3BF', width: '18px' }}>#{i + 1}</div>
                   <div style={{ flex: 1, fontSize: '13px' }}>{u.username || u.email?.split('@')[0] || '—'}</div>
                   <div style={{ ...css.mono, fontSize: '11px', color: G }}>{u.xp || 0} XP</div>
                   <Badge color={u.is_pro ? '#34D399' : '#B8B8B8'}>{u.is_pro ? 'PRO' : 'FREE'}</Badge>
@@ -199,7 +199,7 @@ function DashboardSection({ users, emails, trades, proUsers, loading, onRefresh 
             <div style={css.card}>
               <div style={{ ...css.mono, fontSize: '10px', color: G, marginBottom: '14px', letterSpacing: '0.15em' }}>// RECENT EMAIL LEADS</div>
               {recentEmails.length === 0 ? (
-                <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.5)', textAlign: 'center', padding: '20px' }}>No email signups yet</div>
+                <div style={{ ...css.mono, fontSize: '11px', color: '#AAB3BF', textAlign: 'center', padding: '20px' }}>No email signups yet</div>
               ) : recentEmails.map((e, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '8px 0', borderBottom: `1px solid ${BORDER}` }}>
                   <div style={{ fontSize: '16px' }}>📧</div>
@@ -598,7 +598,7 @@ function CoursesSection() {
         <Select value={filterLevel} onChange={e => setFilterLevel(e.target.value)}
           options={[{ value: 'all', label: 'All Levels' }, 'Beginner', 'Intermediate', 'Advanced', 'SMC'].map(v => typeof v === 'string' ? { value: v, label: v } : v)}
           style={{ width: '180px' }} />
-        <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center' }}>
+        <div style={{ ...css.mono, fontSize: '11px', color: '#AAB3BF', display: 'flex', alignItems: 'center' }}>
           {filtered.length} modules · {filtered.reduce((a, m) => a + m.lessons, 0)} lessons
         </div>
       </div>
@@ -642,7 +642,7 @@ function CoursesSection() {
                 <div style={{ width: '34px', height: '34px', borderRadius: '8px', background: `${G}18`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px', flexShrink: 0 }}>{m.emoji}</div>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontSize: '14px', fontWeight: 600, marginBottom: '2px' }}>{m.title}</div>
-                  <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(255,255,255,0.5)' }}>{m.lessons} lessons · {m.duration} · {m.tag}</div>
+                  <div style={{ ...css.mono, fontSize: '10px', color: '#AAB3BF' }}>{m.lessons} lessons · {m.duration} · {m.tag}</div>
                 </div>
                 <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
                   <Badge color={m.level === 'Beginner' ? '#34D399' : m.level === 'Intermediate' ? G : '#F87171'}>{m.level}</Badge>
@@ -674,7 +674,7 @@ function PagesSection() {
             <div style={{ flex: 1 }}>
               <div style={{ fontWeight: 600, fontSize: '14px', marginBottom: '2px' }}>{p.label}</div>
               <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(232,197,71,0.6)' }}>{p.href}</div>
-              <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.5)', marginTop: '3px' }}>{p.desc}</div>
+              <div style={{ fontSize: '12px', color: '#AAB3BF', marginTop: '3px' }}>{p.desc}</div>
             </div>
             <a href={p.href} target="_blank" rel="noopener noreferrer"
               style={{ ...css.btn, padding: '6px 12px', fontSize: '10px', textDecoration: 'none' }}
@@ -801,7 +801,7 @@ function PricingSection() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
               <div style={{ fontSize: '24px', color: p.color, fontWeight: 700 }}>$</div>
               <Input value={p.value} onChange={e => p.set(e.target.value)} style={{ fontSize: '28px', fontWeight: 700, color: p.color, width: '120px' }} />
-              <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.5)' }}>{p.suffix}</div>
+              <div style={{ ...css.mono, fontSize: '11px', color: '#AAB3BF' }}>{p.suffix}</div>
             </div>
           </div>
         ))}
@@ -1195,7 +1195,7 @@ export default function AdminPage() {
         {/* Footer */}
         <div style={{ padding: '10px 6px', borderTop: `1px solid ${BORDER}` }}>
           <a href="/" target="_blank" rel="noopener noreferrer"
-            style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 10px', borderRadius: '8px', color: 'rgba(255,255,255,0.5)', textDecoration: 'none', justifyContent: sidebarCollapsed ? 'center' : 'flex-start' }}>
+            style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 10px', borderRadius: '8px', color: '#AAB3BF', textDecoration: 'none', justifyContent: sidebarCollapsed ? 'center' : 'flex-start' }}>
             <span>🌐</span>
             {!sidebarCollapsed && <span style={{ ...css.mono, fontSize: '10px' }}>VIEW SITE ↗</span>}
           </a>
