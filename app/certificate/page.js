@@ -12,6 +12,7 @@ export default function CertificatePage() {
   const [profile, setProfile] = useState(null);
   const [certificate, setCertificate] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [accessError, setAccessError] = useState('');
 
   useEffect(() => {
     async function load() {
@@ -20,7 +21,8 @@ export default function CertificatePage() {
         const data = await response.json();
 
         if (!response.ok) {
-          setLoading(false);
+          const message = data?.error || 'Unable to load certificate data.';
+          setAccessError(response.status === 401 ? 'Sign in required to view your certificate.' : message);
           return;
         }
 
@@ -30,6 +32,7 @@ export default function CertificatePage() {
         setProfile({ username: data.name, xp: data.xp || 0 });
       } catch (error) {
         console.error('Certificate page error:', error);
+        setAccessError('Unable to load certificate data. Please try again.');
       } finally {
         setLoading(false);
       }
@@ -63,11 +66,15 @@ export default function CertificatePage() {
 
         {loading ? (
           <div style={{ textAlign: 'center', padding: '80px', fontFamily: 'DM Mono, monospace', color: 'rgba(255,255,255,0.6)' }}>LOADING...</div>
-        ) : !user ? (
+        ) : accessError ? (
           <div style={{ textAlign: 'center', padding: '80px' }}>
-            <div className="font-display" style={{ fontSize: '48px', color: 'white', marginBottom: '16px' }}>SIGN IN REQUIRED</div>
-            <p style={{ color: 'rgba(255,255,255,0.7)', marginBottom: '24px' }}>You need an account to view your certificate.</p>
-            <Link href="/auth" style={{ padding: '14px 32px', background: 'linear-gradient(135deg,#E8C547,#8A6B28)', borderRadius: '10px', color: 'black', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.1em' }}>SIGN IN →</Link>
+            <div className="font-display" style={{ fontSize: 'clamp(40px, 7vw, 64px)', color: 'white', marginBottom: '16px' }}>
+              {accessError.toLowerCase().includes('sign in') ? 'SIGN IN REQUIRED' : 'CERTIFICATE UNAVAILABLE'}
+            </div>
+            <p style={{ color: '#D0D6DE', margin: '0 auto 24px', maxWidth: '520px', lineHeight: 1.7 }}>{accessError}</p>
+            <Link href={accessError.toLowerCase().includes('sign in') ? '/auth' : '/courses'} style={{ padding: '14px 32px', background: 'linear-gradient(135deg,#E8C547,#8A6B28)', borderRadius: '10px', color: 'black', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.1em' }}>
+              {accessError.toLowerCase().includes('sign in') ? 'SIGN IN →' : 'CONTINUE LEARNING →'}
+            </Link>
           </div>
         ) : !eligible ? (
           /* PROGRESS VIEW */
