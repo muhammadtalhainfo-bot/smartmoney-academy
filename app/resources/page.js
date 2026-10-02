@@ -39,7 +39,7 @@ export default function ResourcesPage() {
         <div style={{display:'inline-flex',alignItems:'center',gap:'8px',padding:'6px 16px',borderRadius:'100px',border:'1px solid var(--border)',background:'rgba(212,168,67,.04)',fontFamily:'DM Mono,monospace',fontSize:'13px',letterSpacing:'.15em',color:'#E8C547',marginBottom:'24px'}}>TRADING RESOURCES</div>
         <h1 className="font-display shine" style={{fontSize:'clamp(52px,10vw,96px)',lineHeight:1,marginBottom:'20px'}}>TRADING RESOURCES</h1>
         <p style={{color:'rgba(255,255,255,.55)',fontSize:'16px',fontWeight:300,lineHeight:1.7,maxWidth:'500px',margin:'0 auto 12px'}}>A collection of external trading platforms and educational resources. Check each provider's current terms, pricing, and availability before using any service.</p>
-        <p style={{color:'#E8C547',fontSize:'12px',fontFamily:'DM Mono,monospace',letterSpacing:'.1em'}}>⚠️ TRADING INVOLVES RISK — ONLY USE CAPITAL YOU CAN AFFORD TO LOSE</p>
+        <p style={{color:'#E8C547',fontSize:'12px',fontFamily:'DM Mono,monospace',letterSpacing:'.1em'}}>⚠️ TRADING INVOLVES RISK — REVIEW PROVIDER TERMS AND ONLY USE CAPITAL YOU CAN AFFORD TO LOSE</p>
       </div>
     </section>
     <section style={{position:'sticky',top:'64px',zIndex:30,background:'rgba(8,8,8,.97)',backdropFilter:'blur(20px)',borderBottom:'1px solid var(--border)',padding:'0 24px'}}>
@@ -48,11 +48,11 @@ export default function ResourcesPage() {
       </div>
     </section>
     <div style={{maxWidth:'1100px',margin:'0 auto',padding:'48px 24px'}}>
-      {activeTab==='prop' && <div id="resource-panel-prop" role="tabpanel"><ResourceGrid title="PROP TRADING FIRMS" subtitle="Get funded up to $200,000 — trade with their capital, keep the profits" items={PROP_FIRMS} primary="funded"/></div>}
+      {activeTab==='prop' && <div id="resource-panel-prop" role="tabpanel"><ResourceGrid title="PROP TRADING FIRMS" subtitle="Evaluation programs can provide access to simulated or provider-defined trading accounts; current terms, fees, limits, and eligibility vary." items={PROP_FIRMS} primary="funded"/></div>}
       {activeTab==='brokers' && <div id="resource-panel-brokers" role="tabpanel"><ResourceGrid title="BROKERS" subtitle="For personal trading — execution conditions and account structures vary" items={BROKERS} primary="account"/></div>}
       {activeTab==='tools' && <div id="resource-panel-tools" role="tabpanel"><ResourceGrid title="TOOLS & PLATFORMS" subtitle="Tools and platforms commonly used for charting and trading workflows" items={TOOLS} primary="started"/></div>}
       <div style={{marginTop:'64px',padding:'24px',background:'rgba(212,168,67,.03)',border:'1px solid rgba(232,197,71,.95)',borderRadius:'12px'}}>
-        <p style={{fontFamily:'DM Mono,monospace',fontSize:'11px',color:'rgba(255,255,255,.6)',lineHeight:1.8,letterSpacing:'.05em',margin:0}}><span style={{color:'#E8C547'}}>DISCLAIMER:</span> This page lists external resources for educational convenience. ICT Flow does not receive payments from these links. Provider terms, pricing, and availability can change. Trading financial instruments involves significant risk of loss and is not suitable for all investors. Past performance is not indicative of future results. This is not financial advice.</p>
+        <p style={{fontFamily:'DM Mono,monospace',fontSize:'11px',color:'rgba(255,255,255,.6)',lineHeight:1.8,letterSpacing:'.05em',margin:0}}><span style={{color:'#E8C547'}}>DISCLAIMER:</span> This page lists external resources for educational convenience. Some links may be affiliate links and may generate a commission for ICT Flow at no additional cost to you. Provider terms, pricing, and availability can change. Trading financial instruments involves significant risk of loss and is not suitable for all investors. Past performance is not indicative of future results. This is not financial advice.</p>
       </div>
     </div>
     <Footer/>
