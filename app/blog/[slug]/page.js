@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 import { POSTS } from '../posts';
@@ -68,10 +69,13 @@ export default async function BlogPost({ params }) {
       <Navbar active="/blog" />
 
       <div style={{ height: '320px', overflow: 'hidden', position: 'relative', background: '#111111' }}>
-        <img
+        <Image
           src={post.image || '/images/market-structure.png'}
           alt={post.title}
-          style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.4 }}
+          fill
+          sizes="100vw"
+          priority
+          style={{ objectFit: 'cover', opacity: 0.4 }}
         />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 30%, #080808)' }} />
       </div>
