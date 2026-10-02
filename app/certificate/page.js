@@ -150,23 +150,23 @@ export default function CertificatePage() {
                 {[[TOTAL_MODULES, 'Modules'], [certificate?.totalLessons || 203, 'Lessons'], [certificate?.xp || profile?.xp || 0, 'XP Earned']].map(([val, label]) => (
                   <div key={label} style={{ textAlign: 'center' }}>
                     <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '32px', color: '#E8C547' }}>{val}</div>
-                    <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#999', letterSpacing: '0.15em' }}>{label}</div>
+                    <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#5B6573', letterSpacing: '0.15em' }}>{label}</div>
                   </div>
                 ))}
               </div>
 
               <div style={{ borderTop: '1px solid #e5e5e5', paddingTop: '24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div style={{ textAlign: 'left' }}>
-                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#999', letterSpacing: '0.1em', marginBottom: '4px' }}>DATE ISSUED</div>
+                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#5B6573', letterSpacing: '0.1em', marginBottom: '4px' }}>DATE ISSUED</div>
                   <div style={{ fontFamily: 'Georgia, serif', fontSize: '13px', color: '#333' }}>{date}</div>
                 </div>
                 <div style={{ textAlign: 'center' }}>
-                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#999', letterSpacing: '0.1em', marginBottom: '4px' }}>CREDENTIAL ID</div>
+                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#5B6573', letterSpacing: '0.1em', marginBottom: '4px' }}>CREDENTIAL ID</div>
                   <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#E8C547' }}>{certificate?.credentialId || '—'}</div>
                 </div>
                 <div style={{ textAlign: 'right' }}>
                   <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '20px', color: '#E8C547', letterSpacing: '0.1em' }}>ICT FLOW</div>
-                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '8px', color: '#999', letterSpacing: '0.15em' }}>ACADEMY</div>
+                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '8px', color: '#5B6573', letterSpacing: '0.15em' }}>ACADEMY</div>
                 </div>
               </div>
             </div>
