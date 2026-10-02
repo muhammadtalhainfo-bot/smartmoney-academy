@@ -203,7 +203,7 @@ const EPISODES = [
     duration: "2h 40m",
     youtube: null,
     concepts: ["London Open", "Midnight Open", "NDOG", "Session Extremes", "Daily Range"],
-    summary: "Define the range from NY Midnight Open to London Open. Algorithm reacts to session extremes. Essential for capturing the initial expansion of the daily range during London.",
+    summary: "Define the range from NY Midnight Open to London Open. Some ICT traders study session extremes as contextual reference points for London price delivery; the relationship should be tested rather than assumed.",
     keyLesson: "The New York Midnight Open (12:00 AM EST) is an ICT reference level that some traders study alongside daily price delivery; its role should be tested rather than assumed.",
     tags: ["Session Timing", "London", "Foundation"]
   },
@@ -313,7 +313,7 @@ const EPISODES = [
     duration: "2h 35m",
     youtube: null,
     concepts: ["FVG Validity", "Liquidity Run Required", "Structure Shift Required", "ES Examples"],
-    summary: "Not every FVG is tradeable. Must occur AFTER a liquidity run AND a structure shift to be valid. Quality over quantity — fewer, higher-conviction setups.",
+    summary: "Not every FVG is necessarily a trade setup. In this model, a liquidity event and structure shift can be used as additional filters; define the complete rule set and test it rather than treating those conditions as universal requirements.",
     keyLesson: "This lesson presents three example conditions for an FVG entry: a liquidity sweep, an MSS, and alignment with HTF bias. Treat them as a testable framework rather than universal requirements.",
     tags: ["FVG", "NQ/ES", "Entry Models"]
   },
@@ -333,7 +333,7 @@ const EPISODES = [
     duration: "2h 25m",
     youtube: null,
     concepts: ["FVG", "ES Precision", "Real Examples", "Pattern Repetition"],
-    summary: "Additional E-Mini S&P 500 FVG examples reinforcing the three-criteria framework. The algorithm repeats the same patterns — train your eye to see them instantly.",
+    summary: "Additional E-Mini S&P 500 FVG examples reinforcing a three-criteria framework. Repeated chart patterns can be studied and tested, but similar-looking formations do not establish a fixed algorithmic process.",
     keyLesson: "This lesson encourages repeated historical study to recognize recurring patterns and test hypotheses; historical patterns do not reliably reveal the next price move.",
     tags: ["FVG", "NQ/ES", "Review"]
   },
@@ -393,7 +393,7 @@ const EPISODES = [
     duration: "3h 00m",
     youtube: null,
     concepts: ["20-Minute Windows", "Algorithmic Timing", "Macro Precision", "Time = Edge"],
-    summary: "Theoretical deep dive into time-based macro windows. Specific 20-minute windows during the day when the algorithm is most active seeking objectives. Time is the most critical variable.",
+    summary: "Theoretical deep dive into time-based macro windows. Some ICT traders study recurring time windows as a timing variable; market behavior can vary by instrument, session, and day, so the windows should be treated as testable context.",
     keyLesson: "The 20-minute macro windows are: 8:50-9:10, 9:50-10:10, 10:50-11:10, 11:50-12:10, 1:10-1:30, 1:50-2:10, 2:50-3:10, 3:30-4:00 EST.",
     tags: ["Macros", "Theory", "Must Watch", "Algorithm"]
   },
@@ -403,7 +403,7 @@ const EPISODES = [
     duration: "2h 50m",
     youtube: null,
     concepts: ["Daily Bias Keys", "Bias Checklist", "Intermarket", "Draw on Liquidity"],
-    summary: "Final checklist for establishing daily market direction. Primary determinants: Intermarket relationship (SMT) and Draw on Liquidity (DOL). These two factors define bias above all else.",
+    summary: "Final checklist for studying daily market direction. Intermarket relationships (SMT) and Draw on Liquidity (DOL) are two framework inputs; they should be evaluated alongside broader context rather than treated as sufficient on their own.",
     keyLesson: "Daily Bias checklist: 1) Where is the HTF draw on liquidity? 2) Is SMT confirming? 3) Which killzone sets up the delivery? 4) What is the AMD script for today?",
     tags: ["Bias", "Must Watch", "Foundation", "Checklist"]
   },
