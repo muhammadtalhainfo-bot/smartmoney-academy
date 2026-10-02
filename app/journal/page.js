@@ -124,8 +124,8 @@ const StatCard = ({ label, value, sub, color = C.gold, accent }) => (
   </div>
 );
 
-const Tag = ({ children, color = C.gold, onClick, active }) => (
-  <span onClick={onClick} style={{
+const Tag = ({ children, color = C.gold, onClick, active }) => {
+  const style = {
     display: 'inline-flex', alignItems: 'center',
     padding: '4px 11px', borderRadius: '20px', cursor: onClick ? 'pointer' : 'default',
     border: `1px solid ${active ? color : C.border2}`,
@@ -133,8 +133,10 @@ const Tag = ({ children, color = C.gold, onClick, active }) => (
     color: active ? color : C.text3,
     fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.05em',
     transition: 'all 0.15s',
-  }}>{children}</span>
-);
+  };
+  if (onClick) return <button type="button" onClick={onClick} aria-pressed={!!active} style={style}>{children}</button>;
+  return <span style={style}>{children}</span>;
+};
 
 const SectionHead = ({ title, sub, action }) => (
   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '22px' }}>
