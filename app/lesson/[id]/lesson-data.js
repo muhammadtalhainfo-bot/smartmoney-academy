@@ -374,16 +374,16 @@ There are four main Killzones, each serving a specific role in the daily narrati
       {
         title: 'The Four Killzones',
         content: `Asian Killzone (8:00 PM – 12:00 AM EST):
-Role: ACCUMULATION. Price consolidates and builds the Asian Range. This is where smart money quietly accumulates positions. The high and low of the Asian session = critical levels. Price may revisit or sweep one of these levels during London or New York. Mark them every single day.
+Role: ACCUMULATION. Price consolidates and builds the Asian Range. ICT teaching sometimes frames this session as accumulation, but actual participant positioning cannot be confirmed from the chart alone. The high and low of the Asian session = critical levels. Price may revisit or sweep one of these levels during London or New York. Mark them every single day.
 
 London Killzone (2:00 AM – 5:00 AM EST):
-Role: MANIPULATION / JUDAS SWING. This is where the fake move happens. London will often sweep one side of the Asian range first (the Judas Swing) — tricking retail into a trade — before reversing hard in the true direction. This is ICT's "don't trade the first 15 minutes of London" rule. The sweep of Asian high/low during this window = a liquidity grab signal.
+Role: MANIPULATION / JUDAS SWING. ICT teaching often frames this window as the Manipulation/Judas Swing phase. Price may sweep one side of the Asian range before reversing, but the move, participant intent, and direction can vary by market and day. This is ICT's "don't trade the first 15 minutes of London" rule. The sweep of Asian high/low during this window = a liquidity grab signal.
 
 New York AM Killzone (7:00 AM – 10:00 AM EST) — or 8:30-11:00 AM:
-Role: DISTRIBUTION. The real, sustained directional move. This is where institutional positions that were accumulated in Asia and manipulated in London get DISTRIBUTED. The biggest daily candles form here. The Silver Bullet trade runs entirely within this window (specifically 10:00-11:00 AM EST for the NY AM Silver Bullet).
+Role: DISTRIBUTION. ICT teaching often frames NY AM as a primary distribution window. Volatility and directional behavior can vary by market and day, and institutional positioning cannot be confirmed from the chart alone. The Silver Bullet trade runs entirely within this window (specifically 10:00-11:00 AM EST for the NY AM Silver Bullet).
 
 London Close Killzone (10:00 AM – 12:00 PM EST):
-Role: REVERSAL / PROFIT TAKING. As London banks close their books, they take profits on positions opened during the London Killzone. This can coincide with a retracement or reversal of the NY AM move, but the behavior varies by session and market. ICT traders either close positions here or look for a fade trade.`,
+Role: REVERSAL / PROFIT TAKING. Some ICT traders interpret London Close activity as potential profit-taking or a retracement/reversal window. The behavior varies by session and market, and specific bank positioning cannot be confirmed from a chart. ICT traders either close positions here or look for a fade trade.`,
         highlight: '📌 London = fake out (Judas). NY AM = real move. This two-step pattern is commonly taught within the AMD framework; its occurrence and usefulness should be evaluated across the market and session being studied.',
       },
       {
