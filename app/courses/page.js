@@ -96,7 +96,7 @@ function ModuleCard({ mod, index }) {
       {mod.image && (
         <div style={{ height: '148px', overflow: 'hidden', background: '#090909', borderBottom: '1px solid rgba(255,255,255,0.04)', flexShrink: 0 }}>
           <ModuleBanner
-            id={mod.id >= 1 && mod.id <= 13 ? String(mod.id).padStart(2, '0') : mod.id === 14 ? '28' : `module-${mod.id}`}
+            id={mod.id >= 1 && mod.id <= 14 ? String(mod.id).padStart(2, '0') : `module-${mod.id}`}
             title={mod.title}
             label={mod.level}
             levelColor={lvl}

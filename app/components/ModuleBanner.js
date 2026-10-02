@@ -347,7 +347,7 @@ const BANNERS = {
     </>
   ),
 
-  '28': ({ w, h }) => (  // Top-Down Analysis — MTF pyramid
+  '14': ({ w, h }) => (  // Top-Down Analysis — MTF pyramid
     <>
       <GridLines w={w} h={h} spacing={36} opacity={0.03} />
       {/* Timeframe pyramid */}
@@ -369,6 +369,22 @@ const BANNERS = {
     </>
   ),
 
+  // ── Backtesting & Model Development ──
+  '28': ({ w, h }) => (
+    <>
+      <GridLines w={w} h={h} spacing={36} opacity={0.03} />
+      <rect x={28} y={24} width={w - 56} height={h - 48} rx="5" fill="rgba(129,140,248,0.05)" stroke="#818CF8" strokeWidth="0.9" strokeOpacity="0.45" strokeDasharray="4,3" />
+      <text x={w / 2} y={48} textAnchor="middle" fontFamily="monospace" fontSize="9" fill="#818CF8" fillOpacity="0.85">BACKTESTING</text>
+      {[[55,86,78,0.34],[118,70,92,0.42],[185,94,62,0.28],[238,54,104,0.52]].map(([x,y,height,opacity],i) => (
+        <g key={i}>
+          <line x1={x} y1={y - 10} x2={x} y2={y + height + 8} stroke={GOLD} strokeWidth="1" strokeOpacity="0.35" />
+          <rect x={x - 5} y={y} width={10} height={height} rx="2" fill={GOLD} fillOpacity={opacity} stroke={GOLD} strokeWidth="0.8" strokeOpacity="0.6" />
+        </g>
+      ))}
+      <polyline points={"28," + (h - 28) + " 72," + (h - 52) + " 118," + (h - 44) + " 164," + (h - 76) + " 210," + (h - 66) + " " + (w - 28) + "," + (h - 96)} fill="none" stroke="#34D399" strokeWidth="1.5" strokeOpacity="0.72" />
+      <text x={w - 28} y={h - 102} textAnchor="end" fontFamily="monospace" fontSize="7.5" fill="#34D399" fillOpacity="0.7">OUT-OF-SAMPLE</text>
+    </>
+  ),
   // ── BLOG POSTS ──
 
   'what-is-ict-trading': ({ w, h }) => (
