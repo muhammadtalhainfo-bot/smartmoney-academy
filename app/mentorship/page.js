@@ -364,7 +364,7 @@ const EPISODES = [
     youtube: null,
     concepts: ["PA Review", "Execution Review", "Trade Management"],
     summary: "Third PA review focusing on trade management decisions — where to take partials, when to move stop to break-even, and how to scale into HTF objectives.",
-    keyLesson: "Move stop to break-even after price reaches the first structural level. Never let a confirmed entry turn into a full loss.",
+    keyLesson: "One testable trade-management rule is to move the stop to break-even after a predefined structural milestone. The exact rule should be part of the trader's plan and tested rather than assumed to prevent every loss.",
     tags: ["Review", "Risk Management", "Trade Management"]
   },
   {
