@@ -11,7 +11,7 @@ const TOOLS = [
     emoji: '✅',
     title: 'ICT Risk Management Checklist',
     subtitle: 'Pre-Trade · Post-Trade · Weekly · Monthly',
-    desc: 'The complete checklist professional ICT traders use before every trade, after every session, and for weekly and monthly reviews. Takes 30 seconds and saves accounts.',
+    desc: 'A structured checklist for pre-trade, post-trade, weekly, and monthly review. Use it as a repeatable process and adapt the rules to your own tested plan.',
     color: '#34D399',
     sections: [
       {
@@ -64,17 +64,17 @@ const TOOLS = [
       {
         title: 'THE NON-NEGOTIABLES',
         items: [
-          { label: 'THESE ARE NEVER BROKEN', checks: [
-            'NEVER risk more than 2% per trade',
-            'NEVER trade without a stop loss',
-            'NEVER move your stop loss further away after entry',
-            'NEVER revenge trade',
-            'NEVER trade outside killzones',
-            'NEVER trade against daily bias',
-            'NEVER risk more than 6% portfolio heat total',
-            'NEVER skip journaling',
-            'NEVER trade when emotional',
-            'NEVER change strategy mid-month',
+          { label: 'EXAMPLE HARD RULES TO DEFINE IN YOUR PLAN', checks: [
+            'Define a maximum risk per trade and do not exceed it',
+            'Use a predefined stop-loss rule unless your documented strategy explicitly specifies otherwise',
+            'Do not widen the stop after entry unless your tested rules explicitly allow it',
+            'Do not revenge trade; pause and follow your recovery process',
+            'Define whether killzones are required by your tested strategy',
+            'Define how daily bias affects eligibility and what invalidates it',
+            'Define a portfolio-heat ceiling appropriate to your account and strategy',
+            'Record the trades required by your review process',
+            'Define objective conditions for stepping away from the market',
+            'Change rules through a documented review process rather than impulsively during live trading',
           ]},
         ],
       },
