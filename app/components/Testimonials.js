@@ -112,7 +112,7 @@ export default function Testimonials() {
         </div>
 
         {/* BOTTOM NOTE */}
-        <p style={{ textAlign: 'center', fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.55)', letterSpacing: '0.1em', marginTop: '40px' }}>
+        <p style={{ textAlign: 'center', fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#B9C1CC', letterSpacing: '0.1em', marginTop: '40px' }}>
           RESULTS MAY VARY · TRADING INVOLVES RISK · THESE ARE INDIVIDUAL EXPERIENCES
         </p>
       </div>

@@ -138,7 +138,7 @@ function AuthPageInner() {
 
         .auth-input { background: #141414; border: 1px solid #E8C547; border-radius: 10px; color: #F5F5F5; padding: 12px 16px; font-size: 15px; font-family: 'DM Sans', sans-serif; outline: none; width: 100%; transition: border-color 0.2s; }
         .auth-input:focus { border-color: #E8C547; }
-        .auth-input::placeholder { color: rgba(255,255,255,0.55); }
+        .auth-input::placeholder { color: #B9C1CC; }
       `}</style>
 
       <div style={{ width: '100%', maxWidth: '420px' }}>
@@ -180,7 +180,7 @@ function AuthPageInner() {
               </button>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
                 <div style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.18)' }} />
-                <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.55)', letterSpacing: '0.1em' }}>OR</span>
+                <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#B9C1CC', letterSpacing: '0.1em' }}>OR</span>
                 <div style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.18)' }} />
               </div>
 {!isLogin && (
@@ -253,7 +253,7 @@ function AuthPageInner() {
           </div>
         </div>
 
-        <p style={{ textAlign: 'center', marginTop: '24px', fontFamily: 'DM Mono', fontSize: '11px', color: 'rgba(255,255,255,0.55)' }}>
+        <p style={{ textAlign: 'center', marginTop: '24px', fontFamily: 'DM Mono', fontSize: '11px', color: '#B9C1CC' }}>
           Free access to all 38 modules
         </p>
 

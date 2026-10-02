@@ -170,7 +170,7 @@ export default function ToolsPage() {
             TRADING<br />
             <span style={{ color: '#D4A843' }}>TOOLS</span>
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '15px', maxWidth: '480px', margin: '0 auto', lineHeight: 1.6 }}>
+          <p style={{ color: '#B9C1CC', fontSize: '15px', maxWidth: '480px', margin: '0 auto', lineHeight: 1.6 }}>
             Professional trading tools for disciplined ICT study. The core checklist is free; the full trading-plan template is a Pro tool.
           </p>
         </section>
@@ -187,7 +187,7 @@ export default function ToolsPage() {
                   borderRadius: '10px',
                   border: `1px solid ${activeTool === t.id ? t.color : 'rgba(255,255,255,0.08)'}`,
                   background: activeTool === t.id ? `${t.color}18` : 'transparent',
-                  color: activeTool === t.id ? t.color : 'rgba(255,255,255,0.5)',
+                  color: activeTool === t.id ? t.color : '#AAB3BF',
                   cursor: 'pointer',
                   fontSize: '13px',
                   fontFamily: 'DM Mono, monospace',
@@ -205,7 +205,7 @@ export default function ToolsPage() {
               <div style={{ fontSize: '34px', marginBottom: '12px' }}>🔒</div>
               <div className="font-mono-c" style={{ fontSize: '11px', letterSpacing: '2px', color: '#E8C547', marginBottom: '10px' }}>// PRO TOOL</div>
               <h2 className="font-display" style={{ fontSize: '38px', color: 'white', marginBottom: '10px' }}>ICT TRADING PLAN TEMPLATE</h2>
-              <p style={{ color: 'rgba(255,255,255,0.55)', maxWidth: '520px', margin: '0 auto 24px', lineHeight: 1.7, fontSize: '14px' }}>
+              <p style={{ color: '#B9C1CC', maxWidth: '520px', margin: '0 auto 24px', lineHeight: 1.7, fontSize: '14px' }}>
                 The checklist stays free. The full professional trading-plan template is included with Pro access, together with the advanced curriculum and ad-free experience.
               </p>
               <Link href="/pricing" style={{ display: 'inline-block', padding: '13px 26px', borderRadius: '10px', background: 'linear-gradient(135deg,#E8C547,#F0C96A)', color: '#080808', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em' }}>
@@ -224,7 +224,7 @@ export default function ToolsPage() {
                 <h2 className="font-display" style={{ fontSize: '32px', color: 'white', marginBottom: '8px' }}>
                   {tool.emoji} {tool.title}
                 </h2>
-                <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '14px', lineHeight: 1.6, maxWidth: '560px' }}>
+                <p style={{ color: '#B9C1CC', fontSize: '14px', lineHeight: 1.6, maxWidth: '560px' }}>
                   {tool.desc}
                 </p>
               </div>

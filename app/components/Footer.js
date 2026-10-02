@@ -72,7 +72,7 @@ export default function Footer() {
 
         {/* BOTTOM BAR */}
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '24px', display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.55)', letterSpacing: '0.08em' }}>
+          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#B9C1CC', letterSpacing: '0.08em' }}>
             FOR EDUCATIONAL PURPOSES ONLY · NOT FINANCIAL ADVICE
           </div>
           <div style={{ display: 'flex', gap: '16px' }}>

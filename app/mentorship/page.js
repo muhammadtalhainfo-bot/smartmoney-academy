@@ -484,7 +484,7 @@ export default function MentorshipPage() {
         .tag-pill { cursor: pointer; transition: all 0.15s; }
         .progress-bar { background: rgba(212,168,67,0.22); border-radius: 99px; overflow: hidden; height: 6px; }
         .progress-fill { background: linear-gradient(90deg, #8A6B28, #E8C547, #F0C96A); height: 6px; border-radius: 99px; transition: width 0.8s ease; }
-        input::placeholder { color: rgba(255,255,255,0.55); }
+        input::placeholder { color: #B9C1CC; }
         input:focus { outline: none; border-color: rgba(232,197,71,0.95) !important; }
         ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: #0A0A0A; } ::-webkit-scrollbar-thumb { background: #E8C547; border-radius: 4px; }
       `}</style>
@@ -499,7 +499,7 @@ export default function MentorshipPage() {
             <span style={{ color: 'white' }}>ICT 2022 </span>
             <span style={{ background: 'linear-gradient(135deg, #8A6B28, #E8C547, #F0C96A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>MENTORSHIP</span>
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '16px', maxWidth: '640px', lineHeight: 1.7, fontWeight: 300, marginBottom: '32px' }}>
+          <p style={{ color: '#B9C1CC', fontSize: '16px', maxWidth: '640px', lineHeight: 1.7, fontWeight: 300, marginBottom: '32px' }}>
             The complete 41-episode series deconstructed. Every concept, key lesson, and algorithmic framework — organized for systematic mastery of the IPDA.
           </p>
 
