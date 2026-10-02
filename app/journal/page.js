@@ -1,6 +1,7 @@
 'use client';
 // Production build checkpoint
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import Image from 'next/image';
 import { createClient } from '@/lib/supabase';
 
 // ─── CONSTANTS ────────────────────────────────────────────────────────────────
@@ -1432,7 +1433,7 @@ export default function JournalPage() {
           {/* Logo */}
           <div style={{ padding: '22px 18px 16px', borderBottom: `1px solid ${C.border}` }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <img src="/ictflow-symbol.svg" alt="ICT Flow" style={{ width: "32px", height: "32px", borderRadius: "8px", flexShrink: 0 }} />
+              <Image src="/ictflow-symbol.svg" alt="ICT Flow" width={32} height={32} sizes="32px" style={{ width: "32px", height: "32px", borderRadius: "8px", flexShrink: 0 }} />
               <div>
                 <div style={{ fontSize: '14px', fontWeight: 700, color: C.text, letterSpacing: '-0.3px' }}>ICT Flow Journal</div>
                 <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: C.text3, letterSpacing: '0.1em', marginTop: '1px' }}>TRADE JOURNAL</div>
