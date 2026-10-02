@@ -972,14 +972,14 @@ function JournalSection({ adminDbClient = adminDb }) {
     return (
       <div style={{ ...css.card, marginBottom:'16px' }}>
         <div style={{ ...css.mono, fontSize:'10px', color:G, marginBottom:'14px', letterSpacing:'0.12em' }}>
-          {label.toUpperCase()} <span style={{ color:'rgba(255,255,255,0.4)', marginLeft:'8px' }}>{items.length} items</span>
+          {label.toUpperCase()} <span style={{ color:'#AAB3BF', marginLeft:'8px' }}>{items.length} items</span>
         </div>
         <div style={{ display:'flex', flexWrap:'wrap', gap:'8px', marginBottom:'12px' }}>
           {items.map((item,i) => (
             <div key={i} style={{ display:'flex', alignItems:'center', gap:'4px', background:S3, border:`1px solid ${BORDER}`, borderRadius:'7px', padding:'4px 8px 4px 10px' }}>
               <span style={{ fontSize:'12px' }}>{item}</span>
-              <button onClick={()=>move(i,-1)} style={{ background:'none',border:'none',color:'rgba(255,255,255,0.3)',cursor:'pointer',fontSize:'12px',padding:'0 2px' }}>↑</button>
-              <button onClick={()=>move(i,1)}  style={{ background:'none',border:'none',color:'rgba(255,255,255,0.3)',cursor:'pointer',fontSize:'12px',padding:'0 2px' }}>↓</button>
+              <button onClick={()=>move(i,-1)} style={{ background:'none',border:'none',color:'#9DA6B2',cursor:'pointer',fontSize:'12px',padding:'0 2px' }}>↑</button>
+              <button onClick={()=>move(i,1)}  style={{ background:'none',border:'none',color:'#9DA6B2',cursor:'pointer',fontSize:'12px',padding:'0 2px' }}>↓</button>
               <button onClick={()=>remove(i)}  style={{ background:'none',border:'none',color:'#F87171',cursor:'pointer',fontSize:'14px',padding:'0 0 0 4px' }}>×</button>
             </div>
           ))}
