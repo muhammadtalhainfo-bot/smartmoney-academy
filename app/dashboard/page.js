@@ -179,9 +179,22 @@ export default function DashboardPage() {
                 </div>
               </Link>
               {profile?.is_pro ? (
-                <a href="/api/create-portal" className="px-5 py-3 rounded-xl font-mono-c text-xs tracking-wider uppercase font-bold" style={{ border: '1px solid rgba(232,197,71,0.35)', color: '#E8C547', textDecoration: 'none' }}>
+                <button
+                  type="button"
+                  onClick={async () => {
+                    const response = await fetch('/api/create-portal', { method: 'POST' });
+                    const data = await response.json().catch(() => ({}));
+                    if (response.ok && data.url) {
+                      window.location.href = data.url;
+                    } else {
+                      window.alert(data?.error || 'Unable to open billing portal.');
+                    }
+                  }}
+                  className="px-5 py-3 rounded-xl font-mono-c text-xs tracking-wider uppercase font-bold"
+                  style={{ border: '1px solid rgba(232,197,71,0.35)', color: '#E8C547', background: 'transparent', cursor: 'pointer' }}
+                >
                   Manage Pro →
-                </a>
+                </button>
               ) : null}
             </div>
           </div>
