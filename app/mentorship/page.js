@@ -33,7 +33,7 @@ const EPISODES = [
     duration: "3h 00m",
     youtube: null,
     concepts: ["IRL", "MSS", "Displacement", "Relative Equal Highs/Lows", "REH/REL"],
-    summary: "Critical distinction between a structure 'break' and a true 'shift'. MSS requires displacement — large energetic candles signaling institutional intent. Algorithm targets REH and REL where dense stop clusters sit.",
+    summary: "Critical distinction between a structure 'break' and a true 'shift'. MSS is distinguished here by displacement — strong price movement used as a chart-based condition. Claims about algorithmic targets, stop placement, or participant intent are framework interpretations rather than directly observable facts.",
     keyLesson: "In this ICT-style model, an MSS is distinguished from an ordinary break by displacement; traders can test whether requiring strong candles and an FVG improves their setup definition.",
     tags: ["Market Structure", "Liquidity", "Foundation"]
   },
@@ -83,7 +83,7 @@ const EPISODES = [
     duration: "3h 10m",
     youtube: null,
     concepts: ["EURUSD", "Forex Application", "Order Flow", "Session Alignment"],
-    summary: "Forex pairs mirror index futures behavioral patterns. EUR/USD application of the 2022 model. A structured step-by-step: HTF bias → liquidity sweep → LTF MSS → FVG entry.",
+    summary: "The 2022 model can be studied on EUR/USD as an example. Forex and index futures can share some ICT-style concepts, but liquidity, volatility, and session behavior can differ by instrument.",
     keyLesson: "Step 1: HTF bias. Step 2: Wait for killzone sweep. Step 3: LTF MSS with displacement. Step 4: Limit order at FVG.",
     tags: ["Forex", "EURUSD", "Entry Models", "Practical"]
   },
@@ -93,7 +93,7 @@ const EPISODES = [
     duration: "2h 55m",
     youtube: null,
     concepts: ["1:30 PM Macro", "NY PM Session", "Trend Continuation", "Reversals"],
-    summary: "1:30 PM EST Macro often drives significant continuations or reversals in index futures. The PM session is when institutional volatility is injected for afternoon objectives.",
+    summary: "The 1:30 PM EST macro can be studied as a session variable when reviewing index-futures behavior. Continuations, reversals, and volatility vary by day and should be evaluated with historical data rather than assumed.",
     keyLesson: "The 1:30 PM macro can be included as a testable session variable; evaluate its behavior and alignment with the AM trend on the market traded.",
     tags: ["Macros", "NQ/ES", "Session Timing"]
   },
@@ -184,7 +184,7 @@ const EPISODES = [
     youtube: null,
     concepts: ["2022 Model", "Full Framework", "Step by Step", "Checklist"],
     summary: "A step-by-step guide to the 2022 model. Complete sequence: HTF bias → killzone liquidity sweep → LTF MSS with displacement → FVG entry → low-hanging fruit target → HTF draw.",
-    keyLesson: "Write this checklist: 1) HTF bias confirmed? 2) Killzone liquidity sweep happened? 3) MSS with displacement? 4) FVG present? All yes = valid setup.",
+    keyLesson: "Write this checklist: 1) HTF bias confirmed? 2) Killzone liquidity sweep happened? 3) MSS with displacement? 4) FVG present? Meeting these conditions satisfies this model’s rule set; it does not guarantee a favorable outcome, so test the complete setup.",
     tags: ["2022 Model", "Entry Models", "Must Watch"]
   },
   {
