@@ -113,7 +113,7 @@ const EPISODES = [
     duration: "3h 20m",
     youtube: null,
     concepts: ["Institutional Sponsorship", "Advanced Price Action", "Professional Reading"],
-    summary: "Professionals look for Institutional Sponsorship — evidence that smart money is actively supporting a move. Retail traders look for patterns; ICT traders look for algorithmic signatures.",
+    summary: "Some ICT teaching uses the idea of institutional sponsorship and algorithmic signatures. Treat these as framework interpretations and distinguish chart observations from claims about participant intent.",
     keyLesson: "Before entering, identify the structural and liquidity evidence supporting the setup and distinguish observations from interpretations about institutional activity.",
     tags: ["Advanced", "Market Structure", "Theory"]
   },
@@ -264,7 +264,7 @@ const EPISODES = [
     youtube: null,
     concepts: ["Advanced Tape Reading", "Pattern Recognition", "IPDA Signatures"],
     summary: "Advanced tape reading skills. Identifying IPDA signatures in real-time price action. Building the 'eye' through focused observation of candle-by-candle delivery.",
-    keyLesson: "Slow down your charts. Watch one candle at a time. What story is each candle telling about where the algorithm wants to go?",
+    keyLesson: "Slow down your charts. Watch one candle at a time. What story is each candle suggesting within the framework, and what would count as invalidation?",
     tags: ["Tape Reading", "Advanced", "Price Action"]
   },
   {
@@ -273,7 +273,7 @@ const EPISODES = [
     duration: "2h 10m",
     youtube: null,
     concepts: ["Counter Trend", "Reversal Setups", "HTF Targets", "Trend End"],
-    summary: "When the higher-timeframe draw on liquidity has been reached, counter-trend setups become valid. These can offer attractive reward-to-risk profiles in some conditions, but outcomes depend on the setup and execution.",
+    summary: "When a higher-timeframe draw on liquidity has been reached, traders may study counter-trend setups as a conditional hypothesis; define invalidation and test the rule. These can offer attractive reward-to-risk profiles in some conditions, but outcomes depend on the setup and execution.",
     keyLesson: "Counter-trend setups can be evaluated around higher-timeframe extremes and liquidity events; define invalidation and avoid treating the framework as an absolute rule.",
     tags: ["Reversals", "Advanced", "HTF Analysis"]
   },
@@ -323,8 +323,8 @@ const EPISODES = [
     duration: "2h 00m",
     youtube: null,
     concepts: ["Consolidation Day", "MOC", "Anticipation", "Order Building", "Low-Volume Days"],
-    summary: "Consolidation days are for anticipation, not trading. Algorithm builds orders for the next significant move. Market on Close profile reveals institutional positioning intentions.",
-    keyLesson: "On consolidation days, DO NOT TRADE. Use the time to mark your levels and prepare your narrative for tomorrow's potential expansion.",
+    summary: "Consolidation days can be studied as periods of anticipation within this framework. Claims about algorithmic order-building or institutional positioning are interpretations rather than directly observable facts.",
+    keyLesson: "Use the session to mark levels and define a hypothesis for potential expansion; whether to trade should depend on your written rules and current conditions.",
     tags: ["Consolidation", "Risk Management", "Theory"]
   },
   {
