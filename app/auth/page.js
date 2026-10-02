@@ -138,7 +138,7 @@ function AuthPageInner() {
 
         .auth-input { background: #141414; border: 1px solid #E8C547; border-radius: 10px; color: #F5F5F5; padding: 12px 16px; font-size: 15px; font-family: 'DM Sans', sans-serif; outline: none; width: 100%; transition: border-color 0.2s; }
         .auth-input:focus { border-color: #E8C547; }
-        .auth-input::placeholder { color: rgba(255,255,255,0.55); }
+        .auth-input::placeholder { color: #B9C1CC; }
       `}</style>
 
       <div style={{ width: '100%', maxWidth: '420px' }}>
