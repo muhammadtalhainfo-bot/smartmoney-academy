@@ -7,7 +7,7 @@ const PLAN =   {
     emoji: '📋',
     title: 'ICT Trading Plan Template',
     subtitle: 'Fill-in-the-blank · 10 Sections · Professional',
-    desc: 'A professional trading plan is your roadmap to consistency. Without it, you are not a trader -- you are a gambler. Fill out this template and post it next to your monitor.',
+    desc: 'A written trading plan can help turn broad intentions into explicit, testable rules. Fill out this template and keep it available during your review process.',
     color: '#D4A843',
     sections: [
       {
