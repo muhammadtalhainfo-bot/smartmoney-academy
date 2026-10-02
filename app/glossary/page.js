@@ -100,7 +100,7 @@ const TERMS = [
   { term: "IRL", full: "Internal Range Liquidity", cat: "ICT", def: "Liquidity sitting inside the current dealing range -- unmitigated FVGs, OBs, and gaps. IRL is the entry zone; ERL is the target." },
   { term: "MMBM", full: "Market Maker Buy Model", cat: "ICT", def: "ICT complete bullish trade framework: accumulate, manipulate (sweep SSL), then rally to BSL. Used to read the full weekly and daily narrative before entering." },
   { term: "MMSM", full: "Market Maker Sell Model", cat: "ICT", def: "ICT complete bearish trade framework: accumulate, manipulate (sweep BSL), then decline to SSL. The mirror image of MMBM." },
-  { term: "Reclaimed OB", full: "Reclaimed Order Block", cat: "ICT", def: "An Order Block initially violated by price that price then returns to and reclaims back inside. When reclaimed, it reasserts its original institutional role." },
+  { term: "Reclaimed OB", full: "Reclaimed Order Block", cat: "ICT", def: "An Order Block initially violated by price that price later returns to and trades back inside. Some traders study the reclaim as relevant context, but its original institutional role is not directly observable or guaranteed to reassert." },
   { term: "TGIF Setup", full: "TGIF (Thank God It's Friday)", cat: "ICT", def: "Friday price action that reveals the true weekly delivery direction. Some ICT traders study Friday price behavior for potential weekly reversal or retracement patterns; outcomes vary." },
   { term: "Vacuum Block", full: "Vacuum Block", cat: "ICT", def: "An area where price moves rapidly due to lack of opposing orders. Similar to a liquidity void -- price passes through these zones without meaningful retracement." },
 ];
