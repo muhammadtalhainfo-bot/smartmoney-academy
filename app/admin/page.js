@@ -647,7 +647,7 @@ function CoursesSection() {
                 <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
                   <Badge color={m.level === 'Beginner' ? '#34D399' : m.level === 'Intermediate' ? G : '#F87171'}>{m.level}</Badge>
                   {m.locked && <Badge color="#F87171">PRO</Badge>}
-                  {m.comingSoon && <Badge color="rgba(255,255,255,0.5)">SOON</Badge>}
+                  {m.comingSoon && <Badge color="#AAB3BF">SOON</Badge>}
                   <a href={`/lesson/${m.id}`} target="_blank" rel="noopener noreferrer" style={{ ...css.btnGhost, padding: '5px 10px', fontSize: '10px', textDecoration: 'none' }}>VIEW ↗</a>
                   <button onClick={() => { setEditing(m.id); setForm({ ...m }); }} style={{ ...css.btn, padding: '5px 12px', fontSize: '10px' }}>EDIT</button>
                 </div>
@@ -720,7 +720,7 @@ function MediaSection() {
             <div style={{ width: '100%', height: '70px', background: S3, borderRadius: '6px', overflow: 'hidden', marginBottom: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <img src={img} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => { e.target.style.display = 'none'; }} />
             </div>
-            <div style={{ ...css.mono, fontSize: '9px', color: copied === img ? G : 'rgba(255,255,255,0.5)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+            <div style={{ ...css.mono, fontSize: '9px', color: copied === img ? G : '#AAB3BF', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
               {copied === img ? '✓ COPIED!' : img.split('/').pop()}
             </div>
           </div>
@@ -1016,7 +1016,7 @@ function JournalSection({ adminDbClient = adminDb }) {
           <div style={{ padding:'14px', background:S3, borderRadius:'10px' }}>
             <div style={{ fontSize:'13px', fontWeight:600, marginBottom:'4px' }}>Data stored in:</div>
             <div style={{ ...css.mono, fontSize:'11px', color:G }}>supabase → trades table</div>
-            <div style={{ fontSize:'11px', color:'rgba(255,255,255,0.5)', marginTop:'4px' }}>User-isolated via RLS (user_id column)</div>
+            <div style={{ fontSize:'11px', color:'#AAB3BF', marginTop:'4px' }}>User-isolated via RLS (user_id column)</div>
           </div>
         </div>
       </div>
