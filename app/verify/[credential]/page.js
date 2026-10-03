@@ -26,11 +26,11 @@ async function verifyCredential(credential) {
 
   const supabase = adminClient();
   const [{ data: profile }, { data: completions }] = await Promise.all([
-    supabase.from('profiles').select('name, username, is_pro').eq('id', userId).maybeSingle(),
+    supabase.from('profiles').select('name, username').eq('id', userId).maybeSingle(),
     supabase.from('lesson_completions').select('lesson_id, completed_at, quiz_score').eq('user_id', userId),
   ]);
 
-  if (!profile || profile.is_pro !== true || !completions) return null;
+  if (!profile || !completions) return null;
 
   const requiredIds = MODULES.map((module) => module.id);
   const completed = new Set(completions.filter((row) => Number(row.quiz_score) >= 70).map((row) => Number(row.lesson_id)));
