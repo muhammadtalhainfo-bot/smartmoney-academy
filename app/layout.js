@@ -1,6 +1,7 @@
 import "./globals.css";
 import CookieBanner from '@/app/components/CookieBanner';
 import ThirdPartyScripts from '@/app/components/ThirdPartyScripts';
+import { serializeJsonLd } from '@/lib/jsonld';
 
 export const metadata = {
   metadataBase: new URL('https://ictflow.com'),
@@ -109,7 +110,7 @@ export default function RootLayout({ children }) {
         <meta name="theme-color" content="#E8C547" />
         <meta name="google-adsense-account" content="ca-pub-4615893071983318" />
         <link rel="manifest" href="/site.webmanifest" />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" />
