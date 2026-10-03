@@ -1329,9 +1329,9 @@ export default function JournalPage() {
   const [user, setUser] = useState(undefined);
   const [saveError, setSaveError] = useState('');
   const [loadError, setLoadError] = useState('');
-  const supabase = createClient();
 
   const load = useCallback(async () => {
+    const supabase = createClient();
     setLoading(true);
     setLoadError('');
     const { data: { user: u }, error: authError } = await supabase.auth.getUser();
@@ -1359,12 +1359,13 @@ export default function JournalPage() {
       rules_checked: Array.isArray(t.rules_checked) ? t.rules_checked : [],
     })));
     setLoading(false);
-  }, [supabase]);
+  }, []);
 
   useEffect(() => { load(); }, [load]);
 
   const save = async (form) => {
     setSaveError('');
+    const supabase = createClient();
     const { data: { user: u } } = await supabase.auth.getUser();
     if (!u) {
       setSaveError('Your session has expired. Please sign in again.');
@@ -1403,6 +1404,7 @@ export default function JournalPage() {
   const del = async (id) => {
     if (!confirm('Delete this trade? This cannot be undone.')) return;
     setSaveError('');
+    const supabase = createClient();
     const { data: { user: currentUser }, error: authError } = await supabase.auth.getUser();
     if (authError || !currentUser) {
       setSaveError('Your session has expired. Please sign in again.');
