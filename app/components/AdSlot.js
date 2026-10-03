@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { createClient } from '@/lib/supabase';
 
 const CONSENT_KEY = 'cookies_accepted';
@@ -9,6 +9,7 @@ const CONSENT_EVENT = 'ictflow-cookie-consent';
 export default function AdSlot({ slot, className = '' }) {
   const [show, setShow] = useState(false);
   const [consent, setConsent] = useState(false);
+  const supabase = useMemo(() => createClient(), []);
 
   useEffect(() => {
     const syncConsent = () => setConsent(window.localStorage.getItem(CONSENT_KEY) === 'true');
@@ -19,33 +20,53 @@ export default function AdSlot({ slot, className = '' }) {
 
   useEffect(() => {
     let mounted = true;
-    const supabase = createClient();
 
     async function check() {
       if (!consent) {
         if (mounted) setShow(false);
         return;
       }
+
       const client = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
       const adSlot = slot || process.env.NEXT_PUBLIC_ADSENSE_SLOT;
-      if (!client || !adSlot) return;
-
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        const { data: profile } = await supabase
-          .from('profiles')
-          .select('is_pro')
-          .eq('id', user.id)
-          .maybeSingle();
-        if (profile?.is_pro === true) return;
+      if (!client || !adSlot) {
+        if (mounted) setShow(false);
+        return;
       }
 
-      if (mounted) setShow(true);
+      try {
+        const { data: { user }, error: authError } = await supabase.auth.getUser();
+        if (authError) throw authError;
+
+        let shouldShow = true;
+        if (user) {
+          const { data: profile, error: profileError } = await supabase
+            .from('profiles')
+            .select('is_pro')
+            .eq('id', user.id)
+            .maybeSingle();
+          if (profileError) throw profileError;
+          shouldShow = profile?.is_pro !== true;
+        }
+
+        if (mounted) setShow(shouldShow);
+      } catch (error) {
+        console.error('Ad eligibility check failed:', error);
+        if (mounted) setShow(false);
+      }
     }
 
     check();
-    return () => { mounted = false; };
-  }, [slot, consent]);
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(() => {
+      setTimeout(check, 0);
+    });
+
+    return () => {
+      mounted = false;
+      subscription?.unsubscribe();
+    };
+  }, [slot, consent, supabase]);
 
   useEffect(() => {
     if (!show) return;
