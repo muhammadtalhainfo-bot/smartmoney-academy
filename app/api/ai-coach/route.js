@@ -79,7 +79,18 @@ export async function POST(req) {
       return NextResponse.json({ error: 'AI Coach rate limit reached. Try again later.' }, { status: 429 });
     }
 
-    const body = await req.json();
+    const rawBody = await req.text();
+    if (rawBody.length > 20_000) {
+      return NextResponse.json({ error: 'Journal summary is too large.' }, { status: 413 });
+    }
+
+    let body = {};
+    try {
+      body = rawBody ? JSON.parse(rawBody) : {};
+    } catch {
+      return NextResponse.json({ error: 'Invalid request.' }, { status: 400 });
+    }
+
     const input = body?.summary;
     if (!input || typeof input !== 'object') {
       return NextResponse.json({ error: 'Invalid journal summary' }, { status: 400 });
