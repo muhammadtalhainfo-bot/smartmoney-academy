@@ -259,10 +259,12 @@ export default function ToolsPage() {
                     {(item.checks || []).map((check, ci) => {
                       const key = `${si}-${ii}-${ci}`;
                       return (
-                        <div
+                        <button
+                          type="button"
                           key={ci}
                           onClick={() => toggleCheck(key)}
-                          style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', padding: '8px 12px', borderRadius: '8px', cursor: 'pointer', marginBottom: '4px', background: checked[key] ? 'rgba(52,211,153,0.05)' : 'transparent', transition: 'background 0.15s' }}
+                          aria-pressed={!!checked[key]}
+                          style={{ display: 'flex', width: '100%', alignItems: 'flex-start', gap: '12px', padding: '8px 12px', borderRadius: '8px', cursor: 'pointer', marginBottom: '4px', background: checked[key] ? 'rgba(52,211,153,0.05)' : 'transparent', border: 'none', color: 'inherit', textAlign: 'left', transition: 'background 0.15s' }}
                         >
                           <div style={{
                             width: '18px', height: '18px', borderRadius: '4px', flexShrink: 0, marginTop: '1px',
@@ -276,7 +278,7 @@ export default function ToolsPage() {
                           <span style={{ fontSize: '14px', color: checked[key] ? '#B9C1CC' : 'rgba(255,255,255,0.75)', textDecoration: checked[key] ? 'line-through' : 'none', lineHeight: 1.5, transition: 'all 0.15s' }}>
                             {check}
                           </span>
-                        </div>
+                        </button>
                       );
                     })}
                     {(item.fields || []).map((field, fi) => (
