@@ -42,7 +42,16 @@ export async function POST(req) {
       return Response.json({ error: 'Too many requests. Try again later.' }, { status: 429 });
     }
 
-    const body = await req.json().catch(() => null);
+    const rawBody = await req.text();
+    if (rawBody.length > 2_000) return Response.json({ error: 'Request too large.' }, { status: 413 });
+
+    let body = null;
+    try {
+      body = rawBody ? JSON.parse(rawBody) : null;
+    } catch {
+      return Response.json({ error: 'Invalid request.', code: 'invalid_json' }, { status: 400 });
+    }
+
     const email = typeof body?.email === 'string' ? body.email.trim().toLowerCase() : '';
     if (!email || email.length > 254 || !email.includes('@')) {
       return Response.json({ error: 'Invalid email.', code: 'invalid_email' }, { status: 400 });
