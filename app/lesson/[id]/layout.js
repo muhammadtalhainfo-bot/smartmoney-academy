@@ -1,4 +1,5 @@
 import { MODULES } from '@/lib/curriculum';
+import { serializeJsonLd } from '@/lib/jsonld';
 // Pre-render all lesson pages as static HTML at build time
 // This makes Google read the full lesson content, not a JS loading shell
 export function generateStaticParams() {
@@ -125,7 +126,7 @@ export default async function LessonLayout({ children, params }) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
       {children}
     </>
