@@ -215,13 +215,19 @@ export default function PricingPage() {
           COMMON <span className="shine">QUESTIONS</span>
         </h2>
         {FAQS.map((faq, i) => (
-          <div key={i} className="faq-item" style={{ padding: '20px 0', cursor: 'pointer' }} onClick={() => setOpenFaq(openFaq === i ? null : i)}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
+          <div key={i} className="faq-item" style={{ padding: '20px 0' }}>
+            <button
+              type="button"
+              aria-expanded={openFaq === i}
+              aria-controls={`faq-answer-${i}`}
+              onClick={() => setOpenFaq(openFaq === i ? null : i)}
+              style={{ display: 'flex', width: '100%', alignItems: 'center', justifyContent: 'space-between', gap: '16px', padding: 0, border: 'none', background: 'transparent', color: 'inherit', cursor: 'pointer', textAlign: 'left' }}
+            >
               <span style={{ fontSize: '15px', color: 'rgba(255,255,255,0.85)', fontWeight: 500 }}>{faq.q}</span>
-              <span style={{ color: '#E8C547', fontSize: '18px', flexShrink: 0, transition: 'transform 0.2s', transform: openFaq === i ? 'rotate(45deg)' : 'none' }}>+</span>
-            </div>
+              <span aria-hidden="true" style={{ color: '#E8C547', fontSize: '18px', flexShrink: 0, transition: 'transform 0.2s', transform: openFaq === i ? 'rotate(45deg)' : 'none' }}>+</span>
+            </button>
             {openFaq === i && (
-              <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '14px', lineHeight: 1.7, marginTop: '12px', fontWeight: 300 }}>{faq.a}</p>
+              <p id={`faq-answer-${i}`} style={{ color: 'rgba(255,255,255,0.75)', fontSize: '14px', lineHeight: 1.7, margin: '12px 0 0', fontWeight: 300 }}>{faq.a}</p>
             )}
           </div>
         ))}
