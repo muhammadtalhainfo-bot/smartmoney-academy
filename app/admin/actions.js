@@ -7,9 +7,8 @@ import { POSTS } from '@/app/blog/posts';
 
 const COOKIE_NAME = 'ictflow_admin_session';
 const SESSION_TTL = 8 * 60 * 60;
-const ADMIN_LOGIN_WINDOW = 15 * 60 * 1000;
+const ADMIN_LOGIN_WINDOW_SECONDS = 15 * 60;
 const ADMIN_LOGIN_MAX_FAILURES = 10;
-const adminLoginAttempts = new Map();
 
 function tokenFor(secret, issuedAt) {
   return `${issuedAt}.${crypto.createHmac('sha256', secret).update(`ictflow-admin-v1:${issuedAt}`).digest('hex')}`;
@@ -30,28 +29,32 @@ export async function loginAdmin(password) {
   const headerStore = await headers();
   const forwarded = headerStore.get('x-forwarded-for') || '';
   const clientIp = forwarded.split(',')[0].trim() || headerStore.get('x-real-ip') || 'unknown';
-  const nowMs = Date.now();
-  const previous = adminLoginAttempts.get(clientIp);
-  const attempt = previous && nowMs - previous.startedAt < ADMIN_LOGIN_WINDOW
-    ? previous
-    : { startedAt: nowMs, failures: 0 };
+  const pepper = process.env.RATE_LIMIT_SECRET || secret;
+  const clientKeyHash = crypto.createHash('sha256').update(pepper + ':' + clientIp).digest('hex');
 
-  if (attempt.failures >= ADMIN_LOGIN_MAX_FAILURES) {
-    return { ok: false, error: 'Too many failed attempts. Try again later.' };
+  let rateAllowed;
+  try {
+    const admin = adminDbClient();
+    const { data, error } = await admin.rpc('consume_api_rate_limit', {
+      p_scope: 'admin-login',
+      p_key_hash: clientKeyHash,
+      p_window_seconds: ADMIN_LOGIN_WINDOW_SECONDS,
+      p_max_requests: ADMIN_LOGIN_MAX_FAILURES,
+    });
+    if (error) throw error;
+    rateAllowed = data === true;
+  } catch (error) {
+    console.error('Admin login rate-limit check failed:', error);
+    return { ok: false, error: 'Admin access is temporarily unavailable.' };
+  }
+
+  if (!rateAllowed) {
+    return { ok: false, error: 'Too many login attempts. Try again later.' };
   }
 
   if (!sameSecret(password, secret)) {
-    attempt.failures += 1;
-    adminLoginAttempts.set(clientIp, attempt);
-    if (adminLoginAttempts.size > 5000) {
-      for (const [key, value] of adminLoginAttempts) {
-        if (nowMs - value.startedAt >= ADMIN_LOGIN_WINDOW) adminLoginAttempts.delete(key);
-      }
-    }
     return { ok: false, error: 'Incorrect admin password.' };
   }
-
-  adminLoginAttempts.delete(clientIp);
 
   const store = await cookies();
   const issuedAt = Math.floor(Date.now() / 1000);
