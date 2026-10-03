@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
@@ -22,31 +22,68 @@ export default function LeaderboardPage() {
   const [currentUser, setCurrentUser] = useState(null);
   const [userRank, setUserRank] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState('');
+  const supabase = useMemo(() => createClient(), []);
 
   useEffect(() => {
+    let mounted = true;
+
     async function load() {
-      const supabase = createClient();
-      const { data: { session } } = await supabase.auth.getSession();
-      const user = session?.user;
-
-      // Fetch top 50
-      const { data: top } = await supabase
-        .from('leaderboard_profiles')
-        .select('id, username, xp, streak')
-        .order('xp', { ascending: false })
-        .limit(50);
-
-      setLeaders(top || []);
-
-      if (user) {
-        setCurrentUser(user);
-        const pos = (top || []).findIndex(p => p.id === user.id);
-        setUserRank(pos >= 0 ? pos + 1 : null);
+      if (mounted) {
+        setLoading(true);
+        setLoadError('');
       }
-      setLoading(false);
+
+      try {
+        const [{ data: { session }, error: sessionError }, { data: top, error: leaderboardError }] = await Promise.all([
+          supabase.auth.getSession(),
+          supabase
+            .from('leaderboard_profiles')
+            .select('id, username, xp, streak')
+            .order('xp', { ascending: false })
+            .limit(50),
+        ]);
+
+        if (sessionError) throw sessionError;
+        if (leaderboardError) throw leaderboardError;
+        if (!mounted) return;
+
+        const user = session?.user || null;
+        setCurrentUser(user);
+        setLeaders(top || []);
+
+        if (user) {
+          const pos = (top || []).findIndex(p => p.id === user.id);
+          setUserRank(pos >= 0 ? pos + 1 : null);
+        } else {
+          setUserRank(null);
+        }
+      } catch (error) {
+        console.error('Leaderboard load failed:', error);
+        if (mounted) {
+          setLoadError('Unable to load the leaderboard right now. Please refresh and try again.');
+          setLeaders([]);
+          setCurrentUser(null);
+          setUserRank(null);
+        }
+      } finally {
+        if (mounted) setLoading(false);
+      }
     }
+
     load();
-  }, []);
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
+      if (event === 'SIGNED_IN' || event === 'SIGNED_OUT') {
+        setTimeout(load, 0);
+      }
+    });
+
+    return () => {
+      mounted = false;
+      subscription?.unsubscribe();
+    };
+  }, [supabase]);
 
   return (
     <div style={{ minHeight: '100vh', background: '#080808', color: 'white', fontFamily: "'DM Sans', sans-serif" }}>
@@ -116,6 +153,8 @@ export default function LeaderboardPage() {
 
           {loading ? (
             <div style={{ padding: '48px', textAlign: 'center', color: 'rgba(255,255,255,0.6)', fontFamily: 'DM Mono, monospace', fontSize: '12px' }}>LOADING...</div>
+          ) : loadError ? (
+            <div role="alert" style={{ padding: '48px', textAlign: 'center', color: '#FCA5A5', fontFamily: 'DM Mono, monospace', fontSize: '12px' }}>{loadError}</div>
           ) : leaders.length === 0 ? (
             <div style={{ padding: '48px', textAlign: 'center', color: 'rgba(255,255,255,0.6)', fontFamily: 'DM Mono, monospace', fontSize: '12px' }}>NO DATA YET — BE THE FIRST!</div>
           ) : (
