@@ -260,13 +260,13 @@ function TradeForm({ initial, onSave, onCancel }) {
         </div>
 
         {/* Two columns */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+        <div className="trade-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
           {/* LEFT */}
           <div>
             {/* Core */}
             <div style={{ marginBottom: '20px' }}>
               <div style={{ ...S.mono, fontSize: '10px', color: C.gold, letterSpacing: '0.12em', marginBottom: '12px', paddingBottom: '8px', borderBottom: `1px solid ${C.border}` }}>TRADE DETAILS</div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '10px' }}>
+              <div className="trade-fields-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '10px' }}>
                 <div><label style={lbl}>Symbol</label><select value={form.pair} onChange={e => set('pair', e.target.value)} style={sel}>{PAIRS.map(p => <option key={p}>{p}</option>)}</select></div>
                 <div><label style={lbl}>Date</label><input type="date" value={form.date} onChange={e => set('date', e.target.value)} style={inp} /></div>
               </div>
@@ -290,7 +290,7 @@ function TradeForm({ initial, onSave, onCancel }) {
                 <div><label style={lbl}>Take Profit</label><input type="number" value={form.tp} onChange={e => set('tp', e.target.value)} placeholder="0.00" style={inp} /></div>
                 <div><label style={lbl}>Exit Price</label><input type="number" value={form.exit} onChange={e => set('exit', e.target.value)} placeholder="0.00" style={inp} /></div>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px', marginBottom: '10px' }}>
+              <div className="trade-fields-grid-3" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px', marginBottom: '10px' }}>
                 <div><label style={lbl}>R:R (auto)</label><input value={form.rr} onChange={e => set('rr', e.target.value)} placeholder="2.5" style={{ ...inp, color: C.gold }} /></div>
                 <div><label style={lbl}>P&L ($)</label><input type="number" value={form.pnl} onChange={e => set('pnl', e.target.value)} placeholder="0.00" style={inp} /></div>
                 <div><label style={lbl}>Risk %</label><input type="number" value={form.risk_pct} onChange={e => set('risk_pct', e.target.value)} placeholder="1.0" style={inp} /></div>
@@ -1407,6 +1407,8 @@ export default function JournalPage() {
       .journal-main { width: 100%; min-width: 0; overflow: visible !important; }
       .journal-content { padding: 20px 16px !important; }
       .journal-footer { padding: 16px !important; flex-direction: column; gap: 8px; align-items: flex-start !important; }
+      .trade-form-grid { grid-template-columns: 1fr !important; }
+      .trade-fields-grid-2, .trade-fields-grid-3 { grid-template-columns: 1fr !important; }
     }
   `;
 
