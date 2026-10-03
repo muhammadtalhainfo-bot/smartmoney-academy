@@ -24,7 +24,11 @@ export default function CookieBanner() {
   if (!show) return null;
 
   return (
-    <div style={{
+    <div
+      role="dialog"
+      aria-label="Cookie consent"
+      aria-live="polite"
+      style={{
       position: 'fixed', bottom: '24px', left: '50%', transform: 'translateX(-50%)',
       zIndex: 1000, width: '90%', maxWidth: '600px',
       background: '#0F0F0F', border: '1px solid #E8C547',
@@ -38,14 +42,14 @@ export default function CookieBanner() {
         <Link href="/cookies" style={{ color: '#E8C547', textDecoration: 'underline' }}>Cookie Policy</Link>.
       </p>
       <div style={{ display: 'flex', gap: '8px' }}>
-        <button onClick={accept} style={{
+        <button type="button" onClick={accept} style={{
           background: 'linear-gradient(135deg, #E8C547, #F0C96A)',
           color: '#080808', border: 'none', borderRadius: '8px',
           padding: '8px 20px', fontFamily: 'DM Mono, monospace',
           fontSize: '11px', fontWeight: 700, cursor: 'pointer',
           letterSpacing: '0.08em', textTransform: 'uppercase'
         }}>Accept</button>
-        <button onClick={decline} style={{
+        <button type="button" onClick={decline} style={{
           background: 'transparent', color: 'rgba(255,255,255,0.7)',
           border: '1px solid rgba(255,255,255,0.6)', borderRadius: '8px',
           padding: '8px 16px', fontFamily: 'DM Mono, monospace',
