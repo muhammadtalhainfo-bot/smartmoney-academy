@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
-import { POSTS } from '../posts';
+import { getPublishedBlogPosts } from '@/lib/blog-data';
 import AdSlot from '@/app/components/AdSlot';
 
 function renderContent(content) {
@@ -44,12 +44,15 @@ function renderContent(content) {
   return null;
 }
 
+export const revalidate = 300;
+
 export default async function BlogPost({ params }) {
   const { slug } = await params;
 
   if (!slug) return <div style={{ minHeight: '100vh', background: '#080808' }} />;
 
-  const post = POSTS.find(p => p && p.slug === slug) || null;
+  const posts = await getPublishedBlogPosts();
+  const post = posts.find(p => p && p.slug === slug) || null;
 
   if (!post) notFound();
 
