@@ -29,6 +29,8 @@ export default function DashboardPage() {
   const [profile, setProfile] = useState(null);
   const [completions, setCompletions] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState('');
+  const [retryTick, setRetryTick] = useState(0);
   const [activeTab, setActiveTab] = useState('overview');
   const supabase = useMemo(() => createClient(), []);
 
@@ -47,39 +49,62 @@ export default function DashboardPage() {
   useEffect(() => {
     let isMounted = true;
     async function loadData() {
+      if (!isMounted) return;
+      setLoading(true);
+      setLoadError('');
+
       try {
-      // Check auth with retry (3x exponential backoff)
-      let { data: { session } } = await supabase.auth.getSession();
-      let retryCount = 0;
-      while (!session && retryCount < 3) {
-        await new Promise(r => setTimeout(r, 500 * (retryCount + 1)));
-        const { data: { session: s } } = await supabase.auth.getSession();
-        session = s;
-        retryCount++;
+        // Check auth with retry (3x exponential backoff)
+        let { data: { session } } = await supabase.auth.getSession();
+        let authRetryCount = 0;
+        while (!session && authRetryCount < 3) {
+          await new Promise(r => setTimeout(r, 500 * (authRetryCount + 1)));
+          const { data: { session: s } } = await supabase.auth.getSession();
+          session = s;
+          authRetryCount++;
+        }
+
+        const currentUser = session?.user;
+        if (!currentUser) {
+          router.push('/auth');
+          return;
+        }
+        if (!isMounted) return;
+        setUser(currentUser);
+
+        const { data: profileData, error: profileError } = await supabase
+          .from('profiles')
+          .select('id, name, username, xp, streak, longest_streak, is_pro')
+          .eq('id', currentUser.id)
+          .single();
+
+        if (profileError || !profileData) {
+          throw new Error('Unable to load your profile.');
+        }
+
+        const { data: completionData, error: completionError } = await supabase
+          .from('lesson_completions')
+          .select('*')
+          .eq('user_id', currentUser.id);
+
+        if (completionError) {
+          throw new Error('Unable to load your lesson progress.');
+        }
+
+        if (!isMounted) return;
+        setProfile(profileData);
+        setCompletions((completionData || []).filter((row) => Number(row.quiz_score) >= 70));
+
+        // Streak failures are non-fatal; progress data is still usable.
+        await updateStreak();
+        if (isMounted) setLoading(false);
+      } catch (err) {
+        console.error('Dashboard error:', err);
+        if (isMounted) {
+          setLoadError(err?.message || 'Unable to load your dashboard data.');
+          setLoading(false);
+        }
       }
-      const user = session?.user;
-      if (!user) { router.push('/auth'); return; }
-      setUser(user);
-
-      // Load profile
-      const { data: profileData } = await supabase
-        .from('profiles')
-        .select('id, name, username, xp, streak, longest_streak, is_pro')
-        .eq('id', user.id)
-        .single();
-      setProfile(profileData);
-
-      // Load completions
-      const { data: completionData } = await supabase
-        .from('lesson_completions')
-        .select('*')
-        .eq('user_id', user.id);
-      setCompletions((completionData || []).filter((row) => Number(row.quiz_score) >= 70));
-
-      // Update streak
-      await updateStreak();
-      setLoading(false);
-      } catch (err) { console.error('Dashboard error:', err); setLoading(false); }
     }
     loadData();
 
@@ -89,7 +114,7 @@ export default function DashboardPage() {
     });
 
     return () => { isMounted = false; subscription?.unsubscribe(); };
-  }, [router, supabase, updateStreak]);
+  }, [router, supabase, updateStreak, retryTick]);
 
   async function handleSignOut() {
     await supabase.auth.signOut();
@@ -102,6 +127,27 @@ export default function DashboardPage() {
       <div className="min-h-screen bg-[#080808] flex items-center justify-center">
         <div className="font-mono-c text-xs tracking-widest" style={{ fontFamily: "'DM Mono', monospace", color: 'rgba(232,197,71,0.95)' }}>
           LOADING YOUR DASHBOARD...
+        </div>
+      </div>
+    );
+  }
+
+  if (loadError) {
+    return (
+      <div className="min-h-screen bg-[#080808] flex items-center justify-center px-6" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+        <div className="w-full max-w-lg rounded-2xl border p-8 text-center" style={{ background: '#0F0F0F', borderColor: 'rgba(248,113,113,0.3)' }}>
+          <div className="text-4xl mb-4">⚠️</div>
+          <div className="font-mono-c text-xs tracking-widest uppercase mb-3" style={{ color: '#FCA5A5' }}>// Dashboard Load Failed</div>
+          <h1 className="font-display text-4xl text-white mb-3">YOUR DATA IS STILL SAFE</h1>
+          <p className="text-sm leading-relaxed mb-6" style={{ color: '#B9C1CC' }}>{loadError}</p>
+          <button
+            type="button"
+            onClick={() => setRetryTick(tick => tick + 1)}
+            className="px-6 py-3 rounded-xl font-mono-c text-xs tracking-wider uppercase font-bold"
+            style={{ background: 'linear-gradient(135deg, #E8C547, #F0C96A)', color: '#080808' }}
+          >
+            Retry Dashboard
+          </button>
         </div>
       </div>
     );
