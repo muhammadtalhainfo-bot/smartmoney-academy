@@ -1,6 +1,44 @@
+import { createHash } from 'node:crypto';
 import { getAdminSession } from '../../admin/actions';
 
 export const runtime = 'nodejs';
+
+const WINDOW_SECONDS = 5 * 60;
+const MAX_REQUESTS = 5;
+
+function hashClientKey(value) {
+  const pepper = process.env.RATE_LIMIT_SECRET || process.env.SUPABASE_SERVICE_KEY || 'ictflow-rate-limit';
+  return createHash('sha256').update(pepper + ':notify:' + value).digest('hex');
+}
+
+function getClientKey(req) {
+  const forwarded = req.headers.get('x-forwarded-for') || '';
+  return forwarded.split(',')[0].trim() || req.headers.get('x-real-ip') || 'unknown';
+}
+
+async function consumeRateLimit(req) {
+  const session = await getAdminSession();
+  if (!session?.ok) return { session, allowed: false };
+
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const serviceKey = process.env.SUPABASE_SERVICE_KEY;
+  if (!url || !serviceKey) return { session, allowed: true, unavailable: true };
+
+  const { createClient } = await import('@supabase/supabase-js');
+  const supabase = createClient(url, serviceKey, { auth: { autoRefreshToken: false, persistSession: false } });
+  const { data: allowed, error } = await supabase.rpc('consume_api_rate_limit', {
+    p_scope: 'admin-notify',
+    p_key_hash: hashClientKey(getClientKey(req)),
+    p_window_seconds: WINDOW_SECONDS,
+    p_max_requests: MAX_REQUESTS,
+  });
+
+  if (error) {
+    console.error('Notification rate-limit error:', error);
+    return { session, allowed: false, rateLimitError: true };
+  }
+  return { session, allowed: allowed === true };
+}
 
 export async function POST(req) {
   try {
@@ -9,9 +47,18 @@ export async function POST(req) {
       return Response.json({ error: 'Request too large.' }, { status: 413 });
     }
 
-    const session = await getAdminSession();
-    if (!session?.ok) {
+    const rate = await consumeRateLimit(req);
+    if (!rate.session?.ok) {
       return Response.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+    if (rate.unavailable) {
+      return Response.json({ error: 'Notification service not configured' }, { status: 500 });
+    }
+    if (rate.rateLimitError) {
+      return Response.json({ error: 'Service temporarily unavailable' }, { status: 503 });
+    }
+    if (!rate.allowed) {
+      return Response.json({ error: 'Too many requests. Try again later.' }, { status: 429 });
     }
 
     if (!process.env.ONESIGNAL_REST_API_KEY) {
