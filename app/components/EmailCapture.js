@@ -62,7 +62,7 @@ export default function EmailCapture() {
         </p>
 
         {status === 'success' ? (
-          <div style={{ padding: '20px 28px', background: 'rgba(52,211,153,0.08)', border: '1px solid rgba(52,211,153,0.2)', borderRadius: '12px', fontFamily: 'DM Mono, monospace', fontSize: '13px', color: '#34D399', letterSpacing: '0.05em' }}>
+          <div role="status" aria-live="polite" style={{ padding: '20px 28px', background: 'rgba(52,211,153,0.08)', border: '1px solid rgba(52,211,153,0.2)', borderRadius: '12px', fontFamily: 'DM Mono, monospace', fontSize: '13px', color: '#34D399', letterSpacing: '0.05em' }}>
             ✓ {msg}
           </div>
         ) : (
@@ -74,11 +74,13 @@ export default function EmailCapture() {
                 value={email}
                 onChange={e => { setEmail(e.target.value); setStatus('idle'); setMsg(''); }}
                 onKeyDown={e => e.key === 'Enter' && handleSubmit()}
+                autoComplete="email"
                 placeholder="your@email.com"
                 maxLength={254}
                 style={{ flex: 1, padding: '14px 18px', background: 'rgba(255,255,255,0.04)', border: `1px solid ${status === 'error' ? 'rgba(248,113,113,0.4)' : 'rgba(232,197,71,0.95)'}`, borderRadius: '10px', color: 'white', fontSize: '14px', fontFamily: 'DM Mono, monospace', outline: 'none', letterSpacing: '0.05em' }}
               />
               <button
+                type="button"
                 onClick={handleSubmit}
                 disabled={status === 'loading'}
                 style={{ padding: '14px 24px', background: status === 'loading' ? '#E8C547' : 'linear-gradient(135deg,#E8C547,#D4A843)', border: 'none', borderRadius: '10px', color: 'black', fontFamily: 'DM Mono, monospace', fontSize: '12px', fontWeight: 600, letterSpacing: '0.1em', cursor: status === 'loading' ? 'not-allowed' : 'pointer', whiteSpace: 'nowrap', transition: 'opacity 0.2s' }}
@@ -87,7 +89,7 @@ export default function EmailCapture() {
               </button>
             </div>
             {msg && status === 'error' && (
-              <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(248,113,113,0.8)', letterSpacing: '0.05em' }}>{msg}</p>
+              <p role="alert" style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#FCA5A5', letterSpacing: '0.05em' }}>{msg}</p>
             )}
             <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.85)', letterSpacing: '0.08em', marginTop: '12px' }}>
               JOIN THE ICT FLOW COMMUNITY · UNSUBSCRIBE ANYTIME
