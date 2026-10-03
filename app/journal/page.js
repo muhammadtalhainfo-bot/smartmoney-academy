@@ -377,10 +377,16 @@ function TradeForm({ initial, onSave, onCancel, error }) {
             <div>
               <label style={lbl}>Screenshot URL (TradingView, chart image)</label>
               <input value={form.screenshot_url} onChange={e => set('screenshot_url', e.target.value)}
-                placeholder="https://..." style={inp} />
-              {form.screenshot_url && (
-                <img src={form.screenshot_url} alt="Chart" onError={e => e.target.style.display = 'none'}
-                  style={{ width: '100%', maxHeight: '120px', objectFit: 'cover', borderRadius: '8px', marginTop: '8px' }} />
+                placeholder="https://..." style={inp} maxLength={2048} inputMode="url" />
+              {form.screenshot_url && isSafeHttpUrl(form.screenshot_url) && (
+                <img
+                  src={form.screenshot_url.trim()}
+                  alt="Trade chart preview"
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
+                  onError={e => { e.currentTarget.style.display = 'none'; }}
+                  style={{ width: '100%', maxHeight: '120px', objectFit: 'cover', borderRadius: '8px', marginTop: '8px' }}
+                />
               )}
             </div>
           </div>
@@ -1315,9 +1321,73 @@ function JournalLanding() {
   );
 }
 // ─── MAIN PAGE ────────────────────────────────────────────────────────────────
-const sanitizeInput = (str) => {
-  if (typeof str !== 'string') return str;
-  return str.replace(/[<>]/g, '').trim().slice(0, 1000);
+const SAFE_PAIRS = new Set(PAIRS);
+const SAFE_SESSIONS = new Set(SESSIONS);
+const SAFE_DIRECTIONS = new Set(['Long', 'Short']);
+const SAFE_RESULTS = new Set(['Win', 'Loss', 'Break Even', 'Partial']);
+
+const parseOptionalNumber = (value) => {
+  if (value === '' || value === null || value === undefined) return null;
+  const n = Number(value);
+  return Number.isFinite(n) ? n : null;
+};
+
+const isSafeHttpUrl = (value) => {
+  if (!value || typeof value !== 'string' || value.length > 2048) return false;
+  try {
+    const url = new URL(value.trim());
+    return (url.protocol === 'https:' || url.protocol === 'http:') && !url.username && !url.password;
+  } catch {
+    return false;
+  }
+};
+
+const validateTradeForm = (form) => {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(String(form.date || ''))) return 'Please enter a valid trade date.';
+  if (!SAFE_PAIRS.has(form.pair)) return 'Please select a valid trading symbol.';
+  if (!SAFE_DIRECTIONS.has(form.direction)) return 'Please select Long or Short.';
+  if (!SAFE_SESSIONS.has(form.session)) return 'Please select a valid trading session.';
+  if (!SAFE_RESULTS.has(form.result)) return 'Please select a valid trade result.';
+
+  const riskPct = Number(form.risk_pct);
+  if (!Number.isFinite(riskPct) || riskPct <= 0 || riskPct > 100) return 'Risk % must be between 0 and 100.';
+
+  const numericFields = ['entry', 'sl', 'tp', 'exit', 'rr', 'pnl'];
+  for (const field of numericFields) {
+    if (form[field] === '' || form[field] === null || form[field] === undefined) continue;
+    if (!Number.isFinite(Number(form[field]))) return field.toUpperCase() + ' must be a valid number.';
+  }
+
+  const entry = parseOptionalNumber(form.entry);
+  const sl = parseOptionalNumber(form.sl);
+  const tp = parseOptionalNumber(form.tp);
+  const exit = parseOptionalNumber(form.exit);
+  const rr = parseOptionalNumber(form.rr);
+
+  for (const [label, value] of [['Entry', entry], ['Stop Loss', sl], ['Take Profit', tp], ['Exit Price', exit]]) {
+    if (value !== null && value <= 0) return label + ' must be greater than 0.';
+  }
+  if (rr !== null && rr <= 0) return 'R:R must be greater than 0.';
+
+  if (entry !== null && sl !== null && tp !== null) {
+    if (Math.abs(entry - sl) === 0) return 'Entry and Stop Loss cannot be the same.';
+    if (form.direction === 'Long' && !(sl < entry && tp > entry)) {
+      return 'For a Long trade, Stop Loss must be below Entry and Take Profit must be above Entry.';
+    }
+    if (form.direction === 'Short' && !(sl > entry && tp < entry)) {
+      return 'For a Short trade, Stop Loss must be above Entry and Take Profit must be below Entry.';
+    }
+  }
+
+  if (String(form.notes_pre || '').length > 5000 || String(form.notes_post || '').length > 5000) {
+    return 'Trade notes must be 5,000 characters or fewer per field.';
+  }
+
+  if (form.screenshot_url && !isSafeHttpUrl(form.screenshot_url)) {
+    return 'Screenshot URL must be a valid http(s) URL.';
+  }
+
+  return null;
 };
 
 export default function JournalPage() {
@@ -1329,9 +1399,9 @@ export default function JournalPage() {
   const [user, setUser] = useState(undefined);
   const [saveError, setSaveError] = useState('');
   const [loadError, setLoadError] = useState('');
+  const supabase = useMemo(() => createClient(), []);
 
   const load = useCallback(async () => {
-    const supabase = createClient();
     setLoading(true);
     setLoadError('');
     const { data: { user: u }, error: authError } = await supabase.auth.getUser();
@@ -1365,25 +1435,48 @@ export default function JournalPage() {
 
   const save = async (form) => {
     setSaveError('');
-    const supabase = createClient();
-    const { data: { user: u } } = await supabase.auth.getUser();
+    const validationError = validateTradeForm(form);
+    if (validationError) {
+      setSaveError(validationError);
+      return;
+    }
+
+    const { data: { user: u }, error: authError } = await supabase.auth.getUser();
+    if (authError) {
+      setSaveError('Unable to verify your session. Please refresh and try again.');
+      return;
+    }
     if (!u) {
       setSaveError('Your session has expired. Please sign in again.');
       return;
     }
+    const entry = parseOptionalNumber(form.entry);
+    const sl = parseOptionalNumber(form.sl);
+    const tp = parseOptionalNumber(form.tp);
+    const exit = parseOptionalNumber(form.exit);
+    const pnl = parseOptionalNumber(form.pnl);
+
+    let rr = parseOptionalNumber(form.rr);
+    if (entry !== null && sl !== null && tp !== null && Math.abs(entry - sl) > 0) {
+      rr = Number((Math.abs(tp - entry) / Math.abs(entry - sl)).toFixed(4));
+    }
+
     const payload = {
       user_id: u.id,
       date: form.date, pair: form.pair, direction: form.direction, session: form.session,
-      entry: form.entry || null, sl: form.sl || null, tp: form.tp || null,
-      exit: form.exit || null, rr: form.rr || null, pnl: form.pnl || null,
-      risk_pct: form.risk_pct || '1', result: form.result,
-      setup: form.setup || [], market: form.market || [],
-      mistakes: form.mistakes || [],
-      emotion_pre: form.emotion_pre || '', emotion_during: form.emotion_during || [],
-      emotion_post: form.emotion_post || '',
-      rules_checked: form.rules_checked || [],
-      notes_pre: form.notes_pre || '', notes_post: form.notes_post || '',
-      screenshot_url: form.screenshot_url || '',
+      entry, sl, tp, exit, rr, pnl,
+      risk_pct: String(Number(form.risk_pct)),
+      result: form.result,
+      setup: Array.isArray(form.setup) ? form.setup.slice(0, 20) : [],
+      market: Array.isArray(form.market) ? form.market.slice(0, 20) : [],
+      mistakes: Array.isArray(form.mistakes) ? form.mistakes.slice(0, 20) : [],
+      emotion_pre: typeof form.emotion_pre === 'string' ? form.emotion_pre.slice(0, 100) : '',
+      emotion_during: Array.isArray(form.emotion_during) ? form.emotion_during.slice(0, 20) : [],
+      emotion_post: typeof form.emotion_post === 'string' ? form.emotion_post.slice(0, 100) : '',
+      rules_checked: Array.isArray(form.rules_checked) ? form.rules_checked.slice(0, 20) : [],
+      notes_pre: String(form.notes_pre || '').slice(0, 5000),
+      notes_post: String(form.notes_post || '').slice(0, 5000),
+      screenshot_url: form.screenshot_url ? form.screenshot_url.trim() : '',
     };
 
     const { error } = editTrade?.id
@@ -1404,7 +1497,6 @@ export default function JournalPage() {
   const del = async (id) => {
     if (!confirm('Delete this trade? This cannot be undone.')) return;
     setSaveError('');
-    const supabase = createClient();
     const { data: { user: currentUser }, error: authError } = await supabase.auth.getUser();
     if (authError || !currentUser) {
       setSaveError('Your session has expired. Please sign in again.');
