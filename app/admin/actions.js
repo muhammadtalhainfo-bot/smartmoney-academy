@@ -111,17 +111,29 @@ export async function adminDb(action, payload = {}) {
   switch (action) {
     case 'dashboard': {
       const [{ data: users, error: usersError }, { data: emails, error: emailsError }, { count, error: tradesError }] = await Promise.all([
-        supabase.from('profiles').select('*').order('xp', { ascending: false }).limit(500),
-        supabase.from('email_signups').select('*').order('created_at', { ascending: false }),
-        supabase.from('trades').select('*', { count: 'exact', head: true }),
+        supabase.from('profiles').select('id,username,email,xp,streak,is_pro,created_at').order('xp', { ascending: false }).limit(500),
+        supabase.from('email_signups').select('email,created_at').order('created_at', { ascending: false }),
+        supabase.from('trades').select('id', { count: 'exact', head: true }),
       ]);
       if (usersError || emailsError || tradesError) throw usersError || emailsError || tradesError;
       return { users: users || [], emails: emails || [], trades: count || 0 };
     }
-    case 'profile.togglePro':
-      return supabase.from('profiles').update({ is_pro: payload.isPro === true }).eq('id', payload.id);
-    case 'profile.resetXP':
-      return supabase.from('profiles').update({ xp: 0, streak: 0 }).eq('id', payload.id);
+    case 'profile.togglePro': {
+      const { error } = await supabase
+        .from('profiles')
+        .update({ is_pro: payload.isPro === true })
+        .eq('id', payload.id);
+      if (error) throw error;
+      return { ok: true };
+    }
+    case 'profile.resetXP': {
+      const { error } = await supabase
+        .from('profiles')
+        .update({ xp: 0, streak: 0 })
+        .eq('id', payload.id);
+      if (error) throw error;
+      return { ok: true };
+    }
     case 'profile.delete': {
       const userId = typeof payload.id === 'string' ? payload.id.trim() : '';
       if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(userId)) {
@@ -137,8 +149,14 @@ export async function adminDb(action, payload = {}) {
       return supabase.from('blog_posts').upsert(payload.form, { onConflict: 'slug' });
     case 'blog.delete':
       return supabase.from('blog_posts').delete().eq('slug', payload.slug);
-    case 'blog.togglePublished':
-      return supabase.from('blog_posts').update({ published: payload.published === true }).eq('id', payload.id);
+    case 'blog.togglePublished': {
+      const { error } = await supabase
+        .from('blog_posts')
+        .update({ published: payload.published === true })
+        .eq('id', payload.id);
+      if (error) throw error;
+      return { ok: true };
+    }
     case 'journal.load': {
       const [{ count, error: countError }, { data: wins, error: winsError }, { data: all, error: allError }] = await Promise.all([
         supabase.from('trades').select('*', { count: 'exact', head: true }),
