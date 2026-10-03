@@ -1,12 +1,14 @@
 import { MODULES } from '../lib/curriculum'
-import { POSTS } from './blog/posts'
+import { getPublishedBlogPosts } from '../lib/blog-data'
 import { SEO_PAGES } from './learn/seo-data'
 
 export const revalidate = 3600
 
 const BASE = 'https://ictflow.com'
 
-export default function sitemap() {
+export default async function sitemap() {
+  const posts = await getPublishedBlogPosts();
+
   const staticPages = [
     [BASE,                  1.0,  'weekly'],
     [`${BASE}/courses`,     0.9,  'monthly'],
@@ -40,7 +42,7 @@ export default function sitemap() {
     priority: 0.75,
   }))
 
-  const blogPages = (POSTS || [])
+  const blogPages = (posts || [])
     .filter(p => p && p.slug)
     .map(p => ({
       url: `${BASE}/blog/${p.slug}`,
