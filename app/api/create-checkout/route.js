@@ -26,7 +26,19 @@ export async function POST(req) {
     if (contentLength > 20_000) {
       return Response.json({ error: 'Request too large.' }, { status: 413 });
     }
-    const body = await req.json().catch(() => ({}));
+
+    const rawBody = await req.text();
+    if (rawBody.length > 20_000) {
+      return Response.json({ error: 'Request too large.' }, { status: 413 });
+    }
+
+    let body = {};
+    try {
+      body = rawBody ? JSON.parse(rawBody) : {};
+    } catch {
+      return Response.json({ error: 'Invalid request.' }, { status: 400 });
+    }
+
     const priceId = typeof body.priceId === 'string' ? body.priceId.trim() : '';
 
     if (!process.env.STRIPE_SECRET_KEY) {
