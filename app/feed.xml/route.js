@@ -1,4 +1,4 @@
-import { POSTS } from '../blog/posts'
+import { getPublishedBlogPosts } from '@/lib/blog-data'
 
 const BASE = 'https://ictflow.com'
 
@@ -16,8 +16,11 @@ function parseDate(value) {
   return Number.isNaN(time) ? new Date().toUTCString() : new Date(time).toUTCString()
 }
 
-export function GET() {
-  const items = POSTS.map((post) => `    <item>
+export const revalidate = 300;
+
+export async function GET() {
+  const posts = await getPublishedBlogPosts();
+  const items = posts.map((post) => `    <item>
       <title>${escapeXml(post.title)}</title>
       <link>${BASE}/blog/${post.slug}</link>
       <guid isPermaLink="true">${BASE}/blog/${post.slug}</guid>
