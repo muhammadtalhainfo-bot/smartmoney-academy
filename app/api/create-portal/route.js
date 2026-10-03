@@ -46,7 +46,11 @@ export async function POST(req) {
 
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
     const configuredOrigin = process.env.NEXT_PUBLIC_APP_URL?.trim()?.replace(/\/$/, '');
-    const origin = configuredOrigin || new URL(req.url).origin;
+    const origin = configuredOrigin || (
+      process.env.NODE_ENV === 'production'
+        ? 'https://ictflow.com'
+        : new URL(req.url).origin
+    );
     const portal = await stripe.billingPortal.sessions.create({
       customer: profile.stripe_customer_id,
       return_url: `${origin}/dashboard`,
