@@ -118,10 +118,10 @@ export default function PricingPage() {
 
           {/* BILLING TOGGLE */}
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '14px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.18)', borderRadius: '100px', padding: '6px 8px' }}>
-            <button onClick={() => setAnnual(false)} aria-pressed={!annual} style={{ padding: '8px 20px', borderRadius: '100px', border: 'none', cursor: 'pointer', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.1em', transition: 'all 0.2s', background: !annual ? '#E8C547' : 'transparent', color: !annual ? 'black' : 'rgba(255,255,255,0.85)' }}>
+            <button type="button" onClick={() => setAnnual(false)} aria-pressed={!annual} style={{ padding: '8px 20px', borderRadius: '100px', border: 'none', cursor: 'pointer', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.1em', transition: 'all 0.2s', background: !annual ? '#E8C547' : 'transparent', color: !annual ? 'black' : 'rgba(255,255,255,0.85)' }}>
               MONTHLY
             </button>
-            <button onClick={() => setAnnual(true)} aria-pressed={annual} style={{ padding: '8px 20px', borderRadius: '100px', border: 'none', cursor: 'pointer', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.1em', transition: 'all 0.2s', background: annual ? '#E8C547' : 'transparent', color: annual ? 'black' : 'rgba(255,255,255,0.85)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <button type="button" onClick={() => setAnnual(true)} aria-pressed={annual} style={{ padding: '8px 20px', borderRadius: '100px', border: 'none', cursor: 'pointer', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.1em', transition: 'all 0.2s', background: annual ? '#E8C547' : 'transparent', color: annual ? 'black' : 'rgba(255,255,255,0.85)', display: 'flex', alignItems: 'center', gap: '8px' }}>
               ANNUAL
               <span style={{ background: annual ? 'rgba(0,0,0,0.2)' : 'rgba(52,211,153,0.15)', color: annual ? 'black' : '#34D399', fontSize: '9px', padding: '2px 7px', borderRadius: '100px', fontWeight: 600 }}>SAVE {savings}%</span>
             </button>
@@ -179,7 +179,7 @@ export default function PricingPage() {
             Premium tools and an ad-free study experience for deeper study and review.
           </p>
 
-          <button style={{ display: 'block', width: '100%', textAlign: 'center', padding: '15px', borderRadius: '10px', border: 'none', background: 'linear-gradient(135deg,#E8C547,#8A6B28)', color: 'black', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600, cursor: 'pointer', marginBottom: '28px', transition: 'opacity 0.2s' }}
+          <button type="button" style={{ display: 'block', width: '100%', textAlign: 'center', padding: '15px', borderRadius: '10px', border: 'none', background: 'linear-gradient(135deg,#E8C547,#8A6B28)', color: 'black', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600, cursor: 'pointer', marginBottom: '28px', transition: 'opacity 0.2s' }}
             onClick={handleCheckout} disabled={checkoutLoading}
             onMouseOver={e => e.currentTarget.style.opacity = '0.9'}
             onMouseOut={e => e.currentTarget.style.opacity = '1'}>

@@ -23,6 +23,7 @@ function Section({ section, index, diagramSrc, diagramAlt }) {
   return (
     <div className="border border-[rgba(212,168,67,0.1)] rounded-xl overflow-hidden mb-4">
       <button
+        type="button"
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between p-5 text-left hover:bg-[rgba(212,168,67,0.03)] transition-colors"
       >
@@ -205,10 +206,10 @@ export default function LessonClient({ lesson, lessonId, moduleDiagramSrc }) {
           {/* Share Bar */}
           <div style={{ display:'flex', alignItems:'center', gap:'10px', marginTop:'16px', marginBottom:'8px', flexWrap:'wrap' }}>
             <span style={{ fontFamily:'DM Mono,monospace', fontSize:'10px', color:'#B9C1CC', letterSpacing:'0.12em' }}>SHARE FREE:</span>
-            <button onClick={() => handleShare('twitter')} style={{ padding:'6px 14px', borderRadius:'8px', border:'1px solid rgba(29,161,242,0.3)', background:'rgba(29,161,242,0.08)', color:'#1DA1F2', fontFamily:'DM Mono,monospace', fontSize:'10px', cursor:'pointer', letterSpacing:'0.08em' }}>
+            <button type="button" onClick={() => handleShare('twitter')} style={{ padding:'6px 14px', borderRadius:'8px', border:'1px solid rgba(29,161,242,0.3)', background:'rgba(29,161,242,0.08)', color:'#1DA1F2', fontFamily:'DM Mono,monospace', fontSize:'10px', cursor:'pointer', letterSpacing:'0.08em' }}>
               𝕏 Twitter
             </button>
-            <button onClick={() => handleShare('whatsapp')} style={{ padding:'6px 14px', borderRadius:'8px', border:'1px solid rgba(37,211,102,0.3)', background:'rgba(37,211,102,0.08)', color:'#25D366', fontFamily:'DM Mono,monospace', fontSize:'10px', cursor:'pointer', letterSpacing:'0.08em' }}>
+            <button type="button" onClick={() => handleShare('whatsapp')} style={{ padding:'6px 14px', borderRadius:'8px', border:'1px solid rgba(37,211,102,0.3)', background:'rgba(37,211,102,0.08)', color:'#25D366', fontFamily:'DM Mono,monospace', fontSize:'10px', cursor:'pointer', letterSpacing:'0.08em' }}>
               WhatsApp
             </button>
             <button onClick={() => handleShare('copy')} style={{ padding:'6px 14px', borderRadius:'8px', border:'1px solid rgba(232,197,71,0.3)', background:'rgba(232,197,71,0.06)', color:'#E8C547', fontFamily:'DM Mono,monospace', fontSize:'10px', cursor:'pointer', letterSpacing:'0.08em' }}>

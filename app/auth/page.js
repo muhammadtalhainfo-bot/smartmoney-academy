@@ -35,13 +35,17 @@ function AuthPageInner() {
 
   const handleGoogle = async () => {
     trackEvent('login_started', { method: 'google' });
+    setError('');
     const supabase = createClient();
-    await supabase.auth.signInWithOAuth({
+    const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
         redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(redirectTo)}`,
       }
     });
+    if (error) {
+      setError('Unable to start Google sign-in. Please try again.');
+    }
   };
 
   const handleAuth = async () => {
@@ -161,7 +165,7 @@ function AuthPageInner() {
           {/* Tabs */}
           <div style={{ display: 'flex', background: '#141414', borderRadius: '12px', padding: '4px', marginBottom: '28px' }}>
             {['Login', 'Sign Up'].map((tab, i) => (
-              <button key={tab} onClick={() => { setIsLogin(i === 0); setError(''); setSuccess(''); }}
+              <button type="button" key={tab} onClick={() => { setIsLogin(i === 0); setError(''); setSuccess(''); }}
                 style={{ flex: 1, padding: '10px', borderRadius: '9px', border: 'none', cursor: 'pointer', fontFamily: 'DM Mono', fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase', transition: 'all 0.2s',
                   background: isLogin === (i === 0) ? 'linear-gradient(135deg, #E8C547, #F0C96A)' : 'transparent',
                   color: isLogin === (i === 0) ? '#080808' : 'rgba(255,255,255,0.7)',
@@ -210,7 +214,7 @@ function AuthPageInner() {
             {/* Forgot Password Link */}
             {isLogin && !showForgot && (
               <div style={{ textAlign: 'right', marginTop: '-4px' }}>
-                <button onClick={() => { setShowForgot(true); setError(''); }}
+                <button type="button" onClick={() => { setShowForgot(true); setError(''); }}
                   style={{ background: 'none', border: 'none', color: '#E8C547', fontFamily: 'DM Mono', fontSize: '11px', cursor: 'pointer', letterSpacing: '0.05em', padding: 0 }}>
                   Forgot password?
                 </button>

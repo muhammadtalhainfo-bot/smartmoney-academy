@@ -36,19 +36,19 @@ export default function ResetPasswordPage() {
         <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(232,197,71,0.95)', textAlign: 'center', marginBottom: '28px', letterSpacing: '0.1em' }}>ICT FLOW — ACCOUNT RECOVERY</div>
 
         {success ? (
-          <div style={{ textAlign: 'center', color: '#34D399', fontFamily: 'DM Mono, monospace', fontSize: '13px' }}>✓ Password updated! Redirecting...</div>
+          <div role="status" aria-live="polite" style={{ textAlign: 'center', color: '#34D399', fontFamily: 'DM Mono, monospace', fontSize: '13px' }}>✓ Password updated! Redirecting...</div>
         ) : (
           <>
             <div style={{ marginBottom: '14px' }}>
-              <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#E8C547', marginBottom: '6px', letterSpacing: '0.1em' }}>NEW PASSWORD</div>
-              <input type="password" value={password} onChange={e => setPassword(e.target.value)}
+              <label htmlFor="new-password" style={{ display: 'block', fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#E8C547', marginBottom: '6px', letterSpacing: '0.1em' }}>NEW PASSWORD</label>
+              <input id="new-password" type="password" value={password} onChange={e => setPassword(e.target.value)}
                 autoComplete="new-password"
                 placeholder="Min 8 characters"
                 style={{ width: '100%', background: '#080808', border: '1px solid #E8C547', borderRadius: '8px', padding: '12px 14px', color: 'white', fontSize: '14px', boxSizing: 'border-box', outline: 'none' }} />
             </div>
             <div style={{ marginBottom: '20px' }}>
-              <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#E8C547', marginBottom: '6px', letterSpacing: '0.1em' }}>CONFIRM PASSWORD</div>
-              <input type="password" value={confirm} onChange={e => setConfirm(e.target.value)}
+              <label htmlFor="confirm-password" style={{ display: 'block', fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#E8C547', marginBottom: '6px', letterSpacing: '0.1em' }}>CONFIRM PASSWORD</label>
+              <input id="confirm-password" type="password" value={confirm} onChange={e => setConfirm(e.target.value)}
                 autoComplete="new-password"
                 placeholder="Repeat password"
                 style={{ width: '100%', background: '#080808', border: '1px solid #E8C547', borderRadius: '8px', padding: '12px 14px', color: 'white', fontSize: '14px', boxSizing: 'border-box', outline: 'none' }} />
