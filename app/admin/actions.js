@@ -183,7 +183,7 @@ export async function adminDb(action, payload = {}) {
           .from('profiles')
           .select('id,username,xp,streak,is_pro,joined_at')
           .order('xp', { ascending: false })
-          .limit(500),
+          .limit(1000),
         supabase.from('email_signups').select('email,created_at').order('created_at', { ascending: false }),
         supabase.from('trades').select('id', { count: 'exact', head: true }),
         supabase.auth.admin.listUsers({ page: 1, perPage: 1000 }),
