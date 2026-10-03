@@ -83,7 +83,7 @@ export default function AboutPage() {
             When we first discovered ICT's methodology, we spent hundreds of hours scattered across YouTube videos, old forum posts, and paid courses trying to piece it together. There was no single resource that laid it all out clearly.
           </p>
           <p>
-            We built ICT Flow to be that resource — a structured, progressive curriculum that takes a complete beginner from market structure basics all the way to advanced IPDA theory and trade management. Built from ICT's official YouTube content and mentorship material.
+            We built ICT Flow to be that resource — a structured, progressive curriculum that takes a complete beginner from market structure basics all the way to advanced IPDA theory and trade management. The curriculum studies publicly available ICT educational content and mentorship material. ICT Flow is an independent educational resource and is not affiliated with or endorsed by Inner Circle Trader or any individual educator.
           </p>
           <p>
             The platform is designed around a simple idea: organized study beats scattered information. We combine ICT/SMC concepts with structured lessons, quizzes, journaling and review tools in one place.
