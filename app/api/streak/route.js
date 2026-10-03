@@ -1,3 +1,4 @@
+import { createClient as createSupabaseAdmin } from '@supabase/supabase-js';
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
@@ -40,74 +41,96 @@ function previousDate(dateString) {
   return date.toISOString().slice(0, 10);
 }
 
+function adminClient() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_KEY;
+  if (!url || !key) throw new Error('Supabase server configuration is missing.');
+  return createSupabaseAdmin(url, key, {
+    auth: { autoRefreshToken: false, persistSession: false },
+  });
+}
+
 export async function POST(req) {
-  const cookieStore = await cookies();
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-    {
-      cookies: {
-        getAll() { return cookieStore.getAll(); },
-        setAll(cookiesToSet) {
-          try {
-            cookiesToSet.forEach(({ name, value, options }) => cookieStore.set(name, value, options));
-          } catch {}
+  try {
+    const cookieStore = await cookies();
+    const supabase = createServerClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+      {
+        cookies: {
+          getAll() { return cookieStore.getAll(); },
+          setAll(cookiesToSet) {
+            try {
+              cookiesToSet.forEach(({ name, value, options }) => cookieStore.set(name, value, options));
+            } catch {}
+          },
         },
-      },
+      }
+    );
+
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    if (authError || !user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
+    const { data: profile, error: profileError } = await supabase
+      .from('profiles')
+      .select('streak, longest_streak, last_active')
+      .eq('id', user.id)
+      .single();
+
+    if (profileError || !profile) {
+      return NextResponse.json({ error: 'Profile not found' }, { status: 404 });
     }
-  );
 
-  const { data: { user }, error: authError } = await supabase.auth.getUser();
-  if (authError || !user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    const now = new Date();
+    const timezone = req.headers.get('x-timezone')?.trim() || '';
+    const today = dateForTimezone(now, timezone);
 
-  const { data: profile, error: profileError } = await supabase
-    .from('profiles')
-    .select('streak, longest_streak, last_active')
-    .eq('id', user.id)
-    .single();
+    if (profile.last_active === today) {
+      return NextResponse.json({
+        streak: profile.streak || 0,
+        longest_streak: profile.longest_streak || 0,
+        last_active: profile.last_active,
+      }, { headers: { 'Cache-Control': 'private, no-store' } });
+    }
 
-  if (profileError || !profile) {
-    return NextResponse.json({ error: 'Profile not found' }, { status: 404 });
-  }
+    const yesterday = previousDate(today);
+    const newStreak = profile.last_active === yesterday ? (profile.streak || 0) + 1 : 1;
+    const longestStreak = Math.max(newStreak, profile.longest_streak || 0);
 
-  const now = new Date();
-  const timezone = req.headers.get('x-timezone')?.trim() || '';
-  const today = dateForTimezone(now, timezone);
+    const admin = adminClient();
+    let update = admin
+      .from('profiles')
+      .update({
+        streak: newStreak,
+        longest_streak: longestStreak,
+        last_active: today,
+      })
+      .eq('id', user.id);
 
-  if (profile.last_active === today) {
+    update = profile.last_active === null
+      ? update.is('last_active', null)
+      : update.eq('last_active', profile.last_active);
+
+    const { data: updatedProfile, error: updateError } = await update
+      .select('streak, longest_streak, last_active')
+      .maybeSingle();
+
+    if (updateError) {
+      console.error('Streak update error:', updateError);
+      return NextResponse.json({ error: 'Unable to update streak' }, { status: 500 });
+    }
+
+    if (!updatedProfile) {
+      return NextResponse.json({ error: 'Streak changed concurrently. Refresh and retry.' }, { status: 409 });
+    }
+
     return NextResponse.json({
-      streak: profile.streak || 0,
-      longest_streak: profile.longest_streak || 0,
-      last_active: profile.last_active,
+      streak: updatedProfile.streak || 0,
+      longest_streak: updatedProfile.longest_streak || 0,
+      last_active: updatedProfile.last_active,
     }, { headers: { 'Cache-Control': 'private, no-store' } });
+  } catch (error) {
+    console.error('Streak endpoint error:', error);
+    return NextResponse.json({ error: 'Unable to update streak' }, { status: 500 });
   }
-
-  const yesterday = previousDate(today);
-  const newStreak = profile.last_active === yesterday ? (profile.streak || 0) + 1 : 1;
-  const longestStreak = Math.max(newStreak, profile.longest_streak || 0);
-
-  let update = supabase
-    .from('profiles')
-    .update({
-      streak: newStreak,
-      longest_streak: longestStreak,
-      last_active: today,
-    })
-    .eq('id', user.id);
-
-  update = profile.last_active === null
-    ? update.is('last_active', null)
-    : update.eq('last_active', profile.last_active);
-
-  const { error: updateError } = await update;
-
-  if (updateError) {
-    return NextResponse.json({ error: 'Unable to update streak' }, { status: 409 });
-  }
-
-  return NextResponse.json({
-    streak: newStreak,
-    longest_streak: longestStreak,
-    last_active: today,
-  }, { headers: { 'Cache-Control': 'private, no-store' } });
 }
