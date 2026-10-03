@@ -180,14 +180,20 @@ export default function CertificatePage() {
 
             <div className="no-print" style={{ textAlign: 'center', marginTop: '18px' }}>
               <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#C5CCD6', letterSpacing: '0.12em', marginBottom: '6px' }}>PUBLIC VERIFICATION</div>
-              <a
-                href={certificate?.verificationUrl || '#'}
-                target="_blank"
-                rel="noreferrer"
-                style={{ color: '#E8C547', fontFamily: 'DM Mono, monospace', fontSize: '10px', wordBreak: 'break-all' }}
-              >
-                {certificate?.verificationUrl || 'Verification unavailable'}
-              </a>
+              {certificate?.verificationUrl ? (
+                <a
+                  href={certificate.verificationUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: '#E8C547', fontFamily: 'DM Mono, monospace', fontSize: '10px', wordBreak: 'break-all' }}
+                >
+                  {certificate.verificationUrl}
+                </a>
+              ) : (
+                <span style={{ color: '#C5CCD6', fontFamily: 'DM Mono, monospace', fontSize: '10px' }}>
+                  Verification unavailable
+                </span>
+              )}
             </div>
 
             {/* ACTIONS */}
