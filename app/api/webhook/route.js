@@ -2,6 +2,9 @@ import { createClient } from '@supabase/supabase-js';
 
 export const runtime = 'nodejs';
 
+const WEBHOOK_RECLAIM_AFTER_MS = 5 * 60 * 1000;
+const MAX_WEBHOOK_ERROR_LENGTH = 1000;
+
 async function findProfileByCustomer(supabase, customerId) {
   if (!customerId) return null;
   const { data } = await supabase
@@ -42,7 +45,117 @@ async function findUserByEmail(supabase, email) {
   }
 }
 
+async function claimWebhookEvent(supabase, event) {
+  const now = new Date();
+  const { data: inserted, error: insertError } = await supabase
+    .from('stripe_webhook_events')
+    .insert({
+      event_id: event.id,
+      event_type: event.type,
+      status: 'processing',
+      received_at: now.toISOString(),
+      processed_at: null,
+      last_error: null,
+    })
+    .select('event_id')
+    .maybeSingle();
+
+  if (!insertError && inserted) return { claimed: true };
+
+  if (insertError?.code !== '23505') {
+    throw insertError;
+  }
+
+  const { data: existing, error: existingError } = await supabase
+    .from('stripe_webhook_events')
+    .select('event_id,status,received_at')
+    .eq('event_id', event.id)
+    .maybeSingle();
+
+  if (existingError) throw existingError;
+  if (!existing) return { claimed: false, busy: true };
+
+  if (existing.status === 'processed') {
+    return { claimed: false, duplicate: true };
+  }
+
+  const staleCutoff = new Date(Date.now() - WEBHOOK_RECLAIM_AFTER_MS).toISOString();
+
+  if (existing.status === 'failed') {
+    const { data: reclaimed, error: reclaimError } = await supabase
+      .from('stripe_webhook_events')
+      .update({
+        event_type: event.type,
+        status: 'processing',
+        received_at: now.toISOString(),
+        processed_at: null,
+        last_error: null,
+      })
+      .eq('event_id', event.id)
+      .eq('status', 'failed')
+      .select('event_id');
+
+    if (reclaimError) throw reclaimError;
+    return reclaimed?.length ? { claimed: true } : { claimed: false, busy: true };
+  }
+
+  if (existing.status === 'processing' && existing.received_at < staleCutoff) {
+    const { data: reclaimed, error: reclaimError } = await supabase
+      .from('stripe_webhook_events')
+      .update({
+        event_type: event.type,
+        status: 'processing',
+        received_at: now.toISOString(),
+        processed_at: null,
+        last_error: null,
+      })
+      .eq('event_id', event.id)
+      .eq('status', 'processing')
+      .lt('received_at', staleCutoff)
+      .select('event_id');
+
+    if (reclaimError) throw reclaimError;
+    return reclaimed?.length ? { claimed: true } : { claimed: false, busy: true };
+  }
+
+  return { claimed: false, busy: true };
+}
+
+async function markWebhookProcessed(supabase, eventId) {
+  const { error } = await supabase
+    .from('stripe_webhook_events')
+    .update({
+      status: 'processed',
+      processed_at: new Date().toISOString(),
+      last_error: null,
+    })
+    .eq('event_id', eventId)
+    .eq('status', 'processing');
+
+  if (error) throw error;
+}
+
+async function markWebhookFailed(supabase, eventId, error) {
+  const message = String(error?.message || error || 'Webhook processing failed')
+    .slice(0, MAX_WEBHOOK_ERROR_LENGTH);
+
+  const { error: updateError } = await supabase
+    .from('stripe_webhook_events')
+    .update({
+      status: 'failed',
+      last_error: message,
+    })
+    .eq('event_id', eventId)
+    .neq('status', 'processed');
+
+  if (updateError) {
+    console.error('Stripe webhook ledger update failed:', updateError);
+  }
+}
+
 export async function POST(req) {
+  let claimedEventId = null;
+
   try {
     const Stripe = (await import('stripe')).default;
     const secret = process.env.SUPABASE_SERVICE_KEY;
@@ -72,6 +185,19 @@ export async function POST(req) {
       return Response.json({ error: 'Webhook signature failed' }, { status: 400 });
     }
 
+    const claim = await claimWebhookEvent(supabase, event);
+    if (claim.duplicate) {
+      return Response.json({ received: true, duplicate: true }, { headers: { 'Cache-Control': 'no-store' } });
+    }
+    if (claim.busy) {
+      return Response.json({ error: 'Webhook event is already being processed.' }, { status: 409, headers: { 'Cache-Control': 'no-store' } });
+    }
+    if (!claim.claimed) {
+      return Response.json({ error: 'Unable to claim webhook event.' }, { status: 503, headers: { 'Cache-Control': 'no-store' } });
+    }
+
+    claimedEventId = event.id;
+
     if (event.type === 'checkout.session.completed') {
       const session = event.data.object;
       const email = session.customer_email || session.customer_details?.email || session.metadata?.email;
@@ -88,7 +214,10 @@ export async function POST(req) {
       if (!user && email) {
         user = await findUserByEmail(supabase, email);
       }
-      if (!user) return Response.json({ received: true }, { headers: { 'Cache-Control': 'no-store' } });
+      if (!user) {
+        await markWebhookProcessed(supabase, event.id);
+        return Response.json({ received: true }, { headers: { 'Cache-Control': 'no-store' } });
+      }
 
       let active = false;
       if (session.subscription) {
@@ -96,10 +225,18 @@ export async function POST(req) {
         active = ['active', 'trialing', 'past_due'].includes(subscription.status);
       }
 
+      const { data: existingProfile, error: profileLookupError } = await supabase
+        .from('profiles')
+        .select('pro_since')
+        .eq('id', user.id)
+        .maybeSingle();
+
+      if (profileLookupError) throw profileLookupError;
+
       const { error: profileError } = await supabase.from('profiles').upsert({
         id: user.id,
         is_pro: active,
-        pro_since: active ? new Date().toISOString() : null,
+        pro_since: active ? (existingProfile?.pro_since || new Date().toISOString()) : null,
         stripe_customer_id: typeof session.customer === 'string' ? session.customer : session.customer?.id || null,
       }, { onConflict: 'id' });
       if (profileError) throw profileError;
@@ -127,9 +264,22 @@ export async function POST(req) {
       }
     }
 
+    await markWebhookProcessed(supabase, event.id);
     return Response.json({ received: true });
   } catch (err) {
     console.error('Stripe webhook error:', err);
+    if (claimedEventId) {
+      const secret = process.env.SUPABASE_SERVICE_KEY;
+      const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+      if (secret && url) {
+        try {
+          const supabase = createClient(url, secret);
+          await markWebhookFailed(supabase, claimedEventId, err);
+        } catch (ledgerError) {
+          console.error('Stripe webhook failure ledger error:', ledgerError);
+        }
+      }
+    }
     return Response.json({ error: 'Webhook failed' }, { status: 500, headers: { 'Cache-Control': 'no-store' } });
   }
 }
