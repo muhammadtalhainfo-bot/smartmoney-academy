@@ -170,13 +170,37 @@ export async function adminDb(action, payload = {}) {
 
   switch (action) {
     case 'dashboard': {
-      const [{ data: users, error: usersError }, { data: emails, error: emailsError }, { count, error: tradesError }] = await Promise.all([
-        supabase.from('profiles').select('id,username,email,xp,streak,is_pro,created_at').order('xp', { ascending: false }).limit(500),
+      const [
+        { data: profileRows, error: profilesError },
+        { data: emails, error: emailsError },
+        { count, error: tradesError },
+        { data: authPage, error: authUsersError },
+      ] = await Promise.all([
+        supabase
+          .from('profiles')
+          .select('id,username,xp,streak,is_pro,joined_at')
+          .order('xp', { ascending: false })
+          .limit(500),
         supabase.from('email_signups').select('email,created_at').order('created_at', { ascending: false }),
         supabase.from('trades').select('id', { count: 'exact', head: true }),
+        supabase.auth.admin.listUsers({ page: 1, perPage: 1000 }),
       ]);
-      if (usersError || emailsError || tradesError) throw usersError || emailsError || tradesError;
-      return { users: users || [], emails: emails || [], trades: count || 0 };
+
+      if (profilesError || emailsError || tradesError || authUsersError) {
+        throw profilesError || emailsError || tradesError || authUsersError;
+      }
+
+      const authById = new Map((authPage?.users || []).map((authUser) => [authUser.id, authUser]));
+      const users = (profileRows || []).map((profile) => {
+        const authUser = authById.get(profile.id);
+        return {
+          ...profile,
+          email: authUser?.email || '',
+          created_at: authUser?.created_at || profile.joined_at || null,
+        };
+      });
+
+      return { users, emails: emails || [], trades: count || 0 };
     }
     case 'profile.togglePro': {
       const { error } = await supabase
@@ -189,7 +213,7 @@ export async function adminDb(action, payload = {}) {
     case 'profile.resetXP': {
       const { error } = await supabase
         .from('profiles')
-        .update({ xp: 0, streak: 0 })
+        .update({ xp: 0, total_xp: 0, streak: 0 })
         .eq('id', payload.id);
       if (error) throw error;
       return { ok: true };
