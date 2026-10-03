@@ -1487,7 +1487,7 @@ export default function JournalPage() {
                 {stats ? stats.consistencyScore : '—'}
               </div>
             </div>
-            <button onClick={() => { setEditTrade(null); setShowForm(true); }} style={{ ...S.btn, width: '100%', marginTop: '10px', padding: '10px', fontSize: '11px' }}>
+            <button type="button" onClick={() => { setSaveError(''); setEditTrade(null); setShowForm(true); }} style={{ ...S.btn, width: '100%', marginTop: '10px', padding: '10px', fontSize: '11px' }}>
               + Log Trade
             </button>
           </div>
@@ -1501,7 +1501,7 @@ export default function JournalPage() {
             ) : (
               <>
                 {page === 'dashboard' && <Dashboard trades={trades} stats={stats} onAdd={() => { setEditTrade(null); setShowForm(true); }} onPage={setPage} />}
-                {page === 'trades' && <TradeHistory trades={trades} onEdit={(t) => { setEditTrade(t); setShowForm(true); }} onDelete={del} />}
+                {page === 'trades' && <TradeHistory trades={trades} onEdit={(t) => { setSaveError(''); setEditTrade(t); setShowForm(true); }} onDelete={del} />}
                 {page === 'analytics' && <Analytics trades={trades} stats={stats} />}
                 {page === 'sessions' && <Sessions trades={trades} stats={stats} />}
                 {page === 'psychology' && <Psychology trades={trades} stats={stats} />}
@@ -1528,7 +1528,8 @@ export default function JournalPage() {
         <TradeForm
           initial={editTrade}
           onSave={save}
-          onCancel={() => { setShowForm(false); setEditTrade(null); }}
+          error={saveError}
+          onCancel={() => { setShowForm(false); setEditTrade(null); setSaveError(''); }}
         />
       )}
     </>
