@@ -19,8 +19,12 @@ export default function ResetPasswordPage() {
     const supabase = createClient();
     const { error } = await supabase.auth.updateUser({ password });
     setLoading(false);
-    if (error) { setError(error.message); }
-    else { setSuccess(true); setTimeout(() => router.push('/dashboard'), 2000); }
+    if (error) {
+      setError('Unable to update your password. Please request a new reset link and try again.');
+    } else {
+      setSuccess(true);
+      setTimeout(() => router.push('/dashboard'), 2000);
+    }
   };
 
   return (
@@ -38,17 +42,19 @@ export default function ResetPasswordPage() {
             <div style={{ marginBottom: '14px' }}>
               <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#E8C547', marginBottom: '6px', letterSpacing: '0.1em' }}>NEW PASSWORD</div>
               <input type="password" value={password} onChange={e => setPassword(e.target.value)}
+                autoComplete="new-password"
                 placeholder="Min 8 characters"
                 style={{ width: '100%', background: '#080808', border: '1px solid #E8C547', borderRadius: '8px', padding: '12px 14px', color: 'white', fontSize: '14px', boxSizing: 'border-box', outline: 'none' }} />
             </div>
             <div style={{ marginBottom: '20px' }}>
               <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#E8C547', marginBottom: '6px', letterSpacing: '0.1em' }}>CONFIRM PASSWORD</div>
               <input type="password" value={confirm} onChange={e => setConfirm(e.target.value)}
+                autoComplete="new-password"
                 placeholder="Repeat password"
                 style={{ width: '100%', background: '#080808', border: '1px solid #E8C547', borderRadius: '8px', padding: '12px 14px', color: 'white', fontSize: '14px', boxSizing: 'border-box', outline: 'none' }} />
             </div>
-            {error && <div style={{ color: '#F87171', fontFamily: 'DM Mono, monospace', fontSize: '12px', marginBottom: '14px' }}>{error}</div>}
-            <button onClick={handleReset} disabled={loading}
+            {error && <div role="alert" aria-live="assertive" style={{ color: '#FCA5A5', fontFamily: 'DM Mono, monospace', fontSize: '12px', marginBottom: '14px' }}>{error}</div>}
+            <button type="button" onClick={handleReset} disabled={loading}
               style={{ width: '100%', background: 'linear-gradient(135deg, #E8C547, #F0C96A)', color: '#080808', border: 'none', borderRadius: '10px', padding: '14px', fontFamily: 'DM Mono, monospace', fontSize: '12px', fontWeight: 700, cursor: 'pointer', letterSpacing: '0.1em' }}>
               {loading ? 'UPDATING...' : 'UPDATE PASSWORD'}
             </button>
