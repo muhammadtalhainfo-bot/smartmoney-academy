@@ -1,9 +1,18 @@
 import Stripe from 'stripe';
+import { createHash } from 'node:crypto';
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
 export const runtime = 'nodejs';
+
+const WINDOW_SECONDS = 10 * 60;
+const MAX_REQUESTS = 5;
+
+function hashUserKey(userId) {
+  const pepper = process.env.RATE_LIMIT_SECRET || process.env.SUPABASE_SERVICE_KEY || 'ictflow-rate-limit';
+  return createHash('sha256').update(pepper + ':portal:' + userId).digest('hex');
+}
 
 export async function POST(req) {
   try {
@@ -44,6 +53,30 @@ export async function POST(req) {
       return NextResponse.json({ error: 'Pro access required.' }, { status: 403 });
     }
 
+    const serviceKey = process.env.SUPABASE_SERVICE_KEY;
+    if (!serviceKey) {
+      return NextResponse.json({ error: 'Payment service is not configured.' }, { status: 503 });
+    }
+
+    const { createClient } = await import('@supabase/supabase-js');
+    const admin = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, serviceKey, {
+      auth: { autoRefreshToken: false, persistSession: false },
+    });
+    const { data: allowed, error: rateError } = await admin.rpc('consume_api_rate_limit', {
+      p_scope: 'stripe-portal',
+      p_key_hash: hashUserKey(user.id),
+      p_window_seconds: WINDOW_SECONDS,
+      p_max_requests: MAX_REQUESTS,
+    });
+
+    if (rateError) {
+      console.error('Stripe portal rate-limit error:', rateError);
+      return NextResponse.json({ error: 'Payment service temporarily unavailable.' }, { status: 503 });
+    }
+    if (allowed !== true) {
+      return NextResponse.json({ error: 'Too many requests. Try again later.' }, { status: 429 });
+    }
+
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
     const configuredOrigin = process.env.NEXT_PUBLIC_APP_URL?.trim()?.replace(/\/$/, '');
     const origin = configuredOrigin || (
@@ -51,12 +84,12 @@ export async function POST(req) {
         ? 'https://ictflow.com'
         : new URL(req.url).origin
     );
-    const portal = await stripe.billingPortal.sessions.create({
+    const portalSession = await stripe.billingPortal.sessions.create({
       customer: profile.stripe_customer_id,
       return_url: `${origin}/dashboard`,
     });
 
-    return NextResponse.json({ url: portal.url }, { headers: { 'Cache-Control': 'no-store' } });
+    return NextResponse.json({ url: portalSession.url }, { headers: { 'Cache-Control': 'no-store' } });
   } catch (error) {
     console.error('Stripe portal error:', error);
     return NextResponse.json({ error: 'Unable to open billing portal.' }, { status: 502, headers: { 'Cache-Control': 'no-store' } });
