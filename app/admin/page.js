@@ -397,13 +397,19 @@ function BlogSection({ adminDbClient = adminDb }) {
   const [view, setView] = useState('list');
   const [form, setForm] = useState(EMPTY_POST);
   const [editId, setEditId] = useState(null);
+  const [saving, setSaving] = useState(false);
   const [msg, setMsg] = useState({ text: '', type: 'success' });
   const [search, setSearch] = useState('');
   const [filterCat, setFilterCat] = useState('all');
 
   const load = useCallback(async () => {
-    const { data } = await adminDbClient('blog.list');
-    if (data) setPosts(data);
+    try {
+      const { data } = await adminDbClient('blog.list');
+      if (data) setPosts(data);
+    } catch (error) {
+      console.error('Admin blog load failed:', error);
+      setMsg({ text: 'Unable to load blog posts.', type: 'error' });
+    }
   }, [adminDbClient]);
 
   useEffect(() => { load(); }, [load]);
@@ -416,31 +422,62 @@ function BlogSection({ adminDbClient = adminDb }) {
   });
 
   const save = async () => {
-    if (!form.title || !form.content) { setMsg({ text: 'Title and content are required', type: 'error' }); return; }
+    if (!form.title || !form.content) {
+      setMsg({ text: 'Title and content are required', type: 'error' });
+      return;
+    }
     setSaving(true);
     const slug = form.slug || form.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
     const date = form.date || new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-    const { error } = await adminDbClient('blog.save', { form: { ...form, slug, date } });
-    if (error) setMsg({ text: 'Error: ' + error.message, type: 'error' });
-    else { setMsg({ text: '✓ Post saved!', type: 'success' }); load(); setView('list'); setForm(EMPTY_POST); setEditId(null); }
-    setSaving(false);
+    try {
+      await adminDbClient('blog.save', { form: { ...form, slug, date } });
+      setMsg({ text: '✓ Post saved!', type: 'success' });
+      await load();
+      setView('list');
+      setForm(EMPTY_POST);
+      setEditId(null);
+    } catch (error) {
+      console.error('Admin blog save failed:', error);
+      setMsg({ text: 'Unable to save this post. Please try again.', type: 'error' });
+    } finally {
+      setSaving(false);
+    }
   };
 
-  const del = async (slug) => {
+  const del = async (p) => {
     if (!confirm('Delete this post permanently?')) return;
-    await adminDbClient('blog.delete', { slug });
-    load();
+    try {
+      await adminDbClient('blog.delete', { id: p.id, slug: p.slug, post: p });
+      await load();
+    } catch (error) {
+      console.error('Admin blog delete failed:', error);
+      setMsg({ text: 'Unable to delete this post.', type: 'error' });
+    }
   };
 
-  const edit = (p) => { setEditId(p.id); setForm({ ...p }); setView('edit'); setMsg({ text: '', type: 'success' }); };
-  const togglePub = async (p) => { await adminDbClient('blog.togglePublished', { id: p.id, published: !p.published }); load(); };
+  const edit = (p) => {
+    setEditId(p.id);
+    setForm({ ...p });
+    setView('edit');
+    setMsg({ text: '', type: 'success' });
+  };
+
+  const togglePub = async (p) => {
+    try {
+      await adminDbClient('blog.togglePublished', { id: p.id, slug: p.slug, post: p, published: !p.published });
+      await load();
+    } catch (error) {
+      console.error('Admin blog publish toggle failed:', error);
+      setMsg({ text: 'Unable to update publication status.', type: 'error' });
+    }
+  };
 
   const CATS = ['all', 'Beginner', 'Intermediate', 'Advanced', 'Strategy', 'Psychology', 'News', 'Analysis'];
 
   if (view === 'edit') return (
     <div>
       <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '24px' }}>
-        <button onClick={() => { setView('list'); setForm(EMPTY_POST); setEditId(null); }} style={css.btnGhost}>← Back</button>
+        <button type="button" onClick={() => { setView('list'); setForm(EMPTY_POST); setEditId(null); }} style={css.btnGhost}>← Back</button>
         <div style={{ ...css.bebas, fontSize: '26px', color: 'white' }}>{editId ? 'EDIT POST' : 'NEW POST'}</div>
       </div>
 
@@ -466,7 +503,7 @@ function BlogSection({ adminDbClient = adminDb }) {
             <FieldGroup label="Status">
               <div style={{ display: 'flex', gap: '8px' }}>
                 {['Published', 'Draft'].map(s => (
-                  <button key={s} onClick={() => setForm({ ...form, published: s === 'Published' })}
+                  <button type="button" key={s} onClick={() => setForm({ ...form, published: s === 'Published' })}
                     style={{ flex: 1, padding: '8px', borderRadius: '7px', cursor: 'pointer',
                       background: (s === 'Published') === form.published ? `${G}18` : 'transparent',
                       border: `1px solid ${(s === 'Published') === form.published ? G : BORDER2}`,
@@ -513,10 +550,10 @@ function BlogSection({ adminDbClient = adminDb }) {
           </div>
 
           <Toast msg={msg.text} type={msg.type} />
-          <button onClick={save} disabled={saving} style={{ ...css.btn, width: '100%', padding: '14px', fontSize: '12px', marginBottom: '8px' }}>
+          <button type="button" onClick={save} disabled={saving} style={{ ...css.btn, width: '100%', padding: '14px', fontSize: '12px', marginBottom: '8px' }}>
             {saving ? 'SAVING...' : editId ? '💾 SAVE CHANGES' : '🚀 PUBLISH POST'}
           </button>
-          <button onClick={() => { setView('list'); setForm(EMPTY_POST); setEditId(null); }} style={{ ...css.btnGhost, width: '100%', padding: '12px' }}>CANCEL</button>
+          <button type="button" onClick={() => { setView('list'); setForm(EMPTY_POST); setEditId(null); }} style={{ ...css.btnGhost, width: '100%', padding: '12px' }}>CANCEL</button>
         </div>
       </div>
     </div>
@@ -525,7 +562,7 @@ function BlogSection({ adminDbClient = adminDb }) {
   return (
     <div>
       <SectionHeader title={`BLOG POSTS (${posts.length})`} action={
-        <button onClick={() => { setForm(EMPTY_POST); setEditId(null); setView('edit'); }} style={css.btn}>+ NEW POST</button>
+        <button type="button" onClick={() => { setForm(EMPTY_POST); setEditId(null); setView('edit'); }} style={css.btn}>+ NEW POST</button>
       } />
 
       <div style={{ display: 'flex', gap: '10px', marginBottom: '16px' }}>
@@ -561,8 +598,8 @@ function BlogSection({ adminDbClient = adminDb }) {
                 ...css.mono, fontSize: '10px', cursor: 'pointer',
               }}>{p.published ? '● LIVE' : '○ DRAFT'}</button>
               <a href={`/blog/${p.slug}`} target="_blank" rel="noopener noreferrer" style={{ ...css.btnGhost, padding: '6px 12px', fontSize: '10px', textDecoration: 'none' }}>VIEW ↗</a>
-              <button onClick={() => edit(p)} style={{ ...css.btn, padding: '6px 14px', fontSize: '10px' }}>EDIT</button>
-              <button onClick={() => del(p.slug)} style={css.btnDanger}>DEL</button>
+              <button type="button" onClick={() => edit(p)} style={{ ...css.btn, padding: '6px 14px', fontSize: '10px' }}>EDIT</button>
+              <button type="button" onClick={() => del(p)} style={css.btnDanger}>DEL</button>
             </div>
           </div>
         ))}
