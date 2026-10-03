@@ -18,7 +18,19 @@ export async function POST(req) {
       return Response.json({ error: 'Notification service not configured' }, { status: 500 });
     }
 
-    const { title, message } = await req.json();
+    const rawBody = await req.text();
+    if (rawBody.length > 25_000) {
+      return Response.json({ error: 'Request too large.' }, { status: 413 });
+    }
+
+    let body = {};
+    try {
+      body = rawBody ? JSON.parse(rawBody) : {};
+    } catch {
+      return Response.json({ error: 'Invalid request.' }, { status: 400 });
+    }
+
+    const { title, message } = body;
     const cleanTitle = typeof title === 'string' ? title.trim() : '';
     const cleanMessage = typeof message === 'string' ? message.trim() : '';
     if (!cleanTitle) return Response.json({ error: 'Missing title' }, { status: 400 });
