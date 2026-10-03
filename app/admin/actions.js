@@ -3,6 +3,7 @@
 import { cookies, headers } from 'next/headers';
 import crypto from 'node:crypto';
 import { createClient } from '@supabase/supabase-js';
+import { POSTS } from '@/app/blog/posts';
 
 const COOKIE_NAME = 'ictflow_admin_session';
 const SESSION_TTL = 8 * 60 * 60;
@@ -99,6 +100,65 @@ function adminDbClient() {
   return createClient(url, key, { auth: { autoRefreshToken: false, persistSession: false } });
 }
 
+function editorText(content) {
+  if (typeof content === 'string') return content;
+  if (!Array.isArray(content)) return '';
+  return content.map((block) => {
+    if (!block) return '';
+    if (block.type === 'list' && Array.isArray(block.items)) return block.items.join('\n');
+    return block.text || '';
+  }).filter(Boolean).join('\n\n');
+}
+
+async function loadAdminBlogPosts(supabase) {
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .select('id,slug,title,description,category,read_time,date,image,image_url,featured,published,sort_order,content,content_json,meta_title,meta_desc,created_at')
+    .order('sort_order', { ascending: true })
+    .order('created_at', { ascending: true });
+  if (error) throw error;
+
+  const dbBySlug = new Map((data || []).filter((row) => row?.slug).map((row) => [row.slug, row]));
+  const merged = POSTS.map((post, index) => {
+    const row = dbBySlug.get(post.slug);
+    if (!row) {
+      return {
+        ...post,
+        id: null,
+        read_time: post.readTime || '5 min read',
+        published: true,
+        sort_order: index,
+        content: editorText(post.content),
+        meta_title: '',
+        meta_desc: '',
+      };
+    }
+    dbBySlug.delete(post.slug);
+    return {
+      ...post,
+      ...row,
+      read_time: row.read_time || post.readTime || '5 min read',
+      image: row.image || row.image_url || post.image || '',
+      content: row.content || editorText(post.content),
+      meta_title: row.meta_title || '',
+      meta_desc: row.meta_desc || '',
+    };
+  });
+
+  for (const row of dbBySlug.values()) {
+    merged.push({
+      ...row,
+      read_time: row.read_time || '5 min read',
+      image: row.image || row.image_url || '',
+      content: row.content || editorText(row.content_json),
+      meta_title: row.meta_title || '',
+      meta_desc: row.meta_desc || '',
+    });
+  }
+
+  return merged;
+}
+
 async function requireAdmin() {
   const session = await getAdminSession();
   if (!session?.ok) throw new Error('Unauthorized');
@@ -144,16 +204,79 @@ export async function adminDb(action, payload = {}) {
       return { ok: true };
     }
     case 'blog.list':
-      return supabase.from('blog_posts').select('*').order('sort_order', { ascending: true });
-    case 'blog.save':
-      return supabase.from('blog_posts').upsert(payload.form, { onConflict: 'slug' });
-    case 'blog.delete':
-      return supabase.from('blog_posts').delete().eq('slug', payload.slug);
+      return { data: await loadAdminBlogPosts(supabase) };
+    case 'blog.save': {
+      const form = payload.form || {};
+      const row = {
+        slug: form.slug,
+        title: form.title,
+        description: form.description || '',
+        category: form.category || 'Beginner',
+        read_time: form.read_time || '5 min read',
+        date: form.date || '',
+        image: form.image || '',
+        featured: form.featured === true,
+        published: form.published !== false,
+        sort_order: Number.isFinite(Number(form.sort_order)) ? Number(form.sort_order) : 0,
+        content: typeof form.content === 'string' ? form.content : '',
+        meta_title: form.meta_title || '',
+        meta_desc: form.meta_desc || '',
+      };
+      if (typeof form.id === 'string' && form.id) row.id = form.id;
+      const { error } = await supabase.from('blog_posts').upsert(row, { onConflict: 'slug' });
+      if (error) throw error;
+      return { ok: true };
+    }
+    case 'blog.delete': {
+      if (payload.id) {
+        const { error } = await supabase.from('blog_posts').delete().eq('id', payload.id);
+        if (error) throw error;
+        return { ok: true };
+      }
+      const post = payload.post || {};
+      if (!post.slug) throw new Error('Invalid blog post.');
+      const { error } = await supabase.from('blog_posts').upsert({
+        slug: post.slug,
+        title: post.title || post.slug,
+        description: post.description || '',
+        category: post.category || 'Beginner',
+        read_time: post.read_time || '5 min read',
+        date: post.date || '',
+        image: post.image || '',
+        featured: post.featured === true,
+        published: false,
+        sort_order: Number.isFinite(Number(post.sort_order)) ? Number(post.sort_order) : 0,
+        content: typeof post.content === 'string' ? post.content : '',
+        meta_title: post.meta_title || '',
+        meta_desc: post.meta_desc || '',
+      }, { onConflict: 'slug' });
+      if (error) throw error;
+      return { ok: true };
+    }
     case 'blog.togglePublished': {
-      const { error } = await supabase
-        .from('blog_posts')
-        .update({ published: payload.published === true })
-        .eq('id', payload.id);
+      const published = payload.published === true;
+      if (payload.id) {
+        const { error } = await supabase.from('blog_posts').update({ published }).eq('id', payload.id);
+        if (error) throw error;
+        return { ok: true };
+      }
+      const post = payload.post || {};
+      if (!post.slug) throw new Error('Invalid blog post.');
+      const { error } = await supabase.from('blog_posts').upsert({
+        slug: post.slug,
+        title: post.title || post.slug,
+        description: post.description || '',
+        category: post.category || 'Beginner',
+        read_time: post.read_time || '5 min read',
+        date: post.date || '',
+        image: post.image || '',
+        featured: post.featured === true,
+        published,
+        sort_order: Number.isFinite(Number(post.sort_order)) ? Number(post.sort_order) : 0,
+        content: typeof post.content === 'string' ? post.content : '',
+        meta_title: post.meta_title || '',
+        meta_desc: post.meta_desc || '',
+      }, { onConflict: 'slug' });
       if (error) throw error;
       return { ok: true };
     }
