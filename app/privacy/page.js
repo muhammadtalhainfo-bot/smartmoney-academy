@@ -35,7 +35,7 @@ export default function PrivacyPage() {
         </div>
         <div style={{ marginBottom: '40px' }}>
           <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '28px', color: '#E8C547', marginBottom: '12px', letterSpacing: '0.05em' }}>Google Advertising</h2>
-          <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: '1.8', fontSize: '15px' }}>If advertising is enabled, Google and its advertising partners may use cookies or similar technologies to serve and measure ads, including ads based on prior visits to this or other websites. Users can manage personalized advertising through <a href="https://adssettings.google.com/" target="_blank" rel="noreferrer">Google Ads Settings</a>. We may use Google AdSense on eligible pages after Google approves the site.</p>
+          <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: '1.8', fontSize: '15px' }}>If advertising is enabled, Google and its advertising partners may use cookies or similar technologies to serve and measure ads, including ads based on prior visits to this or other websites. Users can manage personalized advertising through <a href="https://adssettings.google.com/" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>. We may use Google AdSense on eligible pages after Google approves the site.</p>
         </div>
         <div style={{ marginBottom: '40px' }}>
           <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '28px', color: '#E8C547', marginBottom: '12px', letterSpacing: '0.05em' }}>Your Rights</h2>
