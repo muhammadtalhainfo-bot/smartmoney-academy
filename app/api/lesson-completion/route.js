@@ -16,7 +16,15 @@ function adminClient() {
 async function readJson(req) {
   const contentLength = Number(req.headers.get('content-length') || 0);
   if (contentLength > 20_000) throw new Error('Request too large.');
-  return req.json();
+
+  const rawBody = await req.text();
+  if (rawBody.length > 20_000) throw new Error('Request too large.');
+
+  try {
+    return rawBody ? JSON.parse(rawBody) : {};
+  } catch {
+    throw new Error('Invalid JSON payload.');
+  }
 }
 
 export async function POST(req) {
