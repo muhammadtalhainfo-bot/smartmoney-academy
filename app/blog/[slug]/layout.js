@@ -1,4 +1,5 @@
 import { POSTS } from '../posts';
+import { getPublishedBlogPosts } from '@/lib/blog-data';
 
 export function generateStaticParams() {
   return POSTS.filter((post) => post?.slug).map(({ slug }) => ({ slug }));
@@ -6,7 +7,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const post = POSTS.find((item) => item?.slug === slug);
+  const post = (await getPublishedBlogPosts()).find((item) => item?.slug === slug);
 
   if (!post) {
     return {
@@ -22,14 +23,14 @@ export async function generateMetadata({ params }) {
     : 'https://ictflow.com/og-image.png';
 
   return {
-    title: post.title,
-    description,
+    title: post.metaTitle || post.title,
+    description: post.metaDesc || description,
     alternates: { canonical },
     openGraph: {
       type: 'article',
       url: canonical,
-      title: post.title,
-      description,
+      title: post.metaTitle || post.title,
+      description: post.metaDesc || description,
       siteName: 'ICT Flow',
       images: [{ url: image, alt: post.title }],
       publishedTime: post.date ? new Date(post.date).toISOString() : undefined,
@@ -37,8 +38,8 @@ export async function generateMetadata({ params }) {
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.title,
-      description,
+      title: post.metaTitle || post.title,
+      description: post.metaDesc || description,
       images: [image],
     },
   };
@@ -46,7 +47,7 @@ export async function generateMetadata({ params }) {
 
 export default async function BlogPostLayout({ children, params }) {
   const { slug } = await params;
-  const post = POSTS.find((item) => item?.slug === slug);
+  const post = (await getPublishedBlogPosts()).find((item) => item?.slug === slug);
 
   if (!post) return children;
 
