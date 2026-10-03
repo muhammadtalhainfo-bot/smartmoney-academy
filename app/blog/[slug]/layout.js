@@ -1,5 +1,6 @@
 import { POSTS } from '../posts';
 import { getPublishedBlogPosts } from '@/lib/blog-data';
+import { serializeJsonLd } from '@/lib/jsonld';
 
 export function generateStaticParams() {
   return POSTS.filter((post) => post?.slug).map(({ slug }) => ({ slug }));
@@ -84,7 +85,7 @@ export default async function BlogPostLayout({ children, params }) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
       {children}
     </>
