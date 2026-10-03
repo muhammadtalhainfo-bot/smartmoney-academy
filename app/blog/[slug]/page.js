@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from '@/app/components/Navbar';
@@ -50,15 +51,7 @@ export default async function BlogPost({ params }) {
 
   const post = POSTS.find(p => p && p.slug === slug) || null;
 
-  if (!post) return (
-    <div style={{ minHeight: '100vh', background: '#080808', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ textAlign: 'center' }}>
-        <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '64px', color: '#E8C547' }}>404</div>
-        <p style={{ color: 'rgba(255,255,255,0.7)', marginBottom: '24px' }}>Post not found</p>
-        <Link href="/blog" style={{ color: '#E8C547', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px' }}>Back to Blog</Link>
-      </div>
-    </div>
-  );
+  if (!post) notFound();
 
   return (
     <div style={{ minHeight: '100vh', background: '#080808', color: 'white', fontFamily: "'DM Sans', sans-serif" }}>
