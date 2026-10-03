@@ -137,15 +137,15 @@ export default function CertificatePage() {
                 <div style={{ width: '40px', height: '40px', borderRadius: '8px', background: 'linear-gradient(135deg,#E8C547,#8A6B28)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Bebas Neue, sans-serif', color: 'black', fontSize: '22px' }}>S</div>
                 <div style={{ textAlign: 'left' }}>
                   <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '18px', letterSpacing: '0.15em', color: '#1a1a1a' }}>ICT FLOW</div>
-                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#8A6B28', letterSpacing: '0.2em' }}>ICT & SMART MONEY EDUCATION</div>
+                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#6B4F16', letterSpacing: '0.2em' }}>ICT & SMART MONEY EDUCATION</div>
                 </div>
               </div>
 
-              <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#8A6B28', letterSpacing: '0.3em', marginBottom: '16px' }}>CERTIFICATE OF COMPLETION</div>
+              <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#6B4F16', letterSpacing: '0.3em', marginBottom: '16px' }}>CERTIFICATE OF COMPLETION</div>
 
               <div style={{ fontFamily: 'Georgia, serif', fontSize: '14px', color: '#666', marginBottom: '8px' }}>This certifies that</div>
 
-              <div style={{ fontFamily: 'Playfair Display, serif', fontSize: '48px', fontStyle: 'italic', color: '#E8C547', marginBottom: '8px', lineHeight: 1.2 }}>{name}</div>
+              <div style={{ fontFamily: 'Playfair Display, serif', fontSize: '48px', fontStyle: 'italic', color: '#8A6B28', marginBottom: '8px', lineHeight: 1.2 }}>{name}</div>
 
               <div style={{ fontFamily: 'Georgia, serif', fontSize: '14px', color: '#666', marginBottom: '24px', lineHeight: 1.8 }}>
                 has successfully completed the<br />
@@ -156,7 +156,7 @@ export default function CertificatePage() {
               <div style={{ display: 'flex', justifyContent: 'center', gap: '32px', marginBottom: '32px' }}>
                 {[[TOTAL_MODULES, 'Modules'], [certificate?.totalLessons || 203, 'Lessons'], [certificate?.xp || profile?.xp || 0, 'XP Earned']].map(([val, label]) => (
                   <div key={label} style={{ textAlign: 'center' }}>
-                    <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '32px', color: '#E8C547' }}>{val}</div>
+                    <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '32px', color: '#8A6B28' }}>{val}</div>
                     <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#5B6573', letterSpacing: '0.15em' }}>{label}</div>
                   </div>
                 ))}
@@ -169,10 +169,10 @@ export default function CertificatePage() {
                 </div>
                 <div style={{ textAlign: 'center' }}>
                   <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#5B6573', letterSpacing: '0.1em', marginBottom: '4px' }}>CREDENTIAL ID</div>
-                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#E8C547' }}>{certificate?.credentialId || '—'}</div>
+                  <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#8A6B28' }}>{certificate?.credentialId || '—'}</div>
                 </div>
                 <div style={{ textAlign: 'right' }}>
-                  <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '20px', color: '#E8C547', letterSpacing: '0.1em' }}>ICT FLOW</div>
+                  <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '20px', color: '#8A6B28', letterSpacing: '0.1em' }}>ICT FLOW</div>
                   <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '8px', color: '#5B6573', letterSpacing: '0.15em' }}>ACADEMY</div>
                 </div>
               </div>
