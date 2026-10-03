@@ -1,28 +1,20 @@
 import { createServerClient } from '@supabase/ssr';
+import { createClient as createSupabaseAdmin } from '@supabase/supabase-js';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
 export const runtime = 'nodejs';
 
-const RATE_WINDOW_MS = 10 * 60 * 1000;
+const RATE_WINDOW_SECONDS = 10 * 60;
 const RATE_LIMIT = 10;
-const rateBuckets = new Map();
 
-function rateLimited(userId) {
-  const now = Date.now();
-  const recent = (rateBuckets.get(userId) || []).filter((time) => now - time < RATE_WINDOW_MS);
-  if (recent.length >= RATE_LIMIT) {
-    rateBuckets.set(userId, recent);
-    return true;
-  }
-  recent.push(now);
-  rateBuckets.set(userId, recent);
-  if (rateBuckets.size > 5000) {
-    for (const [key, times] of rateBuckets) {
-      if (!times.some((time) => now - time < RATE_WINDOW_MS)) rateBuckets.delete(key);
-    }
-  }
-  return false;
+function createAdminClient() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_KEY;
+  if (!url || !key) throw new Error('Supabase server configuration is missing.');
+  return createSupabaseAdmin(url, key, {
+    auth: { autoRefreshToken: false, persistSession: false },
+  });
 }
 
 const ALLOWED_KEYS = [
@@ -42,7 +34,12 @@ export async function POST(req) {
       return NextResponse.json({ error: 'Journal summary is too large.' }, { status: 413 });
     }
 
-    if (!process.env.ANTHROPIC_API_KEY || !process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    if (
+      !process.env.ANTHROPIC_API_KEY ||
+      !process.env.NEXT_PUBLIC_SUPABASE_URL ||
+      !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+      !process.env.SUPABASE_SERVICE_KEY
+    ) {
       return NextResponse.json({ error: 'AI Coach is not configured' }, { status: 503 });
     }
 
@@ -66,7 +63,19 @@ export async function POST(req) {
     if (authError || !user) {
       return NextResponse.json({ error: 'Authentication required' }, { status: 401 });
     }
-    if (rateLimited(user.id)) {
+    const admin = createAdminClient();
+    const { data: allowed, error: rateError } = await admin.rpc('consume_ai_coach_rate_limit', {
+      p_user_id: user.id,
+      p_window_seconds: RATE_WINDOW_SECONDS,
+      p_max_requests: RATE_LIMIT,
+    });
+
+    if (rateError) {
+      console.error('AI Coach rate-limit error:', rateError);
+      return NextResponse.json({ error: 'AI Coach is temporarily unavailable. Please try again later.' }, { status: 503 });
+    }
+
+    if (allowed !== true) {
       return NextResponse.json({ error: 'AI Coach rate limit reached. Try again later.' }, { status: 429 });
     }
 
