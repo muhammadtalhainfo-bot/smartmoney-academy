@@ -374,7 +374,7 @@ export default function FoundationsPage() {
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <div style={{ ...mono, fontSize: '10px', color: 'rgba(232,197,71,0.95)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '8px' }}>// Learning Roadmap</div>
           <h2 className="font-display" style={{ fontSize: '42px', color: 'white', marginBottom: '32px' }}>YOUR PATH TO MASTERY</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%,280px), 1fr))', gap: '16px' }}>
             {STEPS.map((step, i) => {
               const stepTopics = TOPICS.filter(t => t.step === step.id);
               const stepCompleted = stepTopics.filter(t => completed.includes(t.id)).length;
@@ -461,7 +461,7 @@ export default function FoundationsPage() {
                   {/* Expanded */}
                   {isOpen && (
                     <div id={`foundation-topic-${topic.id}-content`} style={{ borderTop: '1px solid rgba(212,168,67,0.22)', padding: '24px 22px', background: 'rgba(0,0,0,0.15)' }}>
-                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px', marginBottom: '16px' }}>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%,260px), 1fr))', gap: '16px', marginBottom: '16px' }}>
                         {/* Explanation */}
                         <div>
                           <div style={{ ...mono, fontSize: '10px', color: '#E8C547', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '8px' }}>What it means</div>

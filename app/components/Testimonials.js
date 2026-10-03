@@ -78,7 +78,7 @@ export default function Testimonials() {
         </div>
 
         {/* GRID */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '16px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%,320px), 1fr))', gap: '16px' }}>
           {TESTIMONIALS.map((t, i) => (
             <div key={i} style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.35)', borderRadius: '16px', padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px', transition: 'border-color 0.2s' }}
               onMouseOver={e => e.currentTarget.style.borderColor = '#E8C547'}

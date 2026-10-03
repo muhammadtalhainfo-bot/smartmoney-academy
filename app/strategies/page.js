@@ -178,7 +178,7 @@ export default function StrategiesPage() {
               ))}
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '16px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%,320px), 1fr))', gap: '16px' }}>
               {filtered.map(s => (
                 <button type="button" key={s.slug} className="strat-card" onClick={() => setSelected(s.slug)} aria-label={`Open ${s.title} strategy playbook`} style={{ width: '100%', textAlign: 'left', color: 'inherit', background: '#111111', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '16px', padding: '24px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>

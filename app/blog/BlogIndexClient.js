@@ -80,7 +80,7 @@ export default function BlogIndexClient({ posts }) {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '16px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%,300px), 1fr))', gap: '16px' }}>
           {rest.map(post => (
             <Link key={post.slug} href={'/blog/' + post.slug} style={{ textDecoration: 'none' }}>
               <div className="card" style={{ background: '#0C0C0C', border: '1px solid rgba(232,197,71,0.95)', borderRadius: '18px', overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column' }}>

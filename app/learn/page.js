@@ -53,7 +53,7 @@ export default function LearnHub() {
             Clear explanations of ICT and Smart Money Concepts, with practical rules, examples and limitations. Learn the framework, then test ideas yourself.
           </p>
         </header>
-        <section style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))',gap:18}}>
+        <section style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(min(100%,280px),1fr))',gap:18}}>
           {SEO_PAGES.map(p => (
             <Link key={p.slug} href={`/learn/${p.slug}`} style={{textDecoration:'none',color:'inherit'}}>
               <article style={{height:'100%',boxSizing:'border-box',background:'#111',border:'1px solid rgba(232,197,71,.2)',borderRadius:16,padding:24}}>
