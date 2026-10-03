@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { createClient } from '@/lib/supabase';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -33,15 +33,26 @@ export default function Navbar({ active }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const supabase = useMemo(() => createClient(), []);
 
   useEffect(() => {
-    async function checkSession() {
-      const supabase = createClient();
-      const { data: { session } } = await supabase.auth.getSession();
-      setIsLoggedIn(!!session);
-    }
-    checkSession();
-  }, []);
+    let mounted = true;
+
+    const syncSession = (session) => {
+      if (mounted) setIsLoggedIn(!!session);
+    };
+
+    supabase.auth.getSession().then(({ data: { session } }) => syncSession(session));
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      syncSession(session);
+    });
+
+    return () => {
+      mounted = false;
+      subscription?.unsubscribe();
+    };
+  }, [supabase]);
 
   return (
     <>
