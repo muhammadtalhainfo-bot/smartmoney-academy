@@ -3,14 +3,29 @@
 import { useEffect, useState } from 'react';
 import { createClient } from '@/lib/supabase';
 
+const CONSENT_KEY = 'cookies_accepted';
+const CONSENT_EVENT = 'ictflow-cookie-consent';
+
 export default function AdSlot({ slot, className = '' }) {
   const [show, setShow] = useState(false);
+  const [consent, setConsent] = useState(false);
+
+  useEffect(() => {
+    const syncConsent = () => setConsent(window.localStorage.getItem(CONSENT_KEY) === 'true');
+    syncConsent();
+    window.addEventListener(CONSENT_EVENT, syncConsent);
+    return () => window.removeEventListener(CONSENT_EVENT, syncConsent);
+  }, []);
 
   useEffect(() => {
     let mounted = true;
     const supabase = createClient();
 
     async function check() {
+      if (!consent) {
+        if (mounted) setShow(false);
+        return;
+      }
       const client = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
       const adSlot = slot || process.env.NEXT_PUBLIC_ADSENSE_SLOT;
       if (!client || !adSlot) return;
@@ -30,7 +45,7 @@ export default function AdSlot({ slot, className = '' }) {
 
     check();
     return () => { mounted = false; };
-  }, [slot]);
+  }, [slot, consent]);
 
   useEffect(() => {
     if (!show) return;
@@ -43,7 +58,7 @@ export default function AdSlot({ slot, className = '' }) {
 
   return (
     <div className={className} style={{ margin: '28px auto', maxWidth: '970px', minHeight: '90px', textAlign: 'center' }}>
-      <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.28)', letterSpacing: '0.12em', marginBottom: '6px' }}>
+      <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#9DA6B2', letterSpacing: '0.12em', marginBottom: '6px' }}>
         ADVERTISEMENT
       </div>
       <ins
