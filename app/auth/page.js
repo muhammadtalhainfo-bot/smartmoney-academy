@@ -245,7 +245,7 @@ function AuthPageInner() {
 
             {/* Error / Success */}
             {error && <div role="alert" aria-live="assertive" style={{ background: 'rgba(248,113,113,0.1)', border: '1px solid rgba(248,113,113,0.3)', borderRadius: '8px', padding: '12px', color: '#FCA5A5', fontSize: '13px' }}>{error}</div>}
-            {success && <div role="status" aria-live="polite" style={{ background: 'rgba(74,222,128,0.1)', border: '1px solid rgba(74,222,128,0.3)', borderRadius: '8px', padding: '12px', color: '#4ADE80', fontSize: '13px' }}>{success}</div>
+            {success && <div role="status" aria-live="polite" style={{ background: 'rgba(74,222,128,0.1)', border: '1px solid rgba(74,222,128,0.3)', borderRadius: '8px', padding: '12px', color: '#4ADE80', fontSize: '13px' }}>{success}</div>}
 
             {/* Submit */}
             <button type="button" onClick={handleAuth} disabled={loading}
