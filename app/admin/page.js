@@ -978,9 +978,9 @@ function JournalSection({ adminDbClient = adminDb }) {
           {items.map((item,i) => (
             <div key={i} style={{ display:'flex', alignItems:'center', gap:'4px', background:S3, border:`1px solid ${BORDER}`, borderRadius:'7px', padding:'4px 8px 4px 10px' }}>
               <span style={{ fontSize:'12px' }}>{item}</span>
-              <button onClick={()=>move(i,-1)} style={{ background:'none',border:'none',color:'#9DA6B2',cursor:'pointer',fontSize:'12px',padding:'0 2px' }}>↑</button>
-              <button onClick={()=>move(i,1)}  style={{ background:'none',border:'none',color:'#9DA6B2',cursor:'pointer',fontSize:'12px',padding:'0 2px' }}>↓</button>
-              <button onClick={()=>remove(i)}  style={{ background:'none',border:'none',color:'#F87171',cursor:'pointer',fontSize:'14px',padding:'0 0 0 4px' }}>×</button>
+              <button type="button" onClick={()=>move(i,-1)} aria-label={`Move ${item} up`} style={{ background:'none',border:'none',color:'#9DA6B2',cursor:'pointer',fontSize:'12px',padding:'0 2px' }}>↑</button>
+              <button type="button" onClick={()=>move(i,1)} aria-label={`Move ${item} down`} style={{ background:'none',border:'none',color:'#9DA6B2',cursor:'pointer',fontSize:'12px',padding:'0 2px' }}>↓</button>
+              <button type="button" onClick={()=>remove(i)} aria-label={`Remove ${item}`} style={{ background:'none',border:'none',color:'#F87171',cursor:'pointer',fontSize:'14px',padding:'0 0 0 4px' }}>×</button>
             </div>
           ))}
         </div>
