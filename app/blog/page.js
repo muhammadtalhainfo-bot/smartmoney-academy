@@ -1,5 +1,6 @@
 import BlogIndexClient from './BlogIndexClient';
 import { getPublishedBlogPosts } from '@/lib/blog-data';
+import { serializeJsonLd } from '@/lib/jsonld';
 
 export const metadata = {
   title: 'ICT Trading Blog — Strategies, Analysis & Education',
@@ -57,7 +58,7 @@ export default async function BlogPage() {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(blogSchema) }} />
       <BlogIndexClient posts={posts} />
     </>
   );
