@@ -1,14 +1,19 @@
 import { createClient } from '@supabase/supabase-js';
+import { createHash } from 'node:crypto';
 
 export const runtime = 'nodejs';
 
-const WINDOW_MS = 10 * 60 * 1000;
+const WINDOW_SECONDS = 10 * 60;
 const MAX_REQUESTS = 5;
-const attempts = new Map();
 
 function getClientKey(req) {
   const forwarded = req.headers.get('x-forwarded-for') || '';
   return forwarded.split(',')[0].trim() || req.headers.get('x-real-ip') || 'unknown';
+}
+
+function hashClientKey(value) {
+  const pepper = process.env.RATE_LIMIT_SECRET || process.env.SUPABASE_SERVICE_KEY || 'ictflow-rate-limit';
+  return createHash('sha256').update(pepper + ':' + value).digest('hex');
 }
 
 export async function POST(req) {
@@ -16,14 +21,24 @@ export async function POST(req) {
     const contentLength = Number(req.headers.get('content-length') || 0);
     if (contentLength > 2_000) return Response.json({ error: 'Request too large.' }, { status: 413 });
 
-    const key = getClientKey(req);
-    const now = Date.now();
-    const previous = attempts.get(key);
-    const entry = previous && now - previous.startedAt < WINDOW_MS
-      ? previous
-      : { startedAt: now, count: 0 };
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const serviceKey = process.env.SUPABASE_SERVICE_KEY;
+    if (!url || !serviceKey) return Response.json({ error: 'Service unavailable.' }, { status: 500 });
 
-    if (entry.count >= MAX_REQUESTS) {
+    const supabase = createClient(url, serviceKey, { auth: { autoRefreshToken: false, persistSession: false } });
+    const { data: allowed, error: rateError } = await supabase.rpc('consume_api_rate_limit', {
+      p_scope: 'email-capture',
+      p_key_hash: hashClientKey(getClientKey(req)),
+      p_window_seconds: WINDOW_SECONDS,
+      p_max_requests: MAX_REQUESTS,
+    });
+
+    if (rateError) {
+      console.error('Email capture rate-limit error:', rateError);
+      return Response.json({ error: 'Service temporarily unavailable.' }, { status: 503 });
+    }
+
+    if (allowed !== true) {
       return Response.json({ error: 'Too many requests. Try again later.' }, { status: 429 });
     }
 
@@ -33,19 +48,7 @@ export async function POST(req) {
       return Response.json({ error: 'Invalid email.', code: 'invalid_email' }, { status: 400 });
     }
 
-    entry.count += 1;
-    attempts.set(key, entry);
-    if (attempts.size > 5000) {
-      for (const [storedKey, value] of attempts) {
-        if (now - value.startedAt >= WINDOW_MS) attempts.delete(storedKey);
-      }
-    }
 
-    const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const serviceKey = process.env.SUPABASE_SERVICE_KEY;
-    if (!url || !serviceKey) return Response.json({ error: 'Service unavailable.' }, { status: 500 });
-
-    const supabase = createClient(url, serviceKey, { auth: { autoRefreshToken: false, persistSession: false } });
     const { error } = await supabase.from('email_signups').insert({ email });
     if (error?.code === '23505') {
       return Response.json({ ok: true, alreadySubscribed: true }, { headers: { 'Cache-Control': 'no-store' } });
