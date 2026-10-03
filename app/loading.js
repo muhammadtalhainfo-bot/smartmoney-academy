@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <div style={{ 
+    <div role="status" aria-label="Loading" aria-busy="true" style={{ 
       minHeight: '100vh', 
       background: '#080808', 
       display: 'flex',
