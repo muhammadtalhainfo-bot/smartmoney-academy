@@ -135,7 +135,7 @@ function AuthPageInner() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', background: '#080808', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'DM Sans', sans-serif", padding: '24px' }}>
+    <div style={{ minHeight: '100vh', background: '#080808', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'DM Sans', sans-serif", padding: '24px', flexDirection: 'column' }}>
       <h1 className="font-display text-4xl md:text-6xl text-white mb-8 text-center">Sign In</h1>
       <style>{`
 
