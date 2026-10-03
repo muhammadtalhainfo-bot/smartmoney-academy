@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Navbar from '@/app/components/Navbar'
 import Footer from '@/app/components/Footer'
 import { SEO_PAGES } from './seo-data'
+import { serializeJsonLd } from '@/lib/jsonld'
 
 export const metadata = {
   title: 'ICT Trading Guides: FVG, Liquidity, Order Blocks & More',
@@ -42,7 +43,7 @@ export default function LearnHub() {
       <main style={{minHeight:'100vh',background:'#080808',color:'#fff',fontFamily:"'DM Sans',sans-serif",padding:'64px 24px'}}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(itemListSchema) }}
       />
       <div style={{maxWidth:1000,margin:'0 auto'}}>
         <Link href="/" style={{color:'#E8C547',textDecoration:'none'}}>← ICT Flow</Link>
