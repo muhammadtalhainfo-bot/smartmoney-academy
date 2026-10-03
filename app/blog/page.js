@@ -1,5 +1,5 @@
 import BlogIndexClient from './BlogIndexClient';
-import { POSTS } from './posts';
+import { getPublishedBlogPosts } from '@/lib/blog-data';
 
 export const metadata = {
   title: 'ICT Trading Blog — Strategies, Analysis & Education',
@@ -22,8 +22,11 @@ export const metadata = {
   },
 };
 
-export default function BlogPage() {
-  const posts = POSTS.map((p) => ({
+export const revalidate = 300;
+
+export default async function BlogPage() {
+  const publishedPosts = await getPublishedBlogPosts();
+  const posts = publishedPosts.map((p) => ({
     slug: p.slug,
     title: p.title,
     description: p.description || '',
