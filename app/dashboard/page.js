@@ -35,15 +35,19 @@ export default function DashboardPage() {
   const supabase = useMemo(() => createClient(), []);
 
   const updateStreak = useCallback(async () => {
-    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const response = await fetch('/api/streak', {
-      method: 'POST',
-      cache: 'no-store',
-      headers: timezone ? { 'x-timezone': timezone } : undefined,
-    });
-    if (!response.ok) return;
-    const data = await response.json();
-    setProfile(p => p ? { ...p, ...data } : p);
+    try {
+      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      const response = await fetch('/api/streak', {
+        method: 'POST',
+        cache: 'no-store',
+        headers: timezone ? { 'x-timezone': timezone } : undefined,
+      });
+      if (!response.ok) return;
+      const data = await response.json();
+      setProfile(p => p ? { ...p, ...data } : p);
+    } catch (error) {
+      console.warn('Dashboard streak update skipped:', error);
+    }
   }, []);
 
   useEffect(() => {
