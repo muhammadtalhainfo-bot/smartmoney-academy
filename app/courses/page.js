@@ -359,7 +359,9 @@ export default function CoursesPage() {
           <span className="font-mono-c text-xs mr-2 flex-shrink-0" style={{ color: 'rgba(232,197,71,0.95)' }}>FILTER:</span>
           {FILTERS.map(f => (
             <button
+              type="button"
               key={f}
+              aria-pressed={activeFilter === f}
               onClick={() => setActiveFilter(f)}
               className={`filter-btn flex-shrink-0 px-4 py-2 rounded-lg text-xs border tracking-wider uppercase ${activeFilter === f ? 'active font-bold' : ''}`}
               style={activeFilter !== f ? { borderColor: 'rgba(232,197,71,0.95)', color: '#A0A0A0', background: 'transparent' } : {}}

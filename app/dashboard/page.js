@@ -220,7 +220,7 @@ export default function DashboardPage() {
         {/* TABS */}
         <div className="fade-up flex gap-6 border-b mb-8" style={{ animationDelay: '0.15s', borderColor: 'rgba(232,197,71,0.95)' }}>
           {[['overview', 'Overview'], ['modules', 'All Modules']].map(([key, label]) => (
-            <button key={key} onClick={() => setActiveTab(key)} className={`tab-btn pb-3 text-xs tracking-widest uppercase ${activeTab === key ? 'active' : 'text-gray-200'}`}>
+            <button type="button" key={key} aria-pressed={activeTab === key} onClick={() => setActiveTab(key)} className={`tab-btn pb-3 text-xs tracking-widest uppercase ${activeTab === key ? 'active' : 'text-gray-200'}`}>
               {label}
             </button>
           ))}

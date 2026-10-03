@@ -165,7 +165,7 @@ function AuthPageInner() {
           {/* Tabs */}
           <div style={{ display: 'flex', background: '#141414', borderRadius: '12px', padding: '4px', marginBottom: '28px' }}>
             {['Login', 'Sign Up'].map((tab, i) => (
-              <button type="button" key={tab} onClick={() => { setIsLogin(i === 0); setError(''); setSuccess(''); }}
+              <button type="button" key={tab} aria-pressed={isLogin === (i === 0)} onClick={() => { setIsLogin(i === 0); setError(''); setSuccess(''); }}
                 style={{ flex: 1, padding: '10px', borderRadius: '9px', border: 'none', cursor: 'pointer', fontFamily: 'DM Mono', fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase', transition: 'all 0.2s',
                   background: isLogin === (i === 0) ? 'linear-gradient(135deg, #E8C547, #F0C96A)' : 'transparent',
                   color: isLogin === (i === 0) ? '#080808' : 'rgba(255,255,255,0.7)',

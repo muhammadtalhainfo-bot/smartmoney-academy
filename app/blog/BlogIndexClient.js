@@ -67,7 +67,7 @@ export default function BlogIndexClient({ posts }) {
           </h2>
           <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
             {CATEGORIES.map(cat => (
-              <button key={cat} onClick={() => setActive(cat)} aria-pressed={active === cat} style={{
+              <button type="button" key={cat} onClick={() => setActive(cat)} aria-pressed={active === cat} style={{
                 padding: '6px 14px', borderRadius: '100px',
                 border: '1px solid ' + (active === cat ? '#E8C547' : 'rgba(255,255,255,0.6)'),
                 background: active === cat ? 'rgba(232,197,71,0.95)' : 'transparent',
