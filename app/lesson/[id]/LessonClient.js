@@ -56,7 +56,97 @@ function Section({ section, index, diagramSrc, diagramAlt }) {
 function Quiz({ questions, lessonId }) {
   const [answers, setAnswers] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [completionState, setCompletionState] = useState('idle');
+  const [completionMessage, setCompletionMessage] = useState('');
   const score = submitted ? questions.filter((q, i) => answers[i] === q.answer).length : 0;
+
+  const saveCompletion = async () => {
+    setCompletionState('saving');
+    setCompletionMessage('');
+
+    try {
+      const supabase = createClient();
+      const { data: { session } } = await supabase.auth.getSession();
+
+      if (!session?.user || !session.access_token) {
+        setCompletionState('auth_required');
+        setCompletionMessage('Sign in to save your completion and earn XP.');
+        return;
+      }
+
+      const normalizedLessonId = Number.parseInt(String(lessonId), 10);
+      if (Number.isNaN(normalizedLessonId)) {
+        setCompletionState('error');
+        setCompletionMessage('This lesson could not be saved. Please refresh and try again.');
+        return;
+      }
+
+      const response = await fetch('/api/lesson-completion', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${session.access_token}`,
+        },
+        body: JSON.stringify({
+          lessonId: normalizedLessonId,
+          answers: questions.map((_, index) => answers[index]),
+        }),
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (response.status === 401) {
+        setCompletionState('auth_required');
+        setCompletionMessage('Your session has expired. Sign in again, then use Retry Save.');
+        return;
+      }
+
+      if (response.status === 422 || data?.passed === false) {
+        setCompletionState('quiz_failed');
+        setCompletionMessage(`You scored ${data?.scorePercent ?? Math.round((score / questions.length) * 100)}%. A score of 70% is required to record this lesson.`);
+        return;
+      }
+
+      if (!response.ok) {
+        setCompletionState('error');
+        setCompletionMessage(data?.error || 'We could not save your completion. Try again.');
+        return;
+      }
+
+      if (data?.alreadyCompleted) {
+        setCompletionState('already_completed');
+        setCompletionMessage('This lesson was already recorded. No additional XP was awarded.');
+      } else {
+        setCompletionState('saved');
+        setCompletionMessage(`Completion saved. +${data?.xpEarned || 0} XP earned.`);
+      }
+    } catch (error) {
+      console.error('Lesson completion save error:', error);
+      setCompletionState('error');
+      setCompletionMessage('We could not reach the server. Check your connection and use Retry Save.');
+    }
+  };
+
+  const submitQuiz = async () => {
+    const sc = questions.filter((q, i) => answers[i] === q.answer).length;
+    setSubmitted(true);
+    trackLessonComplete(lessonId, document.title, sc);
+
+    if ((sc / questions.length) * 100 < 70) {
+      setCompletionState('quiz_failed');
+      setCompletionMessage(`You scored ${Math.round((sc / questions.length) * 100)}%. A score of 70% is required to record this lesson.`);
+      return;
+    }
+
+    await saveCompletion();
+  };
+
+  const retryQuiz = () => {
+    setAnswers({});
+    setSubmitted(false);
+    setCompletionState('idle');
+    setCompletionMessage('');
+  };
 
   return (
     <div className="rounded-2xl border border-[rgba(212,168,67,0.2)] bg-[rgba(212,168,67,0.03)] p-6">
@@ -92,36 +182,8 @@ function Quiz({ questions, lessonId }) {
       ))}
       {!submitted ? (
         <button
-          onClick={async () => {
-            setSubmitted(true);
-            const sc = questions.filter((q, i) => answers[i] === q.answer).length;
-            trackLessonComplete(lessonId, document.title, sc);
-            try {
-              const supabase = createClient();
-              const { data: { session } } = await supabase.auth.getSession();
-      const user = session?.user;
-              if (user && session?.access_token) {
-                const normalizedLessonId = Number.parseInt(String(lessonId), 10);
-                if (Number.isNaN(normalizedLessonId)) return;
-
-                const response = await fetch('/api/lesson-completion', {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${session.access_token}`,
-                  },
-                  body: JSON.stringify({
-                    lessonId: normalizedLessonId,
-                    answers: questions.map((_, index) => answers[index]),
-                  }),
-                });
-
-                if (!response.ok) {
-                  console.error('Lesson completion was not recorded.');
-                }
-              }
-            } catch(e) {}
-          }}
+          type="button"
+          onClick={submitQuiz}
           disabled={Object.keys(answers).length < questions.length}
           className="w-full py-3 rounded-xl font-mono text-sm tracking-wider uppercase transition-all"
           style={{
@@ -142,6 +204,58 @@ function Quiz({ questions, lessonId }) {
           <p className="text-gray-400 text-sm mt-1">
             {score === questions.length ? '🎯 Perfect! You nailed it.' : score >= questions.length / 2 ? '💪 Good job. Review the ones you missed.' : '📖 Re-read the lesson and try again.'}
           </p>
+
+          {completionState === 'saving' && (
+            <p role="status" className="text-[#D4A843] text-sm mt-3">Saving your completion…</p>
+          )}
+          {completionMessage && completionState !== 'saving' && (
+            <p
+              role={completionState === 'error' || completionState === 'auth_required' ? 'alert' : 'status'}
+              className={`text-sm mt-3 ${
+                completionState === 'saved' || completionState === 'already_completed'
+                  ? 'text-emerald-300'
+                  : completionState === 'quiz_failed'
+                    ? 'text-amber-300'
+                    : 'text-red-300'
+              }`}
+            >
+              {completionMessage}
+            </p>
+          )}
+
+          {(completionState === 'error' || completionState === 'auth_required' || completionState === 'already_completed') && (
+            <div className="flex flex-col sm:flex-row gap-2 justify-center mt-4">
+              {completionState === 'auth_required' ? (
+                <Link
+                  href={`/auth?next=/lesson/${lessonId}`}
+                  className="px-4 py-2 rounded-lg font-mono text-xs uppercase tracking-wider"
+                  style={{ background: 'linear-gradient(135deg,#D4A843,#F0C96A)', color: '#080808', fontWeight: 700, textDecoration: 'none' }}
+                >
+                  Sign In to Save
+                </Link>
+              ) : completionState !== 'already_completed' ? (
+                <button
+                  type="button"
+                  onClick={saveCompletion}
+                  className="px-4 py-2 rounded-lg font-mono text-xs uppercase tracking-wider"
+                  style={{ background: 'linear-gradient(135deg,#D4A843,#F0C96A)', color: '#080808', fontWeight: 700 }}
+                >
+                  Retry Save
+                </button>
+              ) : null}
+            </div>
+          )}
+
+          {completionState === 'quiz_failed' && (
+            <button
+              type="button"
+              onClick={retryQuiz}
+              className="mt-4 px-4 py-2 rounded-lg font-mono text-xs uppercase tracking-wider"
+              style={{ border: '1px solid rgba(212,168,67,0.35)', background: 'transparent', color: '#E8C547', fontWeight: 700 }}
+            >
+              Retry Quiz
+            </button>
+          )}
         </div>
       )}
     </div>
