@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
@@ -126,27 +126,77 @@ export default function ToolsPage() {
   const [isPro, setIsPro] = useState(false);
   const [proLoading, setProLoading] = useState(true);
   const [planSections, setPlanSections] = useState([]);
+  const [loadError, setLoadError] = useState('');
+  const supabase = useMemo(() => createClient(), []);
   const tool = activeTool === 'plan' ? { ...PRO_TOOL, sections: planSections } : TOOLS.find(t => t.id === activeTool);
 
   useEffect(() => {
     let mounted = true;
-    const supabase = createClient();
-    supabase.auth.getUser().then(async ({ data: { user } }) => {
-      if (!user) { if (mounted) setProLoading(false); return; }
-      const { data: profile } = await supabase.from('profiles').select('is_pro').eq('id', user.id).maybeSingle();
-      const pro = profile?.is_pro === true;
-      if (mounted) setIsPro(pro);
-      if (pro) {
-        const response = await fetch('/api/pro-tools/plan', { cache: 'no-store' });
-        if (response.ok) {
-          const data = await response.json();
-          if (mounted) setPlanSections(Array.isArray(data.sections) ? data.sections : []);
+
+    const loadAccess = async () => {
+      setLoadError('');
+      if (mounted) setProLoading(true);
+
+      try {
+        const { data: { user }, error: authError } = await supabase.auth.getUser();
+        if (authError) throw authError;
+
+        if (!user) {
+          if (mounted) {
+            setIsPro(false);
+            setPlanSections([]);
+          }
+          return;
         }
+
+        const { data: profile, error: profileError } = await supabase
+          .from('profiles')
+          .select('is_pro')
+          .eq('id', user.id)
+          .maybeSingle();
+
+        if (profileError) throw profileError;
+
+        const pro = profile?.is_pro === true;
+        if (mounted) setIsPro(pro);
+
+        if (!pro) {
+          if (mounted) setPlanSections([]);
+          return;
+        }
+
+        const response = await fetch('/api/pro-tools/plan', { cache: 'no-store' });
+        if (!response.ok) throw new Error('Unable to load the Pro trading plan.');
+        const data = await response.json();
+
+        if (mounted) {
+          setPlanSections(Array.isArray(data.sections) ? data.sections : []);
+        }
+      } catch (error) {
+        console.error('Tools access check failed:', error);
+        if (mounted) {
+          setLoadError('Unable to verify Pro access right now. Please refresh and try again.');
+          setIsPro(false);
+          setPlanSections([]);
+        }
+      } finally {
+        if (mounted) setProLoading(false);
       }
-      if (mounted) setProLoading(false);
-    }).catch(() => { if (mounted) setProLoading(false); });
-    return () => { mounted = false; };
-  }, []);
+    };
+
+    loadAccess();
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
+      if (event === 'SIGNED_IN' || event === 'SIGNED_OUT' || event === 'USER_UPDATED') {
+        setTimeout(loadAccess, 0);
+      }
+    });
+
+    return () => {
+      mounted = false;
+      subscription?.unsubscribe();
+    };
+  }, [supabase]);
 
   const toggleCheck = (key) => {
     setChecked(prev => ({ ...prev, [key]: !prev[key] }));
@@ -200,7 +250,13 @@ export default function ToolsPage() {
             ))}
           </div>
 
-          {activeTool === 'plan' && !proLoading && !isPro ? (
+          {loadError && !proLoading ? (
+            <div role="alert" style={{ padding: '14px 18px', marginBottom: '24px', borderRadius: '10px', border: '1px solid rgba(248,113,113,0.3)', background: 'rgba(248,113,113,0.08)', color: '#FCA5A5', fontSize: '13px' }}>
+              {loadError}
+            </div>
+          ) : null}
+
+          {activeTool === 'plan' && !proLoading && !isPro && !loadError ? (
             <div style={{ padding: '48px 28px', marginBottom: '28px', textAlign: 'center', background: 'linear-gradient(135deg, rgba(212,168,67,0.08), rgba(212,168,67,0.02))', border: '1px solid rgba(232,197,71,0.35)', borderRadius: '16px' }}>
               <div style={{ fontSize: '34px', marginBottom: '12px' }}>🔒</div>
               <div className="font-mono-c" style={{ fontSize: '11px', letterSpacing: '2px', color: '#E8C547', marginBottom: '10px' }}>// PRO TOOL</div>
