@@ -1,18 +1,17 @@
 'use client';
-import { useEffect, useState } from 'react';
-import { useRouter, usePathname } from 'next/navigation';
+import { useEffect, useMemo, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase';
 import Link from 'next/link';
 
 export default function ProGuard({ children }) {
   const router = useRouter();
-  const pathname = usePathname();
+  const supabase = useMemo(() => createClient(), []);
   const [checking, setChecking] = useState(true);
   const [isPro, setIsPro] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const supabase = createClient();
     let isMounted = true;
 
     const check = async () => {
@@ -57,7 +56,7 @@ export default function ProGuard({ children }) {
     });
 
     return () => { isMounted = false; subscription?.unsubscribe(); };
-  }, [pathname, router]);
+  }, [router, supabase]);
 
   if (error) return (
     <div className="min-h-screen bg-[#080808] flex items-center justify-center">
