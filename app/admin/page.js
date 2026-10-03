@@ -143,7 +143,7 @@ const SectionHeader = ({ title, action }) => (
 );
 
 const Toast = ({ msg, type = 'success' }) => msg ? (
-  <div style={{
+  <div role={type === 'error' ? 'alert' : 'status'} aria-live={type === 'error' ? 'assertive' : 'polite'} style={{
     padding: '12px 16px', borderRadius: '8px', marginBottom: '16px',
     background: type === 'error' ? 'rgba(248,113,113,0.08)' : 'rgba(52,211,153,0.08)',
     border: `1px solid ${type === 'error' ? 'rgba(248,113,113,0.3)' : 'rgba(52,211,153,0.3)'}`,
@@ -167,13 +167,13 @@ function DashboardSection({ users, emails, trades, proUsers, loading, onRefresh 
   return (
     <div>
       <SectionHeader title="SITE OVERVIEW" action={
-        <button onClick={onRefresh} style={css.btnGhost}>↻ Refresh</button>
+        <button type="button" onClick={onRefresh} style={css.btnGhost}>↻ Refresh</button>
       } />
       {loading ? (
         <div style={{ textAlign: 'center', padding: '60px', ...css.mono, fontSize: '12px', color: 'rgba(232,197,71,0.7)' }}>LOADING DATA...</div>
       ) : (
         <>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '14px', marginBottom: '24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr)), gap: '14px', marginBottom: '24px' }}>
             <StatCard icon="👥" value={users.length}  label="Total Users"   sub={`${proUsers} Pro`} />
             <StatCard icon="💰" value={proUsers}       label="Pro Members"   sub={`~$${proUsers * 19}/mo`} />
             <StatCard icon="📧" value={emails.length}  label="Email Leads" />
@@ -181,7 +181,7 @@ function DashboardSection({ users, emails, trades, proUsers, loading, onRefresh 
             <StatCard icon="🎓" value={ALL_MODULES.length} label="Modules"  sub={`${totalLessons} lessons`} />
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr)), gap: '16px', marginBottom: '16px' }}>
             <div style={css.card}>
               <div style={{ ...css.mono, fontSize: '10px', color: G, marginBottom: '14px', letterSpacing: '0.15em' }}>// TOP USERS BY XP</div>
               {topUsers.length === 0 ? (
@@ -232,7 +232,7 @@ function UsersSection({ users, onReload }) {
   const [search, setSearch] = useState('');
   const [filterPro, setFilterPro] = useState('all');
   const [msg, setMsg] = useState('');
-  const [selectedUser, setSelectedUser] = useState(null);
+  const [msgType, setMsgType] = useState('success');
 
   const filtered = users.filter(u => {
     const q = search.toLowerCase();
@@ -242,30 +242,53 @@ function UsersSection({ users, onReload }) {
   });
 
   const togglePro = async (u) => {
-    await adminDb('profile.togglePro', { id: u.id, isPro: !u.is_pro });
-    setMsg(`${u.username || 'User'} → ${!u.is_pro ? 'Pro' : 'Free'}`);
-    onReload();
+    try {
+      await adminDb('profile.togglePro', { id: u.id, isPro: !u.is_pro });
+      setMsg(`${u.username || 'User'} → ${!u.is_pro ? 'Pro' : 'Free'}`);
+      setMsgType('success');
+      onReload();
+    } catch (error) {
+      console.error('Admin Pro toggle failed:', error);
+      setMsg('Could not update this user.');
+      setMsgType('error');
+    }
     setTimeout(() => setMsg(''), 3000);
   };
 
   const resetXP = async (u) => {
     if (!confirm(`Reset XP for ${u.username || u.email}?`)) return;
-    await adminDb('profile.resetXP', { id: u.id });
-    setMsg(`XP reset for ${u.username || u.email}`);
-    onReload();
+    try {
+      await adminDb('profile.resetXP', { id: u.id });
+      setMsg(`XP reset for ${u.username || u.email}`);
+      setMsgType('success');
+      onReload();
+    } catch (error) {
+      console.error('Admin XP reset failed:', error);
+      setMsg('Could not reset this user.');
+      setMsgType('error');
+    }
     setTimeout(() => setMsg(''), 3000);
   };
 
   const deleteUser = async (u) => {
     if (!confirm(`Delete account ${u.username || u.email}? This permanently removes the auth account and linked data.`)) return;
-    await adminDb('profile.delete', { id: u.id });
-    onReload();
+    try {
+      await adminDb('profile.delete', { id: u.id });
+      setMsg('User deleted.');
+      setMsgType('success');
+      onReload();
+    } catch (error) {
+      console.error('Admin user deletion failed:', error);
+      setMsg('Could not delete this user.');
+      setMsgType('error');
+    }
+    setTimeout(() => setMsg(''), 3000);
   };
 
   return (
     <div>
       <SectionHeader title={`USERS (${users.length})`} />
-      <Toast msg={msg} />
+      <Toast msg={msg} type={msgType} />
 
       <div style={{ display: 'flex', gap: '12px', marginBottom: '16px' }}>
         <Input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search by username or email..." style={{ flex: 1 }} />
@@ -286,13 +309,13 @@ function UsersSection({ users, onReload }) {
             </thead>
             <tbody>
               {filtered.map((u, i) => (
-                <tr key={i} style={{ borderBottom: `1px solid rgba(255,255,255,0.03)` }}>
+                <tr key={u.id || i} style={{ borderBottom: `1px solid rgba(255,255,255,0.03)` }}>
                   <td style={{ padding: '10px 12px', fontSize: '13px', fontWeight: 500 }}>{u.username || '—'}</td>
                   <td style={{ padding: '10px 12px', fontSize: '12px', color: 'rgba(255,255,255,0.6)' }}>{u.email || '—'}</td>
                   <td style={{ padding: '10px 12px', color: G, ...css.mono, fontSize: '12px' }}>{u.xp || 0}</td>
                   <td style={{ padding: '10px 12px', fontSize: '13px' }}>{u.streak || 0}🔥</td>
                   <td style={{ padding: '10px 12px' }}>
-                    <button onClick={() => togglePro(u)} style={{
+                    <button type="button" onClick={() => togglePro(u)} style={{
                       background: u.is_pro ? 'rgba(52,211,153,0.1)' : 'rgba(232,197,71,0.08)',
                       border: `1px solid ${u.is_pro ? 'rgba(52,211,153,0.3)' : BORDER2}`,
                       borderRadius: '5px', padding: '3px 10px',
@@ -302,8 +325,8 @@ function UsersSection({ users, onReload }) {
                   </td>
                   <td style={{ padding: '10px 12px', fontSize: '11px', color: '#AAB3BF', whiteSpace: 'nowrap' }}>{u.created_at ? new Date(u.created_at).toLocaleDateString() : '—'}</td>
                   <td style={{ padding: '10px 12px', display: 'flex', gap: '6px' }}>
-                    <button onClick={() => resetXP(u)} style={{ ...css.btnGhost, padding: '5px 10px', fontSize: '10px' }}>RESET XP</button>
-                    <button onClick={() => deleteUser(u)} style={css.btnDanger}>DEL</button>
+                    <button type="button" onClick={() => resetXP(u)} style={{ ...css.btnGhost, padding: '5px 10px', fontSize: '10px' }}>RESET XP</button>
+                    <button type="button" onClick={() => deleteUser(u)} style={css.btnDanger}>DEL</button>
                   </td>
                 </tr>
               ))}
@@ -1129,7 +1152,7 @@ export default function AdminPage() {
           onKeyDown={e => e.key === 'Enter' && login()}
           style={{ ...css.input, marginBottom: '12px', textAlign: 'center', letterSpacing: '0.2em' }} />
         {error && <div style={{ ...css.mono, fontSize: '11px', color: '#F87171', marginBottom: '12px' }}>{error}</div>}
-        <button onClick={login} style={{ ...css.btn, width: '100%', padding: '13px', fontSize: '12px' }}>UNLOCK DASHBOARD</button>
+        <button type="button" onClick={login} style={{ ...css.btn, width: '100%', padding: '13px', fontSize: '12px' }}>UNLOCK DASHBOARD</button>
       </div>
     </div>
   );
@@ -1155,7 +1178,7 @@ export default function AdminPage() {
               <div style={{ ...css.mono, fontSize: '8px', color: 'rgba(232,197,71,0.6)', letterSpacing: '0.1em' }}>ADMIN PANEL</div>
             </div>
           )}
-          <button onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+          <button type="button" onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
             style={{ marginLeft: 'auto', background: 'none', border: 'none', color: '#AAB3BF', cursor: 'pointer', fontSize: '14px', flexShrink: 0 }}>
             {sidebarCollapsed ? '→' : '←'}
           </button>
@@ -1169,7 +1192,7 @@ export default function AdminPage() {
                 <div style={{ ...css.mono, fontSize: '8px', color: '#9DA6B2', letterSpacing: '0.15em', padding: '8px 8px 4px', textTransform: 'uppercase' }}>{group.label}</div>
               )}
               {TABS.filter(t => t.group === group.id).map(tab => (
-                <button key={tab.id} onClick={() => setActiveTab(tab.id)}
+                <button type="button" key={tab.id} onClick={() => setActiveTab(tab.id)}
                   title={sidebarCollapsed ? tab.label : ''}
                   style={{
                     width: '100%', display: 'flex', alignItems: 'center', gap: '9px',
@@ -1199,7 +1222,7 @@ export default function AdminPage() {
             <span>🌐</span>
             {!sidebarCollapsed && <span style={{ ...css.mono, fontSize: '10px' }}>VIEW SITE ↗</span>}
           </a>
-          <button onClick={async () => { await logoutAdmin(); setAuthed(false); }}
+          <button type="button" onClick={async () => { await logoutAdmin(); setAuthed(false); }}
             style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 10px', borderRadius: '8px', border: 'none', background: 'transparent', color: 'rgba(248,113,113,0.6)', cursor: 'pointer', justifyContent: sidebarCollapsed ? 'center' : 'flex-start' }}>
             <span>🚪</span>
             {!sidebarCollapsed && <span style={{ ...css.mono, fontSize: '10px' }}>LOGOUT</span>}
