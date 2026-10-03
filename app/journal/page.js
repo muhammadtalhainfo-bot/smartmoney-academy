@@ -1328,14 +1328,28 @@ export default function JournalPage() {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(undefined);
   const [saveError, setSaveError] = useState('');
+  const [loadError, setLoadError] = useState('');
   const supabase = createClient();
 
   const load = useCallback(async () => {
     setLoading(true);
-    const { data: { user: u } } = await supabase.auth.getUser();
+    setLoadError('');
+    const { data: { user: u }, error: authError } = await supabase.auth.getUser();
     setUser(u || null);
+    if (authError) {
+      console.error('Journal auth load failed:', authError);
+      setLoadError('Unable to load your session. Please refresh or sign in again.');
+      setLoading(false);
+      return;
+    }
     if (!u) { setLoading(false); return; }
-    const { data } = await supabase.from('trades').select('*').eq('user_id', u.id).order('date', { ascending: false });
+    const { data, error: tradesError } = await supabase.from('trades').select('*').eq('user_id', u.id).order('date', { ascending: false });
+    if (tradesError) {
+      console.error('Journal trade load failed:', tradesError);
+      setLoadError('Unable to load your trades right now. Your existing data has not been changed.');
+      setLoading(false);
+      return;
+    }
     if (data) setTrades(data.map(t => ({
       ...t,
       setup: Array.isArray(t.setup) ? t.setup : (t.concepts || []),
@@ -1388,9 +1402,18 @@ export default function JournalPage() {
 
   const del = async (id) => {
     if (!confirm('Delete this trade? This cannot be undone.')) return;
-    const { data: { user: currentUser } } = await supabase.auth.getUser();
-    if (!currentUser) return;
-    await supabase.from('trades').delete().eq('id', id).eq('user_id', currentUser.id);
+    setSaveError('');
+    const { data: { user: currentUser }, error: authError } = await supabase.auth.getUser();
+    if (authError || !currentUser) {
+      setSaveError('Your session has expired. Please sign in again.');
+      return;
+    }
+    const { error } = await supabase.from('trades').delete().eq('id', id).eq('user_id', currentUser.id);
+    if (error) {
+      console.error('Trade delete error:', error);
+      setSaveError('Unable to delete this trade. Please try again.');
+      return;
+    }
     load();
   };
 
@@ -1496,6 +1519,11 @@ export default function JournalPage() {
         {/* ── MAIN ────────────────────────────────────────────────────── */}
         <div className="journal-main" style={{ flex: 1, overflow: 'auto' }}>
           <div className="journal-content" style={{ maxWidth: '1100px', padding: '32px 36px', margin: '0 auto' }}>
+            {loadError && (
+              <div role="alert" style={{ marginBottom: '20px', padding: '12px 14px', borderRadius: '8px', border: `1px solid ${C.red}40`, background: `${C.red}10`, color: '#FCA5A5', fontSize: '12px' }}>
+                {loadError}
+              </div>
+            )}
             {loading ? (
               <div style={{ textAlign: 'center', padding: '100px', fontFamily: 'DM Mono, monospace', fontSize: '12px', color: C.text3 }}>Loading your trades...</div>
             ) : (
