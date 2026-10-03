@@ -1103,7 +1103,7 @@ export default function AdminPage() {
 
     * { box-sizing: border-box; }
     input, textarea, select { outline: none; color: white; }
-    input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.35); }
+    input::placeholder, textarea::placeholder { color: #B9C1CC; opacity: 1; }
     input[type=checkbox] { accent-color: ${G}; }
     ::-webkit-scrollbar { width: 4px; height: 4px; }
     ::-webkit-scrollbar-track { background: transparent; }
