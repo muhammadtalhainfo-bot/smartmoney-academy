@@ -188,7 +188,7 @@ const emptyTrade = () => ({
 });
 
 // ─── TRADE FORM ───────────────────────────────────────────────────────────────
-function TradeForm({ initial, onSave, onCancel }) {
+function TradeForm({ initial, onSave, onCancel, error }) {
   const [form, setForm] = useState(() => initial ? {
     ...emptyTrade(), ...initial,
     setup: initial.setup || [],
@@ -243,7 +243,7 @@ function TradeForm({ initial, onSave, onCancel }) {
     <div style={{
       position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.75)', zIndex: 200,
       display: 'flex', alignItems: 'flex-start', justifyContent: 'center',
-      overflowY: 'auto', padding: '20px',
+      overflowY: 'auto', padding: '20px', flexDirection: 'column',
     }}>
       <h1 className="font-display text-4xl md:text-6xl text-white mb-8 text-center">Trading Journal</h1>
       <div style={{
@@ -256,7 +256,7 @@ function TradeForm({ initial, onSave, onCancel }) {
             <div style={{ fontSize: '20px', fontWeight: 700, color: C.text }}>{initial ? 'Edit Trade' : 'Log New Trade'}</div>
             <div style={{ fontSize: '12px', color: C.text3, marginTop: '3px' }}>Record every detail. Discipline compounds.</div>
           </div>
-          <button onClick={onCancel} style={{ width: '32px', height: '32px', background: C.bg3, border: `1px solid ${C.border}`, borderRadius: '8px', cursor: 'pointer', color: C.text2, fontSize: '16px' }}>✕</button>
+          <button type="button" onClick={onCancel} style={{ width: '32px', height: '32px', background: C.bg3, border: `1px solid ${C.border}`, borderRadius: '8px', cursor: 'pointer', color: C.text2, fontSize: '16px' }}>✕</button>
         </div>
 
         {/* Two columns */}
@@ -299,7 +299,7 @@ function TradeForm({ initial, onSave, onCancel }) {
                 <label style={lbl}>Result</label>
                 <div style={{ display: 'flex', gap: '8px' }}>
                   {['Win','Loss','Break Even','Partial'].map(r => (
-                    <button key={r} onClick={() => set('result', r)} style={{
+                    <button type="button" key={r} onClick={() => set('result', r)} style={{
                       flex: 1, padding: '8px 4px', borderRadius: '8px',
                       border: `1px solid ${form.result === r ? C.gold : C.border}`,
                       background: form.result === r ? C.goldDim : C.bg2,
@@ -351,15 +351,24 @@ function TradeForm({ initial, onSave, onCancel }) {
               {RULES.map(r => {
                 const checked = form.rules_checked.includes(r);
                 return (
-                  <label key={r} onClick={() => toggle('rules_checked', r)} style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
-                    <div style={{
+                  <button
+                    type="button"
+                    key={r}
+                    onClick={() => toggle('rules_checked', r)}
+                    aria-pressed={checked}
+                    style={{
+                      display: 'flex', alignItems: 'center', gap: '10px', width: '100%',
+                      padding: 0, border: 'none', background: 'transparent', textAlign: 'left', cursor: 'pointer',
+                    }}
+                  >
+                    <span style={{
                       width: '16px', height: '16px', borderRadius: '4px', flexShrink: 0,
                       border: `1px solid ${checked ? C.green : C.border2}`,
                       background: checked ? 'rgba(34,197,94,0.15)' : C.bg2,
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    }}>{checked && <span style={{ color: C.green, fontSize: '10px', fontWeight: 700 }}>✓</span>}</div>
+                    }}>{checked && <span style={{ color: C.green, fontSize: '10px', fontWeight: 700 }}>✓</span>}</span>
                     <span style={{ fontSize: '12px', color: checked ? C.text : C.text3 }}>{r}</span>
-                  </label>
+                  </button>
                 );
               })}
             </div>
@@ -377,12 +386,18 @@ function TradeForm({ initial, onSave, onCancel }) {
           </div>
         </div>
 
+        {error && (
+          <div role="alert" style={{ marginTop: '20px', padding: '10px 12px', borderRadius: '8px', border: `1px solid ${C.red}40`, background: `${C.red}10`, color: '#FCA5A5', fontSize: '12px' }}>
+            {error}
+          </div>
+        )}
+
         {/* Footer */}
         <div style={{ display: 'flex', gap: '10px', marginTop: '24px', paddingTop: '20px', borderTop: `1px solid ${C.border}` }}>
-          <button onClick={() => onSave(form)} style={{ ...S.btn, flex: 1, padding: '13px' }}>
+          <button type="button" onClick={() => onSave(form)} style={{ ...S.btn, flex: 1, padding: '13px' }}>
             {initial ? '💾 SAVE CHANGES' : '✦ SAVE TRADE'}
           </button>
-          <button onClick={onCancel} style={{ ...S.btnGhost, padding: '13px 24px' }}>CANCEL</button>
+          <button type="button" onClick={onCancel} style={{ ...S.btnGhost, padding: '13px 24px' }}>CANCEL</button>
         </div>
       </div>
     </div>
@@ -1312,6 +1327,7 @@ export default function JournalPage() {
   const [editTrade, setEditTrade] = useState(null);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(undefined);
+  const [saveError, setSaveError] = useState('');
   const supabase = createClient();
 
   const load = useCallback(async () => {
@@ -1334,8 +1350,12 @@ export default function JournalPage() {
   useEffect(() => { load(); }, [load]);
 
   const save = async (form) => {
+    setSaveError('');
     const { data: { user: u } } = await supabase.auth.getUser();
-    if (!u) return;
+    if (!u) {
+      setSaveError('Your session has expired. Please sign in again.');
+      return;
+    }
     const payload = {
       user_id: u.id,
       date: form.date, pair: form.pair, direction: form.direction, session: form.session,
@@ -1351,10 +1371,14 @@ export default function JournalPage() {
       screenshot_url: form.screenshot_url || '',
     };
 
-    if (editTrade?.id) {
-      await supabase.from('trades').update(payload).eq('id', editTrade.id).eq('user_id', u.id);
-    } else {
-      await supabase.from('trades').insert(payload);
+    const { error } = editTrade?.id
+      ? await supabase.from('trades').update(payload).eq('id', editTrade.id).eq('user_id', u.id)
+      : await supabase.from('trades').insert(payload);
+
+    if (error) {
+      console.error('Trade save error:', error);
+      setSaveError('Unable to save this trade. Please check the fields and try again.');
+      return;
     }
 
     setShowForm(false);
