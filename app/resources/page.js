@@ -61,7 +61,7 @@ export default function ResourcesPage() {
 
 function ResourceGrid({title,subtitle,items,primary}) {
   return <><div style={{marginBottom:'32px'}}><h2 className="font-display" style={{fontSize:'36px',color:'white',marginBottom:'8px'}}>{title}</h2><p style={{color:'rgba(255,255,255,.7)',fontSize:'14px',fontFamily:'DM Mono,monospace'}}>{subtitle}</p></div>
-    <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(440px,1fr))',gap:'20px'}}>
+    <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(min(100%,440px),1fr))',gap:'20px'}}>
       {items.map(item=><a key={item.name} href={item.link} target="_blank" rel="noopener noreferrer" className="card-hover" style={styles.card}>
         <div style={{display:'flex',alignItems:'center',gap:'12px',marginBottom:'16px'}}>
           <div style={{width:'48px',height:'48px',borderRadius:'12px',background:item.color+'15',border:'1px solid '+item.color+'30',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'24px'}}>{item.logo}</div>
