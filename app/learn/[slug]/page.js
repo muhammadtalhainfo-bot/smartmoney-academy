@@ -3,6 +3,7 @@ import Navbar from '@/app/components/Navbar'
 import Footer from '@/app/components/Footer'
 import { notFound } from 'next/navigation'
 import { SEO_PAGES } from '../seo-data'
+import { serializeJsonLd } from '@/lib/jsonld'
 
 export function generateStaticParams() {
   return SEO_PAGES.map(({ slug }) => ({ slug }))
@@ -105,8 +106,8 @@ export default async function SEOGuide({ params }) {
           </div>
         </section>
 
-        <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema)}} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(breadcrumbSchema)}} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{__html:serializeJsonLd(schema)}} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{__html:serializeJsonLd(breadcrumbSchema)}} />
       </article>
     </main>
       <Footer />
