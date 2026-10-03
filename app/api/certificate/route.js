@@ -40,12 +40,12 @@ export async function GET() {
       supabase.from('profiles').select('name, username, xp, is_pro').eq('id', user.id).maybeSingle(),
     ]);
 
-    if (profile?.is_pro !== true) return noStore({ error: 'Pro membership required.' }, 403);
-
     if (completionError || profileError) {
       console.error('Certificate data error:', completionError || profileError);
       return noStore({ error: 'Unable to load certificate data.' }, 500);
     }
+
+    if (profile?.is_pro !== true) return noStore({ error: 'Pro membership required.' }, 403);
 
     const passedCompletions = (completions || []).filter((row) => Number(row.quiz_score) >= 70);
     const completedIds = new Set(passedCompletions.map((row) => Number(row.lesson_id)));
