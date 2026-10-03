@@ -20,7 +20,7 @@ async function customerHasActiveSubscription(stripe, customerId) {
     limit: 100,
   });
   return subscriptions.data.some((subscription) =>
-    ['active', 'trialing'].includes(subscription.status)
+    ['active', 'trialing', 'past_due'].includes(subscription.status)
   );
 }
 
@@ -93,7 +93,7 @@ export async function POST(req) {
       let active = false;
       if (session.subscription) {
         const subscription = await stripe.subscriptions.retrieve(session.subscription);
-        active = ['active', 'trialing'].includes(subscription.status);
+        active = ['active', 'trialing', 'past_due'].includes(subscription.status);
       }
 
       const { error: profileError } = await supabase.from('profiles').upsert({
