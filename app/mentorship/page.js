@@ -647,7 +647,7 @@ export default function MentorshipPage() {
                       {/* Expanded content */}
                       {isExpanded && (
                         <div id={`mentorship-episode-${ep.id}-content`} style={{ borderTop: '1px solid rgba(212,168,67,0.22)', padding: '20px', background: 'rgba(0,0,0,0.2)' }}>
-                          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
+                          <div className="mentorship-episode-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
                             {/* Summary */}
                             <div>
                               <div style={{ ...mono, fontSize: '10px', color: '#E8C547', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '8px' }}>Episode Summary</div>
