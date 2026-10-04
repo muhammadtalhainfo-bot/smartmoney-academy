@@ -257,7 +257,7 @@ function AuthPageInner() {
               {loading ? 'Please wait...' : isLogin ? 'Login →' : 'Create Account →'}
             </button>
 
-          </div>
+          </form>
         </div>
 
         <p style={{ textAlign: 'center', marginTop: '24px', fontFamily: 'DM Mono', fontSize: '11px', color: '#B9C1CC' }}>
