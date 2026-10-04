@@ -84,7 +84,7 @@ export async function POST(req) {
       return privateJson({ error: 'Too many requests. Try again later.' }, { status: 429 });
     }
 
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { timeout: 20_000 });
     const configuredOrigin = process.env.NEXT_PUBLIC_APP_URL?.trim()?.replace(/\/$/, '');
     const origin = configuredOrigin || (
       process.env.NODE_ENV === 'production'
