@@ -269,13 +269,31 @@ export default function LessonClient({ lesson, lessonId, moduleDiagramSrc }) {
     trackLessonStart(lessonId, lesson.title);
   }, [lessonId, lesson.title]);
 
-  const handleShare = (platform) => {
+  const handleShare = async (platform) => {
     const url = typeof window !== 'undefined' ? window.location.href : '';
     trackShare(platform, 'lesson', lessonId);
     const text = `Studying ICT on ICT Flow — ${lesson.title}. Structured lessons, quizzes and practice tools.`;
-    if (platform === 'twitter') window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
-    if (platform === 'whatsapp') window.open(`https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`, '_blank', 'noopener,noreferrer');
-    if (platform === 'copy' && navigator?.clipboard) navigator.clipboard.writeText(url);
+    if (!url) return;
+    if (platform === 'twitter') {
+      window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
+      return;
+    }
+    if (platform === 'whatsapp') {
+      window.open(`https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`, '_blank', 'noopener,noreferrer');
+      return;
+    }
+    if (platform === 'copy') {
+      try {
+        if (navigator?.clipboard?.writeText) {
+          await navigator.clipboard.writeText(url);
+          setShareMessage?.('Link copied.');
+        } else {
+          setShareMessage?.('Copy is not supported in this browser.');
+        }
+      } catch {
+        setShareMessage?.('Unable to copy the link.');
+      }
+    }
   };
 
   const page = (
