@@ -150,7 +150,7 @@ const SectionHead = ({ title, sub, action }) => (
 );
 
 const NavBtn = ({ icon, label, active, badge, onClick }) => (
-  <button onClick={onClick} style={{
+  <button type="button" onClick={onClick} style={{
     width: '100%', display: 'flex', alignItems: 'center', gap: '10px',
     padding: '9px 12px', borderRadius: '9px', border: 'none',
     background: active ? C.goldDim : 'transparent',
@@ -274,7 +274,7 @@ function TradeForm({ initial, onSave, onCancel, error }) {
                 <label style={lbl}>Direction</label>
                 <div style={{ display: 'flex', gap: '8px' }}>
                   {['Long','Short'].map(d => (
-                    <button key={d} onClick={() => set('direction', d)} style={{
+                    <button type="button" key={d} onClick={() => set('direction', d)} style={{
                       flex: 1, padding: '9px', borderRadius: '9px',
                       border: `1px solid ${form.direction === d ? (d === 'Long' ? C.green : C.red) : C.border}`,
                       background: form.direction === d ? (d === 'Long' ? 'rgba(34,197,94,0.1)' : 'rgba(239,68,68,0.1)') : C.bg2,
