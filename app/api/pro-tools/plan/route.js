@@ -2,6 +2,13 @@ import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
+function privateJson(body, init = {}) {
+  return NextResponse.json(body, {
+    ...init,
+    headers: { ...(init.headers || {}), 'Cache-Control': 'private, no-store' },
+  });
+}
+
 const PLAN =   {
     id: 'plan',
     emoji: '📋',
@@ -140,7 +147,7 @@ export async function GET() {
   );
 
   const { data: { user }, error: authError } = await supabase.auth.getUser();
-  if (authError || !user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  if (authError || !user) return privateJson({ error: 'Unauthorized' }, { status: 401 });
 
   const { data: profile, error: profileError } = await supabase
     .from('profiles')
@@ -149,10 +156,10 @@ export async function GET() {
     .maybeSingle();
 
   if (profileError || profile?.is_pro !== true) {
-    return NextResponse.json({ error: 'Pro access required' }, { status: 403 });
+    return privateJson({ error: 'Pro access required' }, { status: 403 });
   }
 
-  return NextResponse.json(PLAN, {
+  return privateJson(PLAN, {
     headers: { 'Cache-Control': 'private, no-store' },
   });
 }
