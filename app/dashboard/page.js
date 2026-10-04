@@ -88,8 +88,9 @@ export default function DashboardPage() {
 
         const { data: completionData, error: completionError } = await supabase
           .from('lesson_completions')
-          .select('*')
-          .eq('user_id', currentUser.id);
+          .select('lesson_id, quiz_score, completed_at')
+          .eq('user_id', currentUser.id)
+          .order('completed_at', { ascending: false });
 
         if (completionError) {
           throw new Error('Unable to load your lesson progress.');
@@ -128,7 +129,7 @@ export default function DashboardPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#080808] flex items-center justify-center">
+      <div className="min-h-screen bg-[#080808] flex items-center justify-center" role="status" aria-live="polite" aria-busy="true">
         <div className="font-mono-c text-xs tracking-widest" style={{ fontFamily: "'DM Mono', monospace", color: 'rgba(232,197,71,0.95)' }}>
           LOADING YOUR DASHBOARD...
         </div>
