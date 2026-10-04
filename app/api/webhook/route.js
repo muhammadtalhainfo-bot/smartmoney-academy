@@ -171,7 +171,7 @@ export async function POST(req) {
       return noStoreJson({ error: 'Configuration error' }, { status: 500 });
     }
 
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { timeout: 20_000 });
     const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, secret);
     const contentLength = Number(req.headers.get('content-length') || 0);
     if (contentLength > 1_000_000) {
