@@ -12,6 +12,7 @@ function privateJson(body, init = {}) {
 
 const WINDOW_SECONDS = 5 * 60;
 const MAX_REQUESTS = 5;
+const ONESIGNAL_TIMEOUT_MS = 10_000;
 
 function hashClientKey(value) {
   const pepper = process.env.RATE_LIMIT_SECRET || process.env.SUPABASE_SERVICE_KEY || 'ictflow-rate-limit';
@@ -106,6 +107,7 @@ export async function POST(req) {
         contents: { en: cleanMessage },
         url: 'https://ictflow.com',
       }),
+      signal: AbortSignal.timeout(ONESIGNAL_TIMEOUT_MS),
     });
 
     const data = await response.json();
