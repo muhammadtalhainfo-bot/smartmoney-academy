@@ -25,7 +25,10 @@ function Section({ section, index, diagramSrc, diagramAlt }) {
     <div className="border border-[rgba(212,168,67,0.1)] rounded-xl overflow-hidden mb-4">
       <button
         type="button"
+        type="button"
         onClick={() => setOpen(!open)}
+        aria-expanded={open}
+        aria-controls={`lesson-section-${index}`}
         className="w-full flex items-center justify-between p-5 text-left hover:bg-[rgba(212,168,67,0.03)] transition-colors"
       >
         <div className="flex items-center gap-3">
@@ -37,7 +40,7 @@ function Section({ section, index, diagramSrc, diagramAlt }) {
         <span className="text-[#D4A843] text-lg">{open ? '−' : '+'}</span>
       </button>
       {open && (
-        <div className="px-5 pb-6 border-t border-[rgba(212,168,67,0.1)]">
+        <div id={`lesson-section-${index}`} className="px-5 pb-6 border-t border-[rgba(212,168,67,0.1)]">
           <div className="pt-5 text-gray-300 leading-relaxed text-sm whitespace-pre-line mb-4" style={{ fontWeight: 300 }}>
             {section.content}
           </div>
