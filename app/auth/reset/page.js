@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase';
 
@@ -11,6 +11,11 @@ export default function ResetPasswordPage() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
   const router = useRouter();
+  const redirectTimerRef = useRef(null);
+
+  useEffect(() => () => {
+    if (redirectTimerRef.current) clearTimeout(redirectTimerRef.current);
+  }, []);
 
   const handleReset = async () => {
     if (password !== confirm) { setError('Passwords do not match'); return; }
@@ -23,7 +28,7 @@ export default function ResetPasswordPage() {
       setError('Unable to update your password. Please request a new reset link and try again.');
     } else {
       setSuccess(true);
-      setTimeout(() => router.push('/dashboard'), 2000);
+      redirectTimerRef.current = setTimeout(() => router.push('/dashboard'), 2000);
     }
   };
 
