@@ -230,15 +230,19 @@ export default function ToolsPage() {
           <div style={{ display: 'flex', gap: '12px', marginBottom: '40px', flexWrap: 'wrap' }}>
             {[...TOOLS, PRO_TOOL].map(t => (
               <button
+                type="button"
                 key={t.id}
-                onClick={() => { if (t.id === 'plan' && !isPro) return; setActiveTool(t.id); setChecked({}); }}
+                disabled={t.id === 'plan' && !isPro}
+                aria-pressed={activeTool === t.id}
+                onClick={() => { setActiveTool(t.id); setChecked({}); }}
                 style={{
                   padding: '10px 20px',
                   borderRadius: '10px',
                   border: `1px solid ${activeTool === t.id ? t.color : 'rgba(255,255,255,0.08)'}`,
                   background: activeTool === t.id ? `${t.color}18` : 'transparent',
                   color: activeTool === t.id ? t.color : '#AAB3BF',
-                  cursor: 'pointer',
+                  cursor: t.id === 'plan' && !isPro ? 'not-allowed' : 'pointer',
+                  opacity: t.id === 'plan' && !isPro ? 0.55 : 1,
                   fontSize: '13px',
                   fontFamily: 'DM Mono, monospace',
                   letterSpacing: '1px',
