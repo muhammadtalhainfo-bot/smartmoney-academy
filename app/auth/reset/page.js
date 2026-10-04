@@ -17,7 +17,8 @@ export default function ResetPasswordPage() {
     if (redirectTimerRef.current) clearTimeout(redirectTimerRef.current);
   }, []);
 
-  const handleReset = async () => {
+  const handleReset = async (event) => {
+    event?.preventDefault();
     if (password !== confirm) { setError('Passwords do not match'); return; }
     if (password.length < 8) { setError('Password must be at least 8 characters'); return; }
     setLoading(true);
@@ -43,6 +44,7 @@ export default function ResetPasswordPage() {
         {success ? (
           <div role="status" aria-live="polite" style={{ textAlign: 'center', color: '#34D399', fontFamily: 'DM Mono, monospace', fontSize: '13px' }}>✓ Password updated! Redirecting...</div>
         ) : (
+          <form onSubmit={handleReset}>
           <>
             <div style={{ marginBottom: '14px' }}>
               <label htmlFor="new-password" style={{ display: 'block', fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#E8C547', marginBottom: '6px', letterSpacing: '0.1em' }}>NEW PASSWORD</label>
@@ -59,11 +61,12 @@ export default function ResetPasswordPage() {
                 style={{ width: '100%', background: '#080808', border: '1px solid #E8C547', borderRadius: '8px', padding: '12px 14px', color: 'white', fontSize: '14px', boxSizing: 'border-box', outline: 'none' }} />
             </div>
             {error && <div role="alert" aria-live="assertive" style={{ color: '#FCA5A5', fontFamily: 'DM Mono, monospace', fontSize: '12px', marginBottom: '14px' }}>{error}</div>}
-            <button type="button" onClick={handleReset} disabled={loading}
+            <button type="submit" disabled={loading}
               style={{ width: '100%', background: 'linear-gradient(135deg, #E8C547, #F0C96A)', color: '#080808', border: 'none', borderRadius: '10px', padding: '14px', fontFamily: 'DM Mono, monospace', fontSize: '12px', fontWeight: 700, cursor: 'pointer', letterSpacing: '0.1em' }}>
               {loading ? 'UPDATING...' : 'UPDATE PASSWORD'}
             </button>
           </>
+          </form>
         )}
       </div>
     </div>
