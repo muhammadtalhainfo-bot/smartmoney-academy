@@ -265,7 +265,7 @@ export async function POST(req) {
     }
 
     await markWebhookProcessed(supabase, event.id);
-    return Response.json({ received: true });
+    return Response.json({ received: true }, { headers: { 'Cache-Control': 'no-store' } });
   } catch (err) {
     console.error('Stripe webhook error:', err);
     if (claimedEventId) {
