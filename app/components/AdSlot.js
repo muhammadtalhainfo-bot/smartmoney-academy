@@ -36,7 +36,15 @@ export default function AdSlot({ slot, className = '' }) {
 
       try {
         const { data: { user }, error: authError } = await supabase.auth.getUser();
-        if (authError) throw authError;
+        const isExpectedNoSession =
+          !user &&
+          authError &&
+          (
+            authError.name === 'AuthSessionMissingError' ||
+            String(authError.message || '').toLowerCase().includes('session missing')
+          );
+
+        if (authError && !isExpectedNoSession) throw authError;
 
         let shouldShow = true;
         if (user) {
