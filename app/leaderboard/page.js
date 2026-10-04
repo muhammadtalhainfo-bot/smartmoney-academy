@@ -35,8 +35,8 @@ export default function LeaderboardPage() {
       }
 
       try {
-        const [{ data: { session }, error: sessionError }, { data: top, error: leaderboardError }] = await Promise.all([
-          supabase.auth.getSession(),
+        const [{ data: { user }, error: userError }, { data: top, error: leaderboardError }] = await Promise.all([
+          supabase.auth.getUser(),
           supabase
             .from('leaderboard_profiles')
             .select('id, username, xp, streak')
@@ -44,11 +44,9 @@ export default function LeaderboardPage() {
             .limit(50),
         ]);
 
-        if (sessionError) throw sessionError;
+        if (userError) throw userError;
         if (leaderboardError) throw leaderboardError;
         if (!mounted) return;
-
-        const user = session?.user || null;
         setCurrentUser(user);
         setLeaders(top || []);
 
