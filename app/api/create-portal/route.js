@@ -6,6 +6,13 @@ import { NextResponse } from 'next/server';
 
 export const runtime = 'nodejs';
 
+function privateJson(body, init = {}) {
+  return NextResponse.json(body, {
+    ...init,
+    headers: { ...(init.headers || {}), 'Cache-Control': 'private, no-store' },
+  });
+}
+
 const WINDOW_SECONDS = 10 * 60;
 const MAX_REQUESTS = 5;
 
@@ -17,7 +24,7 @@ function hashUserKey(userId) {
 export async function POST(req) {
   try {
     if (!process.env.STRIPE_SECRET_KEY || !process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
-      return NextResponse.json({ error: 'Payment service is not configured.' }, { status: 503 });
+      return privateJson({ error: 'Payment service is not configured.' }, { status: 503 });
     }
 
     const cookieStore = await cookies();
@@ -40,7 +47,7 @@ export async function POST(req) {
 
     const { data: { user }, error: authError } = await supabase.auth.getUser();
     if (authError || !user) {
-      return NextResponse.json({ error: 'Authentication required.' }, { status: 401 });
+      return privateJson({ error: 'Authentication required.' }, { status: 401 });
     }
 
     const { data: profile } = await supabase
@@ -50,12 +57,12 @@ export async function POST(req) {
       .maybeSingle();
 
     if (!profile?.is_pro || !profile?.stripe_customer_id) {
-      return NextResponse.json({ error: 'Pro access required.' }, { status: 403 });
+      return privateJson({ error: 'Pro access required.' }, { status: 403 });
     }
 
     const serviceKey = process.env.SUPABASE_SERVICE_KEY;
     if (!serviceKey) {
-      return NextResponse.json({ error: 'Payment service is not configured.' }, { status: 503 });
+      return privateJson({ error: 'Payment service is not configured.' }, { status: 503 });
     }
 
     const { createClient } = await import('@supabase/supabase-js');
@@ -71,10 +78,10 @@ export async function POST(req) {
 
     if (rateError) {
       console.error('Stripe portal rate-limit error:', rateError);
-      return NextResponse.json({ error: 'Payment service temporarily unavailable.' }, { status: 503 });
+      return privateJson({ error: 'Payment service temporarily unavailable.' }, { status: 503 });
     }
     if (allowed !== true) {
-      return NextResponse.json({ error: 'Too many requests. Try again later.' }, { status: 429 });
+      return privateJson({ error: 'Too many requests. Try again later.' }, { status: 429 });
     }
 
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -89,9 +96,9 @@ export async function POST(req) {
       return_url: `${origin}/dashboard`,
     });
 
-    return NextResponse.json({ url: portalSession.url }, { headers: { 'Cache-Control': 'no-store' } });
+    return privateJson({ url: portalSession.url }, { headers: { 'Cache-Control': 'no-store' } });
   } catch (error) {
     console.error('Stripe portal error:', error);
-    return NextResponse.json({ error: 'Unable to open billing portal.' }, { status: 502, headers: { 'Cache-Control': 'no-store' } });
+    return privateJson({ error: 'Unable to open billing portal.' }, { status: 502, headers: { 'Cache-Control': 'no-store' } });
   }
 }
