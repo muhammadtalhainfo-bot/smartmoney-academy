@@ -12,7 +12,13 @@ export default function AdSlot({ slot, className = '' }) {
   const supabase = useMemo(() => createClient(), []);
 
   useEffect(() => {
-    const syncConsent = () => setConsent(window.localStorage.getItem(CONSENT_KEY) === 'true');
+    const syncConsent = () => {
+      try {
+        setConsent(window.localStorage.getItem(CONSENT_KEY) === 'true');
+      } catch {
+        setConsent(false);
+      }
+    };
     syncConsent();
     window.addEventListener(CONSENT_EVENT, syncConsent);
     return () => window.removeEventListener(CONSENT_EVENT, syncConsent);
