@@ -2,6 +2,13 @@ import { createClient } from '@supabase/supabase-js';
 
 export const runtime = 'nodejs';
 
+function noStoreJson(body, init = {}) {
+  return Response.json(body, {
+    ...init,
+    headers: { ...(init.headers || {}), 'Cache-Control': 'no-store' },
+  });
+}
+
 const WEBHOOK_RECLAIM_AFTER_MS = 5 * 60 * 1000;
 const MAX_WEBHOOK_ERROR_LENGTH = 1000;
 
@@ -161,39 +168,39 @@ export async function POST(req) {
     const secret = process.env.SUPABASE_SERVICE_KEY;
 
     if (!process.env.STRIPE_SECRET_KEY || !process.env.STRIPE_WEBHOOK_SECRET || !process.env.NEXT_PUBLIC_SUPABASE_URL || !secret) {
-      return Response.json({ error: 'Configuration error' }, { status: 500 });
+      return noStoreJson({ error: 'Configuration error' }, { status: 500 });
     }
 
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
     const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, secret);
     const contentLength = Number(req.headers.get('content-length') || 0);
     if (contentLength > 1_000_000) {
-      return Response.json({ error: 'Webhook payload too large' }, { status: 413 });
+      return noStoreJson({ error: 'Webhook payload too large' }, { status: 413 });
     }
     const body = await req.text();
     if (body.length > 1_000_000) {
-      return Response.json({ error: 'Webhook payload too large' }, { status: 413 });
+      return noStoreJson({ error: 'Webhook payload too large' }, { status: 413 });
     }
     const sig = req.headers.get('stripe-signature');
 
-    if (!sig) return Response.json({ error: 'Missing signature' }, { status: 400 });
+    if (!sig) return noStoreJson({ error: 'Missing signature' }, { status: 400 });
 
     let event;
     try {
       event = stripe.webhooks.constructEvent(body, sig, process.env.STRIPE_WEBHOOK_SECRET);
     } catch {
-      return Response.json({ error: 'Webhook signature failed' }, { status: 400 });
+      return noStoreJson({ error: 'Webhook signature failed' }, { status: 400 });
     }
 
     const claim = await claimWebhookEvent(supabase, event);
     if (claim.duplicate) {
-      return Response.json({ received: true, duplicate: true }, { headers: { 'Cache-Control': 'no-store' } });
+      return noStoreJson({ received: true, duplicate: true }, { headers: { 'Cache-Control': 'no-store' } });
     }
     if (claim.busy) {
-      return Response.json({ error: 'Webhook event is already being processed.' }, { status: 409, headers: { 'Cache-Control': 'no-store' } });
+      return noStoreJson({ error: 'Webhook event is already being processed.' }, { status: 409, headers: { 'Cache-Control': 'no-store' } });
     }
     if (!claim.claimed) {
-      return Response.json({ error: 'Unable to claim webhook event.' }, { status: 503, headers: { 'Cache-Control': 'no-store' } });
+      return noStoreJson({ error: 'Unable to claim webhook event.' }, { status: 503, headers: { 'Cache-Control': 'no-store' } });
     }
 
     claimedEventId = event.id;
@@ -216,7 +223,7 @@ export async function POST(req) {
       }
       if (!user) {
         await markWebhookProcessed(supabase, event.id);
-        return Response.json({ received: true }, { headers: { 'Cache-Control': 'no-store' } });
+        return noStoreJson({ received: true }, { headers: { 'Cache-Control': 'no-store' } });
       }
 
       let active = false;
@@ -265,7 +272,7 @@ export async function POST(req) {
     }
 
     await markWebhookProcessed(supabase, event.id);
-    return Response.json({ received: true }, { headers: { 'Cache-Control': 'no-store' } });
+    return noStoreJson({ received: true }, { headers: { 'Cache-Control': 'no-store' } });
   } catch (err) {
     console.error('Stripe webhook error:', err);
     if (claimedEventId) {
@@ -280,6 +287,6 @@ export async function POST(req) {
         }
       }
     }
-    return Response.json({ error: 'Webhook failed' }, { status: 500, headers: { 'Cache-Control': 'no-store' } });
+    return noStoreJson({ error: 'Webhook failed' }, { status: 500, headers: { 'Cache-Control': 'no-store' } });
   }
 }
