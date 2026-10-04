@@ -286,7 +286,7 @@ export default function LessonClient({ lesson, lessonId, moduleDiagramSrc }) {
     }
     if (platform === 'copy') {
       try {
-        if (navigator?.clipboard?.writeText) {
+        if (typeof navigator !== 'undefined' && navigator.clipboard?.writeText) {
           await navigator.clipboard.writeText(url);
           setShareMessage('Link copied.');
         } else {
