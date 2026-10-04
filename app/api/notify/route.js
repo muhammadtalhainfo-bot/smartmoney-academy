@@ -3,6 +3,13 @@ import { getAdminSession } from '../../admin/actions';
 
 export const runtime = 'nodejs';
 
+function privateJson(body, init = {}) {
+  return Response.json(body, {
+    ...init,
+    headers: { ...(init.headers || {}), 'Cache-Control': 'private, no-store' },
+  });
+}
+
 const WINDOW_SECONDS = 5 * 60;
 const MAX_REQUESTS = 5;
 
@@ -44,46 +51,46 @@ export async function POST(req) {
   try {
     const contentLength = Number(req.headers.get('content-length') || 0);
     if (contentLength > 25_000) {
-      return Response.json({ error: 'Request too large.' }, { status: 413 });
+      return privateJson({ error: 'Request too large.' }, { status: 413 });
     }
 
     const rate = await consumeRateLimit(req);
     if (!rate.session?.ok) {
-      return Response.json({ error: 'Unauthorized' }, { status: 401 });
+      return privateJson({ error: 'Unauthorized' }, { status: 401 });
     }
     if (rate.unavailable) {
-      return Response.json({ error: 'Notification service not configured' }, { status: 500 });
+      return privateJson({ error: 'Notification service not configured' }, { status: 500 });
     }
     if (rate.rateLimitError) {
-      return Response.json({ error: 'Service temporarily unavailable' }, { status: 503 });
+      return privateJson({ error: 'Service temporarily unavailable' }, { status: 503 });
     }
     if (!rate.allowed) {
-      return Response.json({ error: 'Too many requests. Try again later.' }, { status: 429 });
+      return privateJson({ error: 'Too many requests. Try again later.' }, { status: 429 });
     }
 
     if (!process.env.ONESIGNAL_REST_API_KEY) {
-      return Response.json({ error: 'Notification service not configured' }, { status: 500 });
+      return privateJson({ error: 'Notification service not configured' }, { status: 500 });
     }
 
     const rawBody = await req.text();
     if (rawBody.length > 25_000) {
-      return Response.json({ error: 'Request too large.' }, { status: 413 });
+      return privateJson({ error: 'Request too large.' }, { status: 413 });
     }
 
     let body = {};
     try {
       body = rawBody ? JSON.parse(rawBody) : {};
     } catch {
-      return Response.json({ error: 'Invalid request.' }, { status: 400 });
+      return privateJson({ error: 'Invalid request.' }, { status: 400 });
     }
 
     const { title, message } = body;
     const cleanTitle = typeof title === 'string' ? title.trim() : '';
     const cleanMessage = typeof message === 'string' ? message.trim() : '';
-    if (!cleanTitle) return Response.json({ error: 'Missing title' }, { status: 400 });
-    if (!cleanMessage) return Response.json({ error: 'Missing message' }, { status: 400 });
+    if (!cleanTitle) return privateJson({ error: 'Missing title' }, { status: 400 });
+    if (!cleanMessage) return privateJson({ error: 'Missing message' }, { status: 400 });
     if (cleanTitle.length > 100 || cleanMessage.length > 2000) {
-      return Response.json({ error: 'Notification content is too long.' }, { status: 413 });
+      return privateJson({ error: 'Notification content is too long.' }, { status: 413 });
     }
 
     const response = await fetch('https://api.onesignal.com/notifications', {
@@ -104,11 +111,11 @@ export async function POST(req) {
     const data = await response.json();
     if (!response.ok) {
       console.error('OneSignal notification error:', response.status, data);
-      return Response.json({ error: 'Failed to send notification' }, { status: 502 });
+      return privateJson({ error: 'Failed to send notification' }, { status: 502 });
     }
-    return Response.json({ success: true, data });
+    return privateJson({ success: true, data });
   } catch (err) {
     console.error('Notify error:', err);
-    return Response.json({ error: 'Failed to send notification' }, { status: 500 });
+    return privateJson({ error: 'Failed to send notification' }, { status: 500 });
   }
 }
