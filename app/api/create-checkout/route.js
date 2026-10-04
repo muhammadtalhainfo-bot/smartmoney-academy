@@ -1,8 +1,13 @@
 import Stripe from 'stripe';
+import { createHash } from 'node:crypto';
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
+import { createClient as createSupabaseAdmin } from '@supabase/supabase-js';
 
 export const runtime = 'nodejs';
+
+const CHECKOUT_RATE_WINDOW_SECONDS = 10 * 60;
+const CHECKOUT_RATE_LIMIT = 5;
 
 function getBaseUrl() {
   const configured = process.env.NEXT_PUBLIC_APP_URL?.trim();
@@ -18,6 +23,20 @@ function allowedPriceIds() {
     process.env.STRIPE_MONTHLY_PRICE_ID,
     process.env.STRIPE_YEARLY_PRICE_ID,
   ].filter(Boolean);
+}
+
+function hashUserKey(userId) {
+  const pepper = process.env.RATE_LIMIT_SECRET || process.env.SUPABASE_SERVICE_KEY || 'ictflow-rate-limit';
+  return createHash('sha256').update(pepper + ':checkout:' + userId).digest('hex');
+}
+
+function adminClient() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_KEY;
+  if (!url || !key) throw new Error('Supabase server configuration is missing.');
+  return createSupabaseAdmin(url, key, {
+    auth: { autoRefreshToken: false, persistSession: false },
+  });
 }
 
 export async function POST(req) {
@@ -50,6 +69,7 @@ export async function POST(req) {
     if (!priceId || !allowedPriceIds().includes(priceId)) {
       return Response.json({ error: 'Invalid subscription plan.' }, { status: 400 });
     }
+
     const cookieStore = await cookies();
     const supabase = createServerClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -94,6 +114,22 @@ export async function POST(req) {
           code: 'subscription_exists',
         }, { status: 409 });
       }
+    }
+
+    const admin = adminClient();
+    const { data: allowed, error: rateError } = await admin.rpc('consume_api_rate_limit', {
+      p_scope: 'stripe-checkout',
+      p_key_hash: hashUserKey(user.id),
+      p_window_seconds: CHECKOUT_RATE_WINDOW_SECONDS,
+      p_max_requests: CHECKOUT_RATE_LIMIT,
+    });
+
+    if (rateError) {
+      console.error('Stripe checkout rate-limit error:', rateError);
+      return Response.json({ error: 'Payment service temporarily unavailable.' }, { status: 503 });
+    }
+    if (allowed !== true) {
+      return Response.json({ error: 'Too many checkout attempts. Try again later.' }, { status: 429 });
     }
 
     const baseUrl = getBaseUrl();
