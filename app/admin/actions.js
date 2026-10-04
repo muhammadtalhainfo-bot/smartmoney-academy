@@ -30,7 +30,10 @@ function validateBlogForm(form) {
   const slug = typeof form.slug === 'string' ? form.slug.trim() : '';
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) throw new Error('Invalid blog slug.');
   if (!String(form.title || '').trim()) throw new Error('Blog title is required.');
-  if (form.image && !/^https?:\\/\\//i.test(form.image.trim()) && !form.image.trim().startsWith('/')) throw new Error('Invalid blog image URL.');
+  if (form.image) {
+    const image = form.image.trim();
+    if (!(image.startsWith('https://') || image.startsWith('http://') || image.startsWith('/'))) throw new Error('Invalid blog image URL.');
+  }
   return { ...form, slug };
 }
 
