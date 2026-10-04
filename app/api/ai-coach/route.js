@@ -5,6 +5,13 @@ import { NextResponse } from 'next/server';
 
 export const runtime = 'nodejs';
 
+function privateJson(body, init = {}) {
+  return NextResponse.json(body, {
+    ...init,
+    headers: { ...(init.headers || {}), 'Cache-Control': 'private, no-store' },
+  });
+}
+
 const RATE_WINDOW_SECONDS = 10 * 60;
 const RATE_LIMIT = 10;
 
@@ -31,7 +38,7 @@ export async function POST(req) {
   try {
     const contentLength = Number(req.headers.get('content-length') || 0);
     if (contentLength > 20_000) {
-      return NextResponse.json({ error: 'Journal summary is too large.' }, { status: 413 });
+      return privateJson({ error: 'Journal summary is too large.' }, { status: 413 });
     }
 
     if (
@@ -40,7 +47,7 @@ export async function POST(req) {
       !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
       !process.env.SUPABASE_SERVICE_KEY
     ) {
-      return NextResponse.json({ error: 'AI Coach is not configured' }, { status: 503 });
+      return privateJson({ error: 'AI Coach is not configured' }, { status: 503 });
     }
 
     const cookieStore = await cookies();
@@ -61,7 +68,7 @@ export async function POST(req) {
 
     const { data: { user }, error: authError } = await supabase.auth.getUser();
     if (authError || !user) {
-      return NextResponse.json({ error: 'Authentication required' }, { status: 401 });
+      return privateJson({ error: 'Authentication required' }, { status: 401 });
     }
     const admin = createAdminClient();
     const { data: allowed, error: rateError } = await admin.rpc('consume_ai_coach_rate_limit', {
@@ -72,28 +79,28 @@ export async function POST(req) {
 
     if (rateError) {
       console.error('AI Coach rate-limit error:', rateError);
-      return NextResponse.json({ error: 'AI Coach is temporarily unavailable. Please try again later.' }, { status: 503 });
+      return privateJson({ error: 'AI Coach is temporarily unavailable. Please try again later.' }, { status: 503 });
     }
 
     if (allowed !== true) {
-      return NextResponse.json({ error: 'AI Coach rate limit reached. Try again later.' }, { status: 429 });
+      return privateJson({ error: 'AI Coach rate limit reached. Try again later.' }, { status: 429 });
     }
 
     const rawBody = await req.text();
     if (rawBody.length > 20_000) {
-      return NextResponse.json({ error: 'Journal summary is too large.' }, { status: 413 });
+      return privateJson({ error: 'Journal summary is too large.' }, { status: 413 });
     }
 
     let body = {};
     try {
       body = rawBody ? JSON.parse(rawBody) : {};
     } catch {
-      return NextResponse.json({ error: 'Invalid request.' }, { status: 400 });
+      return privateJson({ error: 'Invalid request.' }, { status: 400 });
     }
 
     const input = body?.summary;
     if (!input || typeof input !== 'object') {
-      return NextResponse.json({ error: 'Invalid journal summary' }, { status: 400 });
+      return privateJson({ error: 'Invalid journal summary' }, { status: 400 });
     }
 
     const summary = Object.fromEntries(
@@ -136,7 +143,7 @@ Only JSON. No preamble.`;
 
     if (!response.ok) {
       console.error('Anthropic API error:', response.status);
-      return NextResponse.json({ error: 'AI Coach request failed' }, { status: 502 });
+      return privateJson({ error: 'AI Coach request failed' }, { status: 502 });
     }
 
     const data = await response.json();
@@ -147,16 +154,16 @@ Only JSON. No preamble.`;
     try {
       parsed = JSON.parse(text);
     } catch {
-      return NextResponse.json({ error: 'AI Coach returned invalid data' }, { status: 502 });
+      return privateJson({ error: 'AI Coach returned invalid data' }, { status: 502 });
     }
 
     if (!Array.isArray(parsed?.insights) || parsed.insights.length !== 4) {
-      return NextResponse.json({ error: 'AI Coach returned incomplete data' }, { status: 502 });
+      return privateJson({ error: 'AI Coach returned incomplete data' }, { status: 502 });
     }
 
-    return NextResponse.json({ insights: parsed.insights }, { headers: { 'Cache-Control': 'private, no-store' } });
+    return privateJson({ insights: parsed.insights }, { headers: { 'Cache-Control': 'private, no-store' } });
   } catch (error) {
     console.error('AI Coach error:', error);
-    return NextResponse.json({ error: 'AI Coach unavailable' }, { status: 500 });
+    return privateJson({ error: 'AI Coach unavailable' }, { status: 500 });
   }
 }
