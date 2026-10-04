@@ -53,8 +53,8 @@ export default function LeaderboardPage() {
         setCurrentUser(userData?.user || null);
         setLeaders(top || []);
 
-        if (user) {
-          const pos = (top || []).findIndex(p => p.id === user.id);
+        if (userData?.user) {
+          const pos = (top || []).findIndex(p => p.id === userData.user.id);
           setUserRank(pos >= 0 ? pos + 1 : null);
         } else {
           setUserRank(null);
