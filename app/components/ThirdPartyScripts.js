@@ -10,7 +10,13 @@ export default function ThirdPartyScripts() {
   const [consent, setConsent] = useState(false);
 
   useEffect(() => {
-    const sync = () => setConsent(window.localStorage.getItem(CONSENT_KEY) === 'true');
+    const sync = () => {
+      try {
+        setConsent(window.localStorage.getItem(CONSENT_KEY) === 'true');
+      } catch {
+        setConsent(false);
+      }
+    };
     sync();
     window.addEventListener(CONSENT_EVENT, sync);
     return () => window.removeEventListener(CONSENT_EVENT, sync);
