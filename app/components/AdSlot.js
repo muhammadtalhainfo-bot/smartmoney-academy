@@ -72,12 +72,18 @@ export default function AdSlot({ slot, className = '' }) {
 
     check();
 
+    let refreshTimer = null;
     const { data: { subscription } } = supabase.auth.onAuthStateChange(() => {
-      setTimeout(check, 0);
+      if (refreshTimer) clearTimeout(refreshTimer);
+      refreshTimer = setTimeout(() => {
+        refreshTimer = null;
+        check();
+      }, 0);
     });
 
     return () => {
       mounted = false;
+      if (refreshTimer) clearTimeout(refreshTimer);
       subscription?.unsubscribe();
     };
   }, [slot, consent, supabase]);
