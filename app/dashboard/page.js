@@ -161,9 +161,10 @@ export default function DashboardPage() {
   const xp = profile?.xp || 0;
   const rankIndex = Math.min(Math.floor(xp / 500), LEVEL_RANKS.length - 1);
   const currentRank = LEVEL_RANKS[rankIndex];
-  const nextRank = LEVEL_RANKS[rankIndex + 1] || 'MAX';
-  const xpToNext = (rankIndex + 1) * 500;
-  const xpPct = Math.round((xp / xpToNext) * 100);
+  const isMaxRank = rankIndex === LEVEL_RANKS.length - 1;
+  const nextRank = isMaxRank ? null : LEVEL_RANKS[rankIndex + 1];
+  const xpToNext = isMaxRank ? null : (rankIndex + 1) * 500;
+  const xpPct = isMaxRank ? 100 : Math.min(100, Math.round((xp / xpToNext) * 100));
   const displayName = profile?.name || user?.email?.split('@')[0] || 'Trader';
 
   // Recent completions
@@ -360,14 +361,14 @@ export default function DashboardPage() {
                 <div className="mb-3">
                   <div className="flex justify-between mb-1.5">
                     <span className="font-mono-c text-[10px]" style={{ color: '#D0D0D0', fontSize: '11px' }}>XP Progress</span>
-                    <span className="font-mono-c text-[10px]" style={{ color: '#E8C547' }}>{xp} / {xpToNext}</span>
+                    <span className="font-mono-c text-[10px]" style={{ color: '#E8C547' }}>{isMaxRank ? 'MAX RANK' : xp + ' / ' + xpToNext}</span>
                   </div>
                   <div className="progress-bar-bg h-2">
                     <div className="progress-bar-fill h-2" style={{ width: `${xpPct}%` }} />
                   </div>
                 </div>
                 <div className="font-mono-c text-[10px] text-center" style={{ color: '#E8C547' }}>
-                  Next: {nextRank} ({xpToNext - xp} XP away)
+                  {isMaxRank ? 'MAX RANK REACHED' : 'Next: ' + nextRank + ' (' + (xpToNext - xp) + ' XP away)'}
                 </div>
                 <div className="mt-5 space-y-2">
                   {LEVEL_RANKS.map((rank, i) => {
