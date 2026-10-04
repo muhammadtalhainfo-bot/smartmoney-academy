@@ -109,7 +109,6 @@ function AuthPageInner() {
           // If auto sign in fails (email confirmation required), show friendly message
           setSuccess('Account created! Please check your email to confirm your account, then log in.');
         } else {
-          await supabase.auth.getSession();
           const redirect = safeRedirect(requestedRedirect, '');
           await new Promise(r => setTimeout(r, 500));
           if (redirect) {
