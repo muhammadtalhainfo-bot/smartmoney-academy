@@ -6,6 +6,13 @@ import { createClient as createSupabaseAdmin } from '@supabase/supabase-js';
 
 export const runtime = 'nodejs';
 
+function privateJson(body, init = {}) {
+  return Response.json(body, {
+    ...init,
+    headers: { ...(init.headers || {}), 'Cache-Control': 'private, no-store' },
+  });
+}
+
 const CHECKOUT_RATE_WINDOW_SECONDS = 10 * 60;
 const CHECKOUT_RATE_LIMIT = 5;
 
@@ -43,31 +50,31 @@ export async function POST(req) {
   try {
     const contentLength = Number(req.headers.get('content-length') || 0);
     if (contentLength > 20_000) {
-      return Response.json({ error: 'Request too large.' }, { status: 413 });
+      return privateJson({ error: 'Request too large.' }, { status: 413 });
     }
 
     const rawBody = await req.text();
     if (rawBody.length > 20_000) {
-      return Response.json({ error: 'Request too large.' }, { status: 413 });
+      return privateJson({ error: 'Request too large.' }, { status: 413 });
     }
 
     let body = {};
     try {
       body = rawBody ? JSON.parse(rawBody) : {};
     } catch {
-      return Response.json({ error: 'Invalid request.' }, { status: 400 });
+      return privateJson({ error: 'Invalid request.' }, { status: 400 });
     }
 
     const priceId = typeof body.priceId === 'string' ? body.priceId.trim() : '';
 
     if (!process.env.STRIPE_SECRET_KEY) {
-      return Response.json({ error: 'Payment is not configured.' }, { status: 500 });
+      return privateJson({ error: 'Payment is not configured.' }, { status: 500 });
     }
     if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
-      return Response.json({ error: 'Authentication is not configured.' }, { status: 500 });
+      return privateJson({ error: 'Authentication is not configured.' }, { status: 500 });
     }
     if (!priceId || !allowedPriceIds().includes(priceId)) {
-      return Response.json({ error: 'Invalid subscription plan.' }, { status: 400 });
+      return privateJson({ error: 'Invalid subscription plan.' }, { status: 400 });
     }
 
     const cookieStore = await cookies();
@@ -88,7 +95,7 @@ export async function POST(req) {
 
     const { data: { user }, error: authError } = await supabase.auth.getUser();
     if (authError || !user?.id || !user.email) {
-      return Response.json({ error: 'Please sign in before starting Pro.' }, { status: 401 });
+      return privateJson({ error: 'Please sign in before starting Pro.' }, { status: 401 });
     }
 
     const admin = adminClient();
@@ -101,10 +108,10 @@ export async function POST(req) {
 
     if (rateError) {
       console.error('Stripe checkout rate-limit error:', rateError);
-      return Response.json({ error: 'Payment service temporarily unavailable.' }, { status: 503 });
+      return privateJson({ error: 'Payment service temporarily unavailable.' }, { status: 503 });
     }
     if (allowed !== true) {
-      return Response.json({ error: 'Too many checkout attempts. Try again later.' }, { status: 429 });
+      return privateJson({ error: 'Too many checkout attempts. Try again later.' }, { status: 429 });
     }
 
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -124,7 +131,7 @@ export async function POST(req) {
         ['active', 'trialing', 'past_due'].includes(subscription.status)
       );
       if (hasActiveSubscription) {
-        return Response.json({
+        return privateJson({
           error: 'You already have a Pro subscription. Manage it from Billing instead of starting another subscription.',
           code: 'subscription_exists',
         }, { status: 409 });
@@ -145,9 +152,9 @@ export async function POST(req) {
       allow_promotion_codes: true,
     }, { idempotencyKey });
 
-    return Response.json({ url: session.url, sessionId: session.id }, { headers: { 'Cache-Control': 'no-store' } });
+    return privateJson({ url: session.url, sessionId: session.id }, { headers: { 'Cache-Control': 'no-store' } });
   } catch (error) {
     console.error('Stripe checkout error:', error);
-    return Response.json({ error: 'Failed to create checkout session.' }, { status: 500 });
+    return privateJson({ error: 'Failed to create checkout session.' }, { status: 500 });
   }
 }
