@@ -777,7 +777,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     id: 13,
     title: 'SMC — Smart Money Concepts',
     subtitle: 'Structure, order blocks, FVGs, CHoCH and a rules-based SMC workflow',
-    level: 'Advanced',
+    level: 'SMC',
     duration: '50 min',
     category: 'SMC',
     imageCaption: 'SMC is a broad community framework with overlapping terminology; exact definitions vary, so the trading rules must be stated explicitly.',
