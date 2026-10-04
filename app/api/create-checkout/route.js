@@ -114,7 +114,7 @@ export async function POST(req) {
       return privateJson({ error: 'Too many checkout attempts. Try again later.' }, { status: 429 });
     }
 
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { timeout: 20_000 });
     const { data: profile } = await supabase
       .from('profiles')
       .select('stripe_customer_id')
