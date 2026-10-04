@@ -7,6 +7,13 @@ import { createHash } from 'node:crypto';
 const WINDOW_SECONDS = 5 * 60;
 const MAX_REQUESTS = 10;
 
+function privateJson(body, init = {}) {
+  return NextResponse.json(body, {
+    ...init,
+    headers: { ...(init.headers || {}), 'Cache-Control': 'private, no-store' },
+  });
+}
+
 function hashUserKey(userId) {
   const pepper = process.env.RATE_LIMIT_SECRET || process.env.SUPABASE_SERVICE_KEY || 'ictflow-rate-limit';
   return createHash('sha256').update(pepper + ':streak:' + userId).digest('hex');
@@ -78,10 +85,10 @@ export async function POST(req) {
     );
 
     const { data: { user }, error: authError } = await supabase.auth.getUser();
-    if (authError || !user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    if (authError || !user) return privateJson({ error: 'Unauthorized' }, { status: 401 });
 
     const serviceKey = process.env.SUPABASE_SERVICE_KEY;
-    if (!serviceKey) return NextResponse.json({ error: 'Server configuration is missing.' }, { status: 503 });
+    if (!serviceKey) return privateJson({ error: 'Server configuration is missing.' }, { status: 503 });
 
     const admin = adminClient();
     const { data: allowed, error: rateError } = await admin.rpc('consume_api_rate_limit', {
@@ -93,10 +100,10 @@ export async function POST(req) {
 
     if (rateError) {
       console.error('Streak rate-limit error:', rateError);
-      return NextResponse.json({ error: 'Service temporarily unavailable.' }, { status: 503 });
+      return privateJson({ error: 'Service temporarily unavailable.' }, { status: 503 });
     }
     if (allowed !== true) {
-      return NextResponse.json({ error: 'Too many requests. Try again later.' }, { status: 429 });
+      return privateJson({ error: 'Too many requests. Try again later.' }, { status: 429 });
     }
 
     const { data: profile, error: profileError } = await supabase
@@ -106,7 +113,7 @@ export async function POST(req) {
       .single();
 
     if (profileError || !profile) {
-      return NextResponse.json({ error: 'Profile not found' }, { status: 404 });
+      return privateJson({ error: 'Profile not found' }, { status: 404 });
     }
 
     const now = new Date();
@@ -114,7 +121,7 @@ export async function POST(req) {
     const today = dateForTimezone(now, timezone);
 
     if (profile.last_active === today) {
-      return NextResponse.json({
+      return privateJson({
         streak: profile.streak || 0,
         longest_streak: profile.longest_streak || 0,
         last_active: profile.last_active,
@@ -144,20 +151,20 @@ export async function POST(req) {
 
     if (updateError) {
       console.error('Streak update error:', updateError);
-      return NextResponse.json({ error: 'Unable to update streak' }, { status: 500 });
+      return privateJson({ error: 'Unable to update streak' }, { status: 500 });
     }
 
     if (!updatedProfile) {
-      return NextResponse.json({ error: 'Streak changed concurrently. Refresh and retry.' }, { status: 409 });
+      return privateJson({ error: 'Streak changed concurrently. Refresh and retry.' }, { status: 409 });
     }
 
-    return NextResponse.json({
+    return privateJson({
       streak: updatedProfile.streak || 0,
       longest_streak: updatedProfile.longest_streak || 0,
       last_active: updatedProfile.last_active,
     }, { headers: { 'Cache-Control': 'private, no-store' } });
   } catch (error) {
     console.error('Streak endpoint error:', error);
-    return NextResponse.json({ error: 'Unable to update streak' }, { status: 500 });
+    return privateJson({ error: 'Unable to update streak' }, { status: 500 });
   }
 }
