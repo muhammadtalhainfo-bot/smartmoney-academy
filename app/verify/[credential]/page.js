@@ -50,7 +50,12 @@ async function verifyCredential(credential) {
 
 export default async function VerifyPage({ params }) {
   const { credential } = await params;
-  const credentialId = decodeURIComponent(credential || '').toUpperCase();
+  let credentialId = '';
+  try {
+    credentialId = decodeURIComponent(credential || '').toUpperCase();
+  } catch {
+    credentialId = '';
+  }
   const result = await verifyCredential(credentialId);
 
   return (
