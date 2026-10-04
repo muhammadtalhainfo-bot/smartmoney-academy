@@ -2,6 +2,15 @@ import { createClient as createSupabaseAdmin } from '@supabase/supabase-js';
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
+import { createHash } from 'node:crypto';
+
+const WINDOW_SECONDS = 5 * 60;
+const MAX_REQUESTS = 10;
+
+function hashUserKey(userId) {
+  const pepper = process.env.RATE_LIMIT_SECRET || process.env.SUPABASE_SERVICE_KEY || 'ictflow-rate-limit';
+  return createHash('sha256').update(pepper + ':streak:' + userId).digest('hex');
+}
 
 function toLocalDate(date) {
   const year = date.getFullYear();
@@ -71,6 +80,25 @@ export async function POST(req) {
     const { data: { user }, error: authError } = await supabase.auth.getUser();
     if (authError || !user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
+    const serviceKey = process.env.SUPABASE_SERVICE_KEY;
+    if (!serviceKey) return NextResponse.json({ error: 'Server configuration is missing.' }, { status: 503 });
+
+    const admin = adminClient();
+    const { data: allowed, error: rateError } = await admin.rpc('consume_api_rate_limit', {
+      p_scope: 'streak-update',
+      p_key_hash: hashUserKey(user.id),
+      p_window_seconds: WINDOW_SECONDS,
+      p_max_requests: MAX_REQUESTS,
+    });
+
+    if (rateError) {
+      console.error('Streak rate-limit error:', rateError);
+      return NextResponse.json({ error: 'Service temporarily unavailable.' }, { status: 503 });
+    }
+    if (allowed !== true) {
+      return NextResponse.json({ error: 'Too many requests. Try again later.' }, { status: 429 });
+    }
+
     const { data: profile, error: profileError } = await supabase
       .from('profiles')
       .select('streak, longest_streak, last_active')
@@ -97,7 +125,6 @@ export async function POST(req) {
     const newStreak = profile.last_active === yesterday ? (profile.streak || 0) + 1 : 1;
     const longestStreak = Math.max(newStreak, profile.longest_streak || 0);
 
-    const admin = adminClient();
     let update = admin
       .from('profiles')
       .update({
