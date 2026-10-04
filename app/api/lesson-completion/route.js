@@ -6,6 +6,13 @@ import { MODULES } from '@/lib/curriculum';
 export const runtime = 'nodejs';
 
 const PASS_PERCENT = 70;
+
+function requestError(status, message) {
+  const error = new Error(message);
+  error.status = status;
+  return error;
+}
+
 const RATE_WINDOW_SECONDS = 10 * 60;
 const RATE_LIMIT = 30;
 
@@ -30,15 +37,15 @@ function adminClient() {
 
 async function readJson(req) {
   const contentLength = Number(req.headers.get('content-length') || 0);
-  if (contentLength > 20_000) throw new Error('Request too large.');
+  if (contentLength > 20_000) throw requestError(413, 'Request too large.');
 
   const rawBody = await req.text();
-  if (rawBody.length > 20_000) throw new Error('Request too large.');
+  if (rawBody.length > 20_000) throw requestError(413, 'Request too large.');
 
   try {
     return rawBody ? JSON.parse(rawBody) : {};
   } catch {
-    throw new Error('Invalid JSON payload.');
+    throw requestError(400, 'Invalid request.');
   }
 }
 
@@ -110,6 +117,9 @@ export async function POST(req) {
       xp: Number(result.xp || 0),
     }, { headers: { 'Cache-Control': 'private, no-store' } });
   } catch (error) {
+    if (error?.status === 400 || error?.status === 413) {
+      return json({ error: error.message }, { status: error.status });
+    }
     console.error('Lesson completion error:', error);
     return json({ error: 'Unable to record lesson completion.' }, { status: 500 });
   }
