@@ -91,11 +91,26 @@ export async function POST(req) {
       return Response.json({ error: 'Please sign in before starting Pro.' }, { status: 401 });
     }
 
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+    const admin = adminClient();
+    const { data: allowed, error: rateError } = await admin.rpc('consume_api_rate_limit', {
+      p_scope: 'stripe-checkout',
+      p_key_hash: hashUserKey(user.id),
+      p_window_seconds: CHECKOUT_RATE_WINDOW_SECONDS,
+      p_max_requests: CHECKOUT_RATE_LIMIT,
+    });
 
+    if (rateError) {
+      console.error('Stripe checkout rate-limit error:', rateError);
+      return Response.json({ error: 'Payment service temporarily unavailable.' }, { status: 503 });
+    }
+    if (allowed !== true) {
+      return Response.json({ error: 'Too many checkout attempts. Try again later.' }, { status: 429 });
+    }
+
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
     const { data: profile } = await supabase
       .from('profiles')
-      .select('stripe_customer_id, is_pro')
+      .select('stripe_customer_id')
       .eq('id', user.id)
       .maybeSingle();
 
@@ -114,22 +129,6 @@ export async function POST(req) {
           code: 'subscription_exists',
         }, { status: 409 });
       }
-    }
-
-    const admin = adminClient();
-    const { data: allowed, error: rateError } = await admin.rpc('consume_api_rate_limit', {
-      p_scope: 'stripe-checkout',
-      p_key_hash: hashUserKey(user.id),
-      p_window_seconds: CHECKOUT_RATE_WINDOW_SECONDS,
-      p_max_requests: CHECKOUT_RATE_LIMIT,
-    });
-
-    if (rateError) {
-      console.error('Stripe checkout rate-limit error:', rateError);
-      return Response.json({ error: 'Payment service temporarily unavailable.' }, { status: 503 });
-    }
-    if (allowed !== true) {
-      return Response.json({ error: 'Too many checkout attempts. Try again later.' }, { status: 429 });
     }
 
     const baseUrl = getBaseUrl();
