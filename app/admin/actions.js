@@ -10,6 +10,12 @@ const SESSION_TTL = 8 * 60 * 60;
 const ADMIN_LOGIN_WINDOW_SECONDS = 15 * 60;
 const ADMIN_LOGIN_MAX_FAILURES = 10;
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+function requireUuid(value, label = 'user ID') {
+  const normalized = typeof value === 'string' ? value.trim() : '';
+  if (!UUID_RE.test(normalized)) throw new Error(`Invalid ${label}.`);
+  return normalized;
+}
 const MAX_BLOG_FIELD_LENGTHS = { slug: 160, title: 200, description: 500, category: 80, read_time: 80, date: 40, image: 2048, meta_title: 200, meta_desc: 500, content: 200_000 };
 
 function validateBlogForm(form) {
@@ -20,6 +26,7 @@ function validateBlogForm(form) {
       if (typeof form[field] === 'string' && form[field].length > max) throw new Error(`${field} is too long.`);
     }
   }
+  if (form.id != null && form.id !== '' && !UUID_RE.test(String(form.id).trim())) throw new Error('Invalid blog ID.');
   const slug = typeof form.slug === 'string' ? form.slug.trim() : '';
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) throw new Error('Invalid blog slug.');
   if (!String(form.title || '').trim()) throw new Error('Blog title is required.');
@@ -223,11 +230,11 @@ export async function adminDb(action, payload = {}) {
       return { users, emails: emails || [], trades: count || 0 };
     }
     case 'profile.togglePro': {
-      if (typeof payload.id !== 'string' || !UUID_RE.test(payload.id)) throw new Error('Invalid user ID.');
+      const userId = requireUuid(payload.id);
       const { error } = await supabase
         .from('profiles')
         .update({ is_pro: payload.isPro === true })
-        .eq('id', payload.id);
+        .eq('id', userId);
       if (error) throw error;
       return { ok: true };
     }
@@ -241,10 +248,7 @@ export async function adminDb(action, payload = {}) {
       return { ok: true };
     }
     case 'profile.delete': {
-      const userId = typeof payload.id === 'string' ? payload.id.trim() : '';
-      if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(userId)) {
-        throw new Error('Invalid user ID.');
-      }
+      const userId = requireUuid(payload.id);
       const { error } = await supabase.auth.admin.deleteUser(userId);
       if (error) throw error;
       return { ok: true };
@@ -275,7 +279,8 @@ export async function adminDb(action, payload = {}) {
     }
     case 'blog.delete': {
       if (payload.id) {
-        const { error } = await supabase.from('blog_posts').delete().eq('id', payload.id);
+        const postId = requireUuid(payload.id, 'blog ID');
+        const { error } = await supabase.from('blog_posts').delete().eq('id', postId);
         if (error) throw error;
         return { ok: true };
       }
@@ -302,7 +307,8 @@ export async function adminDb(action, payload = {}) {
     case 'blog.togglePublished': {
       const published = payload.published === true;
       if (payload.id) {
-        const { error } = await supabase.from('blog_posts').update({ published }).eq('id', payload.id);
+        const postId = requireUuid(payload.id, 'blog ID');
+        const { error } = await supabase.from('blog_posts').update({ published }).eq('id', postId);
         if (error) throw error;
         return { ok: true };
       }
