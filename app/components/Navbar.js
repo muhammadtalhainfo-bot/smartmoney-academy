@@ -87,7 +87,7 @@ export default function Navbar({ active }) {
           {MAIN_NAV.map(([href, label], i) => (
             <React.Fragment key={href}>
               {i > 0 && <span style={{ color: 'rgba(232,197,71,0.95)', fontSize: '12px', userSelect: 'none' }}>|</span>}
-              <Link href={href} style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', textDecoration: 'none', color: active === href ? '#E8C547' : 'rgba(255,255,255,0.6)', borderBottom: active === href ? '1px solid #E8C547' : '1px solid transparent', paddingBottom: '2px', transition: 'color 0.2s', whiteSpace: 'nowrap' }}>{label}</Link>
+              <Link href={href} aria-current={active === href ? 'page' : undefined} style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', textDecoration: 'none', color: active === href ? '#E8C547' : 'rgba(255,255,255,0.6)', borderBottom: active === href ? '1px solid #E8C547' : '1px solid transparent', paddingBottom: '2px', transition: 'color 0.2s', whiteSpace: 'nowrap' }}>{label}</Link>
             </React.Fragment>
           ))}
           <span style={{ color: 'rgba(232,197,71,0.95)', fontSize: '12px', userSelect: 'none' }}>|</span>
@@ -100,7 +100,7 @@ export default function Navbar({ active }) {
             {moreOpen && (
               <div role="menu" aria-label="More navigation links" style={{ position: 'absolute', top: 'calc(100% + 12px)', right: 0, background: '#111', border: '1px solid rgba(232,197,71,0.95)', borderRadius: '12px', padding: '8px', minWidth: '200px', zIndex: 50, boxShadow: '0 20px 40px rgba(0,0,0,0.5)' }}>
                 {MORE_NAV.map(([href, label]) => (
-                  <Link key={href} href={href} onClick={() => setMoreOpen(false)}
+                  <Link key={href} href={href} aria-current={active === href ? 'page' : undefined} onClick={() => setMoreOpen(false)}
                     role="menuitem"
                     target={href.startsWith('http') ? '_blank' : undefined}
                     rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
@@ -131,11 +131,11 @@ export default function Navbar({ active }) {
           <button type="button" onClick={() => setMenuOpen(false)} aria-label="Close menu" style={{ position: 'absolute', top: '24px', right: '24px', background: 'none', border: 'none', color: '#E8C547', fontSize: '28px', cursor: 'pointer' }}>✕</button>
           <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '9px', letterSpacing: '0.3em', color: 'rgba(232,197,71,0.95)', textTransform: 'uppercase' }}>// LEARN</div>
           {MAIN_NAV.map(([href, label]) => (
-            <Link key={href} href={href} onClick={() => setMenuOpen(false)} style={{ fontFamily: "'DM Mono', monospace", fontSize: '18px', letterSpacing: '0.2em', textTransform: 'uppercase', color: active === href ? '#E8C547' : 'rgba(255,255,255,0.75)', textDecoration: 'none' }}>{label}</Link>
+            <Link key={href} href={href} aria-current={active === href ? 'page' : undefined} onClick={() => setMenuOpen(false)} style={{ fontFamily: "'DM Mono', monospace", fontSize: '18px', letterSpacing: '0.2em', textTransform: 'uppercase', color: active === href ? '#E8C547' : 'rgba(255,255,255,0.75)', textDecoration: 'none' }}>{label}</Link>
           ))}
           <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '9px', letterSpacing: '0.3em', color: 'rgba(232,197,71,0.95)', textTransform: 'uppercase', marginTop: '8px' }}>// TOOLS & MORE</div>
           {MORE_NAV.map(([href, label]) => (
-            <Link key={href} href={href} onClick={() => setMenuOpen(false)}
+            <Link key={href} href={href} aria-current={active === href ? 'page' : undefined} onClick={() => setMenuOpen(false)}
               target={href.startsWith('http') ? '_blank' : undefined}
               rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
               style={{ fontFamily: "'DM Mono', monospace", fontSize: '15px', letterSpacing: '0.15em', textTransform: 'uppercase', color: active === href ? '#E8C547' : 'rgba(255,255,255,0.85)', textDecoration: 'none' }}>{label}</Link>
