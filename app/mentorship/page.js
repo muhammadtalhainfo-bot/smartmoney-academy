@@ -437,16 +437,17 @@ export default function MentorshipPage() {
   const [watched, setWatched] = useState([]);
 
   useEffect(() => {
-    const saved = localStorage.getItem('ict_watched_episodes');
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed)) setWatched(parsed);
-      } catch {
-        localStorage.removeItem('ict_watched_episodes');
+    try {
+      const saved = localStorage.getItem('ict_watched_episodes');
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed)) setWatched(parsed);
+        } catch {
+          try { localStorage.removeItem('ict_watched_episodes'); } catch {}
+        }
       }
-    }
-
+    } catch {}
   }, []);
 
   const toggleWatched = (id) => {
@@ -454,7 +455,7 @@ export default function MentorshipPage() {
       ? watched.filter(w => w !== id)
       : [...watched, id];
     setWatched(updated);
-    localStorage.setItem('ict_watched_episodes', JSON.stringify(updated));
+    try { localStorage.setItem('ict_watched_episodes', JSON.stringify(updated)); } catch {}
   };
 
   const filtered = EPISODES.filter(ep => {
