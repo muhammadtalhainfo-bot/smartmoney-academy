@@ -54,6 +54,23 @@ export default function Navbar({ active }) {
     };
   }, [supabase]);
 
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') setMenuOpen(false);
+    };
+
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [menuOpen]);
+
   return (
     <>
       <nav style={{ position: 'sticky', top: 0, zIndex: 40, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 24px', borderBottom: '1px solid rgba(212,168,67,0.22)', background: 'rgba(8,8,8,0.97)', backdropFilter: 'blur(20px)' }}>
@@ -76,14 +93,15 @@ export default function Navbar({ active }) {
           <span style={{ color: 'rgba(232,197,71,0.95)', fontSize: '12px', userSelect: 'none' }}>|</span>
 
           <div style={{ position: 'relative' }}>
-            <button aria-expanded={moreOpen} aria-haspopup="menu" aria-label="Open more navigation" onClick={() => setMoreOpen(!moreOpen)} onBlur={() => setTimeout(() => setMoreOpen(false), 150)}
+            <button type="button" aria-expanded={moreOpen} aria-haspopup="menu" aria-label="Open more navigation" onClick={() => setMoreOpen(!moreOpen)} onBlur={() => setTimeout(() => setMoreOpen(false), 150)}
               style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', background: 'none', border: 'none', color: moreOpen ? '#E8C547' : 'rgba(255,255,255,0.6)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px', padding: 0 }}>
               MORE <span style={{ fontSize: '8px', display: 'inline-block', transform: moreOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>▾</span>
             </button>
             {moreOpen && (
-              <div role="menu" style={{ position: 'absolute', top: 'calc(100% + 12px)', right: 0, background: '#111', border: '1px solid rgba(232,197,71,0.95)', borderRadius: '12px', padding: '8px', minWidth: '200px', zIndex: 50, boxShadow: '0 20px 40px rgba(0,0,0,0.5)' }}>
+              <div role="menu" aria-label="More navigation links" style={{ position: 'absolute', top: 'calc(100% + 12px)', right: 0, background: '#111', border: '1px solid rgba(232,197,71,0.95)', borderRadius: '12px', padding: '8px', minWidth: '200px', zIndex: 50, boxShadow: '0 20px 40px rgba(0,0,0,0.5)' }}>
                 {MORE_NAV.map(([href, label]) => (
                   <Link key={href} href={href} onClick={() => setMoreOpen(false)}
+                    role="menuitem"
                     target={href.startsWith('http') ? '_blank' : undefined}
                     rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
                     style={{ display: 'block', padding: '9px 14px', fontFamily: "'DM Mono', monospace", fontSize: '11px', letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none', color: active === href ? '#E8C547' : 'rgba(255,255,255,0.6)', borderRadius: '8px', background: active === href ? 'rgba(212,168,67,0.06)' : 'transparent', whiteSpace: 'nowrap' }}
@@ -109,8 +127,8 @@ export default function Navbar({ active }) {
       </nav>
 
       {menuOpen && (
-        <div id="mobile-navigation" role="dialog" aria-label="Mobile navigation" style={{ position: 'fixed', inset: 0, zIndex: 50, background: 'rgba(8,8,8,0.98)', backdropFilter: 'blur(20px)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '24px', overflowY: 'auto', padding: '80px 0 40px' }}>
-          <button onClick={() => setMenuOpen(false)} aria-label="Close menu" style={{ position: 'absolute', top: '24px', right: '24px', background: 'none', border: 'none', color: '#E8C547', fontSize: '28px', cursor: 'pointer' }}>✕</button>
+        <div id="mobile-navigation" role="dialog" aria-label="Mobile navigation" aria-modal="true" style={{ position: 'fixed', inset: 0, zIndex: 50, background: 'rgba(8,8,8,0.98)', backdropFilter: 'blur(20px)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '24px', overflowY: 'auto', padding: '80px 0 40px' }}>
+          <button type="button" onClick={() => setMenuOpen(false)} aria-label="Close menu" style={{ position: 'absolute', top: '24px', right: '24px', background: 'none', border: 'none', color: '#E8C547', fontSize: '28px', cursor: 'pointer' }}>✕</button>
           <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '9px', letterSpacing: '0.3em', color: 'rgba(232,197,71,0.95)', textTransform: 'uppercase' }}>// LEARN</div>
           {MAIN_NAV.map(([href, label]) => (
             <Link key={href} href={href} onClick={() => setMenuOpen(false)} style={{ fontFamily: "'DM Mono', monospace", fontSize: '18px', letterSpacing: '0.2em', textTransform: 'uppercase', color: active === href ? '#E8C547' : 'rgba(255,255,255,0.75)', textDecoration: 'none' }}>{label}</Link>
