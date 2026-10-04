@@ -12,7 +12,6 @@ export default function PracticeClient({ initialQuestions, dateStr }) {
   const [score, setScore] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [done, setDone] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
 
   const q = questions[current];
   const progress = ((current) / questions.length) * 100;
@@ -95,8 +94,8 @@ export default function PracticeClient({ initialQuestions, dateStr }) {
                   {q.topic}
                 </span>
                 <span className={`font-mono-custom text-xs px-3 py-1 rounded-lg border ${
-                  q.difficulty === 'Beginner' ? 'border-emerald-500/20 text-emerald-400 bg-emerald-500/5' :
-                  q.difficulty === 'Intermediate' ? 'border-amber-500/20 text-amber-400 bg-amber-500/5' :
+                  q.difficulty === 'easy' ? 'border-emerald-500/20 text-emerald-400 bg-emerald-500/5' :
+                  q.difficulty === 'medium' ? 'border-amber-500/20 text-amber-400 bg-amber-500/5' :
                   'border-red-500/20 text-red-400 bg-red-500/5'
                 }`}>{q.difficulty}</span>
               </div>
@@ -246,7 +245,7 @@ export default function PracticeClient({ initialQuestions, dateStr }) {
                     <span className={`text-base shrink-0 mt-0.5 ${ans.correct ? 'text-emerald-400' : 'text-red-400'}`}>{ans.correct ? '✓' : '✗'}</span>
                     <div>
                       <p className={`text-sm font-medium ${ans.correct ? 'text-emerald-300' : 'text-red-300'}`}>{question.topic}</p>
-                      <p className="text-gray-200 text-xs mt-0.5 leading-relaxed">{question.question.substring(0, 80)}...</p>
+                      <p className="text-gray-200 text-xs mt-0.5 leading-relaxed">{question.q.substring(0, 80)}...</p>
                     </div>
                   </div>
                 );
