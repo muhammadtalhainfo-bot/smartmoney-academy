@@ -9,6 +9,23 @@ const COOKIE_NAME = 'ictflow_admin_session';
 const SESSION_TTL = 8 * 60 * 60;
 const ADMIN_LOGIN_WINDOW_SECONDS = 15 * 60;
 const ADMIN_LOGIN_MAX_FAILURES = 10;
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+const MAX_BLOG_FIELD_LENGTHS = { slug: 160, title: 200, description: 500, category: 80, read_time: 80, date: 40, image: 2048, meta_title: 200, meta_desc: 500, content: 200_000 };
+
+function validateBlogForm(form) {
+  if (!form || typeof form !== 'object') throw new Error('Invalid blog post data.');
+  for (const [field, max] of Object.entries(MAX_BLOG_FIELD_LENGTHS)) {
+    if (field === 'content' || field === 'image' || field === 'slug' || field === 'title' || field === 'description' || field === 'category' || field === 'read_time' || field === 'date' || field === 'meta_title' || field === 'meta_desc') {
+      if (form[field] != null && typeof form[field] !== 'string') throw new Error(`Invalid ${field}.`);
+      if (typeof form[field] === 'string' && form[field].length > max) throw new Error(`${field} is too long.`);
+    }
+  }
+  const slug = typeof form.slug === 'string' ? form.slug.trim() : '';
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) throw new Error('Invalid blog slug.');
+  if (!String(form.title || '').trim()) throw new Error('Blog title is required.');
+  if (form.image && !/^https?:\\/\\//i.test(form.image.trim()) && !form.image.trim().startsWith('/')) throw new Error('Invalid blog image URL.');
+  return { ...form, slug };
+}
 
 function tokenFor(secret, issuedAt) {
   return `${issuedAt}.${crypto.createHmac('sha256', secret).update(`ictflow-admin-v1:${issuedAt}`).digest('hex')}`;
@@ -206,6 +223,7 @@ export async function adminDb(action, payload = {}) {
       return { users, emails: emails || [], trades: count || 0 };
     }
     case 'profile.togglePro': {
+      if (typeof payload.id !== 'string' || !UUID_RE.test(payload.id)) throw new Error('Invalid user ID.');
       const { error } = await supabase
         .from('profiles')
         .update({ is_pro: payload.isPro === true })
@@ -214,6 +232,7 @@ export async function adminDb(action, payload = {}) {
       return { ok: true };
     }
     case 'profile.resetXP': {
+      if (typeof payload.id !== 'string' || !UUID_RE.test(payload.id)) throw new Error('Invalid user ID.');
       const { error } = await supabase
         .from('profiles')
         .update({ xp: 0, total_xp: 0, streak: 0 })
@@ -233,7 +252,7 @@ export async function adminDb(action, payload = {}) {
     case 'blog.list':
       return { data: await loadAdminBlogPosts(supabase) };
     case 'blog.save': {
-      const form = payload.form || {};
+      const form = validateBlogForm(payload.form || {});
       const row = {
         slug: form.slug,
         title: form.title,
@@ -260,7 +279,7 @@ export async function adminDb(action, payload = {}) {
         if (error) throw error;
         return { ok: true };
       }
-      const post = payload.post || {};
+      const post = validateBlogForm(payload.post || {});
       if (!post.slug) throw new Error('Invalid blog post.');
       const { error } = await supabase.from('blog_posts').upsert({
         slug: post.slug,
@@ -287,7 +306,7 @@ export async function adminDb(action, payload = {}) {
         if (error) throw error;
         return { ok: true };
       }
-      const post = payload.post || {};
+      const post = validateBlogForm(payload.post || {});
       if (!post.slug) throw new Error('Invalid blog post.');
       const { error } = await supabase.from('blog_posts').upsert({
         slug: post.slug,
