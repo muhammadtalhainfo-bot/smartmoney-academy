@@ -36,6 +36,7 @@ export default function PricingPage() {
   const [annual, setAnnual] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
   const [checkoutLoading, setCheckoutLoading] = useState(false);
+  const [checkoutError, setCheckoutError] = useState('');
 
   useEffect(() => {
     trackEvent('pricing_view', { page: 'pricing' });
@@ -43,6 +44,7 @@ export default function PricingPage() {
 
   async function handleCheckout() {
     setCheckoutLoading(true);
+    setCheckoutError('');
     try {
       const plan = annual ? 'annual' : 'monthly';
       trackCheckoutStart(plan);
@@ -51,7 +53,7 @@ export default function PricingPage() {
         : process.env.NEXT_PUBLIC_STRIPE_MONTHLY_PRICE;
 
       if (!priceId) {
-        alert('Payment system is being configured. Please try again soon.');
+        setCheckoutError('Payment system is being configured. Please try again soon.');
         setCheckoutLoading(false);
         return;
       }
@@ -71,10 +73,10 @@ export default function PricingPage() {
       if (data.url) {
         window.location.href = data.url;
       } else {
-        alert(data.error || 'Something went wrong. Please try again.');
+        setCheckoutError(data.error || 'Something went wrong. Please try again.');
       }
-    } catch (e) {
-      alert('Something went wrong. Please try again.');
+    } catch {
+      setCheckoutError('Something went wrong. Please try again.');
     }
     setCheckoutLoading(false);
   }
@@ -185,6 +187,12 @@ export default function PricingPage() {
             onMouseOut={e => e.currentTarget.style.opacity = '1'}>
             {checkoutLoading ? 'LOADING...' : annual ? `START FOR $${annualPrice}/YEAR →` : `START FOR $${monthlyPrice}/MONTH →`}
           </button>
+
+          {checkoutError && (
+            <div role="alert" aria-live="assertive" style={{ color: '#FCA5A5', fontSize: '12px', lineHeight: 1.5, marginTop: '-16px', marginBottom: '20px' }}>
+              {checkoutError}
+            </div>
+          )}
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {PRO_FEATURES.map((f, i) => (
