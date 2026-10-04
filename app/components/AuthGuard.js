@@ -14,14 +14,10 @@ export default function AuthGuard({ children }) {
 
     const checkAuth = async () => {
       try {
-        const { data: { session } } = await supabase.auth.getSession();
+        const { data: { user }, error: userError } = await supabase.auth.getUser();
         if (!isMounted) return;
-        if (session) { setReady(true); return; }
-
-        const { data: { session: refreshedSession } } = await supabase.auth.refreshSession();
-        if (!isMounted) return;
-
-        if (refreshedSession) {
+        if (userError) throw userError;
+        if (user) {
           setReady(true);
         } else {
           router.replace('/auth');
