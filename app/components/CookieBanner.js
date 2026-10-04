@@ -6,14 +6,20 @@ export default function CookieBanner() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const accepted = localStorage.getItem('cookies_accepted');
-    const declined = localStorage.getItem('cookies_declined');
-    if (!accepted && !declined) setShow(true);
+    try {
+      const accepted = localStorage.getItem('cookies_accepted');
+      const declined = localStorage.getItem('cookies_declined');
+      if (!accepted && !declined) setShow(true);
+    } catch {
+      setShow(true);
+    }
   }, []);
 
   const setConsent = (accepted) => {
-    if (accepted) localStorage.setItem('cookies_accepted', 'true');
-    else localStorage.setItem('cookies_declined', 'true');
+    try {
+      if (accepted) localStorage.setItem('cookies_accepted', 'true');
+      else localStorage.setItem('cookies_declined', 'true');
+    } catch {}
     setShow(false);
     window.dispatchEvent(new Event('ictflow-cookie-consent'));
   };
