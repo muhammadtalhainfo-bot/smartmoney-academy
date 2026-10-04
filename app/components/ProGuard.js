@@ -16,9 +16,9 @@ export default function ProGuard({ children }) {
 
     const check = async () => {
       try {
-        const { data: { session } } = await supabase.auth.getSession();
-        const user = session?.user;
+        const { data: { user }, error: userError } = await supabase.auth.getUser();
         if (!isMounted) return;
+        if (userError) throw userError;
 
         if (!user) {
           router.push('/auth');
@@ -52,7 +52,14 @@ export default function ProGuard({ children }) {
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       if (!isMounted) return;
-      if (event === 'SIGNED_OUT') router.push('/auth');
+      if (event === 'SIGNED_OUT') {
+        setIsPro(false);
+        setChecking(false);
+        router.push('/auth');
+      } else if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
+        setChecking(true);
+        check();
+      }
     });
 
     return () => { isMounted = false; subscription?.unsubscribe(); };
