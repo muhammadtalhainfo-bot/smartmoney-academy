@@ -58,17 +58,8 @@ export default function DashboardPage() {
       setLoadError('');
 
       try {
-        // Check auth with retry (3x exponential backoff)
-        let { data: { session } } = await supabase.auth.getSession();
-        let authRetryCount = 0;
-        while (!session && authRetryCount < 3) {
-          await new Promise(r => setTimeout(r, 500 * (authRetryCount + 1)));
-          const { data: { session: s } } = await supabase.auth.getSession();
-          session = s;
-          authRetryCount++;
-        }
-
-        const currentUser = session?.user;
+        const { data: { user: currentUser }, error: authError } = await supabase.auth.getUser();
+        if (authError) throw authError;
         if (!currentUser) {
           router.push('/auth');
           return;
