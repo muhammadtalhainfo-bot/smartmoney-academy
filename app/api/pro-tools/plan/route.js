@@ -1,5 +1,7 @@
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
+import { createClient as createSupabaseAdmin } from '@supabase/supabase-js';
+import { createHash } from 'node:crypto';
 import { NextResponse } from 'next/server';
 
 function privateJson(body, init = {}) {
@@ -7,6 +9,21 @@ function privateJson(body, init = {}) {
     ...init,
     headers: { ...(init.headers || {}), 'Cache-Control': 'private, no-store' },
   });
+}
+
+const RATE_WINDOW_SECONDS = 5 * 60;
+const RATE_LIMIT = 30;
+
+function hashUserKey(userId) {
+  const pepper = process.env.RATE_LIMIT_SECRET || process.env.SUPABASE_SERVICE_KEY || 'ictflow-rate-limit';
+  return createHash('sha256').update(pepper + ':pro-plan:' + userId).digest('hex');
+}
+
+function adminClient() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_KEY;
+  if (!url || !key) throw new Error('Supabase server configuration is missing.');
+  return createSupabaseAdmin(url, key, { auth: { autoRefreshToken: false, persistSession: false } });
 }
 
 const PLAN =   {
@@ -148,6 +165,22 @@ export async function GET() {
 
   const { data: { user }, error: authError } = await supabase.auth.getUser();
   if (authError || !user) return privateJson({ error: 'Unauthorized' }, { status: 401 });
+
+  const serviceKey = process.env.SUPABASE_SERVICE_KEY;
+  if (!serviceKey) return privateJson({ error: 'Service temporarily unavailable.' }, { status: 503 });
+
+  const admin = adminClient();
+  const { data: allowed, error: rateError } = await admin.rpc('consume_api_rate_limit', {
+    p_scope: 'pro-plan',
+    p_key_hash: hashUserKey(user.id),
+    p_window_seconds: RATE_WINDOW_SECONDS,
+    p_max_requests: RATE_LIMIT,
+  });
+  if (rateError) {
+    console.error('Pro plan rate-limit error:', rateError);
+    return privateJson({ error: 'Service temporarily unavailable.' }, { status: 503 });
+  }
+  if (allowed !== true) return privateJson({ error: 'Too many requests. Try again later.' }, { status: 429 });
 
   const { data: profile, error: profileError } = await supabase
     .from('profiles')
