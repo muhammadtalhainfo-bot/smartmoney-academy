@@ -254,15 +254,17 @@ export default function FoundationsPage() {
     if (window.location.search.includes('welcome=')) {
       window.history.replaceState({}, '', '/foundations');
     }
-    const saved = localStorage.getItem('foundations_completed');
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed)) setCompleted(parsed);
-      } catch {
-        localStorage.removeItem('foundations_completed');
+    try {
+      const saved = localStorage.getItem('foundations_completed');
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed)) setCompleted(parsed);
+        } catch {
+          try { localStorage.removeItem('foundations_completed'); } catch {}
+        }
       }
-    }
+    } catch {}
   }, []);
 
   const toggleCompleted = (id) => {
@@ -270,7 +272,7 @@ export default function FoundationsPage() {
       ? completed.filter(c => c !== id)
       : [...completed, id];
     setCompleted(updated);
-    localStorage.setItem('foundations_completed', JSON.stringify(updated));
+    try { localStorage.setItem('foundations_completed', JSON.stringify(updated)); } catch {}
   };
 
   const filtered = activeStep === 'All' ? TOPICS : TOPICS.filter(t => t.step === parseInt(activeStep));
