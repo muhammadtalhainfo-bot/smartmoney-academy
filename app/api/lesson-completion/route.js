@@ -1,10 +1,25 @@
 import { createClient } from '@supabase/supabase-js';
+import { createHash } from 'node:crypto';
 import { LESSON_QUIZ_ANSWERS } from '@/lib/lesson-quiz-answers';
 import { MODULES } from '@/lib/curriculum';
 
 export const runtime = 'nodejs';
 
 const PASS_PERCENT = 70;
+const RATE_WINDOW_SECONDS = 10 * 60;
+const RATE_LIMIT = 30;
+
+function json(body, init = {}) {
+  return Response.json(body, {
+    ...init,
+    headers: { ...(init.headers || {}), 'Cache-Control': 'private, no-store' },
+  });
+}
+
+function hashUserKey(userId) {
+  const pepper = process.env.RATE_LIMIT_SECRET || process.env.SUPABASE_SERVICE_KEY || 'ictflow-rate-limit';
+  return createHash('sha256').update(pepper + ':lesson-completion:' + userId).digest('hex');
+}
 
 function adminClient() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -31,30 +46,42 @@ export async function POST(req) {
   try {
     const authHeader = req.headers.get('authorization') || '';
     const accessToken = authHeader.startsWith('Bearer ') ? authHeader.slice(7).trim() : '';
-    if (!accessToken) return Response.json({ error: 'Unauthorized' }, { status: 401 });
+    if (!accessToken) return json({ error: 'Unauthorized' }, { status: 401 });
 
     const supabase = adminClient();
     const { data: { user }, error: authError } = await supabase.auth.getUser(accessToken);
-    if (authError || !user) return Response.json({ error: 'Unauthorized' }, { status: 401 });
+    if (authError || !user) return json({ error: 'Unauthorized' }, { status: 401 });
+
+    const { data: allowed, error: rateError } = await supabase.rpc('consume_api_rate_limit', {
+      p_scope: 'lesson-completion',
+      p_key_hash: hashUserKey(user.id),
+      p_window_seconds: RATE_WINDOW_SECONDS,
+      p_max_requests: RATE_LIMIT,
+    });
+    if (rateError) {
+      console.error('Lesson completion rate-limit error:', rateError);
+      return json({ error: 'Service temporarily unavailable.' }, { status: 503 });
+    }
+    if (allowed !== true) return json({ error: 'Too many completion attempts. Try again later.' }, { status: 429 });
 
     const body = await readJson(req);
     const lessonId = Number.parseInt(String(body?.lessonId), 10);
     const answers = body?.answers;
 
     if (!Number.isSafeInteger(lessonId) || !Array.isArray(answers)) {
-      return Response.json({ error: 'Invalid completion payload.' }, { status: 400 });
+      return json({ error: 'Invalid completion payload.' }, { status: 400 });
     }
 
     const isCurriculumModule = MODULES.some((module) => module.id === lessonId);
     const answerKey = LESSON_QUIZ_ANSWERS[lessonId];
     if (!isCurriculumModule || !answerKey || answers.length !== answerKey.length || answers.some((answer) => !Number.isInteger(answer))) {
-      return Response.json({ error: 'Invalid quiz answers.' }, { status: 400 });
+      return json({ error: 'Invalid quiz answers.' }, { status: 400 });
     }
 
     const score = answers.reduce((total, answer, index) => total + (answer === answerKey[index] ? 1 : 0), 0);
     const scorePercent = Math.round((score / answerKey.length) * 100);
     if (scorePercent < PASS_PERCENT) {
-      return Response.json({ ok: false, passed: false, score, scorePercent, requiredPercent: PASS_PERCENT, xpEarned: 0 }, { status: 422, headers: { 'Cache-Control': 'private, no-store' } });
+      return json({ ok: false, passed: false, score, scorePercent, requiredPercent: PASS_PERCENT, xpEarned: 0 }, { status: 422, headers: { 'Cache-Control': 'private, no-store' } });
     }
     const xpEarned = score === answerKey.length ? 70 : 20;
 
@@ -73,7 +100,7 @@ export async function POST(req) {
     const result = Array.isArray(completionResult) ? completionResult[0] : completionResult;
     if (!result) throw new Error('Completion transaction returned no result.');
 
-    return Response.json({
+    return json({
       ok: true,
       passed: true,
       alreadyCompleted: result.inserted !== true,
@@ -84,6 +111,6 @@ export async function POST(req) {
     }, { headers: { 'Cache-Control': 'private, no-store' } });
   } catch (error) {
     console.error('Lesson completion error:', error);
-    return Response.json({ error: 'Unable to record lesson completion.' }, { status: 500 });
+    return json({ error: 'Unable to record lesson completion.' }, { status: 500 });
   }
 }
