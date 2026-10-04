@@ -9,10 +9,11 @@ export default function MarketTicker() {
 
   useEffect(() => {
     let active = true;
+    const controller = new AbortController();
 
     async function fetchPrices() {
       try {
-        const res = await fetch('/api/ticker', { cache: 'no-store' });
+        const res = await fetch('/api/ticker', { cache: 'no-store', signal: controller.signal });
         const json = await res.json();
         if (active && Array.isArray(json.data) && json.data.length > 0) {
           setTicker(json.data);
@@ -24,6 +25,7 @@ export default function MarketTicker() {
     const interval = setInterval(fetchPrices, POLL_MS);
     return () => {
       active = false;
+      controller.abort();
       clearInterval(interval);
     };
   }, []);
