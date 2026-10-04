@@ -48,7 +48,8 @@ function AuthPageInner() {
     }
   };
 
-  const handleAuth = async () => {
+  const handleAuth = async (event) => {
+    event?.preventDefault();
     const supabase = createClient();
     setLoading(true);
     setError('');
@@ -175,7 +176,7 @@ function AuthPageInner() {
             ))}
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <form onSubmit={handleAuth} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
 
             {/* Email */}
             <div>
@@ -251,7 +252,7 @@ function AuthPageInner() {
             {success && <div role="status" aria-live="polite" style={{ background: 'rgba(74,222,128,0.1)', border: '1px solid rgba(74,222,128,0.3)', borderRadius: '8px', padding: '12px', color: '#4ADE80', fontSize: '13px' }}>{success}</div>}
 
             {/* Submit */}
-            <button type="button" onClick={handleAuth} disabled={loading}
+            <button type="submit" disabled={loading}
               style={{ background: 'linear-gradient(135deg, #E8C547, #F0C96A)', color: '#080808', border: 'none', borderRadius: '12px', padding: '14px', fontFamily: 'DM Mono', fontSize: '13px', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', cursor: loading ? 'not-allowed' : 'pointer', opacity: loading ? 0.7 : 1, marginTop: '4px' }}>
               {loading ? 'Please wait...' : isLogin ? 'Login →' : 'Create Account →'}
             </button>
