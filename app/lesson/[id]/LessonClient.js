@@ -264,6 +264,8 @@ function Quiz({ questions, lessonId }) {
 
 // ─── Main page ───────────────────────────────────────────────────
 export default function LessonClient({ lesson, lessonId, moduleDiagramSrc }) {
+  const [shareMessage, setShareMessage] = useState('');
+
   // Lessons are fully public — no auth required for reading
   useEffect(() => {
     trackLessonStart(lessonId, lesson.title);
@@ -286,12 +288,12 @@ export default function LessonClient({ lesson, lessonId, moduleDiagramSrc }) {
       try {
         if (navigator?.clipboard?.writeText) {
           await navigator.clipboard.writeText(url);
-          setShareMessage?.('Link copied.');
+          setShareMessage('Link copied.');
         } else {
-          setShareMessage?.('Copy is not supported in this browser.');
+          setShareMessage('Copy is not supported in this browser.');
         }
       } catch {
-        setShareMessage?.('Unable to copy the link.');
+        setShareMessage('Unable to copy the link.');
       }
     }
   };
@@ -344,9 +346,10 @@ export default function LessonClient({ lesson, lessonId, moduleDiagramSrc }) {
             <button type="button" onClick={() => handleShare('whatsapp')} style={{ padding:'6px 14px', borderRadius:'8px', border:'1px solid rgba(37,211,102,0.3)', background:'rgba(37,211,102,0.08)', color:'#25D366', fontFamily:'DM Mono,monospace', fontSize:'10px', cursor:'pointer', letterSpacing:'0.08em' }}>
               WhatsApp
             </button>
-            <button onClick={() => handleShare('copy')} style={{ padding:'6px 14px', borderRadius:'8px', border:'1px solid rgba(232,197,71,0.3)', background:'rgba(232,197,71,0.06)', color:'#E8C547', fontFamily:'DM Mono,monospace', fontSize:'10px', cursor:'pointer', letterSpacing:'0.08em' }}>
+            <button type="button" onClick={() => handleShare('copy')} style={{ padding:'6px 14px', borderRadius:'8px', border:'1px solid rgba(232,197,71,0.3)', background:'rgba(232,197,71,0.06)', color:'#E8C547', fontFamily:'DM Mono,monospace', fontSize:'10px', cursor:'pointer', letterSpacing:'0.08em' }}>
               Copy Link
             </button>
+            {shareMessage && <span role="status" aria-live="polite" style={{ fontFamily:'DM Mono,monospace', fontSize:'10px', color:'#34D399' }}>{shareMessage}</span>}
           </div>
           <p className="text-gray-400 text-lg" style={{ fontWeight: 300 }}>{lesson.subtitle}</p>
         </div>
