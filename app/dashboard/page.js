@@ -308,7 +308,7 @@ export default function DashboardPage() {
                           <span className="font-mono-c text-xs" style={{ color: '#808080' }}>{done}/{trackIds.length}</span>
                         </div>
                         <div className="progress-bar-bg h-1.5">
-                          <div className="h-1.5 rounded-full" style={{ width: `${(done / trackIds.length) * 100}%`, background: track.color, transition: 'width 1s ease' }} />
+                          <div className="h-1.5 rounded-full" style={{ width: `${trackIds.length ? (done / trackIds.length) * 100 : 0}%`, background: track.color, transition: 'width 1s ease' }} />
                         </div>
                       </div>
                     );
