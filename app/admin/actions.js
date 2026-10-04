@@ -239,11 +239,11 @@ export async function adminDb(action, payload = {}) {
       return { ok: true };
     }
     case 'profile.resetXP': {
-      if (typeof payload.id !== 'string' || !UUID_RE.test(payload.id)) throw new Error('Invalid user ID.');
+      const userId = requireUuid(payload.id);
       const { error } = await supabase
         .from('profiles')
         .update({ xp: 0, total_xp: 0, streak: 0 })
-        .eq('id', payload.id);
+        .eq('id', userId);
       if (error) throw error;
       return { ok: true };
     }
