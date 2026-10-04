@@ -58,7 +58,9 @@ export default function ProGuard({ children }) {
         router.push('/auth');
       } else if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
         setChecking(true);
-        check();
+        window.setTimeout(() => {
+          if (isMounted) check();
+        }, 0);
       }
     });
 
