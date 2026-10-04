@@ -13,6 +13,7 @@ const LEVEL_STYLE = {
   Beginner: 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20',
   Intermediate: 'text-amber-400 bg-amber-400/10 border-amber-400/20',
   Advanced: 'text-red-400 bg-red-400/10 border-red-400/20',
+  SMC: 'text-orange-300 bg-orange-400/10 border-orange-400/20',
 };
 
 // ─── Section component ───────────────────────────────────────────
@@ -169,7 +170,9 @@ function Quiz({ questions, lessonId }) {
               return (
                 <button
                   key={oi}
+                  type="button"
                   disabled={submitted}
+                  aria-pressed={answers[qi] === oi}
                   onClick={() => setAnswers({ ...answers, [qi]: oi })}
                   className={`w-full text-left px-4 py-3 rounded-xl border text-sm transition-all ${style}`}
                 >
