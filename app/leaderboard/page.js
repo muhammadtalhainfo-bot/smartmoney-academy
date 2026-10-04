@@ -35,7 +35,7 @@ export default function LeaderboardPage() {
       }
 
       try {
-        const [{ data: { user }, error: userError }, { data: top, error: leaderboardError }] = await Promise.all([
+        const [{ data: userData, error: userError }, { data: top, error: leaderboardError }] = await Promise.all([
           supabase.auth.getUser(),
           supabase
             .from('leaderboard_profiles')
@@ -44,10 +44,13 @@ export default function LeaderboardPage() {
             .limit(50),
         ]);
 
-        if (userError) throw userError;
         if (leaderboardError) throw leaderboardError;
         if (!mounted) return;
-        setCurrentUser(user);
+
+        // The leaderboard is public. An anonymous visitor may have no Auth session;
+        // that should not prevent the public ranking from loading.
+        if (userError && userData?.user) console.warn('Leaderboard auth lookup warning:', userError);
+        setCurrentUser(userData?.user || null);
         setLeaders(top || []);
 
         if (user) {
