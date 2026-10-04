@@ -141,16 +141,23 @@ export async function POST(req) {
     const baseUrl = getBaseUrl();
     const metadata = { user_id: user.id, email: user.email.toLowerCase() };
     const idempotencyKey = `checkout:${user.id}:${priceId}:${Math.floor(Date.now() / 60_000)}`;
-    const session = await stripe.checkout.sessions.create({
+    const checkoutParams = {
       mode: 'subscription',
       line_items: [{ price: priceId, quantity: 1 }],
-      customer_email: user.email,
       success_url: `${baseUrl}/dashboard?upgraded=true`,
       cancel_url: `${baseUrl}/pricing?cancelled=true`,
       metadata,
       subscription_data: { metadata },
       allow_promotion_codes: true,
-    }, { idempotencyKey });
+    };
+
+    if (profile?.stripe_customer_id) {
+      checkoutParams.customer = profile.stripe_customer_id;
+    } else {
+      checkoutParams.customer_email = user.email;
+    }
+
+    const session = await stripe.checkout.sessions.create(checkoutParams, { idempotencyKey });
 
     return privateJson({ url: session.url, sessionId: session.id }, { headers: { 'Cache-Control': 'no-store' } });
   } catch (error) {
