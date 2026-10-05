@@ -604,7 +604,7 @@ function BlogSection({ adminDbClient = adminDb }) {
             {posts.length === 0 ? 'No blog posts yet. Click NEW POST to write your first article.' : 'No posts match your search.'}
           </div>
         ) : filtered.map(p => (
-          <div key={p.id} style={{ ...css.card, display: 'flex', alignItems: 'center', gap: '14px', padding: '14px 18px' }}>
+          <div key={p.id || p.slug} style={{ ...css.card, display: 'flex', alignItems: 'center', gap: '14px', padding: '14px 18px' }}>
             <div style={{ width: '44px', height: '44px', borderRadius: '8px', background: S3, flexShrink: 0, overflow: 'hidden' }}>
               {p.image && <img src={p.image} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => e.target.style.display = 'none'} />}
             </div>
@@ -1126,6 +1126,7 @@ export default function AdminPage() {
   const [error, setError] = useState('');
   const [activeTab, setActiveTab] = useState('dashboard');
   const [loading, setLoading] = useState(false);
+  const [authSubmitting, setAuthSubmitting] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   const [users, setUsers] = useState([]);
@@ -1159,14 +1160,20 @@ export default function AdminPage() {
   }, [loadData]);
 
   const login = async () => {
+    if (authSubmitting) return;
+    setAuthSubmitting(true);
     setError('');
-    const result = await loginAdmin(pass);
-    if (result.ok) {
-      setAuthed(true);
-      setPass('');
-      loadData();
-    } else {
-      setError(result.error || 'Admin login failed.');
+    try {
+      const result = await loginAdmin(pass);
+      if (result.ok) {
+        setAuthed(true);
+        setPass('');
+        loadData();
+      } else {
+        setError(result.error || 'Admin login failed.');
+      }
+    } finally {
+      setAuthSubmitting(false);
     }
   };
 
@@ -1195,12 +1202,14 @@ export default function AdminPage() {
         <div style={{ width: '52px', height: '52px', borderRadius: '14px', background: `${G}18`, border: `1px solid ${BORDER2}`, margin: '0 auto 18px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '26px' }}>⚡</div>
         <div style={{ ...css.bebas, fontSize: '30px', color: 'white', marginBottom: '4px', letterSpacing: '0.04em' }}>ADMIN CONSOLE</div>
         <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(232,197,71,0.6)', marginBottom: '24px', letterSpacing: '0.15em' }}>ICT FLOW — RESTRICTED ACCESS</div>
-        <input type="password" placeholder="Enter admin password" value={pass}
+        <input type="password" placeholder="Enter admin password" value={pass} disabled={authSubmitting}
           onChange={e => { setPass(e.target.value); setError(''); }}
           onKeyDown={e => e.key === 'Enter' && login()}
           style={{ ...css.input, marginBottom: '12px', textAlign: 'center', letterSpacing: '0.2em' }} />
         {error && <div style={{ ...css.mono, fontSize: '11px', color: '#F87171', marginBottom: '12px' }}>{error}</div>}
-        <button type="button" onClick={login} style={{ ...css.btn, width: '100%', padding: '13px', fontSize: '12px' }}>UNLOCK DASHBOARD</button>
+        <button type="button" onClick={login} disabled={authSubmitting} style={{ ...css.btn, width: '100%', padding: '13px', fontSize: '12px' }}>
+          {authSubmitting ? 'CHECKING...' : 'UNLOCK DASHBOARD'}
+        </button>
       </div>
     </div>
   );
