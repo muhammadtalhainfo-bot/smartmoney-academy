@@ -40,7 +40,7 @@ export default function LearnHub() {
   return (
     <>
       <Navbar active="/learn" />
-      <main style={{minHeight:'100vh',background:'#080808',color:'#fff',fontFamily:"'DM Sans',sans-serif",padding:'64px 24px'}}>
+      <div style={{minHeight:'100vh',background:'#080808',color:'#fff',fontFamily:"'DM Sans',sans-serif",padding:'64px 24px'}}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(itemListSchema) }}
@@ -67,7 +67,7 @@ export default function LearnHub() {
           ))}
         </section>
       </div>
-      </main>
+      </div>
       <Footer />
     </>
   )
