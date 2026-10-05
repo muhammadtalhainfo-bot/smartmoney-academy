@@ -101,8 +101,6 @@ const BANNERS = {
       {/* Sweep arrow */}
       <path d={`M ${w-55} 30 Q ${w-40} 18 ${w-25} 30`} fill="none" stroke={GOLD} strokeWidth="1.5" strokeOpacity="0.9" markerEnd="url(#arr)" />
       <text x={w-80} y={14} fontFamily="monospace" fontSize="7" fill={GOLD} fillOpacity="0.8">SWEEP</text>
-      <title>{title || label || 'ICT Flow concept illustration'}</title>
-
       <defs>
         <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
           <path d="M0,0 L6,3 L0,6 Z" fill={GOLD} fillOpacity="0.9" />
@@ -530,15 +528,12 @@ export default function ModuleBanner({
 
   return (
     <svg
-      role="img"
-      aria-label={title || label || 'ICT Flow concept illustration'}
       viewBox={`0 0 ${w} ${h}`}
       width="100%"
       height={h}
       xmlns="http://www.w3.org/2000/svg"
       style={{ display: 'block', background: BG }}
     >
-      <title>{title || label || 'ICT Flow concept illustration'}</title>
       <defs>
         <radialGradient id={`glow-${key}`} cx="85%" cy="15%" r="55%">
           <stop offset="0%" stopColor="#E8C547" stopOpacity="0.1" />
