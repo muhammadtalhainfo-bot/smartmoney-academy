@@ -429,17 +429,7 @@ export default function FoundationsPage() {
 
                   {/* Header */}
                   <div
-                    role="button"
-                    tabIndex={0}
-                    aria-expanded={isOpen}
-                    aria-controls={`foundation-topic-${topic.id}-content`}
                     onClick={() => setExpandedId(isOpen ? null : topic.id)}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        setExpandedId(isOpen ? null : topic.id);
-                      }
-                    }}
                     style={{ padding: '18px 22px', display: 'flex', alignItems: 'center', gap: '16px', cursor: 'pointer' }}>
                     <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: isDone ? 'rgba(52,211,153,0.15)' : `${topic.color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', flexShrink: 0 }}>
                       {isDone ? '✅' : topic.icon}
@@ -456,7 +446,14 @@ export default function FoundationsPage() {
                         style={{ background: isDone ? 'rgba(52,211,153,0.1)' : 'rgba(255,255,255,0.04)', border: `1px solid ${isDone ? 'rgba(52,211,153,0.3)' : 'rgba(255,255,255,0.18)'}`, borderRadius: '8px', padding: '6px 12px', ...mono, fontSize: '10px', color: isDone ? '#34D399' : '#808080', cursor: 'pointer' }}>
                         {isDone ? '✓ DONE' : 'MARK DONE'}
                       </button>
-                      <span style={{ color: '#E8C547', fontSize: '18px' }}>{isOpen ? '−' : '+'}</span>
+                      <button
+                        type="button"
+                        aria-expanded={isOpen}
+                        aria-controls={`foundation-topic-${topic.id}-content`}
+                        aria-label={isOpen ? `Collapse ${topic.title}` : `Expand ${topic.title}`}
+                        onClick={(e) => { e.stopPropagation(); setExpandedId(isOpen ? null : topic.id); }}
+                        style={{ background: 'transparent', border: 'none', color: '#E8C547', fontSize: '18px', cursor: 'pointer', padding: '4px 8px', lineHeight: 1 }}
+                      >{isOpen ? '−' : '+'}</button>
                     </div>
                   </div>
 
