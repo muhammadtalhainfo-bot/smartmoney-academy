@@ -180,7 +180,6 @@ function ModuleCard({ mod, index }) {
 }
 
 export default function CoursesPage() {
-  const [menuOpen, setMenuOpen] = React.useState(false);
   const [activeFilter, setActiveFilter] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
 
