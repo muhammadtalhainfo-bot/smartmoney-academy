@@ -281,13 +281,26 @@ export async function adminDb(action, payload = {}) {
       return { ok: true };
     }
     case 'blog.delete': {
+      const post = validateBlogForm(payload.post || {});
       if (payload.id) {
         const postId = requireUuid(payload.id, 'blog ID');
+
+        // Source-controlled posts also exist in app/blog/posts.js. Deleting their
+        // DB override would make them reappear immediately from the static fallback.
+        if (post.slug && POSTS.some((staticPost) => staticPost.slug === post.slug)) {
+          const { error } = await supabase
+            .from('blog_posts')
+            .update({ published: false })
+            .eq('id', postId);
+          if (error) throw error;
+          return { ok: true, unpublished: true };
+        }
+
         const { error } = await supabase.from('blog_posts').delete().eq('id', postId);
         if (error) throw error;
         return { ok: true };
       }
-      const post = validateBlogForm(payload.post || {});
+
       if (!post.slug) throw new Error('Invalid blog post.');
       const { error } = await supabase.from('blog_posts').upsert({
         slug: post.slug,
@@ -305,7 +318,7 @@ export async function adminDb(action, payload = {}) {
         meta_desc: post.meta_desc || '',
       }, { onConflict: 'slug' });
       if (error) throw error;
-      return { ok: true };
+      return { ok: true, unpublished: true };
     }
     case 'blog.togglePublished': {
       const published = payload.published === true;
