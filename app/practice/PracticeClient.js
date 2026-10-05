@@ -14,7 +14,7 @@ export default function PracticeClient({ initialQuestions, dateStr }) {
   const [done, setDone] = useState(false);
 
   const q = questions[current];
-  const progress = ((current) / questions.length) * 100;
+  const progress = ((current + (revealed ? 1 : 0)) / questions.length) * 100;
 
   function handleSelect(i) {
     if (revealed) return;
