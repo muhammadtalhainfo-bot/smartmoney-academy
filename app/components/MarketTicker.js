@@ -33,9 +33,10 @@ export default function MarketTicker() {
   if (ticker.length === 0) return null;
 
   return (
-    <div
-      style={{ position:'relative', zIndex:10, borderBottom:'1px solid rgba(232,197,71,0.12)', background:'#050505', padding:'10px 0', overflow:'hidden' }}
+    <section
+      role="region"
       aria-label="Live market snapshot"
+      style={{ position:'relative', zIndex:10, borderBottom:'1px solid rgba(232,197,71,0.12)', background:'#050505', padding:'10px 0', overflow:'hidden' }}
     >
       <div className="ticker-track" style={{ display:'flex', whiteSpace:'nowrap' }}>
         {[...ticker, ...ticker].map((item, i) => (
@@ -47,6 +48,6 @@ export default function MarketTicker() {
           </span>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
