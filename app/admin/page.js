@@ -117,18 +117,20 @@ const FieldGroup = ({ label, children }) => (
   </div>
 );
 
-const Input = ({ value, onChange, placeholder, type = 'text', style = {}, onKeyDown }) => (
+const Input = ({ value, onChange, placeholder, type = 'text', style = {}, onKeyDown, ariaLabel }) => (
   <input type={type} value={value} onChange={onChange} placeholder={placeholder}
+    aria-label={ariaLabel || placeholder || undefined}
     onKeyDown={onKeyDown} style={{ ...css.input, ...style }} />
 );
 
-const Textarea = ({ value, onChange, placeholder, rows = 5, style = {} }) => (
+const Textarea = ({ value, onChange, placeholder, rows = 5, style = {}, ariaLabel }) => (
   <textarea value={value} onChange={onChange} placeholder={placeholder} rows={rows}
+    aria-label={ariaLabel || placeholder || undefined}
     style={{ ...css.input, resize: 'vertical', lineHeight: 1.6, ...style }} />
 );
 
-const Select = ({ value, onChange, options, style = {} }) => (
-  <select value={value} onChange={onChange} style={{ ...css.input, ...style }}>
+const Select = ({ value, onChange, options, style = {}, ariaLabel }) => (
+  <select value={value} onChange={onChange} aria-label={ariaLabel || undefined} style={{ ...css.input, ...style }}>
     {options.map(o => typeof o === 'string'
       ? <option key={o} value={o}>{o}</option>
       : <option key={o.value} value={o.value}>{o.label}</option>)}
