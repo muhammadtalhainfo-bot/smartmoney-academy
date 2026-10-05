@@ -1034,13 +1034,11 @@ function AICoach({ trades, stats }) {
 
       const data = await res.json();
       if (!res.ok) throw new Error(data?.error || 'AI Coach request failed.');
-      let text = data.content?.[0]?.text || '';
-      text = text.replace(/```json|```/g, '').trim();
-      const parsed = JSON.parse(text);
+
       if (
-        !Array.isArray(parsed?.insights) ||
-        parsed.insights.length !== 4 ||
-        parsed.insights.some((item) =>
+        !Array.isArray(data?.insights) ||
+        data.insights.length !== 4 ||
+        data.insights.some((item) =>
           !item ||
           !['strength', 'weakness', 'pattern', 'action'].includes(item.type) ||
           !['high', 'medium', 'low'].includes(item.priority) ||
@@ -1050,7 +1048,8 @@ function AICoach({ trades, stats }) {
       ) {
         throw new Error('AI Coach returned invalid data.');
       }
-      setInsights(parsed.insights);
+
+      setInsights(data.insights);
     } catch (e) {
       setInsights([{
         type: 'action',
