@@ -143,6 +143,7 @@ export default function PracticeClient({ initialQuestions, dateStr }) {
 
                   return (
                     <button
+                      type="button"
                       key={i}
                       aria-pressed={selected === i}
                       onClick={() => handleSelect(i)}
