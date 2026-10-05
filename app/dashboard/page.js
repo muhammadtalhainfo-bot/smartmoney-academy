@@ -249,7 +249,7 @@ export default function DashboardPage() {
             { label: 'Day Streak', value: profile?.streak || 0, icon: '🔥', sub: `Best: ${profile?.longest_streak || 0}`, highlight: true },
             { label: 'Modules Done', value: completedModules, icon: '📖', sub: `of ${totalModules} total` },
             
-            { label: 'Total XP', value: xp.toLocaleString(), icon: '⚡', sub: `${xpToNext - xp} to next rank` },
+            { label: 'Total XP', value: xp.toLocaleString(), icon: '⚡', sub: isMaxRank ? 'Max rank reached' : `${xpToNext - xp} to next rank` },
           ].map((s, i) => (
             <div key={i} className={`card p-5 ${s.highlight ? 'border-[rgba(232,197,71,0.95)]' : ''}`} style={s.highlight ? { background: 'rgba(212,168,67,0.04)' } : {}}>
               <div className="text-2xl mb-3">{s.icon}</div>
