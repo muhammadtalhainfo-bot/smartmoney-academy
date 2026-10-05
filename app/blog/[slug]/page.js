@@ -4,7 +4,6 @@ import Image from 'next/image';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 import { getPublishedBlogPosts } from '@/lib/blog-data';
-import { serializeJsonLd } from '@/lib/jsonld';
 import AdSlot from '@/app/components/AdSlot';
 
 function renderContent(content) {
@@ -47,53 +46,6 @@ function renderContent(content) {
 
 export const revalidate = 300;
 
-function absoluteImageUrl(image) {
-  try {
-    return new URL(image || '/og-image.png', 'https://ictflow.com').toString();
-  } catch {
-    return 'https://ictflow.com/og-image.png';
-  }
-}
-
-export async function generateMetadata({ params }) {
-  const { slug } = await params;
-  const posts = await getPublishedBlogPosts();
-  const post = posts.find((item) => item && item.slug === slug);
-
-  if (!post) {
-    return {
-      title: 'Article Not Found | ICT Flow',
-      robots: { index: false, follow: false },
-    };
-  }
-
-  const canonical = `https://ictflow.com/blog/${post.slug}`;
-  const title = post.metaTitle || `${post.title} | ICT Flow`;
-  const description = post.metaDesc || post.description || 'ICT Flow trading education article.';
-  const image = absoluteImageUrl(post.image);
-
-  return {
-    title,
-    description,
-    alternates: { canonical },
-    openGraph: {
-      title,
-      description,
-      url: canonical,
-      siteName: 'ICT Flow',
-      type: 'article',
-      images: [{ url: image, alt: post.title }],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: [image],
-      creator: '@riskfirsttrad',
-    },
-  };
-}
-
 export default async function BlogPost({ params }) {
   const { slug } = await params;
 
@@ -104,22 +56,8 @@ export default async function BlogPost({ params }) {
 
   if (!post) notFound();
 
-  const canonical = `https://ictflow.com/blog/${post.slug}`;
-  const articleSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: post.title,
-    description: post.description || '',
-    image: [absoluteImageUrl(post.image)],
-    mainEntityOfPage: canonical,
-    author: { '@type': 'Organization', name: 'ICT Flow', url: 'https://ictflow.com' },
-    publisher: { '@type': 'Organization', name: 'ICT Flow', url: 'https://ictflow.com' },
-  };
-
   return (
-    <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleSchema) }} />
-      <div style={{ minHeight: '100vh', background: '#080808', color: 'white', fontFamily: "'DM Sans', sans-serif" }}>
+    <div style={{ minHeight: '100vh', background: '#080808', color: 'white', fontFamily: "'DM Sans', sans-serif" }}>
       <style>{`
 
       `}</style>
@@ -127,24 +65,14 @@ export default async function BlogPost({ params }) {
       <Navbar active="/blog" />
 
       <div style={{ height: '320px', overflow: 'hidden', position: 'relative', background: '#111111' }}>
-        {/^https?:\/\//i.test(post.image || '') ? (
-          <img
-            src={post.image}
-            alt={post.title}
-            loading="eager"
-            fetchPriority="high"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.4 }}
-          />
-        ) : (
-          <Image
-            src={post.image || '/images/market-structure.png'}
-            alt={post.title}
-            fill
-            sizes="100vw"
-            priority
-            style={{ objectFit: 'cover', opacity: 0.4 }}
-          />
-        )}
+        <Image
+          src={post.image || '/images/market-structure.png'}
+          alt={post.title}
+          fill
+          sizes="100vw"
+          priority
+          style={{ objectFit: 'cover', opacity: 0.4 }}
+        />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 30%, #080808)' }} />
       </div>
 
