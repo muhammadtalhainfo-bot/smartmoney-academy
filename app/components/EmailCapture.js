@@ -7,8 +7,7 @@ export default function EmailCapture() {
   const [status, setStatus] = useState('idle'); // idle | loading | success | error
   const [msg, setMsg] = useState('');
 
-  async function handleSubmit(event) {
-    event?.preventDefault();
+  async function handleSubmit() {
     const normalizedEmail = email.trim().toLowerCase();
     if (!normalizedEmail || !normalizedEmail.includes('@') || normalizedEmail.length > 254) {
       setMsg('Enter a valid email.');
@@ -68,25 +67,27 @@ export default function EmailCapture() {
           </div>
         ) : (
           <>
-            <form onSubmit={handleSubmit} style={{ display: 'flex', gap: '10px', maxWidth: '440px', margin: '0 auto 12px' }}>
+            <div style={{ display: 'flex', gap: '10px', maxWidth: '440px', margin: '0 auto 12px' }}>
               <input
                 aria-label="Email address for ICT Flow updates"
                 type="email"
                 value={email}
                 onChange={e => { setEmail(e.target.value); setStatus('idle'); setMsg(''); }}
+                onKeyDown={e => e.key === 'Enter' && handleSubmit()}
                 autoComplete="email"
                 placeholder="your@email.com"
                 maxLength={254}
                 style={{ flex: 1, padding: '14px 18px', background: 'rgba(255,255,255,0.04)', border: `1px solid ${status === 'error' ? 'rgba(248,113,113,0.4)' : 'rgba(232,197,71,0.95)'}`, borderRadius: '10px', color: 'white', fontSize: '14px', fontFamily: 'DM Mono, monospace', outline: 'none', letterSpacing: '0.05em' }}
               />
               <button
-                type="submit"
+                type="button"
+                onClick={handleSubmit}
                 disabled={status === 'loading'}
                 style={{ padding: '14px 24px', background: status === 'loading' ? '#E8C547' : 'linear-gradient(135deg,#E8C547,#D4A843)', border: 'none', borderRadius: '10px', color: 'black', fontFamily: 'DM Mono, monospace', fontSize: '12px', fontWeight: 600, letterSpacing: '0.1em', cursor: status === 'loading' ? 'not-allowed' : 'pointer', whiteSpace: 'nowrap', transition: 'opacity 0.2s' }}
               >
                 {status === 'loading' ? '...' : 'NOTIFY ME'}
               </button>
-            </form>
+            </div>
             {msg && status === 'error' && (
               <p role="alert" style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#FCA5A5', letterSpacing: '0.05em' }}>{msg}</p>
             )}
