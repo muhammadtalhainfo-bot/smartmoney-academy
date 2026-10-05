@@ -127,6 +127,7 @@ function ModuleCard({ mod, index }) {
 
         {/* Topics toggle */}
         <button
+          type="button"
           onClick={() => setExpanded(!expanded)}
           aria-expanded={expanded}
           aria-controls={`topics-${mod.id}`}
