@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 import { getPublishedBlogPosts } from '@/lib/blog-data';
-import { serializeJsonLd } from '@/app/jsonld';
+import { serializeJsonLd } from '@/lib/jsonld';
 import AdSlot from '@/app/components/AdSlot';
 
 function renderContent(content) {
