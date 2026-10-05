@@ -271,7 +271,7 @@ function UsersSection({ users, onReload }) {
 
       <div style={{ display: 'flex', gap: '12px', marginBottom: '16px' }}>
         <Input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search by username or email..." style={{ flex: 1 }} />
-        <Select value={filterPro} onChange={e => setFilterPro(e.target.value)}
+        <Select ariaLabel="Filter users by Pro status" value={filterPro} onChange={e => setFilterPro(e.target.value)}
           options={[{ value: 'all', label: 'All Users' }, { value: 'pro', label: 'Pro Only' }, { value: 'free', label: 'Free Only' }]}
           style={{ width: '160px' }} />
       </div>
@@ -515,7 +515,7 @@ function BlogSection({ adminDbClient = adminDb }) {
               </div>
             </FieldGroup>
             <FieldGroup label="Category">
-              <Select value={form.category} onChange={e => setForm({ ...form, category: e.target.value })}
+              <Select ariaLabel="Blog category" value={form.category} onChange={e => setForm({ ...form, category: e.target.value })}
                 options={['Beginner', 'Intermediate', 'Advanced', 'Strategy', 'Psychology', 'News', 'Analysis']} />
             </FieldGroup>
             <FieldGroup label="Read Time">
@@ -528,7 +528,7 @@ function BlogSection({ adminDbClient = adminDb }) {
               <Input type="number" value={form.sort_order} onChange={e => setForm({ ...form, sort_order: parseInt(e.target.value) || 0 })} />
             </FieldGroup>
             <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', marginTop: '4px' }}>
-              <input type="checkbox" checked={form.featured} onChange={e => setForm({ ...form, featured: e.target.checked })} />
+              <input aria-label="Featured post" type="checkbox" checked={form.featured} onChange={e => setForm({ ...form, featured: e.target.checked })} />
               <span style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.85)' }}>Featured post</span>
             </label>
           </div>
@@ -569,7 +569,7 @@ function BlogSection({ adminDbClient = adminDb }) {
 
       <div style={{ display: 'flex', gap: '10px', marginBottom: '16px' }}>
         <Input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search posts..." style={{ flex: 1 }} />
-        <Select value={filterCat} onChange={e => setFilterCat(e.target.value)}
+        <Select ariaLabel="Filter posts by category" value={filterCat} onChange={e => setFilterCat(e.target.value)}
           options={CATS.map(c => ({ value: c, label: c === 'all' ? 'All Categories' : c }))}
           style={{ width: '180px' }} />
       </div>
@@ -634,7 +634,7 @@ function CoursesSection() {
       <Toast msg={msg} />
 
       <div style={{ display: 'flex', gap: '10px', marginBottom: '16px' }}>
-        <Select value={filterLevel} onChange={e => setFilterLevel(e.target.value)}
+        <Select ariaLabel="Filter modules by level" value={filterLevel} onChange={e => setFilterLevel(e.target.value)}
           options={[{ value: 'all', label: 'All Levels' }, 'Beginner', 'Intermediate', 'Advanced', 'SMC'].map(v => typeof v === 'string' ? { value: v, label: v } : v)}
           style={{ width: '180px' }} />
         <div style={{ ...css.mono, fontSize: '11px', color: '#AAB3BF', display: 'flex', alignItems: 'center' }}>
@@ -649,24 +649,24 @@ function CoursesSection() {
               <div style={{ ...css.card, border: `1px solid ${BORDER2}` }}>
                 <div style={{ ...css.bebas, fontSize: '18px', color: G, marginBottom: '16px' }}>EDITING: {m.title}</div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '12px', marginBottom: '12px' }}>
-                  <FieldGroup label="Title"><Input value={form.title} onChange={e => setForm({ ...form, title: e.target.value })} /></FieldGroup>
+                  <FieldGroup label="Title"><Input ariaLabel="Module title" value={form.title} onChange={e => setForm({ ...form, title: e.target.value })} /></FieldGroup>
                   <FieldGroup label="Level">
-                    <Select value={form.level} onChange={e => setForm({ ...form, level: e.target.value })} options={['Beginner', 'Intermediate', 'Advanced', 'SMC']} />
+                    <Select ariaLabel="Module level" value={form.level} onChange={e => setForm({ ...form, level: e.target.value })} options={['Beginner', 'Intermediate', 'Advanced', 'SMC']} />
                   </FieldGroup>
                   <FieldGroup label="Tag">
-                    <Select value={form.tag} onChange={e => setForm({ ...form, tag: e.target.value })} options={['ICT', 'ICT & SMC', 'SMC', 'NEWER']} />
+                    <Select ariaLabel="Module tag" value={form.tag} onChange={e => setForm({ ...form, tag: e.target.value })} options={['ICT', 'ICT & SMC', 'SMC', 'NEWER']} />
                   </FieldGroup>
-                  <FieldGroup label="Lessons"><Input type="number" value={form.lessons} onChange={e => setForm({ ...form, lessons: parseInt(e.target.value) || 0 })} /></FieldGroup>
+                  <FieldGroup label="Lessons"><Input ariaLabel="Number of lessons" type="number" value={form.lessons} onChange={e => setForm({ ...form, lessons: parseInt(e.target.value) || 0 })} /></FieldGroup>
                   <FieldGroup label="Duration"><Input value={form.duration} onChange={e => setForm({ ...form, duration: e.target.value })} placeholder="48 min" /></FieldGroup>
-                  <FieldGroup label="Emoji"><Input value={form.emoji} onChange={e => setForm({ ...form, emoji: e.target.value })} /></FieldGroup>
+                  <FieldGroup label="Emoji"><Input ariaLabel="Module emoji" value={form.emoji} onChange={e => setForm({ ...form, emoji: e.target.value })} /></FieldGroup>
                 </div>
                 <div style={{ display: 'flex', gap: '16px', marginBottom: '16px' }}>
                   <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}>
-                    <input type="checkbox" checked={form.locked} onChange={e => setForm({ ...form, locked: e.target.checked })} />
+                    <input aria-label="Lock module for Pro users" type="checkbox" checked={form.locked} onChange={e => setForm({ ...form, locked: e.target.checked })} />
                     <span style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.85)' }}>Pro locked</span>
                   </label>
                   <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}>
-                    <input type="checkbox" checked={form.comingSoon} onChange={e => setForm({ ...form, comingSoon: e.target.checked })} />
+                    <input aria-label="Mark module as coming soon" type="checkbox" checked={form.comingSoon} onChange={e => setForm({ ...form, comingSoon: e.target.checked })} />
                     <span style={{ ...css.mono, fontSize: '11px', color: 'rgba(255,255,255,0.85)' }}>Coming soon</span>
                   </label>
                 </div>
