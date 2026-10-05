@@ -8,6 +8,8 @@ export default function EmailCapture() {
   const [msg, setMsg] = useState('');
 
   async function handleSubmit() {
+    if (status === 'loading') return;
+
     const normalizedEmail = email.trim().toLowerCase();
     if (!normalizedEmail || !normalizedEmail.includes('@') || normalizedEmail.length > 254) {
       setMsg('Enter a valid email.');
