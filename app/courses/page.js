@@ -1,6 +1,6 @@
 'use client';
 import { MODULES } from '@/lib/curriculum';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
