@@ -234,6 +234,7 @@ function UsersSection({ users, onReload }) {
   const [search, setSearch] = useState('');
   const [filterPro, setFilterPro] = useState('all');
   const [msg, setMsg] = useState('');
+  const [msgType, setMsgType] = useState('success');
   const [selectedUser, setSelectedUser] = useState(null);
 
   const filtered = users.filter(u => {
@@ -244,30 +245,53 @@ function UsersSection({ users, onReload }) {
   });
 
   const togglePro = async (u) => {
-    await adminDb('profile.togglePro', { id: u.id, isPro: !u.is_pro });
-    setMsg(`${u.username || 'User'} → ${!u.is_pro ? 'Pro' : 'Free'}`);
-    onReload();
-    setTimeout(() => setMsg(''), 3000);
+    try {
+      await adminDb('profile.togglePro', { id: u.id, isPro: !u.is_pro });
+      setMsgType('success');
+      setMsg(`${u.username || 'User'} → ${!u.is_pro ? 'Pro' : 'Free'}`);
+      onReload();
+      setTimeout(() => setMsg(''), 3000);
+    } catch (error) {
+      console.error('Admin Pro toggle failed:', error);
+      setMsgType('error');
+      setMsg('Could not update this user. Please retry.');
+    }
   };
 
   const resetXP = async (u) => {
     if (!confirm(`Reset XP for ${u.username || u.email}?`)) return;
-    await adminDb('profile.resetXP', { id: u.id });
-    setMsg(`XP reset for ${u.username || u.email}`);
-    onReload();
-    setTimeout(() => setMsg(''), 3000);
+    try {
+      await adminDb('profile.resetXP', { id: u.id });
+      setMsgType('success');
+      setMsg(`XP reset for ${u.username || u.email}`);
+      onReload();
+      setTimeout(() => setMsg(''), 3000);
+    } catch (error) {
+      console.error('Admin XP reset failed:', error);
+      setMsgType('error');
+      setMsg('Could not reset XP. Please retry.');
+    }
   };
 
   const deleteUser = async (u) => {
     if (!confirm(`Delete account ${u.username || u.email}? This permanently removes the auth account and linked data.`)) return;
-    await adminDb('profile.delete', { id: u.id });
-    onReload();
+    try {
+      await adminDb('profile.delete', { id: u.id });
+      setMsgType('success');
+      setMsg(`Deleted ${u.username || u.email || 'account'}.`);
+      onReload();
+      setTimeout(() => setMsg(''), 3000);
+    } catch (error) {
+      console.error('Admin user deletion failed:', error);
+      setMsgType('error');
+      setMsg('Could not delete this account. Please retry.');
+    }
   };
 
   return (
     <div>
       <SectionHeader title={`USERS (${users.length})`} />
-      <Toast msg={msg} />
+      <Toast msg={msg} type={msgType} />
 
       <div style={{ display: 'flex', gap: '12px', marginBottom: '16px' }}>
         <Input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search by username or email..." style={{ flex: 1 }} />
