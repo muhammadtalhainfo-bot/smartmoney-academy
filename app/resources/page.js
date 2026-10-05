@@ -44,7 +44,7 @@ export default function ResourcesPage() {
     </section>
     <section style={{position:'sticky',top:'64px',zIndex:30,background:'rgba(8,8,8,.97)',backdropFilter:'blur(20px)',borderBottom:'1px solid var(--border)',padding:'0 24px'}}>
       <div role="tablist" aria-label="Resource categories" style={{maxWidth:'1100px',margin:'0 auto',display:'flex'}}>
-        {[['prop','Prop Firms'],['brokers','Brokers'],['tools','Tools & Platforms']].map(([key,label])=><button key={key} role="tab" aria-selected={activeTab===key} aria-controls={`resource-panel-${key}`} className="tab-btn" onClick={()=>setActiveTab(key)} style={{padding:'16px 24px',background:'none',border:'none',fontFamily:'DM Mono,monospace',fontSize:'11px',letterSpacing:'.12em',textTransform:'uppercase',cursor:'pointer',color:activeTab===key?'#E8C547':'rgba(255,255,255,.7)',borderBottom:activeTab===key?'2px solid #E8C547':'2px solid transparent',marginBottom:'-1px'}}>{label}</button>)}
+        {[['prop','Prop Firms'],['brokers','Brokers'],['tools','Tools & Platforms']].map(([key,label])=><button type="button" key={key} role="tab" aria-selected={activeTab===key} aria-controls={`resource-panel-${key}`} className="tab-btn" onClick={()=>setActiveTab(key)} style={{padding:'16px 24px',background:'none',border:'none',fontFamily:'DM Mono,monospace',fontSize:'11px',letterSpacing:'.12em',textTransform:'uppercase',cursor:'pointer',color:activeTab===key?'#E8C547':'rgba(255,255,255,.7)',borderBottom:activeTab===key?'2px solid #E8C547':'2px solid transparent',marginBottom:'-1px'}}>{label}</button>)}
       </div>
     </section>
     <div style={{maxWidth:'1100px',margin:'0 auto',padding:'48px 24px'}}>
