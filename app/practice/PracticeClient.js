@@ -169,6 +169,7 @@ export default function PracticeClient({ initialQuestions, dateStr }) {
               {/* Action button */}
               {!revealed ? (
                 <button
+                  type="button"
                   onClick={handleReveal}
                   disabled={selected === null}
                   className="w-full py-4 rounded-xl font-mono-custom text-sm tracking-wider uppercase font-bold transition-all"
