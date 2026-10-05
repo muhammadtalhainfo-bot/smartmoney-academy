@@ -708,16 +708,19 @@ function PagesSection() {
       <InfoBox>ℹ️ All pages are Next.js files in the <code>app/</code> directory. Click VIEW to open the live page. Edit the file in your code editor and push to GitHub to update.</InfoBox>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px' }}>
         {NAV_PAGES.map(p => (
-          <div key={p.href} style={{ ...css.card, display: 'flex', alignItems: 'center', gap: '14px', padding: '14px 18px', cursor: 'pointer', border: selected === p.href ? `1px solid ${G}` : `1px solid ${BORDER}` }}
-            onClick={() => setSelected(selected === p.href ? null : p.href)}>
-            <div style={{ flex: 1 }}>
+          <div key={p.href} style={{ ...css.card, display: 'flex', alignItems: 'center', gap: '14px', padding: '14px 18px', border: selected === p.href ? `1px solid ${G}` : `1px solid ${BORDER}` }}>
+            <button
+              type="button"
+              aria-pressed={selected === p.href}
+              onClick={() => setSelected(selected === p.href ? null : p.href)}
+              style={{ flex: 1, minWidth: 0, padding: 0, border: 'none', background: 'transparent', color: 'inherit', textAlign: 'left', cursor: 'pointer' }}
+            >
               <div style={{ fontWeight: 600, fontSize: '14px', marginBottom: '2px' }}>{p.label}</div>
               <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(232,197,71,0.6)' }}>{p.href}</div>
               <div style={{ fontSize: '12px', color: '#AAB3BF', marginTop: '3px' }}>{p.desc}</div>
-            </div>
+            </button>
             <a href={p.href} target="_blank" rel="noopener noreferrer"
-              style={{ ...css.btn, padding: '6px 12px', fontSize: '10px', textDecoration: 'none' }}
-              onClick={e => e.stopPropagation()}>VIEW ↗</a>
+              style={{ ...css.btn, padding: '6px 12px', fontSize: '10px', textDecoration: 'none' }}>VIEW ↗</a>
           </div>
         ))}
       </div>
@@ -754,15 +757,20 @@ function MediaSection() {
       <InfoBox>ℹ️ Static images in your project. Click any image to copy its URL. To add new images, place them in <code>/public/images/</code> and push to GitHub.</InfoBox>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '12px' }}>
         {IMAGES.map(img => (
-          <div key={img} onClick={() => copy(img)}
-            style={{ ...css.card, padding: '12px', cursor: 'pointer', border: copied === img ? `1px solid ${G}` : `1px solid ${BORDER}` }}>
+          <button
+            type="button"
+            key={img}
+            onClick={() => copy(img)}
+            aria-label={copied === img ? `Copied ${img.split('/').pop()}` : `Copy ${img.split('/').pop()} URL`}
+            style={{ ...css.card, padding: '12px', cursor: 'pointer', border: copied === img ? `1px solid ${G}` : `1px solid ${BORDER}`, color: 'inherit', textAlign: 'left' }}
+          >
             <div style={{ width: '100%', height: '70px', background: S3, borderRadius: '6px', overflow: 'hidden', marginBottom: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <img src={img} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => { e.target.style.display = 'none'; }} />
             </div>
             <div style={{ ...css.mono, fontSize: '9px', color: copied === img ? G : '#AAB3BF', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
               {copied === img ? '✓ COPIED!' : img.split('/').pop()}
             </div>
-          </div>
+          </button>
         ))}
       </div>
     </div>
