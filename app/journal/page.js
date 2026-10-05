@@ -527,7 +527,7 @@ function Dashboard({ trades, stats, onAdd, onPage }) {
       <SectionHead
         title="Command Center"
         sub={`${trades.length} trades logged · Building your edge`}
-        action={<button onClick={onAdd} style={S.btn}>+ Log Trade</button>}
+        action={<button type="button" onClick={onAdd} style={S.btn}>+ Log Trade</button>}
       />
 
       {/* Stats row */}
@@ -695,8 +695,8 @@ function TradeHistory({ trades, onEdit, onDelete }) {
                     </td>
                     <td style={{ padding: '11px 14px' }}>
                       <div style={{ display: 'flex', gap: '6px' }}>
-                        <button onClick={() => onEdit(t)} style={{ padding: '5px 10px', borderRadius: '6px', background: C.goldDim, border: `1px solid rgba(201,168,76,0.2)`, color: C.gold, fontFamily: 'DM Mono, monospace', fontSize: '10px', cursor: 'pointer' }}>Edit</button>
-                        <button onClick={() => onDelete(t.id)} style={{ padding: '5px 10px', borderRadius: '6px', background: 'rgba(239,68,68,0.08)', border: `1px solid rgba(239,68,68,0.2)`, color: C.red, fontFamily: 'DM Mono, monospace', fontSize: '10px', cursor: 'pointer' }}>Del</button>
+                        <button type="button" onClick={() => onEdit(t)} style={{ padding: '5px 10px', borderRadius: '6px', background: C.goldDim, border: `1px solid rgba(201,168,76,0.2)`, color: C.gold, fontFamily: 'DM Mono, monospace', fontSize: '10px', cursor: 'pointer' }}>Edit</button>
+                        <button type="button" onClick={() => onDelete(t.id)} style={{ padding: '5px 10px', borderRadius: '6px', background: 'rgba(239,68,68,0.08)', border: `1px solid rgba(239,68,68,0.2)`, color: C.red, fontFamily: 'DM Mono, monospace', fontSize: '10px', cursor: 'pointer' }}>Del</button>
                       </div>
                     </td>
                   </tr>
@@ -1062,7 +1062,7 @@ function AICoach({ trades, stats }) {
           <div style={{ fontSize: '13px', color: C.text3, marginBottom: '28px', maxWidth: '400px', margin: '0 auto 28px' }}>
             {trades.length < 5 ? `You have ${trades.length} trade${trades.length !== 1 ? 's' : ''} logged. Log at least 5 for meaningful insights.` : `Analyzing ${trades.length} trades for patterns, leaks, and strengths.`}
           </div>
-          <button onClick={generateInsights} disabled={trades.length < 2} style={{ ...S.btn, padding: '14px 32px', fontSize: '13px', opacity: trades.length < 2 ? 0.5 : 1 }}>
+          <button type="button" onClick={generateInsights} disabled={trades.length < 2} style={{ ...S.btn, padding: '14px 32px', fontSize: '13px', opacity: trades.length < 2 ? 0.5 : 1 }}>
             ✦ ANALYZE MY TRADES
           </button>
         </div>
@@ -1090,7 +1090,7 @@ function AICoach({ trades, stats }) {
               </div>
             ))}
           </div>
-          <button onClick={generateInsights} style={{ ...S.btnGhost, width: '100%', padding: '12px' }}>↻ Refresh Analysis</button>
+          <button type="button" onClick={generateInsights} style={{ ...S.btnGhost, width: '100%', padding: '12px' }}>↻ Refresh Analysis</button>
         </div>
       ) : null}
     </div>
