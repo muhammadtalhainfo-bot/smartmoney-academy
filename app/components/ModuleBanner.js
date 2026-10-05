@@ -538,6 +538,7 @@ export default function ModuleBanner({
       xmlns="http://www.w3.org/2000/svg"
       style={{ display: 'block', background: BG }}
     >
+      <title>{title || label || 'ICT Flow concept illustration'}</title>
       <defs>
         <radialGradient id={`glow-${key}`} cx="85%" cy="15%" r="55%">
           <stop offset="0%" stopColor="#E8C547" stopOpacity="0.1" />
