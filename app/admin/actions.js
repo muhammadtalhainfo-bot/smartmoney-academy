@@ -32,7 +32,7 @@ function validateBlogForm(form) {
   if (!String(form.title || '').trim()) throw new Error('Blog title is required.');
   if (form.image) {
     const image = form.image.trim();
-    if (!(image.startsWith('https://') || image.startsWith('http://') || image.startsWith('/'))) throw new Error('Invalid blog image URL.');
+    if (!(image.startsWith('https://') || (image.startsWith('/') && !image.startsWith('//')))) throw new Error('Blog images must use HTTPS or a local /images/... path.');
   }
   return { ...form, slug };
 }
