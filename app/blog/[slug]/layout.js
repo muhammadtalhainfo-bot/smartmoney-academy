@@ -1,6 +1,30 @@
 import { POSTS } from '../posts';
 import { getPublishedBlogPosts } from '@/lib/blog-data';
-import { serializeJsonLd } from '@/lib/jsonld';
+function absoluteImageUrl(image) {
+  const value = typeof image === 'string' ? image.trim() : '';
+  if (!value) return 'https://ictflow.com/og-image.png';
+
+  if (value.startsWith('/') && !value.startsWith('//')) {
+    try {
+      return new URL(value, 'https://ictflow.com').toString();
+    } catch {
+      return 'https://ictflow.com/og-image.png';
+    }
+  }
+
+  try {
+    const parsed = new URL(value);
+    return parsed.protocol === 'https:' ? parsed.toString() : 'https://ictflow.com/og-image.png';
+  } catch {
+    return 'https://ictflow.com/og-image.png';
+  }
+}
+
+function safeIsoDate(value) {
+  if (!value) return undefined;
+  const timestamp = Date.parse(String(value));
+  return Number.isFinite(timestamp) ? new Date(timestamp).toISOString() : undefined;
+}
 
 export function generateStaticParams() {
   return POSTS.filter((post) => post?.slug).map(({ slug }) => ({ slug }));
@@ -19,9 +43,7 @@ export async function generateMetadata({ params }) {
 
   const canonical = `https://ictflow.com/blog/${post.slug}`;
   const description = post.description || `Read ${post.title} on ICT Flow.`;
-  const image = post.image
-    ? (post.image.startsWith('http') ? post.image : `https://ictflow.com${post.image}`)
-    : 'https://ictflow.com/og-image.png';
+  const image = absoluteImageUrl(post.image);
 
   return {
     title: post.metaTitle || post.title,
@@ -34,7 +56,7 @@ export async function generateMetadata({ params }) {
       description: post.metaDesc || description,
       siteName: 'ICT Flow',
       images: [{ url: image, alt: post.title }],
-      publishedTime: post.date ? new Date(post.date).toISOString() : undefined,
+      publishedTime: safeIsoDate(post.date),
       section: post.category,
     },
     twitter: {
@@ -52,42 +74,5 @@ export default async function BlogPostLayout({ children, params }) {
 
   if (!post) return children;
 
-  const canonical = `https://ictflow.com/blog/${post.slug}`;
-  const published = post.date ? new Date(post.date).toISOString() : undefined;
-
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: post.title,
-    description: post.description,
-    image: [post.image
-      ? (post.image.startsWith('http') ? post.image : `https://ictflow.com${post.image}`)
-      : 'https://ictflow.com/og-image.png'],
-    datePublished: published,
-    dateModified: published,
-    author: {
-      '@type': 'Organization',
-      name: 'ICT Flow',
-      url: 'https://ictflow.com/about',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'ICT Flow',
-      url: 'https://ictflow.com',
-      logo: { '@type': 'ImageObject', url: 'https://ictflow.com/favicon-96x96.png' },
-    },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
-    articleSection: post.category,
-    url: canonical,
-  };
-
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
-      />
-      {children}
-    </>
-  );
+  return children;
 }
