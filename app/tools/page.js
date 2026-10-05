@@ -356,6 +356,7 @@ export default function ToolsPage() {
           {activeTool === 'checklist' && (
             <div style={{ textAlign: 'center', paddingTop: '16px' }}>
               <button
+                type="button"
                 onClick={() => setChecked({})}
                 style={{ padding: '10px 24px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', background: 'transparent', color: '#B9C1CC', cursor: 'pointer', fontSize: '12px', fontFamily: 'DM Mono, monospace' }}
               >
