@@ -341,6 +341,7 @@ export default function CoursesPage() {
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px', flexWrap: 'wrap' }}>
             <span className="font-mono-c text-xs flex-shrink-0" style={{ color: 'rgba(232,197,71,0.95)', letterSpacing: '0.14em' }}>FIND A MODULE</span>
             <input
+              type="search"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search by concept, lesson topic, or module..."
