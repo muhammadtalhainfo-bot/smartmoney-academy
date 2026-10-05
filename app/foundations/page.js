@@ -428,21 +428,28 @@ export default function FoundationsPage() {
                   style={{ background: isDone ? 'rgba(52,211,153,0.03)' : '#111111', border: `1px solid ${isDone ? 'rgba(52,211,153,0.2)' : `${topic.color}20`}`, borderRadius: '16px', overflow: 'hidden' }}>
 
                   {/* Header */}
-                  <div
-                    onClick={() => setExpandedId(isOpen ? null : topic.id)}
-                    style={{ padding: '18px 22px', display: 'flex', alignItems: 'center', gap: '16px', cursor: 'pointer' }}>
-                    <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: isDone ? 'rgba(52,211,153,0.15)' : `${topic.color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', flexShrink: 0 }}>
-                      {isDone ? '✅' : topic.icon}
-                    </div>
-                    <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '4px' }}>
-                        <span style={{ fontSize: '15px', fontWeight: 600, color: 'white' }}>{topic.title}</span>
-                        <span style={{ ...mono, fontSize: '9px', color: step?.color, background: `${step?.color}15`, padding: '2px 7px', borderRadius: '4px' }}>Step {topic.step}</span>
+                  <div style={{ padding: '18px 22px', display: 'flex', alignItems: 'center', gap: '16px' }}>
+                    <button
+                      type="button"
+                      aria-expanded={isOpen}
+                      aria-controls={`foundation-topic-${topic.id}-content`}
+                      aria-label={isOpen ? `Collapse ${topic.title}` : `Expand ${topic.title}`}
+                      onClick={() => setExpandedId(isOpen ? null : topic.id)}
+                      style={{ flex: 1, minWidth: 0, display: 'flex', alignItems: 'center', gap: '16px', padding: 0, border: 'none', background: 'transparent', color: 'inherit', cursor: 'pointer', textAlign: 'left' }}
+                    >
+                      <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: isDone ? 'rgba(52,211,153,0.15)' : `${topic.color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', flexShrink: 0 }}>
+                        {isDone ? '✅' : topic.icon}
                       </div>
-                      <div style={{ ...mono, fontSize: '10px', color: '#D1D5DB' }}>{step?.name}</div>
-                    </div>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '4px' }}>
+                          <span style={{ fontSize: '15px', fontWeight: 600, color: 'white' }}>{topic.title}</span>
+                          <span style={{ ...mono, fontSize: '9px', color: step?.color, background: `${step?.color}15`, padding: '2px 7px', borderRadius: '4px' }}>Step {topic.step}</span>
+                        </div>
+                        <div style={{ ...mono, fontSize: '10px', color: '#D1D5DB' }}>{step?.name}</div>
+                      </div>
+                    </button>
                     <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexShrink: 0 }}>
-                      <button type="button" aria-pressed={isDone} onClick={(e) => { e.stopPropagation(); toggleCompleted(topic.id); }}
+                      <button type="button" aria-pressed={isDone} onClick={() => toggleCompleted(topic.id)}
                         style={{ background: isDone ? 'rgba(52,211,153,0.1)' : 'rgba(255,255,255,0.04)', border: `1px solid ${isDone ? 'rgba(52,211,153,0.3)' : 'rgba(255,255,255,0.18)'}`, borderRadius: '8px', padding: '6px 12px', ...mono, fontSize: '10px', color: isDone ? '#34D399' : '#808080', cursor: 'pointer' }}>
                         {isDone ? '✓ DONE' : 'MARK DONE'}
                       </button>
@@ -451,7 +458,7 @@ export default function FoundationsPage() {
                         aria-expanded={isOpen}
                         aria-controls={`foundation-topic-${topic.id}-content`}
                         aria-label={isOpen ? `Collapse ${topic.title}` : `Expand ${topic.title}`}
-                        onClick={(e) => { e.stopPropagation(); setExpandedId(isOpen ? null : topic.id); }}
+                        onClick={() => setExpandedId(isOpen ? null : topic.id)}
                         style={{ background: 'transparent', border: 'none', color: '#E8C547', fontSize: '18px', cursor: 'pointer', padding: '4px 8px', lineHeight: 1 }}
                       >{isOpen ? '−' : '+'}</button>
                     </div>
