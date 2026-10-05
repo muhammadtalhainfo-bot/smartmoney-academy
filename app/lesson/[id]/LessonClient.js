@@ -120,6 +120,7 @@ function Quiz({ questions, lessonId }) {
         setCompletionState('already_completed');
         setCompletionMessage('This lesson was already recorded. No additional XP was awarded.');
       } else {
+        trackLessonComplete(lessonId, document.title, score);
         setCompletionState('saved');
         setCompletionMessage(`Completion saved. +${data?.xpEarned || 0} XP earned.`);
       }
@@ -133,7 +134,6 @@ function Quiz({ questions, lessonId }) {
   const submitQuiz = async () => {
     const sc = questions.filter((q, i) => answers[i] === q.answer).length;
     setSubmitted(true);
-    trackLessonComplete(lessonId, document.title, sc);
 
     if ((sc / questions.length) * 100 < 70) {
       setCompletionState('quiz_failed');
