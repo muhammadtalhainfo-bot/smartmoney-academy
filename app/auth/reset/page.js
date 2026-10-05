@@ -19,6 +19,7 @@ export default function ResetPasswordPage() {
 
   const handleReset = async (event) => {
     event?.preventDefault();
+    if (loading) return;
     if (password !== confirm) { setError('Passwords do not match'); return; }
     if (password.length < 8) { setError('Password must be at least 8 characters'); return; }
     setLoading(true);
@@ -62,7 +63,7 @@ export default function ResetPasswordPage() {
             </div>
             {error && <div role="alert" aria-live="assertive" style={{ color: '#FCA5A5', fontFamily: 'DM Mono, monospace', fontSize: '12px', marginBottom: '14px' }}>{error}</div>}
             <button type="submit" disabled={loading}
-              style={{ width: '100%', background: 'linear-gradient(135deg, #E8C547, #F0C96A)', color: '#080808', border: 'none', borderRadius: '10px', padding: '14px', fontFamily: 'DM Mono, monospace', fontSize: '12px', fontWeight: 700, cursor: 'pointer', letterSpacing: '0.1em' }}>
+              style={{ width: '100%', background: 'linear-gradient(135deg, #E8C547, #F0C96A)', color: '#080808', border: 'none', borderRadius: '10px', padding: '14px', fontFamily: 'DM Mono, monospace', fontSize: '12px', fontWeight: 700, cursor: loading ? 'not-allowed' : 'pointer', letterSpacing: '0.1em', opacity: loading ? 0.7 : 1 }}>
               {loading ? 'UPDATING...' : 'UPDATE PASSWORD'}
             </button>
           </>
