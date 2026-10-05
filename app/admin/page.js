@@ -686,7 +686,7 @@ function CoursesSection() {
                   {m.locked && <Badge color="#F87171">PRO</Badge>}
                   {m.comingSoon && <Badge color="#AAB3BF">SOON</Badge>}
                   <a href={`/lesson/${m.id}`} target="_blank" rel="noopener noreferrer" style={{ ...css.btnGhost, padding: '5px 10px', fontSize: '10px', textDecoration: 'none' }}>VIEW ↗</a>
-                  <button onClick={() => { setEditing(m.id); setForm({ ...m }); }} style={{ ...css.btn, padding: '5px 12px', fontSize: '10px' }}>EDIT</button>
+                  <button type="button" onClick={() => { setEditing(m.id); setForm({ ...m }); }} style={{ ...css.btn, padding: '5px 12px', fontSize: '10px' }}>EDIT</button>
                 </div>
               </div>
             )}
