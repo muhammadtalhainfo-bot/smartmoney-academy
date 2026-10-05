@@ -31,7 +31,6 @@ export default function PracticeClient({ initialQuestions, dateStr }) {
 
   function handleNext() {
     if (current + 1 >= questions.length) {
-      const finalCorrect = answers.filter(a => a.correct).length + (selected === q.answer ? 1 : 0);
       setDone(true);
     } else {
       setCurrent(c => c + 1);
@@ -40,7 +39,7 @@ export default function PracticeClient({ initialQuestions, dateStr }) {
     }
   }
 
-  const finalScore = answers.filter(a => a.correct).length + (revealed && selected === q?.answer ? 1 : 0);
+  const finalScore = answers.filter(a => a.correct).length;
 
   return (
     <div className="min-h-screen bg-[#080808] text-white" style={{ fontFamily: "'DM Sans', sans-serif" }}>
