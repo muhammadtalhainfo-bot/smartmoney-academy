@@ -600,17 +600,7 @@ export default function MentorshipPage() {
 
                       {/* Episode header */}
                       <div
-                        role="button"
-                        tabIndex={0}
-                        aria-expanded={isExpanded}
-                        aria-controls={`mentorship-episode-${ep.id}-content`}
                         onClick={() => setExpandedId(isExpanded ? null : ep.id)}
-                        onKeyDown={(e) => {
-                          if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            setExpandedId(isExpanded ? null : ep.id);
-                          }
-                        }}
                         style={{ padding: '16px 20px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '16px' }}>
 
                         {/* Episode number */}
@@ -644,7 +634,14 @@ export default function MentorshipPage() {
                             style={{ background: isWatched ? 'rgba(52,211,153,0.1)' : 'rgba(255,255,255,0.04)', border: `1px solid ${isWatched ? 'rgba(52,211,153,0.25)' : 'rgba(255,255,255,0.18)'}`, borderRadius: '8px', padding: '6px 12px', ...mono, fontSize: '10px', color: isWatched ? '#34D399' : '#808080', cursor: 'pointer', letterSpacing: '0.06em' }}>
                             {isWatched ? '✓ WATCHED' : 'MARK WATCHED'}
                           </button>
-                          <span style={{ color: '#E8C547', fontSize: '14px' }}>{isExpanded ? '−' : '+'}</span>
+                          <button
+                            type="button"
+                            aria-expanded={isExpanded}
+                            aria-controls={`mentorship-episode-${ep.id}-content`}
+                            aria-label={isExpanded ? `Collapse episode ${ep.id}: ${ep.title}` : `Expand episode ${ep.id}: ${ep.title}`}
+                            onClick={(e) => { e.stopPropagation(); setExpandedId(isExpanded ? null : ep.id); }}
+                            style={{ background: 'transparent', border: 'none', color: '#E8C547', fontSize: '14px', cursor: 'pointer', padding: '4px 8px', lineHeight: 1 }}
+                          >{isExpanded ? '−' : '+'}</button>
                         </div>
                       </div>
 
