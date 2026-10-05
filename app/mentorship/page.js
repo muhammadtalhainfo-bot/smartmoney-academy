@@ -637,6 +637,7 @@ export default function MentorshipPage() {
                         {/* Actions */}
                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
                           <button
+                            type="button"
                             onClick={(e) => { e.stopPropagation(); toggleWatched(ep.id); }}
                             style={{ background: isWatched ? 'rgba(52,211,153,0.1)' : 'rgba(255,255,255,0.04)', border: `1px solid ${isWatched ? 'rgba(52,211,153,0.25)' : 'rgba(255,255,255,0.18)'}`, borderRadius: '8px', padding: '6px 12px', ...mono, fontSize: '10px', color: isWatched ? '#34D399' : '#808080', cursor: 'pointer', letterSpacing: '0.06em' }}>
                             {isWatched ? '✓ WATCHED' : 'MARK WATCHED'}
