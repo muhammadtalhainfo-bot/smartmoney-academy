@@ -13,6 +13,23 @@ function privateJson(body, init = {}) {
 const WINDOW_SECONDS = 5 * 60;
 const MAX_REQUESTS = 5;
 const ONESIGNAL_TIMEOUT_MS = 10_000;
+const APP_ORIGIN = 'https://ictflow.com';
+
+function notificationUrl(value) {
+  const candidate = typeof value === 'string' ? value.trim() : '';
+  if (!candidate) return `${APP_ORIGIN}/`;
+
+  if (candidate.startsWith('/') && !candidate.startsWith('//')) {
+    return new URL(candidate, APP_ORIGIN).toString();
+  }
+
+  try {
+    const parsed = new URL(candidate);
+    if (parsed.protocol === 'https:' && parsed.origin === APP_ORIGIN) return parsed.toString();
+  } catch {}
+
+  return null;
+}
 
 function hashClientKey(value) {
   const pepper = process.env.RATE_LIMIT_SECRET || process.env.SUPABASE_SERVICE_KEY || 'ictflow-rate-limit';
@@ -85,11 +102,13 @@ export async function POST(req) {
       return privateJson({ error: 'Invalid request.' }, { status: 400 });
     }
 
-    const { title, message } = body;
+    const { title, message, url } = body;
     const cleanTitle = typeof title === 'string' ? title.trim() : '';
     const cleanMessage = typeof message === 'string' ? message.trim() : '';
+    const destination = notificationUrl(url);
     if (!cleanTitle) return privateJson({ error: 'Missing title' }, { status: 400 });
     if (!cleanMessage) return privateJson({ error: 'Missing message' }, { status: 400 });
+    if (!destination) return privateJson({ error: 'Invalid notification URL. Use an ICT Flow path or HTTPS ICT Flow URL.' }, { status: 400 });
     if (cleanTitle.length > 100 || cleanMessage.length > 2000) {
       return privateJson({ error: 'Notification content is too long.' }, { status: 413 });
     }
@@ -105,7 +124,7 @@ export async function POST(req) {
         included_segments: ['All'],
         headings: { en: cleanTitle },
         contents: { en: cleanMessage },
-        url: 'https://ictflow.com',
+        url: destination,
       }),
       signal: AbortSignal.timeout(ONESIGNAL_TIMEOUT_MS),
     });
