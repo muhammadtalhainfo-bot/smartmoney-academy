@@ -182,6 +182,7 @@ export default function PracticeClient({ initialQuestions, dateStr }) {
                 </button>
               ) : (
                 <button
+                  type="button"
                   onClick={handleNext}
                   className="w-full py-4 rounded-xl font-mono-custom text-sm tracking-wider uppercase font-bold transition-all pop"
                   style={{ background: 'linear-gradient(135deg, #E8C547, #F0C96A)', color: '#080808' }}
