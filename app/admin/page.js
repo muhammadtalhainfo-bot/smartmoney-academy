@@ -1078,7 +1078,7 @@ const MISTAKES = ${JSON.stringify(mistakes)};
 const RULES = ${JSON.stringify(rules)};`}
         </pre>
       </div>
-      <button onClick={save} style={{ ...css.btn, padding:'14px 28px', marginTop:'16px', fontSize:'12px' }}>
+      <button type="button" onClick={save} style={{ ...css.btn, padding:'14px 28px', marginTop:'16px', fontSize:'12px' }}>
         {saving ? 'SAVING...' : '💾 SAVE JOURNAL CONFIG'}
       </button>
     </div>
@@ -1236,7 +1236,7 @@ export default function AdminPage() {
             <span>🌐</span>
             {!sidebarCollapsed && <span style={{ ...css.mono, fontSize: '10px' }}>VIEW SITE ↗</span>}
           </a>
-          <button onClick={async () => { await logoutAdmin(); setAuthed(false); }}
+          <button type="button" onClick={async () => { await logoutAdmin(); setAuthed(false); }}
             style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 10px', borderRadius: '8px', border: 'none', background: 'transparent', color: 'rgba(248,113,113,0.6)', cursor: 'pointer', justifyContent: sidebarCollapsed ? 'center' : 'flex-start' }}>
             <span>🚪</span>
             {!sidebarCollapsed && <span style={{ ...css.mono, fontSize: '10px' }}>LOGOUT</span>}
