@@ -107,7 +107,7 @@ const PRO_TOOL = {
   id: 'plan',
   emoji: '📋',
   title: 'ICT Trading Plan Template',
-  subtitle: 'Fill-in-the-blank · 10 Sections · Professional',
+  subtitle: 'Fill-in-the-blank · 7 Sections · Professional',
   desc: 'A written trading plan can help turn broad intentions into explicit, testable rules. Fill out this template and keep it available during your review process.',
   color: '#D4A843',
 };
@@ -232,7 +232,6 @@ export default function ToolsPage() {
               <button
                 type="button"
                 key={t.id}
-                disabled={t.id === 'plan' && !isPro}
                 aria-pressed={activeTool === t.id}
                 onClick={() => { setActiveTool(t.id); setChecked({}); }}
                 style={{
@@ -241,8 +240,8 @@ export default function ToolsPage() {
                   border: `1px solid ${activeTool === t.id ? t.color : 'rgba(255,255,255,0.08)'}`,
                   background: activeTool === t.id ? `${t.color}18` : 'transparent',
                   color: activeTool === t.id ? t.color : '#AAB3BF',
-                  cursor: t.id === 'plan' && !isPro ? 'not-allowed' : 'pointer',
-                  opacity: t.id === 'plan' && !isPro ? 0.55 : 1,
+                  cursor: 'pointer',
+                  opacity: 1,
                   fontSize: '13px',
                   fontFamily: 'DM Mono, monospace',
                   letterSpacing: '1px',
