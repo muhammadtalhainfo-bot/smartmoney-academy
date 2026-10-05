@@ -382,7 +382,7 @@ export default function FoundationsPage() {
               const stepCompleted = stepTopics.filter(t => completed.includes(t.id)).length;
               const isActive = activeStep === String(step.id);
               return (
-                <button key={step.id} onClick={() => setActiveStep(isActive ? 'All' : String(step.id))}
+                <button type="button" key={step.id} aria-pressed={isActive} onClick={() => setActiveStep(isActive ? 'All' : String(step.id))}
                   className="step-btn"
                   style={{ background: isActive ? `${step.color}10` : '#111111', border: `1px solid ${isActive ? step.color + '40' : 'rgba(255,255,255,0.15)'}`, borderRadius: '14px', padding: '20px', textAlign: 'left' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
@@ -442,7 +442,7 @@ export default function FoundationsPage() {
                       <div style={{ ...mono, fontSize: '10px', color: '#D1D5DB' }}>{step?.name}</div>
                     </div>
                     <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexShrink: 0 }}>
-                      <button onClick={(e) => { e.stopPropagation(); toggleCompleted(topic.id); }}
+                      <button type="button" aria-pressed={isDone} onClick={(e) => { e.stopPropagation(); toggleCompleted(topic.id); }}
                         style={{ background: isDone ? 'rgba(52,211,153,0.1)' : 'rgba(255,255,255,0.04)', border: `1px solid ${isDone ? 'rgba(52,211,153,0.3)' : 'rgba(255,255,255,0.18)'}`, borderRadius: '8px', padding: '6px 12px', ...mono, fontSize: '10px', color: isDone ? '#34D399' : '#808080', cursor: 'pointer' }}>
                         {isDone ? '✓ DONE' : 'MARK DONE'}
                       </button>
