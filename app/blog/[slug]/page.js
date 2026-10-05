@@ -127,14 +127,24 @@ export default async function BlogPost({ params }) {
       <Navbar active="/blog" />
 
       <div style={{ height: '320px', overflow: 'hidden', position: 'relative', background: '#111111' }}>
-        <Image
-          src={post.image || '/images/market-structure.png'}
-          alt={post.title}
-          fill
-          sizes="100vw"
-          priority
-          style={{ objectFit: 'cover', opacity: 0.4 }}
-        />
+        {/^https?:\/\//i.test(post.image || '') ? (
+          <img
+            src={post.image}
+            alt={post.title}
+            loading="eager"
+            fetchPriority="high"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.4 }}
+          />
+        ) : (
+          <Image
+            src={post.image || '/images/market-structure.png'}
+            alt={post.title}
+            fill
+            sizes="100vw"
+            priority
+            style={{ objectFit: 'cover', opacity: 0.4 }}
+          />
+        )}
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 30%, #080808)' }} />
       </div>
 
