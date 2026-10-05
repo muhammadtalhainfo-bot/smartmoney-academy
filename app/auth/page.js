@@ -53,6 +53,7 @@ function AuthPageInner() {
 
   const handleAuth = async (event) => {
     event?.preventDefault();
+    if (loading) return;
     const supabase = createClient();
     setLoading(true);
     setError('');
