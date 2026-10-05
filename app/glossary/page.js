@@ -114,7 +114,6 @@ const CAT_STYLE = {
 };
 
 export default function GlossaryPage() {
-  const [menuOpen, setMenuOpen] = React.useState(false);
   const [search, setSearch] = useState('');
   const [activeCat, setActiveCat] = useState('All');
   const [expanded, setExpanded] = useState(null);
@@ -205,13 +204,14 @@ export default function GlossaryPage() {
               className="search-input w-full pl-9 pr-4 py-3 rounded-xl text-sm"
             />
             {search && (
-              <button type="button" onClick={() => setSearch('')} className="absolute right-4 top-1/2 -translate-y-1/2 font-mono-c text-xs" style={{ color: 'rgba(232,197,71,0.95)' }}>✕</button>
+              <button type="button" aria-label="Clear glossary search" onClick={() => setSearch('')} className="absolute right-4 top-1/2 -translate-y-1/2 font-mono-c text-xs" style={{ color: 'rgba(232,197,71,0.95)' }}>✕</button>
             )}
           </div>
           {/* Filters */}
           <div className="flex items-center gap-2">
             {CATS.map(cat => (
               <button
+                type="button"
                 key={cat}
                 onClick={() => setActiveCat(cat)}
                 aria-pressed={activeCat === cat}
