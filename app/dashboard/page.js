@@ -93,9 +93,10 @@ export default function DashboardPage() {
         setProfile(profileData);
         setCompletions((completionData || []).filter((row) => Number(row.quiz_score) >= 70));
 
-        // Streak failures are non-fatal; progress data is still usable.
-        await updateStreak();
+        // Render the dashboard as soon as the core progress data is ready.
+        // Streak enrichment is non-critical and must not block the whole page.
         if (isMounted) setLoading(false);
+        void updateStreak();
       } catch (err) {
         console.error('Dashboard error:', err);
         if (isMounted) {
