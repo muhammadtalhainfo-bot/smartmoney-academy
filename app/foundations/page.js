@@ -332,7 +332,7 @@ export default function FoundationsPage() {
             Complete this before starting the ICT 2022 Mentorship or any module
           </p>
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '48px' }}>
-            <button onClick={() => { setActiveStep('All'); document.getElementById('topics').scrollIntoView({ behavior: 'smooth' }); }}
+            <button type="button" onClick={() => { setActiveStep('All'); document.getElementById('topics').scrollIntoView({ behavior: 'smooth' }); }}
               className="btn-gold" style={{ padding: '14px 28px', borderRadius: '12px', ...mono, fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase', border: 'none', cursor: 'pointer' }}>
               Start Beginner Journey →
             </button>
