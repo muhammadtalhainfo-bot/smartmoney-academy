@@ -77,7 +77,14 @@ export default function PracticeClient({ initialQuestions, dateStr }) {
               </div>
 
               {/* Progress bar */}
-              <div className="h-1.5 bg-[#1A1A1A] rounded-full overflow-hidden">
+              <div
+                className="h-1.5 bg-[#1A1A1A] rounded-full overflow-hidden"
+                role="progressbar"
+                aria-label="Daily challenge progress"
+                aria-valuemin={0}
+                aria-valuemax={questions.length}
+                aria-valuenow={current}
+              >
                 <div
                   className="h-full rounded-full transition-all duration-500"
                   style={{ width: `${progress}%`, background: 'linear-gradient(90deg, #E8C547, #F0C96A)' }}
