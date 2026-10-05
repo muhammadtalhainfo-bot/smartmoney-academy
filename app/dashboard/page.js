@@ -32,6 +32,8 @@ export default function DashboardPage() {
   const [loadError, setLoadError] = useState('');
   const [retryTick, setRetryTick] = useState(0);
   const [activeTab, setActiveTab] = useState('overview');
+  const [portalLoading, setPortalLoading] = useState(false);
+  const [portalError, setPortalError] = useState('');
   const supabase = useMemo(() => createClient(), []);
 
   const updateStreak = useCallback(async () => {
@@ -222,22 +224,36 @@ export default function DashboardPage() {
                 </div>
               </Link>
               {profile?.is_pro ? (
-                <button
-                  type="button"
-                  onClick={async () => {
-                    const response = await fetch('/api/create-portal', { method: 'POST' });
-                    const data = await response.json().catch(() => ({}));
-                    if (response.ok && data.url) {
-                      window.location.href = data.url;
-                    } else {
-                      window.alert(data?.error || 'Unable to open billing portal.');
-                    }
-                  }}
-                  className="px-5 py-3 rounded-xl font-mono-c text-xs tracking-wider uppercase font-bold"
-                  style={{ border: '1px solid rgba(232,197,71,0.35)', color: '#E8C547', background: 'transparent', cursor: 'pointer' }}
-                >
-                  Manage Pro →
-                </button>
+                <div className="flex flex-col items-end gap-2">
+                  <button
+                    type="button"
+                    disabled={portalLoading}
+                    onClick={async () => {
+                      setPortalLoading(true);
+                      setPortalError('');
+                      try {
+                        const response = await fetch('/api/create-portal', { method: 'POST' });
+                        const data = await response.json().catch(() => ({}));
+                        if (response.ok && data.url) {
+                          window.location.href = data.url;
+                          return;
+                        }
+                        setPortalError(data?.error || 'Unable to open billing portal.');
+                      } catch {
+                        setPortalError('Unable to open billing portal. Please try again.');
+                      } finally {
+                        setPortalLoading(false);
+                      }
+                    }}
+                    className="px-5 py-3 rounded-xl font-mono-c text-xs tracking-wider uppercase font-bold"
+                    style={{ border: '1px solid rgba(232,197,71,0.35)', color: '#E8C547', background: 'transparent', cursor: portalLoading ? 'not-allowed' : 'pointer', opacity: portalLoading ? 0.7 : 1 }}
+                  >
+                    {portalLoading ? 'Opening Billing…' : 'Manage Pro →'}
+                  </button>
+                  {portalError ? (
+                    <p role="alert" aria-live="assertive" className="text-xs text-right max-w-[260px]" style={{ color: '#FCA5A5' }}>{portalError}</p>
+                  ) : null}
+                </div>
               ) : null}
             </div>
           </div>
