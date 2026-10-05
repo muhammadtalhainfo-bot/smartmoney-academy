@@ -447,7 +447,7 @@ function BlogSection({ adminDbClient = adminDb }) {
   };
 
   const del = async (p) => {
-    if (!confirm('Delete this post permanently?')) return;
+    if (!confirm('Remove this post from the public blog? Source-controlled posts will be unpublished; database-only posts will be deleted.')) return;
     try {
       await adminDbClient('blog.delete', { id: p.id, slug: p.slug, post: p });
       await load();
