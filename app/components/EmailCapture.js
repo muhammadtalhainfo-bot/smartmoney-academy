@@ -74,7 +74,6 @@ export default function EmailCapture() {
                 type="email"
                 value={email}
                 onChange={e => { setEmail(e.target.value); setStatus('idle'); setMsg(''); }}
-                onKeyDown={e => e.key === 'Enter' && handleSubmit()}
                 autoComplete="email"
                 placeholder="your@email.com"
                 maxLength={254}
@@ -82,7 +81,6 @@ export default function EmailCapture() {
               />
               <button
                 type="submit"
-                onClick={undefined}
                 disabled={status === 'loading'}
                 style={{ padding: '14px 24px', background: status === 'loading' ? '#E8C547' : 'linear-gradient(135deg,#E8C547,#D4A843)', border: 'none', borderRadius: '10px', color: 'black', fontFamily: 'DM Mono, monospace', fontSize: '12px', fontWeight: 600, letterSpacing: '0.1em', cursor: status === 'loading' ? 'not-allowed' : 'pointer', whiteSpace: 'nowrap', transition: 'opacity 0.2s' }}
               >
