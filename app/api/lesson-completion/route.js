@@ -1,7 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { createHash } from 'node:crypto';
 import { LESSON_QUIZ_ANSWERS } from '@/lib/lesson-quiz-answers';
-import { MODULES } from '@/lib/curriculum';
 
 export const runtime = 'nodejs';
 
@@ -79,9 +78,8 @@ export async function POST(req) {
       return json({ error: 'Invalid completion payload.' }, { status: 400 });
     }
 
-    const isCurriculumModule = MODULES.some((module) => module.id === lessonId);
     const answerKey = LESSON_QUIZ_ANSWERS[lessonId];
-    if (!isCurriculumModule || !answerKey || answers.length !== answerKey.length || answers.some((answer) => !Number.isInteger(answer))) {
+    if (!answerKey || answers.length !== answerKey.length || answers.some((answer) => !Number.isInteger(answer))) {
       return json({ error: 'Invalid quiz answers.' }, { status: 400 });
     }
 
