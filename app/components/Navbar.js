@@ -121,7 +121,16 @@ export default function Navbar({ active }) {
           ))}
           <span style={{ color: 'rgba(232,197,71,0.95)', fontSize: '12px', userSelect: 'none' }}>|</span>
 
-          <div style={{ position: 'relative' }}>
+          <div
+            style={{ position: 'relative' }}
+            onBlur={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget)) setMoreOpen(false);
+            }}
+            onKeyDown={(event) => {
+              if (event.key === 'Escape') setMoreOpen(false);
+            }}
+            onMouseLeave={() => setMoreOpen(false)}
+          >
             <button type="button" aria-expanded={moreOpen} aria-haspopup="menu" aria-label={moreOpen ? 'Close more navigation' : 'Open more navigation'} onClick={() => setMoreOpen(!moreOpen)}
               style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', background: 'none', border: 'none', color: moreOpen ? '#E8C547' : 'rgba(255,255,255,0.6)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px', padding: 0 }}>
               MORE <span style={{ fontSize: '8px', display: 'inline-block', transform: moreOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>▾</span>
