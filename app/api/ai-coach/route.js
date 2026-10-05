@@ -157,11 +157,29 @@ Only JSON. No preamble.`;
       return privateJson({ error: 'AI Coach returned invalid data' }, { status: 502 });
     }
 
-    if (!Array.isArray(parsed?.insights) || parsed.insights.length !== 4) {
-      return privateJson({ error: 'AI Coach returned incomplete data' }, { status: 502 });
+    const insights = Array.isArray(parsed?.insights) ? parsed.insights : [];
+    const validTypes = new Set(['strength', 'weakness', 'pattern', 'action']);
+    const validPriorities = new Set(['high', 'medium', 'low']);
+    const validInsights = insights.length === 4
+      ? insights.filter((item) =>
+        item &&
+        typeof item === 'object' &&
+        validTypes.has(item.type) &&
+        validPriorities.has(item.priority) &&
+        typeof item.title === 'string' &&
+        typeof item.body === 'string' &&
+        item.title.trim().length > 0 &&
+        item.title.length <= 120 &&
+        item.body.trim().length > 0 &&
+        item.body.length <= 1200
+      )
+      : [];
+
+    if (validInsights.length !== 4) {
+      return privateJson({ error: 'AI Coach returned incomplete or invalid data' }, { status: 502 });
     }
 
-    return privateJson({ insights: parsed.insights }, { headers: { 'Cache-Control': 'private, no-store' } });
+    return privateJson({ insights: validInsights }, { headers: { 'Cache-Control': 'private, no-store' } });
   } catch (error) {
     console.error('AI Coach error:', error);
     return privateJson({ error: 'AI Coach unavailable' }, { status: 500 });
