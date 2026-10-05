@@ -240,16 +240,16 @@ function TradeForm({ initial, onSave, onCancel, error }) {
   );
 
   return (
-    <div style={{
+    <div className="trade-modal-overlay" style={{
       position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.75)', zIndex: 200,
       display: 'flex', alignItems: 'flex-start', justifyContent: 'center',
       overflowY: 'auto', padding: '20px', flexDirection: 'column',
     }}>
       <h1 className="font-display text-4xl md:text-6xl text-white mb-8 text-center">Trading Journal</h1>
-      <div style={{
+      <div className="trade-modal" style={{
         background: C.bg1, border: `1px solid ${C.border}`, borderRadius: '18px',
         width: '100%', maxWidth: '820px', padding: '32px', position: 'relative',
-      }}>
+      }} >
         {/* Header */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '28px' }}>
           <div>
@@ -399,7 +399,7 @@ function TradeForm({ initial, onSave, onCancel, error }) {
         )}
 
         {/* Footer */}
-        <div style={{ display: 'flex', gap: '10px', marginTop: '24px', paddingTop: '20px', borderTop: `1px solid ${C.border}` }}>
+        <div className="trade-modal-footer" style={{ display: 'flex', gap: '10px', marginTop: '24px', paddingTop: '20px', borderTop: `1px solid ${C.border}` }} >
           <button type="button" onClick={() => onSave(form)} style={{ ...S.btn, flex: 1, padding: '13px' }}>
             {initial ? '💾 SAVE CHANGES' : '✦ SAVE TRADE'}
           </button>
@@ -1265,8 +1265,25 @@ function JournalLanding() {
   return (
     <div style={{ minHeight: '100vh', background: C.bg, color: C.text, fontFamily: "'DM Sans', sans-serif" }}>
       <style>{`
-
         * { box-sizing: border-box; } body { margin: 0; background: ${C.bg}; } button:hover { opacity: 0.85; } a { color: ${C.gold}; text-decoration: none; }
+        .trade-modal-overlay { align-items: center !important; }
+        .trade-modal { box-sizing: border-box; }
+        @media (max-width: 768px) {
+          .journal-landing-stats { grid-template-columns: repeat(2, 1fr) !important; }
+          .journal-landing-features { grid-template-columns: 1fr !important; }
+          .trade-modal-overlay { align-items: center !important; padding: 12px !important; }
+          .trade-modal { max-width: 100% !important; padding: 20px !important; border-radius: 14px !important; }
+          .trade-form-grid { grid-template-columns: 1fr !important; gap: 18px !important; }
+          .trade-fields-grid-2, .trade-fields-grid-3 { grid-template-columns: 1fr !important; }
+          .trade-modal-footer { flex-direction: column !important; }
+          .trade-modal-footer button { width: 100% !important; }
+          .trade-modal h1 { font-size: 1.9rem !important; }
+        }
+        @media (max-width: 420px) {
+          .journal-landing-stats > div { padding: 18px 10px !important; }
+          .trade-modal-overlay { padding: 8px !important; }
+          .trade-modal { padding: 16px !important; }
+        }
       `}</style>
       <div style={{ maxWidth: '900px', margin: '0 auto', padding: '80px 24px 60px', textAlign: 'center' }}>
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: C.gold + '12', border: '1px solid ' + C.gold + '30', borderRadius: '20px', padding: '6px 16px', marginBottom: '28px' }}>
@@ -1282,7 +1299,7 @@ function JournalLanding() {
           <a href="/auth" style={{ background: 'linear-gradient(135deg,' + C.gold + ',' + C.gold2 + ')', color: '#07090E', borderRadius: '12px', padding: '14px 32px', fontFamily: 'DM Mono, monospace', fontSize: '13px', fontWeight: 700, letterSpacing: '0.08em' }}>START FREE JOURNAL →</a>
           <a href="/courses" style={{ background: 'transparent', border: '1px solid ' + C.border2, color: C.text2, borderRadius: '12px', padding: '14px 24px', fontFamily: 'DM Mono, monospace', fontSize: '12px' }}>← Back to Courses</a>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px', background: C.border, borderRadius: '14px', overflow: 'hidden', marginTop: '56px' }}>
+        <div className="journal-landing-stats" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px', background: C.border, borderRadius: '14px', overflow: 'hidden', marginTop: '56px' }}>
           {stats.map((s, i) => (
             <div key={i} style={{ background: C.bg1, padding: '24px 16px', textAlign: 'center' }}>
               <div style={{ fontSize: '32px', fontWeight: 800, color: C.gold, fontFamily: 'DM Mono, monospace' }}>{s.value}</div>
@@ -1296,7 +1313,7 @@ function JournalLanding() {
           <h2 style={{ fontSize: '28px', fontWeight: 700, color: C.text, margin: '0 0 8px' }}>Everything you need to build your edge</h2>
           <p style={{ fontSize: '15px', color: C.text3, margin: 0 }}>No paywalls. No locked features. All tools available immediately after free signup.</p>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '48px' }}>
+        <div className="journal-landing-features" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '48px' }}>
           {features.map((f, i) => (
             <div key={i} style={{ background: C.bg1, border: '1px solid ' + C.border, borderRadius: '14px', padding: '24px' }}>
               <div style={{ fontSize: '28px', marginBottom: '12px' }}>{f.icon}</div>
