@@ -167,7 +167,7 @@ function DashboardSection({ users, emails, trades, proUsers, loading, onRefresh 
   return (
     <div>
       <SectionHeader title="SITE OVERVIEW" action={
-        <button onClick={onRefresh} style={css.btnGhost}>↻ Refresh</button>
+        <button type="button" onClick={onRefresh} style={css.btnGhost}>↻ Refresh</button>
       } />
       {loading ? (
         <div style={{ textAlign: 'center', padding: '60px', ...css.mono, fontSize: '12px', color: 'rgba(232,197,71,0.7)' }}>LOADING DATA...</div>
@@ -292,7 +292,7 @@ function UsersSection({ users, onReload }) {
                   <td style={{ padding: '10px 12px', color: G, ...css.mono, fontSize: '12px' }}>{u.xp || 0}</td>
                   <td style={{ padding: '10px 12px', fontSize: '13px' }}>{u.streak || 0}🔥</td>
                   <td style={{ padding: '10px 12px' }}>
-                    <button onClick={() => togglePro(u)} style={{
+                    <button type="button" onClick={() => togglePro(u)} style={{
                       background: u.is_pro ? 'rgba(52,211,153,0.1)' : 'rgba(232,197,71,0.08)',
                       border: `1px solid ${u.is_pro ? 'rgba(52,211,153,0.3)' : BORDER2}`,
                       borderRadius: '5px', padding: '3px 10px',
@@ -302,8 +302,8 @@ function UsersSection({ users, onReload }) {
                   </td>
                   <td style={{ padding: '10px 12px', fontSize: '11px', color: '#AAB3BF', whiteSpace: 'nowrap' }}>{u.created_at ? new Date(u.created_at).toLocaleDateString() : '—'}</td>
                   <td style={{ padding: '10px 12px', display: 'flex', gap: '6px' }}>
-                    <button onClick={() => resetXP(u)} style={{ ...css.btnGhost, padding: '5px 10px', fontSize: '10px' }}>RESET XP</button>
-                    <button onClick={() => deleteUser(u)} style={css.btnDanger}>DEL</button>
+                    <button type="button" onClick={() => resetXP(u)} style={{ ...css.btnGhost, padding: '5px 10px', fontSize: '10px' }}>RESET XP</button>
+                    <button type="button" onClick={() => deleteUser(u)} style={css.btnDanger}>DEL</button>
                   </td>
                 </tr>
               ))}
@@ -590,7 +590,7 @@ function BlogSection({ adminDbClient = adminDb }) {
               <div style={{ ...css.mono, fontSize: '10px', color: 'rgba(232,197,71,0.6)' }}>{p.category} · {p.read_time} · /{p.slug}</div>
             </div>
             <div style={{ display: 'flex', gap: '8px', flexShrink: 0, alignItems: 'center' }}>
-              <button onClick={() => togglePub(p)} style={{
+              <button type="button" onClick={() => togglePub(p)} style={{
                 background: p.published ? 'rgba(52,211,153,0.1)' : 'rgba(255,255,255,0.05)',
                 border: `1px solid ${p.published ? 'rgba(52,211,153,0.3)' : BORDER}`,
                 borderRadius: '6px', padding: '5px 12px',
@@ -669,8 +669,8 @@ function CoursesSection() {
                   </label>
                 </div>
                 <div style={{ display: 'flex', gap: '10px' }}>
-                  <button onClick={save} style={css.btn}>💾 SAVE</button>
-                  <button onClick={() => setEditing(null)} style={css.btnGhost}>CANCEL</button>
+                  <button type="button" onClick={save} style={css.btn}>💾 SAVE</button>
+                  <button type="button" onClick={() => setEditing(null)} style={css.btnGhost}>CANCEL</button>
                 </div>
               </div>
             ) : (
@@ -854,18 +854,18 @@ function PricingSection() {
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '7px 10px', background: S3, borderRadius: '7px' }}>
                   <div style={{ color, fontSize: '12px', flexShrink: 0 }}>✓</div>
                   <div style={{ flex: 1, fontSize: '13px' }}>{f}</div>
-                  <button onClick={() => removeFeature(plan, i)} style={{ background: 'none', border: 'none', color: '#F87171', cursor: 'pointer', fontSize: '14px' }}>×</button>
+                  <button type="button" onClick={() => removeFeature(plan, i)} style={{ background: 'none', border: 'none', color: '#F87171', cursor: 'pointer', fontSize: '14px' }}>×</button>
                 </div>
               ))}
             </div>
             {addingTo === plan ? (
               <div style={{ display: 'flex', gap: '8px' }}>
                 <Input value={newFeature} onChange={e => setNewFeature(e.target.value)} placeholder="New feature..." style={{ flex: 1 }} onKeyDown={e => e.key === 'Enter' && addFeature(plan)} />
-                <button onClick={() => addFeature(plan)} style={css.btn}>ADD</button>
-                <button onClick={() => { setAddingTo(null); setNewFeature(''); }} style={css.btnGhost}>✕</button>
+                <button type="button" onClick={() => addFeature(plan)} style={css.btn}>ADD</button>
+                <button type="button" onClick={() => { setAddingTo(null); setNewFeature(''); }} style={css.btnGhost}>✕</button>
               </div>
             ) : (
-              <button onClick={() => { setAddingTo(plan); setNewFeature(''); }} style={{ ...css.btnGhost, width: '100%', padding: '8px' }}>+ Add Feature</button>
+              <button type="button" onClick={() => { setAddingTo(plan); setNewFeature(''); }} style={{ ...css.btnGhost, width: '100%', padding: '8px' }}>+ Add Feature</button>
             )}
           </div>
         ))}
@@ -939,7 +939,7 @@ function NotificationsSection() {
           <FieldGroup label="Title *"><Input value={title} onChange={e => setTitle(e.target.value)} placeholder="New Module Released!" /></FieldGroup>
           <FieldGroup label="Message *"><Textarea value={msg} onChange={e => setMsg(e.target.value)} placeholder="New ICT lessons and modules are live. Start learning!" rows={4} /></FieldGroup>
           <FieldGroup label="Link URL (optional)"><Input value={url} onChange={e => setUrl(e.target.value)} placeholder="/courses" /></FieldGroup>
-          <button onClick={send} disabled={sending} style={{ ...css.btn, width: '100%', padding: '14px' }}>
+          <button type="button" onClick={send} disabled={sending} style={{ ...css.btn, width: '100%', padding: '14px' }}>
             {sending ? 'SENDING...' : '🔔 SEND PUSH NOTIFICATION'}
           </button>
         </div>
@@ -1025,7 +1025,7 @@ function JournalSection({ adminDbClient = adminDb }) {
           <Input value={newItem[field]} onChange={e=>setNewItem(p=>({...p,[field]:e.target.value}))}
             placeholder={`Add new ${label.toLowerCase()}...`} style={{ flex:1 }}
             onKeyDown={e=>e.key==='Enter'&&add()} />
-          <button onClick={add} style={{ ...css.btn, padding:'10px 18px' }}>ADD</button>
+          <button type="button" onClick={add} style={{ ...css.btn, padding:'10px 18px' }}>ADD</button>
         </div>
       </div>
     );
@@ -1166,7 +1166,7 @@ export default function AdminPage() {
           onKeyDown={e => e.key === 'Enter' && login()}
           style={{ ...css.input, marginBottom: '12px', textAlign: 'center', letterSpacing: '0.2em' }} />
         {error && <div style={{ ...css.mono, fontSize: '11px', color: '#F87171', marginBottom: '12px' }}>{error}</div>}
-        <button onClick={login} style={{ ...css.btn, width: '100%', padding: '13px', fontSize: '12px' }}>UNLOCK DASHBOARD</button>
+        <button type="button" onClick={login} style={{ ...css.btn, width: '100%', padding: '13px', fontSize: '12px' }}>UNLOCK DASHBOARD</button>
       </div>
     </div>
   );
@@ -1192,7 +1192,7 @@ export default function AdminPage() {
               <div style={{ ...css.mono, fontSize: '8px', color: 'rgba(232,197,71,0.6)', letterSpacing: '0.1em' }}>ADMIN PANEL</div>
             </div>
           )}
-          <button onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+          <button type="button" onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
             style={{ marginLeft: 'auto', background: 'none', border: 'none', color: '#AAB3BF', cursor: 'pointer', fontSize: '14px', flexShrink: 0 }}>
             {sidebarCollapsed ? '→' : '←'}
           </button>
@@ -1206,7 +1206,7 @@ export default function AdminPage() {
                 <div style={{ ...css.mono, fontSize: '8px', color: '#9DA6B2', letterSpacing: '0.15em', padding: '8px 8px 4px', textTransform: 'uppercase' }}>{group.label}</div>
               )}
               {TABS.filter(t => t.group === group.id).map(tab => (
-                <button key={tab.id} onClick={() => setActiveTab(tab.id)}
+                <button type="button" key={tab.id} onClick={() => setActiveTab(tab.id)}
                   title={sidebarCollapsed ? tab.label : ''}
                   style={{
                     width: '100%', display: 'flex', alignItems: 'center', gap: '9px',
