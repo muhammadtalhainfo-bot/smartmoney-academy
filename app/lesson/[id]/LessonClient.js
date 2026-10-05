@@ -25,7 +25,6 @@ function Section({ section, index, diagramSrc, diagramAlt }) {
     <div className="border border-[rgba(212,168,67,0.1)] rounded-xl overflow-hidden mb-4">
       <button
         type="button"
-        type="button"
         onClick={() => setOpen(!open)}
         aria-expanded={open}
         aria-controls={`lesson-section-${index}`}
