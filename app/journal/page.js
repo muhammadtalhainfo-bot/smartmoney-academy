@@ -171,7 +171,7 @@ const EmptyState = ({ onAdd }) => (
     <div style={{ fontSize: '44px', marginBottom: '16px' }}>📋</div>
     <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '20px', color: C.text, letterSpacing: '0.08em', marginBottom: '8px' }}>NO TRADES LOGGED</div>
     <div style={{ fontSize: '13px', color: C.text3, marginBottom: '24px' }}>Start building your edge. Every trade is data.</div>
-    <button onClick={onAdd} style={S.btn}>+ LOG FIRST TRADE</button>
+    <button type="button" onClick={onAdd} style={S.btn}>+ LOG FIRST TRADE</button>
   </div>
 );
 
