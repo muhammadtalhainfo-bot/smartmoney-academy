@@ -60,7 +60,13 @@ export async function POST(req) {
     }
 
     const email = typeof body?.email === 'string' ? body.email.trim().toLowerCase() : '';
-    if (!email || email.length > 254 || !email.includes('@')) {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if (
+      !email ||
+      email.length > 254 ||
+      !emailPattern.test(email) ||
+      email.split('@')[0].length > 64
+    ) {
       return noStoreJson({ error: 'Invalid email.', code: 'invalid_email' }, { status: 400 });
     }
 
