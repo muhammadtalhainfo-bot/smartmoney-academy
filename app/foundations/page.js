@@ -412,7 +412,7 @@ export default function FoundationsPage() {
               <div style={{ ...mono, fontSize: '10px', color: 'rgba(232,197,71,0.95)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '4px' }}>// Topics</div>
               <h2 className="font-display" style={{ fontSize: '36px', color: 'white' }}>{activeStep === 'All' ? 'ALL TOPICS' : `STEP ${activeStep}: ${STEPS[parseInt(activeStep)-1]?.name.toUpperCase()}`}</h2>
             </div>
-            <button onClick={() => setActiveStep('All')} style={{ ...mono, fontSize: '11px', color: '#E8C547', background: 'transparent', border: '1px solid rgba(232,197,71,0.95)', borderRadius: '8px', padding: '6px 14px', cursor: 'pointer' }}>
+            <button type="button" onClick={() => setActiveStep('All')} style={{ ...mono, fontSize: '11px', color: '#E8C547', background: 'transparent', border: '1px solid rgba(232,197,71,0.95)', borderRadius: '8px', padding: '6px 14px', cursor: 'pointer' }}>
               Show All →
             </button>
           </div>
