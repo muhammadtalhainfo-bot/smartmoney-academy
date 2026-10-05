@@ -130,6 +130,30 @@ function adminDbClient() {
   return createClient(url, key, { auth: { autoRefreshToken: false, persistSession: false } });
 }
 
+async function fetchAllRows(buildQuery, pageSize = 1000) {
+  const rows = [];
+
+  for (let from = 0; ; from += pageSize) {
+    const { data, error } = await buildQuery().range(from, from + pageSize - 1);
+    if (error) throw error;
+    rows.push(...(data || []));
+    if (!data || data.length < pageSize) return rows;
+  }
+}
+
+async function listAllAuthUsers(supabase, perPage = 1000) {
+  const users = [];
+
+  for (let page = 1; ; page += 1) {
+    const { data, error } = await supabase.auth.admin.listUsers({ page, perPage });
+    if (error) throw error;
+
+    const batch = data?.users || [];
+    users.push(...batch);
+    if (batch.length < perPage) return users;
+  }
+}
+
 function editorText(content) {
   if (typeof content === 'string') return content;
   if (!Array.isArray(content)) return '';
@@ -201,26 +225,26 @@ export async function adminDb(action, payload = {}) {
   switch (action) {
     case 'dashboard': {
       const [
-        { data: profileRows, error: profilesError },
-        { data: emails, error: emailsError },
+        profileRows,
+        emails,
         { count, error: tradesError },
-        { data: authPage, error: authUsersError },
+        authUsers,
       ] = await Promise.all([
-        supabase
+        fetchAllRows(() => supabase
           .from('profiles')
           .select('id,username,xp,streak,is_pro,joined_at')
-          .order('xp', { ascending: false })
-          .limit(1000),
-        supabase.from('email_signups').select('email,created_at').order('created_at', { ascending: false }),
+          .order('xp', { ascending: false })),
+        fetchAllRows(() => supabase
+          .from('email_signups')
+          .select('email,created_at')
+          .order('created_at', { ascending: false })),
         supabase.from('trades').select('id', { count: 'exact', head: true }),
-        supabase.auth.admin.listUsers({ page: 1, perPage: 1000 }),
+        listAllAuthUsers(supabase),
       ]);
 
-      if (profilesError || emailsError || tradesError || authUsersError) {
-        throw profilesError || emailsError || tradesError || authUsersError;
-      }
+      if (tradesError) throw tradesError;
 
-      const authById = new Map((authPage?.users || []).map((authUser) => [authUser.id, authUser]));
+      const authById = new Map((authUsers || []).map((authUser) => [authUser.id, authUser]));
       const users = (profileRows || []).map((profile) => {
         const authUser = authById.get(profile.id);
         return {
@@ -349,17 +373,22 @@ export async function adminDb(action, payload = {}) {
       return { ok: true };
     }
     case 'journal.load': {
-      const [{ count, error: countError }, { data: wins, error: winsError }, { data: all, error: allError }] = await Promise.all([
-        supabase.from('trades').select('*', { count: 'exact', head: true }),
-        supabase.from('trades').select('result').eq('result', 'Win'),
-        supabase.from('trades').select('user_id'),
+      const [
+        { count: total, error: totalError },
+        { count: wins, error: winsError },
+        all,
+      ] = await Promise.all([
+        supabase.from('trades').select('id', { count: 'exact', head: true }),
+        supabase.from('trades').select('id', { count: 'exact', head: true }).eq('result', 'Win'),
+        fetchAllRows(() => supabase.from('trades').select('user_id')),
       ]);
-      if (countError || winsError || allError) throw countError || winsError || allError;
+
+      if (totalError || winsError) throw totalError || winsError;
       return {
         stats: {
-          total: count || 0,
-          wins: (wins || []).length,
-          users: new Set((all || []).map((t) => t.user_id)).size,
+          total: total || 0,
+          wins: wins || 0,
+          users: new Set((all || []).map((t) => t.user_id).filter(Boolean)).size,
         },
         config: null,
       };
