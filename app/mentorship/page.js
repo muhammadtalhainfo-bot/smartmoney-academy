@@ -539,7 +539,7 @@ export default function MentorshipPage() {
             const phaseEps = EPISODES.filter(e => e.phase === p.id);
             const watchedInPhase = phaseEps.filter(e => watched.includes(e.id)).length;
             return (
-              <button key={p.id} onClick={() => setActivePhase(activePhase === String(p.id) ? 'All' : String(p.id))}
+              <button type="button" key={p.id} aria-pressed={activePhase === String(p.id)} onClick={() => setActivePhase(activePhase === String(p.id) ? 'All' : String(p.id))}
                 style={{ background: activePhase === String(p.id) ? `${p.color}15` : 'transparent', border: `1px solid ${activePhase === String(p.id) ? p.color + '40' : 'rgba(255,255,255,0.18)'}`, borderRadius: '10px', padding: '10px 16px', cursor: 'pointer', textAlign: 'left', minWidth: '160px' }}>
                 <div style={{ ...mono, fontSize: '9px', color: p.color, letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '4px' }}>{p.label} · EP {p.episodes}</div>
                 <div style={{ fontSize: '12px', color: 'white', fontWeight: 500, marginBottom: '6px' }}>{p.name}</div>
@@ -555,6 +555,8 @@ export default function MentorshipPage() {
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexDirection: 'column' }}>
             <input
+              type="search"
+              aria-label="Search mentorship episodes"
               value={search}
               onChange={e => setSearch(e.target.value)}
               placeholder="Search episodes, concepts..."
@@ -562,7 +564,7 @@ export default function MentorshipPage() {
             />
             <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', flex: 1 }}>
               {['All', ...ALL_TAGS].map(tag => (
-                <button key={tag} onClick={() => setActiveTag(tag)}
+                <button type="button" key={tag} aria-pressed={activeTag === tag} onClick={() => setActiveTag(tag)}
                   className="tag-pill"
                   style={{ background: activeTag === tag ? 'rgba(232,197,71,0.95)' : 'transparent', border: `1px solid ${activeTag === tag ? 'rgba(232,197,71,0.95)' : 'rgba(255,255,255,0.18)'}`, borderRadius: '99px', padding: '4px 10px', ...mono, fontSize: '10px', color: activeTag === tag ? '#080808' : '#A6A6A6', letterSpacing: '0.06em' }}>
                   {tag}
