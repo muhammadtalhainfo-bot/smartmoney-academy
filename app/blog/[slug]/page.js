@@ -48,11 +48,27 @@ function renderContent(content) {
 export const revalidate = 300;
 
 function absoluteImageUrl(image) {
+  const value = typeof image === 'string' ? image.trim() : '';
+  if (!value) return 'https://ictflow.com/og-image.png';
+
+  if (value.startsWith('/') && !value.startsWith('//')) {
+    try {
+      return new URL(value, 'https://ictflow.com').toString();
+    } catch {
+      return 'https://ictflow.com/og-image.png';
+    }
+  }
+
   try {
-    return new URL(image || '/og-image.png', 'https://ictflow.com').toString();
+    const parsed = new URL(value);
+    return parsed.protocol === 'https:' ? parsed.toString() : 'https://ictflow.com/og-image.png';
   } catch {
     return 'https://ictflow.com/og-image.png';
   }
+}
+
+function isLocalImage(image) {
+  return typeof image === 'string' && image.startsWith('/') && !image.startsWith('//');
 }
 
 export async function generateMetadata({ params }) {
@@ -105,6 +121,7 @@ export default async function BlogPost({ params }) {
   if (!post) notFound();
 
   const canonical = `https://ictflow.com/blog/${post.slug}`;
+  const coverImage = post.image || '/images/market-structure.png';
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -126,14 +143,26 @@ export default async function BlogPost({ params }) {
       <Navbar active="/blog" />
 
       <div style={{ height: '320px', overflow: 'hidden', position: 'relative', background: '#111111' }}>
-        <Image
-          src={post.image || '/images/market-structure.png'}
-          alt={post.title}
-          fill
-          sizes="100vw"
-          priority
-          style={{ objectFit: 'cover', opacity: 0.4 }}
-        />
+        {isLocalImage(coverImage) ? (
+          <Image
+            src={coverImage}
+            alt={post.title}
+            fill
+            sizes="100vw"
+            priority
+            style={{ objectFit: 'cover', opacity: 0.4 }}
+          />
+        ) : (
+          <img
+            src={coverImage}
+            alt={post.title}
+            width="1600"
+            height="640"
+            loading="eager"
+            fetchPriority="high"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.4 }}
+          />
+        )}
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 30%, #080808)' }} />
       </div>
 
