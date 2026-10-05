@@ -77,8 +77,11 @@ function Quiz({ questions, lessonId }) {
         return;
       }
 
-      const normalizedLessonId = Number.parseInt(String(lessonId), 10);
-      if (Number.isNaN(normalizedLessonId)) {
+      const lessonIdText = typeof lessonId === 'string' || typeof lessonId === 'number'
+        ? String(lessonId).trim()
+        : '';
+      const normalizedLessonId = Number(lessonIdText);
+      if (!/^\d+$/.test(lessonIdText) || !Number.isSafeInteger(normalizedLessonId) || normalizedLessonId <= 0 || String(normalizedLessonId) !== lessonIdText) {
         setCompletionState('error');
         setCompletionMessage('This lesson could not be saved. Please refresh and try again.');
         return;
