@@ -71,10 +71,19 @@ export async function POST(req) {
     if (allowed !== true) return json({ error: 'Too many completion attempts. Try again later.' }, { status: 429 });
 
     const body = await readJson(req);
-    const lessonId = Number.parseInt(String(body?.lessonId), 10);
+    const lessonIdText = typeof body?.lessonId === 'string' || typeof body?.lessonId === 'number'
+      ? String(body.lessonId).trim()
+      : '';
+    const lessonId = Number(lessonIdText);
     const answers = body?.answers;
 
-    if (!Number.isSafeInteger(lessonId) || !Array.isArray(answers)) {
+    if (
+      !/^\d+$/.test(lessonIdText) ||
+      !Number.isSafeInteger(lessonId) ||
+      lessonId <= 0 ||
+      String(lessonId) !== lessonIdText ||
+      !Array.isArray(answers)
+    ) {
       return json({ error: 'Invalid completion payload.' }, { status: 400 });
     }
 
