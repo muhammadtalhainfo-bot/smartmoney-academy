@@ -59,7 +59,7 @@ export default async function VerifyPage({ params }) {
   const result = await verifyCredential(credentialId);
 
   return (
-    <main style={{ minHeight: '100vh', background: '#080808', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '32px 20px', fontFamily: "'DM Sans', sans-serif" }}>
+    <div style={{ minHeight: '100vh', background: '#080808', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '32px 20px', fontFamily: "'DM Sans', sans-serif" }}>
       <div style={{ width: '100%', maxWidth: '760px', background: '#101010', border: '1px solid rgba(232,197,71,0.35)', borderRadius: '24px', padding: '48px', boxShadow: '0 30px 80px rgba(0,0,0,0.45)', textAlign: 'center' }}>
         <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', letterSpacing: '0.25em', color: '#E8C547', marginBottom: '18px' }}>ICT FLOW ACADEMY</div>
         {result ? (
@@ -101,6 +101,6 @@ export default async function VerifyPage({ params }) {
           ← ICTFLOW.COM
         </Link>
       </div>
-    </main>
+    </div>
   );
 }
