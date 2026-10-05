@@ -15,7 +15,7 @@ export default function NotFound() {
   return (
     <div style={{ minHeight: '100vh', background: '#080808', color: '#ededed', display: 'flex', flexDirection: 'column', fontFamily: "'DM Sans', sans-serif" }}>
       <Navbar />
-      <main style={{ flex: 1, display: 'grid', placeItems: 'center', padding: '80px 24px', textAlign: 'center' }}>
+      <div style={{ flex: 1, display: 'grid', placeItems: 'center', padding: '80px 24px', textAlign: 'center' }}>
         <div style={{ maxWidth: '620px' }}>
           <div style={{ fontFamily: 'DM Mono, monospace', color: '#E8C547', fontSize: '11px', letterSpacing: '0.18em', marginBottom: '18px' }}>404 // PAGE NOT FOUND</div>
           <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(64px, 12vw, 120px)', lineHeight: 0.9, margin: '0 0 20px' }}>WRONG <span style={{ color: '#E8C547' }}>LEVEL.</span></h1>
@@ -25,7 +25,7 @@ export default function NotFound() {
             <Link href="/courses" style={{ border: '1px solid rgba(232,197,71,0.3)', color: '#E8C547', padding: '14px 26px', borderRadius: '10px', textDecoration: 'none' }}>Browse 38 Modules</Link>
           </div>
         </div>
-      </main>
+      </div>
       <Footer />
     </div>
   );
