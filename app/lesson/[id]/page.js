@@ -10,9 +10,10 @@ export function generateStaticParams() {
 
 export default async function LessonPage({ params }) {
   const { id } = await params;
-  const lessonId = Number.parseInt(id, 10);
+  if (!/^\d+$/.test(id)) notFound();
 
-  if (!Number.isSafeInteger(lessonId)) notFound();
+  const lessonId = Number.parseInt(id, 10);
+  if (!Number.isSafeInteger(lessonId) || String(lessonId) !== id) notFound();
 
   const lesson = ALL_LESSONS[lessonId] || LEGACY_LESSONS[lessonId];
   if (!lesson) notFound();
