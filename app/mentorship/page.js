@@ -599,38 +599,44 @@ export default function MentorshipPage() {
                     <div key={ep.id} className="ep-card" style={{ background: isWatched ? 'rgba(52,211,153,0.03)' : '#111111', borderRadius: '14px', overflow: 'hidden', borderColor: isWatched ? 'rgba(52,211,153,0.15)' : isMustWatch ? '#E8C547' : 'rgba(212,168,67,0.22)' }}>
 
                       {/* Episode header */}
-                      <div
-                        onClick={() => setExpandedId(isExpanded ? null : ep.id)}
-                        style={{ padding: '16px 20px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '16px' }}>
-
-                        {/* Episode number */}
-                        <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: isWatched ? 'rgba(52,211,153,0.15)' : 'rgba(212,168,67,0.22)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                          {isWatched
-                            ? <span style={{ color: '#34D399', fontSize: '16px' }}>✓</span>
-                            : <span className="font-display" style={{ color: '#E8C547', fontSize: '16px' }}>{String(ep.id).padStart(2, '0')}</span>
-                          }
-                        </div>
-
-                        {/* Title and meta */}
-                        <div style={{ flex: 1, minWidth: 0 }}>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '4px' }}>
-                            <span style={{ fontSize: '14px', fontWeight: 600, color: 'white' }}>{ep.title}</span>
-                            {isMustWatch && <span style={{ ...mono, fontSize: '9px', background: 'rgba(232,197,71,0.95)', color: '#080808', padding: '2px 6px', borderRadius: '4px', letterSpacing: '0.08em' }}>MUST WATCH</span>}
+                      <div style={{ padding: '16px 20px', display: 'flex', alignItems: 'center', gap: '16px' }}>
+                        <button
+                          type="button"
+                          aria-expanded={isExpanded}
+                          aria-controls={`mentorship-episode-${ep.id}-content`}
+                          aria-label={isExpanded ? `Collapse episode ${ep.id}: ${ep.title}` : `Expand episode ${ep.id}: ${ep.title}`}
+                          onClick={() => setExpandedId(isExpanded ? null : ep.id)}
+                          style={{ flex: 1, minWidth: 0, display: 'flex', alignItems: 'center', gap: '16px', padding: 0, border: 'none', background: 'transparent', color: 'inherit', cursor: 'pointer', textAlign: 'left' }}
+                        >
+                          {/* Episode number */}
+                          <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: isWatched ? 'rgba(52,211,153,0.15)' : 'rgba(212,168,67,0.22)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                            {isWatched
+                              ? <span style={{ color: '#34D399', fontSize: '16px' }}>✓</span>
+                              : <span className="font-display" style={{ color: '#E8C547', fontSize: '16px' }}>{String(ep.id).padStart(2, '0')}</span>
+                            }
                           </div>
-                          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
-                            <span style={{ ...mono, fontSize: '10px', color: '#808080' }}>{ep.duration}</span>
-                            {ep.concepts.slice(0, 3).map(c => (
-                              <span key={c} style={{ ...mono, fontSize: '9px', color: 'rgba(232,197,71,0.95)', background: 'rgba(212,168,67,0.05)', border: '1px solid rgba(232,197,71,0.95)', padding: '1px 6px', borderRadius: '4px' }}>{c}</span>
-                            ))}
-                            {ep.concepts.length > 3 && <span style={{ ...mono, fontSize: '9px', color: '#D1D5DB' }}>+{ep.concepts.length - 3} more</span>}
+
+                          {/* Title and meta */}
+                          <div style={{ flex: 1, minWidth: 0 }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '4px' }}>
+                              <span style={{ fontSize: '14px', fontWeight: 600, color: 'white' }}>{ep.title}</span>
+                              {isMustWatch && <span style={{ ...mono, fontSize: '9px', background: 'rgba(232,197,71,0.95)', color: '#080808', padding: '2px 6px', borderRadius: '4px', letterSpacing: '0.08em' }}>MUST WATCH</span>}
+                            </div>
+                            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
+                              <span style={{ ...mono, fontSize: '10px', color: '#808080' }}>{ep.duration}</span>
+                              {ep.concepts.slice(0, 3).map(c => (
+                                <span key={c} style={{ ...mono, fontSize: '9px', color: 'rgba(232,197,71,0.95)', background: 'rgba(212,168,67,0.05)', border: '1px solid rgba(232,197,71,0.95)', padding: '1px 6px', borderRadius: '4px' }}>{c}</span>
+                              ))}
+                              {ep.concepts.length > 3 && <span style={{ ...mono, fontSize: '9px', color: '#D1D5DB' }}>+{ep.concepts.length - 3} more</span>}
+                            </div>
                           </div>
-                        </div>
+                        </button>
 
                         {/* Actions */}
                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
                           <button
                             type="button"
-                            onClick={(e) => { e.stopPropagation(); toggleWatched(ep.id); }}
+                            onClick={() => toggleWatched(ep.id)}
                             style={{ background: isWatched ? 'rgba(52,211,153,0.1)' : 'rgba(255,255,255,0.04)', border: `1px solid ${isWatched ? 'rgba(52,211,153,0.25)' : 'rgba(255,255,255,0.18)'}`, borderRadius: '8px', padding: '6px 12px', ...mono, fontSize: '10px', color: isWatched ? '#34D399' : '#808080', cursor: 'pointer', letterSpacing: '0.06em' }}>
                             {isWatched ? '✓ WATCHED' : 'MARK WATCHED'}
                           </button>
@@ -639,7 +645,7 @@ export default function MentorshipPage() {
                             aria-expanded={isExpanded}
                             aria-controls={`mentorship-episode-${ep.id}-content`}
                             aria-label={isExpanded ? `Collapse episode ${ep.id}: ${ep.title}` : `Expand episode ${ep.id}: ${ep.title}`}
-                            onClick={(e) => { e.stopPropagation(); setExpandedId(isExpanded ? null : ep.id); }}
+                            onClick={() => setExpandedId(isExpanded ? null : ep.id)}
                             style={{ background: 'transparent', border: 'none', color: '#E8C547', fontSize: '14px', cursor: 'pointer', padding: '4px 8px', lineHeight: 1 }}
                           >{isExpanded ? '−' : '+'}</button>
                         </div>
