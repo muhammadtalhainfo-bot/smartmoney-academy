@@ -63,7 +63,7 @@ export default async function SEOGuide({ params }) {
   return (
     <>
       <Navbar active="/learn" />
-      <main style={{minHeight:'100vh',background:'#080808',color:'#fff',fontFamily:"'DM Sans',sans-serif",padding:'56px 24px 80px'}}>
+      <div style={{minHeight:'100vh',background:'#080808',color:'#fff',fontFamily:"'DM Sans',sans-serif",padding:'56px 24px 80px'}}>
       <article style={{maxWidth:820,margin:'0 auto'}}>
         <Link href="/learn" style={{color:'#E8C547',textDecoration:'none'}}>← All ICT guides</Link>
         <p style={{color:'#E8C547',fontFamily:'DM Mono,monospace',fontSize:11,letterSpacing:2,marginTop:42}}>{page.category}</p>
@@ -109,7 +109,7 @@ export default async function SEOGuide({ params }) {
         <script type="application/ld+json" dangerouslySetInnerHTML={{__html:serializeJsonLd(schema)}} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{__html:serializeJsonLd(breadcrumbSchema)}} />
       </article>
-    </main>
+    </div>
       <Footer />
     </>
   )
