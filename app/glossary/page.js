@@ -205,7 +205,7 @@ export default function GlossaryPage() {
               className="search-input w-full pl-9 pr-4 py-3 rounded-xl text-sm"
             />
             {search && (
-              <button onClick={() => setSearch('')} className="absolute right-4 top-1/2 -translate-y-1/2 font-mono-c text-xs" style={{ color: 'rgba(232,197,71,0.95)' }}>✕</button>
+              <button type="button" onClick={() => setSearch('')} className="absolute right-4 top-1/2 -translate-y-1/2 font-mono-c text-xs" style={{ color: 'rgba(232,197,71,0.95)' }}>✕</button>
             )}
           </div>
           {/* Filters */}
@@ -268,6 +268,7 @@ export default function GlossaryPage() {
                 return (
                   <div key={i} className={`term-row ${isOpen ? 'active' : ''}`}>
                     <button
+                      type="button"
                       onClick={() => setExpanded(isOpen ? null : `${letter}-${i}`)}
                       className="w-full flex items-center justify-between px-6 py-4 text-left"
                     >
