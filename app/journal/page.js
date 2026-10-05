@@ -267,8 +267,8 @@ function TradeForm({ initial, onSave, onCancel, error }) {
             <div style={{ marginBottom: '20px' }}>
               <div style={{ ...S.mono, fontSize: '10px', color: C.gold, letterSpacing: '0.12em', marginBottom: '12px', paddingBottom: '8px', borderBottom: `1px solid ${C.border}` }}>TRADE DETAILS</div>
               <div className="trade-fields-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '10px' }}>
-                <div><label style={lbl}>Symbol</label><select aria-label="Trading symbol" value={form.pair} onChange={e => set('pair', e.target.value)} style={sel}>{PAIRS.map(p => <option key={p}>{p}</option>)}</select></div>
-                <div><label style={lbl}>Date</label><input aria-label="Trade date" type="date" value={form.date} onChange={e => set('date', e.target.value)} style={inp} /></div>
+                <div><label style={lbl}>Symbol</label><select value={form.pair} onChange={e => set('pair', e.target.value)} style={sel}>{PAIRS.map(p => <option key={p}>{p}</option>)}</select></div>
+                <div><label style={lbl}>Date</label><input type="date" value={form.date} onChange={e => set('date', e.target.value)} style={inp} /></div>
               </div>
               <div style={{ marginBottom: '10px' }}>
                 <label style={lbl}>Direction</label>
@@ -285,15 +285,15 @@ function TradeForm({ initial, onSave, onCancel, error }) {
                 </div>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '10px' }}>
-                <div><label style={lbl}>Entry</label><input aria-label="Entry price" type="number" value={form.entry} onChange={e => set('entry', e.target.value)} placeholder="0.00" style={inp} /></div>
-                <div><label style={lbl}>Stop Loss</label><input aria-label="Stop loss price" type="number" value={form.sl} onChange={e => set('sl', e.target.value)} placeholder="0.00" style={inp} /></div>
-                <div><label style={lbl}>Take Profit</label><input aria-label="Take profit price" type="number" value={form.tp} onChange={e => set('tp', e.target.value)} placeholder="0.00" style={inp} /></div>
-                <div><label style={lbl}>Exit Price</label><input aria-label="Exit price" type="number" value={form.exit} onChange={e => set('exit', e.target.value)} placeholder="0.00" style={inp} /></div>
+                <div><label style={lbl}>Entry</label><input type="number" value={form.entry} onChange={e => set('entry', e.target.value)} placeholder="0.00" style={inp} /></div>
+                <div><label style={lbl}>Stop Loss</label><input type="number" value={form.sl} onChange={e => set('sl', e.target.value)} placeholder="0.00" style={inp} /></div>
+                <div><label style={lbl}>Take Profit</label><input type="number" value={form.tp} onChange={e => set('tp', e.target.value)} placeholder="0.00" style={inp} /></div>
+                <div><label style={lbl}>Exit Price</label><input type="number" value={form.exit} onChange={e => set('exit', e.target.value)} placeholder="0.00" style={inp} /></div>
               </div>
               <div className="trade-fields-grid-3" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px', marginBottom: '10px' }}>
-                <div><label style={lbl}>R:R (auto)</label><input aria-label="Risk reward ratio" value={form.rr} onChange={e => set('rr', e.target.value)} placeholder="2.5" style={{ ...inp, color: C.gold }} /></div>
-                <div><label style={lbl}>P&L ($)</label><input aria-label="Profit and loss in dollars" type="number" value={form.pnl} onChange={e => set('pnl', e.target.value)} placeholder="0.00" style={inp} /></div>
-                <div><label style={lbl}>Risk %</label><input aria-label="Risk percentage" type="number" value={form.risk_pct} onChange={e => set('risk_pct', e.target.value)} placeholder="1.0" style={inp} /></div>
+                <div><label style={lbl}>R:R (auto)</label><input value={form.rr} onChange={e => set('rr', e.target.value)} placeholder="2.5" style={{ ...inp, color: C.gold }} /></div>
+                <div><label style={lbl}>P&L ($)</label><input type="number" value={form.pnl} onChange={e => set('pnl', e.target.value)} placeholder="0.00" style={inp} /></div>
+                <div><label style={lbl}>Risk %</label><input type="number" value={form.risk_pct} onChange={e => set('risk_pct', e.target.value)} placeholder="1.0" style={inp} /></div>
               </div>
               <div>
                 <label style={lbl}>Result</label>
@@ -316,13 +316,13 @@ function TradeForm({ initial, onSave, onCancel, error }) {
               <div style={{ ...S.mono, fontSize: '10px', color: C.gold, letterSpacing: '0.12em', marginBottom: '12px', paddingBottom: '8px', borderBottom: `1px solid ${C.border}` }}>TRADE NOTES</div>
               <div style={{ marginBottom: '10px' }}>
                 <label style={lbl}>Pre-Trade Plan (thesis, confluences, DOL)</label>
-                <textarea aria-label="Pre-trade plan" value={form.notes_pre} onChange={e => set('notes_pre', e.target.value)} rows={3}
+                <textarea value={form.notes_pre} onChange={e => set('notes_pre', e.target.value)} rows={3}
                   placeholder="What did you see? HTF bias? Killzone? Draw on liquidity?"
                   style={{ ...inp, resize: 'vertical', lineHeight: 1.6 }} />
               </div>
               <div>
                 <label style={lbl}>Post-Trade Review (what happened, lessons)</label>
-                <textarea aria-label="Post-trade review" value={form.notes_post} onChange={e => set('notes_post', e.target.value)} rows={3
+                <textarea value={form.notes_post} onChange={e => set('notes_post', e.target.value)} rows={3}
                   placeholder="Did price behave as expected? What would you do differently?"
                   style={{ ...inp, resize: 'vertical', lineHeight: 1.6 }} />
               </div>
@@ -376,7 +376,7 @@ function TradeForm({ initial, onSave, onCancel, error }) {
             {/* Screenshot */}
             <div>
               <label style={lbl}>Screenshot URL (TradingView, chart image)</label>
-              <input aria-label="Trade screenshot URL" value={form.screenshot_url} onChange={e => set('screenshot_url', e.target.value)}
+              <input value={form.screenshot_url} onChange={e => set('screenshot_url', e.target.value)}
                 placeholder="https://..." style={inp} maxLength={2048} inputMode="url" />
               {form.screenshot_url && isSafeHttpUrl(form.screenshot_url) && (
                 <img
@@ -634,8 +634,8 @@ function TradeHistory({ trades, onEdit, onDelete }) {
 
       {/* Filters */}
       <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr', gap: '10px', marginBottom: '16px' }}>
-        <input aria-label="Search journal trades" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search symbol, notes..." style={{ ...S.input, fontSize: '13px' }} />
-        <select aria-label="Filter journal results" value={filter.result} onChange={e => setFilter(f => ({ ...f, result: e.target.value }))} style={selStyle}>
+        <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search symbol, notes..." style={{ ...S.input, fontSize: '13px' }} />
+        <select value={filter.result} onChange={e => setFilter(f => ({ ...f, result: e.target.value }))} style={selStyle}>
           <option value="all">All Results</option>
           <option>Win</option><option>Loss</option><option>Break Even</option><option>Partial</option>
         </select>
