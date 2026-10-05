@@ -20,6 +20,7 @@ export default function Error({ error, reset }) {
         We could not load this page. Please try again.
       </p>
       <button
+        type="button"
         onClick={reset}
         style={{
           background: 'linear-gradient(135deg, #E8C547, #F0C96A)',
