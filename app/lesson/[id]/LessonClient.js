@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase';
 import { trackLessonStart, trackLessonComplete, trackShare } from '@/lib/analytics';
-import { MODULES } from '@/lib/curriculum';
 import Link from 'next/link';
 import Image from 'next/image';
 import AdSlot from '@/app/components/AdSlot';
