@@ -1,7 +1,7 @@
 'use client';
 // Production build checkpoint
 
-import { useState, useEffect } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
@@ -275,7 +275,7 @@ export default function FoundationsPage() {
     try { localStorage.setItem('foundations_completed', JSON.stringify(updated)); } catch {}
   };
 
-  const filtered = activeStep === 'All' ? TOPICS : TOPICS.filter(t => t.step === parseInt(activeStep));
+  const filtered = useMemo(() => activeStep === 'All' ? TOPICS : TOPICS.filter(t => t.step === parseInt(activeStep)), [activeStep]);
   const pct = Math.round((completed.length / TOPICS.length) * 100);
   const mono = { fontFamily: 'DM Mono, monospace' };
 
