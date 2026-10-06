@@ -41,7 +41,8 @@ export default function AdSlot({ slot, className = '' }) {
       }
 
       try {
-        const { data: { user }, error: authError } = await supabase.auth.getUser();
+        const { data: { session }, error: authError } = await supabase.auth.getSession();
+        const user = session?.user || null;
         const isExpectedNoSession =
           !user &&
           authError &&
