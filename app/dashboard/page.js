@@ -115,6 +115,27 @@ export default function DashboardPage() {
     return () => { isMounted = false; subscription?.unsubscribe(); };
   }, [router, supabase, updateStreak, retryTick]);
 
+  const totalModules = ALL_MODULES.length;
+  const completedModuleIds = useMemo(() => [...new Set(
+    completions
+      .map(c => Number(c.lesson_id))
+      .filter(id => ALL_MODULES.some(m => m.id === id))
+  )], [completions]);
+  const completedModules = completedModuleIds.length;
+  const overallPct = totalModules ? Math.round((completedModules / totalModules) * 100) : 0;
+  const xp = profile?.xp || 0;
+  const rankIndex = Math.min(Math.floor(xp / 500), LEVEL_RANKS.length - 1);
+  const currentRank = LEVEL_RANKS[rankIndex];
+  const isMaxRank = rankIndex === LEVEL_RANKS.length - 1;
+  const nextRank = isMaxRank ? null : LEVEL_RANKS[rankIndex + 1];
+  const xpToNext = isMaxRank ? null : (rankIndex + 1) * 500;
+  const xpPct = isMaxRank ? 100 : Math.min(100, Math.round((xp / xpToNext) * 100));
+  const displayName = profile?.name || user?.email?.split('@')[0] || 'Trader';
+  const recentCompletions = useMemo(
+    () => [...completions].sort((a, b) => new Date(b.completed_at) - new Date(a.completed_at)).slice(0, 4),
+    [completions]
+  );
+
   async function handleSignOut() {
     await supabase.auth.signOut();
     router.push('/');
@@ -151,29 +172,6 @@ export default function DashboardPage() {
       </div>
     );
   }
-
-  // Computed stats
-  const totalModules = ALL_MODULES.length;
-  const completedModuleIds = [...new Set(
-    completions
-      .map(c => Number(c.lesson_id))
-      .filter(id => ALL_MODULES.some(m => m.id === id))
-  )];
-  const completedModules = completedModuleIds.length;
-  const overallPct = Math.round((completedModuleIds.length / totalModules) * 100);
-  const xp = profile?.xp || 0;
-  const rankIndex = Math.min(Math.floor(xp / 500), LEVEL_RANKS.length - 1);
-  const currentRank = LEVEL_RANKS[rankIndex];
-  const isMaxRank = rankIndex === LEVEL_RANKS.length - 1;
-  const nextRank = isMaxRank ? null : LEVEL_RANKS[rankIndex + 1];
-  const xpToNext = isMaxRank ? null : (rankIndex + 1) * 500;
-  const xpPct = isMaxRank ? 100 : Math.min(100, Math.round((xp / xpToNext) * 100));
-  const displayName = profile?.name || user?.email?.split('@')[0] || 'Trader';
-
-  // Recent completions
-  const recentCompletions = [...completions]
-    .sort((a, b) => new Date(b.completed_at) - new Date(a.completed_at))
-    .slice(0, 4);
 
   return (
     <div className="min-h-screen bg-[#080808] text-white" style={{ fontFamily: "'DM Sans', sans-serif" }}>
