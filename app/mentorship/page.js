@@ -1,7 +1,7 @@
 'use client';
 // Production build checkpoint
 // Production build checkpoint
-import { useState, useEffect } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
