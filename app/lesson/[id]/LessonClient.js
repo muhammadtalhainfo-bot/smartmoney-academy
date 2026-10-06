@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { createClient } from '@/lib/supabase';
 import { trackLessonStart, trackLessonComplete, trackShare } from '@/lib/analytics';
 import Link from 'next/link';
