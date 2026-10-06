@@ -8,6 +8,7 @@ import { createClient } from '@/lib/supabase';
 import { MODULES as ALL_MODULES } from '@/lib/curriculum';
 
 const LEVEL_RANKS = ['Novice', 'Apprentice', 'Practitioner', 'Analyst', 'Strategist', 'Institutional'];
+const MODULE_ID_SET = new Set(ALL_MODULES.map(module => module.id));
 
 function CircleProgress({ pct, size = 90, stroke = 7, color = '#E8C547' }) {
   const r = (size - stroke) / 2;
