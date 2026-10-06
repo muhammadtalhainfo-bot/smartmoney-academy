@@ -89,6 +89,13 @@ export default function LeaderboardPage() {
   return (
     <div style={{ minHeight: '100vh', background: '#080808', color: 'white', fontFamily: "'DM Sans', sans-serif" }}>
       <style>{`
+        .leaderboard-row { min-width: 0; }
+        @media (max-width: 640px) {
+          .leaderboard-row { grid-template-columns: 42px minmax(0, 1fr) 72px !important; padding-left: 12px !important; padding-right: 12px !important; }
+          .leaderboard-row > :nth-child(4) { display: none; }
+          .leaderboard-row > :nth-child(3) { text-align: right; }
+        }
+
 
         .font-display { font-family: 'Bebas Neue', sans-serif; }
         .shine { background: linear-gradient(135deg, #8A6B28 0%, #E8C547 40%, #F0C96A 60%, #E8C547 80%, #8A6B28 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
@@ -146,7 +153,7 @@ export default function LeaderboardPage() {
         {/* LEADERBOARD TABLE */}
         <div style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '16px', overflow: 'hidden' }}>
           {/* Header */}
-          <div style={{ display: 'grid', gridTemplateColumns: '60px 1fr 120px 80px', padding: '12px 20px', borderBottom: '1px solid rgba(255,255,255,0.15)', background: 'rgba(255,255,255,0.02)' }}>
+          <div className="leaderboard-row leaderboard-head" style={{ display: 'grid', gridTemplateColumns: '60px 1fr 120px 80px', padding: '12px 20px', borderBottom: '1px solid rgba(255,255,255,0.15)', background: 'rgba(255,255,255,0.02)' }}>
             {['RANK', 'TRADER', 'XP', 'STREAK'].map(h => (
               <div key={h} style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: 'rgba(255,255,255,0.6)', letterSpacing: '0.15em' }}>{h}</div>
             ))}
@@ -164,7 +171,7 @@ export default function LeaderboardPage() {
               const isMe = currentUser && p.id === currentUser.id;
               const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : null;
               return (
-                <div key={p.id} className="row-hover" style={{ display: 'grid', gridTemplateColumns: '60px 1fr 120px 80px', padding: '14px 20px', borderBottom: '1px solid rgba(255,255,255,0.04)', background: isMe ? 'rgba(212,168,67,0.04)' : 'transparent', transition: 'background 0.2s' }}>
+                <div key={p.id} className="row-hover leaderboard-row" style={{ display: 'grid', gridTemplateColumns: '60px 1fr 120px 80px', padding: '14px 20px', borderBottom: '1px solid rgba(255,255,255,0.04)', background: isMe ? 'rgba(212,168,67,0.04)' : 'transparent', transition: 'background 0.2s' }}>
                   <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '14px', color: i < 3 ? '#E8C547' : 'rgba(255,255,255,0.7)', fontWeight: 600 }}>
                     {medal || `#${i + 1}`}
                   </div>
