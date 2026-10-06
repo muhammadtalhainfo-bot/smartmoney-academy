@@ -1553,18 +1553,10 @@ export default function JournalPage() {
   };
 
   const stats = useStats(trades);
-  const mistakeCount = trades.filter(t => (t.mistakes || []).length > 0 && !t.notes_post).length;
-
-  const PAGES = [
-    { id: 'dashboard', icon: '▦', label: 'Dashboard' },
-    { id: 'trades', icon: '≡', label: 'Trade History' },
-    { id: 'analytics', icon: '◎', label: 'Analytics' },
-    { id: 'sessions', icon: '◷', label: 'Sessions' },
-    { id: 'psychology', icon: '◉', label: 'Psychology' },
-    { id: 'ai', icon: '✦', label: 'AI Coach' },
-    { id: 'calendar', icon: '◫', label: 'Calendar' },
-    { id: 'progress', icon: '↑', label: 'Progress' },
-  ];
+  const mistakeCount = useMemo(
+    () => trades.filter(t => (t.mistakes || []).length > 0 && !t.notes_post).length,
+    [trades]
+  );
 
   const globalStyles = `
 
