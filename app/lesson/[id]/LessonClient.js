@@ -60,7 +60,10 @@ function Quiz({ questions, lessonId }) {
   const [submitted, setSubmitted] = useState(false);
   const [completionState, setCompletionState] = useState('idle');
   const [completionMessage, setCompletionMessage] = useState('');
-  const score = submitted ? questions.filter((q, i) => answers[i] === q.answer).length : 0;
+  const score = useMemo(
+    () => submitted ? questions.filter((q, i) => answers[i] === q.answer).length : 0,
+    [answers, questions, submitted]
+  );
 
   const saveCompletion = async () => {
     setCompletionState('saving');
