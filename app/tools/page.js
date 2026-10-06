@@ -128,7 +128,10 @@ export default function ToolsPage() {
   const [planSections, setPlanSections] = useState([]);
   const [loadError, setLoadError] = useState('');
   const supabase = useMemo(() => createClient(), []);
-  const tool = activeTool === 'plan' ? { ...PRO_TOOL, sections: planSections } : TOOLS.find(t => t.id === activeTool);
+  const tool = useMemo(
+    () => activeTool === 'plan' ? { ...PRO_TOOL, sections: planSections } : TOOLS.find(t => t.id === activeTool),
+    [activeTool, planSections]
+  );
 
   useEffect(() => {
     let mounted = true;
