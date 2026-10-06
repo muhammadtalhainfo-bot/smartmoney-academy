@@ -27,8 +27,6 @@ const MORE_NAV = [
   ['/about', 'About'],
 ];
 
-const ALL_NAV = [...MAIN_NAV, ...MORE_NAV];
-
 export default function Navbar({ active }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
