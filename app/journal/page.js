@@ -1351,6 +1351,17 @@ function JournalLanding() {
   );
 }
 // ─── MAIN PAGE ────────────────────────────────────────────────────────────────
+const PAGES = [
+  { id: 'dashboard', icon: '▦', label: 'Dashboard' },
+  { id: 'trades', icon: '≡', label: 'Trade History' },
+  { id: 'analytics', icon: '◎', label: 'Analytics' },
+  { id: 'sessions', icon: '◷', label: 'Sessions' },
+  { id: 'psychology', icon: '◉', label: 'Psychology' },
+  { id: 'ai', icon: '✦', label: 'AI Coach' },
+  { id: 'calendar', icon: '◫', label: 'Calendar' },
+  { id: 'progress', icon: '↑', label: 'Progress' },
+];
+
 const SAFE_PAIRS = new Set(PAIRS);
 const SAFE_SESSIONS = new Set(SESSIONS);
 const SAFE_DIRECTIONS = new Set(['Long', 'Short']);
