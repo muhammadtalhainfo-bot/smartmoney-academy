@@ -1,7 +1,8 @@
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
-import MarketTicker from '@/app/components/MarketTicker';
-import EmailCapture from '@/app/components/EmailCapture';
+const MarketTicker = dynamic(() => import('@/app/components/MarketTicker'));
+const EmailCapture = dynamic(() => import('@/app/components/EmailCapture'));
 import Footer from '@/app/components/Footer';
 import { MODULES, CURRICULUM_STATS } from '@/lib/curriculum';
 
