@@ -205,10 +205,16 @@ export default function ToolsPage() {
     setChecked(prev => ({ ...prev, [key]: !prev[key] }));
   };
 
-  const totalChecks = tool.sections.reduce((acc, s) =>
-    acc + s.items.reduce((a, i) => a + ((i.checks || i.fields || []).length), 0), 0);
-  const doneChecks = Object.values(checked).filter(Boolean).length;
-  const progress = totalChecks > 0 ? Math.round((doneChecks / totalChecks) * 100) : 0;
+  const { totalChecks, doneChecks, progress } = useMemo(() => {
+    const total = tool.sections.reduce((acc, s) =>
+      acc + s.items.reduce((a, i) => a + ((i.checks || i.fields || []).length), 0), 0);
+    const done = Object.values(checked).filter(Boolean).length;
+    return {
+      totalChecks: total,
+      doneChecks: done,
+      progress: total > 0 ? Math.round((done / total) * 100) : 0,
+    };
+  }, [tool.sections, checked]);
 
   return (
     <>
