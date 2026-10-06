@@ -411,7 +411,7 @@ export default function DashboardPage() {
                   const nextModule = ALL_MODULES.find(m => !completedModuleIds.includes(m.id));
                   if (!nextModule) return <p className="font-mono-c text-xs text-center py-4" style={{ color: '#34D399' }}>🏆 All modules complete!</p>;
                   return (
-                    <Link href={`/lesson/${nextModule.id}`} prefetch={false}>
+                    <Link href={`/lesson/${nextModule.id}`}>
                       <div className="p-4 rounded-xl border cursor-pointer transition-all hover:border-[#E8C547]" style={{ borderColor: 'rgba(232,197,71,0.95)', background: 'rgba(212,168,67,0.03)' }}>
                         <div className="flex items-center gap-3 mb-3">
                           <span className="text-2xl">{nextModule.emoji}</span>
