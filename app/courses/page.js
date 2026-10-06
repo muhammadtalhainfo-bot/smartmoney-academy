@@ -1,6 +1,6 @@
 'use client';
 import { MODULES } from '@/lib/curriculum';
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
@@ -183,34 +183,36 @@ export default function CoursesPage() {
   const [activeFilter, setActiveFilter] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
 
-  const filtered = MODULES.filter(m => {
-    const q = searchTerm.trim().toLowerCase();
-    const matchesSearch = !q || [
-      m.title,
-      m.desc,
-      m.level,
-      m.tag,
-      m.module,
-      ...(m.topics || []),
-    ].some(value => String(value).toLowerCase().includes(q));
-
-    if (!matchesSearch) return false;
-    if (activeFilter === 'All') return true;
-    if (['Beginner', 'Intermediate', 'Advanced'].includes(activeFilter)) return m.level === activeFilter;
-    if (activeFilter === 'SMC') return m.tag === 'SMC' || m.tag === 'ICT & SMC';
-    if (activeFilter === 'ICT & SMC') return m.tag === 'ICT & SMC';
-    if (activeFilter === 'NEWER') return m.tag === 'NEWER';
-    if (activeFilter === 'New') return m.isNew === true;
-    return m.tag.includes('ICT');
-  });
-
-  const stats = {
+  const stats = useMemo(() => ({
     total: MODULES.length,
     beginner: MODULES.filter(m => m.level === 'Beginner').length,
     intermediate: MODULES.filter(m => m.level === 'Intermediate').length,
     advanced: MODULES.filter(m => m.level === 'Advanced').length,
     lessons: MODULES.reduce((a, m) => a + m.lessons, 0),
-  };
+  }), []);
+
+  const filtered = useMemo(() => {
+    const q = searchTerm.trim().toLowerCase();
+    return MODULES.filter(m => {
+      const matchesSearch = !q || [
+        m.title,
+        m.desc,
+        m.level,
+        m.tag,
+        m.module,
+        ...(m.topics || []),
+      ].some(value => String(value).toLowerCase().includes(q));
+
+      if (!matchesSearch) return false;
+      if (activeFilter === 'All') return true;
+      if (['Beginner', 'Intermediate', 'Advanced'].includes(activeFilter)) return m.level === activeFilter;
+      if (activeFilter === 'SMC') return m.tag === 'SMC' || m.tag === 'ICT & SMC';
+      if (activeFilter === 'ICT & SMC') return m.tag === 'ICT & SMC';
+      if (activeFilter === 'NEWER') return m.tag === 'NEWER';
+      if (activeFilter === 'New') return m.isNew === true;
+      return m.tag.includes('ICT');
+    });
+  }, [activeFilter, searchTerm]);
 
   return (
     <div className="min-h-screen bg-[#080808] text-white" style={{ fontFamily: "'DM Sans', sans-serif" }}>
