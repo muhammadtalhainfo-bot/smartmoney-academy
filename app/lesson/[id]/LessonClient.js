@@ -180,7 +180,7 @@ function Quiz({ questions, lessonId }) {
                   type="button"
                   disabled={submitted}
                   aria-pressed={answers[qi] === oi}
-                  onClick={() => setAnswers({ ...answers, [qi]: oi })}
+                  onClick={() => setAnswers(prev => ({ ...prev, [qi]: oi }))}
                   className={`w-full text-left px-4 py-3 rounded-xl border text-sm transition-all ${style}`}
                 >
                   {opt}
