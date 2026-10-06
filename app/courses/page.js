@@ -162,7 +162,7 @@ function ModuleCard({ mod, index }) {
 
       {/* Start button */}
       <div style={{ padding: '14px 22px 20px' }}>
-        <Link href={`/lesson/${mod.id}`}>
+        <Link href={`/lesson/${mod.id}`} prefetch={false}>
           <div className="start-btn" style={{
             width: '100%', padding: '11px', borderRadius: '10px',
             border: '1px solid #E8C547',
