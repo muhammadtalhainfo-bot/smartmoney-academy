@@ -1,5 +1,3 @@
-'use client';
-
 const TESTIMONIALS = [
   {
     name: 'Ahmed K.',
