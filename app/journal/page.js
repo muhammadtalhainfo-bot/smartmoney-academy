@@ -433,9 +433,12 @@ function useStats(trades) {
       .slice().sort((a, b) => a.date.localeCompare(b.date))
       .map(t => { equity += parseFloat(t.pnl) || 0; return equity; });
 
-    // Max drawdown
-    let peak = 0, maxDD = 0, running = 0;
-    for (const p of pnls) { running += p; if (running > peak) peak = running; if (peak - running > maxDD) maxDD = peak - running; }
+    // Max drawdown must follow the same chronological order as the equity curve.
+    let peak = 0, maxDD = 0;
+    for (const equity of equityPoints) {
+      if (equity > peak) peak = equity;
+      if (peak - equity > maxDD) maxDD = peak - equity;
+    }
 
     // By session
     const bySess = {};
@@ -501,7 +504,6 @@ function useStats(trades) {
     });
 
     // Consistency score
-    const daysTraded = new Set(trades.map(t => t.date)).size;
     const tradesMistakes = trades.filter(t => (t.mistakes || []).length > 0).length;
     const tradesRuleBreaks = trades.filter(t => t.rules_checked && t.rules_checked.length < 4).length;
     const consistencyScore = Math.round(100 - (tradesMistakes / trades.length) * 30 - (tradesRuleBreaks / trades.length) * 20 + (winRate - 50) * 0.5);
