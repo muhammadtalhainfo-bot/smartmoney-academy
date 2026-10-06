@@ -1,11 +1,13 @@
 'use client';
+import dynamic from 'next/dynamic';
 import { MODULES } from '@/lib/curriculum';
 import React, { useMemo, useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
-import ModuleBanner from '@/app/components/ModuleBanner';
 
+
+const ModuleBanner = dynamic(() => import('@/app/components/ModuleBanner'));
 
 const FILTERS = ['All', 'Beginner', 'Intermediate', 'Advanced', 'ICT', 'ICT & SMC', 'SMC', 'NEWER', 'New'];
 
