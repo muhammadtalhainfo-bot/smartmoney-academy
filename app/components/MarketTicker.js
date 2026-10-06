@@ -21,12 +21,30 @@ export default function MarketTicker() {
       } catch {}
     }
 
+    let interval = null;
+    const schedule = () => {
+      if (document.visibilityState !== 'visible') return;
+      if (interval) clearInterval(interval);
+      interval = setInterval(fetchPrices, POLL_MS);
+    };
+    const onVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        fetchPrices();
+        schedule();
+      } else if (interval) {
+        clearInterval(interval);
+        interval = null;
+      }
+    };
+
     fetchPrices();
-    const interval = setInterval(fetchPrices, POLL_MS);
+    schedule();
+    document.addEventListener('visibilitychange', onVisibilityChange);
     return () => {
       active = false;
       controller.abort();
-      clearInterval(interval);
+      if (interval) clearInterval(interval);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
     };
   }, []);
 
