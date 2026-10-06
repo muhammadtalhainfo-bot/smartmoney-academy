@@ -120,7 +120,7 @@ export default function DashboardPage() {
   const completedModuleIds = useMemo(() => [...new Set(
     completions
       .map(c => Number(c.lesson_id))
-      .filter(id => ALL_MODULES.some(m => m.id === id))
+      .filter(id => MODULE_ID_SET.has(id))
   )], [completions]);
   const completedModules = completedModuleIds.length;
   const overallPct = totalModules ? Math.round((completedModules / totalModules) * 100) : 0;
