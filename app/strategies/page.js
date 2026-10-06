@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
@@ -136,7 +136,7 @@ export default function StrategiesPage() {
   const [activeTag, setActiveTag] = useState('All');
   const [selected, setSelected] = useState(null);
 
-  const filtered = activeTag === 'All' ? STRATEGIES : STRATEGIES.filter(s => s.tags.includes(activeTag));
+  const filtered = useMemo(() => activeTag === 'All' ? STRATEGIES : STRATEGIES.filter(s => s.tags.includes(activeTag)), [activeTag]);
   const strategy = selected ? STRATEGIES.find(s => s.slug === selected) : null;
 
   return (
