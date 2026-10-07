@@ -54,8 +54,10 @@ export async function loginAdmin(password) {
   }
 
   const headerStore = await headers();
-  const forwarded = headerStore.get('x-forwarded-for') || '';
-  const clientIp = forwarded.split(',')[0].trim() || headerStore.get('x-real-ip') || 'unknown';
+  const clientIp = headerStore.get('x-vercel-forwarded-for')?.trim()
+    || headerStore.get('x-forwarded-for')?.split(',')[0]?.trim()
+    || headerStore.get('x-real-ip')?.trim()
+    || 'unknown';
   const pepper = process.env.RATE_LIMIT_SECRET || secret;
   const clientKeyHash = crypto.createHash('sha256').update(pepper + ':' + clientIp).digest('hex');
 
