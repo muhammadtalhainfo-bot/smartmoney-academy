@@ -269,7 +269,7 @@ export async function adminDb(action, payload = {}) {
       const userId = requireUuid(payload.id);
       const { error } = await supabase
         .from('profiles')
-        .update({ xp: 0, total_xp: 0, streak: 0 })
+        .update({ xp: 0, total_xp: 0, streak: 0, longest_streak: 0, last_active: null })
         .eq('id', userId);
       if (error) throw error;
       return { ok: true };
