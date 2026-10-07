@@ -184,7 +184,7 @@ export default function GlossaryPage() {
             <span className="gold-gradient">GLOSSARY</span>
           </h1>
           <p className="text-gray-200 max-w-lg mx-auto text-sm" style={{ fontWeight: 300 }}>
-            Every term from ICT's YouTube channel and mentorship series. The complete reference — no fluff.
+            Every term from ICT&apos;s YouTube channel and mentorship series. The complete reference — no fluff.
           </p>
         </div>
       </section>
@@ -247,7 +247,7 @@ export default function GlossaryPage() {
       <div className="relative z-10 max-w-5xl mx-auto px-6 py-10">
         {grouped.length === 0 && (
           <div className="text-center py-20">
-            <p className="font-mono-c text-xs" style={{ color: '#E8C547' }}>No terms match "{search}"</p>
+            <p className="font-mono-c text-xs" style={{ color: '#E8C547' }}>No terms match &quot;{search}&quot;</p>
           </div>
         )}
 

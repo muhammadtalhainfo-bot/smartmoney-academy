@@ -89,7 +89,7 @@ export default function Testimonials() {
 
               {/* TEXT */}
               <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px', lineHeight: 1.7, fontWeight: 300, flex: 1 }}>
-                "{t.text}"
+                &quot;{t.text}&quot;
               </p>
 
               {/* TAG */}

@@ -10,7 +10,7 @@ export default function CookiesPage() {
       `}</style>
       <Navbar />
       <div style={{ maxWidth: '800px', margin: '0 auto', padding: '60px 24px' }}>
-        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#E8C547', letterSpacing: '0.2em', marginBottom: '12px' }}>// Legal</div>
+        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: '#E8C547', letterSpacing: '0.2em', marginBottom: '12px' }}>{'// Legal'}</div>
         <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '56px', color: 'white', marginBottom: '8px', letterSpacing: '0.05em' }}>COOKIE POLICY</h1>
         <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', color: 'rgba(255,255,255,0.6)', marginBottom: '48px' }}>Last updated: October 2026</div>
                 <div style={{ marginBottom: '40px' }}>
