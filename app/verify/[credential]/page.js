@@ -32,8 +32,10 @@ function hashClientKey(value) {
 
 async function consumeVerificationRateLimit() {
   const headerStore = await headers();
-  const forwarded = headerStore.get('x-forwarded-for') || '';
-  const clientIp = headerStore.get('x-real-ip') || forwarded.split(',')[0].trim() || 'unknown';
+  const clientIp = headerStore.get('x-vercel-forwarded-for')?.trim()
+    || headerStore.get('x-forwarded-for')?.split(',')[0]?.trim()
+    || headerStore.get('x-real-ip')?.trim()
+    || 'unknown';
   const supabase = adminClient();
   const { data: allowed, error } = await supabase.rpc('consume_api_rate_limit', {
     p_scope: 'credential-verify',
