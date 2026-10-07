@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase';
 import Link from 'next/link';
+import { PRO_MONTHLY_PRICE_USD } from '@/lib/pricing';
 
 export default function ProGuard({ children }) {
   const router = useRouter();
@@ -88,7 +89,7 @@ export default function ProGuard({ children }) {
         <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(232,197,71,0.95)', letterSpacing: '0.2em', marginBottom: '12px' }}>// PRO FEATURE</div>
         <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '48px', color: 'white', marginBottom: '16px', lineHeight: 1 }}>UPGRADE TO PRO</h1>
         <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '14px', lineHeight: 1.7, marginBottom: '32px' }}>
-          Certificates and premium trading tools are Pro features. Upgrade for $19/month to unlock everything.
+          Certificates and premium trading tools are Pro features. Upgrade for ${PRO_MONTHLY_PRICE_USD}/month to unlock everything.
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
           <Link href="/pricing" style={{ display: 'block', padding: '16px', borderRadius: '12px', fontFamily: 'DM Mono, monospace', fontSize: '13px', letterSpacing: '0.1em', textTransform: 'uppercase', background: 'linear-gradient(135deg, #E8C547, #F0C96A)', color: '#080808', fontWeight: 700, textDecoration: 'none', textAlign: 'center' }}>

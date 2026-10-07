@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { adminDb } from './actions';
 import { getAdminSession, loginAdmin, logoutAdmin } from './actions';
 import { MODULES as CURRICULUM_MODULES } from '@/lib/curriculum';
+import { PRO_ANNUAL_PRICE_USD, PRO_MONTHLY_PRICE_USD } from '@/lib/pricing';
 
 const G = '#E8C547';
 const G2 = '#F0C96A';
@@ -177,7 +178,7 @@ function DashboardSection({ users, emails, trades, proUsers, loading, onRefresh 
         <>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '14px', marginBottom: '24px' }}>
             <StatCard icon="👥" value={users.length}  label="Total Users"   sub={`${proUsers} Pro`} />
-            <StatCard icon="💰" value={proUsers}       label="Pro Members"   sub={`~$${proUsers * 19}/mo`} />
+            <StatCard icon="💰" value={proUsers}       label="Pro Members"   sub={`~${proUsers * PRO_MONTHLY_PRICE_USD}/mo`} />
             <StatCard icon="📧" value={emails.length}  label="Email Leads" />
             <StatCard icon="📊" value={trades}         label="Trade Logs" />
             <StatCard icon="🎓" value={ALL_MODULES.length} label="Modules"  sub={`${totalLessons} lessons`} />
@@ -838,8 +839,8 @@ function SEOSection() {
 function PricingSection() {
   const [freeFeatures, setFreeFeatures] = useState(['All 38 modules and 203+ lessons', 'ICT Glossary (97+ terms)', 'Daily practice challenges', 'Trade Journal', 'AI trade coaching in the journal']);
   const [proFeatures, setProFeatures] = useState(['Everything in Free', 'Certificate of completion', 'Professional trading-plan template', 'Ad-free learning experience', 'Cancel anytime']);
-  const [monthlyPrice, setMonthlyPrice] = useState('19');
-  const [annualPrice, setAnnualPrice] = useState('149');
+  const [monthlyPrice, setMonthlyPrice] = useState(String(PRO_MONTHLY_PRICE_USD));
+  const [annualPrice, setAnnualPrice] = useState(String(PRO_ANNUAL_PRICE_USD));
   const [newFeature, setNewFeature] = useState('');
   const [addingTo, setAddingTo] = useState(null);
   const [msg, setMsg] = useState('');
