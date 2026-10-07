@@ -46,6 +46,45 @@ function adminClient() {
   });
 }
 
+async function ensureStripeCustomer(stripe, admin, profile, user) {
+  if (profile?.stripe_customer_id) return profile.stripe_customer_id;
+
+  const email = user.email.trim().toLowerCase();
+  const customers = await stripe.customers.list({ email, limit: 25 });
+  let customer = customers.data.find(
+    (candidate) => candidate.metadata?.ictflow_user_id === user.id
+  );
+
+  if (!customer) {
+    const unassigned = customers.data.filter(
+      (candidate) => !candidate.metadata?.ictflow_user_id
+    );
+    if (unassigned.length === 1) customer = unassigned[0];
+  }
+
+  if (!customer) {
+    customer = await stripe.customers.create(
+      { email, metadata: { ictflow_user_id: user.id } },
+      { idempotencyKey: 'ictflow-customer-' + hashUserKey(user.id) }
+    );
+  } else if (customer.metadata?.ictflow_user_id !== user.id) {
+    customer = await stripe.customers.update(customer.id, {
+      metadata: { ...customer.metadata, ictflow_user_id: user.id },
+    });
+  }
+
+  const { error: profileUpdateError } = await admin
+    .from('profiles')
+    .update({ stripe_customer_id: customer.id })
+    .eq('id', user.id);
+
+  if (profileUpdateError) {
+    console.error('Stripe customer link failed:', profileUpdateError);
+  }
+
+  return customer.id;
+}
+
 export async function POST(req) {
   try {
     const contentLength = Number(req.headers.get('content-length') || 0);
@@ -121,21 +160,20 @@ export async function POST(req) {
       .eq('id', user.id)
       .maybeSingle();
 
-    if (profile?.stripe_customer_id) {
-      const subscriptions = await stripe.subscriptions.list({
-        customer: profile.stripe_customer_id,
-        status: 'all',
-        limit: 100,
-      });
-      const hasActiveSubscription = subscriptions.data.some((subscription) =>
-        ['active', 'trialing', 'past_due'].includes(subscription.status)
-      );
-      if (hasActiveSubscription) {
-        return privateJson({
-          error: 'You already have a Pro subscription. Manage it from Billing instead of starting another subscription.',
-          code: 'subscription_exists',
-        }, { status: 409 });
-      }
+    const stripeCustomerId = await ensureStripeCustomer(stripe, admin, profile, user);
+    const subscriptions = await stripe.subscriptions.list({
+      customer: stripeCustomerId,
+      status: 'all',
+      limit: 100,
+    });
+    const hasActiveSubscription = subscriptions.data.some((subscription) =>
+      ['active', 'trialing', 'past_due'].includes(subscription.status)
+    );
+    if (hasActiveSubscription) {
+      return privateJson({
+        error: 'You already have a Pro subscription. Manage it from Billing instead of starting another subscription.',
+        code: 'subscription_exists',
+      }, { status: 409 });
     }
 
     const baseUrl = getBaseUrl();
@@ -151,11 +189,7 @@ export async function POST(req) {
       allow_promotion_codes: true,
     };
 
-    if (profile?.stripe_customer_id) {
-      checkoutParams.customer = profile.stripe_customer_id;
-    } else {
-      checkoutParams.customer_email = user.email;
-    }
+    checkoutParams.customer = stripeCustomerId;
 
     const session = await stripe.checkout.sessions.create(checkoutParams, { idempotencyKey });
 
