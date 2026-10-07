@@ -305,7 +305,7 @@ export default function CoursesPage() {
             <span className="gold-gradient-text">ICT CURRICULUM</span>
           </h1>
           <p className="text-gray-200 text-lg max-w-xl mx-auto" style={{ fontWeight: 300 }}>
-            Every concept. Every model. From basic market structure to the newer Mentorship models. Built from ICT's YouTube channel — recent Mentorship updates.
+            Every concept. Every model. From basic market structure to the newer Mentorship models. Built from ICT&apos;s YouTube channel — recent Mentorship updates.
           </p>
         </div>
       </section>
