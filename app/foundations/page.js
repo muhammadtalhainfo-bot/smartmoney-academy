@@ -259,6 +259,7 @@ export default function FoundationsPage() {
       if (saved) {
         try {
           const parsed = JSON.parse(saved);
+          // eslint-disable-next-line react-hooks/set-state-in-effect -- hydrate client-only completion state
           if (Array.isArray(parsed)) setCompleted(parsed);
         } catch {
           try { localStorage.removeItem('foundations_completed'); } catch {}
