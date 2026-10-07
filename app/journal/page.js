@@ -537,15 +537,31 @@ function useStats(trades) {
       equityPoints, maxDD, avgWin, avgLoss,
       bySess, bySetup, byPair, byDay, byEmo, byMonth, byMistake,
       consistencyScore: Math.min(100, Math.max(0, consistencyScore)),
+      tradesMistakes,
     };
   }, [trades]);
 }
 // ─── PAGES ────────────────────────────────────────────────────────────────────
 
 function Dashboard({ trades, stats, onAdd, onPage }) {
+  const recent = useMemo(() => trades.slice().sort((a, b) => b.date.localeCompare(a.date)).slice(0, 5), [trades]);
+  const topSetup = useMemo(
+    () => stats ? Object.entries(stats.bySetup).sort((a, b) => b[1].total - a[1].total)[0] : null,
+    [stats]
+  );
+  const equityMini = useMemo(() => {
+    const points = (stats?.equityPoints || []).slice(-30);
+    if (!points.length) return [];
+    const min = Math.min(...points);
+    const max = Math.max(...points);
+    const range = max - min || 1;
+    return points.map((value) => ({
+      value,
+      height: Math.max(4, ((value - min) / range) * 72),
+    }));
+  }, [stats?.equityPoints]);
+
   if (!trades.length) return <EmptyState onAdd={onAdd} />;
-  const recent = trades.slice().sort((a, b) => b.date.localeCompare(a.date)).slice(0, 5);
-  const topSetup = stats ? Object.entries(stats.bySetup).sort((a, b) => b[1].total - a[1].total)[0] : null;
 
   return (
     <div>
@@ -568,12 +584,9 @@ function Dashboard({ trades, stats, onAdd, onPage }) {
         <div style={S.card}>
           <div style={{ ...S.mono, fontSize: '10px', color: C.text3, letterSpacing: '0.12em', marginBottom: '12px' }}>EQUITY CURVE</div>
           <div style={{ height: '80px', display: 'flex', alignItems: 'flex-end', gap: '3px' }}>
-            {stats.equityPoints.slice(-30).map((v, i, arr) => {
-              const min = Math.min(...arr), max = Math.max(...arr);
-              const range = max - min || 1;
-              const h = Math.max(4, ((v - min) / range) * 72);
-              return <div key={i} style={{ flex: 1, height: `${h}px`, background: v >= 0 ? C.green : C.red, borderRadius: '2px 2px 0 0', opacity: 0.8 }} />;
-            })}
+            {equityMini.map((point, i) => (
+              <div key={i} style={{ flex: 1, height: `${point.height}px`, background: point.value >= 0 ? C.green : C.red, borderRadius: '2px 2px 0 0', opacity: 0.8 }} />
+            ))}
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '8px' }}>
             <span style={{ ...S.mono, fontSize: '10px', color: C.text3 }}>Max DD: <span style={{ color: C.red }}>-${fmt(stats.maxDD, 0)}</span></span>
@@ -588,7 +601,7 @@ function Dashboard({ trades, stats, onAdd, onPage }) {
             {[
               { label: 'Win Rate', val: stats.winRate, color: C.gold },
               { label: 'Consistency', val: stats.consistencyScore, color: C.blue },
-              { label: 'Clean Entries', val: Math.round(100 - (trades.filter(t => (t.mistakes || []).length > 0).length / trades.length) * 100), color: C.green },
+              { label: 'Clean Entries', val: Math.round(100 - (stats.tradesMistakes / trades.length) * 100), color: C.green },
             ].map(({ label, val, color }) => (
               <div key={label}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
@@ -637,6 +650,8 @@ function TradeHistory({ trades, onEdit, onDelete }) {
   const [sort, setSort] = useState('date_desc');
   const [search, setSearch] = useState('');
 
+  const symbols = useMemo(() => [...new Set(trades.map(t => t.pair).filter(Boolean))], [trades]);
+
   const filtered = useMemo(() => {
     let t = [...trades];
     if (filter.result !== 'all') t = t.filter(x => x.result === filter.result);
@@ -670,7 +685,7 @@ function TradeHistory({ trades, onEdit, onDelete }) {
         </select>
         <select aria-label="Filter by symbol" value={filter.pair} onChange={e => setFilter(f => ({ ...f, pair: e.target.value }))} style={selStyle}>
           <option value="all">All Symbols</option>
-          {[...new Set(trades.map(t => t.pair))].map(p => <option key={p}>{p}</option>)}
+          {symbols.map(p => <option key={p}>{p}</option>)}
         </select>
         <select aria-label="Sort trade history" value={sort} onChange={e => setSort(e.target.value)} style={selStyle}>
           <option value="date_desc">Newest First</option>
