@@ -309,7 +309,7 @@ export default function HomePage() {
           <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'rgba(232,197,71,0.5)', letterSpacing:'0.15em', marginBottom:'28px' }}>{'// ICT'}</div>
           <blockquote className="font-display" style={{ fontSize:'clamp(28px, 5vw, 52px)', color:'white', lineHeight:1.2, marginBottom:'20px' }}>
             &quot;STOP TRYING TO PREDICT.<br />
-            <span className="gold-text">START READING THE ALGORITHM."</span>
+            <span className="gold-text">START READING THE ALGORITHM.&quot;</span>
           </blockquote>
           <p style={{ fontFamily:'DM Mono,monospace', fontSize:'10px', color:'#B9C1CC', letterSpacing:'0.2em' }}>— MICHAEL J. HUDDLESTON (ICT)</p>
         </div>
