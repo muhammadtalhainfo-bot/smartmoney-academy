@@ -213,7 +213,7 @@ export default function HomePage() {
         <div style={{ maxWidth:'1100px', margin:'0 auto' }}>
           <div style={{ textAlign:'center', marginBottom:'56px' }}>
             <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'#D8B94F', letterSpacing:'0.15em', marginBottom:'12px' }}>{'// CURRICULUM'}</div>
-            <h2 className="font-display" style={{ fontSize:'clamp(40px, 7vw, 72px)', color:'white', lineHeight:1, marginBottom:'12px' }}>WHAT YOU'LL LEARN</h2>
+            <h2 className="font-display" style={{ fontSize:'clamp(40px, 7vw, 72px)', color:'white', lineHeight:1, marginBottom:'12px' }}>WHAT YOU&apos;LL LEARN</h2>
             <p style={{ fontSize:'15px', color:'#C5CCD6', fontWeight:300 }}>38 modules. Structured independently around ICT and SMC concepts, with original explanations and practice.</p>
           </div>
 
