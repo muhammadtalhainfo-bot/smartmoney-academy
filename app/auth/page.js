@@ -229,7 +229,7 @@ function AuthPageInner() {
             {/* Forgot Password Panel */}
             {showForgot && (
               <div style={{ background: 'rgba(212,168,67,0.05)', border: '1px solid rgba(232,197,71,0.95)', borderRadius: '12px', padding: '18px' }}>
-                <div style={{ fontFamily: 'DM Mono', fontSize: '10px', color: '#E8C547', marginBottom: '12px', letterSpacing: '0.12em' }}>// RESET PASSWORD</div>
+                <div style={{ fontFamily: 'DM Mono', fontSize: '10px', color: '#E8C547', marginBottom: '12px', letterSpacing: '0.12em' }}>{'// RESET PASSWORD'}</div>
                 {forgotSent ? (
                   <div style={{ color: '#34D399', fontFamily: 'DM Sans', fontSize: '13px' }}>✓ Reset link sent! Check your email.</div>
                 ) : (
