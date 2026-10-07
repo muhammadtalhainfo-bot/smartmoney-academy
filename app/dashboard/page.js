@@ -122,8 +122,25 @@ export default function DashboardPage() {
       .map(c => Number(c.lesson_id))
       .filter(id => MODULE_ID_SET.has(id))
   )], [completions]);
+  const completedModuleIdSet = useMemo(() => new Set(completedModuleIds), [completedModuleIds]);
   const completedModules = completedModuleIds.length;
   const overallPct = totalModules ? Math.round((completedModules / totalModules) * 100) : 0;
+  const trackProgress = useMemo(() => (
+    [
+      { label: 'Beginner Track', level: 'Beginner', color: '#34D399' },
+      { label: 'Intermediate Track', level: 'Intermediate', color: '#E8C547' },
+      { label: 'Advanced Track', level: 'Advanced', color: '#F87171' },
+      { label: 'SMC Track', level: 'SMC', color: '#FB923C' },
+    ].map((track) => {
+      const trackIds = ALL_MODULES.filter(m => m.level === track.level).map(m => m.id);
+      const done = trackIds.filter(id => completedModuleIdSet.has(id)).length;
+      return { ...track, total: trackIds.length, done };
+    })
+  ), [completedModuleIdSet]);
+  const nextModule = useMemo(
+    () => ALL_MODULES.find(module => !completedModuleIdSet.has(module.id)) || null,
+    [completedModuleIdSet]
+  );
   const xp = profile?.xp || 0;
   const rankIndex = Math.min(Math.floor(xp / 500), LEVEL_RANKS.length - 1);
   const currentRank = LEVEL_RANKS[rankIndex];
@@ -309,26 +326,17 @@ export default function DashboardPage() {
                   </div>
                 </div>
                 <div className="space-y-3">
-                  {[
-                    { label: 'Beginner Track', level: 'Beginner', color: '#34D399' },
-                    { label: 'Intermediate Track', level: 'Intermediate', color: '#E8C547' },
-                    { label: 'Advanced Track', level: 'Advanced', color: '#F87171' },
-                    { label: 'SMC Track', level: 'SMC', color: '#FB923C' },
-                  ].map((track) => {
-                    const trackIds = ALL_MODULES.filter(m => m.level === track.level).map(m => m.id);
-                    const done = trackIds.filter(id => completedModuleIds.includes(id)).length;
-                    return (
-                      <div key={track.label}>
-                        <div className="flex justify-between mb-1.5">
-                          <span className="font-mono-c text-xs" style={{ color: track.color }}>{track.label}</span>
-                          <span className="font-mono-c text-xs" style={{ color: '#808080' }}>{done}/{trackIds.length}</span>
-                        </div>
-                        <div className="progress-bar-bg h-1.5">
-                          <div className="h-1.5 rounded-full" style={{ width: `${trackIds.length ? (done / trackIds.length) * 100 : 0}%`, background: track.color, transition: 'width 1s ease' }} />
-                        </div>
+                  {trackProgress.map((track) => (
+                    <div key={track.label}>
+                      <div className="flex justify-between mb-1.5">
+                        <span className="font-mono-c text-xs" style={{ color: track.color }}>{track.label}</span>
+                        <span className="font-mono-c text-xs" style={{ color: '#808080' }}>{track.done}/{track.total}</span>
                       </div>
-                    );
-                  })}
+                      <div className="progress-bar-bg h-1.5">
+                        <div className="h-1.5 rounded-full" style={{ width: `${track.total ? (track.done / track.total) * 100 : 0}%`, background: track.color, transition: 'width 1s ease' }} />
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -407,7 +415,6 @@ export default function DashboardPage() {
               <div className="card p-6">
                 <div className="font-mono-c text-xs tracking-widest uppercase mb-4" style={{ color: '#E8C547' }}>// Up Next</div>
                 {(() => {
-                  const nextModule = ALL_MODULES.find(m => !completedModuleIds.includes(m.id));
                   if (!nextModule) return <p className="font-mono-c text-xs text-center py-4" style={{ color: '#34D399' }}>🏆 All modules complete!</p>;
                   return (
                     <Link href={`/lesson/${nextModule.id}`}>
@@ -436,7 +443,7 @@ export default function DashboardPage() {
         {activeTab === 'modules' && (
           <div className="fade-up grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {ALL_MODULES.map((mod) => {
-              const isComplete = completedModuleIds.includes(mod.id);
+              const isComplete = completedModuleIdSet.has(mod.id);
               const pct = isComplete ? 100 : 0;
               return (
                 <Link key={mod.id} href={`/lesson/${mod.id}`}>
