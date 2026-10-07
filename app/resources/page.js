@@ -38,7 +38,7 @@ export default function ResourcesPage() {
       <div style={{maxWidth:'700px',margin:'0 auto'}}>
         <div style={{display:'inline-flex',alignItems:'center',gap:'8px',padding:'6px 16px',borderRadius:'100px',border:'1px solid var(--border)',background:'rgba(212,168,67,.04)',fontFamily:'DM Mono,monospace',fontSize:'13px',letterSpacing:'.15em',color:'#E8C547',marginBottom:'24px'}}>TRADING RESOURCES</div>
         <h1 className="font-display shine" style={{fontSize:'clamp(52px,10vw,96px)',lineHeight:1,marginBottom:'20px'}}>TRADING RESOURCES</h1>
-        <p style={{color:'rgba(255,255,255,.55)',fontSize:'16px',fontWeight:300,lineHeight:1.7,maxWidth:'500px',margin:'0 auto 12px'}}>A collection of external trading platforms and educational resources. Check each provider's current terms, pricing, and availability before using any service.</p>
+        <p style={{color:'rgba(255,255,255,.55)',fontSize:'16px',fontWeight:300,lineHeight:1.7,maxWidth:'500px',margin:'0 auto 12px'}}>A collection of external trading platforms and educational resources. Check each provider&apos;s current terms, pricing, and availability before using any service.</p>
         <p style={{color:'#E8C547',fontSize:'12px',fontFamily:'DM Mono,monospace',letterSpacing:'.1em'}}>⚠️ TRADING INVOLVES RISK — REVIEW PROVIDER TERMS AND ONLY USE CAPITAL YOU CAN AFFORD TO LOSE</p>
       </div>
     </section>
