@@ -485,7 +485,7 @@ export default function CoursesPage() {
       <section className="relative z-10 px-6 py-16 border-t" style={{ borderColor: 'var(--border)', background: '#0A0A0A' }}>
         <div className="max-w-2xl mx-auto text-center">
           <div className="font-mono-c text-xs tracking-widest uppercase mb-4" style={{ color: 'rgba(232,197,71,0.95)' }}>{'// Start From Zero'}</div>
-          <h2 className="font-display text-5xl text-white mb-4">DON'T KNOW WHERE<br/>TO BEGIN?</h2>
+          <h2 className="font-display text-5xl text-white mb-4">DON&apos;T KNOW WHERE<br/>TO BEGIN?</h2>
           <p className="text-gray-200 text-sm mb-8" style={{ fontWeight: 300 }}>New to trading? Start with Trading Foundations first, then come back here.</p>
           <Link href="/lesson/1">
             <span className="inline-block px-8 py-4 rounded-xl font-mono-c text-sm tracking-widest uppercase font-bold transition-all hover:shadow-lg" style={{ background: 'linear-gradient(135deg, #E8C547, #F0C96A)', color: '#080808' }}>
