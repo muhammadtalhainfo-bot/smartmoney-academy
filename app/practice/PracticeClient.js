@@ -1,11 +1,11 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 
 export default function PracticeClient({ initialQuestions, dateStr }) {
-  const [questions] = useState(initialQuestions);
+  const questions = Array.isArray(initialQuestions) ? initialQuestions : [];
   const [current, setCurrent] = useState(0);
   const [selected, setSelected] = useState(null);
   const [revealed, setRevealed] = useState(false);
@@ -14,7 +14,9 @@ export default function PracticeClient({ initialQuestions, dateStr }) {
   const [done, setDone] = useState(false);
 
   const q = questions[current];
-  const progress = ((current + (revealed ? 1 : 0)) / questions.length) * 100;
+  const progress = questions.length
+    ? ((current + (revealed ? 1 : 0)) / questions.length) * 100
+    : 0;
 
   function handleSelect(i) {
     if (revealed) return;
@@ -40,6 +42,19 @@ export default function PracticeClient({ initialQuestions, dateStr }) {
   }
 
   const finalScore = answers.filter(a => a.correct).length;
+
+  if (!questions.length) {
+    return (
+      <div className="min-h-screen bg-[#080808] text-white" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+        <Navbar active="/practice" />
+        <main className="max-w-2xl mx-auto px-4 py-16 text-center">
+          <h1 className="font-display text-4xl md:text-6xl text-white mb-4">Practice</h1>
+          <p className="text-gray-200">No practice questions are available right now. Please try again later.</p>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#080808] text-white" style={{ fontFamily: "'DM Sans', sans-serif" }}>

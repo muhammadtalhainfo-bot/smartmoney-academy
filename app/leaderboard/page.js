@@ -12,9 +12,10 @@ const RANKS = [
   { name: 'Liquidity Hunter', min: 1000, color: '#8B5CF6', icon: '🎯' },
   { name: 'ICT Master', min: 2500, color: '#E8C547', icon: '👑' },
 ];
+const RANKS_DESC = [...RANKS].reverse();
 
 function getRank(xp) {
-  return [...RANKS].reverse().find(r => xp >= r.min) || RANKS[0];
+  return RANKS_DESC.find(r => xp >= r.min) || RANKS[0];
 }
 
 export default function LeaderboardPage() {

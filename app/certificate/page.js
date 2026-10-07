@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import { MODULES } from '@/lib/curriculum';
@@ -41,6 +41,10 @@ export default function CertificatePage() {
   }, []);
 
   const progress = Math.round((completed / TOTAL_MODULES) * 100);
+  const completedModuleIdSet = useMemo(
+    () => new Set((certificate?.completedModuleIds || []).map(Number)),
+    [certificate?.completedModuleIds]
+  );
   const eligible = Boolean(certificate?.eligible) && completed >= TOTAL_MODULES;
   const name = certificate?.name || profile?.username || user?.email?.split('@')[0] || 'Trader';
   const date = certificate?.issuedAt
@@ -99,7 +103,7 @@ export default function CertificatePage() {
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '10px' }}>
                 {MODULES.map((module) => {
-                  const done = certificate?.completedModuleIds?.includes(module.id);
+                  const done = completedModuleIdSet.has(module.id);
                   return (
                     <div key={module.id} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', borderRadius: '8px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)' }}>
                       <span style={{ fontSize: '14px' }}>{done ? '✅' : '⬜'}</span>
