@@ -159,7 +159,7 @@ function Quiz({ questions, lessonId }) {
   return (
     <div className="rounded-2xl border border-[rgba(212,168,67,0.2)] bg-[rgba(212,168,67,0.03)] p-6">
       <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', color: '#D4A843', letterSpacing: '0.15em' }} className="mb-4">
-        // KNOWLEDGE CHECK
+        {'// KNOWLEDGE CHECK'}
       </div>
       {questions.map((q, qi) => (
         <div key={qi} className="mb-6">
@@ -391,7 +391,7 @@ export default function LessonClient({ lesson, lessonId, moduleDiagramSrc }) {
 
         {/* ── Content sections ── */}
         <div className="mb-10">
-          <div className="font-mono-custom text-xs text-[var(--gold)] tracking-widest uppercase mb-5">// Lesson Content</div>
+          <div className="font-mono-custom text-xs text-[var(--gold)] tracking-widest uppercase mb-5">{'// Lesson Content'}</div>
           {lesson.sections.map((section, i) => (
             <Section
               key={i}
@@ -405,7 +405,7 @@ export default function LessonClient({ lesson, lessonId, moduleDiagramSrc }) {
 
         {/* ── Quiz ── */}
         <div className="mb-10">
-          <div className="font-mono-custom text-xs text-[var(--gold)] tracking-widest uppercase mb-5">// Test Your Understanding</div>
+          <div className="font-mono-custom text-xs text-[var(--gold)] tracking-widest uppercase mb-5">{'// Test Your Understanding'}</div>
           <Quiz questions={lesson.quiz} lessonId={lessonId} />
         </div>
 
@@ -435,7 +435,7 @@ export default function LessonClient({ lesson, lessonId, moduleDiagramSrc }) {
       <div className="border-t border-[var(--border)] px-6 py-8 mt-8">
         <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
-            <div className="font-mono-custom text-xs text-[var(--gold)] tracking-widest uppercase mb-1">// What to study next</div>
+            <div className="font-mono-custom text-xs text-[var(--gold)] tracking-widest uppercase mb-1">{'// What to study next'}</div>
             <div className="text-white font-semibold">Continue your ICT journey</div>
           </div>
           <div className="flex gap-3">

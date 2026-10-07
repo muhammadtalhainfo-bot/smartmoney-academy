@@ -225,7 +225,7 @@ export default function ToolsPage() {
 
         {/* HERO */}
         <section style={{ paddingTop: '100px', paddingBottom: '60px', textAlign: 'center', borderBottom: '1px solid rgba(212,168,67,0.08)' }}>
-          <div className="font-mono-c" style={{ fontSize: '11px', letterSpacing: '3px', color: 'rgba(212,168,67,0.7)', marginBottom: '16px', textTransform: 'uppercase' }}>// Trader Tools</div>
+          <div className="font-mono-c" style={{ fontSize: '11px', letterSpacing: '3px', color: 'rgba(212,168,67,0.7)', marginBottom: '16px', textTransform: 'uppercase' }}>{'// Trader Tools'}</div>
           <h1 className="font-display" style={{ fontSize: 'clamp(42px,7vw,80px)', color: 'white', lineHeight: 1, marginBottom: '16px' }}>
             TRADING<br />
             <span style={{ color: '#D4A843' }}>TOOLS</span>
@@ -272,7 +272,7 @@ export default function ToolsPage() {
           {activeTool === 'plan' && !proLoading && !isPro && !loadError ? (
             <div style={{ padding: '48px 28px', marginBottom: '28px', textAlign: 'center', background: 'linear-gradient(135deg, rgba(212,168,67,0.08), rgba(212,168,67,0.02))', border: '1px solid rgba(232,197,71,0.35)', borderRadius: '16px' }}>
               <div style={{ fontSize: '34px', marginBottom: '12px' }}>🔒</div>
-              <div className="font-mono-c" style={{ fontSize: '11px', letterSpacing: '2px', color: '#E8C547', marginBottom: '10px' }}>// PRO TOOL</div>
+              <div className="font-mono-c" style={{ fontSize: '11px', letterSpacing: '2px', color: '#E8C547', marginBottom: '10px' }}>{'// PRO TOOL'}</div>
               <h2 className="font-display" style={{ fontSize: '38px', color: 'white', marginBottom: '10px' }}>ICT TRADING PLAN TEMPLATE</h2>
               <p style={{ color: '#B9C1CC', maxWidth: '520px', margin: '0 auto 24px', lineHeight: 1.7, fontSize: '14px' }}>
                 The checklist stays free. The full professional trading-plan template is included with Pro access, together with the advanced curriculum and ad-free experience.
@@ -387,7 +387,7 @@ export default function ToolsPage() {
 
         {/* BOTTOM CTA */}
         <section style={{ textAlign: 'center', padding: '60px 24px', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-          <div className="font-mono-c" style={{ fontSize: '11px', letterSpacing: '3px', color: 'rgba(212,168,67,0.7)', marginBottom: '16px', textTransform: 'uppercase' }}>// Apply These Rules</div>
+          <div className="font-mono-c" style={{ fontSize: '11px', letterSpacing: '3px', color: 'rgba(212,168,67,0.7)', marginBottom: '16px', textTransform: 'uppercase' }}>{'// Apply These Rules'}</div>
           <h2 className="font-display" style={{ fontSize: '48px', color: 'white', marginBottom: '16px' }}>
             START YOUR<br /><span style={{ color: '#D4A843' }}>ICT JOURNEY</span>
           </h2>
