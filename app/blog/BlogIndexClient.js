@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
@@ -10,11 +10,13 @@ const CATEGORIES = ['All', 'Beginner', 'Intermediate', 'Advanced', 'Strategy', '
 export default function BlogIndexClient({ posts }) {
   const [active, setActive] = useState('All');
 
-  const allPosts = posts;
-
-  const filtered = active === 'All' ? allPosts : allPosts.filter(p => p.category === active);
-  const featured = allPosts.find(p => p.featured) || allPosts[0];
-  const rest = (active === 'All' ? allPosts : filtered).filter(p => p.slug !== featured?.slug);
+  const { allPosts, featured, rest } = useMemo(() => {
+    const allPosts = Array.isArray(posts) ? posts : [];
+    const filtered = active === 'All' ? allPosts : allPosts.filter(p => p.category === active);
+    const featured = allPosts.find(p => p.featured) || allPosts[0];
+    const rest = filtered.filter(p => p.slug !== featured?.slug);
+    return { allPosts, featured, rest };
+  }, [posts, active]);
 
   return (
     <div style={{ minHeight: '100vh', background: '#080808', color: 'white', fontFamily: "'DM Sans', sans-serif" }}>
