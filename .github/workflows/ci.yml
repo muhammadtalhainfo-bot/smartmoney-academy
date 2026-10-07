@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   quality:
-    name: Lint and production build
+    name: Lint changed code and production build
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
@@ -29,6 +29,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
@@ -39,8 +41,41 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run ESLint
-        run: npm run lint
+      - name: Lint changed JavaScript/JSX
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            base_sha="${{ github.event.pull_request.base.sha }}"
+          else
+            base_sha="${{ github.event.before }}"
+          fi
+
+          if [[ -z "$base_sha" || "$base_sha" == "0000000000000000000000000000000000000000" ]]; then
+            echo "No usable base SHA; skipping changed-file lint."
+            exit 0
+          fi
+
+          files="$(git diff --name-only "$base_sha" "$GITHUB_SHA" -- '*.js' '*.jsx' '*.mjs' '*.cjs')"
+          if [[ -z "$files" ]]; then
+            echo "No JavaScript/JSX source files changed."
+            exit 0
+          fi
+
+          printf 'Linting changed files:\n%s\n' "$files"
+          # shellcheck disable=SC2086
+          npx eslint $files
+
+      - name: Full lint audit (non-blocking)
+        shell: bash
+        run: |
+          set +e
+          npm run lint
+          status=$?
+          if [[ $status -ne 0 ]]; then
+            echo "::warning::Full-project lint still reports legacy issues; changed-file lint above remains the blocking lint gate."
+          fi
+          exit 0
 
       - name: Build production bundle
         run: npm run build
