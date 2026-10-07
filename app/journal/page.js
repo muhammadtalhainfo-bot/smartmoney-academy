@@ -235,6 +235,7 @@ function TradeForm({ initial, onSave, onCancel, error }) {
     if (e && sl && tp && e !== sl) {
       const risk = Math.abs(e - sl);
       const reward = Math.abs(tp - e);
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- auto-calculate a derived form field from user inputs
       set('rr', (reward / risk).toFixed(2));
     }
   }, [form.entry, form.sl, form.tp]);
@@ -1276,7 +1277,7 @@ function Progress({ trades, stats }) {
             {stats.byMistake['Moved Stop Loss'] >= 3 && (
               <div style={{ padding: '12px', background: 'rgba(239,68,68,0.07)', border: `1px solid rgba(239,68,68,0.15)`, borderRadius: '9px' }}>
                 <div style={{ fontSize: '12px', fontWeight: 600, color: C.red, marginBottom: '4px' }}>Stop moving your stop loss</div>
-                <div style={{ fontSize: '11px', color: C.text3 }}>You've moved your stop {stats.byMistake['Moved Stop Loss']}x. This is destroying your expectancy. Set it. Forget it.</div>
+                <div style={{ fontSize: '11px', color: C.text3 }}>{`You've moved your stop ${stats.byMistake['Moved Stop Loss']}x. This is destroying your expectancy. Set it. Forget it.`}</div>
               </div>
             )}
             {stats.winRate >= 60 && stats.avgRR >= 2 && (
