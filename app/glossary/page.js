@@ -184,7 +184,7 @@ export default function GlossaryPage() {
             <span className="gold-gradient">GLOSSARY</span>
           </h1>
           <p className="text-gray-200 max-w-lg mx-auto text-sm" style={{ fontWeight: 300 }}>
-            Every term from ICT's YouTube channel and mentorship series. The complete reference — no fluff.
+            Every term from ICT&apos;s YouTube channel and mentorship series. The complete reference — no fluff.
           </p>
         </div>
       </section>
