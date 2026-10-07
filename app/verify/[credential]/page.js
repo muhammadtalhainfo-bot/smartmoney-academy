@@ -1,9 +1,14 @@
 import { createClient } from '@supabase/supabase-js';
 import Link from 'next/link';
+import { headers } from 'next/headers';
+import { createHash } from 'node:crypto';
 import { MODULES } from '@/lib/curriculum';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
+
+const VERIFY_WINDOW_SECONDS = 5 * 60;
+const VERIFY_MAX_REQUESTS = 30;
 export const metadata = {
   robots: { index: false, follow: false },
 };
@@ -20,9 +25,32 @@ function parseCredential(value) {
   return match?.[1] || null;
 }
 
+function hashClientKey(value) {
+  const pepper = process.env.RATE_LIMIT_SECRET || process.env.SUPABASE_SERVICE_KEY || 'ictflow-rate-limit';
+  return createHash('sha256').update(pepper + ':credential-verify:' + value).digest('hex');
+}
+
+async function consumeVerificationRateLimit() {
+  const headerStore = await headers();
+  const forwarded = headerStore.get('x-forwarded-for') || '';
+  const clientIp = headerStore.get('x-real-ip') || forwarded.split(',')[0].trim() || 'unknown';
+  const supabase = adminClient();
+  const { data: allowed, error } = await supabase.rpc('consume_api_rate_limit', {
+    p_scope: 'credential-verify',
+    p_key_hash: hashClientKey(clientIp),
+    p_window_seconds: VERIFY_WINDOW_SECONDS,
+    p_max_requests: VERIFY_MAX_REQUESTS,
+  });
+  if (error) throw error;
+  return allowed === true;
+}
+
 async function verifyCredential(credential) {
   const userId = parseCredential(credential);
   if (!userId) return null;
+
+  const allowed = await consumeVerificationRateLimit();
+  if (!allowed) return { rateLimited: true };
 
   const supabase = adminClient();
   const [{ data: profile }, { data: completions }] = await Promise.all([
@@ -56,13 +84,26 @@ export default async function VerifyPage({ params }) {
   } catch {
     credentialId = '';
   }
-  const result = await verifyCredential(credentialId);
+  let result = null;
+  try {
+    result = await verifyCredential(credentialId);
+  } catch (error) {
+    console.error('Credential verification error:', error);
+  }
 
   return (
     <div style={{ minHeight: '100vh', background: '#080808', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '32px 20px', fontFamily: "'DM Sans', sans-serif" }}>
       <div style={{ width: '100%', maxWidth: '760px', background: '#101010', border: '1px solid rgba(232,197,71,0.35)', borderRadius: '24px', padding: '48px', boxShadow: '0 30px 80px rgba(0,0,0,0.45)', textAlign: 'center' }}>
         <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', letterSpacing: '0.25em', color: '#E8C547', marginBottom: '18px' }}>ICT FLOW ACADEMY</div>
-        {result ? (
+        {result?.rateLimited ? (
+          <>
+            <div style={{ fontSize: '52px', marginBottom: '14px' }}>⏳</div>
+            <h1 style={{ margin: 0, fontSize: '42px', letterSpacing: '0.04em' }}>PLEASE TRY AGAIN LATER</h1>
+            <p style={{ color: '#B8B8B8', lineHeight: 1.7, maxWidth: '520px', margin: '16px auto 28px' }}>
+              Verification requests are temporarily limited. Please wait a few minutes and try again.
+            </p>
+          </>
+        ) : result ? (
           <>
             <div style={{ fontSize: '52px', marginBottom: '14px' }}>✓</div>
             <h1 style={{ margin: 0, fontSize: '42px', letterSpacing: '0.04em' }}>VERIFIED CERTIFICATE</h1>
