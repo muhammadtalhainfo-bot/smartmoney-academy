@@ -186,7 +186,7 @@ function DashboardSection({ users, emails, trades, proUsers, loading, onRefresh 
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
             <div style={css.card}>
-              <div style={{ ...css.mono, fontSize: '10px', color: G, marginBottom: '14px', letterSpacing: '0.15em' }}>// TOP USERS BY XP</div>
+              <div style={{ ...css.mono, fontSize: '10px', color: G, marginBottom: '14px', letterSpacing: '0.15em' }}>{'// TOP USERS BY XP'}</div>
               {topUsers.length === 0 ? (
                 <div style={{ ...css.mono, fontSize: '11px', color: '#AAB3BF', textAlign: 'center', padding: '20px' }}>No users yet</div>
               ) : topUsers.map((u, i) => (
@@ -200,7 +200,7 @@ function DashboardSection({ users, emails, trades, proUsers, loading, onRefresh 
             </div>
 
             <div style={css.card}>
-              <div style={{ ...css.mono, fontSize: '10px', color: G, marginBottom: '14px', letterSpacing: '0.15em' }}>// RECENT EMAIL LEADS</div>
+              <div style={{ ...css.mono, fontSize: '10px', color: G, marginBottom: '14px', letterSpacing: '0.15em' }}>{'// RECENT EMAIL LEADS'}</div>
               {recentEmails.length === 0 ? (
                 <div style={{ ...css.mono, fontSize: '11px', color: '#AAB3BF', textAlign: 'center', padding: '20px' }}>No email signups yet</div>
               ) : recentEmails.map((e, i) => (
@@ -214,7 +214,7 @@ function DashboardSection({ users, emails, trades, proUsers, loading, onRefresh 
           </div>
 
           <div style={{ ...css.card }}>
-            <div style={{ ...css.mono, fontSize: '10px', color: G, marginBottom: '14px', letterSpacing: '0.15em' }}>// QUICK LINKS — LIVE SITE</div>
+            <div style={{ ...css.mono, fontSize: '10px', color: G, marginBottom: '14px', letterSpacing: '0.15em' }}>{'// QUICK LINKS — LIVE SITE'}</div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
               {['/', '/courses', '/blog', '/pricing', '/glossary', '/practice', '/leaderboard', '/dashboard', '/lesson/1', '/lesson/15', '/lesson/28'].map(href => (
                 <a key={href} href={href} target="_blank" rel="noopener noreferrer"
