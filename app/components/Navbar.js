@@ -165,11 +165,11 @@ export default function Navbar({ active }) {
       {menuOpen && (
         <div ref={mobileMenuRef} id="mobile-navigation" role="dialog" aria-label="Mobile navigation" aria-modal="true" style={{ position: 'fixed', inset: 0, zIndex: 50, background: 'rgba(8,8,8,0.98)', backdropFilter: 'blur(20px)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '24px', overflowY: 'auto', padding: '80px 0 40px' }}>
           <button ref={mobileMenuCloseRef} type="button" onClick={() => setMenuOpen(false)} aria-label="Close menu" style={{ position: 'absolute', top: '24px', right: '24px', background: 'none', border: 'none', color: '#E8C547', fontSize: '28px', cursor: 'pointer' }}>✕</button>
-          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '9px', letterSpacing: '0.3em', color: 'rgba(232,197,71,0.95)', textTransform: 'uppercase' }}>// LEARN</div>
+          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '9px', letterSpacing: '0.3em', color: 'rgba(232,197,71,0.95)', textTransform: 'uppercase' }}>{'// LEARN'}</div>
           {MAIN_NAV.map(([href, label]) => (
             <Link key={href} href={href} aria-current={active === href ? 'page' : undefined} onClick={() => setMenuOpen(false)} style={{ fontFamily: "'DM Mono', monospace", fontSize: '18px', letterSpacing: '0.2em', textTransform: 'uppercase', color: active === href ? '#E8C547' : 'rgba(255,255,255,0.75)', textDecoration: 'none' }}>{label}</Link>
           ))}
-          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '9px', letterSpacing: '0.3em', color: 'rgba(232,197,71,0.95)', textTransform: 'uppercase', marginTop: '8px' }}>// TOOLS & MORE</div>
+          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '9px', letterSpacing: '0.3em', color: 'rgba(232,197,71,0.95)', textTransform: 'uppercase', marginTop: '8px' }}>{'// TOOLS & MORE'}</div>
           {MORE_NAV.map(([href, label]) => (
             <Link key={href} href={href} aria-current={active === href ? 'page' : undefined} onClick={() => setMenuOpen(false)}
               target={href.startsWith('http') ? '_blank' : undefined}
