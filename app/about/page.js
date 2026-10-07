@@ -89,7 +89,7 @@ export default function AboutPage() {
             The platform is designed around a simple idea: organized study beats scattered information. We combine ICT/SMC concepts with structured lessons, quizzes, journaling and review tools in one place.
           </p>
           <p style={{ color: '#E8C547', fontStyle: 'italic' }}>
-            "Stop trying to predict. Start reading the algorithm." — ICT
+            &quot;Stop trying to predict. Start reading the algorithm.&quot; — ICT
           </p>
         </div>
       </section>
