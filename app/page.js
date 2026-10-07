@@ -113,7 +113,7 @@ export default function HomePage() {
       <section style={{ position:'relative', zIndex:10, background:'#0A0A0A', borderBottom:'1px solid rgba(232,197,71,0.1)', padding:'48px 24px' }}>
         <div style={{ maxWidth:'900px', margin:'0 auto' }}>
           <div style={{ textAlign:'center', marginBottom:'32px' }}>
-            <span style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'#D8B94F', letterSpacing:'0.15em' }}>// WHY IS IT FREE?</span>
+            <span style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'#D8B94F', letterSpacing:'0.15em' }}>{'// WHY IS IT FREE?'}</span>
           </div>
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))', gap:'16px' }}>
             {[
@@ -135,7 +135,7 @@ export default function HomePage() {
       <section style={{ position:'relative', zIndex:10, padding:'96px 24px', background:'#080808' }}>
         <div style={{ maxWidth:'960px', margin:'0 auto' }}>
           <div style={{ textAlign:'center', marginBottom:'56px' }}>
-            <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'#D8B94F', letterSpacing:'0.15em', marginBottom:'12px' }}>// HOW IT WORKS</div>
+            <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'#D8B94F', letterSpacing:'0.15em', marginBottom:'12px' }}>{'// HOW IT WORKS'}</div>
             <h2 className="font-display" style={{ fontSize:'clamp(40px, 7vw, 72px)', color:'white', lineHeight:1 }}>THREE STEPS TO<span className="gold-text"> ICT</span></h2>
           </div>
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(260px, 1fr))', gap:'24px' }}>
@@ -158,7 +158,7 @@ export default function HomePage() {
       <section style={{ position:'relative', zIndex:10, padding:'96px 24px', background:'#0A0A0A', borderTop:'1px solid rgba(232,197,71,0.08)', borderBottom:'1px solid rgba(232,197,71,0.08)' }}>
         <div style={{ maxWidth:'1000px', margin:'0 auto' }}>
           <div style={{ textAlign:'center', marginBottom:'52px' }}>
-            <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'#D8B94F', letterSpacing:'0.15em', marginBottom:'12px' }}>// THE PLATFORM</div>
+            <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'#D8B94F', letterSpacing:'0.15em', marginBottom:'12px' }}>{'// THE PLATFORM'}</div>
             <h2 className="font-display" style={{ fontSize:'clamp(38px, 6vw, 70px)', color:'white', lineHeight:1, marginBottom:'14px' }}>
               BUILT FOR <span className="gold-text">DELIBERATE STUDY</span>
             </h2>
@@ -183,7 +183,7 @@ export default function HomePage() {
         <div style={{ maxWidth:'1100px', margin:'0 auto' }}>
           <div style={{ display:'flex', alignItems:'flex-end', justifyContent:'space-between', gap:'24px', flexWrap:'wrap', marginBottom:'28px' }}>
             <div>
-              <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'#D8B94F', letterSpacing:'0.15em', marginBottom:'10px' }}>// RECENT ADDITIONS</div>
+              <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'#D8B94F', letterSpacing:'0.15em', marginBottom:'10px' }}>{'// RECENT ADDITIONS'}</div>
               <h2 className="font-display" style={{ fontSize:'clamp(38px, 6vw, 64px)', color:'white', lineHeight:1 }}>NEW TO THE <span className="gold-text">CURRICULUM.</span></h2>
             </div>
             <p style={{ maxWidth:'420px', color:'#C5CCD6', fontSize:'13px', lineHeight:1.7, fontWeight:300, margin:0 }}>
@@ -212,7 +212,7 @@ export default function HomePage() {
       <section className="grid-bg" style={{ position:'relative', zIndex:10, padding:'96px 24px' }}>
         <div style={{ maxWidth:'1100px', margin:'0 auto' }}>
           <div style={{ textAlign:'center', marginBottom:'56px' }}>
-            <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'#D8B94F', letterSpacing:'0.15em', marginBottom:'12px' }}>// CURRICULUM</div>
+            <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'#D8B94F', letterSpacing:'0.15em', marginBottom:'12px' }}>{'// CURRICULUM'}</div>
             <h2 className="font-display" style={{ fontSize:'clamp(40px, 7vw, 72px)', color:'white', lineHeight:1, marginBottom:'12px' }}>WHAT YOU'LL LEARN</h2>
             <p style={{ fontSize:'15px', color:'#C5CCD6', fontWeight:300 }}>38 modules. Structured independently around ICT and SMC concepts, with original explanations and practice.</p>
           </div>
@@ -254,7 +254,7 @@ export default function HomePage() {
       <section style={{ position:'relative', zIndex:10, borderTop:'1px solid rgba(232,197,71,0.08)', borderBottom:'1px solid rgba(232,197,71,0.08)', background:'#0A0A0A', padding:'72px 24px' }}>
         <div style={{ maxWidth:'960px', margin:'0 auto' }}>
           <div style={{ textAlign:'center', marginBottom:'40px' }}>
-            <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'#D8B94F', letterSpacing:'0.15em', marginBottom:'10px' }}>// ICT DAILY BLUEPRINT</div>
+            <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'#D8B94F', letterSpacing:'0.15em', marginBottom:'10px' }}>{'// ICT DAILY BLUEPRINT'}</div>
             <h2 className="font-display" style={{ fontSize:'clamp(32px, 5vw, 56px)', color:'white' }}>A DAILY ICT-STYLE FRAMEWORK</h2>
           </div>
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(200px, 1fr))', gap:'12px' }}>
@@ -280,7 +280,7 @@ export default function HomePage() {
         <div style={{ maxWidth:'1100px', margin:'0 auto' }}>
           <div style={{ display:'flex', alignItems:'flex-end', justifyContent:'space-between', gap:'20px', flexWrap:'wrap', marginBottom:'28px' }}>
             <div>
-              <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'#D8B94F', letterSpacing:'0.15em', marginBottom:'10px' }}>// FREE ICT GUIDES</div>
+              <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'#D8B94F', letterSpacing:'0.15em', marginBottom:'10px' }}>{'// FREE ICT GUIDES'}</div>
               <h2 className="font-display" style={{ fontSize:'clamp(36px, 5vw, 58px)', color:'white', lineHeight:1 }}>LEARN THE <span className="gold-text">CORE CONCEPTS</span></h2>
             </div>
             <Link href="/learn" style={{ color:'#E8C547', fontFamily:'DM Mono,monospace', fontSize:'11px', letterSpacing:'0.1em', textDecoration:'none', textTransform:'uppercase' }}>View all guides →</Link>
@@ -306,7 +306,7 @@ export default function HomePage() {
       {/* ── QUOTE ── */}
       <section style={{ position:'relative', zIndex:10, padding:'80px 24px', textAlign:'center', borderTop:'1px solid rgba(232,197,71,0.08)', background:'#0A0A0A' }}>
         <div style={{ maxWidth:'800px', margin:'0 auto' }}>
-          <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'rgba(232,197,71,0.5)', letterSpacing:'0.15em', marginBottom:'28px' }}>// ICT</div>
+          <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'rgba(232,197,71,0.5)', letterSpacing:'0.15em', marginBottom:'28px' }}>{'// ICT'}</div>
           <blockquote className="font-display" style={{ fontSize:'clamp(28px, 5vw, 52px)', color:'white', lineHeight:1.2, marginBottom:'20px' }}>
             "STOP TRYING TO PREDICT.<br />
             <span className="gold-text">START READING THE ALGORITHM."</span>
@@ -320,7 +320,7 @@ export default function HomePage() {
         <div style={{ maxWidth:'1100px', margin:'0 auto' }}>
           <div style={{ display:'flex', alignItems:'flex-end', justifyContent:'space-between', gap:'24px', flexWrap:'wrap', marginBottom:'40px' }}>
             <div>
-              <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'#D8B94F', letterSpacing:'0.15em', marginBottom:'12px' }}>// STUDY STACK</div>
+              <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'#D8B94F', letterSpacing:'0.15em', marginBottom:'12px' }}>{'// STUDY STACK'}</div>
               <h2 className="font-display" style={{ fontSize:'clamp(38px, 6vw, 68px)', color:'white', lineHeight:1 }}>ONE PLACE. <span className="gold-text">FOUR TOOLS.</span></h2>
             </div>
             <Link href="/courses" style={{ color:'#E8C547', fontFamily:'DM Mono,monospace', fontSize:'11px', letterSpacing:'0.1em', textDecoration:'none', textTransform:'uppercase' }}>Browse curriculum →</Link>
@@ -344,7 +344,7 @@ export default function HomePage() {
       {/* ── FINAL CTA ── */}
       <section style={{ position:'relative', zIndex:10, padding:'96px 24px', background:'#0A0A0A', borderTop:'1px solid rgba(232,197,71,0.08)' }}>
         <div style={{ maxWidth:'640px', margin:'0 auto', textAlign:'center' }}>
-          <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'#D8B94F', letterSpacing:'0.15em', marginBottom:'16px' }}>// BEGIN NOW</div>
+          <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'#D8B94F', letterSpacing:'0.15em', marginBottom:'16px' }}>{'// BEGIN NOW'}</div>
           <h2 className="font-display" style={{ fontSize:'clamp(40px, 7vw, 72px)', color:'white', lineHeight:1, marginBottom:'16px' }}>
             READY TO BUILD<br /><span className="gold-text">A STRUCTURED PROCESS?</span>
           </h2>
