@@ -159,7 +159,7 @@ function Quiz({ questions, lessonId }) {
   return (
     <div className="rounded-2xl border border-[rgba(212,168,67,0.2)] bg-[rgba(212,168,67,0.03)] p-6">
       <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', color: '#D4A843', letterSpacing: '0.15em' }} className="mb-4">
-        // KNOWLEDGE CHECK
+        {'// KNOWLEDGE CHECK'}
       </div>
       {questions.map((q, qi) => (
         <div key={qi} className="mb-6">
