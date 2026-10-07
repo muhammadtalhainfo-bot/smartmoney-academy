@@ -90,11 +90,12 @@ export default function Navbar({ active }) {
     };
 
     document.addEventListener('keydown', onKeyDown);
+    const triggerToRestore = mobileMenuTriggerRef.current;
     return () => {
       window.cancelAnimationFrame(frame);
       document.body.style.overflow = previousOverflow;
       document.removeEventListener('keydown', onKeyDown);
-      mobileMenuTriggerRef.current?.focus();
+      triggerToRestore?.focus();
     };
   }, [menuOpen]);
 
