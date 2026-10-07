@@ -1105,13 +1105,13 @@ function JournalSection({ adminDbClient = adminDb }) {
       </div>
       <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'16px' }}>
         <div>
-          <JournalListEditor label="Trading Pairs" field="pairs" items={pairs} setItems={setPairs} />
-          <JournalListEditor label="Sessions" field="sessions" items={sessions} setItems={setSessions} />
-          <JournalListEditor label="Trading Rules" field="rules" items={rules} setItems={setRules} />
+          <JournalListEditor label="Trading Pairs" field="pairs" items={pairs} setItems={setPairs} newItem={newItem} setNewItem={setNewItem} />
+          <JournalListEditor label="Sessions" field="sessions" items={sessions} setItems={setSessions} newItem={newItem} setNewItem={setNewItem} />
+          <JournalListEditor label="Trading Rules" field="rules" items={rules} setItems={setRules} newItem={newItem} setNewItem={setNewItem} />
         </div>
         <div>
-          <JournalListEditor label="ICT Setups" field="setups" items={setups} setItems={setSetups} />
-          <JournalListEditor label="Mistakes / Leaks" field="mistakes" items={mistakes} setItems={setMistakes} />
+          <JournalListEditor label="ICT Setups" field="setups" items={setups} setItems={setSetups} newItem={newItem} setNewItem={setNewItem} />
+          <JournalListEditor label="Mistakes / Leaks" field="mistakes" items={mistakes} setItems={setMistakes} newItem={newItem} setNewItem={setNewItem} />
         </div>
       </div>
       <div style={{ ...css.card, marginTop:'16px' }}>
