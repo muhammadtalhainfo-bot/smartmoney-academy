@@ -30,7 +30,7 @@ const PLAN =   {
     id: 'plan',
     emoji: '📋',
     title: 'ICT Trading Plan Template',
-    subtitle: 'Fill-in-the-blank · 10 Sections · Professional',
+    subtitle: 'Fill-in-the-blank · 7 Sections · Professional',
     desc: 'A written trading plan can help turn broad intentions into explicit, testable rules. Fill out this template and keep it available during your review process.',
     color: '#D4A843',
     sections: [
