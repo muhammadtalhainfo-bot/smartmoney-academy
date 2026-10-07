@@ -80,7 +80,7 @@ export default function PracticeClient({ initialQuestions, dateStr }) {
             <div className="mb-8 fade-up">
               <div className="flex items-center justify-between mb-2">
                 <div>
-                  <div className="font-mono-custom text-xs text-[#E8C547] tracking-widest uppercase mb-1">// Daily Challenge</div>
+                  <div className="font-mono-custom text-xs text-[#E8C547] tracking-widest uppercase mb-1">{'// Daily Challenge'}</div>
                   <div className="font-mono-custom text-xs text-gray-200">{dateStr}</div>
                 </div>
                 <div className="text-right">
@@ -181,7 +181,7 @@ export default function PracticeClient({ initialQuestions, dateStr }) {
               {/* Explanation (revealed) */}
               {revealed && (
                 <div className="fade-up p-5 rounded-xl border border-[#E8C547] bg-[rgba(212,168,67,0.04)] mb-5">
-                  <div className="font-mono-custom text-xs text-[#E8C547] mb-2">// Explanation</div>
+                  <div className="font-mono-custom text-xs text-[#E8C547] mb-2">{'// Explanation'}</div>
                   <p className="text-gray-200 text-sm leading-relaxed">{q.explanation}</p>
                   <Link href={`/lesson/${q.lesson}`} className="inline-flex items-center gap-1 mt-3 font-mono-custom text-xs text-[#E8C547] hover:text-[#F0C96A] transition-colors">
                     📖 Review Lesson {q.lesson} →
@@ -229,7 +229,7 @@ export default function PracticeClient({ initialQuestions, dateStr }) {
         ) : (
           /* ── Results Screen ── */
           <div className="fade-up text-center">
-            <div className="font-mono-custom text-xs text-[#E8C547] tracking-widest uppercase mb-6">// Challenge Complete</div>
+            <div className="font-mono-custom text-xs text-[#E8C547] tracking-widest uppercase mb-6">{'// Challenge Complete'}</div>
 
             {/* Score circle */}
             <div className="w-40 h-40 rounded-full mx-auto mb-6 flex flex-col items-center justify-center border-2"
@@ -260,7 +260,7 @@ export default function PracticeClient({ initialQuestions, dateStr }) {
 
             {/* Question review */}
             <div className="text-left mb-8">
-              <div className="font-mono-custom text-xs text-[#E8C547] tracking-widest uppercase mb-3">// Review</div>
+              <div className="font-mono-custom text-xs text-[#E8C547] tracking-widest uppercase mb-3">{'// Review'}</div>
               {questions.map((question, i) => {
                 const ans = answers[i];
                 if (!ans) return null;
