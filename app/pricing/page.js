@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 import { trackEvent, trackCheckoutStart } from '@/lib/analytics';
+import { PRO_ANNUAL_PRICE_USD, PRO_MONTHLY_PRICE_USD } from '@/lib/pricing';
 
 const FREE_FEATURES = [
   { text: 'All 38 modules and 203+ lessons', included: true },
@@ -81,8 +82,8 @@ export default function PricingPage() {
     setCheckoutLoading(false);
   }
 
-  const monthlyPrice = 19;
-  const annualPrice = 149;
+  const monthlyPrice = PRO_MONTHLY_PRICE_USD;
+  const annualPrice = PRO_ANNUAL_PRICE_USD;
   const annualMonthly = (annualPrice / 12).toFixed(2);
   const savings = Math.round(100 - (annualPrice / (monthlyPrice * 12)) * 100);
 
