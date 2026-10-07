@@ -175,7 +175,7 @@ export default function DashboardPage() {
       <div className="min-h-screen bg-[#080808] flex items-center justify-center px-6" style={{ fontFamily: "'DM Sans', sans-serif" }}>
         <div className="w-full max-w-lg rounded-2xl border p-8 text-center" style={{ background: '#0F0F0F', borderColor: 'rgba(248,113,113,0.3)' }}>
           <div className="text-4xl mb-4">⚠️</div>
-          <div className="font-mono-c text-xs tracking-widest uppercase mb-3" style={{ color: '#FCA5A5' }}>// Dashboard Load Failed</div>
+          <div className="font-mono-c text-xs tracking-widest uppercase mb-3" style={{ color: '#FCA5A5' }}>{'// Dashboard Load Failed'}</div>
           <h1 className="font-display text-4xl text-white mb-3">YOUR DATA IS STILL SAFE</h1>
           <p className="text-sm leading-relaxed mb-6" style={{ color: '#B9C1CC' }}>{loadError}</p>
           <button
@@ -223,7 +223,7 @@ export default function DashboardPage() {
 
         {/* HEADER */}
         <div className="fade-up mb-10">
-          <div className="font-mono-c text-xs tracking-widest uppercase mb-2" style={{ color: '#E8C547' }}>// Your Progress</div>
+          <div className="font-mono-c text-xs tracking-widest uppercase mb-2" style={{ color: '#E8C547' }}>{'// Your Progress'}</div>
           <div className="flex items-end justify-between flex-wrap gap-4">
             <div>
               <h1 className="font-display leading-none" style={{ fontSize: 'clamp(36px, 6vw, 72px)' }}>
@@ -309,7 +309,7 @@ export default function DashboardPage() {
 
               {/* Overall progress */}
               <div className="card p-6">
-                <div className="font-mono-c text-xs tracking-widest uppercase mb-5" style={{ color: '#E8C547' }}>// Curriculum Progress</div>
+                <div className="font-mono-c text-xs tracking-widest uppercase mb-5" style={{ color: '#E8C547' }}>{'// Curriculum Progress'}</div>
                 <div className="flex items-center gap-6 mb-6">
                   <div className="relative flex-shrink-0">
                     <CircleProgress pct={overallPct} />
@@ -342,7 +342,7 @@ export default function DashboardPage() {
 
               {/* Recent module completions */}
               <div className="card p-6">
-                <div className="font-mono-c text-xs tracking-widest uppercase mb-5" style={{ color: '#E8C547' }}>// Recent Modules</div>
+                <div className="font-mono-c text-xs tracking-widest uppercase mb-5" style={{ color: '#E8C547' }}>{'// Recent Modules'}</div>
                 {recentCompletions.length === 0 ? (
                   <div className="text-center py-8">
                     <p className="font-mono-c text-xs" style={{ color: '#A8A8A8' }}>No modules completed yet</p>
@@ -376,7 +376,7 @@ export default function DashboardPage() {
             <div className="space-y-6">
               {/* Rank card */}
               <div className="card p-6" style={{ background: 'rgba(212,168,67,0.03)' }}>
-                <div className="font-mono-c text-xs tracking-widest uppercase mb-4" style={{ color: '#E8C547' }}>// Current Rank</div>
+                <div className="font-mono-c text-xs tracking-widest uppercase mb-4" style={{ color: '#E8C547' }}>{'// Current Rank'}</div>
                 <div className="text-center mb-5">
                   <div className="text-5xl mb-3">🎖️</div>
                   <div className="font-display text-3xl text-white mb-1">{currentRank.toUpperCase()}</div>
@@ -413,7 +413,7 @@ export default function DashboardPage() {
 
               {/* Next up */}
               <div className="card p-6">
-                <div className="font-mono-c text-xs tracking-widest uppercase mb-4" style={{ color: '#E8C547' }}>// Up Next</div>
+                <div className="font-mono-c text-xs tracking-widest uppercase mb-4" style={{ color: '#E8C547' }}>{'// Up Next'}</div>
                 {(() => {
                   if (!nextModule) return <p className="font-mono-c text-xs text-center py-4" style={{ color: '#34D399' }}>🏆 All modules complete!</p>;
                   return (
