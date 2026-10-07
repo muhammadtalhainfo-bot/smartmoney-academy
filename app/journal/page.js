@@ -187,6 +187,32 @@ const emptyTrade = () => ({
   screenshot_url: '',
 });
 
+function TradeToggleGroup({ label, field, options, color = C.gold, form, set, toggle }) {
+  const lbl = S.label;
+  return (
+    <div style={{ marginBottom: '16px' }}>
+      <label style={lbl}>{label}</label>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '7px' }}>
+        {options.map(o => {
+          const isArr = Array.isArray(form[field]);
+          const active = isArr ? form[field].includes(o) : form[field] === o;
+          return (
+            <button type="button" key={o} onClick={() => isArr ? toggle(field, o) : set(field, o)} aria-pressed={active} style={{
+              padding: '5px 12px', borderRadius: '8px', cursor: 'pointer',
+              border: `1px solid ${active ? color : C.border}`,
+              background: active ? `${color}14` : C.bg2,
+              color: active ? color : C.text3,
+              fontFamily: 'DM Mono, monospace', fontSize: '10px',
+              transition: 'all 0.12s',
+            }}>{o}</button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+
 // ─── TRADE FORM ───────────────────────────────────────────────────────────────
 function TradeForm({ initial, onSave, onCancel, error }) {
   const [form, setForm] = useState(() => initial ? {
@@ -209,6 +235,7 @@ function TradeForm({ initial, onSave, onCancel, error }) {
     if (e && sl && tp && e !== sl) {
       const risk = Math.abs(e - sl);
       const reward = Math.abs(tp - e);
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- auto-calculate a derived form field from user inputs
       set('rr', (reward / risk).toFixed(2));
     }
   }, [form.entry, form.sl, form.tp]);
@@ -216,28 +243,6 @@ function TradeForm({ initial, onSave, onCancel, error }) {
   const inp = { ...S.input };
   const sel = { ...S.input, cursor: 'pointer' };
   const lbl = S.label;
-
-  const ToggleGroup = ({ label, field, options, color = C.gold }) => (
-    <div style={{ marginBottom: '16px' }}>
-      <label style={lbl}>{label}</label>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '7px' }}>
-        {options.map(o => {
-          const isArr = Array.isArray(form[field]);
-          const active = isArr ? form[field].includes(o) : form[field] === o;
-          return (
-            <button type="button" key={o} onClick={() => isArr ? toggle(field, o) : set(field, o)} aria-pressed={active} style={{
-              padding: '5px 12px', borderRadius: '8px', cursor: 'pointer',
-              border: `1px solid ${active ? color : C.border}`,
-              background: active ? `${color}14` : C.bg2,
-              color: active ? color : C.text3,
-              fontFamily: 'DM Mono, monospace', fontSize: '10px',
-              transition: 'all 0.12s',
-            }}>{o}</button>
-          );
-        })}
-      </div>
-    </div>
-  );
 
   return (
     <div className="trade-modal-overlay" style={{
@@ -333,17 +338,17 @@ function TradeForm({ initial, onSave, onCancel, error }) {
           <div>
             <div style={{ ...S.mono, fontSize: '10px', color: C.gold, letterSpacing: '0.12em', marginBottom: '12px', paddingBottom: '8px', borderBottom: `1px solid ${C.border}` }}>CONTEXT & TAGS</div>
 
-            <ToggleGroup label="Session" field="session" options={SESSIONS} />
-            <ToggleGroup label="Setup / Strategy" field="setup" options={SETUPS} />
-            <ToggleGroup label="Market Condition" field="market" options={MARKETS} />
-            <ToggleGroup label="Mistakes Made" field="mistakes" options={MISTAKES} color={C.red} />
+            <TradeToggleGroup label="Session" field="session" options={SESSIONS}  form={form} set={set} toggle={toggle} />
+            <TradeToggleGroup label="Setup / Strategy" field="setup" options={SETUPS}  form={form} set={set} toggle={toggle} />
+            <TradeToggleGroup label="Market Condition" field="market" options={MARKETS}  form={form} set={set} toggle={toggle} />
+            <TradeToggleGroup label="Mistakes Made" field="mistakes" options={MISTAKES} color={C.red}  form={form} set={set} toggle={toggle} />
 
             <div style={{ height: '1px', background: C.border, margin: '16px 0' }} />
             <div style={{ ...S.mono, fontSize: '10px', color: C.gold, letterSpacing: '0.12em', marginBottom: '12px' }}>PSYCHOLOGY</div>
 
-            <ToggleGroup label="Emotion Before Entry" field="emotion_pre" options={EMOTIONS_PRE} color={C.cyan} />
-            <ToggleGroup label="During Trade" field="emotion_during" options={EMOTIONS_DURING} color={C.purple} />
-            <ToggleGroup label="Emotion After Exit" field="emotion_post" options={EMOTIONS_POST} color={C.blue} />
+            <TradeToggleGroup label="Emotion Before Entry" field="emotion_pre" options={EMOTIONS_PRE} color={C.cyan}  form={form} set={set} toggle={toggle} />
+            <TradeToggleGroup label="During Trade" field="emotion_during" options={EMOTIONS_DURING} color={C.purple}  form={form} set={set} toggle={toggle} />
+            <TradeToggleGroup label="Emotion After Exit" field="emotion_post" options={EMOTIONS_POST} color={C.blue}  form={form} set={set} toggle={toggle} />
 
             <div style={{ height: '1px', background: C.border, margin: '16px 0' }} />
             <div style={{ ...S.mono, fontSize: '10px', color: C.gold, letterSpacing: '0.12em', marginBottom: '12px' }}>RULE CHECKLIST</div>
@@ -513,10 +518,13 @@ function useStats(trades) {
     const expectancy = (winRate / 100) * avgWin - (1 - winRate / 100) * avgLoss;
 
     // Equity curve
-    let equity = 0;
     const equityPoints = trades
       .slice().sort((a, b) => a.date.localeCompare(b.date))
-      .map(t => { equity += parseFloat(t.pnl) || 0; return equity; });
+      .reduce((points, t, index) => {
+        const previous = index > 0 ? points[index - 1] : 0;
+        points.push(previous + (parseFloat(t.pnl) || 0));
+        return points;
+      }, []);
 
     // Max drawdown must follow the same chronological order as the equity curve.
     let peak = 0, maxDD = 0;
@@ -1269,7 +1277,7 @@ function Progress({ trades, stats }) {
             {stats.byMistake['Moved Stop Loss'] >= 3 && (
               <div style={{ padding: '12px', background: 'rgba(239,68,68,0.07)', border: `1px solid rgba(239,68,68,0.15)`, borderRadius: '9px' }}>
                 <div style={{ fontSize: '12px', fontWeight: 600, color: C.red, marginBottom: '4px' }}>Stop moving your stop loss</div>
-                <div style={{ fontSize: '11px', color: C.text3 }}>You've moved your stop {stats.byMistake['Moved Stop Loss']}x. This is destroying your expectancy. Set it. Forget it.</div>
+                <div style={{ fontSize: '11px', color: C.text3 }}>{`You've moved your stop ${stats.byMistake['Moved Stop Loss']}x. This is destroying your expectancy. Set it. Forget it.`}</div>
               </div>
             )}
             {stats.winRate >= 60 && stats.avgRR >= 2 && (
@@ -1512,6 +1520,7 @@ export default function JournalPage() {
     setLoading(false);
   }, []);
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => { load(); }, [load]);
 
   const save = async (form) => {
