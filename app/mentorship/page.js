@@ -442,6 +442,7 @@ export default function MentorshipPage() {
       if (saved) {
         try {
           const parsed = JSON.parse(saved);
+          // eslint-disable-next-line react-hooks/set-state-in-effect -- hydrate client-only localStorage state
           if (Array.isArray(parsed)) setWatched(parsed);
         } catch {
           try { localStorage.removeItem('ict_watched_episodes'); } catch {}
