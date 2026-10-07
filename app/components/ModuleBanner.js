@@ -524,7 +524,7 @@ export default function ModuleBanner({
   const w = width;
   const h = height;
   const key = String(id);
-  const Visual = BANNERS[key] || (() => <DefaultBanner w={w} h={h} label={label} />);
+  const Visual = BANNERS[key];
 
   return (
     <svg
@@ -552,7 +552,7 @@ export default function ModuleBanner({
       <rect width={w} height={h} fill={`url(#glow-${key})`} />
 
       {/* Concept-specific visual */}
-      <Visual w={w} h={h} />
+      {Visual ? <Visual w={w} h={h} /> : <DefaultBanner w={w} h={h} label={label} />}
 
       {/* Bottom fade */}
       <rect width={w} height={h} fill={`url(#fade-${key})`} />
