@@ -37,8 +37,10 @@ function hashClientKey(value) {
 }
 
 function getClientKey(req) {
-  const forwarded = req.headers.get('x-forwarded-for') || '';
-  return forwarded.split(',')[0].trim() || req.headers.get('x-real-ip') || 'unknown';
+  return req.headers.get('x-vercel-forwarded-for')?.trim()
+    || req.headers.get('x-forwarded-for')?.split(',')[0]?.trim()
+    || req.headers.get('x-real-ip')?.trim()
+    || 'unknown';
 }
 
 async function consumeRateLimit(req) {
