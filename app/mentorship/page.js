@@ -496,7 +496,7 @@ export default function MentorshipPage() {
       {/* Hero */}
       <section style={{ borderBottom: '1px solid rgba(232,197,71,0.95)', background: 'linear-gradient(180deg, #0A0A0A 0%, #080808 100%)', padding: '64px 24px 48px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div style={{ ...mono, fontSize: '11px', color: '#E8C547', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '12px' }}>// Michael J. Huddleston</div>
+          <div style={{ ...mono, fontSize: '11px', color: '#E8C547', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '12px' }}>{'// Michael J. Huddleston'}</div>
           <h1 className="font-display" style={{ fontSize: 'clamp(42px, 7vw, 96px)', lineHeight: 1, marginBottom: '16px' }}>
             <span style={{ color: 'white' }}>ICT 2022 </span>
             <span style={{ background: 'linear-gradient(135deg, #8A6B28, #E8C547, #F0C96A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>MENTORSHIP</span>
