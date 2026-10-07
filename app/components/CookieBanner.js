@@ -9,6 +9,7 @@ export default function CookieBanner() {
     try {
       const accepted = localStorage.getItem('cookies_accepted');
       const declined = localStorage.getItem('cookies_declined');
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- hydrate client-only cookie consent state
       if (!accepted && !declined) setShow(true);
     } catch {
       setShow(true);
