@@ -1518,7 +1518,7 @@ export default function JournalPage() {
       rules_checked: Array.isArray(t.rules_checked) ? t.rules_checked : [],
     })));
     setLoading(false);
-  }, []);
+  }, [supabase]);
 
   // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => { load(); }, [load]);

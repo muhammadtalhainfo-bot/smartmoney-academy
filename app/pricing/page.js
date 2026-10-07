@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 import { trackEvent, trackCheckoutStart } from '@/lib/analytics';
@@ -34,6 +35,7 @@ const FAQS = [
 ];
 
 export default function PricingPage() {
+  const router = useRouter();
   const [annual, setAnnual] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
   const [checkoutLoading, setCheckoutLoading] = useState(false);
@@ -66,7 +68,7 @@ export default function PricingPage() {
       });
 
       if (res.status === 401) {
-        window.location.href = '/auth?redirect=/pricing';
+        router.push('/auth?redirect=/pricing');
         return;
       }
 
