@@ -414,17 +414,102 @@ function TradeForm({ initial, onSave, onCancel, error }) {
 function useStats(trades) {
   return useMemo(() => {
     if (!trades.length) return null;
-    const wins = trades.filter(t => t.result === 'Win').length;
-    const losses = trades.filter(t => t.result === 'Loss').length;
+
+    let wins = 0;
+    let losses = 0;
+    let netPnl = 0;
+    let rrTotal = 0;
+    let rrCount = 0;
+    let winRRTotal = 0;
+    let winRRCount = 0;
+    let lossRRTotal = 0;
+    let lossRRCount = 0;
+    let tradesMistakes = 0;
+    let tradesRuleBreaks = 0;
+
+    const bySess = {};
+    SESSIONS.forEach(s => { bySess[s] = { wins: 0, total: 0, pnl: 0 }; });
+
+    const bySetup = {};
+    const byPair = {};
+    const byDay = {};
+    DAYS.forEach(d => { byDay[d] = { wins: 0, total: 0 }; });
+
+    const byEmo = {};
+    const byMonth = {};
+    const byMistake = {};
+    const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+    for (const t of trades) {
+      const pnl = parseFloat(t.pnl) || 0;
+      const isWin = t.result === 'Win';
+      const isLoss = t.result === 'Loss';
+      netPnl += pnl;
+
+      if (isWin) wins++;
+      if (isLoss) losses++;
+
+      if (t.rr) {
+        const rr = parseFloat(t.rr);
+        rrTotal += rr;
+        rrCount++;
+        if (isWin) {
+          winRRTotal += rr;
+          winRRCount++;
+        } else if (isLoss) {
+          lossRRTotal += rr;
+          lossRRCount++;
+        }
+      }
+
+      const session = t.session;
+      if (bySess[session]) {
+        bySess[session].total++;
+        if (isWin) bySess[session].wins++;
+        bySess[session].pnl += pnl;
+      }
+
+      for (const setup of (t.setup || [])) {
+        if (!bySetup[setup]) bySetup[setup] = { wins: 0, total: 0 };
+        bySetup[setup].total++;
+        if (isWin) bySetup[setup].wins++;
+      }
+
+      const pair = t.pair;
+      if (!byPair[pair]) byPair[pair] = { wins: 0, total: 0, pnl: 0 };
+      byPair[pair].total++;
+      if (isWin) byPair[pair].wins++;
+      byPair[pair].pnl += pnl;
+
+      const dayName = dayNames[new Date(t.date).getDay()];
+      if (byDay[dayName]) {
+        byDay[dayName].total++;
+        if (isWin) byDay[dayName].wins++;
+      }
+
+      const emotion = t.emotion_pre || 'Unknown';
+      if (!byEmo[emotion]) byEmo[emotion] = { wins: 0, total: 0 };
+      byEmo[emotion].total++;
+      if (isWin) byEmo[emotion].wins++;
+
+      const monthKey = toMonthKey(t.date);
+      if (!byMonth[monthKey]) byMonth[monthKey] = { wins: 0, total: 0, pnl: 0 };
+      byMonth[monthKey].total++;
+      if (isWin) byMonth[monthKey].wins++;
+      byMonth[monthKey].pnl += pnl;
+
+      for (const mistake of (t.mistakes || [])) {
+        byMistake[mistake] = (byMistake[mistake] || 0) + 1;
+      }
+
+      if ((t.mistakes || []).length > 0) tradesMistakes++;
+      if (t.rules_checked && t.rules_checked.length < 4) tradesRuleBreaks++;
+    }
+
     const winRate = (wins / trades.length) * 100;
-    const pnls = trades.map(t => parseFloat(t.pnl) || 0);
-    const netPnl = pnls.reduce((a, b) => a + b, 0);
-    const rrs = trades.filter(t => t.rr).map(t => parseFloat(t.rr));
-    const avgRR = rrs.length ? rrs.reduce((a, b) => a + b, 0) / rrs.length : 0;
-    const winRRs = trades.filter(t => t.result === 'Win' && t.rr).map(t => parseFloat(t.rr));
-    const lossRRs = trades.filter(t => t.result === 'Loss' && t.rr).map(t => parseFloat(t.rr));
-    const avgWin = winRRs.length ? winRRs.reduce((a, b) => a + b, 0) / winRRs.length : 0;
-    const avgLoss = lossRRs.length ? lossRRs.reduce((a, b) => a + b, 0) / lossRRs.length : 1;
+    const avgRR = rrCount ? rrTotal / rrCount : 0;
+    const avgWin = winRRCount ? winRRTotal / winRRCount : 0;
+    const avgLoss = lossRRCount ? lossRRTotal / lossRRCount : 1;
     const expectancy = (winRate / 100) * avgWin - (1 - winRate / 100) * avgLoss;
 
     // Equity curve
@@ -435,94 +520,48 @@ function useStats(trades) {
 
     // Max drawdown must follow the same chronological order as the equity curve.
     let peak = 0, maxDD = 0;
-    for (const equity of equityPoints) {
-      if (equity > peak) peak = equity;
-      if (peak - equity > maxDD) maxDD = peak - equity;
+    for (const equityPoint of equityPoints) {
+      if (equityPoint > peak) peak = equityPoint;
+      if (peak - equityPoint > maxDD) maxDD = peak - equityPoint;
     }
 
-    // By session
-    const bySess = {};
-    SESSIONS.forEach(s => { bySess[s] = { wins: 0, total: 0, pnl: 0 }; });
-    trades.forEach(t => {
-      const s = t.session;
-      if (bySess[s]) { bySess[s].total++; if (t.result === 'Win') bySess[s].wins++; bySess[s].pnl += parseFloat(t.pnl) || 0; }
-    });
-
-    // By setup
-    const bySetup = {};
-    trades.forEach(t => {
-      (t.setup || []).forEach(s => {
-        if (!bySetup[s]) bySetup[s] = { wins: 0, total: 0 };
-        bySetup[s].total++;
-        if (t.result === 'Win') bySetup[s].wins++;
-      });
-    });
-
-    // By symbol
-    const byPair = {};
-    trades.forEach(t => {
-      if (!byPair[t.pair]) byPair[t.pair] = { wins: 0, total: 0, pnl: 0 };
-      byPair[t.pair].total++;
-      if (t.result === 'Win') byPair[t.pair].wins++;
-      byPair[t.pair].pnl += parseFloat(t.pnl) || 0;
-    });
-
-    // By day
-    const byDay = {};
-    DAYS.forEach(d => { byDay[d] = { wins: 0, total: 0 }; });
-    trades.forEach(t => {
-      const d = new Date(t.date);
-      const name = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][d.getDay()];
-      if (byDay[name]) { byDay[name].total++; if (t.result === 'Win') byDay[name].wins++; }
-    });
-
-    // Emotion win rate
-    const byEmo = {};
-    trades.forEach(t => {
-      const e = t.emotion_pre || 'Unknown';
-      if (!byEmo[e]) byEmo[e] = { wins: 0, total: 0 };
-      byEmo[e].total++;
-      if (t.result === 'Win') byEmo[e].wins++;
-    });
-
-    // Monthly
-    const byMonth = {};
-    trades.forEach(t => {
-      const mk = toMonthKey(t.date);
-      if (!byMonth[mk]) byMonth[mk] = { wins: 0, total: 0, pnl: 0 };
-      byMonth[mk].total++;
-      if (t.result === 'Win') byMonth[mk].wins++;
-      byMonth[mk].pnl += parseFloat(t.pnl) || 0;
-    });
-
-    // Mistake frequency
-    const byMistake = {};
-    trades.forEach(t => {
-      (t.mistakes || []).forEach(m => {
-        byMistake[m] = (byMistake[m] || 0) + 1;
-      });
-    });
-
-    // Consistency score
-    const tradesMistakes = trades.filter(t => (t.mistakes || []).length > 0).length;
-    const tradesRuleBreaks = trades.filter(t => t.rules_checked && t.rules_checked.length < 4).length;
-    const consistencyScore = Math.round(100 - (tradesMistakes / trades.length) * 30 - (tradesRuleBreaks / trades.length) * 20 + (winRate - 50) * 0.5);
+    const consistencyScore = Math.round(
+      100
+      - (tradesMistakes / trades.length) * 30
+      - (tradesRuleBreaks / trades.length) * 20
+      + (winRate - 50) * 0.5
+    );
 
     return {
       wins, losses, winRate, netPnl, avgRR, expectancy,
       equityPoints, maxDD, avgWin, avgLoss,
       bySess, bySetup, byPair, byDay, byEmo, byMonth, byMistake,
       consistencyScore: Math.min(100, Math.max(0, consistencyScore)),
+      tradesMistakes,
     };
   }, [trades]);
 }
-
 // ─── PAGES ────────────────────────────────────────────────────────────────────
 
 function Dashboard({ trades, stats, onAdd, onPage }) {
+  const recent = useMemo(() => trades.slice().sort((a, b) => b.date.localeCompare(a.date)).slice(0, 5), [trades]);
+  const topSetup = useMemo(
+    () => stats ? Object.entries(stats.bySetup).sort((a, b) => b[1].total - a[1].total)[0] : null,
+    [stats]
+  );
+  const equityMini = useMemo(() => {
+    const points = (stats?.equityPoints || []).slice(-30);
+    if (!points.length) return [];
+    const min = Math.min(...points);
+    const max = Math.max(...points);
+    const range = max - min || 1;
+    return points.map((value) => ({
+      value,
+      height: Math.max(4, ((value - min) / range) * 72),
+    }));
+  }, [stats?.equityPoints]);
+
   if (!trades.length) return <EmptyState onAdd={onAdd} />;
-  const recent = trades.slice().sort((a, b) => b.date.localeCompare(a.date)).slice(0, 5);
-  const topSetup = stats ? Object.entries(stats.bySetup).sort((a, b) => b[1].total - a[1].total)[0] : null;
 
   return (
     <div>
@@ -545,12 +584,9 @@ function Dashboard({ trades, stats, onAdd, onPage }) {
         <div style={S.card}>
           <div style={{ ...S.mono, fontSize: '10px', color: C.text3, letterSpacing: '0.12em', marginBottom: '12px' }}>EQUITY CURVE</div>
           <div style={{ height: '80px', display: 'flex', alignItems: 'flex-end', gap: '3px' }}>
-            {stats.equityPoints.slice(-30).map((v, i, arr) => {
-              const min = Math.min(...arr), max = Math.max(...arr);
-              const range = max - min || 1;
-              const h = Math.max(4, ((v - min) / range) * 72);
-              return <div key={i} style={{ flex: 1, height: `${h}px`, background: v >= 0 ? C.green : C.red, borderRadius: '2px 2px 0 0', opacity: 0.8 }} />;
-            })}
+            {equityMini.map((point, i) => (
+              <div key={i} style={{ flex: 1, height: `${point.height}px`, background: point.value >= 0 ? C.green : C.red, borderRadius: '2px 2px 0 0', opacity: 0.8 }} />
+            ))}
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '8px' }}>
             <span style={{ ...S.mono, fontSize: '10px', color: C.text3 }}>Max DD: <span style={{ color: C.red }}>-${fmt(stats.maxDD, 0)}</span></span>
@@ -565,7 +601,7 @@ function Dashboard({ trades, stats, onAdd, onPage }) {
             {[
               { label: 'Win Rate', val: stats.winRate, color: C.gold },
               { label: 'Consistency', val: stats.consistencyScore, color: C.blue },
-              { label: 'Clean Entries', val: Math.round(100 - (trades.filter(t => (t.mistakes || []).length > 0).length / trades.length) * 100), color: C.green },
+              { label: 'Clean Entries', val: Math.round(100 - (stats.tradesMistakes / trades.length) * 100), color: C.green },
             ].map(({ label, val, color }) => (
               <div key={label}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
@@ -614,6 +650,8 @@ function TradeHistory({ trades, onEdit, onDelete }) {
   const [sort, setSort] = useState('date_desc');
   const [search, setSearch] = useState('');
 
+  const symbols = useMemo(() => [...new Set(trades.map(t => t.pair).filter(Boolean))], [trades]);
+
   const filtered = useMemo(() => {
     let t = [...trades];
     if (filter.result !== 'all') t = t.filter(x => x.result === filter.result);
@@ -647,7 +685,7 @@ function TradeHistory({ trades, onEdit, onDelete }) {
         </select>
         <select aria-label="Filter by symbol" value={filter.pair} onChange={e => setFilter(f => ({ ...f, pair: e.target.value }))} style={selStyle}>
           <option value="all">All Symbols</option>
-          {[...new Set(trades.map(t => t.pair))].map(p => <option key={p}>{p}</option>)}
+          {symbols.map(p => <option key={p}>{p}</option>)}
         </select>
         <select aria-label="Sort trade history" value={sort} onChange={e => setSort(e.target.value)} style={selStyle}>
           <option value="date_desc">Newest First</option>
