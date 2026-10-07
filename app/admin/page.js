@@ -366,7 +366,7 @@ function AnalyticsSection({ users, emails }) {
         <StatCard icon="📈" value={`${convRate}%`} label="Conversion Rate" sub="Free → Pro" />
         <StatCard icon="⚡" value={avgXP}           label="Avg XP / User" />
         <StatCard icon="🔥" value={activeStreaks}    label="Active Streaks" sub="3+ day streak" />
-        <StatCard icon="💵" value={`$${proCount * 19}`} label="Est. Monthly Rev" sub="at $19/mo" />
+        <StatCard icon="💵" value={`${proCount * PRO_MONTHLY_PRICE_USD}`} label="Est. Monthly Rev" sub={`at ${PRO_MONTHLY_PRICE_USD}/mo`} />
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' }}>
