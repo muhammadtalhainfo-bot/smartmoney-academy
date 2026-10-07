@@ -51,30 +51,15 @@ async function ensureStripeCustomer(stripe, admin, profile, user) {
 
   const email = user.email.trim().toLowerCase();
   const customers = await stripe.customers.list({ email, limit: 25 });
-  const eligibleCustomers = customers.data.filter((candidate) =>
-    !candidate.metadata?.ictflow_user_id || candidate.metadata.ictflow_user_id === user.id
-  );
-  let customer = eligibleCustomers.find(
+  let customer = customers.data.find(
     (candidate) => candidate.metadata?.ictflow_user_id === user.id
   );
 
-  for (const candidate of eligibleCustomers) {
-    const subscriptions = await stripe.subscriptions.list({
-      customer: candidate.id,
-      status: 'all',
-      limit: 100,
-    });
-    const hasActiveSubscription = subscriptions.data.some((subscription) =>
-      ['active', 'trialing', 'past_due'].includes(subscription.status)
+  if (!customer) {
+    const unassigned = customers.data.filter(
+      (candidate) => !candidate.metadata?.ictflow_user_id
     );
-    if (hasActiveSubscription) {
-      customer = candidate;
-      break;
-    }
-  }
-
-  if (!customer && eligibleCustomers.length === 1) {
-    customer = eligibleCustomers[0];
+    if (unassigned.length === 1) customer = unassigned[0];
   }
 
   if (!customer) {
