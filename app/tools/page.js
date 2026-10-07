@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
+import { PRO_MONTHLY_PRICE_USD } from '@/lib/pricing';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 import { createClient } from '@/lib/supabase';
@@ -277,7 +278,7 @@ export default function ToolsPage() {
                 The checklist stays free. The full professional trading-plan template is included with Pro access, together with the advanced curriculum and ad-free experience.
               </p>
               <Link href="/pricing" style={{ display: 'inline-block', padding: '13px 26px', borderRadius: '10px', background: 'linear-gradient(135deg,#E8C547,#F0C96A)', color: '#080808', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em' }}>
-                UNLOCK PRO — $19/MONTH →
+                UNLOCK PRO — ${PRO_MONTHLY_PRICE_USD}/MONTH →
               </Link>
             </div>
           ) : null}
