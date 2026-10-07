@@ -80,7 +80,7 @@ export default function AboutPage() {
         </h2>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', color: 'rgba(255,255,255,0.75)', fontSize: '15px', lineHeight: 1.8, fontWeight: 300 }}>
           <p>
-            When we first discovered ICT's methodology, we spent hundreds of hours scattered across YouTube videos, old forum posts, and paid courses trying to piece it together. There was no single resource that laid it all out clearly.
+            When we first discovered ICT&apos;s methodology, we spent hundreds of hours scattered across YouTube videos, old forum posts, and paid courses trying to piece it together. There was no single resource that laid it all out clearly.
           </p>
           <p>
             We built ICT Flow to be that resource — a structured, progressive curriculum that takes a complete beginner from market structure basics all the way to advanced IPDA theory and trade management. The curriculum studies publicly available ICT educational content and mentorship material. ICT Flow is an independent educational resource and is not affiliated with or endorsed by Inner Circle Trader or any individual educator.
