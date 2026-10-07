@@ -161,6 +161,46 @@ const InfoBox = ({ children }) => (
   </div>
 );
 
+const JournalListEditor = ({ label, field, items, setItems, newItem, setNewItem }) => {
+  const add = () => {
+    if (!newItem[field].trim()) return;
+    setItems(p => [...p, newItem[field].trim()]);
+    setNewItem(p => ({ ...p, [field]: '' }));
+  };
+  const remove = i => setItems(p => p.filter((_, idx) => idx !== i));
+  const move = (i, dir) => {
+    const next = [...items];
+    const j = i + dir;
+    if (j < 0 || j >= next.length) return;
+    [next[i], next[j]] = [next[j], next[i]];
+    setItems(next);
+  };
+
+  return (
+    <div style={{ ...css.card, marginBottom:'16px' }}>
+      <div style={{ ...css.mono, fontSize:'10px', color:G, marginBottom:'14px', letterSpacing:'0.12em' }}>
+        {label.toUpperCase()} <span style={{ color:'#AAB3BF', marginLeft:'8px' }}>{items.length} items</span>
+      </div>
+      <div style={{ display:'flex', flexWrap:'wrap', gap:'8px', marginBottom:'12px' }}>
+        {items.map((item,i) => (
+          <div key={i} style={{ display:'flex', alignItems:'center', gap:'4px', background:S3, border:`1px solid ${BORDER}`, borderRadius:'7px', padding:'4px 8px 4px 10px' }}>
+            <span style={{ fontSize:'12px' }}>{item}</span>
+            <button type="button" onClick={() => move(i,-1)} aria-label={`Move ${item} up`} style={{ background:'none',border:'none',color:'#9DA6B2',cursor:'pointer',fontSize:'12px',padding:'0 2px' }}>↑</button>
+            <button type="button" onClick={() => move(i,1)} aria-label={`Move ${item} down`} style={{ background:'none',border:'none',color:'#9DA6B2',cursor:'pointer',fontSize:'12px',padding:'0 2px' }}>↓</button>
+            <button type="button" onClick={() => remove(i)} aria-label={`Remove ${item}`} style={{ background:'none',border:'none',color:'#F87171',cursor:'pointer',fontSize:'14px',padding:'0 0 0 4px' }}>×</button>
+          </div>
+        ))}
+      </div>
+      <div style={{ display:'flex', gap:'8px' }}>
+        <Input value={newItem[field]} onChange={e => setNewItem(p => ({ ...p, [field]: e.target.value }))}
+          placeholder={`Add new ${label.toLowerCase()}...`} style={{ flex:1 }}
+          onKeyDown={e => e.key === 'Enter' && add()} />
+        <button type="button" onClick={add} style={{ ...css.btn, padding:'10px 18px' }}>ADD</button>
+      </div>
+    </div>
+  );
+};
+
 // ─── DASHBOARD SECTION ────────────────────────────────────────────────────────
 function DashboardSection({ users, emails, trades, proUsers, loading, onRefresh }) {
   const topUsers = [...users].sort((a, b) => (b.xp || 0) - (a.xp || 0)).slice(0, 8);
@@ -1037,35 +1077,6 @@ function JournalSection({ adminDbClient = adminDb }) {
     setTimeout(() => setMsg({ text:'', type:'success' }), 8000);
   };
 
-  const ListEditor = ({ label, field, items, setItems }) => {
-    const add = () => { if (!newItem[field].trim()) return; setItems(p=>[...p, newItem[field].trim()]); setNewItem(p=>({...p,[field]:''})); };
-    const remove = i => setItems(p=>p.filter((_,idx)=>idx!==i));
-    const move = (i,dir) => { const a=[...items]; const j=i+dir; if(j<0||j>=a.length)return; [a[i],a[j]]=[a[j],a[i]]; setItems(a); };
-    return (
-      <div style={{ ...css.card, marginBottom:'16px' }}>
-        <div style={{ ...css.mono, fontSize:'10px', color:G, marginBottom:'14px', letterSpacing:'0.12em' }}>
-          {label.toUpperCase()} <span style={{ color:'#AAB3BF', marginLeft:'8px' }}>{items.length} items</span>
-        </div>
-        <div style={{ display:'flex', flexWrap:'wrap', gap:'8px', marginBottom:'12px' }}>
-          {items.map((item,i) => (
-            <div key={i} style={{ display:'flex', alignItems:'center', gap:'4px', background:S3, border:`1px solid ${BORDER}`, borderRadius:'7px', padding:'4px 8px 4px 10px' }}>
-              <span style={{ fontSize:'12px' }}>{item}</span>
-              <button type="button" onClick={()=>move(i,-1)} aria-label={`Move ${item} up`} style={{ background:'none',border:'none',color:'#9DA6B2',cursor:'pointer',fontSize:'12px',padding:'0 2px' }}>↑</button>
-              <button type="button" onClick={()=>move(i,1)} aria-label={`Move ${item} down`} style={{ background:'none',border:'none',color:'#9DA6B2',cursor:'pointer',fontSize:'12px',padding:'0 2px' }}>↓</button>
-              <button type="button" onClick={()=>remove(i)} aria-label={`Remove ${item}`} style={{ background:'none',border:'none',color:'#F87171',cursor:'pointer',fontSize:'14px',padding:'0 0 0 4px' }}>×</button>
-            </div>
-          ))}
-        </div>
-        <div style={{ display:'flex', gap:'8px' }}>
-          <Input value={newItem[field]} onChange={e=>setNewItem(p=>({...p,[field]:e.target.value}))}
-            placeholder={`Add new ${label.toLowerCase()}...`} style={{ flex:1 }}
-            onKeyDown={e=>e.key==='Enter'&&add()} />
-          <button type="button" onClick={add} style={{ ...css.btn, padding:'10px 18px' }}>ADD</button>
-        </div>
-      </div>
-    );
-  };
-
   const winRate = stats.total > 0 ? ((stats.wins/stats.total)*100).toFixed(1) : 0;
   return (
     <div>
@@ -1094,13 +1105,13 @@ function JournalSection({ adminDbClient = adminDb }) {
       </div>
       <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'16px' }}>
         <div>
-          <ListEditor label="Trading Pairs" field="pairs" items={pairs} setItems={setPairs} />
-          <ListEditor label="Sessions" field="sessions" items={sessions} setItems={setSessions} />
-          <ListEditor label="Trading Rules" field="rules" items={rules} setItems={setRules} />
+          <JournalListEditor label="Trading Pairs" field="pairs" items={pairs} setItems={setPairs} />
+          <JournalListEditor label="Sessions" field="sessions" items={sessions} setItems={setSessions} />
+          <JournalListEditor label="Trading Rules" field="rules" items={rules} setItems={setRules} />
         </div>
         <div>
-          <ListEditor label="ICT Setups" field="setups" items={setups} setItems={setSetups} />
-          <ListEditor label="Mistakes / Leaks" field="mistakes" items={mistakes} setItems={setMistakes} />
+          <JournalListEditor label="ICT Setups" field="setups" items={setups} setItems={setSetups} />
+          <JournalListEditor label="Mistakes / Leaks" field="mistakes" items={mistakes} setItems={setMistakes} />
         </div>
       </div>
       <div style={{ ...css.card, marginTop:'16px' }}>
