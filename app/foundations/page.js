@@ -320,7 +320,7 @@ export default function FoundationsPage() {
       <section style={{ padding: '80px 24px 64px', borderBottom: '1px solid rgba(232,197,71,0.95)', background: 'linear-gradient(180deg, #111111 0%, #080808 100%)', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(212,168,67,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(212,168,67,0.025) 1px, transparent 1px)', backgroundSize: '60px 60px', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-          <div style={{ ...mono, fontSize: '11px', color: '#E8C547', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '16px' }}>// Step 0 — Before ICT & SMC</div>
+          <div style={{ ...mono, fontSize: '11px', color: '#E8C547', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '16px' }}>{'// Step 0 — Before ICT & SMC'}</div>
           <h1 className="font-display" style={{ fontSize: 'clamp(48px, 8vw, 110px)', lineHeight: 1, marginBottom: '20px', letterSpacing: '0.02em' }}>
             <span style={{ display: 'block', color: 'white' }}>TRADING</span>
             <span style={{ display: 'block', background: 'linear-gradient(135deg, #8A6B28, #E8C547, #F0C96A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>FOUNDATIONS</span>
@@ -374,7 +374,7 @@ export default function FoundationsPage() {
       {/* Roadmap Steps */}
       <section style={{ padding: '48px 24px', background: '#080808', borderBottom: '1px solid rgba(212,168,67,0.22)' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-          <div style={{ ...mono, fontSize: '10px', color: 'rgba(232,197,71,0.95)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '8px' }}>// Learning Roadmap</div>
+          <div style={{ ...mono, fontSize: '10px', color: 'rgba(232,197,71,0.95)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '8px' }}>{'// Learning Roadmap'}</div>
           <h2 className="font-display" style={{ fontSize: '42px', color: 'white', marginBottom: '32px' }}>YOUR PATH TO MASTERY</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%,280px), 1fr))', gap: '16px' }}>
             {STEPS.map((step, i) => {
@@ -409,7 +409,7 @@ export default function FoundationsPage() {
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px', flexWrap: 'wrap', gap: '12px' }}>
             <div>
-              <div style={{ ...mono, fontSize: '10px', color: 'rgba(232,197,71,0.95)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '4px' }}>// Topics</div>
+              <div style={{ ...mono, fontSize: '10px', color: 'rgba(232,197,71,0.95)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '4px' }}>{'// Topics'}</div>
               <h2 className="font-display" style={{ fontSize: '36px', color: 'white' }}>{activeStep === 'All' ? 'ALL TOPICS' : `STEP ${activeStep}: ${STEPS[parseInt(activeStep)-1]?.name.toUpperCase()}`}</h2>
             </div>
             <button type="button" onClick={() => setActiveStep('All')} style={{ ...mono, fontSize: '11px', color: '#E8C547', background: 'transparent', border: '1px solid rgba(232,197,71,0.95)', borderRadius: '8px', padding: '6px 14px', cursor: 'pointer' }}>
@@ -499,7 +499,7 @@ export default function FoundationsPage() {
       {/* Checkpoint Quiz */}
       <section style={{ padding: '48px 24px', background: '#0A0A0A', borderTop: '1px solid rgba(212,168,67,0.22)' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-          <div style={{ ...mono, fontSize: '10px', color: 'rgba(232,197,71,0.95)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '8px' }}>// Checkpoint</div>
+          <div style={{ ...mono, fontSize: '10px', color: 'rgba(232,197,71,0.95)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '8px' }}>{'// Checkpoint'}</div>
           <h2 className="font-display" style={{ fontSize: '42px', color: 'white', marginBottom: '24px' }}>FOUNDATION CHECKLIST</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '12px' }}>
             {[
@@ -526,7 +526,7 @@ export default function FoundationsPage() {
       {/* Next Steps CTA */}
       <section style={{ padding: '64px 24px', borderTop: '1px solid rgba(232,197,71,0.95)' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', textAlign: 'center' }}>
-          <div style={{ ...mono, fontSize: '10px', color: 'rgba(232,197,71,0.95)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '12px' }}>// What's Next</div>
+          <div style={{ ...mono, fontSize: '10px', color: 'rgba(232,197,71,0.95)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '12px' }}>{'// What\'s Next'}</div>
           <h2 className="font-display" style={{ fontSize: '56px', color: 'white', marginBottom: '16px' }}>READY FOR THE REAL THING?</h2>
           <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.85)', maxWidth: '500px', margin: '0 auto 40px', lineHeight: 1.7, fontWeight: 300 }}>
             You've built the foundation. Now step into the full ICT curriculum and study how ICT-style frameworks interpret market behavior.
