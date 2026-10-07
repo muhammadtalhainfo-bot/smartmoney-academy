@@ -331,7 +331,7 @@ export default function CoursesPage() {
       <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '32px 24px 0' }}>
         <div style={{ background: 'rgba(212,168,67,0.06)', border: '1px solid #E8C547', borderRadius: '16px', padding: '20px 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
           <div>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', letterSpacing: '0.2em', color: '#E8C547', marginBottom: '6px' }}>// NEW TO TRADING?</div>
+            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '10px', letterSpacing: '0.2em', color: '#E8C547', marginBottom: '6px' }}>{'// NEW TO TRADING?'}</div>
             <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '15px', color: 'white', fontWeight: 600 }}>Start with Trading Foundations before ICT concepts.</div>
             <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '13px', color: 'rgba(255,255,255,0.85)', marginTop: '4px' }}>Learn what trading is, how markets work, and risk management basics first.</div>
           </div>
@@ -484,7 +484,7 @@ export default function CoursesPage() {
       {/* ── BOTTOM CTA ── */}
       <section className="relative z-10 px-6 py-16 border-t" style={{ borderColor: 'var(--border)', background: '#0A0A0A' }}>
         <div className="max-w-2xl mx-auto text-center">
-          <div className="font-mono-c text-xs tracking-widest uppercase mb-4" style={{ color: 'rgba(232,197,71,0.95)' }}>// Start From Zero</div>
+          <div className="font-mono-c text-xs tracking-widest uppercase mb-4" style={{ color: 'rgba(232,197,71,0.95)' }}>{'// Start From Zero'}</div>
           <h2 className="font-display text-5xl text-white mb-4">DON'T KNOW WHERE<br/>TO BEGIN?</h2>
           <p className="text-gray-200 text-sm mb-8" style={{ fontWeight: 300 }}>New to trading? Start with Trading Foundations first, then come back here.</p>
           <Link href="/lesson/1">
