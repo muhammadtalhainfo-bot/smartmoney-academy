@@ -87,7 +87,7 @@ This is one possible top-down analysis framework; traders can adapt the timefram
   2: {
     id: 2,
     title: 'Liquidity Concepts',
-    subtitle: 'Why Price Really Moves — The Stop Hunt Mechanism Explained',
+    subtitle: 'Liquidity Sweeps and Stop-Hunt Interpretations Explained',
     level: 'Beginner',
     duration: '20 min read',
     category: 'Foundation',
@@ -114,7 +114,7 @@ Within the ICT framework, traders may study BSL as an area where sell-side liqui
 
 You'll recognize BSL as: Equal Highs (EQH) on a chart, previous day/week highs, obvious resistance levels that everyone is watching, and round numbers like 1.1000 or 2000 on Gold.
 
-A common liquidity-sweep example is price approaching BSL, briefly trading above it, then potentially reversing. ICT calls this the "stop hunt" or "liquidity sweep."`,
+A common liquidity-sweep example is price approaching BSL, briefly trading above it, then potentially reversing. ICT education may call this a "stop hunt" or "liquidity sweep," but the chart alone cannot establish that stops were deliberately targeted.`,
         highlight: '📌 Every time you see price spike above an obvious high and immediately reverse — that may be interpreted as a BSL sweep; institutional order flow cannot be confirmed from the chart alone.',
       },
       {
@@ -160,7 +160,7 @@ A commonly studied ICT sequence is Liquidity Sweep → Structure Shift → Entry
     ],
     quiz: [
       { q: 'Buy-side liquidity (BSL) is located...', options: ['Below recent lows', 'Above recent highs', 'At the 50% Fibonacci level', 'During the Asian session'], answer: 1 },
-      { q: 'What happens after a liquidity sweep?', options: ['Price continues in the same direction', 'Price reverses sharply', 'Price consolidates for weeks', 'Volume disappears'], answer: 1 },
+      { q: 'What can happen after a liquidity sweep?", options: ["Price may continue or reverse depending on conditions", "Price reverses sharply", "Price consolidates for weeks", "Volume disappears"], answer: 1 },
       { q: 'Equal Highs (EQH) in ICT represent...', options: ['Strong resistance to sell from', 'Resting buy-side liquidity above', 'A bullish continuation pattern', 'Order block validation'], answer: 1 },
     ],
     nextLesson: { id: 3, title: 'Fair Value Gaps (FVG)' },
@@ -170,7 +170,7 @@ A commonly studied ICT sequence is Liquidity Sweep → Structure Shift → Entry
   3: {
     id: 3,
     title: 'Fair Value Gaps (FVG)',
-    subtitle: 'The Most Traded ICT Concept — Imbalance, Magnet Zones, and How to Use Them',
+    subtitle: 'Imbalances, Potential Repricing Areas, and How to Study Them',
     level: 'Beginner',
     duration: '16 min read',
     category: 'PD Arrays',
