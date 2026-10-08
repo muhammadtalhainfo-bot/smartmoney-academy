@@ -364,6 +364,20 @@ export default function LessonClient({ lesson, lessonId, moduleDiagramSrc }) {
           <p className="text-gray-400 text-lg" style={{ fontWeight: 300 }}>{lesson.subtitle}</p>
         </div>
 
+        {/* ── Editorial context ── */}
+        <div className="mb-8 rounded-2xl border border-[rgba(212,168,67,0.14)] bg-[#0C0C0C] p-5">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-2">
+            <span className="font-mono-custom text-[10px] tracking-widest uppercase text-[#D4A843]">ICT Flow Editorial</span>
+            <span className="font-mono-custom text-[10px] text-gray-500">Independent educational resource</span>
+          </div>
+          <p className="text-gray-400 text-sm leading-relaxed" style={{ fontWeight: 300 }}>
+            This lesson explains concepts commonly taught in ICT/SMC trading education and presents them as frameworks to study and test. Chart patterns cannot independently prove institutional intent, future price delivery, or profitability. Examples and rules are educational, not trading advice.
+          </p>
+          <Link href="/editorial-policy" className="inline-block mt-3 font-mono-custom text-[10px] tracking-wider uppercase text-[#E8C547] hover:underline">
+            Read our editorial standards →
+          </Link>
+        </div>
+
         {/* ── Intro ── */}
         <div className="p-6 rounded-2xl border border-[var(--border)] bg-[var(--bg2)] mb-8">
           <p className="text-gray-300 leading-relaxed" style={{ fontWeight: 300 }}>{lesson.intro}</p>
