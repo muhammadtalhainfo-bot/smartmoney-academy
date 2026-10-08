@@ -1,6 +1,45 @@
+import { createHash } from 'node:crypto';
+import { createClient as createSupabaseAdmin } from '@supabase/supabase-js';
+
 export const runtime = 'nodejs';
 
 const CACHE_DURATION = 60 * 1000;
+const RATE_WINDOW_SECONDS = 60;
+const RATE_LIMIT = 30;
+
+function getClientIp(req) {
+  const vercelIp = req.headers.get('x-vercel-forwarded-for')?.split(',')[0]?.trim();
+  if (vercelIp) return vercelIp;
+  const forwarded = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim();
+  return forwarded || req.headers.get('x-real-ip')?.trim() || 'unknown';
+}
+
+function hashClientIp(ip) {
+  const pepper = process.env.RATE_LIMIT_SECRET || process.env.SUPABASE_SERVICE_KEY || 'ictflow-rate-limit';
+  return createHash('sha256').update(pepper + ':ticker:' + ip).digest('hex');
+}
+
+function adminClient() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_KEY;
+  if (!url || !key) throw new Error('Supabase server configuration is missing.');
+  return createSupabaseAdmin(url, key, { auth: { autoRefreshToken: false, persistSession: false } });
+}
+
+async function enforceRateLimit(req) {
+  const admin = adminClient();
+  const { data: allowed, error } = await admin.rpc('consume_api_rate_limit', {
+    p_scope: 'ticker',
+    p_key_hash: hashClientIp(getClientIp(req)),
+    p_window_seconds: RATE_WINDOW_SECONDS,
+    p_max_requests: RATE_LIMIT,
+  });
+  if (error) {
+    console.error('Ticker rate-limit error:', error);
+    throw new Error('Ticker rate-limit service unavailable.');
+  }
+  return allowed === true;
+}
 let cachedData = null;
 let lastFetchTime = 0;
 
@@ -50,8 +89,11 @@ const HEADERS = {
   'Cache-Control': 'public, max-age=15, s-maxage=60, stale-while-revalidate=30',
 };
 
-export async function GET() {
+export async function GET(req) {
   try {
+    if (!(await enforceRateLimit(req))) {
+      return Response.json({ data: [], error: 'Too many requests. Try again later.' }, { status: 429, headers: { 'Cache-Control': 'private, no-store' } });
+    }
     const data = await fetchTickerData();
     return Response.json({ data, timestamp: new Date().toISOString() }, { headers: HEADERS });
   } catch {
