@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
+import { CURRICULUM_STATS } from '@/lib/curriculum';
 
 const STATS = [
-  { value: '38', label: 'ICT Modules' },
-  { value: '203+', label: 'Lessons Built' },
+  { value: String(CURRICULUM_STATS.moduleCount), label: 'ICT Modules' },
+  { value: `${CURRICULUM_STATS.lessonCount}+`, label: 'Lessons Built' },
   { value: '97+', label: 'Glossary Terms' },
   { value: '100%', label: 'Free to Start' },
 ];
@@ -23,7 +24,7 @@ const VALUES = [
   {
     icon: '🆓',
     title: 'Free Starting Point',
-    desc: 'All 38 modules and 203+ lessons are free. Pro adds premium tools and an ad-free experience.',
+    desc: `All ${CURRICULUM_STATS.moduleCount} modules and ${CURRICULUM_STATS.lessonCount}+ lessons are free. Pro adds premium tools and an ad-free experience.`,
   },
   {
     icon: '🎯',
@@ -55,7 +56,7 @@ export default function AboutPage() {
             <span className="shine">STRUCTURE</span>
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '17px', lineHeight: 1.8, fontWeight: 300, maxWidth: '560px', margin: '0 auto' }}>
-            ICT Flow was built to make ICT and Smart Money Concepts easier to study through a structured curriculum, practice tools and progress tracking. All 38 modules and 203+ lessons are available free; Pro adds premium tools and extras.
+            ICT Flow was built to make ICT and Smart Money Concepts easier to study through a structured curriculum, practice tools and progress tracking. All ${CURRICULUM_STATS.moduleCount} modules and ${CURRICULUM_STATS.lessonCount}+ lessons are available free; Pro adds premium tools and extras.
           </p>
         </div>
       </section>
