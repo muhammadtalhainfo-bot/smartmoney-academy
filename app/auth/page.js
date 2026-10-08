@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase';
 import { trackEvent, trackLogin, trackSignUp } from '@/lib/analytics';
+import { CURRICULUM_STATS } from '@/lib/curriculum';
 function AuthPageInner() {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
@@ -266,7 +267,7 @@ function AuthPageInner() {
         </div>
 
         <p style={{ textAlign: 'center', marginTop: '24px', fontFamily: 'DM Mono', fontSize: '11px', color: '#B9C1CC' }}>
-          Free access to all 38 modules
+          Free access to all {CURRICULUM_STATS.moduleCount} modules
         </p>
 
       </div>
