@@ -160,7 +160,7 @@ A commonly studied ICT sequence is Liquidity Sweep → Structure Shift → Entry
     ],
     quiz: [
       { q: 'Buy-side liquidity (BSL) is located...', options: ['Below recent lows', 'Above recent highs', 'At the 50% Fibonacci level', 'During the Asian session'], answer: 1 },
-      { q: 'What can happen after a liquidity sweep?", options: ["Price may continue or reverse depending on conditions", "Price reverses sharply", "Price consolidates for weeks", "Volume disappears"], answer: 1 },
+      { q: 'What can happen after a liquidity sweep?', options: ['Price may continue or reverse depending on conditions', 'Price reverses sharply', 'Price consolidates for weeks', 'Volume disappears'], answer: 0 },
       { q: 'Equal Highs (EQH) in ICT represent...', options: ['Strong resistance to sell from', 'Resting buy-side liquidity above', 'A bullish continuation pattern', 'Order block validation'], answer: 1 },
     ],
     nextLesson: { id: 3, title: 'Fair Value Gaps (FVG)' },
