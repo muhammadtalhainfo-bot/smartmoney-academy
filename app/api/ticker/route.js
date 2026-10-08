@@ -91,12 +91,31 @@ const HEADERS = {
 
 export async function GET(req) {
   try {
-    if (!(await enforceRateLimit(req))) {
-      return Response.json({ data: [], error: 'Too many requests. Try again later.' }, { status: 429, headers: { 'Cache-Control': 'private, no-store' } });
+    let allowed;
+    try {
+      allowed = await enforceRateLimit(req);
+    } catch (error) {
+      console.error('Ticker rate-limit service unavailable:', error);
+      return Response.json(
+        { data: [], error: 'Ticker service temporarily unavailable.' },
+        { status: 503, headers: { 'Cache-Control': 'private, no-store' } }
+      );
     }
+
+    if (!allowed) {
+      return Response.json(
+        { data: [], error: 'Too many requests. Try again later.' },
+        { status: 429, headers: { 'Cache-Control': 'private, no-store' } }
+      );
+    }
+
     const data = await fetchTickerData();
     return Response.json({ data, timestamp: new Date().toISOString() }, { headers: HEADERS });
-  } catch {
-    return Response.json({ data: [], timestamp: new Date().toISOString() }, { headers: HEADERS });
+  } catch (error) {
+    console.error('Ticker endpoint error:', error);
+    return Response.json(
+      { data: [], timestamp: new Date().toISOString() },
+      { headers: HEADERS }
+    );
   }
 }
