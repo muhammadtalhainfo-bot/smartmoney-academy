@@ -48,7 +48,7 @@ jobs:
             -e '\b80\+?[[:space:]]+lessons\b' \
             -e '\b192\+?[[:space:]]+lessons\b' \
             -e 'join (the )?discord' \
-            -e 'discord.gg' -- app lib public; then
+            -e 'discord\\.gg' \\n            -e '\\b10[[:space:]]+sections\\b' \\n            -e '\\$19/(month|MONTH)' \\n            -e '\\$149/(year|YEAR)' -- app lib public; then
             echo "Found a retired ICT Flow claim or Discord reference."
             exit 1
           fi
