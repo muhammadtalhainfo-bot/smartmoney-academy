@@ -102,7 +102,7 @@ const TOPICS = [
     id: 11, step: 3, stepName: "Understand Risk",
     title: "Stop Loss & Take Profit",
     icon: "🛡️",
-    explanation: "Stop Loss (SL) = automatic order that closes your trade at a defined loss level. Take Profit (TP) = automatic order that closes at your target. Both are essential. Trading without a stop loss is gambling.",
+    explanation: "Stop Loss (SL) = automatic order that closes your trade at a defined loss level. Take Profit (TP) = automatic order that closes at your target. Both are essential. Trading without defined loss controls exposes you to uncontrolled downside.",
     example: "Buy EURUSD at 1.0800. SL at 1.0780 (20 pip risk). TP at 1.0860 (60 pip target). R:R = 1:3. If wrong, lose 20 pips. If right, gain 60 pips.",
     remember: "Consider defining and placing a stop or other explicit loss-control method before entry when appropriate to the strategy. Risk controls should reflect the account and instrument.",
     color: "#F87171"
@@ -174,8 +174,8 @@ const TOPICS = [
     id: 19, step: 4, stepName: "Practice Market Structure",
     title: "Liquidity in Simple Language",
     icon: "💧",
-    explanation: "Liquidity = pools of pending orders (stop losses and pending orders). Equal highs and lows are liquidity magnets — retail traders cluster orders there. ICT-style interpretations often describe price as seeking liquidity pools; this is a framework rather than a guaranteed mechanism.",
-    example: "Price makes three equal highs at 100. Thousands of retail traders have stop losses at 100.10 (just above). A possible liquidity-sweep interpretation is that price moves above the level, triggers orders, and then reverses; this should be evaluated from observed price data.",
+    explanation: "Liquidity refers to chart areas where traders may hypothesize that stop-loss or other resting orders could cluster. Equal highs and lows are commonly studied as potential liquidity areas; the actual location and size of orders cannot be known from the chart alone.",
+    example: "Price makes three equal highs at 100. Thousands of retail traders have stop losses at 100.10 (just above). One possible liquidity-sweep interpretation is that price moves above the level, interacts with orders, and then reverses; the outcome should be evaluated from observed price data rather than assumed.",
     remember: "ICT-style liquidity concepts focus on areas where orders may cluster; a sweep is a potential scenario, not a guaranteed future path.",
     color: "#818CF8"
   },
@@ -192,9 +192,9 @@ const TOPICS = [
     id: 21, step: 5, stepName: "Move into ICT & SMC",
     title: "What is SMC? (Simple Version)",
     icon: "💡",
-    explanation: "Smart Money Concepts (SMC) is a community-derived framework based on ICT teachings. It focuses on Order Blocks (institutional entry zones), Fair Value Gaps (price imbalances), Break of Structure, and Change of Character. It's slightly simplified from pure ICT.",
+    explanation: "Smart Money Concepts (SMC) is a community-derived framework based on ICT teachings. It focuses on Order Blocks (zones studied in institutional-style interpretations), Fair Value Gaps (price imbalances), Break of Structure, and Change of Character. It's slightly simplified from pure ICT.",
     example: "An SMC trader sees price break structure upward, pull back to an Order Block (the last bearish candle before the bullish move), and enters long. ICT adds the time and liquidity dimension to this.",
-    remember: "SMC is a good entry point into institutional concepts. Once comfortable, progress to full ICT to understand the deeper algorithmic mechanics.",
+    remember: "SMC is a good entry point into institutional concepts. Once comfortable, progress to full ICT to understand the more detailed ICT framework concepts.",
     color: "#C084FC"
   },
   {
