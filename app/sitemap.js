@@ -5,6 +5,7 @@ import { SEO_PAGES } from './learn/seo-data'
 export const revalidate = 3600
 
 const BASE = 'https://ictflow.com'
+const CONTENT_UPDATED_AT = new Date('2026-10-09T00:00:00.000Z')
 
 export default async function sitemap() {
   const posts = await getPublishedBlogPosts();
@@ -23,30 +24,33 @@ export default async function sitemap() {
     [`${BASE}/resources`,   0.7,  'monthly'],
     [`${BASE}/tools`,       0.75, 'monthly'],
     [`${BASE}/about`,       0.7,  'monthly'],
+    [`${BASE}/editorial-policy`, 0.6, 'monthly'],
     [`${BASE}/privacy`,     0.3,  'yearly'],
     [`${BASE}/terms`,       0.3,  'yearly'],
     [`${BASE}/cookies`,     0.3,  'yearly'],
   ].map(([url, priority, changeFrequency]) => ({
-    url, priority, changeFrequency,
+    url, priority, changeFrequency, lastModified: CONTENT_UPDATED_AT,
   }))
 
   const learnPages = SEO_PAGES.map(({ slug }) => ({
     url: `${BASE}/learn/${slug}`,
     changeFrequency: 'monthly',
     priority: 0.8,
+    lastModified: CONTENT_UPDATED_AT,
   }))
 
   const lessonPages = MODULES.map(({ id }) => ({
     url: `${BASE}/lesson/${id}`,
     changeFrequency: 'monthly',
     priority: 0.75,
+    lastModified: CONTENT_UPDATED_AT,
   }))
 
   const blogPages = (posts || [])
     .filter(p => p && p.slug)
     .map(p => ({
       url: `${BASE}/blog/${p.slug}`,
-      lastModified: p.date,
+      lastModified: p.date || CONTENT_UPDATED_AT,
       changeFrequency: 'monthly',
       priority: 0.7,
     }))
