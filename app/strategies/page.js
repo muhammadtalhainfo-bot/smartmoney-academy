@@ -12,11 +12,11 @@ const STRATEGIES = [
     avatar: 'ICT',
     color: '#E8C547',
     tags: ['Forex', 'Indices'],
-    description: 'A precision intraday strategy using three specific one-hour windows. Requires a liquidity sweep followed by a 1-minute FVG entry. Uses defined risk-reward rules with tight invalidation.',
+    description: 'A precision intraday framework using three specific one-hour windows. It studies liquidity sweeps followed by a 1-minute FVG entry, with defined risk and invalidation rules to test.',
     stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Daily', type: 'Intraday' },
     content: [
       { heading: 'Overview', text: 'The Silver Bullet is an ICT intraday model commonly described using specific time windows and setup conditions. Session windows depend on the time-zone convention and daylight-saving period, so verify the applicable New York time before trading. Within each window, you wait for a liquidity sweep followed by displacement and a 1-minute FVG entry.' },
-      { heading: 'Entry Conditions', items: ['Liquidity sweep of session high or low must occur first', 'A displacement candle creates a 1-minute FVG', 'Enter inside the FVG — ideally at the 50% midpoint', 'Stop loss below the sweep wick (bullish) or above (bearish)', 'Target: next opposing liquidity pool'] },
+      { heading: 'Entry Conditions', items: ['A liquidity sweep of the session high or low is a required condition for this model; test whether the rule improves results', 'A displacement candle creates a 1-minute FVG that can serve as the model's entry reference', 'Enter inside the FVG — ideally at the 50% midpoint', 'Stop loss below the sweep wick (bullish) or above (bearish)', 'Target: a predefined opposing liquidity reference from the tested plan'] },
       { heading: 'Best Instruments', text: 'NAS100, S&P500, EURUSD, GBPUSD, XAUUSD. It is commonly studied on liquid instruments; test suitability on your chosen market.' },
       { heading: 'Time Windows', items: ['3:00-4:00 AM EST — London session (optional)', '10:00-11:00 AM EST — Primary NY macro window', '2:00-3:00 PM EST — Afternoon session'] },
       { heading: 'Rules', items: ['No trade if no liquidity sweep occurs in the window', 'One trade per window maximum', 'Do not carry trades between windows', 'If target not reached by end of window, manage manually'] },
@@ -48,7 +48,7 @@ const STRATEGIES = [
     description: 'Enter at the 62-79% Fibonacci retracement (Optimal Trade Entry) after a liquidity sweep and market structure shift. Can be adapted across timeframes, but suitability should be tested on the chosen market and timeframe.',
     stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Swing/Intraday', type: 'Multi-TF' },
     content: [
-      { heading: 'Overview', text: 'The OTE (Optimal Trade Entry) model enters trades at the 62-79% Fibonacci retracement of a prior swing. Combined with a liquidity sweep, market structure shift, and discount/premium analysis, it can provide a clearly defined risk-reward framework when the setup conditions align.' },
+      { heading: 'Overview', text: 'The OTE (Optimal Trade Entry) model studies the 62-79% Fibonacci retracement of a prior swing as a potential entry zone. Combined with a liquidity sweep, market structure shift, and discount/premium analysis, it provides a clearly defined framework whose performance should be tested when the conditions align.' },
       { heading: 'Setup Steps', items: ['Identify a significant swing high to low (bullish setup = low to high)', 'Apply Fibonacci from swing low to swing high', 'Wait for price to retrace to the 62-79% zone', 'Look for an OB or FVG within the OTE zone', 'Confirm with LTF ChoCH inside the OTE zone', 'Define invalidation relative to the swing structure'] },
       { heading: 'Key Levels', items: ['50% = Equilibrium (neutral — not ideal entry)', '62% = Start of OTE zone', '70.5% = Golden pocket', '79% = End of OTE zone', 'Beyond 79% = Reassess the setup rather than assuming automatic invalidation'] },
     ],
@@ -63,9 +63,9 @@ const STRATEGIES = [
     description: 'Wait for a liquidity sweep of a key level, then enter at the nearest Fair Value Gap created by the displacement candle. A simple, structured setup; its effectiveness should be evaluated with your own testing.',
     stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Daily', type: 'Intraday' },
     content: [
-      { heading: 'Overview', text: 'This is a commonly taught ICT-style entry model. A liquidity sweep clears the stops, displacement creates an FVG, and price returns to fill the FVG before continuing. The sweep + FVG combination is one framework used in ICT-style trading.' },
+      { heading: 'Overview', text: 'This is a commonly taught ICT-style entry model. A liquidity sweep may interact with stop orders, displacement can create an FVG, and price may later revisit that gap. The sweep + FVG combination is one framework used in ICT-style trading; the sequence and outcome are not guaranteed.' },
       { heading: 'Entry Conditions', items: ['Key liquidity level identified (equal highs/lows, swing points)', 'Price sweeps the level with a clear wick or close beyond', 'Displacement candle moves rapidly away — creating an FVG', 'Price retraces into the FVG', 'Consider the FVG, including its 50% midpoint, as a testable entry reference rather than a standalone signal', 'Stop beyond the sweep wick'] },
-      { heading: 'Filters', items: ['Only take in direction of HTF bias', 'FVG must be in discount (for buys) or premium (for sells)', 'Often studied during killzone hours; test whether session timing improves your results', 'Avoid taking if FVG is too small (less than 5 pips for forex)'] },
+      { heading: 'Filters', items: ['Prefer setups aligned with the higher-timeframe bias defined in the tested plan', 'For this framework, test FVGs in discount for buys or premium for sells as a defined filter', 'Often studied during killzone hours; test whether session timing improves your results', 'Avoid taking if FVG is too small (less than 5 pips for forex)'] },
     ],
   },
   {
@@ -93,9 +93,9 @@ const STRATEGIES = [
     description: 'Fade false breakouts by entering opposite to a liquidity sweep. When price makes a new high/low then immediately reverses, enter the reversal with the next liquidity pool as target.',
     stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Daily', type: 'Counter-trend' },
     content: [
-      { heading: 'Overview', text: 'The Turtle Soup is a counter-trend strategy that trades against false breakouts. When price makes a new high or low and then reverses, the setup can be interpreted as a potential false breakout or liquidity sweep within this framework; the chart alone cannot establish the underlying cause. This reversal can produce fast moves, but outcomes vary by market and conditions.' },
+      { heading: 'Overview', text: 'The Turtle Soup is a counter-trend framework that studies potential false breakouts. When price makes a new high or low and then reverses, the setup can be interpreted as a potential false breakout or liquidity sweep within this framework; the chart alone cannot establish the underlying cause. This reversal can produce fast moves, but outcomes vary by market and conditions.' },
       { heading: 'Entry Conditions', items: ['Price makes a new swing high or low (breakout)', 'Price immediately reverses — closing back inside the range', 'Displacement candle in the opposite direction', 'Enter on the first pullback after the displacement', 'Stop beyond the false breakout wick', 'Target: opposite end of the range + liquidity beyond'] },
-      { heading: 'Best Market Conditions', items: ['Ranging markets with clear equal highs/lows', 'Just before major session opens (pre-London, pre-NY)', 'When higher TF structure suggests reversal is due'] },
+      { heading: 'Best Market Conditions', items: ['Ranging markets with clear equal highs/lows', 'Just before major session opens (pre-London, pre-NY)', 'When higher-timeframe structure provides context for a potential reversal'] },
     ],
   },
   {
@@ -105,11 +105,11 @@ const STRATEGIES = [
     avatar: 'SMA',
     color: '#14B8A6',
     tags: ['Forex', 'Indices'],
-    description: 'Use Smart Money Technique divergence between correlated pairs (EURUSD/GBPUSD or NAS100/SP500) to confirm reversals at key ICT levels. Adds confluence to any setup.',
+    description: 'Use Smart Money Technique divergence between correlated pairs (EURUSD/GBPUSD or NAS100/SP500) as potential confirmation at key ICT levels. It can add confluence, but should not be treated as proof of a reversal.',
     stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Daily', type: 'Confirmation' },
     content: [
       { heading: 'Overview', text: 'SMT Divergence occurs when two correlated instruments fail to confirm each other\'s move. When EURUSD makes a new low but GBPUSD does not, it can be treated as bullish divergence within this framework; it does not by itself establish institutional positioning. This divergence at a key ICT level (OB, FVG, OTE) can provide additional confluence, but its effectiveness should be evaluated with your own testing.' },
-      { heading: 'How to Use SMT', items: ['Open two correlated charts side by side (EURUSD + GBPUSD or NAS100 + SP500)', 'Mark the same swing highs and lows on both', 'Look for divergence: one makes a new high/low, the other does not', 'The stronger instrument (that did NOT make new extremes) is your buy/sell', 'Combine with OB, FVG, or OTE at the divergence level', 'Enter on the stronger instrument with LTF confirmation'] },
+      { heading: 'How to Use SMT', items: ['Open two correlated charts side by side (EURUSD + GBPUSD or NAS100 + SP500)', 'Mark the same swing highs and lows on both', 'Look for divergence: one makes a new high/low, the other does not', 'The instrument that does not make the new extreme can be treated as the directional reference for the tested setup', 'Combine with OB, FVG, or OTE at the divergence level', 'Enter on the stronger instrument with LTF confirmation'] },
       { heading: 'Correlated Pairs', items: ['EURUSD ↔ GBPUSD (USD base pairs)', 'NAS100 ↔ S&P500 (US indices)', 'AUDUSD ↔ NZDUSD (commodity currencies)', 'XAUUSD ↔ DXY (inverse — gold vs dollar)'] },
     ],
   },
@@ -123,7 +123,7 @@ const STRATEGIES = [
     description: 'Use the 12 AM EST candle open as a key reference level. Some traders study whether price revisits the midnight open during the trading day. Trade rejections and sweeps of this level.',
     stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Daily', type: 'Level-based' },
     content: [
-      { heading: 'Overview', text: 'The Midnight Open (12 AM EST) is a key ICT reference level. Some traders use this level as a reference during the trading day; its usefulness should be evaluated with your own testing. Combined with session analysis, this level provides clear entry and exit points.' },
+      { heading: 'Overview', text: 'The Midnight Open (12 AM EST) is a key ICT reference level. Some traders use this level as a reference during the trading day; its usefulness should be evaluated with your own testing. Combined with session analysis, this level can provide predefined reference points for a testable entry and exit plan.' },
       { heading: 'How to Trade It', items: ['Mark the 12 AM EST candle open price at the start of each day', 'Use price relative to the midnight open as one contextual input rather than a standalone bias rule', 'Look for price to sweep the midnight open and reverse', 'Or look for price to consolidate above/below and break with momentum', 'Use killzone timing for entries'] },
       { heading: 'Combining with Other Concepts', text: 'Some traders give the midnight open more weight when it aligns with an FVG, OB, or OTE zone. A midnight open that sits inside a daily bullish FVG, for example, can provide additional confluence for a buy setup.' },
     ],
