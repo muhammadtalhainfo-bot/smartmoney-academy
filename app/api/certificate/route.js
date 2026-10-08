@@ -68,6 +68,7 @@ export async function GET() {
     if (allowed !== true) return noStore({ error: 'Too many requests. Try again later.' }, 429);
 
     const requiredModuleIds = MODULES.map((module) => module.id);
+    const totalLessons = MODULES.reduce((sum, module) => sum + Number(module.lessons || 0), 0);
     const [{ data: completions, error: completionError }, { data: profile, error: profileError }] = await Promise.all([
       supabase.from('lesson_completions').select('lesson_id, completed_at, quiz_score').eq('user_id', user.id),
       supabase.from('profiles').select('name, username, xp, is_pro').eq('id', user.id).maybeSingle(),
@@ -81,8 +82,29 @@ export async function GET() {
     if (profile?.is_pro !== true) return noStore({ error: 'Pro membership required.' }, 403);
 
     const passedCompletions = (completions || []).filter((row) => Number(row.quiz_score) >= 70);
-    const completedIds = new Set(passedCompletions.map((row) => Number(row.lesson_id)));
-    const completedModuleIds = requiredModuleIds.filter((id) => completedIds.has(id));
+    const completedLessonIds = new Set(
+      passedCompletions
+        .map((row) => Number(row.lesson_id))
+        .filter((lessonId) => Number.isSafeInteger(lessonId) && lessonId >= 1 && lessonId <= totalLessons)
+    );
+
+    // Lesson IDs are sequential across the curriculum. A module is complete only
+    // when every lesson assigned to that module has a passing completion.
+    let lessonCursor = 1;
+    const completedModuleIds = [];
+    for (const module of MODULES) {
+      const lessonCount = Number(module.lessons || 0);
+      let moduleComplete = lessonCount > 0;
+      for (let offset = 0; offset < lessonCount; offset += 1) {
+        if (!completedLessonIds.has(lessonCursor + offset)) {
+          moduleComplete = false;
+          break;
+        }
+      }
+      if (moduleComplete) completedModuleIds.push(module.id);
+      lessonCursor += lessonCount;
+    }
+
     const eligible = completedModuleIds.length === requiredModuleIds.length;
 
     const latestCompletion = (completions || [])
@@ -98,7 +120,7 @@ export async function GET() {
       eligible,
       completedCount: completedModuleIds.length,
       totalModules: requiredModuleIds.length,
-      totalLessons: MODULES.reduce((sum, module) => sum + Number(module.lessons || 0), 0),
+      totalLessons,
       completedModuleIds,
       name: profile?.name || profile?.username || user.email?.split('@')[0] || 'Trader',
       username: profile?.username || null,
