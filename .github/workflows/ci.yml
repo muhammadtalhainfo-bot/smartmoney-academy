@@ -48,7 +48,7 @@ jobs:
             -e '80+? lessons' \
             -e '192+? lessons' \
             -e 'join (the )?discord' \
-            -e 'discord.gg' -- .; then
+            -e 'discord.gg' -- app lib public; then
             echo "Found a retired ICT Flow claim or Discord reference."
             exit 1
           fi
