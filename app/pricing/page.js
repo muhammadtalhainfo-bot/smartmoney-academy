@@ -6,9 +6,10 @@ import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 import { trackEvent, trackCheckoutStart } from '@/lib/analytics';
 import { PRO_ANNUAL_PRICE_USD, PRO_MONTHLY_PRICE_USD } from '@/lib/pricing';
+import { CURRICULUM_STATS } from '@/lib/curriculum';
 
 const FREE_FEATURES = [
-  { text: 'All 38 modules and 203+ lessons', included: true },
+  { text: `All ${CURRICULUM_STATS.moduleCount} modules and ${CURRICULUM_STATS.lessonCount}+ lessons`, included: true },
   { text: 'ICT Glossary (97+ terms)', included: true },
   { text: 'Daily practice challenges', included: true },
   { text: 'Trade Journal', included: true },
@@ -26,7 +27,7 @@ const PRO_FEATURES = [
 ];
 
 const FAQS = [
-  { q: 'Can I try before I pay?', a: 'Yes — all 38 modules are free with no credit card required. Sign up and start learning immediately.' },
+  { q: 'Can I try before I pay?', a: `Yes — all ${CURRICULUM_STATS.moduleCount} modules are free with no credit card required. Sign up and start learning immediately.` },
   { q: 'What payment methods do you accept?', a: 'Payments are processed securely through Stripe. The checkout page shows the payment methods currently available for your region and plan.' },
   { q: 'Can I cancel anytime?', a: 'Absolutely. Cancel with one click from your dashboard. No questions asked, no cancellation fees.' },
   { q: 'Is this suitable for complete beginners?', a: 'Yes. The curriculum starts from zero — market structure basics — and progressively builds to advanced ICT models. No prior trading knowledge needed.' },
@@ -118,7 +119,7 @@ export default function PricingPage() {
             <span style={{ color: 'white' }}>TRADING EDGE</span>
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '16px', lineHeight: 1.7, fontWeight: 300, marginBottom: '40px' }}>
-            All 38 modules are free. Upgrade when you want premium tools and an ad-free experience.
+            All {CURRICULUM_STATS.moduleCount} modules are free. Upgrade when you want premium tools and an ad-free experience.
           </p>
 
           {/* BILLING TOGGLE */}
