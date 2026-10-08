@@ -73,7 +73,7 @@ export const QUESTIONS = [
     "options": [
       "Major swing points only",
       "Smaller market structure within a larger move",
-      "Institutional order flow",
+      "Institutional-style order-flow interpretations",
       "Daily candle patterns"
     ],
     "answer": 1
@@ -124,7 +124,7 @@ export const QUESTIONS = [
     "q": "Equal lows (EQL) are considered:",
     "options": [
       "Random price levels",
-      "Liquidity targets for smart money",
+      "Potential liquidity targets in the framework",
       "Support that always holds",
       "Resistance zones"
     ],
@@ -150,7 +150,7 @@ export const QUESTIONS = [
     "q": "What happens to price after a true BOS?",
     "options": [
       "It reverses immediately",
-      "It continues in the direction of the break",
+      "It may continue in the direction of the break, but continuation is not guaranteed",
       "It consolidates forever",
       "It gaps away"
     ],
@@ -527,7 +527,7 @@ export const QUESTIONS = [
     "q": "What is the significance of the weekly open?",
     "options": [
       "No significance",
-      "Key level that price often references and respects",
+      "Key reference level that some traders study for price behavior",
       "Only for stocks",
       "Random level"
     ],
@@ -592,7 +592,7 @@ export const QUESTIONS = [
     "q": "What is 'price delivery'?",
     "options": [
       "Broker execution speed",
-      "How the algorithm delivers price to target levels",
+      "How the framework describes price moving toward target levels",
       "Order routing",
       "Slippage"
     ],
@@ -696,7 +696,7 @@ export const QUESTIONS = [
     "q": "Why does price sweep liquidity before the real move?",
     "options": [
       "Random price movement",
-      "To trigger stops and fill institutional orders",
+      "A framework explanation for interaction with stops or other resting orders",
       "Technical analysis works",
       "Market makers are random"
     ],
@@ -709,7 +709,7 @@ export const QUESTIONS = [
     "q": "A 'stop hunt' is:",
     "options": [
       "When your broker hunts your stops",
-      "A liquidity sweep designed to trigger retail stop losses",
+      "A move through a visible liquidity area that may interact with stop orders",
       "A random spike",
       "A news event"
     ],
@@ -735,7 +735,7 @@ export const QUESTIONS = [
     "q": "After sweeping buy-side liquidity, price typically:",
     "options": [
       "Continues higher",
-      "Reverses lower as the sweep was the fuel for the move",
+      "May reverse lower, but the outcome is not guaranteed",
       "Consolidates",
       "Gaps higher"
     ],
@@ -1061,7 +1061,7 @@ export const QUESTIONS = [
     "options": [
       "A random event",
       "A liquidity sweep followed by displacement — a setup that can be tested",
-      "A guaranteed reversal",
+      "A reversal scenario that is not guaranteed",
       "Random volatility"
     ],
     "answer": 1
@@ -1075,7 +1075,7 @@ export const QUESTIONS = [
       "They are guaranteed support",
       "Potential sell-side liquidity may exist below visible lows",
       "They are random",
-      "They guarantee a reversal"
+      "They predict a reversal with certainty"
     ],
     "answer": 1
   },
@@ -2516,7 +2516,7 @@ export const QUESTIONS = [
     "q": "What does ICT mean by 'macro times'?",
     "options": [
       "Economic macros",
-      "Specific 20-minute windows within sessions where algorithm delivers price",
+      "Specific 20-minute windows some traders study within sessions",
       "Daily levels",
       "Weekly turns"
     ],
@@ -4686,7 +4686,7 @@ export const QUESTIONS = [
     "difficulty": "easy",
     "q": "Why should a trader define a maximum risk per trade?",
     "options": [
-      "To guarantee profits",
+      "To define risk and evaluate potential profitability",
       "To cap the loss from any single trade and preserve capital",
       "To increase leverage",
       "To avoid using a stop loss"
