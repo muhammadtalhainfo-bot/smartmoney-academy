@@ -24,7 +24,7 @@ const VALUES = [
   {
     icon: '🆓',
     title: 'Free Starting Point',
-    desc: `All ${CURRICULUM_STATS.moduleCount} modules and ${CURRICULUM_STATS.lessonCount}+ lessons are free. Pro adds premium tools and an ad-free experience.',
+    desc: `All ${CURRICULUM_STATS.moduleCount} modules and ${CURRICULUM_STATS.lessonCount}+ lessons are free. Pro adds premium tools and an ad-free experience.`,
   },
   {
     icon: '🎯',
