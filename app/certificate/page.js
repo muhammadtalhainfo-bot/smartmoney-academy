@@ -2,9 +2,10 @@
 import { useMemo, useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
-import { MODULES } from '@/lib/curriculum';
+import { CURRICULUM_STATS } from '@/lib/curriculum';
 
-const TOTAL_MODULES = MODULES.length;
+const TOTAL_MODULES = CURRICULUM_STATS.moduleCount;
+const TOTAL_LESSONS = CURRICULUM_STATS.lessonCount;
 
 export default function CertificatePage() {
   const [user, setUser] = useState(null);
@@ -154,11 +155,11 @@ export default function CertificatePage() {
               <div style={{ fontFamily: 'Georgia, serif', fontSize: '14px', color: '#666', marginBottom: '24px', lineHeight: 1.8 }}>
                 has successfully completed the<br />
                 <strong style={{ color: '#1a1a1a' }}>ICT & Smart Money Concepts Curriculum</strong><br />
-                comprising all {TOTAL_MODULES} modules and {certificate?.totalLessons || 203} lessons
+                comprising all {TOTAL_MODULES} modules and {certificate?.totalLessons ?? TOTAL_LESSONS} lessons
               </div>
 
               <div style={{ display: 'flex', justifyContent: 'center', gap: '32px', marginBottom: '32px' }}>
-                {[[TOTAL_MODULES, 'Modules'], [certificate?.totalLessons || 203, 'Lessons'], [certificate?.xp || profile?.xp || 0, 'XP Earned']].map(([val, label]) => (
+                {[[TOTAL_MODULES, 'Modules'], [certificate?.totalLessons ?? TOTAL_LESSONS, 'Lessons'], [certificate?.xp || profile?.xp || 0, 'XP Earned']].map(([val, label]) => (
                   <div key={label} style={{ textAlign: 'center' }}>
                     <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '32px', color: '#8A6B28' }}>{val}</div>
                     <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#5B6573', letterSpacing: '0.15em' }}>{label}</div>
