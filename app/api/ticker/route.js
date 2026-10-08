@@ -92,7 +92,7 @@ const HEADERS = {
 export async function GET(req) {
   try {
     if (!(await enforceRateLimit(req))) {
-      return Response.json({ data: [], error: 'Too many requests. Try again later.' }, { status: 429, headers: HEADERS });
+      return Response.json({ data: [], error: 'Too many requests. Try again later.' }, { status: 429, headers: { 'Cache-Control': 'private, no-store' } });
     }
     const data = await fetchTickerData();
     return Response.json({ data, timestamp: new Date().toISOString() }, { headers: HEADERS });
