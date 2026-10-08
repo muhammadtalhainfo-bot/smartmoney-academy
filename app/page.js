@@ -19,12 +19,12 @@ const LEVEL_STYLE = {
 
 const STEPS = [
   { num: '01', title: 'Start with Foundations', desc: 'New to trading? Begin with Trading Foundations — what markets are, how sessions work, risk basics. No jargon.', href: '/foundations', cta: 'Start Foundations' },
-  { num: '02', title: 'Study the ICT Modules', desc: '38 modules spanning market structure, liquidity, execution, risk, indices, gold and crypto. Each module is structured for deliberate study.', href: '/courses', cta: 'Browse Modules' },
+  { num: '02', title: 'Study the ICT Modules', desc: `${CURRICULUM_STATS.moduleCount} modules spanning market structure, liquidity, execution, risk, indices, gold and crypto. Each module is structured for deliberate study.`, href: '/courses', cta: 'Browse Modules' },
   { num: '03', title: 'Practice & Apply', desc: 'Use the Trade Journal to log trades. Take daily quizzes to test your knowledge. Track progress on your dashboard.', href: '/journal', cta: 'Open Journal' },
 ];
 
 const PLATFORM_HIGHLIGHTS = [
-  { icon: '01', title: 'Structured curriculum', desc: '38 modules arranged from foundations through advanced concepts, execution and risk.' },
+  { icon: '01', title: 'Structured curriculum', desc: `${CURRICULUM_STATS.moduleCount} modules arranged from foundations through advanced concepts, execution and risk.` },
   { icon: '02', title: 'Lessons with checks', desc: 'Readable lessons, examples and knowledge checks make passive watching more active study.' },
   { icon: '03', title: 'Practice tools', desc: 'Use the journal, glossary and quizzes to turn concepts into a repeatable study process.' },
   { icon: '04', title: 'Built for independent study', desc: 'Original explanations and navigation keep the learning path usable without hunting through scattered videos.' },
@@ -78,7 +78,7 @@ export default function HomePage() {
         </h1>
 
         <p className="fade-up d3" style={{ color:'rgba(255,255,255,0.6)', fontSize:'clamp(15px, 2vw, 18px)', maxWidth:'520px', lineHeight:1.7, marginBottom:'12px', fontWeight:300 }}>
-          Study a structured 38-module ICT curriculum — from market structure and liquidity to execution, risk management, indices, gold and crypto.
+          Study a structured ${CURRICULUM_STATS.moduleCount}-module ICT curriculum — from market structure and liquidity to execution, risk management, indices, gold and crypto.
           <strong style={{ color:'rgba(255,255,255,0.9)', fontWeight:500 }}> Start free, then choose whether Pro tools are useful to you.</strong>
         </p>
 
@@ -92,7 +92,7 @@ export default function HomePage() {
           </Link>
           <Link href="/courses" style={{ padding:'16px 32px', borderRadius:'12px', fontFamily:'DM Mono,monospace', fontSize:'12px', letterSpacing:'0.12em', textTransform:'uppercase', textDecoration:'none', border:'1px solid rgba(232,197,71,0.3)', color:'rgba(255,255,255,0.7)', transition:'all 0.2s', display:'inline-block' }}
             className="hero-outline">
-            Explore 38 Modules
+            Explore {CURRICULUM_STATS.moduleCount} Modules
           </Link>
         </div>
 
@@ -214,7 +214,7 @@ export default function HomePage() {
           <div style={{ textAlign:'center', marginBottom:'56px' }}>
             <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'#D8B94F', letterSpacing:'0.15em', marginBottom:'12px' }}>{'// CURRICULUM'}</div>
             <h2 className="font-display" style={{ fontSize:'clamp(40px, 7vw, 72px)', color:'white', lineHeight:1, marginBottom:'12px' }}>WHAT YOU&apos;LL LEARN</h2>
-            <p style={{ fontSize:'15px', color:'#C5CCD6', fontWeight:300 }}>38 modules. Structured independently around ICT and SMC concepts, with original explanations and practice.</p>
+            <p style={{ fontSize:'15px', color:'#C5CCD6', fontWeight:300 }}>{CURRICULUM_STATS.moduleCount} modules. Structured independently around ICT and SMC concepts, with original explanations and practice.</p>
           </div>
 
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(280px, 1fr))', gap:'16px', marginBottom:'40px' }}>
@@ -244,7 +244,7 @@ export default function HomePage() {
           </div>
           <div style={{ textAlign:'center' }}>
             <Link href="/courses" className="btn-gold" style={{ padding:'14px 32px', borderRadius:'12px', fontFamily:'DM Mono,monospace', fontSize:'12px', letterSpacing:'0.12em', textTransform:'uppercase', textDecoration:'none', display:'inline-block' }}>
-              Explore 38 Modules →
+              Explore {CURRICULUM_STATS.moduleCount} Modules →
             </Link>
           </div>
         </div>
@@ -327,7 +327,7 @@ export default function HomePage() {
           </div>
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(280px, 1fr))', gap:'16px' }}>
             {[
-              ['CURRICULUM', '38 modules', 'Progress from trading foundations to advanced ICT and SMC concepts.'],
+              ['CURRICULUM', `${CURRICULUM_STATS.moduleCount} modules`, 'Progress from trading foundations to advanced ICT and SMC concepts.'],
               ['GLOSSARY', '97 terms', 'Quick definitions for the vocabulary used throughout the lessons.'],
               ['PRACTICE', 'Daily checks', 'Use quizzes to test recall instead of rereading everything.'],
               ['JOURNAL', 'Trade review', 'Record setups, outcomes and observations in a dedicated workspace.'],
@@ -349,7 +349,7 @@ export default function HomePage() {
             READY TO BUILD<br /><span className="gold-text">A STRUCTURED PROCESS?</span>
           </h2>
           <p style={{ color:'#C5CCD6', fontSize:'15px', lineHeight:1.7, fontWeight:300, marginBottom:'36px' }}>
-            Build a structured trading study process around concepts, practice and review. 38 modules. 203+ lessons. Start free.
+            Build a structured trading study process around concepts, practice and review. {CURRICULUM_STATS.moduleCount} modules. {CURRICULUM_STATS.lessonCount}+ lessons. Start free.
           </p>
           <div style={{ display:'flex', flexWrap:'wrap', gap:'12px', justifyContent:'center' }}>
             <Link href="/lesson/1" className="btn-gold" style={{ padding:'16px 36px', borderRadius:'12px', fontFamily:'DM Mono,monospace', fontSize:'13px', letterSpacing:'0.12em', textTransform:'uppercase', textDecoration:'none', display:'inline-block' }}>
