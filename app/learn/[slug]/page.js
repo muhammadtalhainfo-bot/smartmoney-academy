@@ -4,6 +4,7 @@ import Footer from '@/app/components/Footer'
 import { notFound } from 'next/navigation'
 import { SEO_PAGES } from '../seo-data'
 import { serializeJsonLd } from '@/lib/jsonld'
+import { CURRICULUM_STATS } from '@/lib/curriculum'
 
 export function generateStaticParams() {
   return SEO_PAGES.map(({ slug }) => ({ slug }))
@@ -84,7 +85,7 @@ export default async function SEOGuide({ params }) {
         <section style={{background:'linear-gradient(135deg,rgba(232,197,71,.10),rgba(232,197,71,.03))',border:'1px solid rgba(232,197,71,.24)',borderRadius:16,padding:'24px',marginTop:52}}>
           <p style={{fontFamily:'DM Mono,monospace',fontSize:11,letterSpacing:2,color:'#E8C547',marginBottom:8}}>FREE LEARNING PATH</p>
           <h2 style={{fontSize:28,lineHeight:1.2,margin:'0 0 10px'}}>Turn this concept into a complete trading framework.</h2>
-          <p style={{fontSize:15,lineHeight:1.7,color:'rgba(255,255,255,.68)',margin:'0 0 18px'}}>Create a free account to track your progress through the ICT Flow curriculum, then continue from the foundations into 38 modules and 203+ lessons.</p>
+          <p style={{fontSize:15,lineHeight:1.7,color:'rgba(255,255,255,.68)',margin:'0 0 18px'}}>Create a free account to track your progress through the ICT Flow curriculum, then continue from the foundations into {CURRICULUM_STATS.moduleCount} modules and {CURRICULUM_STATS.lessonCount}+ lessons.</p>
           <div style={{display:'flex',flexWrap:'wrap',gap:10}}>
             <Link href="/auth?redirect=/foundations?welcome=1" style={{background:'linear-gradient(135deg,#E8C547,#F0C96A)',color:'#080808',padding:'11px 16px',borderRadius:9,textDecoration:'none',fontWeight:700,fontSize:13}}>Start Free Learning →</Link>
             <Link href="/courses" style={{border:'1px solid rgba(232,197,71,.28)',color:'#E8C547',padding:'11px 16px',borderRadius:9,textDecoration:'none',fontSize:13}}>View Curriculum</Link>
