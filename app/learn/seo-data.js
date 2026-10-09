@@ -11,6 +11,7 @@ export const SEO_PAGES = [
       ['Core ICT concepts','A beginner usually encounters market structure first, followed by liquidity, displacement, fair value gaps (FVGs), order blocks, premium/discount and session timing. These concepts are often combined into a specific trade model rather than used as isolated signals.'],
       ['How a typical workflow looks','A common educational workflow is to establish higher-timeframe context, mark relevant highs/lows and liquidity, wait for a setup during a chosen session, then define an entry, invalidation level and target before risking capital. The exact rules vary between ICT models and individual traders.'],
       ['Does ICT guarantee profits?','No trading methodology guarantees profits. Chart interpretation can be subjective, and a setup that looks compelling in hindsight may behave differently in live markets. Backtesting, forward testing, position sizing and a written trading plan are essential.'],
+      ["Worked example (hypothetical)", "Imagine a trader marks the previous day's high, waits for price to move beyond it, then looks for a structure condition defined in advance. If that condition never appears, the plan records no entry rather than inventing one after the move. For each eligible session, log the reference level, trigger, invalidation, target and outcome in R. Include sessions with no setup. This example shows how to turn framework language into testable rules; it does not imply that this sequence predicts direction."],
     ],
     related:['ict-market-structure','ict-liquidity','fair-value-gap-trading','ict-risk-management']
   },
@@ -26,6 +27,7 @@ export const SEO_PAGES = [
       ['Break of Structure (BOS)','BOS is commonly used for a break of a relevant prior swing in the direction of the existing structure. Traders use it as evidence of continuation within their chosen framework. The exact swing selected matters, so the rule should be defined before testing.'],
       ['CHOCH and MSS','CHOCH (Change of Character) and MSS (Market Structure Shift) are terms used for a meaningful change against the prior short-term structure. Different educators use the terms differently, so a trading plan should state exactly which swing must break and whether a candle close is required.'],
       ['Top-down use','One practical workflow is to use a higher timeframe for broad context and a lower timeframe for execution. Avoid changing the definition of a swing after seeing the outcome; that creates hindsight bias.'],
+      ["Worked example (hypothetical)", "Suppose price wicks above a marked swing high but closes back below it. Under a close-only rule, that candle is not a confirmed break; under a wick-based rule, it may qualify. Choose one convention before reviewing results and apply it consistently. Record clean breaks, failed breaks and choppy conditions, then compare the definitions on a separate sample. If the rule changes after seeing which interpretation would have won, the test is exposed to hindsight bias."],
     ],
     related:['what-is-ict-trading','ict-liquidity','ict-order-block','how-to-backtest-ict']
   },
@@ -41,6 +43,7 @@ export const SEO_PAGES = [
       ['Equal highs and equal lows','Repeated or closely matched highs can be treated as a visible area of potential buy-side liquidity, while repeated lows can be treated as potential sell-side liquidity. The important skill is defining a consistent rule for what counts as equal.'],
       ['What is a liquidity sweep?','A liquidity sweep describes price moving through a previously marked high or low and then reacting. Traders often look for additional confirmation after the sweep rather than treating the sweep alone as an entry signal.'],
       ['Avoiding the common mistake','Do not assume every wick is a stop hunt or that every sweep must reverse. Record the setup conditions before the outcome and test them over a meaningful sample.'],
+      ["Worked example (hypothetical)", "Suppose two highs form near the same price and a later candle trades above them. Before calling it a sweep, define how close the highs must be, how far price must cross the level and whether a close back inside the range is required. Then track what happens over a fixed number of candles, including continuation and sideways outcomes. The chart can show the price path, but it cannot prove the exact orders present or that a participant deliberately targeted them."],
     ],
     related:['what-is-ict-trading','ict-market-structure','fair-value-gap-trading','ict-silver-bullet']
   },
@@ -56,6 +59,7 @@ export const SEO_PAGES = [
       ['Bearish FVG','A bearish FVG is the inverse: the high of the third candle is below the low of the first candle. The resulting area is marked as an imbalance zone.'],
       ['FVG is not a complete strategy','An FVG by itself does not tell you direction, risk, position size or target. ICT traders often combine it with higher-timeframe context, liquidity, displacement and a defined invalidation point.'],
       ['Testing FVG ideas','If you want to test an FVG model, define the exact timeframe, entry rule, invalidation, session, target and maximum risk before collecting results. This makes the test repeatable instead of selecting only attractive historical examples.'],
+      ["Worked example (hypothetical)", "For a bullish three-candle FVG, a common ICT definition looks for the first candle's high to be below the third candle's low, leaving a visible interval between them. Decide how your chart feed handles equal prices, minimum gap size and partial fills. When price later revisits the interval, record whether it rejects, partially trades through or crosses the full gap. Do not count only the clean examples where price bounced. A revisit is an observation to classify, not a required future event."],
     ],
     related:['ict-liquidity','ict-market-structure','ict-silver-bullet','how-to-backtest-ict']
   },
@@ -71,6 +75,7 @@ export const SEO_PAGES = [
       ['Context matters','An order block becomes part of a trading idea only when the trader has defined context, such as market structure, liquidity and a directional hypothesis. Marking every opposite-color candle creates too many zones to be useful.'],
       ['Define invalidation first','Before entry, decide what price action would invalidate the setup. A zone that is continually redefined after price moves against it cannot be tested objectively.'],
       ['Order blocks and FVGs','Some traders use an order block together with a nearby FVG or displacement leg. Treat these as confluence rules to be tested, not as proof that an institution placed a specific order at that exact candle.'],
+      ["Worked example (hypothetical)", "A practical order-block test begins by writing the candle-selection rule before marking charts. For example, define which final opposing candle qualifies, what size or displacement condition follows it, and whether a structure break is required. Record the zone boundaries and invalidation before any revisit. Later, classify the interaction as a reaction, full trade-through or no revisit within the test horizon. This lets you evaluate the chart pattern without claiming that the candle proves a bank placed an order there."],
     ],
     related:['fair-value-gap-trading','ict-liquidity','ict-market-structure','how-to-backtest-ict']
   },
@@ -86,6 +91,7 @@ export const SEO_PAGES = [
       ['The setup sequence','A commonly taught sequence is: establish context and a liquidity objective, observe the chosen time window, wait for displacement, identify an FVG created by that move, and consider an entry on a retracement according to the trader’s rules.'],
       ['What not to assume','A time window does not make every FVG a Silver Bullet setup. Likewise, a sweep does not guarantee a reversal. The setup needs explicit conditions that can be recorded and tested.'],
       ['Backtesting the model','Keep the window, instrument, timeframe, entry, stop, target and trade-management rules fixed during a test. Record skipped setups as well as taken setups so the sample is not selectively curated.'],
+      ["Worked example (hypothetical)", "Suppose you study the New York morning window. Record the exact New York clock time and convert it using the correct daylight-saving date; do not assume a fixed UTC offset all year. Define the liquidity reference, displacement rule, FVG entry, stop, target and no-trade condition before reviewing the day. Log every qualifying occurrence in the window and compare with a baseline from other times. The time window is a convention used in the model, not proof that an algorithm must deliver price during that hour."],
     ],
     related:['fair-value-gap-trading','ict-liquidity','how-to-backtest-ict','ict-risk-management']
   },
@@ -102,6 +108,7 @@ export const SEO_PAGES = [
       ['3. Track more than win rate','Record number of trades, wins, losses, average R, largest losing streak, drawdown and results by session or setup type. Win rate alone does not determine whether a strategy has positive expectancy.'],
       ['4. Separate development from validation','Use one historical period to develop the rules and a different period to test them. Changing rules after seeing validation results weakens the test.'],
       ['5. Forward test before scaling','A historical result is not a promise of future performance. Demo or very small-risk forward testing can reveal execution, spread, slippage and discipline problems that a clean chart review misses.'],
+      ["Worked example (hypothetical)", "Separate strategy discovery from evaluation. Use an initial sample to write the rule and resolve ambiguities, then freeze the definition before collecting a fresh out-of-sample sample. Include spread, commissions, plausible slippage, missed entries and skipped trades. Report expectancy in R, win rate, average win/loss, maximum drawdown and the number of observations. If results deteriorate on the fresh sample, record that honestly rather than adding filters until the historical chart looks better. A backtest estimates how a defined rule behaved in that sample; it does not guarantee future performance."],
     ],
     related:['ict-risk-management','fair-value-gap-trading','ict-silver-bullet','ict-market-structure']
   },
@@ -117,6 +124,7 @@ export const SEO_PAGES = [
       ['Define the liquidity event','Decide in advance which high or low qualifies as the liquidity reference. Avoid changing the reference after seeing the outcome.'],
       ['Define the entry','Write down the exact confirmation, FVG condition, stop placement and target before testing. This turns a visual idea into a repeatable model.'],
       ['Backtest before risking capital','Record every qualifying setup across a fixed sample. Measure win rate, average R, drawdown and rule adherence rather than judging the model from a few attractive examples.'],
+      ["Worked example (hypothetical)", "Turn each stage into a checklist with an observable condition: higher-timeframe context, selected liquidity reference, chosen session window, entry trigger, invalidation and target. For each chart, mark which conditions were present before entry and which were absent. If the planned trigger does not occur, record a no-trade outcome. Keep your definition of a structure shift or FVG fixed across examples. This helps distinguish a complete setup from a story assembled after the move, and makes the full sequence possible to review consistently."],
     ],
     related:['ict-market-structure','ict-liquidity','fair-value-gap-trading','how-to-backtest-ict']
   },
@@ -132,6 +140,7 @@ export const SEO_PAGES = [
       ['Why terminology differs','Terms such as BOS, CHOCH, MSS and order block can have different definitions depending on the educator. A written trading plan should define the version being tested.'],
       ['ICT-specific terminology','ICT education includes a broader vocabulary around concepts such as Killzones, Silver Bullet, IPDA and specific time-and-price models.'],
       ['How to study both','Learn the definition used by your chosen source, then test the rule consistently. Avoid mixing definitions from multiple educators without documenting the change.'],
+      ["Worked example (hypothetical)", "Create a small terminology matrix before studying both approaches. For every term, record the educator or source, the exact swing or candle rule, what qualifies as confirmation and what invalidates the idea. If one source defines an order block differently from another, label the variants separately. Do not merge the best-looking portions into one strategy and then attribute the combined results to either framework. This comparison is most useful when it explains where definitions overlap, where they differ and how those differences affect a repeatable test."],
     ],
     related:['what-is-ict-trading','ict-market-structure','ict-order-block','how-to-backtest-ict']
   },
@@ -147,6 +156,7 @@ export const SEO_PAGES = [
       ['Define the setup','Write the required context, liquidity condition, confirmation, entry trigger, invalidation and target. Avoid discretionary phrases that cannot be measured.'],
       ['Set risk rules','Define maximum risk per trade, daily loss limits, maximum simultaneous exposure and conditions that require stopping for the day.'],
       ['Review and improve','Journal every eligible setup, including skipped trades. Change one rule at a time and validate the change on a new sample before adopting it.'],
+      ["Worked example (hypothetical)", "A one-page plan can specify the instruments traded, session and timezone, higher-timeframe context, exact setup criteria, entry trigger, stop placement, target, position-sizing formula, daily loss limit and reasons to stand aside. Add one sentence describing what would invalidate the directional idea. Before each session, fill in the relevant levels and scenarios; afterward, compare the trade with the plan rather than judging only profit or loss. Review changes on a fresh sample instead of revising several rules after a single losing trade."],
     ],
     related:['what-is-ict-trading','ict-risk-management','how-to-backtest-ict','ict-2022-model']
   },
@@ -162,6 +172,7 @@ export const SEO_PAGES = [
       ['Use session timing','Choose a specific New York or other session window and keep it fixed during testing. Session definitions should account for New York daylight-saving changes.'],
       ['Account for volatility','Large moves can increase slippage and stop distance requirements. Position size should be calculated from the predefined monetary risk and stop distance.'],
       ['Test the exact rules','Do not assume an ICT setup behaves identically across markets. Compare NAS100 results separately from forex, gold or crypto results.'],
+      ["Worked example (hypothetical)", "A NAS100 plan should define exactly which instrument and broker feed are being tested, because index CFDs, futures and related products can differ in contract value, trading hours, spread and execution. Record the chosen session, scheduled news conditions, setup definition, stop distance and dollar value per point before computing size. Keep NAS100 results separate from forex or gold results. A pattern that looks similar across charts may produce different net outcomes after instrument costs, volatility and execution are included."],
     ],
     related:['ict-liquidity','ict-market-structure','ict-risk-management','how-to-backtest-ict']
   },
@@ -177,6 +188,7 @@ export const SEO_PAGES = [
       ['Study the session','Choose a defined session window and record how the setup behaves during that period. Do not assume a model transfers unchanged between sessions.'],
       ['Control position size','Calculate position size from your maximum monetary risk and the distance to invalidation. Gold volatility can make fixed lot sizes inappropriate.'],
       ['Keep a separate sample','Track XAUUSD results separately so its behavior does not get mixed with results from other instruments.'],
+      ["Worked example (hypothetical)", "For a gold setup, document the symbol specification from the broker, including contract size, tick value, spread and how the platform expresses price movement. Define the reference range and entry trigger before the session, and note whether major scheduled releases fall near the setup. Size the position using the monetary risk and instrument value rather than copying a lot size from another market. Record both rejected setups and trades entered. Gold may move quickly around news; a chart pattern alone cannot control execution or guarantee a fill at the planned price."],
     ],
     related:['ict-liquidity','ict-risk-management','how-to-backtest-ict','ict-silver-bullet']
   },
@@ -192,6 +204,7 @@ export const SEO_PAGES = [
       ['Position size from the stop','Position size should be calculated from the amount you are willing to lose and the distance to the invalidation point. A tighter stop should not automatically mean a larger position if the market structure does not justify the tighter invalidation.'],
       ['Think in R','R represents the amount initially risked. A trade that risks $50 and makes $100 returns +2R; a trade that loses $50 is -1R. R-multiples make results easier to compare across different account sizes.'],
       ['Protect against drawdown','Set daily and weekly loss limits, avoid increasing size to recover losses, and keep a journal. A strategy can have positive historical expectancy while a trader still fails through inconsistent execution or oversized positions.'],
+      ["Worked example (hypothetical)", "For a position-sizing example, first choose a monetary risk amount the account can tolerate. Divide that amount by the monetary loss that one unit or lot would incur at the planned stop distance, using the correct contract or point value. Then account for commission, spread and likely slippage, and check whether the required size is supported by margin limits. A stop level defines planned risk rather than an exact maximum loss in every market condition. Review losing streaks and drawdown as well as average expectancy before deciding whether a rule is suitable."],
     ],
     related:['how-to-backtest-ict','what-is-ict-trading','ict-market-structure','fair-value-gap-trading']
   },
@@ -207,6 +220,7 @@ export const SEO_PAGES = [
       ['London and New York','Traders often study London and New York activity because these sessions can produce meaningful changes in liquidity and volatility. Define the exact window rather than relying on a vague session label.'],
       ['Combine timing with price','A Killzone should be combined with predefined market context, liquidity references and entry conditions. Entering simply because the clock reached a certain time is not a complete strategy.'],
       ['Backtest the window','Fix the instrument, timezone, session, setup, stop and target. Record every qualifying occurrence instead of selecting only attractive historical examples.'],
+      ["Worked example (hypothetical)", "Choose one session convention and write it down, including the timezone, the exact start/end times and how daylight-saving transitions are handled. For each session window, log the same setup criteria, spreads, scheduled news and results in R. Compare the selected window with a reasonable baseline, such as the same setup outside that window, while avoiding cherry-picked periods. The purpose is to measure whether the timing filter adds useful information in your sample. A killzone label does not itself establish an edge or guarantee a specific market move."],
     ],
     related:['ict-liquidity','ict-silver-bullet','how-to-backtest-ict','ict-risk-management']
   },
@@ -222,6 +236,7 @@ export const SEO_PAGES = [
       ['Displacement and FVGs','A strong move can create a Fair Value Gap, which is why ICT traders often study displacement and FVGs together. An FVG does not guarantee a later reaction.'],
       ['Displacement after liquidity','One common sequence is a liquidity event followed by displacement and then a retracement toward a price-delivery area. Treat this as a hypothesis to test.'],
       ['Make it measurable','Define the minimum candle characteristics, timeframe, session, entry trigger and invalidation. Do not change the definition after seeing the result.'],
+      ["Worked example (hypothetical)", "To test displacement consistently, define the candle body or range threshold relative to recent volatility, the timeframe and whether a close beyond a specified swing is required. Record whether the move creates the additional structure or FVG condition your strategy expects. Apply the same measurement to weak and strong examples and note false positives. Large candles can occur for multiple reasons, including news and ordinary order imbalance; the candle alone does not verify institutional intent. A measurable definition is more useful than labeling a move as displacement only after it succeeds."],
     ],
     related:['fair-value-gap-trading','ict-liquidity','ict-market-structure','how-to-backtest-ict']
   },
@@ -237,6 +252,7 @@ export const SEO_PAGES = [
       ['Choose the dealing leg','Define whether the range comes from a displacement leg, a specific high-to-low move or another objective rule.'],
       ['Use OTE with context','Traders may combine OTE with structure, liquidity, displacement or an order block. Confluence does not remove market risk.'],
       ['Backtest the rule','Record the exact range, entry zone, stop, target, timeframe and session. Test consecutive examples rather than only charts where price respected the zone.'],
+      ["Worked example (hypothetical)", "Before drawing Fibonacci levels, define the swing anchors with a rule you can apply without seeing the outcome. For example, specify the timeframe, which swing points qualify and what invalidates the selected leg. Then record whether price reaches the chosen 62–79% zone, whether any additional conditions are present, and where the planned stop and target would be. Compare the OTE filter with the same setup without that filter. This helps test whether the zone contributes useful information in your sample rather than assuming the named zone is inherently optimal."],
     ],
     related:['ict-market-structure','ict-liquidity','ict-order-block','how-to-backtest-ict']
   },
@@ -252,6 +268,7 @@ export const SEO_PAGES = [
       ['Why correlation matters','Correlation is not constant. Two markets can move together during one period and diverge during another, so the relationship should be tested rather than assumed.'],
       ['SMT is not a complete trade','An SMT observation does not define entry, stop or target by itself. Traders may combine it with liquidity, structure and an execution model.'],
       ['How to test SMT','Define the pair, timeframe, swing rule, maximum time difference and entry trigger. Record false signals as well as successful examples.'],
+      ["Worked example (hypothetical)", "Pick the instrument pair and a consistent way to match the swing points in time. Define what counts as a new high or low, the maximum time difference between instruments, the timeframe and what confirms an entry. Record cases where only one instrument makes a new extreme, including those followed by continuation rather than reversal. Then compare results against a baseline without the SMT filter. Divergence can describe a visible non-confirmation between related instruments, but it does not prove hidden positioning or establish the next direction by itself."],
     ],
     related:['ict-market-structure','ict-liquidity','how-to-backtest-ict','ict-risk-management']
   },
@@ -267,6 +284,7 @@ export const SEO_PAGES = [
       ['Manipulation','Manipulation refers to a move beyond a visible high or low interpreted as a false break or liquidity event. Not every breakout is a manipulation phase.'],
       ['Distribution','Distribution is the directional phase some AMD interpretations expect after the range and liquidity event. Markets can remain range-bound or behave differently.'],
       ['How to study AMD','Define the range, reference high/low, sweep rule and directional confirmation. Backtest the complete sequence rather than labeling it after the outcome.'],
+      ["Worked example (hypothetical)", "To review an AMD idea, mark the reference range and the time blocks before the expected directional move. Define what counts as a manipulation or sweep, what observable condition supports a distribution scenario and what would invalidate it. Label the phases before looking at the final outcome, then keep examples that do not fit the sequence. This reduces the temptation to describe every range as accumulation and every reversal as manipulation after the fact. The framework can organize a hypothesis, but trading sessions do not have to follow three distinct phases."],
     ],
     related:['ict-liquidity','ict-market-structure','ict-killzones','how-to-backtest-ict']
   },
@@ -282,6 +300,7 @@ export const SEO_PAGES = [
       ['Why structure matters','Define which swing has broken and what qualifies as a meaningful structural change. Otherwise failed zones can be relabeled after the fact.'],
       ['Breaker and liquidity','Some traders combine breaker blocks with a liquidity sweep or other context. Treat the combination as a hypothesis with measurable conditions.'],
       ['Backtest it','Record the original zone, invalidation event, retest condition, stop, target and session. Include failed retests in the sample.'],
+      ["Worked example (hypothetical)", "For a breaker-block test, first mark the original order-block zone and define exactly what failure means, such as a close beyond a boundary or a break of a selected swing. Record the new polarity hypothesis only after that condition is met, then define what a valid retest looks like. Include zones that fail to retest and retests that continue through the zone. Compare the outcomes with your original order-block rule on the same market. The breaker label is a framework interpretation, not proof of the reason price moved through the original zone."],
     ],
     related:['ict-order-block','ict-market-structure','ict-liquidity','how-to-backtest-ict']
   },
@@ -297,6 +316,7 @@ export const SEO_PAGES = [
       ['Define the reference','Decide which candle, range or swing qualifies. If the reference changes from chart to chart, the idea becomes difficult to test.'],
       ['Use market context','Liquidity, structure and displacement can provide context for a mitigation-block hypothesis. Avoid treating the zone as an automatic entry signal.'],
       ['Create a repeatable test','Fix the timeframe, reference rule, retest condition, invalidation, target and session. Track both successful and unsuccessful interactions.'],
+      ["Worked example (hypothetical)", "Because sources may define mitigation blocks differently, write down the exact source definition before collecting examples. Specify the qualifying prior block, the event that counts as failure or mitigation, the zone boundaries, the trigger, and the invalidation. Apply those criteria to consecutive charts and record non-reactions. Avoid changing the selected candle or zone after seeing where price later turns. The goal is to learn whether the defined condition adds measurable context beyond a basic order-block rule, not to infer which institution exited a position from candle shape."],
     ],
     related:['ict-order-block','ict-market-structure','ict-liquidity','how-to-backtest-ict']
   },
@@ -312,6 +332,7 @@ export const SEO_PAGES = [
       ['Premium and discount','The upper portion is commonly called premium and the lower portion discount. Some ICT traders use the distinction to prefer short ideas in premium and long ideas in discount when other conditions align.'],
       ['Equilibrium is not a signal','The midpoint is a reference level, not proof that price will reverse there. A strong trend can continue through equilibrium.'],
       ['Test the full rule','Specify range selection, directional filter, entry condition, stop and target. Compare results with and without the premium/discount filter.'],
+      ["Worked example (hypothetical)", "Start by defining the dealing range with a repeatable swing-selection rule, then calculate the 50% midpoint. Mark premium and discount from that range without moving the anchors after price reacts. State whether the location is only a context filter or a required entry condition, and define the independent trigger and invalidation. Compare outcomes for otherwise similar setups with and without the filter. Price can continue through either half of a range; a location label alone does not establish that an instrument is expensive, cheap or due for reversal."],
     ],
     related:['ict-market-structure','ict-order-block','ict-risk-management','how-to-backtest-ict']
   },
