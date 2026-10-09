@@ -87,7 +87,7 @@ This is one possible top-down analysis framework; traders can adapt the timefram
   2: {
     id: 2,
     title: 'Liquidity Concepts',
-    subtitle: 'Why Price Really Moves — The Stop Hunt Mechanism Explained',
+    subtitle: 'Liquidity Sweeps and Stop-Hunt Interpretations Explained',
     level: 'Beginner',
     duration: '20 min read',
     category: 'Foundation',
@@ -114,7 +114,7 @@ Within the ICT framework, traders may study BSL as an area where sell-side liqui
 
 You'll recognize BSL as: Equal Highs (EQH) on a chart, previous day/week highs, obvious resistance levels that everyone is watching, and round numbers like 1.1000 or 2000 on Gold.
 
-A common liquidity-sweep example is price approaching BSL, briefly trading above it, then potentially reversing. ICT calls this the "stop hunt" or "liquidity sweep."`,
+A common liquidity-sweep example is price approaching BSL, briefly trading above it, then potentially reversing. ICT education may call this a "stop hunt" or "liquidity sweep," but the chart alone cannot establish that stops were deliberately targeted.`,
         highlight: '📌 Every time you see price spike above an obvious high and immediately reverse — that may be interpreted as a BSL sweep; institutional order flow cannot be confirmed from the chart alone.',
       },
       {
@@ -160,7 +160,7 @@ A commonly studied ICT sequence is Liquidity Sweep → Structure Shift → Entry
     ],
     quiz: [
       { q: 'Buy-side liquidity (BSL) is located...', options: ['Below recent lows', 'Above recent highs', 'At the 50% Fibonacci level', 'During the Asian session'], answer: 1 },
-      { q: 'What happens after a liquidity sweep?', options: ['Price continues in the same direction', 'Price reverses sharply', 'Price consolidates for weeks', 'Volume disappears'], answer: 1 },
+      { q: 'What can happen after a liquidity sweep?', options: ['Price may continue, reverse, or consolidate depending on conditions', 'Price reverses sharply in every case', 'Price consolidates for weeks', 'Volume disappears'], answer: 0 },
       { q: 'Equal Highs (EQH) in ICT represent...', options: ['Strong resistance to sell from', 'Resting buy-side liquidity above', 'A bullish continuation pattern', 'Order block validation'], answer: 1 },
     ],
     nextLesson: { id: 3, title: 'Fair Value Gaps (FVG)' },
@@ -170,11 +170,11 @@ A commonly studied ICT sequence is Liquidity Sweep → Structure Shift → Entry
   3: {
     id: 3,
     title: 'Fair Value Gaps (FVG)',
-    subtitle: 'The Most Traded ICT Concept — Imbalance, Magnet Zones, and How to Use Them',
+    subtitle: 'Imbalances, Potential Repricing Areas, and How to Study Them',
     level: 'Beginner',
     duration: '16 min read',
     category: 'PD Arrays',
-    imageCaption: 'A bullish FVG: gap between candle 1 high and candle 3 low — price returns to fill it',
+    imageCaption: 'A bullish FVG: gap between candle 1 high and candle 3 low — an area some traders monitor for a possible revisit',
     intro: `Fair Value Gap (FVG) is a core ICT concept and a useful framework to study price imbalance. Traders study FVGs across timeframes and instruments as areas of price imbalance; how price reacts when it revisits an FVG should be evaluated in context.`,
     sections: [
       {
@@ -400,7 +400,7 @@ The key Macro Times (all EST):
 • PM Session Macro: 1:10 PM – 1:40 PM
 • Last Hour Macro: 3:15 PM – 3:45 PM
 
-During these 20-minute windows, ICT says the algorithm "draws to liquidity" — meaning it makes the decisive move toward the next target. The Silver Bullet strategy is specifically designed around the 10:00-11:00 AM and 2:00-3:00 PM Macro windows.`,
+Some ICT teachings describe these windows as periods when price may move toward a liquidity reference. The chart does not establish that a specific algorithm causes the move or that a target will be reached. The Silver Bullet is commonly studied during selected windows, but its effectiveness should be tested against clearly defined rules.`,
         highlight: '📌 Macro Times are ICT time-window concepts that some traders study for session behavior. Their precision and usefulness should be evaluated for the market and strategy being tested.',
       },
       {
@@ -439,7 +439,7 @@ The Asian-range sweep-and-reversal setup is an example traders may study; report
     duration: '17 min read',
     category: 'Market Mechanics',
     imageCaption: 'AMD: price accumulates in Asia, manipulates (Judas) in London, distributes in New York',
-    intro: `The Power of Three (PO3), also known as AMD (Accumulate, Manipulate, Distribute), is an ICT framework for interpreting a possible sequence in price delivery; it should not be treated as a description of every trading day. Once you understand this three-act script, you will stop being confused by price action and start reading the daily narrative with clarity. Most losing days happen because traders fight this structure instead of flowing with it.`,
+    intro: `The Power of Three (PO3), also known as AMD (Accumulate, Manipulate, Distribute), is an ICT framework for interpreting a possible sequence in price delivery; it should not be treated as a description of every trading day. The three-phase model can help organize a daily narrative, but it will not explain every market session. Losing trades can have many causes, including execution, risk management, market conditions and flaws in a tested rule set.`,
     sections: [
       {
         title: 'The Three Acts of a Trading Day',
