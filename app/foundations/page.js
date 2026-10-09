@@ -41,7 +41,7 @@ const TOPICS = [
     icon: "🕯️",
     explanation: "Every candle has a Body (open to close) and Wicks/Shadows (high and low extremes). A green/white candle = closed HIGHER than it opened (bullish). A red/black candle = closed LOWER than it opened (bearish). The wick shows how far price explored beyond the body.",
     example: "A candle opens at 100, rises to 105 (upper wick), drops to 98 (lower wick), and closes at 103. Body = 100-103. Upper wick = 103-105. Lower wick = 98-100.",
-    remember: "Long wicks = liquidity was swept. Strong bodies = directional conviction. Wicks and bodies provide different information; interpret both in context.",
+    remember: "Long wicks can show rejection or movement through a reference level; infer a liquidity sweep only when your predefined criteria are met. Candle bodies and wicks provide different information and should be interpreted in context.",
     color: "#F59E0B"
   },
   {
@@ -102,8 +102,8 @@ const TOPICS = [
     id: 11, step: 3, stepName: "Understand Risk",
     title: "Stop Loss & Take Profit",
     icon: "🛡️",
-    explanation: "Stop Loss (SL) = automatic order that closes your trade at a defined loss level. Take Profit (TP) = automatic order that closes at your target. Both are essential. Trading without defined loss controls exposes you to uncontrolled downside.",
-    example: "Buy EURUSD at 1.0800. SL at 1.0780 (20 pip risk). TP at 1.0860 (60 pip target). R:R = 1:3. If wrong, lose 20 pips. If right, gain 60 pips.",
+    explanation: "A Stop Loss (SL) is an order intended to trigger an exit at a defined price level; the final fill can differ during gaps, slippage or fast markets. A Take Profit (TP) is an order intended to close at a target level, but execution can also vary. Define your loss controls and account exposure before entry.",
+    example: "For illustration, a EURUSD entry at 1.0800 with a stop level at 1.0780 and a target at 1.0860 plans for 20 pips of price risk and 60 pips of potential reward (1:3 before costs). Actual fills can differ because of spread, slippage or gaps, so realized results may not equal the plan.",
     remember: "Consider defining and placing a stop or other explicit loss-control method before entry when appropriate to the strategy. Risk controls should reflect the account and instrument.",
     color: "#F87171"
   },
@@ -147,7 +147,7 @@ const TOPICS = [
     id: 16, step: 4, stepName: "Practice Market Structure",
     title: "Basic Market Structure",
     icon: "🏗️",
-    explanation: "Uptrend = Higher Highs (HH) + Higher Lows (HL). Downtrend = Lower Highs (LH) + Lower Lows (LL). Break of Structure (BOS) = continuation signal. Change of Character (CHoCH) = potential reversal signal.",
+    explanation: "In a common swing-structure definition, an uptrend forms higher highs (HH) and higher lows (HL), while a downtrend forms lower highs (LH) and lower lows (LL). ICT/SMC traders often use a Break of Structure (BOS) as a continuation reference and a Change of Character (CHoCH) as a possible shift in behavior; neither label guarantees the next move.",
     example: "Price makes HH at 100, pulls back to HL at 95, rallies to new HH at 105. This is a healthy uptrend. If price then breaks below 95 (the HL), structure has shifted bearish.",
     remember: "Market structure is the foundation of everything. Before any trade, ask: what is the current structure and where is it likely going next?",
     color: "#E8C547"
@@ -156,7 +156,7 @@ const TOPICS = [
     id: 17, step: 4, stepName: "Practice Market Structure",
     title: "Support & Resistance",
     icon: "🧱",
-    explanation: "Support = price level where buying is historically strong (floor). Resistance = price level where selling is historically strong (ceiling). In ICT, these are reframed as liquidity levels — pools of stop-loss orders.",
+    explanation: "Support and resistance are price areas where the market has previously paused, rejected or changed direction. They are reference levels, not guaranteed floors or ceilings. In ICT, some traders also study nearby highs and lows as potential liquidity areas, but the exact orders present cannot be confirmed from a chart alone.",
     example: "Price bounces off 1.0800 three times. That may be evidence of a historically watched level. Some ICT interpretations treat nearby highs/lows as potential liquidity areas, but the location and size of resting orders cannot be known from the chart alone.",
     remember: "Traditional support and resistance can be studied alongside ICT liquidity concepts. Some ICT traders look for a sweep below support before considering a long setup, but a sweep or reversal is not guaranteed.",
     color: "#F59E0B"
@@ -167,7 +167,7 @@ const TOPICS = [
     icon: "📉",
     explanation: "Trending market = price making consistent directional movement (HH/HL or LH/LL). Ranging market = price bouncing between two levels without clear direction. Different strategies work in different conditions.",
     example: "NAS100 in an uptrend: buy pullbacks to FVGs and Order Blocks. NAS100 in a range: trade reversals at range extremes. Misreading this is a common beginner mistake.",
-    remember: "The trend is your friend — until it ends. Don't fight the trend. In ICT, use the daily bias to confirm which direction you should trade.",
+    remember: "Trend context can help organize a trade idea, but it does not guarantee continuation. Define what would confirm or invalidate your daily-bias hypothesis, and allow for neutral or conflicting conditions.",
     color: "#34D399"
   },
   {
@@ -175,7 +175,7 @@ const TOPICS = [
     title: "Liquidity in Simple Language",
     icon: "💧",
     explanation: "Liquidity refers to chart areas where traders may hypothesize that stop-loss or other resting orders could cluster. Equal highs and lows are commonly studied as potential liquidity areas; the actual location and size of orders cannot be known from the chart alone.",
-    example: "Price makes three equal highs at 100. Thousands of retail traders have stop losses at 100.10 (just above). One possible liquidity-sweep interpretation is that price moves above the level, interacts with orders, and then reverses; the outcome should be evaluated from observed price data rather than assumed.",
+    example: "Price makes three equal highs at 100. Traders may hypothesize that some orders are clustered above the highs, but the chart does not reveal the number or type of orders present. One possible liquidity-sweep interpretation is that price moves above the level, interacts with orders, and then reverses; evaluate this against observed data rather than assuming the outcome.",
     remember: "ICT-style liquidity concepts focus on areas where orders may cluster; a sweep is a potential scenario, not a guaranteed future path.",
     color: "#818CF8"
   },
@@ -192,9 +192,9 @@ const TOPICS = [
     id: 21, step: 5, stepName: "Move into ICT & SMC",
     title: "What is SMC? (Simple Version)",
     icon: "💡",
-    explanation: "Smart Money Concepts (SMC) is a community-derived framework based on ICT teachings. It focuses on Order Blocks (zones studied in institutional-style interpretations), Fair Value Gaps (price imbalances), Break of Structure, and Change of Character. It's slightly simplified from pure ICT.",
+    explanation: "Smart Money Concepts (SMC) is a broad community framework that overlaps with ICT teaching. It includes Order Blocks, Fair Value Gaps, Break of Structure and Change of Character. Terminology and identification rules vary among educators, so define the specific rules you intend to study.",
     example: "An SMC trader sees price break structure upward, pull back to an Order Block (the last bearish candle before the bullish move), and enters long. ICT adds the time and liquidity dimension to this.",
-    remember: "SMC is a good entry point into institutional concepts. Once comfortable, progress to full ICT to understand the more detailed ICT framework concepts.",
+    remember: "SMC and ICT share many terms but are not one universal rulebook. Compare definitions carefully and choose a consistent framework before backtesting.",
     color: "#C084FC"
   },
   {
@@ -221,7 +221,7 @@ const TOPICS = [
     icon: "🚫",
     explanation: "1) Trading without a stop loss. 2) Risking too much per trade. 3) Trading during low-volume sessions. 4) Chasing price after a big move. 5) Moving stop loss further away when losing. 6) Not keeping a journal. 7) Jumping between strategies constantly.",
     example: "The biggest killer: moving your SL further away because you 'know' price will come back. This turns a 1% loss into a 5% or 10% loss. Avoid widening a stop impulsively; if the strategy permits stop adjustments, define the rules before trading.",
-    remember: "Your stop loss is your maximum risk. It is sacred. Moving it further away is not a strategy — it is denial.",
+    remember: "A stop-loss level helps define planned risk, but gaps and slippage can make the realized loss larger than expected. Do not widen a stop impulsively; if adjustments are permitted by your strategy, define the rules before the trade.",
     color: "#F87171"
   },
   {
