@@ -42,6 +42,56 @@ if (index.includes('delivered weekly')) {
   errors.push('Blog index must not promise a publishing cadence the content source does not establish.');
 }
 
+const detailedPostSlugs = [
+  'ict-ipda-interbank-price-delivery',
+  'backtest-ict-strategies',
+  'ict-consequent-encroachment-explained',
+  'smt-divergence-ict-explained',
+  'ict-sibi-bisi-explained',
+  'common-ict-mistakes',
+  'ict-tgif-setup-explained',
+  'ict-reclaimed-order-block',
+  'ict-rdrb-redelivered-rebalanced-price-range',
+  'ict-vs-smc-difference',
+  'ict-bearish-order-block-complete',
+  'ict-central-bank-dealers-range',
+  'trading-psychology-complete-guide',
+  'ict-bullish-order-block-complete',
+  'ict-single-candle-order-block-scob',
+  'ict-market-maker-buy-model-mmbm',
+  'ict-scalping-strategy',
+  'ict-suspension-block-2025',
+  'ict-market-maker-sell-model-mmsm',
+  'ict-propulsion-block-guide',
+];
+const starts = [...posts.matchAll(/(?:^|\n)\s*\{\n\s+slug:\s*'([^']+)'/g)];
+const postChunks = starts.map((match, index) => {
+  const start = match.index + match[0].lastIndexOf('{');
+  const next = starts[index + 1];
+  const end = next ? next.index + next[0].lastIndexOf('{') : posts.length;
+  return { slug: match[1], source: posts.slice(start, end) };
+});
+for (const slug of detailedPostSlugs) {
+  const post = postChunks.find((item) => item.slug === slug);
+  if (!post) {
+    errors.push('Missing article required for content-depth checks: ' + slug);
+    continue;
+  }
+  for (const heading of ['Worked hypothetical example', 'Failure case and what to test', 'Test checklist']) {
+    if (!post.source.includes(heading)) errors.push('/blog/' + slug + ': missing ' + heading + '.');
+  }
+}
+const overclaimTitles = [
+  ['fixed daily profit promise', /title:\s*'[^']*How to Book 30-50 Pips a Day/i],
+  ['guaranteed day-direction claim', /title:\s*'[^']*CBDR[^']*Predicts the Day/i],
+  ['exclusive session promise', /title:\s*'[^']*The Only Hours That Matter/i],
+  ['certain reversal promise', /title:\s*'[^']*Catch Institutional Reversals/i],
+  ['certain entry power claim', /title:\s*'[^']*Powers Every Entry/i],
+];
+for (const [label, pattern] of overclaimTitles) {
+  if (pattern.test(posts)) errors.push('Avoid unsupported blog-title claim: ' + label + '.');
+}
+
 if (errors.length) {
   for (const error of errors) console.error('Blog editorial guard failed: ' + error);
   process.exit(1);
