@@ -204,7 +204,7 @@ export default async function BlogPost({ params }) {
               {relatedPosts.map((related) => (
                 <Link
                   key={related.slug}
-                  href={\x60/blog/\x24{related.slug}\x60}
+                  href={'/blog/' + related.slug}
                   style={{ display: 'block', padding: '18px', borderRadius: '10px', border: '1px solid rgba(232,197,71,0.22)', background: '#101010', textDecoration: 'none', minHeight: '150px' }}
                 >
                   <span style={{ display: 'block', color: '#E8C547', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '10px' }}>

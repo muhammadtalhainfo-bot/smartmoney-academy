@@ -9,7 +9,7 @@ async function main() {
 
   if (!page.includes('getRelatedBlogPosts')) errors.push('Blog article pages must import and use the related-reading helper.');
   if (!page.includes('aria-labelledby="related-reading-heading"')) errors.push('Related reading needs a labelled section for assistive technology.');
-  if (!page.includes('href={\x60/blog/\x24{related.slug}\x60}')) errors.push('Related recommendations must link to their canonical /blog/[slug] route.');
+  if (!page.includes("href={'/blog/' + related.slug}")) errors.push('Related recommendations must link to their canonical /blog/[slug] route.');
 
   if (knownSlugs.size !== POSTS.length) errors.push('Blog post slugs must be unique before building internal links.');
 
