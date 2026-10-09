@@ -1181,8 +1181,8 @@ export const POSTS = [
 
   {
     slug: 'ict-hidden-order-block',
-    title: 'ICT Hidden Order Block — The Secret PD Array Most Traders Miss',
-    description: 'The Hidden Order Block is an institutional zone that cannot be seen on higher timeframes but becomes visible when you drill down. It is formed by overlapping wicks — and it is one of the most precise entry tools in advanced ICT.',
+    title: 'ICT Hidden Order Block: Definitions and Chart Examples',
+    description: 'Review the Hidden Order Block label as used in ICT education, including how traders mark candidate zones and what evidence would be needed to evaluate the idea. Terminology alone is not a trading signal.',
     category: 'Advanced',
     readTime: '11 min read',
     date: 'April 21, 2026',
@@ -1630,8 +1630,8 @@ export const POSTS = [
 
   {
     slug: 'ict-daily-bias-trick',
-    title: 'ICT Daily Bias — The Exact Method for Determining Direction Every Day',
-    description: 'Determining daily bias correctly is the single most important skill in ICT trading. This guide explains the exact process ICT uses — not a guess, not an indicator, but a structural and liquidity-based framework.',
+    title: 'ICT Daily Bias: A Repeatable Review Process',
+    description: 'A process for forming a conditional daily thesis from higher-timeframe structure and liquidity references. It is a hypothesis to test, not a guarantee of the session direction.',
     category: 'Beginner',
     readTime: '13 min read',
     date: 'May 3, 2026',
