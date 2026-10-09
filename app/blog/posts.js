@@ -1,3 +1,7 @@
+// ─── EXPANDED BLOG POSTS ─────────────────────────────────────────────────────
+// Static educational blog content.
+// All content is original, inspired by ICT methodology
+
 export const POSTS = [
   {
     slug: 'what-is-ict-trading',
