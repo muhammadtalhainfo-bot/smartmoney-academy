@@ -143,8 +143,8 @@ const EPISODES = [
     duration: "2h 30m",
     youtube: null,
     concepts: ["Live Execution", "TradingView", "Real-Time Analysis", "Conviction"],
-    summary: "Huddleston shares live executions on TradingView. Challenge: reverse-engineer the logic behind each entry. Builds conviction through real-time observation.",
-    keyLesson: "Watch the trade BEFORE it triggers. Can you see why he entered? If not, you need more chart time.",
+    summary: "This lesson studies live-execution examples on TradingView. Describe the setup criteria before reviewing the outcome, then compare the decision with the stated framework; a live example alone does not prove repeatable profitability.",
+    keyLesson: "Study the stated setup criteria before the trade triggers and write down the conditions that would invalidate the idea. Avoid using the outcome alone to justify an entry.",
     tags: ["Live Trading", "Practical", "Advanced"]
   },
   {
@@ -163,7 +163,7 @@ const EPISODES = [
     duration: "2h 20m",
     youtube: null,
     concepts: ["Internal Structure", "1-Minute Chart", "5-Minute Chart", "Multiple Entries"],
-    summary: "You don't have to catch the first move. Internal structure on 1M and 5M charts reveals additional entry opportunities throughout the session after the initial AM move.",
+    summary: "You don't have to catch the first move. Internal structure on 1M and 5M charts can be studied for possible later-session setups after the initial AM move; whether they offer an edge depends on the rules and tested sample.",
     keyLesson: "Miss the first setup? Look for internal structure shifts in the continuation. Additional entries may appear after an initial move, but they are not guaranteed and should meet the same plan criteria.",
     tags: ["Entry Models", "Practical", "Advanced"]
   },
