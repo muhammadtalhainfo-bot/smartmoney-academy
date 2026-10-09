@@ -56,6 +56,9 @@ jobs:
             exit 1
           fi
 
+      - name: Validate robots.txt and noindex alignment
+        run: node scripts/check-robots-indexing.cjs
+
       - name: Lint changed JavaScript/JSX
         shell: bash
         run: |
