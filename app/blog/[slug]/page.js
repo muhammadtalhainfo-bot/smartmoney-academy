@@ -68,6 +68,12 @@ function absoluteImageUrl(image) {
   }
 }
 
+function safeIsoDate(value) {
+  if (!value) return undefined;
+  const timestamp = Date.parse(String(value));
+  return Number.isFinite(timestamp) ? new Date(timestamp).toISOString() : undefined;
+}
+
 function isLocalImage(image) {
   return typeof image === 'string' && image.startsWith('/') && !image.startsWith('//');
 }
@@ -131,13 +137,24 @@ export default async function BlogPost({ params }) {
     description: post.description || '',
     image: [absoluteImageUrl(post.image)],
     mainEntityOfPage: canonical,
+    datePublished: safeIsoDate(post.date),
     author: { '@type': 'Organization', name: 'ICT Flow', url: 'https://ictflow.com' },
     publisher: { '@type': 'Organization', name: 'ICT Flow', url: 'https://ictflow.com' },
+  };
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'ICT Flow', item: 'https://ictflow.com' },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://ictflow.com/blog' },
+      { '@type': 'ListItem', position: 3, name: post.title, item: canonical },
+    ],
   };
 
   return (
     <div style={{ minHeight: '100vh', background: '#080808', color: 'white', fontFamily: "'DM Sans', sans-serif" }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbSchema) }} />
       <style>{`
 
       `}</style>
@@ -169,6 +186,15 @@ export default async function BlogPost({ params }) {
       </div>
 
       <article style={{ maxWidth: '720px', margin: '-80px auto 0', padding: '0 24px 80px', position: 'relative' }}>
+        <nav aria-label="Breadcrumb" style={{ marginBottom: '22px' }}>
+          <ol style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '8px', listStyle: 'none', padding: 0, margin: 0, fontSize: '12px', lineHeight: 1.6 }}>
+            <li><Link href="/" style={{ color: 'rgba(255,255,255,0.62)', textDecoration: 'none' }}>ICT Flow</Link></li>
+            <li aria-hidden="true" style={{ color: 'rgba(255,255,255,0.35)' }}>/</li>
+            <li><Link href="/blog" style={{ color: '#E8C547', textDecoration: 'none' }}>Blog</Link></li>
+            <li aria-hidden="true" style={{ color: 'rgba(255,255,255,0.35)' }}>/</li>
+            <li aria-current="page" style={{ color: 'rgba(255,255,255,0.8)' }}>{post.title}</li>
+          </ol>
+        </nav>
         <div style={{ display: 'flex', gap: '12px', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap' }}>
           <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#E8C547', background: 'rgba(212,168,67,0.22)', padding: '4px 12px', borderRadius: '4px', letterSpacing: '0.1em' }}>{post.category}</span>
           <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.65)' }}>{post.readTime}</span>
