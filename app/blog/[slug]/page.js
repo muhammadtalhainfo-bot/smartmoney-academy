@@ -179,6 +179,13 @@ export default async function BlogPost({ params }) {
           <p style={{ fontSize: '17px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.8, fontWeight: 300, marginBottom: '32px', borderLeft: '3px solid #E8C547', paddingLeft: '20px' }}>{post.description}</p>
         )}
 
+        <div role="note" aria-label="ICT methodology note" style={{ background: '#101010', border: '1px solid rgba(232,197,71,0.22)', borderRadius: '10px', padding: '16px 18px', marginBottom: '24px' }}>
+          <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.72)', lineHeight: 1.75, margin: 0 }}>
+            <strong style={{ color: '#E8C547' }}>Framework note:</strong> ICT terms are interpretations of price action, not proof of institutional motives or a market algorithm’s intent. No setup is guaranteed. Test clearly defined rules, account for costs and slippage, and use risk limits before risking capital.{' '}
+            <Link href="/editorial-policy" style={{ color: '#E8C547', textDecoration: 'underline' }}>Read our editorial policy.</Link>
+          </p>
+        </div>
+
         <AdSlot />
 
         <div>{renderContent(post.content)}</div>

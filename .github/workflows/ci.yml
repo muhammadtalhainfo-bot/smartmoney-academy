@@ -62,6 +62,9 @@ jobs:
       - name: Validate SEO guide content and related links
         run: node scripts/check-seo-guides.cjs
 
+      - name: Validate blog editorial claims and context
+        run: node scripts/check-blog-editorial-claims.cjs
+
       - name: Lint changed JavaScript/JSX
         shell: bash
         run: |
