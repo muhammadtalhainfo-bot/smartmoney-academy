@@ -3,6 +3,10 @@ const fs = require('node:fs');
 const robotsPath = 'public/robots.txt';
 const sitemapPath = 'app/sitemap.js';
 const noindexRoutes = [
+  { path: '/dashboard', metadataPath: 'app/dashboard/layout.js' },
+  { path: '/admin', metadataPath: 'app/admin/layout.js' },
+  { path: '/auth', metadataPath: 'app/auth/layout.js' },
+  { path: '/auth/reset', metadataPath: 'app/auth/reset/layout.js' },
   { path: '/journal', metadataPath: 'app/journal/layout.js' },
   { path: '/certificate', metadataPath: 'app/certificate/layout.js' },
   { path: '/verify', metadataPath: 'app/verify/[credential]/page.js' },
@@ -37,7 +41,7 @@ for (const route of noindexRoutes) {
     fail(`${route.path} uses noindex and must not be blocked by robots.txt.`);
   }
 
-  if (sitemap.includes('${BASE}' + route.path)) {
+  if (sitemap.includes(route.path)) {
     fail(`${route.path} must remain excluded from the public sitemap.`);
   }
 }
