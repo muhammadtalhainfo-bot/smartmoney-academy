@@ -413,8 +413,8 @@ const EPISODES = [
     duration: "2h 30m",
     youtube: null,
     concepts: ["Risk Management", "Independence", "Backtesting", "Journaling", "Final Advice"],
-    summary: "Final installment. Urges continued backtesting and journaling. The path to independence requires 6-12 months of disciplined study. Risk management is the foundation of longevity.",
-    keyLesson: "Journal every trade. Screenshot the setup before and after. Write what you saw, what you did, and what you learned. This is how mastery is built.",
+    summary: "Final installment. Urges continued backtesting and journaling. Progress toward trading independence varies widely. Consistent study, risk management, backtesting and journaling can support learning, but no fixed timeline guarantees readiness or profitability.",
+    keyLesson: "Journal every trade. Screenshot the setup before and after. Write what you saw, what you did, and what you learned. This practice can support deliberate learning and review, but progress and results vary.",
     tags: ["Psychology", "Risk Management", "Foundation", "Must Watch"]
   }
 ];
