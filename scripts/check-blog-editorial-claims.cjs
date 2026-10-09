@@ -26,6 +26,10 @@ const riskyClaims = [
   ['unverified order-presence claim', /the same institutional orders that drove price away are still waiting to participate again/i],
   ['deterministic CRT claim', /inside every candle, the algorithm goes through three phases/i],
   ['deterministic algorithmic target', /the algorithm will deliver price to that boundary/i],
+  ['certain opening-gap fill', /will be filled at some point during the week or session/i],
+  ['certain stop-hunt prediction', /your stop will be hunted before the real move occurs/i],
+  ['claimed automatic return', /the algorithm returns to fill them/i],
+  ['unsupported divergence intent', /institutions are telling you exactly where the real move is going/i],
 ];
 for (const [label, pattern] of riskyClaims) {
   if (pattern.test(posts)) errors.push('Remove or qualify the unsupported blog claim: ' + label + '.');
