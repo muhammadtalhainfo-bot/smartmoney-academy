@@ -1507,7 +1507,7 @@ export const POSTS = [
 {
     slug: 'ict-qml-quasimodo-pattern',
     title: 'ICT QML (Quasimodo): A Reversal Pattern to Define and Test',
-    description: 'Explore the Quasimodo label as a swing-based reversal pattern, and document the structure and confirmation rules needed to evaluate it without assuming high-probability turning points.',
+    description: 'Explore the Quasimodo label as a swing-based reversal pattern, and document the structure and confirmation rules needed to evaluate it without presuming that the pattern predicts a turn.',
     category: 'Intermediate',
     readTime: '11 min read',
     date: 'April 27, 2026',
