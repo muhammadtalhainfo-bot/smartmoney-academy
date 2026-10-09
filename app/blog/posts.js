@@ -1,4 +1,5 @@
-{
+export const POSTS = [
+  {
     slug: 'what-is-ict-trading',
     title: 'What Is ICT Trading? The Complete Beginner\'s Guide to Inner Circle Trader',
     description: 'An introduction to ICT trading concepts, including liquidity, market structure and price imbalances, with emphasis on treating chart interpretations as hypotheses to test.',
