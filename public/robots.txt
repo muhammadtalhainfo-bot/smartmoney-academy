@@ -1,13 +1,9 @@
 User-agent: *
 Allow: /
 
-Disallow: /dashboard
-Disallow: /admin
-Disallow: /auth
-Disallow: /auth/reset
 Disallow: /api/
 
 # These routes declare noindex and must remain crawlable for search engines to read that directive.
-# /journal, /certificate and /verify are intentionally not disallowed here.
+# /dashboard, /admin, /auth, /journal, /certificate and /verify are intentionally not disallowed here.
 
 Sitemap: https://ictflow.com/sitemap.xml
