@@ -201,8 +201,8 @@ export const POSTS = [
 
   {
     slug: 'ict-killzones-guide',
-    title: 'ICT Killzones — The Only Hours That Matter for High-Probability Trading',
-    description: 'Trading outside ICT killzones is one of the biggest reasons traders fail. This guide covers every session window, the logic behind them, and how to build your entire trading day around these specific hours.',
+    title: 'ICT Killzones Explained: London and New York Session Filters',
+    description: 'Learn how ICT traders use London and New York session windows as observation filters, and how to test whether the timing adds value for a specific instrument and rule set.',
     category: 'Intermediate',
     readTime: '14 min read',
     date: 'April 1, 2026',
@@ -309,8 +309,8 @@ export const POSTS = [
 
   {
     slug: 'smt-divergence-ict-explained',
-    title: 'SMT Divergence — How to Use Correlated Markets to Catch Institutional Reversals',
-    description: 'SMT divergence compares swing highs and lows in related instruments. It may provide context for a trading hypothesis, but it does not establish that a market is being manipulated or reveal what happens next.',
+    title: 'SMT Divergence: Comparing Related Markets in ICT Trading',
+    description: 'Understand how SMT divergence compares swing behavior in related instruments, and why divergence is context for a hypothesis rather than proof of intent or future direction.',
     category: 'Advanced',
     readTime: '14 min read',
     date: 'April 6, 2026',
@@ -332,6 +332,17 @@ export const POSTS = [
       { type: 'paragraph', text: 'SMT Divergence is commonly discussed as a confirmation tool rather than a standalone signal. When your top-down analysis has already identified a bearish setup — the daily is bearish, you are at a premium zone with a bearish OB above, and the London Judas Swing has completed — adding SMT Divergence as the entry trigger gives you exceptional confidence.' },
       { type: 'paragraph', text: 'The entry sequence: price reaches your target zone (OB/FVG in premium). You observe that one correlated pair makes a new high while the other does not. This confirms the high is engineered — a liquidity sweep for institutional selling. You wait for the 1-minute or 5-minute ChoCH below recent structure in the diverging pair, then enter short with a stop above the sweep high.' },
       { type: 'highlight', text: 'SMT Divergence works best during killzone hours when institutional volume is present. A divergence during the Asian session low-volume period is less meaningful than the same pattern during the London or NY AM Killzone when institutional participation is at its peak.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'Suppose two related equity indices are rising. One makes a marginal new swing high while the other stays below its prior swing high. An ICT trader might label this SMT divergence, then wait for a predefined structure break before considering a trade. The divergence itself is context; it does not name the next direction or prove manipulation.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'Correlation can change and the instruments may diverge for ordinary reasons, including different sector weights, news or trading hours. A chart comparison can look persuasive after the move but offer no useful signal in real time.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Choose the instruments and swing-identification rule before reviewing.',
+        'Define confirmation, invalidation and signal expiry in advance.',
+        'Count reversals, continuations and ambiguous cases—not just successful examples.',
+      ]},
+
     ],
   },
 
@@ -894,8 +905,8 @@ export const POSTS = [
 
   {
     slug: 'ict-central-bank-dealers-range',
-    title: 'ICT Central Bank Dealers Range (CBDR) — The Asian Range That Predicts the Day',
-    description: 'The Central Bank Dealers Range is the price range established during the low-volatility overnight hours. It is the accumulation phase of the daily candle — and breaking out of it signals the day\'s true directional delivery.',
+    title: 'ICT Central Bank Dealers Range (CBDR): A Session-Range Framework',
+    description: 'A practical look at the CBDR as a defined session range, including measurement choices, possible breakout scenarios and ways to test the idea without assuming it predicts the day.',
     category: 'Intermediate',
     readTime: '10 min read',
     date: 'April 15, 2026',
@@ -919,6 +930,17 @@ export const POSTS = [
       { type: 'paragraph', text: 'The CBDR and the Asian Range overlap and interact. The Asian session (midnight to 6:00 AM London time) occurs within and extends beyond the CBDR. The Asian range high and low are often used interchangeably with the CBDR boundaries, though technically the CBDR begins at 2:00 PM New York and the Asian range begins at midnight New York.' },
       { type: 'paragraph', text: 'What matters practically is that the combined zone created by the overnight low-volatility period establishes the day\'s range boundaries that London will then seek to break. Mark both the CBDR boundaries and the Asian session high/low, and watch for the London session to sweep one side before delivering in the other direction — the classic London Turtle Soup setup operates directly from the CBDR/Asian range extremes.' },
       { type: 'highlight', text: 'The CBDR is a daily planning tool — it is most useful when incorporated into your pre-session routine. Before London opens each day, mark the CBDR range. Note whether it is narrow or wide. This immediately calibrates your expectation for the day\'s potential range and helps you size targets appropriately. Large CBDR = modest day; small CBDR = potentially large day.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'A hypothetical trader marks a defined overnight range before the London and New York sessions. Price breaks above the high, briefly returns inside the range and later makes another high. A rule that required a close back inside would log a breakout-and-return event, but any later entry still needs its own confirmation and risk rule.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'The range does not predict the day\'s direction by itself. Range size, news, instrument, daylight-saving transitions and broker/session definitions can affect the measurement. Choosing start and end times after seeing price introduces hindsight bias.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'State timezone and session boundaries, including daylight-saving handling.',
+        'Record breaks that continue as well as those that return inside.',
+        'Test the range as context separately from the actual entry trigger.',
+      ]},
+
     ],
   },
 
@@ -987,8 +1009,8 @@ export const POSTS = [
 
   {
     slug: 'ict-suspension-block-2025',
-    title: 'ICT Suspension Block — The Newest PD Array Explained (2025)',
-    description: 'The Suspension Block was introduced by ICT in September 2025 as a new PD Array concept. It represents a specific candle structure that identifies zones where price was suspended before a major move.',
+    title: 'ICT Suspension Block: Definition, Example and Testing Limits',
+    description: 'A guide to documenting a Suspension Block definition, comparing examples and testing the setup without assuming that a newer label guarantees predictive value.',
     category: 'Advanced',
     readTime: '10 min read',
     date: 'April 18, 2026',
@@ -1013,13 +1035,24 @@ export const POSTS = [
       { type: 'heading', text: 'Suspension Block vs Order Block — The Distinction' },
       { type: 'paragraph', text: 'The key difference between a Suspension Block and a standard Order Block is the pre-move price action. An Order Block is identified by a single last-opposing candle before a move. A Suspension Block is identified by a cluster of tight-ranging candles before the move. The suspension indicates more deliberate, extended accumulation by smart money — which typically results in a more explosive move when it releases and a more reliable reaction when price returns.' },
       { type: 'highlight', text: 'The Suspension Block is particularly relevant on higher timeframes (4-hour and daily) where the tight clustering of candles before a major move is clearly visible. Once you identify a Suspension Block on the daily chart, mark it and watch for the return. These zones often produce some of the cleanest reactions in the entire PD Array hierarchy because the institutional position loading that created them was so deliberate.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'For a hypothetical Suspension Block study, the trader writes down the exact candle sequence and boundaries from the educational source they follow, then marks examples without looking ahead. After the pattern forms, they record whether the stated confirmation appears and how price behaves around the candidate zone.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'Specialist terminology can have different definitions across educators, and a new label is not evidence of predictive value. Without a stable definition, a backtest cannot be replicated or compared across instruments.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Record the chosen definition and avoid mixing variants.',
+        'Mark candidates before subsequent candles form.',
+        'Compare with simpler price-action rules and log cases that do not qualify.',
+      ]},
+
     ],
   },
 
   {
     slug: 'ict-reversal-patterns-guide',
-    title: 'ICT Reversal Patterns — The 3 commonly discussed Signals for Catching Turns',
-    description: 'ICT teaches three specific reversal patterns that identify when the algorithm is genuinely switching direction. Learning to distinguish real reversals from traps is one of the most valuable skills in trading.',
+    title: 'ICT Reversal Patterns: Three Setups and Their Limits',
+    description: 'Review three reversal concepts in ICT education, define the chart conditions clearly and distinguish a hypothesis from a confirmed change in market direction.',
     category: 'Intermediate',
     readTime: '12 min read',
     date: 'April 19, 2026',
@@ -1138,6 +1171,17 @@ export const POSTS = [
       { type: 'heading', text: 'Trading the RDRB' },
       { type: 'paragraph', text: 'RDRB entries follow the same confirmation model as other PD Arrays. When price enters the RDRB zone, switch to the lower timeframe and look for a displacement and FVG forming within the RDRB zone. Enter at the CE of the lower timeframe FVG. Stop: beyond the RDRB zone. Target: the next external liquidity pool.' },
       { type: 'highlight', text: 'RDRBs are commonly discussed on the 1-hour and 4-hour timeframes, where the original FVG was significant enough to represent genuine institutional imbalance. A 1-minute FVG that fills and then creates an RDRB carries far less weight. Always contextualize the RDRB by the timeframe significance of the original FVG.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'In a hypothetical chart review, a trader marks an imbalance zone, observes price trade through it, and then applies a written RDRB definition to a later move back across the same area. The next step is to log the candidate zone and test whether the predefined entry trigger occurs. A visual resemblance alone is not enough to count it as a valid setup.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'Specialist ICT terminology can vary between educators. If the candle sequence, boundaries or required reclaim are vague, different traders may label the same chart differently. Freeze one definition before the sample and note borderline cases separately.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Document the exact pattern sequence and zone boundaries.',
+        'Separate pattern identification from the later entry trigger.',
+        'Compare outcomes with ordinary FVG and no-trade baselines.',
+      ]},
+
     ],
   },
 
@@ -1205,8 +1249,8 @@ export const POSTS = [
 
   {
     slug: 'ict-scalping-strategy',
-    title: 'ICT Scalping Strategy — How to Book 30-50 Pips a Day with ICT Concepts',
-    description: 'ICT scalping uses the same institutional concepts applied to the 1-minute and 5-minute charts during Macro windows. This guide shows you the complete framework for consistent small-range trading.',
+    title: 'ICT Scalping Strategy: Entry Rules, Costs and Risk Controls',
+    description: 'Explore how ICT concepts may be used in a scalping plan, with emphasis on clear entry conditions, execution costs, realistic risk limits and after-cost testing.',
     category: 'Strategy',
     readTime: '12 min read',
     date: 'April 25, 2026',
@@ -1232,6 +1276,17 @@ export const POSTS = [
       { type: 'heading', text: 'Risk Management for ICT Scalping' },
       { type: 'paragraph', text: 'The difference between profitable ICT scalping and account destruction is discipline. Profitable ICT scalping means: maximum 3 attempts per session (if the first two setups fail, stop for the day), strict 0.5% risk per trade, clear pre-defined stop levels (no moving stops after entry), and no trading outside of Macro windows. The tight discipline framework is not optional — it is what makes the strategy viable.' },
       { type: 'highlight', text: 'ICT scalping is not for beginners. Before attempting to scalp with ICT concepts, you must be able to identify liquidity sweeps, Market Structure Shifts, and FVGs on the 1-minute chart in real-time with confidence. If you are still learning these concepts on the daily chart, spend at least 3-6 months there before moving to 1-minute scalping.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'A hypothetical scalper compares two otherwise identical setups: one traded during a selected session and one outside it. They record entry, exit, spread, commissions, slippage and time exposed to the market. The point is to find whether the session filter changes measured results, not to assume a fixed number of pips is available each day.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'Frequent trades magnify costs and execution errors. A visually small stop may be smaller than a typical spread or may be hit by normal noise; high win rate alone also says little if occasional losses are much larger than wins.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Calculate risk in account currency and include trading costs.',
+        'Use a daily loss limit and stop at the plan\'s defined threshold.',
+        'Compare after-cost results and avoid promises of fixed daily pips.',
+      ]},
+
     ],
   },
 
@@ -1621,8 +1676,8 @@ export const POSTS = [
 
   {
     slug: 'ict-balanced-price-range-bpr',
-    title: 'ICT Balanced Price Range (BPR) — The commonly discussed FVG Confluence',
-    description: 'The Balanced Price Range forms when a bullish and bearish FVG overlap. The result is the confluence-based entry zone in the entire ICT PD Array framework — a double layer of institutional imbalance at one price level.',
+    title: 'ICT Balanced Price Range (BPR): How Traders Define the Overlap',
+    description: 'Learn how ICT traders define an overlap between bullish and bearish Fair Value Gap zones, what a BPR can and cannot show, and how to test it.',
     category: 'Advanced',
     readTime: '10 min read',
     date: 'May 8, 2026',
@@ -1773,6 +1828,17 @@ export const POSTS = [
       { type: 'heading', text: 'Propulsion Block vs Order Block — The Distinction' },
       { type: 'paragraph', text: 'The Order Block is the last opposing candle before the move (the last bearish candle before a bullish move). The Propulsion Block is the last same-direction candle before the move amplifies (the last consolidation candle, which may actually be bullish, immediately before an even larger bullish explosion). They are adjacent concepts, and both often exist together: the OB precedes the Propulsion Block, and the Propulsion Block precedes the displacement.' },
       { type: 'highlight', text: 'The Propulsion Block is particularly powerful when it overlaps with an FVG or Order Block from the preceding sequence. When the Propulsion Block zone aligns with a prior OB and together they form the retracement entry zone, the confluence of three elements (Propulsion Block + OB + first return after displacement) creates one of the commonly studied entry structures in the entire advanced ICT toolkit.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'For a hypothetical Propulsion Block rule, a trader identifies the required candle sequence using a single definition, records the resulting zone and then waits to see whether the predefined confirmation and retest occur. If the zone is never revisited, it remains a non-triggered candidate—not a missed guaranteed entry.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'The name can sound causal, but a plotted zone does not prove that it launched the move or that price will return. A definition selected after the fact makes nearly any favorable reaction look like confirmation.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'State the candle sequence and zone boundaries before replay.',
+        'Separate pattern, confirmation, entry and exit rules.',
+        'Measure reactions and failures with the same risk and cost assumptions.',
+      ]},
+
     ],
   },
 
@@ -1932,8 +1998,8 @@ export const POSTS = [
 
   {
     slug: 'ict-reclaimed-order-block',
-    title: 'ICT Reclaimed Order Block — When a Failed OB Gets a Second Life',
-    description: 'A Reclaimed Order Block is a failed OB that price returns to and validates from the new direction — proving that institutional interest at that level has resumed. It is one of the highest-conviction re-entry signals in ICT.',
+    title: 'ICT Reclaimed Order Block: Rules for Reviewing a Recovered Zone',
+    description: 'Learn how traders may define a reclaimed Order Block, what counts as recovery or invalidation and how to evaluate retests without assuming institutional orders remain.',
     category: 'Advanced',
     readTime: '10 min read',
     date: 'May 18, 2026',
@@ -1956,6 +2022,17 @@ export const POSTS = [
         'If the Reclaimed OB also aligns with a FVG or BPR at the same level, the confluence makes it a top-tier setup.',
       ]},
       { type: 'highlight', text: 'Track your Mitigation Blocks carefully and note which ones get reclaimed. In a strongly trending market, OBs in the direction of the trend frequently fail and then get reclaimed as the trend uses the broken OB zones as continuation support/resistance. Identifying these reclamation events early — during the first retest after the polarity flip — gives you high-conviction entries with very tight stops right at the beginning of what is often a sustained directional move.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'Suppose an area marked as a bullish Order Block trades below its stated invalidation boundary, then later price closes back above that boundary with a strong upward candle. A trader who uses a reclaimed-block rule can mark the later close as a candidate signal and wait for the predefined retest or confirmation. Neither the recovery nor the label proves institutional interest.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'A brief wick back inside the zone may not meet a close-based rule, and a reclaimed level can fail again. Decide whether invalidation is based on a wick, close or number of bars before looking at outcomes.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Set the original block boundaries and failure rule in advance.',
+        'Define what qualifies as recovery and whether a retest is required.',
+        'Measure failures, no-retests and entries that slip beyond the planned price.',
+      ]},
+
     ],
   },
 
@@ -1985,6 +2062,17 @@ export const POSTS = [
       { type: 'paragraph', text: 'Entry: when price retraces back up into the bearish OB zone, switch to the 5-minute chart. Wait for a bearish displacement within the OB zone — a bearish MSS or a bearish FVG forming within the zone. Enter short at the CE of the 5-minute FVG (or at the CE of the OB if no FVG is available). Stop: above the high of the OB candle. Target: the nearest sell-side liquidity pool below (equal lows, previous session low, daily swing low).' },
       { type: 'paragraph', text: 'Risk-to-reward depends on the chosen entry, invalidation and target; a 3:1 to 8:1 ratio should not be presented as standard without data. Record wins and losses, missed entries and transaction costs to assess the rule.' },
       { type: 'highlight', text: 'The single most important OB trade rule: never buy a bearish OB. A bearish OB is always traded as a short entry on the retracement. No matter how bullish the price action looks as it retraces into the bearish OB, the institutional context is bearish at that zone. The retracement into the OB is the delivery of price to the institutional sellers — it is the setup, not the direction.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'For a hypothetical bearish-block rule, a trader marks the final bullish candle before a defined downward displacement and records its range before future bars appear. On a later return, the plan may require a rejection close and a lower-timeframe structure condition. If price crosses the chosen invalidation boundary, the setup failed by the written rule even if it later falls.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'The candle does not reveal who sold there, and price may pass through the zone or never come back. A narrow stop can also be unrealistic after spread or slippage, while a wide stop can make planned risk too large.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Use one rule for choosing the final opposing candle.',
+        'Predefine invalidation and size the position from that risk.',
+        'Track reactions, full traversal, no-retest and missed-entry outcomes.',
+      ]},
+
     ],
   },
 
@@ -2016,6 +2104,17 @@ export const POSTS = [
         'Enter at the CE of the 5-minute FVG (preferred) or at the CE of the OB candle. Stop: below the low of the OB candle. Target: the nearest buy-side liquidity pool (equal highs, swing high, previous session high).',
       ]},
       { type: 'highlight', text: 'After entering a bullish OB trade, monitor the first 3-5 candles after your entry closely. If a genuine bullish OB is working, the first few candles after entry should be bullish-bodied with minimal retracement — characteristic of a Low Resistance Liquidity Run beginning. If the candles after entry are choppy and overlapping, the OB may not be holding as expected and the stop should be reconsidered. A valid bullish OB entry almost always shows immediate directional momentum.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'Under a hypothetical bullish-block rule, a trader marks the last bearish candle before a defined upward displacement, then freezes that zone\'s boundaries. If price revisits it later, the trader checks the planned entry conditions rather than buying on touch alone. A close below the stated invalidation level means the setup failed by the written rule.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'The visual area cannot show that buyers accumulated there or that orders remain unfilled. In an ongoing downtrend, a block may fail and price can keep falling; a later bounce does not change what the rule said at entry.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Define displacement and candle-selection criteria before marking the zone.',
+        'Set invalidation and size the trade to planned risk.',
+        'Record successful retests, failed breaks and zones that never return.',
+      ]},
+
     ],
   },
 
@@ -2086,8 +2185,8 @@ export const POSTS = [
 
   {
     slug: 'ict-ipda-interbank-price-delivery',
-    title: 'ICT IPDA — The Interbank Price Delivery Algorithm Explained',
-    description: 'IPDA — the Interbank Price Delivery Algorithm — is a conceptual framework in ICT education for studying selected lookback ranges and reference levels. It does not establish that market movements are controlled by one algorithm or that price must visit a particular level.',
+    title: 'ICT IPDA Explained: Lookback Ranges as Testable References',
+    description: 'Learn how ICT educators use IPDA lookback ranges as price references, then test whether pre-defined levels are reached without assuming one algorithm dictates market movement.',
     category: 'Advanced',
     readTime: '12 min read',
     date: 'May 23, 2026',
@@ -2111,13 +2210,24 @@ export const POSTS = [
         'If multiple reference levels are swept, record what follows; a reversal is one possible outcome, not an expected or required result.',
       ]},
       { type: 'highlight', text: 'IPDA can serve as a higher-timeframe planning lens for traders who use it. Mark selected ranges, document the reason for each hypothesis, and record misses as well as hits. No reference level determines the path forward, and backtested results—not confidence alone—should guide whether a rule is useful.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'Suppose a NAS100 trader marks the prior 20-, 40- and 60-session highs and lows before Monday opens. Under a written rule, the nearest level is only a scenario target. During the week, price instead turns at the range midpoint and never reaches the marked high. The journal entry should say the target was not reached—not that an algorithm changed its plan after the fact.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'A common failure is selecting the reference range after seeing the move, or counting a level as a target only when price later approaches it. To avoid hindsight bias, record the chosen boundary, timeframe, bias rule and invalidation before the test begins.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Use the same completed-bar lookback method on every sample.',
+        'Record whether price reaches the selected boundary before invalidation.',
+        'Include reversals, untouched levels, costs and missed entries in the results.',
+      ]},
+
     ],
   },
 
   {
     slug: 'ict-consequent-encroachment-explained',
-    title: 'ICT Consequent Encroachment (CE) — The 50% Level That Powers Every Entry',
-    description: 'The Consequent Encroachment is ICT\'s term for the 50% midpoint of any range — FVG, Order Block, or dealing range. It is the most precisely defined entry point in all of ICT methodology.',
+    title: 'ICT Consequent Encroachment (CE): How to Mark the 50% Level',
+    description: 'Learn how to calculate the 50% midpoint of a selected range, where ICT traders apply it and why the midpoint alone does not guarantee a fill or reaction.',
     category: 'Beginner',
     readTime: '8 min read',
     date: 'May 24, 2026',
@@ -2140,6 +2250,17 @@ export const POSTS = [
         'For BPR entries: the CE of the overlap zone (the Balanced Price Range midpoint) is your entry level.',
       ]},
       { type: 'highlight', text: 'The CE provides a precise 50% reference inside a defined range, which can make a rule easier to state and test. It is not a required entry for every setup, and it does not remove judgment from selecting the range, confirming a setup or managing risk.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'Imagine a hypothetical Fair Value Gap between 100 and 110 price units. Its midpoint is 105. A trader may test a rule that waits for price to trade to 105, then requires a separate confirmation condition before entry. If price never returns to 105, the trade is recorded as not triggered rather than counted as a loss or a missed guaranteed move.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'A midpoint is a calculation, not evidence that the market will respect it. The range used to draw the gap is itself selected by a rule, and a midpoint touch can occur during a strong move through the zone. Test limit-entry and confirmation-entry approaches separately.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Define the two boundaries and calculate the midpoint mechanically.',
+        'Track touch, fill, slippage and subsequent adverse movement separately.',
+        'Compare outcomes with an edge-of-zone entry and a no-trade baseline.',
+      ]},
+
     ],
   },
 
@@ -2170,6 +2291,17 @@ export const POSTS = [
         'Confirmation: after price enters the SCOB zone, watch the 1-minute or 5-minute for a reaction FVG within the SCOB body — enter at its CE for maximum precision.',
       ]},
       { type: 'highlight', text: 'When reviewing historical charts, specifically study days where price made a clean displacement from an SCOB. Note how tight the stop would have been versus the distance to the target. You will consistently find R:R ratios of 5:1 to 10:1 on clean SCOB setups — especially on the 15-minute and 1-hour timeframes where single-candle OBs that precede multi-hour displacement moves are common. The SCOB\'s precision is its greatest strength.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'Suppose a trader\'s written SCOB rule requires a single candle whose body is at least 70% of its total range and whose close is followed by a predefined structure break. A candle that looks strong but fails the size or follow-through condition is excluded. The 70% threshold is an example for this hypothetical rule, not an official universal standard.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'Changing the body threshold or redefining the reference candle after observing later price will inflate apparent success. A large candle can occur during a news spike and still fail to create a useful entry.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Choose the body-to-range threshold before backtesting.',
+        'Separate the candle pattern from required confirmation and entry.',
+        'Include failures, costs and no-retest examples in the sample.',
+      ]},
+
     ],
   },
 
@@ -2199,6 +2331,17 @@ export const POSTS = [
         'Mark all FVGs on your chart with their classification: BISI for bullish FVGs (mark in green), SIBI for bearish FVGs (mark in red). This visual distinction immediately tells you which FVGs are tradeable in which direction.',
       ]},
       { type: 'highlight', text: 'The SIBI/BISI terminology is useful beyond just naming — it reinforces the directional discipline required for FVG trading. By explicitly labeling each FVG as SIBI or BISI, you are forced to confront the question: "Is this FVG in the direction of my bias?" A bullish trader looking at a SIBI must consciously recognize they are looking at bearish institutional imbalance — a reminder not to buy it. This labeling practice reduces counter-trend FVG entries significantly.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'In a hypothetical bullish example, candle one\'s high is 100 and candle three\'s low is 102, leaving a visible gap between 100 and 102. Under the chosen terminology, a trader may mark this as BISI. For a bearish SIBI example, candle one\'s low is 102 and candle three\'s high is 100. These labels describe the candle relationship; they do not predict a return to the gap.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'A frequent testing mistake is to mark only gaps that later react and ignore those price never revisits or trades through. Apply the same naming rule to every eligible sequence, regardless of its eventual outcome.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Write the candle-boundary rule and test bullish and bearish cases separately.',
+        'Record revisits, partial trades through and full crosses.',
+        'Evaluate entry rules after spread, slippage and the stated invalidation.',
+      ]},
+
     ],
   },
 
@@ -2224,6 +2367,17 @@ export const POSTS = [
       { type: 'paragraph', text: 'The confluence-based MMBM entries come at Phase Three to Four — the manipulation spike and the subsequent reversal. After the Judas Swing sweep of the accumulation range, watch for the bullish MSS on the 5-minute chart. Enter at the FVG created by the MSS displacement. Stop below the Judas Swing low. Target: the BSL above.' },
       { type: 'paragraph', text: 'The second-best MMBM entry is at Phase Five — during the distribution phase, entering at any shallow retracement into the first FVG left behind by the displacement. These are lower-risk entries that capture a portion of the distribution move without the challenge of timing the exact reversal.' },
       { type: 'highlight', text: 'Study the MMBM on 30 historical daily charts of your primary instrument. For each bullish move you find, map the six phases and identify where the manipulation spike (Judas Swing) occurred. You will find a consistent pattern: the Judas Swing most often occurs during the Asian session or the early London session, and the true distribution (Phase Five) occurs during the London and New York sessions. This temporal pattern is the MMBM\'s greatest predictive feature.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'A hypothetical MMBM study could mark a pre-session range, define what would count as a sweep below its low, and require a specified structure shift before a possible long entry. If price instead continues lower without meeting that condition, the record is \'no valid setup\' rather than a failed long trade.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'The model\'s labels do not prove that a market maker accumulated or manipulated price. A story can be fitted to almost any completed range unless the phases and timing are defined in advance.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Define accumulation range, sweep, confirmation and target objectively.',
+        'Do not enter solely because a chart can be narrated as three phases.',
+        'Track skipped setups and continuations that invalidate the hypothesis.',
+      ]},
+
     ],
   },
 
@@ -2256,13 +2410,24 @@ export const POSTS = [
       { type: 'heading', text: 'The MMSM Trade Entry' },
       { type: 'paragraph', text: 'The confluence-based MMSM entry is at Phase Three to Four. After the bullish Judas Swing sweep of the distribution range high, watch for the bearish MSS on the 5-minute chart. The displacement that creates the bearish MSS leaves a bearish FVG. Enter short at the CE of this FVG. Stop above the Judas Swing high. Target: the nearest SSL below (equal lows, swing low, previous day\'s low).' },
       { type: 'highlight', text: 'The Market Maker models (MMBM and MMSM) are the macro templates that all shorter-timeframe ICT analysis occurs within. Before every trade, ask: "Is this a MMBM setup or an MMSM setup?" Identifying the model gives you the complete structural context — you know the manipulation phase (the Judas Swing), the distribution phase (the entry), and the target (the opposing liquidity pool). Trading a specific model rather than reacting to individual candles is what produces consistent, repeatable performance.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'A hypothetical MMSM test begins by marking a predefined range and stating what would count as a sweep above it. A bearish structure condition must then appear before any short is considered. If the market breaks higher and continues, the trader records invalidation rather than assuming the move was manipulation that must reverse later.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'A rally above a range can be a genuine continuation, not a trap. The phrase \'market maker sell model\' does not identify actual participants in a move or prove that a reversal should follow.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Define the range, sweep and bearish confirmation in advance.',
+        'Use a stop at the written invalidation and size risk consistently.',
+        'Include upside continuations and no-confirmation sessions in testing.',
+      ]},
+
     ],
   },
 
   {
     slug: 'ict-tgif-setup-explained',
-    title: 'ICT TGIF Setup — How Friday Price Action Reveals the Week\'s True Delivery',
-    description: 'TGIF (Thank God It\'s Friday) is ICT\'s weekly reversal pattern where the algorithm retraces on Friday to close the week near the opposite extreme of its earlier manipulation. Learning to trade TGIF adds a reliable weekly edge.',
+    title: 'ICT TGIF Setup: A Friday Price-Action Framework',
+    description: 'Review the TGIF concept as a hypothesis about Friday price action, with possible continuations and reversals and a checklist for testing it without hindsight.',
     category: 'Strategy',
     readTime: '10 min read',
     date: 'May 29, 2026',
@@ -2285,6 +2450,17 @@ export const POSTS = [
       { type: 'heading', text: 'TGIF Risk Management' },
       { type: 'paragraph', text: 'TGIF trades should be managed with the understanding that Friday afternoon price action can be volatile and unpredictable as the New York session winds down before the weekend. Take partial profits at the first significant level (the weekly midpoint or a clear FVG fill), and move the stop to breakeven on the remainder. Do not hold TGIF positions into Friday\'s New York close — the unpredictability of the final 30 minutes outweighs the potential additional profit.' },
       { type: 'highlight', text: 'Track TGIF setups for 12 consecutive weeks. For each week, note: which direction was the Thursday extreme? Did Friday reverse? How deep did the Friday retracement go? This documentation will reveal the specific TGIF tendencies of your traded instrument — some instruments show consistent 30-40% retracements of the weekly range on Friday; others show more shallow TGIF moves. Knowing your instrument\'s typical TGIF behavior calibrates your targets and expectations accurately.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'For a hypothetical Friday review, a trader marks the weekly high and low before the session, then writes a scenario that price could test one side and return into the prior range. Price instead trends beyond the high into the close. That outcome is recorded as a continuation, not retroactively reclassified as a different TGIF story.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'Friday is not required to reverse, retrace or complete a weekly pattern. News, expiry flows, liquidity and different market hours can change behavior. A named setup should not replace checking the calendar or respecting a no-trade rule.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Define the weekly reference range and decision time before Friday begins.',
+        'Record reversal, continuation, range-bound and no-setup outcomes.',
+        'Do not increase risk to meet a weekly target or force a pattern.',
+      ]},
+
     ],
   },
 
@@ -2499,6 +2675,17 @@ export const POSTS = [
       { type: 'paragraph', text: 'Myth: ICT is a scam. Reality: ICT has been teaching for 20+ years with thousands of successful students. The free content alone is more comprehensive than most paid courses. Myth: SMC is just ICT repackaged. Reality: While SMC evolved from ICT, it has developed unique concepts and simplifications. Myth: You must choose one. Reality: The best traders use concepts from both. Market structure is market structure regardless of the label.' },
       { type: 'heading', text: 'Conclusion' },
       { type: 'paragraph', text: 'ICT and SMC are two paths to the same destination: understanding how institutional traders move price and using that knowledge to trade profitably. ICT is the university degree -- deep, theoretical, comprehensive. SMC is the trade school -- practical, simplified, application-focused. Neither is better. The best choice depends on your learning style, goals, and personality.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'A student reviewing the same chart might use ICT terms such as dealing range, FVG and session window, while another describes a swing break, supply/demand zone and liquidity. Put both analyses beside each other and ask which observable rules differ: zone boundaries, entry trigger, invalidation, timing or target. The vocabulary alone does not prove one approach is better.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'Treating ICT and SMC as completely separate systems can create artificial distinctions because educators use overlapping terms differently. The reverse mistake is assuming all methods are identical without comparing their rules.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Compare rules and examples, not just terminology.',
+        'State what each framework adds to an actual trade decision.',
+        'Judge claims using the same dataset, costs and risk assumptions.',
+      ]},
+
     ],
   },
 
@@ -2527,13 +2714,24 @@ export const POSTS = [
       { type: 'heading', text: 'Chapter 6: Building Unshakeable Confidence' },
       { type: 'paragraph', text: 'A more evidence-based form of confidence comes from repeatedly executing a clearly defined strategy and reviewing the results. Backtesting and journaling can help, but sample size, market regime, execution quality, and out-of-sample performance all matter; a small sample does not by itself prove an edge.' },
       { type: 'highlight', text: 'Trading psychology is not about eliminating emotions; it is about recognizing them and using systems that reduce their influence on decisions. Risk limits, written rules, deliberate pauses, and post-trade review can help. Psychology is one part of trading performance alongside strategy quality, risk management, market conditions, and execution.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'After two losses, a hypothetical trader\'s written plan says to pause and review before another entry. They notice that both losses followed valid setups and remained within planned risk, while the urge to recover money led to a third unplanned trade. The useful change is to enforce the pause rule and record the urge—not to label the valid losses as mistakes.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'Psychology advice cannot rescue a strategy without a measurable edge, and normal losses do not always mean a trader lacks discipline. Emotional discomfort should not be used to justify revenge trading or changing stops mid-trade.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Separate process adherence from trade outcome in the journal.',
+        'Define a cooling-off rule before emotions rise.',
+        'Review position sizing, losses and strategy evidence without self-blame.',
+      ]},
+
     ],
   },
 
   {
     slug: 'common-ict-mistakes',
-    title: '15 Mistakes That Destroy ICT Trading Accounts (And How to Avoid Them)',
-    description: 'These 15 common mistakes can undermine ICT trading practice. Learn how to recognize them, manage risk, and build a more consistent process.',
+    title: '15 Common ICT Trading Mistakes and Ways to Review Them',
+    description: 'A practical checklist for reviewing setup definitions, risk, execution and trading behavior without assuming every loss is a mistake or every win proves an edge.',
     category: 'Education',
     readTime: '16 min read',
     date: 'April 25, 2026',
@@ -2556,6 +2754,17 @@ export const POSTS = [
       { type: 'heading', text: 'Mistakes 11-15: Strategy and Mindset Errors' },
       { type: 'paragraph', text: 'Trading news events means ICT setups before NFP or FOMC are traps. Overcomplicating with 12 indicators creates paralysis. Not backtesting means you are trading a theory, not a proven system. Changing strategies too often means you never master anything. Expecting to get rich quick leads to oversized risk and emotional decisions.' },
       { type: 'highlight', text: 'The Accountability Checklist: Did you check daily bias? Trade only during killzones? Buy in discount / sell in premium? Place stop at technical invalidation? Risk 1% or less? Journal every trade? Stop after 2 consecutive losses? Avoid news events? Use 3-4 confluences maximum? Follow your plan exactly? Score 10/10 = professional trader. Score below 7/10 = fix these mistakes immediately.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'A hypothetical journal review shows that a trader follows the planned entry rule on four trades but takes two extra trades after missing a setup. The meaningful finding is not simply the win/loss total: the trader broke the rule on two identifiable occasions. The next review can focus on the trigger for those extra trades and a practical prevention rule.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'Broad labels such as \'bad psychology\' are hard to act on. They can hide a poorly defined setup, a position size that is too large, unclear invalidation or a strategy with no measured edge. Separate process errors from normal losses on trades that followed the plan.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Tag every trade as plan-following, rule-breaking or unclear.',
+        'Record planned and realized risk, setup evidence and emotional trigger.',
+        'Change one observable behavior at a time and review it over a fixed sample.',
+      ]},
+
     ],
   },
 
@@ -2583,6 +2792,17 @@ export const POSTS = [
       { type: 'heading', text: 'Common Backtesting Mistakes' },
       { type: 'paragraph', text: 'Curve fitting: adjusting rules to fit historical data perfectly creates a strategy that fails in the future. Small sample size: 20 trades tells you nothing. Only cherry-picking winners: test every valid setup. Only testing bull markets: test across all conditions. Not simulating execution: subtract 1-2 pips from every win to simulate real spread costs.' },
       { type: 'highlight', text: 'Backtesting Schedule: Weeks 1-2 define your strategy and rules. Weeks 3-6 backtest 100 trades at 10-15 per week. Week 7 analyze all statistics and find patterns. Week 8 refine one rule at a time and re-test. Then forward test on demo at 0.5% risk for 50 trades. Spend 100 hours backtesting before risking $1000 live. Your future self will thank you.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'For a hypothetical FVG test, define a bullish gap using the same three-candle rule on every chart. Set one fixed session window, the same entry trigger, a stop based on a written invalidation rule and an exit rule. Replay each eligible setup in chronological order and save a screenshot before revealing later candles.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'If you change the definition after a losing sample, skip days without a setup or use a different stop when a chart looks unusual, the test no longer measures one strategy. A small winning sample can also be random and may not survive spread, slippage or a different market period.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Write entry, invalidation, exit, session and exclusions before replay.',
+        'Log every eligible case, including no-fill and no-trade cases.',
+        'Separate development data from a later out-of-sample review.',
+      ]},
+
     ],
   },
 ];
