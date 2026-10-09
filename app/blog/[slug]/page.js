@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 import { getPublishedBlogPosts } from '@/lib/blog-data';
+import { getRelatedBlogPosts } from '@/lib/related-blog-posts';
 import { serializeJsonLd } from '@/lib/jsonld';
 import AdSlot from '@/app/components/AdSlot';
 
@@ -122,6 +123,7 @@ export default async function BlogPost({ params }) {
 
   const canonical = `https://ictflow.com/blog/${post.slug}`;
   const coverImage = post.image || '/images/market-structure.png';
+  const relatedPosts = getRelatedBlogPosts(post, posts);
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -189,6 +191,36 @@ export default async function BlogPost({ params }) {
         <AdSlot />
 
         <div>{renderContent(post.content)}</div>
+
+        {relatedPosts.length > 0 && (
+          <section aria-labelledby="related-reading-heading" style={{ marginTop: '56px', paddingTop: '28px', borderTop: '1px solid rgba(255,255,255,0.14)' }}>
+            <h2 id="related-reading-heading" style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '30px', color: 'white', letterSpacing: '0.04em', marginBottom: '8px' }}>
+              RELATED READING
+            </h2>
+            <p style={{ color: 'rgba(255,255,255,0.62)', fontSize: '14px', lineHeight: 1.7, marginBottom: '20px' }}>
+              Continue with guides selected for overlapping concepts and practical context.
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 210px), 1fr))', gap: '14px' }}>
+              {relatedPosts.map((related) => (
+                <Link
+                  key={related.slug}
+                  href={'/blog/' + related.slug}
+                  style={{ display: 'block', padding: '18px', borderRadius: '10px', border: '1px solid rgba(232,197,71,0.22)', background: '#101010', textDecoration: 'none', minHeight: '150px' }}
+                >
+                  <span style={{ display: 'block', color: '#E8C547', fontFamily: 'DM Mono, monospace', fontSize: '10px', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '10px' }}>
+                    {related.category || 'Trading education'}{related.readTime ? ' · ' + related.readTime : ''}
+                  </span>
+                  <span style={{ display: 'block', color: 'white', fontSize: '16px', lineHeight: 1.45, fontWeight: 600, marginBottom: '8px' }}>
+                    {related.title}
+                  </span>
+                  <span style={{ display: '-webkit-box', WebkitBoxOrient: 'vertical', WebkitLineClamp: 3, overflow: 'hidden', color: 'rgba(255,255,255,0.65)', fontSize: '13px', lineHeight: 1.6 }}>
+                    {related.description || 'Explore this related ICT trading concept and its practical limits.'}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         <div style={{ marginTop: '64px', padding: '32px', background: '#111111', border: '1px solid rgba(212,168,67,0.22)', borderRadius: '16px', textAlign: 'center' }}>
           <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '28px', color: 'white', marginBottom: '8px' }}>READY TO APPLY THIS?</div>
