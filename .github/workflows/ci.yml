@@ -59,6 +59,9 @@ jobs:
       - name: Validate robots.txt and noindex alignment
         run: node scripts/check-robots-indexing.cjs
 
+      - name: Validate SEO guide content and related links
+        run: node scripts/check-seo-guides.cjs
+
       - name: Lint changed JavaScript/JSX
         shell: bash
         run: |
