@@ -13,6 +13,16 @@ if (slugs.length === 0) errors.push('No static blog posts found.');
 if (new Set(slugs).size !== slugs.length) errors.push('Blog slugs must be unique.');
 
 const riskyClaims = [
+  ['OTE predicts institutional re-entry', /retracement zone identifies precisely where institutions re-enter/i],
+  ['certain swing identification', /most traders identify them incorrectly/i],
+  ['universal market-order-flow causation', /the force that drives every significant price move/i],
+  ['perfect single daily trade implication', /single perfect trade per session/i],
+  ['FVG importance certainty', /the most significant fvg of the trading day/i],
+  ['displacement guarantees institutional validity', /no entry has institutional validity/i],
+  ['QML high-probability certainty', /high-probability turning points/i],
+  ['algorithmic inducement intent', /how the algorithm sets traps after a break of structure/i],
+  ['method superiority claim', /smart money concepts are superior for precision trading/i],
+  ['SMT proves manipulation', /detect institutional manipulation/i],
   ['algorithmic window certainty', /macro times are specific 20-minute windows when the algorithm actively seeks liquidity/i],
   ['inducement intent assertion', /inducement is the deliberate creation of false entry opportunities to trap retail traders/i],
   ['guaranteed liquidity void traversal', /a near-empty zone that price will move through rapidly once it enters/i],
@@ -89,6 +99,26 @@ const detailedPostSlugs = [
   'ict-silver-bullet-strategy-complete',
   'ict-liquidity-sweep-vs-run',
   'ict-rejection-block-explained',
+  'ict-hidden-order-block',
+  'ict-swing-high-swing-low-explained',
+  'ict-optimal-trade-entry-ote',
+  'ict-market-structure-shift-complete',
+  'ict-mss-vs-choch-explained',
+  'ict-market-order-flow-explained',
+  'ict-one-shot-one-kill-model',
+  'ict-reversal-patterns-guide',
+  'ict-unicorn-model-explained',
+  'ict-mitigation-block-guide',
+  'ict-1st-presented-fvg-opening-range',
+  'ict-displacement-move-explained',
+  'ict-qml-quasimodo-pattern',
+  'ict-internal-external-range-liquidity',
+  'ict-supply-demand-forex',
+  'ict-inducement-after-bos',
+  'ict-stl-itl-ltl-market-structure',
+  'ict-daily-bias-trick',
+  'draw-on-liquidity-ict',
+  'ict-smt-divergence-complete-guide',
 ];
 const starts = [...posts.matchAll(/(?:^|\n)\s*\{\n\s+slug:\s*'([^']+)'/g)];
 const postChunks = starts.map((match, index) => {
@@ -108,6 +138,11 @@ for (const slug of detailedPostSlugs) {
   }
 }
 const overclaimTitles = [
+  ['certain swing-label superiority', /title:\s*'[^']*How to Identify Them Correctly/i],
+  ['precise OTE prediction', /title:\s*'[^']*Optimal Trade Entry Explained with Fibonacci/i],
+  ['most important daily FVG', /title:\s*'[^']*Most Important FVG of the Day/i],
+  ['deterministic price direction', /title:\s*'[^']*The Concept That Changes Everything/i],
+  ['universal reversal certainty', /title:\s*'[^']*High-Probability Turning Points/i],
   ['certain algorithmic macro activity', /title:\s*'[^']*Algorithm's Precise 20-Minute Windows/i],
   ['mechanical entry certainty', /title:\s*'[^']*Most Precise Mechanical Entry Model/i],
   ['exact daily direction', /title:\s*'[^']*Exact Method for Determining Direction Every Day/i],

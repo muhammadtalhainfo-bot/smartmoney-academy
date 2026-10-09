@@ -431,8 +431,8 @@ export const POSTS = [
 
   {
     slug: 'draw-on-liquidity-ict',
-    title: 'Draw on Liquidity — The ICT Concept That Changes Everything',
-    description: 'The Draw on Liquidity is where price is going before it arrives. Mastering this single concept transforms your trading from reactive to anticipatory — from chasing price to positioning ahead of it.',
+    title: 'ICT Draw on Liquidity: Mapping Potential Reference Levels',
+    description: 'Learn how traders select a potential Draw on Liquidity reference from prior highs, lows and range boundaries, while treating the target as a conditional hypothesis rather than a prediction.',
     category: 'Advanced',
     readTime: '14 min read',
     date: 'April 9, 2026',
@@ -456,6 +456,17 @@ export const POSTS = [
       { type: 'paragraph', text: 'Before each trading session, mark the following liquidity pools on your chart: the most recent swing high and swing low on the daily chart; equal highs or equal lows if they exist; the previous day high and low; the previous week high and low; any open FVGs on the 4-hour or daily chart. Then ask: given my daily bias and the current market structure, which of these levels is price most likely being drawn toward today?' },
       { type: 'paragraph', text: 'Your DOL becomes your take-profit target before you ever enter a trade. Every trade has both an entry and an exit defined before execution. The entry is in the IRL (FVG or OB at your killzone). The exit is at the DOL — the ERL target that the algorithm is delivering toward. This pre-planned structure is what separates systematic ICT trading from guesswork.' },
       { type: 'highlight', text: 'A single powerful exercise: every week, before the market opens on Monday, identify the weekly DOL — where do you believe price will deliver by Friday? Write it down. Then review your accuracy weekly. Traders who practice DOL identification consistently become dramatically better at reading the market\'s intentions within 60-90 days of dedicated practice.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'A trader marks the prior-week high and low before the new week opens and chooses the high as a potential objective based on a stated range condition. Price first falls through an internal swing low and never reaches the prior-week high during the sample. The result is recorded as a path that did not reach the planned reference.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'A target can be selected after price is already moving toward it, making the idea look more precise than it was. Markets may reach another level first, reverse or remain in a range, and no single liquidity objective is guaranteed.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Choose candidate levels and selection rules before the period begins.',
+        'Record missed targets and alternative levels reached first.',
+        'Compare the chosen reference with a baseline such as prior-day high/low.',
+      ]},
+
     ],
   },
 
@@ -581,8 +592,8 @@ export const POSTS = [
 
   {
     slug: 'ict-optimal-trade-entry-ote',
-    title: 'ICT OTE — Optimal Trade Entry Explained with Fibonacci',
-    description: 'The OTE is ICT\'s Fibonacci-based entry framework. Understand how the 62-79% retracement zone identifies precisely where institutions re-enter after a displacement move.',
+    title: 'ICT Optimal Trade Entry (OTE): Retracement Zones and Testing',
+    description: 'A guide to the commonly discussed OTE retracement area, how to state swing anchors consistently, and why a Fibonacci zone is context rather than a standalone entry signal.',
     category: 'Intermediate',
     readTime: '11 min read',
     date: 'April 4, 2026',
@@ -611,6 +622,17 @@ export const POSTS = [
       { type: 'paragraph', text: 'Some traders study an OTE when the 62%–79% zone also aligns with an Order Block, Fair Value Gap or Breaker Block. This overlap defines a testable confluence rule, but it does not establish a higher win rate without recorded results.' },
       { type: 'paragraph', text: 'On the daily timeframe, an OTE into a 4-hour Order Block at the 70.5% level during the London Killzone is an example of maximal confluence. The HTF structure is aligned, the PD Array element provides the entry zone, the Fibonacci level confirms the discount pricing, and the session timing confirms the algorithmic delivery window.' },
       { type: 'highlight', text: 'The OTE is a filter, not a standalone setup. Price must reach the 62-79% zone — you do not enter at 38% because it looks like a good level. You wait for the discount. The discipline to wait for price to come to you, rather than chasing it at shallow retracements, is what separates OTE traders who profit from those who do not.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'A trader measures a hypothetical impulse from 100 to 110 and has chosen the 62–79% retracement band for a study. Under that convention the candidate area is approximately 102.1 to 103.8. Price trades into the band, but the trader’s separate confirmation does not appear before the setup expires, so no trade is recorded.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'Moving the swing anchors after price returns or selecting only levels that held creates hindsight bias. Retracement ratios are mathematical references; they do not establish where institutions will re-enter or whether a trade has positive expectancy.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Set the swing-anchor rule and ratios before the sample.',
+        'Record touches that hold, fail, and never reach the zone.',
+        'Compare with simpler retracement rules after spread, slippage and fees.',
+      ]},
+
     ],
   },
 
@@ -732,8 +754,8 @@ export const POSTS = [
 
   {
     slug: 'ict-unicorn-model-explained',
-    title: 'ICT Unicorn Model — The Dual-Confirmation Entry Strategy',
-    description: 'The Unicorn Model combines two ICT concepts — Mitigation Block and Fair Value Gap — into a single high-conviction entry. When both confirm simultaneously, the setup becomes exceptionally powerful.',
+    title: 'ICT Unicorn Model: Combining Mitigation and FVG Conditions',
+    description: 'An overview of the Unicorn label as a combination of mitigation-block and Fair Value Gap ideas, with an emphasis on consistent pattern rules and testing rather than assuming dual confirmation means a strong edge.',
     category: 'Advanced',
     readTime: '11 min read',
     date: 'April 8, 2026',
@@ -759,6 +781,17 @@ export const POSTS = [
       { type: 'paragraph', text: 'Unicorn setups occur on every timeframe, but the most tradeable ones appear on the 15-minute and 1-hour charts during Killzone periods. To find them, start by marking all your Order Blocks on the chart. Monitor which ones fail — those become Mitigation Blocks. Then check whether the displacement that broke the OB also created a Fair Value Gap that overlaps with the Mitigation Block zone. When you find an overlap, mark it as a potential Unicorn.' },
       { type: 'paragraph', text: 'Not every Mitigation Block will have an overlapping FVG. Perhaps 20-30% of Mitigation Blocks will qualify as Unicorns. When one does, prioritize it above all other entry zones on that timeframe — it is the confluence-based setup available.' },
       { type: 'highlight', text: 'The Unicorn Model is a patience trade. These setups do not appear every session. When you find one that aligns with your HTF bias during a Killzone, trade it with full conviction and appropriate position sizing. Missing a Unicorn is far less damaging than forcing trades that do not qualify.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'A trader marks a candidate mitigation area and a nearby FVG under a predefined source definition. Price revisits the area, but the required overlap is absent, so the setup is rejected. On another chart, both conditions are present, and it is logged for testing with the same stop and confirmation rules as every other qualifying case.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'If the definition of a mitigation block or the required FVG alignment changes from chart to chart, the combination can be fitted to past winners. Two labels appearing together do not automatically provide independent confirmation.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Define each component and the exact required overlap.',
+        'Log candidates that meet only one of the two conditions.',
+        'Compare the combined rule with each component tested alone.',
+      ]},
+
     ],
   },
 
@@ -796,8 +829,8 @@ export const POSTS = [
 
   {
     slug: 'ict-smt-divergence-complete-guide',
-    title: 'ICT SMT Divergence — How to Use Correlated Pairs as Confirmation',
-    description: 'Smart Money Technique divergence uses two correlated instruments to detect institutional manipulation. When they diverge in structure, it reveals the true direction that one of them is being manipulated away from.',
+    title: 'ICT SMT Divergence: Comparing Correlated Instruments',
+    description: 'Understand how SMT divergence compares swing behavior in related instruments. It may add context to a trade hypothesis, but it does not prove manipulation or reveal the true future direction.',
     category: 'Advanced',
     readTime: '12 min read',
     date: 'April 10, 2026',
@@ -824,6 +857,17 @@ export const POSTS = [
       { type: 'heading', text: 'Avoiding False SMT Signals' },
       { type: 'paragraph', text: 'Not every divergence between correlated instruments is a true SMT signal. False SMT appears when the timeframe is too small (noise dominates), when the instruments are not genuinely correlated in the current market regime, or when the divergence occurs outside of a Killzone or Macro window. Only use SMT on the 5-minute chart or higher, only during high-activity sessions, and only when the pair correlation is clear and recent.' },
       { type: 'highlight', text: 'SMT is a confirmation tool, not a standalone strategy. Before trading an SMT signal, confirm that your daily bias supports the direction, that the sweep occurred at a known liquidity pool (equal high/low, previous session high/low), and that the divergence appeared during a Killzone or Macro window. With all four elements present, the SMT setup becomes a very high-probability trade.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'Two equity indices approach their prior swing highs. One makes a marginal higher high while the other remains below its previous high. A trader records the divergence, then waits for a separate, prewritten confirmation on the intended instrument. If no confirmation appears, the divergence remains a market observation rather than an entry.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'Correlations change, instruments have different constituents and sessions, and one market may move first for ordinary reasons. Selecting pairs only after the divergence is visible creates a biased sample.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Choose instruments and swing rules before looking for divergence.',
+        'Record divergence cases followed by reversals, continuations and no signal.',
+        'Test whether the comparison adds information beyond the primary instrument alone.',
+      ]},
+
     ],
   },
 
@@ -929,8 +973,8 @@ export const POSTS = [
 
   {
     slug: 'ict-mitigation-block-guide',
-    title: 'ICT Mitigation Block — When Failed Order Blocks Become Opportunities',
-    description: 'A Mitigation Block is a failed Order Block waiting to be retested. Understanding why Order Blocks fail — and what that failure means for your next trade — is essential ICT knowledge.',
+    title: 'ICT Mitigation Block: Rules for Identifying a Candidate Zone',
+    description: 'Explore how ICT traders describe mitigation blocks and how to test whether a marked zone adds information beyond an ordinary retest. A revisit or reaction is never guaranteed.',
     category: 'Intermediate',
     readTime: '10 min read',
     date: 'April 14, 2026',
@@ -955,6 +999,17 @@ export const POSTS = [
       { type: 'heading', text: 'Mitigation Block vs Breaker Block — One More Time' },
       { type: 'paragraph', text: 'The conceptual difference is simple: a Mitigation Block is the failed OB before the first retest. Once price retests the Mitigation Block from the new direction and reacts, it becomes a Breaker Block — the failure has been confirmed by a reaction. In trading terms, the Mitigation Block is your entry opportunity; the Breaker Block is the confirmed level for subsequent retests.' },
       { type: 'highlight', text: 'Track your Order Blocks carefully and note which ones hold and which ones fail. The most valuable data you can collect as an ICT trader is an accurate record of OB behavior on your specific instrument. Some markets (like NAS100) break OBs more frequently than others (like forex majors). Knowing the OB integrity rate of your instrument tells you how aggressively to trade Mitigation Blocks versus waiting for confirmed Breakers.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'A trader identifies a candidate zone using a documented failed-structure rule and marks its boundaries before price returns. On the revisit, price closes through the zone and continues beyond the prior swing. The setup is recorded as invalidated, rather than widening the zone after the fact to make the chart fit.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'The term mitigation block can be defined differently by educators, and price may never revisit a candidate zone. Retrospective boundary changes can make nearly any reversal look like a valid block.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Record the failed structure and exact zone boundaries.',
+        'Predefine how a revisit and invalidation are measured.',
+        'Compare candidate zones with ordinary retests and no-trade cases.',
+      ]},
+
     ],
   },
 
@@ -1144,6 +1199,17 @@ export const POSTS = [
         'Reversals change the Draw on Liquidity — after a genuine reversal, the DOL is in the opposite direction. Retracements preserve the existing DOL.',
       ]},
       { type: 'highlight', text: 'The most important filter for any reversal trade: does the reversal change the Draw on Liquidity? After a genuine reversal at a swing high, the DOL is now below (toward the nearest swing low or equal lows). If the nearest liquidity pool is above rather than below the potential reversal point, you are not looking at a genuine reversal — you are looking at a trap.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'A trader records three candidate reversal structures from a historical chart using fixed swing and confirmation rules. Two reverse modestly, while one continues in the original direction. The trader retains all three cases and checks whether the separate entry rule would have been triggered before judging the pattern.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'Reversal labels are often applied after the turn is visible. Trend strength, scheduled news and range context can change outcomes, and the same candle sequence may produce very different results across instruments.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Write the reversal and invalidation conditions before reviewing charts.',
+        'Count failed reversals and continuation cases.',
+        'Include entry timing, spread and slippage when assessing outcomes.',
+      ]},
+
     ],
   },
 
@@ -1182,7 +1248,7 @@ export const POSTS = [
   {
     slug: 'ict-hidden-order-block',
     title: 'ICT Hidden Order Block: Definitions and Chart Examples',
-    description: 'Review the Hidden Order Block label as used in ICT education, including how traders mark candidate zones and what evidence would be needed to evaluate the idea. Terminology alone is not a trading signal.',
+    description: 'Review the Hidden Order Block label as used in ICT education, how traders mark candidate zones, and what evidence would be needed to evaluate the idea. Terminology alone is not a trading signal.',
     category: 'Advanced',
     readTime: '11 min read',
     date: 'April 21, 2026',
@@ -1207,6 +1273,17 @@ export const POSTS = [
       { type: 'heading', text: 'Overlapping Wicks — The Hidden OB Cluster' },
       { type: 'paragraph', text: 'When multiple consecutive candles have overlapping wicks at the same price level — their wicks touch or overlap without the bodies trading through — this creates what ICT calls a Hidden OB cluster. This is essentially multiple Hidden Order Blocks stacked at the same level, each one adding to the institutional significance of the zone. These clusters are among the confluence-based PD Array elements in the advanced ICT toolkit.' },
       { type: 'highlight', text: 'Make Hidden OB hunting a regular practice by reviewing your higher timeframe analysis at the lower timeframe before each session. Specifically, look at all significant wick rejections on the daily or 4-hour chart and drill into them on the 15-minute chart. The Hidden OBs you find there will often be the commonly discussed entry zones of the upcoming session.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'Suppose a trader sees an area that appears more clearly on a 5-minute chart than on a 1-hour chart and labels it a candidate Hidden Order Block using a definition from their chosen source. Before price returns, the trader records the precise candle boundaries and the confirmation they would require. On a later revisit, price trades through the area without reacting; that outcome stays in the sample.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'The label can become a hindsight explanation when the zone is drawn only after price reacts. Different educators may define the pattern differently, and a visually neat zone does not prove that hidden orders are waiting there.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Record the exact definition and candle boundaries before the retest.',
+        'Test reactions, clean passes and ambiguous examples with the same rule.',
+        'Compare results with an ordinary swing or support/resistance reference.',
+      ]},
+
     ],
   },
 
@@ -1253,8 +1330,8 @@ export const POSTS = [
 
   {
     slug: 'ict-1st-presented-fvg-opening-range',
-    title: 'ICT 1st Presented FVG and Opening Range — The Most Important FVG of the Day',
-    description: 'The first Fair Value Gap formed after the 9:30 AM market open is the most significant FVG of the trading day. Here is why it matters and exactly how to trade it.',
+    title: 'ICT First-Presented FVG and Opening Range: How to Evaluate the Setup',
+    description: 'Learn how traders define a first-presented Fair Value Gap near the opening range, and why its timing or position alone does not make it the most significant gap of a session.',
     category: 'Intermediate',
     readTime: '11 min read',
     date: 'April 23, 2026',
@@ -1279,6 +1356,17 @@ export const POSTS = [
       { type: 'heading', text: 'The Opening Range High and Low as Targets' },
       { type: 'paragraph', text: 'The opening range high and low (the extremes of the first 30-60 minutes) are the primary liquidity targets of the opening session. If your 1st Presented FVG is bullish and the daily bias is bullish, your target from the FVG entry is the opening range high — and potentially beyond to the previous day\'s high. If the FVG is bearish, your target is the opening range low.' },
       { type: 'highlight', text: 'The 1st Presented FVG is the single most important FVG to mark each trading day. Before doing anything else during the opening range, identify and mark this FVG. It will be a reference level for your opening range trades, for your Silver Bullet setup later in the 10:00-11:00 window, and for understanding the day\'s initial institutional order flow direction.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'A trader specifies the exchange opening time, the timeframe and the rule for identifying the first qualifying FVG after the open. On one session, the first gap appears but price never retraces into it before the session window ends. The example is logged as a no-entry case rather than substituting a later gap.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'The result changes with the chosen opening time, market session, timeframe and gap definition. A first gap may be crossed cleanly, while a later gap may behave differently; importance cannot be assumed from sequence alone.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Fix the session, timeframe and qualifying-gap rule in advance.',
+        'Record no-retrace, full-cross and partial-fill cases.',
+        'Compare the first qualifying gap with later gaps and a simple opening-range baseline.',
+      ]},
+
     ],
   },
 
@@ -1418,8 +1506,8 @@ export const POSTS = [
 
 {
     slug: 'ict-qml-quasimodo-pattern',
-    title: 'ICT QML — The Quasimodo Reversal Pattern Explained',
-    description: 'The Quasimodo (QML) is a reversal chart pattern used in ICT methodology to identify high-probability turning points. It combines liquidity sweeps with structural failure for clean counter-trend entries.',
+    title: 'ICT QML (Quasimodo): A Reversal Pattern to Define and Test',
+    description: 'Explore the Quasimodo label as a swing-based reversal pattern, and document the structure and confirmation rules needed to evaluate it without presuming that the pattern predicts a turn.',
     category: 'Intermediate',
     readTime: '11 min read',
     date: 'April 27, 2026',
@@ -1445,6 +1533,17 @@ export const POSTS = [
       { type: 'heading', text: 'QML vs Head and Shoulders — The Key Difference' },
       { type: 'paragraph', text: 'Retail traders will recognize the QML as similar to a Head and Shoulders pattern. The difference is the ICT interpretation of what is actually happening. In traditional technical analysis, Head and Shoulders is just a pattern to be followed. In ICT, the QML reveals the liquidity mechanism: the second shoulder (the higher HH) is an engineered sweep of the prior high, specifically designed to trap breakout buyers before the reversal. The HL breakdown is the confirmation that the sweep was manipulation, not genuine continuation.' },
       { type: 'highlight', text: 'QML setups are commonly studied on the 1-hour and 4-hour charts during Killzone periods. A bearish QML on the 4-hour chart that forms during the New York session open, with the entry zone aligning with a 4-hour Order Block, is an potential reversal setup. The structural clarity of the QML makes it one of the easier ICT patterns to identify in hindsight — the challenge is identifying it in real-time as the fourth swing is forming.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'A trader marks a lower low, a rebound swing and a later lower high under a written QML pattern definition. The proposed neckline and invalidation point are recorded before the next candles form. Price breaks the neckline but immediately reclaims it, so the failed signal stays in the sample.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'The pattern can be redrawn retrospectively by shifting swing points or choosing whichever neckline best fits the later reversal. The structure does not establish why price turned or guarantee a follow-through.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Write the swing sequence and neckline rule in advance.',
+        'Track failures, retests and trades that never trigger.',
+        'Compare QML results with ordinary swing-break rules.',
+      ]},
+
     ],
   },
 
@@ -1492,8 +1591,8 @@ export const POSTS = [
 
   {
     slug: 'ict-stl-itl-ltl-market-structure',
-    title: 'ICT STL, ITL, LTL — Advanced Market Structure Levels Explained',
-    description: 'ICT categorizes swing lows into three tiers: Short Term Lows, Intermediate Term Lows, and Long Term Lows. Each tier holds different liquidity significance. Mastering this hierarchy is how you read the market on any timeframe.',
+    title: 'ICT STL, ITL and LTL: Classifying Swing Levels Consistently',
+    description: 'Review short-, intermediate- and long-term swing labels as a hierarchy used in some ICT explanations, and define the confirmation rules that make classifications reproducible across timeframes.',
     category: 'Intermediate',
     readTime: '11 min read',
     date: 'April 29, 2026',
@@ -1519,6 +1618,17 @@ export const POSTS = [
         'The confluence-based ICT entries buy above a broken STL (bullish bias), targeting the nearest ITH. They sell below a broken STH (bearish bias), targeting the nearest ITL.',
       ]},
       { type: 'highlight', text: 'Practice identifying all three tiers on a daily chart of any instrument for 30 consecutive days. Mark each swing high and low and classify it as STH/STL, ITH/ITL, or LTH/LTL. Over time, you will develop an intuitive sense for the hierarchy of any price chart — and you will never again be fooled by a minor stop hunt that temporarily breaks a Short Term Low into thinking the trend has reversed.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'A trader labels a confirmed five-minute pivot as a short-term reference, then checks whether a higher-timeframe swing rule also classifies the same area as intermediate-term. The pivot does not qualify under the larger lookback, so only the short-term label is retained. The classification is fixed before any later sweep or reaction occurs.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'The time horizon and exact swing requirements can vary across teaching sources. Applying labels after seeing which level price respects can make the hierarchy appear predictive when it may simply describe the chart retrospectively.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Document the rule and timeframe for each swing tier.',
+        'Mark pivots using only data available at the chosen confirmation point.',
+        'Test whether the tiers improve decisions beyond a single consistent swing rule.',
+      ]},
+
     ],
   },
 
@@ -1567,8 +1677,8 @@ export const POSTS = [
 
   {
     slug: 'ict-inducement-after-bos',
-    title: 'ICT Inducement After Break of Structure — The Trap Before the Entry',
-    description: 'Inducement is one of ICT\'s most critical concepts for avoiding bad entries. Understanding how the algorithm sets traps after a Break of Structure will save you from the most common ICT trading mistake.',
+    title: 'ICT Inducement After BOS: Separating Structure from Interpretation',
+    description: 'Review how traders apply an inducement label after a Break of Structure, while avoiding claims that a market algorithm deliberately sets traps or that one sequence guarantees a trade.',
     category: 'Intermediate',
     readTime: '11 min read',
     date: 'May 1, 2026',
@@ -1594,6 +1704,17 @@ export const POSTS = [
       { type: 'paragraph', text: 'The primary defense against inducement is patience and HTF alignment. Before entering any retracement trade after a BOS, ask: has price reached my HTF PD Array? If the answer is no — if the 4-hour OB or the OTE zone or the daily FVG has not yet been touched — wait. The retracement has not finished. What you are seeing is inducement.' },
       { type: 'paragraph', text: 'The second defense: check for liquidity below your entry zone. If equal lows or any STL exists between your intended entry and the HTF PD Array, price will likely take that liquidity first. Wait for the liquidity below your entry to be swept before entering the trade.' },
       { type: 'highlight', text: 'A useful mental framework: every entry should have a reason to exist that goes beyond "the retracement looks like it is ending here." You need a confirmed HTF PD Array, alignment with the overall bias, no remaining liquidity between your entry and the next target, and a killzone or Macro window timing. If your entry cannot satisfy all four criteria, it may be inducement. Walk away and wait.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'A trader marks a confirmed swing break and identifies a smaller nearby pivot as a possible inducement reference under the chosen rule. Price trades through the small pivot and continues in the breakout direction rather than reversing. The observation counts as a continuation case; the label is not changed to fit the result.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'The phrase inducement can imply intent that candle data alone cannot verify. With no objective swing or sweep conditions, nearly any pre-break move can be interpreted as a trap after the outcome is known.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Specify the swing break and candidate inducement level before the move.',
+        'Record reversals and continuations using the same definitions.',
+        'Describe chart behavior without claiming to know participants\' intent.',
+      ]},
+
     ],
   },
 
@@ -1657,13 +1778,24 @@ export const POSTS = [
       { type: 'heading', text: 'When Daily Bias Is Unclear' },
       { type: 'paragraph', text: 'On some days, the daily bias is genuinely unclear — the weekly structure is consolidating, the daily chart shows balanced structure, and there are no obvious draws on liquidity in either direction. On these days, the correct approach is to wait. Do not force a bias onto a market that is in genuine equilibrium. The algorithm is accumulating during these periods, and attempting to trade in a direction during genuine consolidation will result in getting chopped up in both directions.' },
       { type: 'highlight', text: 'The most important bias-determination discipline: state your bias BEFORE the session opens and do not change it once the session begins unless a clearly significant structural event invalidates it. Traders who switch their bias based on the first 30 minutes of price action are not trading bias — they are reacting to noise. True bias is determined in pre-session analysis, not in real-time reaction.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'Before the session, a trader records a bullish scenario above a defined range high, a bearish scenario below the prior-day low, and a neutral condition when price stays between them. Price remains inside the range for most of the session, so the neutral scenario is accepted rather than forcing a directional trade.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'A bias can become a post-hoc story if the trader changes the relevant level after price moves. A directional forecast can also be correct but produce a losing entry, so prediction and execution results should not be combined into one score.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Write bullish, bearish and neutral conditions before the session.',
+        'State what invalidates the thesis and when to stop using it.',
+        'Track bias accuracy separately from entry performance and costs.',
+      ]},
+
     ],
   },
 
   {
     slug: 'ict-mss-vs-choch-explained',
-    title: 'ICT MSS vs ChoCH — Understanding the Difference Between Market Structure Shifts',
-    description: 'MSS and ChoCH are both structural shift concepts, but they have distinct definitions and different implications for trade direction. This guide clarifies both and shows you exactly when each one matters.',
+    title: 'ICT MSS vs ChoCH: Comparing Structural-Change Labels',
+    description: 'Compare how MSS and ChoCH are commonly used in ICT education, while documenting one consistent definition so examples can be tested and reproduced.',
     category: 'Beginner',
     readTime: '10 min read',
     date: 'May 4, 2026',
@@ -1687,6 +1819,17 @@ export const POSTS = [
       { type: 'heading', text: 'MSS vs ChoCH in the Entry Model' },
       { type: 'paragraph', text: 'In a practical trade scenario: you have identified a bearish daily bias and are waiting for a retracement to a bearish 4-hour FVG. When price enters the 4-hour FVG zone, you switch to the 5-minute chart. On the 5-minute, you watch for a bullish ChoCH first (a minor pullback establishing a short-term higher low), then wait for the bearish MSS — the break of that minor high on the 5-minute — as your entry trigger. The 5-minute MSS within the 4-hour FVG is the complete entry signal.' },
       { type: 'highlight', text: 'Rule of thumb: trade the MSS, be aware of the ChoCH. The ChoCH puts you on alert; the MSS pulls the trigger. Never enter on a ChoCH alone — you need the MSS confirmation before committing capital. The number of traders who lose money entering on ChoCH alone, only to see price continue the original trend, is enormous. Wait for the MSS.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'A trader defines ChoCH as a break against the immediate swing sequence and MSS as a break of a specific confirmed swing accompanied by displacement. On a sample chart, one move meets the first rule but not the second because the chosen displacement condition is absent. That case is recorded as a distinction under this trader’s rules, not a universal terminology standard.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'Educators do not always use MSS and ChoCH identically, so a definition borrowed from one source may conflict with another. Changing labels after seeing the next move can make a setup appear more accurate than it is.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Name the source definition and timeframe before classifying charts.',
+        'Write explicit wick/close, swing and displacement conditions.',
+        'Keep a separate category for cases that do not fit either rule.',
+      ]},
+
     ],
   },
 
@@ -1777,8 +1920,8 @@ export const POSTS = [
 
   {
     slug: 'ict-one-shot-one-kill-model',
-    title: 'ICT One Shot One Kill — The Precision Trading Model',
-    description: 'One Shot One Kill is ICT\'s philosophy of maximum preparation for a single perfect trade per session. This is not about trading frequency — it is about identifying the one setup with maximum confluence and executing it with full conviction.',
+    title: 'ICT One Shot One Kill: Planning a Limited-Trade Session',
+    description: 'Review the One Shot One Kill philosophy as a way to predefine session attempts and avoid impulsive entries, rather than as evidence that one perfect setup exists each day.',
     category: 'Strategy',
     readTime: '11 min read',
     date: 'May 7, 2026',
@@ -1803,6 +1946,17 @@ export const POSTS = [
       { type: 'heading', text: 'Managing the One Shot After Entry' },
       { type: 'paragraph', text: 'After entering the OSOK trade, management is straightforward. Move stop to breakeven after the first significant HTF FVG is left behind in the trade\'s direction. Take 50% profit at the first liquidity pool in the path to the DOL. Run the remaining 50% to the full DOL target. This management structure ensures you never give back more than breakeven on a trade that has proven directional while still capturing the full potential of a high-quality entry.' },
       { type: 'highlight', text: 'The test of your OSOK discipline: can you sit in front of your trading platform for an entire session — watching every tick, seeing apparent opportunities arise and disappear — without pressing the buy or sell button because your specific setup did not appear? That discipline is the skill. The entry model is easy. The patience to wait for the one perfect shot is the hard part — and the part that, when mastered, transforms average ICT students into consistently profitable traders.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'A trader decides before New York that they will take at most one fully qualifying setup and will stop after that attempt regardless of outcome. No setup meets the written criteria during the window, so the trader records a no-trade day. The exercise tests adherence to a limit, not whether a single daily entry is inherently more profitable.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'A limit on trade count may reduce overtrading but does not create an edge by itself. Calling a setup perfect after it wins, or forcing one trade because the model name implies there should be one, undermines the plan.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Define what qualifies as an attempt before the session.',
+        'Track no-trade days and skipped candidates as part of the sample.',
+        'Evaluate process adherence separately from trading profitability.',
+      ]},
+
     ],
   },
 
@@ -1850,8 +2004,8 @@ export const POSTS = [
 
   {
     slug: 'ict-internal-external-range-liquidity',
-    title: 'ICT IRL vs ERL — Internal and External Range Liquidity Explained',
-    description: 'Understanding the difference between Internal Range Liquidity and External Range Liquidity is how ICT traders define the hierarchy of targets within any dealing range — from the imbalances inside the range to the swing extremes beyond it.',
+    title: 'ICT IRL vs ERL: Organizing Internal and External Reference Levels',
+    description: 'Understand how ICT traders distinguish internal range references from external swing extremes, and how to test a target-selection hypothesis without assuming price must travel from one to the other.',
     category: 'Intermediate',
     readTime: '11 min read',
     date: 'May 9, 2026',
@@ -1877,13 +2031,24 @@ export const POSTS = [
       { type: 'heading', text: 'IRL First, Then ERL — The Sequence' },
       { type: 'paragraph', text: 'A crucial ICT rule: price almost always delivers to IRL targets first before reaching the ERL. When you identify a bullish daily bias targeting the previous week\'s high (ERL), price will not go directly there in a straight line. It will first hit internal FVGs and OBs (IRL) along the way. Understanding this means you do not set your stop just below your entry and target the ERL directly from the start — you manage the trade to give price room to hit the IRL targets while keeping the ERL as your full profit target.' },
       { type: 'highlight', text: 'The IRL/ERL framework is the solution to the most common ICT targeting problem: "I was right about the direction but took profit too early." By identifying all the IRL targets between your entry and the ERL, you can plan your partial profit-taking at each IRL while running a portion of the position to the full ERL target. This is how ICT traders capture the full range of a delivery rather than exiting at the first touch of any resistance.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'A trader defines a dealing range between two confirmed swing extremes and marks an imbalance inside it as an internal reference. The outer high is tagged as an external reference. Price revisits the internal area and then turns before reaching the external high, which is recorded as one possible path rather than a broken rule.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'A trader can change the range anchors after the move and make targets appear obvious in hindsight. Internal and external labels organize a chart, but do not guarantee the order in which levels will be visited.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Set range boundaries before assigning internal and external labels.',
+        'Record which reference is touched first, including paths that invalidate the thesis.',
+        'Keep target selection separate from entry confirmation and risk sizing.',
+      ]},
+
     ],
   },
 
   {
     slug: 'ict-displacement-move-explained',
-    title: 'ICT Displacement Move — Why It Is the Foundation of Every Entry',
-    description: 'The displacement move is the single most important price action signal in ICT methodology. Without a genuine displacement, no FVG, no OB, and no entry has institutional validity. This guide defines it precisely and explains why it matters so much.',
+    title: 'ICT Displacement: Defining Strong Price Movement for Testing',
+    description: 'Learn how ICT traders describe displacement and how to turn that visual concept into a measurable rule. A sharp move can be useful context but does not by itself prove an institutional cause or validate an entry.',
     category: 'Beginner',
     readTime: '10 min read',
     date: 'May 10, 2026',
@@ -1909,6 +2074,17 @@ export const POSTS = [
       { type: 'heading', text: 'Displacement and the FVG — The Inseparable Relationship' },
       { type: 'paragraph', text: 'Every valid FVG requires displacement. When you mark an FVG on your chart, always look back at the candle sequence that created it. If you cannot identify a displacement move — if the FVG was created by a single average-sized candle in the middle of balanced price action — it is not a valid institutional FVG. It is a coincidental three-candle gap with no institutional significance.' },
       { type: 'highlight', text: 'Before marking any FVG as a potential trade entry, ask one question: was this FVG created by a genuine displacement move? If the answer is yes — large candles, minimal overlap, FVGs embedded in the sequence — the FVG is valid. If the answer is no — small candles, high overlap, no clear directional momentum — skip it and wait for a displacement-backed FVG to form. This single filter will eliminate the majority of losing ICT trades.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'A trader defines a candidate displacement as a candle body larger than a specified multiple of the recent median body, followed by a close beyond a confirmed swing. When a large candle occurs inside the prior range and fails the swing-break condition, it is not counted as displacement under this rule.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'Terms such as strong, clean or impulsive are subjective unless the sample, candle size and structure conditions are explicit. Volatility spikes and news can produce large candles that do not create a durable directional move.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Choose candle-size and swing-break criteria before testing.',
+        'Include large candles that fail the remaining conditions.',
+        'Compare results with a simpler volatility or momentum threshold.',
+      ]},
+
     ],
   },
 
@@ -2038,8 +2214,8 @@ export const POSTS = [
 
   {
     slug: 'ict-market-order-flow-explained',
-    title: 'ICT Market Order Flow — Understanding the True Engine of Price Movement',
-    description: 'Institutional order flow is the force that drives every significant price move. Learning to identify its direction, confirm its commitment, and align your trades with it is the foundation of all ICT methodology.',
+    title: 'ICT Market Order Flow: Reading Price Sequences as a Framework',
+    description: 'An introduction to how ICT traders interpret directional price sequences and displacement. These observations describe chart behavior; they do not reveal the full mix of orders or prove a cause.',
     category: 'Beginner',
     readTime: '12 min read',
     date: 'May 14, 2026',
@@ -2063,6 +2239,17 @@ export const POSTS = [
       { type: 'heading', text: 'Order Flow and Stop Placement' },
       { type: 'paragraph', text: 'Understanding order flow also determines stop loss placement. Your stop is placed at the level that, if reached, would invalidate the order flow bias. For a bullish daily order flow trade, the stop goes below the last significant daily Higher Low — if that level is broken, the bullish order flow has been negated and the trade premise is invalid. This principle prevents the common mistake of placing arbitrary stops based on risk amount rather than structural logic.' },
       { type: 'highlight', text: 'Every morning before trading, take 5 minutes to verbally state the order flow on three timeframes: "Weekly order flow is [direction] because [structural reason]. Daily order flow is [direction] because [structural reason]. 4-hour order flow is [direction] because [structural reason]." If all three align, you have maximum confluence for your trading bias. If they conflict, wait for resolution before trading.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'Price repeatedly makes higher swing highs and higher lows while pullbacks remain shallow over the selected sample. A trader labels the sequence bullish under a written structure rule and notes the last confirmed higher low as a reference. When price later breaks below it, the trader updates the chart description without claiming to know which participants caused the move.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'Candlestick and swing patterns do not provide a complete view of order flow across venues. News, liquidity, execution and timeframe selection can affect what appears directional, and a readable structure can still be unprofitable to trade.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'State the observable rule behind each order-flow label.',
+        'Test across instruments and market regimes instead of one chart.',
+        'Separate description of price from claims about institutional intent.',
+      ]},
+
     ],
   },
 
@@ -2154,8 +2341,8 @@ export const POSTS = [
 
   {
     slug: 'ict-swing-high-swing-low-explained',
-    title: 'ICT Swing High and Swing Low — How to Identify Them Correctly',
-    description: 'Swing highs and swing lows are the building blocks of all ICT structure analysis. But most traders identify them incorrectly. This guide explains the exact ICT definition and why precision matters.',
+    title: 'ICT Swing High and Swing Low: Defining Structure Consistently',
+    description: 'Learn how traders define swing highs and swing lows in ICT-style chart analysis, and why consistent confirmation rules matter more than relabeling pivots after the outcome.',
     category: 'Beginner',
     readTime: '9 min read',
     date: 'May 17, 2026',
@@ -2180,6 +2367,17 @@ export const POSTS = [
       { type: 'paragraph', text: 'ICT teaches that swing highs and lows are fractal — the same structures appear on every timeframe. A 5-minute swing high is a minor structural point within a 1-hour swing that is itself within a daily swing. The significance of each swing is proportional to the timeframe on which it forms: daily swing highs are major structural levels with large liquidity pools; 5-minute swing highs are minor structural points for entry timing only.' },
       { type: 'paragraph', text: 'Understanding the fractal nature of swings is what allows ICT top-down analysis to work: you identify the major swing high on the daily (the ERL target), the intermediate swing on the 4-hour (the retracement boundary), and the minor swing on the 15-minute (the entry trigger). Each timeframe\'s swings are valid at their own level of significance.' },
       { type: 'highlight', text: 'Exercise: on a clean chart with no indicators, mark every swing high and swing low using the strict ICT definition (one confirming candle on each side minimum). Then classify each one as STH/STL, ITH/ITL, or LTH/LTL based on the three-tier hierarchy. Repeat this on 20 different charts across multiple timeframes. Within two weeks, swing identification will be automatic and your entire structural analysis will become significantly more accurate.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'A trader chooses a three-candle swing rule: the middle candle must have a higher high than the candles directly before and after it. A new high appears, but the following candle has not closed yet, so the swing remains provisional. The trader waits until the prewritten rule is satisfied before using the level in a liquidity or structure analysis.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'Different lookback sizes, wick-versus-close rules and real-time versus confirmed pivots can produce different swing maps. A swing may also be obvious in hindsight but unavailable for a live decision until later candles form.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Document the pivot and confirmation rule, including timeframe.',
+        'Avoid changing the rule between winners and losers.',
+        'Record how much delay confirmation introduces to an entry or alert.',
+      ]},
+
     ],
   },
 
@@ -2768,8 +2966,8 @@ export const POSTS = [
 
   {
     slug: 'ict-market-structure-shift-complete',
-    title: 'ICT Market Structure Shift (MSS) — The Complete Entry Trigger Guide',
-    description: 'The Market Structure Shift is the most precise entry trigger in ICT methodology. This complete guide covers exactly what it is, how to identify it on any timeframe, and how to use it as the definitive execution signal.',
+    title: 'ICT Market Structure Shift (MSS): Confirmation Rules and Limits',
+    description: 'Understand how ICT traders use a Market Structure Shift label, specify the swing being broken, and separate a structural observation from a complete entry plan.',
     category: 'Beginner',
     readTime: '12 min read',
     date: 'June 2, 2026',
@@ -2795,6 +2993,17 @@ export const POSTS = [
       { type: 'paragraph', text: 'The MSS concept applies to every timeframe. A daily MSS represents a significant shift in the multi-day delivery direction. A 15-minute MSS represents an intraday shift appropriate for swing entries. A 5-minute or 1-minute MSS represents the precise entry trigger within a pre-identified HTF PD Array zone.' },
       { type: 'paragraph', text: 'For intraday entries, use the 5-minute MSS as your trigger. The sequence: daily bias (HTF), 4-hour PD Array (entry zone), 5-minute MSS (entry trigger). The 5-minute MSS within a 4-hour OB or FVG is the complete ICT entry model — three timeframes aligned with a precise trigger.' },
       { type: 'highlight', text: 'The MSS is the answer to "when do I enter?" The answer is always the same: when the MSS confirms the direction. Not when you think the direction is about to change, not when you see a PD Array approaching, not when the session opens. When the MSS candle closes beyond the reference level — that is the moment. Place your entry at the CE of the FVG created by the MSS displacement. The MSS is your green light.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'In a hypothetical uptrend, a trader marks a recent confirmed higher low before a push to a new high. Price later closes below that higher low, meeting the trader’s written MSS rule. The break is logged as a possible change in short-term structure, but the trader still waits for a separate entry trigger and defined invalidation.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'The MSS label depends on which swing counts, whether wicks or closes qualify and how much displacement is required. A structural break can quickly reverse, and different definitions can make backtests incomparable.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Define the reference swing and break condition before review.',
+        'Separate the MSS label from entry, stop and target rules.',
+        'Count false breaks and reversals rather than keeping only clean examples.',
+      ]},
+
     ],
   },
 
@@ -2840,8 +3049,8 @@ export const POSTS = [
 
   {
     slug: 'ict-supply-demand-forex',
-    title: 'Supply and Demand in Forex — How ICT Transforms Classic S&D into Smart Money Concepts',
-    description: 'Supply and Demand is the foundation that ICT builds on and then surpasses. Understanding the relationship between traditional S&D zones and ICT\'s PD Arrays shows you why smart money concepts are superior for precision trading.',
+    title: 'Supply and Demand vs ICT Concepts: Comparing Chart Frameworks',
+    description: 'Compare classic supply-and-demand zones with ICT terminology such as order blocks and Fair Value Gaps, while treating both as chart frameworks that require clear rules and independent testing.',
     category: 'Beginner',
     readTime: '10 min read',
     date: 'June 4, 2026',
@@ -2866,6 +3075,17 @@ export const POSTS = [
         'S&D on failure: "the zone failed, move on." ICT on failure: "the zone is now a Mitigation Block — it will flip to resistance and become a short entry on the retest."',
       ]},
       { type: 'highlight', text: 'If you come from a Supply and Demand background, ICT will feel immediately intuitive because the core logic is the same — institutional orders exist at specific zones that produce reactions. The ICT advancement is in the precision of identification, the filter framework (premium/discount), and the lifecycle management (OB → Mitigation Block → Breaker Block). Apply your S&D experience as the foundation and layer ICT precision on top — you will immediately improve your entry accuracy and your understanding of why zones succeed or fail.' },
+      { type: 'heading', text: 'Worked hypothetical example' },
+      { type: 'paragraph', text: 'A trader marks one supply zone using a preselected base-and-move rule, then marks an ICT order block using a different written candle-sequence rule on the same chart. The zones overlap partially but are not identical. The trader logs reactions to each zone separately rather than assuming the newer label is superior.' },
+      { type: 'heading', text: 'Failure case and what to test' },
+      { type: 'paragraph', text: 'Terms may overlap without referring to identical rules, and the labels alone cannot prove that one method identifies institutional activity. Choosing only zones that later react exaggerates the apparent skill of either framework.' },
+      { type: 'heading', text: 'Test checklist' },
+      { type: 'list', items: [
+        'Define both zone types without referring to subsequent price action.',
+        'Record overlapping and non-overlapping candidates.',
+        'Compare both methods using the same sample and outcome metric.',
+      ]},
+
     ],
   },
 
