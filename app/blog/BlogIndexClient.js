@@ -34,7 +34,7 @@ export default function BlogIndexClient({ posts }) {
             <span className="shine">NEWS & INSIGHTS</span>
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '15px', fontWeight: 300 }}>
-            ICT education, strategy guides, and prop firm tips delivered weekly.
+            ICT education, strategy frameworks, and risk-aware trading practice.
           </p>
         </div>
       </section>
