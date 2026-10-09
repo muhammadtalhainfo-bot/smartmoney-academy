@@ -13,6 +13,12 @@ if (slugs.length === 0) errors.push('No static blog posts found.');
 if (new Set(slugs).size !== slugs.length) errors.push('Blog slugs must be unique.');
 
 const riskyClaims = [
+  ['algorithmic window certainty', /macro times are specific 20-minute windows when the algorithm actively seeks liquidity/i],
+  ['inducement intent assertion', /inducement is the deliberate creation of false entry opportunities to trap retail traders/i],
+  ['guaranteed liquidity void traversal', /a near-empty zone that price will move through rapidly once it enters/i],
+  ['deterministic premium/discount result', /buying in discount and selling in premium aligns your entries with institutional pricing logic — and eliminates the majority/i],
+  ['certain weekly-profile forecast', /using them allows you to anticipate the weekly range expansion before it happens/i],
+  ['predictable sweep/run binary', /one is a reversal signal\. one is a continuation signal/i],
   ['algorithm certainty', /\bthe algorithm is programmed to\b/i],
   ['unsubstantiated probability ranking', /\bhighest[- ]probability\b/i],
   ['unsubstantiated reliability ranking', /\bmost reliable\b/i],
@@ -63,6 +69,26 @@ const detailedPostSlugs = [
   'ict-suspension-block-2025',
   'ict-market-maker-sell-model-mmsm',
   'ict-propulsion-block-guide',
+  'ict-top-down-analysis-complete',
+  'ict-macro-times-explained',
+  'ict-institutional-order-flow-entry-drill',
+  'daily-bias-ict-how-to-determine',
+  'ict-venom-model-2025',
+  'ict-liquidity-void-explained',
+  'ict-inducement-forex-explained',
+  'ict-balanced-price-range-bpr',
+  'ict-fibonacci-levels-settings',
+  'how-to-pass-ftmo-ict-strategy',
+  'ict-asian-range-trading-strategy',
+  'ict-weekly-profiles-range-expansion',
+  'ict-premium-discount-zone-identification',
+  'ict-valid-pullback-guide',
+  'ict-implied-fair-value-gap-ifvg',
+  'ict-bos-vs-choch-complete',
+  'ict-seek-and-destroy-friday',
+  'ict-silver-bullet-strategy-complete',
+  'ict-liquidity-sweep-vs-run',
+  'ict-rejection-block-explained',
 ];
 const starts = [...posts.matchAll(/(?:^|\n)\s*\{\n\s+slug:\s*'([^']+)'/g)];
 const postChunks = starts.map((match, index) => {
@@ -82,6 +108,14 @@ for (const slug of detailedPostSlugs) {
   }
 }
 const overclaimTitles = [
+  ['certain algorithmic macro activity', /title:\s*'[^']*Algorithm's Precise 20-Minute Windows/i],
+  ['mechanical entry certainty', /title:\s*'[^']*Most Precise Mechanical Entry Model/i],
+  ['exact daily direction', /title:\s*'[^']*Exact Method for Determining Direction Every Day/i],
+  ['guaranteed prop-firm pass implication', /title:\s*'[^']*How to Pass FTMO Using ICT Strategy/i],
+  ['exact Fibonacci settings claim', /title:\s*'[^']*Exact Settings and How to Apply Them/i],
+  ['secret zone superiority claim', /title:\s*'[^']*Secret PD Array Most Traders Miss/i],
+  ['deterministic rejection zone claim', /title:\s*'[^']*Shows Exactly Where Price Was Rejected/i],
+  ['certain day-of-week profile forecast', /title:\s*'[^']*Weekly High and Low Before Friday/i],
   ['fixed daily profit promise', /title:\s*'[^']*How to Book 30-50 Pips a Day/i],
   ['guaranteed day-direction claim', /title:\s*'[^']*CBDR[^']*Predicts the Day/i],
   ['exclusive session promise', /title:\s*'[^']*The Only Hours That Matter/i],
