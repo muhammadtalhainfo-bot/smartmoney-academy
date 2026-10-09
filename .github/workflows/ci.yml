@@ -65,6 +65,9 @@ jobs:
       - name: Validate blog editorial claims and context
         run: node scripts/check-blog-editorial-claims.cjs
 
+      - name: Validate topic-aware blog related reading
+        run: node scripts/check-blog-related-posts.cjs
+
       - name: Lint changed JavaScript/JSX
         shell: bash
         run: |
