@@ -103,7 +103,7 @@ const TOPICS = [
     title: "Stop Loss & Take Profit",
     icon: "🛡️",
     explanation: "A Stop Loss (SL) is an order intended to trigger an exit at a defined price level; the final fill can differ during gaps, slippage or fast markets. A Take Profit (TP) is an order intended to close at a target level, but execution can also vary. Define your loss controls and account exposure before entry.",
-    example: "Buy EURUSD at 1.0800. SL at 1.0780 (20 pip risk). TP at 1.0860 (60 pip target). R:R = 1:3. If wrong, lose 20 pips. If right, gain 60 pips.",
+    example: "For illustration, a EURUSD entry at 1.0800 with a stop level at 1.0780 and a target at 1.0860 plans for 20 pips of price risk and 60 pips of potential reward (1:3 before costs). Actual fills can differ because of spread, slippage or gaps, so realized results may not equal the plan.",
     remember: "Consider defining and placing a stop or other explicit loss-control method before entry when appropriate to the strategy. Risk controls should reflect the account and instrument.",
     color: "#F87171"
   },
