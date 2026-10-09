@@ -24,6 +24,8 @@ const riskyClaims = [
   ['deterministic liquidity path', /price never moves from one arbitrary level to another/i],
   ['unverified institutional-volume claim', /control the vast majority of market volume/i],
   ['unverified order-presence claim', /the same institutional orders that drove price away are still waiting to participate again/i],
+  ['deterministic CRT claim', /inside every candle, the algorithm goes through three phases/i],
+  ['deterministic algorithmic target', /the algorithm will deliver price to that boundary/i],
 ];
 for (const [label, pattern] of riskyClaims) {
   if (pattern.test(posts)) errors.push('Remove or qualify the unsupported blog claim: ' + label + '.');
