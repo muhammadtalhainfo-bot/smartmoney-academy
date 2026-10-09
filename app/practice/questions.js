@@ -98,7 +98,7 @@ export const QUESTIONS = [
     "q": "A bullish ChoCH signals:",
     "options": [
       "Bears are in control",
-      "Bulls are taking over from bears",
+      "A possible shift toward bullish structure within the framework",
       "No directional bias",
       "A sell opportunity"
     ],
@@ -693,10 +693,10 @@ export const QUESTIONS = [
     "id": 54,
     "topic": "Liquidity",
     "difficulty": "easy",
-    "q": "Why does price sweep liquidity before the real move?",
+    "q": "In the ICT framework, a liquidity sweep may be interpreted as:",
     "options": [
       "Random price movement",
-      "A framework explanation for interaction with stops or other resting orders",
+      "A framework hypothesis about price interacting with visible liquidity or resting orders",
       "Technical analysis works",
       "Market makers are random"
     ],
@@ -748,7 +748,7 @@ export const QUESTIONS = [
     "q": "What is a 'liquidity sweep'?",
     "options": [
       "Price reaching a level",
-      "Price quickly exceeding a key level to grab stops then reversing",
+      "Price moving beyond a reference level that traders may interpret as a liquidity sweep",
       "A slow grind higher",
       "A consolidation pattern"
     ],
@@ -852,7 +852,7 @@ export const QUESTIONS = [
     "q": "Old highs are liquidity because:",
     "options": [
       "They are support",
-      "Retail traders place stops above them; institutions target them",
+      "Some traders hypothesize that orders may cluster there; participant intent cannot be confirmed from the chart",
       "They are resistance",
       "Random levels"
     ],
@@ -1294,7 +1294,7 @@ export const QUESTIONS = [
     "q": "The 'liquidity cascade' effect means:",
     "options": [
       "Random selling",
-      "One stop trigger causes others to trigger in sequence \u2014 amplifying the move",
+      "A possible sequence where stop triggers may contribute to further price movement",
       "News impact",
       "Volume spike"
     ],
@@ -1957,7 +1957,7 @@ export const QUESTIONS = [
     "q": "A bearish OB at the top of a range combined with a bearish FVG:",
     "options": [
       "Weak signal",
-      "Strong confluence \u2014 high probability sell setup",
+      "Potential confluence that should be tested before being treated as a sell setup",
       "No significance",
       "Buy signal"
     ],
@@ -2643,10 +2643,10 @@ export const QUESTIONS = [
     "id": 204,
     "topic": "Killzones & Sessions",
     "difficulty": "hard",
-    "q": "When London sweeps Asia lows and reverses, you:",
+    "q": "If London sweeps Asia lows and price then reverses bullishly, you:",
     "options": [
       "Sell more",
-      "Look for buys \u2014 the Judas Swing down is complete",
+      "Consider a long only if the rest of the plan confirms and risk is defined",
       "Wait for more downside",
       "Exit all trades"
     ],
