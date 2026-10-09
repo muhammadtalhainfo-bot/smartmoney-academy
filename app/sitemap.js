@@ -5,7 +5,6 @@ import { SEO_PAGES } from './learn/seo-data'
 export const revalidate = 3600
 
 const BASE = 'https://ictflow.com'
-const CONTENT_UPDATED_AT = new Date('2026-10-09T00:00:00.000Z')
 
 export default async function sitemap() {
   const posts = await getPublishedBlogPosts();
@@ -29,28 +28,27 @@ export default async function sitemap() {
     [`${BASE}/terms`,       0.3,  'yearly'],
     [`${BASE}/cookies`,     0.3,  'yearly'],
   ].map(([url, priority, changeFrequency]) => ({
-    url, priority, changeFrequency, lastModified: CONTENT_UPDATED_AT,
+    url, priority, changeFrequency,
   }))
 
   const learnPages = SEO_PAGES.map(({ slug }) => ({
     url: `${BASE}/learn/${slug}`,
     changeFrequency: 'monthly',
     priority: 0.8,
-    lastModified: CONTENT_UPDATED_AT,
   }))
 
   const lessonPages = MODULES.map(({ id }) => ({
     url: `${BASE}/lesson/${id}`,
     changeFrequency: 'monthly',
     priority: 0.75,
-    lastModified: CONTENT_UPDATED_AT,
   }))
 
+  // A publication date is not a last-modified timestamp. Omit lastModified
+  // until the content sources expose a trustworthy update timestamp.
   const blogPages = (posts || [])
     .filter(p => p && p.slug)
     .map(p => ({
       url: `${BASE}/blog/${p.slug}`,
-      lastModified: p.date || CONTENT_UPDATED_AT,
       changeFrequency: 'monthly',
       priority: 0.7,
     }))
