@@ -52,7 +52,7 @@ const glossaryPath = 'app/glossary/page.js';
 const glossaryMetadataPath = 'app/glossary/layout.js';
 const glossary = fs.readFileSync(glossaryPath, 'utf8');
 const glossaryMetadata = fs.readFileSync(glossaryMetadataPath, 'utf8');
-const glossaryTerms = [...glossary.matchAll(/\{\s*term:\s*"([^"]+)",\s*full:\s*"([^"]+)",\s*cat:\s*"([^"]+)",\s*def:\s*"([^"]+)"\s*\}/g)].map((match) => match[1]);
+const glossaryTerms = glossary.split(/\r?\n/).map((line) => line.match(/^\s*\{\s*term:\s*"([^"]+)"/)).filter(Boolean).map((match) => match[1]);
 if (glossaryTerms.length === 0) errors.push('No glossary terms found.');
 if (new Set(glossaryTerms).size !== glossaryTerms.length) errors.push('Glossary terms must be unique; duplicates make the reference misleading.');
 const glossaryCount = glossaryTerms.length;
