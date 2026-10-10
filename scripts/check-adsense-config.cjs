@@ -15,7 +15,7 @@ const errors = [];
 if (/NEXT_PUBLIC_ADSENSE_CLIENT\s*\|\|\s*['"`]ca-pub-/.test(loader)) {
   errors.push('Do not silently fall back to a hard-coded AdSense publisher ID.');
 }
-if (!/const ADSENSE_CLIENT = process\.env\.NEXT_PUBLIC_ADSENSE_CLIENT \|\| ['"`]{0,1}['"`]/.test(loader)) {
+if (!loader.includes("const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT || '';")) {
   errors.push('Resolve the optional publisher ID explicitly from NEXT_PUBLIC_ADSENSE_CLIENT.');
 }
 if (!loader.includes('{ADSENSE_CLIENT ? (')) {
