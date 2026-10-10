@@ -79,14 +79,14 @@ The previous ZIP contained a Finnhub credential in source. It has been removed f
 - [ ] Verify the market ticker works with the rotated key and fails closed without fabricated prices.
 
 
-## Deployment failure recovery gate
+## Deployment verification and failure recovery gate
 
-- [ ] Inspect the Vercel failure for the current `main` SHA in the Vercel dashboard or CLI (`npx vercel inspect dpl_4GLRbTJg7sKhLYcjJ9gxjZ6JCsAY --logs`).
+- [ ] If the latest `main` deployment fails, inspect that specific deployment in the Vercel dashboard or with `npx vercel inspect <deployment-id-or-url> --logs`.
 - [ ] Fix the actual build/configuration error; do not assume GitHub Actions success means the Vercel deployment passed.
 - [ ] Verify the next Vercel deployment is Ready and its commit SHA matches the intended `main` commit.
 - [ ] Smoke-test `https://ictflow.com` and the key routes above against the deployed build.
-- [ ] Recheck this section after every production release; never copy an earlier successful Vercel result into the latest status.
+- [ ] Recheck the exact `main` SHA's Vercel status after every production release; never infer the latest result from an older deployment.
 
 ## Verification status
 
-The production build is verified in GitHub Actions on the current `main` commit, including a clean `npm ci` and `npm run build`. GitHub's Vercel commit status for current `main` is currently **failed** (deployment `dpl_4GLRbTJg7sKhLYcjJ9gxjZ6JCsAY`; see the status link on the merge commit). Do not treat this release as deployment-verified until the Vercel build failure is diagnosed and a subsequent deployment reports success. The connected Vercel integration currently returns a 403 for the project's team scope, so build logs, production aliases, custom-domain smoke tests and live environment-variable values remain unverified. Do not paste secrets into source control or this checklist.
+The most recent verified GitHub Vercel commit status for the current `main` SHA must be `success` before the release is considered deployment-verified. At the time this checklist was last reconciled, `main` had a successful Vercel commit status; the earlier failed deployment (`dpl_4GLRbTJg7sKhLYcjJ9gxjZ6JCsAY`) was superseded. The connected Vercel integration returns a 403 for the project's team scope, so deployment details, custom-domain/browser smoke tests and live environment-variable values remain unverified from this session. Do not paste secrets into source control or this checklist.
