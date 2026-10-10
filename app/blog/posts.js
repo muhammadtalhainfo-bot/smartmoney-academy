@@ -42,6 +42,13 @@ export const POSTS = [
       { type: 'paragraph', text: 'A practical learning sequence can start with market structure, then study liquidity as a way to identify areas where orders may cluster and where a trader might frame a testable price-path hypothesis. Then fair value gaps, order blocks, killzones, and session timing. Finally, you integrate everything into a top-down analytical framework and a defined entry model.' },
       { type: 'paragraph', text: 'The most common mistake beginners make is jumping to entry models before understanding the foundation. Knowing what a Silver Bullet setup looks like means nothing if you cannot first identify the correct daily bias, the institutional order flow direction, and the draw on liquidity the trade is targeting.' },
       { type: 'highlight', text: 'The ICT Flow curriculum is built in the exact sequence ICT methodology requires — starting with market structure fundamentals and progressively building toward advanced concepts. Do not skip modules. Every concept builds on the one before it.' },
+    ,
+      {"type":"heading","text":"Worked hypothetical example: testing a liquidity-level hypothesis"},
+      {"type":"paragraph","text":"Suppose a learner marks the prior day's high on a liquid index chart before the New York session. In a hypothetical review, price trades above that level, closes back below it, and then breaks a nearby short-term low. The learner records the event as a possible failed-break setup only if those conditions were written down beforehand. The chart does not show who placed orders at the high or why price crossed it."},
+      {"type":"heading","text":"Failure case and what to test"},
+      {"type":"paragraph","text":"The same level may break and continue higher, drift sideways, or never produce the follow-through needed by a chosen entry rule. Compare the close-back-inside condition with alternatives, include days with no setup, and count spread, commissions and slippage. Do not select only the examples where price reversed."},
+      {"type":"heading","text":"Test checklist"},
+      {"type":"list","items":["Define the market, timeframe, session and prior-day level before the session begins.","Write the exact sweep, confirmation, entry, invalidation and target rules.","Record qualifying, failing and absent setups with timestamps and costs.","Separate development and holdout periods; report the sample size and uncertainty."]}
     ],
   },
 
@@ -89,6 +96,13 @@ export const POSTS = [
       { type: 'paragraph', text: 'A proper FVG entry begins with top-down analysis. On the daily or 4-hour chart, confirm the direction of the institutional order flow. Identify the draw on liquidity — where is price likely going? Confirm that the FVG you are targeting is in the correct direction of the higher timeframe bias.' },
       { type: 'paragraph', text: 'When price returns to the FVG, watch for delivery to the CE area. Look for a lower timeframe (1-minute or 5-minute) displacement away from the FVG as confirmation that institutional orders are being triggered. Enter on a limit order at the CE or on the LTF displacement confirmation. Place your stop loss below the entire FVG (for long trades) or above it (for short trades). Your target is the next pool of liquidity in the direction of your bias.' },
       { type: 'highlight', text: 'Key rule: An FVG without a displacement move that created it is just a gap — the visual pattern alone does not prove institutional activity. Define a consistent displacement rule and test it against examples that succeed and fail.' },
+    ,
+      {"type":"heading","text":"Worked hypothetical example: classify an FVG revisit"},
+      {"type":"paragraph","text":"Assume candle one's high is 100.00 and candle three's low is 100.40, creating a 0.40-point bullish FVG under the chosen three-candle definition. A later candle revisits 100.20 and then trades to 99.95. Under a rule that defines full invalidation as trading below the lower boundary, this is not a clean rejection. Record the partial revisit and boundary break rather than relabeling the zone after observing the outcome."},
+      {"type":"heading","text":"Failure case and what to test"},
+      {"type":"paragraph","text":"An FVG may be partly filled, crossed completely, revisited only after the intended session, or never revisited within the observation window. Test different minimum-gap filters and clearly specified entry/stop rules without changing definitions from chart to chart. A gap is a visible candle relationship, not proof of unfilled institutional orders."},
+      {"type":"heading","text":"Test checklist"},
+      {"type":"list","items":["Fix the candle and equal-price rules used to define a gap.","Set the revisit horizon, entry trigger, stop and target before testing.","Log no-revisit, partial-fill, full-fill and continuation cases.","Include costs and compare results with a simple baseline on unseen data."]}
     ],
   },
 
@@ -124,6 +138,13 @@ export const POSTS = [
       { type: 'paragraph', text: 'Amateur traders place a limit order at the top of the Order Block and wait. Professional ICT traders do something more nuanced — they wait for price to enter the OB range and then watch the lower timeframe for signs of institutional activation. A 1-minute or 5-minute displacement move away from the OB interior is the confirmation that institutional orders are being triggered and the reversal has begun.' },
       { type: 'paragraph', text: 'Stop loss placement on OB trades is placed below the entire Order Block candle — not at the midpoint, not inside the candle. The entire candle body represents the institutional accumulation zone. If price trades fully through it, the setup is invalidated and you want to be stopped out cleanly.' },
       { type: 'highlight', text: 'The single biggest mistake Order Block traders make: drawing boxes around any consolidation zone and calling it an OB. A genuine Order Block requires a displacement move immediately following it, a BOS, and alignment with institutional order flow. Without these, you are just drawing random boxes.' },
+    ,
+      {"type":"heading","text":"Worked hypothetical example: document an order-block candidate"},
+      {"type":"paragraph","text":"Imagine a trader predefines a bullish candidate as the final bearish candle before a move that closes above a named swing high by at least a fixed range threshold. The candidate spans 4120–4124. Before any retest, the trader records those boundaries, an invalidation price and the maximum holding time. If price later trades through 4120, the recorded setup is a failure under that rule—even if another candle could be selected after the fact."},
+      {"type":"heading","text":"Failure case and what to test"},
+      {"type":"paragraph","text":"Different definitions of the 'last opposing candle', swing selection and displacement can create different zones. A zone can fail, be skipped or never be revisited. Compare one precise definition at a time, and do not infer that a bank's orders remain inside a chart box."},
+      {"type":"heading","text":"Test checklist"},
+      {"type":"list","items":["State the candle-selection, swing-break and displacement thresholds.","Freeze boundaries and invalidation before the first retest.","Include failed breaks, full trade-throughs and no-retest cases.","Record risk per trade, costs and performance by instrument and session."]}
     ],
   },
 
@@ -160,6 +181,13 @@ export const POSTS = [
       { type: 'paragraph', text: 'ICT market structure does not exist only on price charts — it follows a weekly calendar rhythm. Monday typically establishes the week\'s initial direction through the first significant move, often creating the low or high that will define the week\'s range. Tuesday and Wednesday frequently see the primary trend move develop. Thursday can see continuation or early reversal signs. Friday is often used for position squaring and range compression before the weekend.' },
       { type: 'paragraph', text: 'Understanding this weekly rhythm allows ICT traders to have expectations about which days are most likely to produce tradeable setups and which days may deliver countertrend moves designed to shake out positions. The classic ICT weekly pattern is a Monday liquidity sweep of the previous week\'s range, followed by a directional delivery that completes by Thursday or Friday.' },
       { type: 'highlight', text: 'The most common structural analysis mistake: calling every BOS a reversal signal. A BOS confirms the trend — it is a continuation signal. Only a ChoCH signals a potential reversal, and even then, it requires displacement and additional confirmation before you flip your bias.' },
+    ,
+      {"type":"heading","text":"Worked hypothetical example: compare swing-break rules"},
+      {"type":"paragraph","text":"On a hypothetical chart, price wicks above a prior swing at 5000 but closes at 4997. A wick-based rule marks a break; a close-only rule does not. The learner records both labels without choosing whichever leads to the better trade. After defining the next structural condition and invalidation in advance, the sequence can be evaluated consistently across many charts."},
+      {"type":"heading","text":"Failure case and what to test"},
+      {"type":"paragraph","text":"Swing labels can vary by timeframe, pivot window and whether a wick or close is required. Choppy markets often produce repeated breaks that fail to continue. Test a fixed swing algorithm or written marking rule and include ambiguous cases rather than revising anchors after seeing future candles."},
+      {"type":"heading","text":"Test checklist"},
+      {"type":"list","items":["Define the pivot lookback and wick-versus-close convention.","Specify what qualifies as BOS, MSS or CHoCH for the strategy being tested.","Record failed breaks, ranges and trend continuation separately.","Audit labels on held-out charts and document disagreements."]}
     ],
   },
 
@@ -196,6 +224,13 @@ export const POSTS = [
       { type: 'paragraph', text: 'The practical application of liquidity analysis involves three steps: first, identify where liquidity is resting above and below current price; second, determine which pool the algorithm is likely to target next based on HTF context and the current AMD phase; third, position yourself to benefit from the move into that liquidity rather than being caught on the wrong side of it.' },
       { type: 'paragraph', text: 'Stop placement should follow a defined invalidation rule and position-sizing plan. Orders may cluster around visible highs and lows, but that does not mean a stop will be deliberately targeted. A wider stop also increases risk unless position size is adjusted.' },
       { type: 'highlight', text: 'The single most important liquidity concept to internalize: price does not move from support to resistance. Price moves from one liquidity pool to the next. Every move you see on any chart is a delivery from the last liquidity pool that was collected to the next one that needs to be reached.' },
+    ,
+      {"type":"heading","text":"Worked hypothetical example: observe a marked liquidity area"},
+      {"type":"paragraph","text":"Suppose two visible highs form near 1.0850. Before the next session, a trader defines an equal-high tolerance of five pips and marks the band. Price later trades to 1.0857 and closes back below 1.0850. That path may be classified as a sweep under the rule, but the chart cannot confirm that stop orders were present, who held them, or that a participant deliberately targeted them."},
+      {"type":"heading","text":"Failure case and what to test"},
+      {"type":"paragraph","text":"Price may continue above the highs, make repeated crossings, or remain near the level. Changing the tolerance or the observation horizon can change the classification dramatically. Test those choices prospectively and avoid using a sweep alone as an entry trigger."},
+      {"type":"heading","text":"Test checklist"},
+      {"type":"list","items":["Set the instrument, timeframe, high/low tolerance and crossing definition.","Record the close location and price path after the crossing.","Count continuations and ranges as well as reversals.","Use a defined horizon and include transaction costs in any strategy test."]}
     ],
   },
 
@@ -235,6 +270,13 @@ export const POSTS = [
       { type: 'heading', text: 'Building Your Trading Day Around Killzones' },
       { type: 'paragraph', text: 'A disciplined ICT trading schedule looks like this: Study the HTF charts before any session opens. Identify the daily bias and the draw on liquidity. During the Asian session, simply observe and mark the range — do not trade. Watch the London open for the Judas Swing. Position for the London reversal if the sweep is clear. Enter or prepare the primary trade during the New York AM Killzone. Be done by 11 AM EST for the highest-quality setups. The afternoon sessions can provide additional opportunities but carry higher noise.' },
       { type: 'highlight', text: 'If you only trade during the New York AM Killzone (7 AM–11 AM EST) and refuse to take trades outside this window for 90 days, using one defined session window may make a routine easier to follow, but whether it improves results depends on the market and rules. Test it against other times with the same entry, exit and risk criteria.' },
+    ,
+      {"type":"heading","text":"Worked hypothetical example: evaluate a session filter"},
+      {"type":"paragraph","text":"A trader studies a 30-minute opening-range strategy both inside a predefined New York morning window and outside it. Each signal is logged using the same entry, stop and target rules; only the time filter differs. The trader uses New York local time and documents daylight-saving transitions to avoid accidentally shifting the sample by an hour."},
+      {"type":"heading","text":"Failure case and what to test"},
+      {"type":"paragraph","text":"A setup can fail inside a commonly cited killzone, while a similar setup can work outside it. Session effects may differ across instruments, weekdays, volatility regimes and news conditions. Comparing many time windows after seeing results can overfit the sample."},
+      {"type":"heading","text":"Test checklist"},
+      {"type":"list","items":["Define time windows in a named timezone and handle daylight-saving changes.","Keep signal and risk rules identical between filtered and unfiltered samples.","Record skipped, losing and winning signals plus major scheduled news.","Compare out-of-sample expectancy, drawdown, sample size and costs."]}
     ],
   },
 
@@ -270,6 +312,13 @@ export const POSTS = [
       { type: 'paragraph', text: 'The AMD model fractal nature is one of its commonly discussed characteristics. The same three-phase pattern that describes a single day also describes an entire week, and a week\'s pattern describes an entire month, and a month\'s pattern describes a quarter. ICT teaches traders to read AMD on multiple timeframes simultaneously to understand where the market is in its delivery cycle at any given moment.' },
       { type: 'paragraph', text: 'A trader who understands that we are in the Distribution phase of a weekly AMD cycle (Wednesday-Thursday delivery to an external target) will not be confused when daily charts show manipulation moves against the trend — they understand those daily manipulations are simply the internal AMD cycles within the larger weekly distribution.' },
       { type: 'highlight', text: 'Practice identifying AMD on completed daily candles first. Look at yesterday\'s candle: where did it open? Did it make a false move in one direction early? Then where did it close? Once you can consistently identify AMD in completed historical candles, begin watching for the pattern in real time.' },
+    ,
+      {"type":"heading","text":"Worked hypothetical example: label an AMD sequence"},
+      {"type":"paragraph","text":"Before a session, a learner marks a pre-session range from 100 to 102. Price first consolidates in the band, briefly trades to 102.3, returns below 102, and later falls to 99.6. Under a predefined rule this may be recorded as accumulation, a failed upside break and a downside expansion. Those labels describe the observed path; they do not establish that the sequence was planned or that the same order must repeat."},
+      {"type":"heading","text":"Failure case and what to test"},
+      {"type":"paragraph","text":"Some sessions break the range and continue without returning; others expand both ways or remain balanced. Test a fixed range, crossing threshold and time horizon. Avoid identifying the phases only after seeing the full day's high and low."},
+      {"type":"heading","text":"Test checklist"},
+      {"type":"list","items":["Define the range-building period and minimum duration.","Set manipulation/sweep and expansion criteria before the session.","Classify continuation, two-sided expansion and non-expansion cases.","Test across separate time periods, instruments and realistic trading costs."]}
     ],
   },
 
@@ -304,6 +353,13 @@ export const POSTS = [
       { type: 'paragraph', text: 'Like all ICT concepts, Premium and Discount is fractal — it applies on every timeframe. A monthly dealing range defines premium and discount for the macro trend. A weekly dealing range defines it for the intermediate trend. A daily range for the daily bias. A 4-hour range for the session narrative. A 1-hour range for the entry setup.' },
       { type: 'paragraph', text: 'Some traders look for agreement across multiple timeframes, including Premium/Discount locations. If monthly, weekly, AND daily all show price in Discount with bullish structure, and your 1-hour entry is in the OTE zone within a bullish FVG, you have alignment on four timeframes — the type of confluence that produces the cleanest, commonly discussed trades.' },
       { type: 'highlight', text: 'Common mistake: drawing the Fibonacci from the nearest visible swing. The correct approach is to draw from the most recently BROKEN swing — the swing that was taken out by a BOS or ChoCH. That displacement defines the dealing range for the retracement you are measuring.' },
+    ,
+      {"type":"heading","text":"Worked hypothetical example: set a dealing range"},
+      {"type":"paragraph","text":"Assume a predefined range spans 200 to 220. Its midpoint is 210. A trader labels prices above 210 as premium and below 210 as discount, then separately requires a structure trigger and fixed invalidation before considering any trade. Price reaching 205 does not itself mean a long entry is justified; the midpoint is a location label within this framework, not a signal that reveals institutional pricing."},
+      {"type":"heading","text":"Failure case and what to test"},
+      {"type":"paragraph","text":"The range anchors can be subjective, and price can continue moving deeper into a zone or invalidate the original range. Compare a predeclared anchor rule with a simple midpoint or trend-following baseline. Avoid moving the range endpoints to make a past entry appear optimal."},
+      {"type":"heading","text":"Test checklist"},
+      {"type":"list","items":["Define which swing anchors create the dealing range.","Calculate the midpoint consistently and freeze anchors before the setup.","Require a separate entry, stop and target rule.","Report results by trend/range context and include rejected setups and costs."]}
     ],
   },
 
@@ -502,6 +558,13 @@ export const POSTS = [
       { type: 'heading', text: 'Breaker Block vs Mitigation Block — The Key Difference' },
       { type: 'paragraph', text: 'Traders often confuse Breaker Blocks with Mitigation Blocks. The distinction is important. A Mitigation Block is simply a failed Order Block that has not yet been retested from the new direction — it is waiting to be mitigated. A Breaker Block is what that Mitigation Block becomes after price has returned to it and the polarity flip has been confirmed. In practice: the Mitigation Block is the concept; the Breaker Block trade is the entry.' },
       { type: 'highlight', text: 'The commonly discussed Breaker Block setups occur when the failed OB is in alignment with the higher timeframe institutional order flow. A bearish Breaker Block in a bearish HTF structure is a potential setup — the failure of the bullish OB confirms the bears are fully in control.' },
+    ,
+      {"type":"heading","text":"Worked hypothetical example: log a breaker candidate"},
+      {"type":"paragraph","text":"A trader marks a bearish order-block candidate between 75.20 and 75.50. Price closes above 75.50 and later retests the band from above. The trader records a bullish breaker candidate only if the definition requires that close and a retest within a fixed horizon. If price falls back through 75.20, the setup is marked invalid rather than relabeled as another block."},
+      {"type":"heading","text":"Failure case and what to test"},
+      {"type":"paragraph","text":"The original block may break without a useful retest, or the retest may continue through the zone. Different educators use different boundaries and confirmation rules, so an undefined visual label is difficult to backtest reliably."},
+      {"type":"heading","text":"Test checklist"},
+      {"type":"list","items":["Define the original block and the close required to invalidate it.","Specify the retest horizon and entry confirmation.","Record no-retest, failed-retest and continuation cases.","Compare performance after costs with the underlying setup without the breaker label."]}
     ],
   },
 
@@ -537,6 +600,13 @@ export const POSTS = [
       { type: 'heading', text: 'Timeframes and Context' },
       { type: 'paragraph', text: 'Turtle Soup setups work across all timeframes, but the commonly studied setups occur when the swept swing high or low is significant on a higher timeframe. A sweep of the previous week\'s high on the daily chart that forms a bearish Turtle Soup is far more powerful than a sweep of a random 5-minute swing high. The higher the timeframe significance of the swept level, the larger the accumulated liquidity, and the more powerful the reversal.' },
       { type: 'highlight', text: 'Critical rule: the reversal must be sharp and decisive. A genuine Turtle Soup reversal creates a large displacement candle immediately after the sweep. If price sweeps a level and then grinds back slowly, that is not a clean Turtle Soup — it may be a genuine breakout retesting the level. The violence of the rejection is confirmation of the liquidity sweep.' },
+    ,
+      {"type":"heading","text":"Worked hypothetical example: predefine a failed-break setup"},
+      {"type":"paragraph","text":"Suppose the prior 20-bar high is 150.00. The trader requires price to trade at least 0.10 above that level and close back under 150.00 within two bars. A later short-term structure break is the entry trigger, with a stop above the sweep high. The setup is counted only when all conditions occur in order; a price touch alone is not enough."},
+      {"type":"heading","text":"Failure case and what to test"},
+      {"type":"paragraph","text":"Price may stay above the old high or trigger the entry and then continue upward to the stop. Results can change with the lookback length, minimum overshoot, confirmation rule and holding period. The chart cannot prove the event was a deliberate stop hunt."},
+      {"type":"heading","text":"Test checklist"},
+      {"type":"list","items":["Choose the reference high/low lookback and overshoot threshold.","Write the close-back-inside and entry confirmation rules.","Define stop placement, time exit and maximum risk.","Count failed reversals and compare against a basic breakout baseline."]}
     ],
   },
 
@@ -672,6 +742,13 @@ export const POSTS = [
       { type: 'heading', text: 'The BPR — The commonly discussed PD Array' },
       { type: 'paragraph', text: 'The Balanced Price Range deserves special attention. It forms when a bullish FVG and a bearish FVG overlap — meaning both types of institutional imbalance are stacked at the same price level. Reactions at BPRs are typically the sharpest and fastest of any PD Array element. When a BPR aligns with the OTE zone during a Killzone, it represents maximum confluence — the confluence-based ICT entry scenario.' },
       { type: 'highlight', text: 'Use the PD Array Matrix as a pre-session planning tool, not a real-time indicator. Before each session, identify the relevant range, mark all PD Arrays within the discount or premium zones depending on your bias, and then wait for price to come to you. Reactive trading — chasing price — is the opposite of what the PD Array Matrix is designed for.' },
+    ,
+      {"type":"heading","text":"Worked hypothetical example: compare two PD-array rules"},
+      {"type":"paragraph","text":"In a hypothetical sample, a trader records every predefined FVG and order-block candidate inside the same higher-timeframe range. One group uses the FVG as the entry zone; the other uses the order-block zone, while all other entry, stop and target conditions remain fixed. The resulting comparison tests two written rules; it does not establish a universal ranking of arrays."},
+      {"type":"heading","text":"Failure case and what to test"},
+      {"type":"paragraph","text":"Different anchors, overlapping zones and hindsight selection can produce apparently perfect confluence. Test each array separately before combining them, include cases in which zones conflict, and avoid ranking tools by a handful of attractive charts."},
+      {"type":"heading","text":"Test checklist"},
+      {"type":"list","items":["Define each array's boundaries and eligibility criteria.","Keep position sizing and outcome horizon consistent across groups.","Record conflicting zones, missing setups and failed reactions.","Compare out-of-sample outcomes, sample size and costs before drawing conclusions."]}
     ],
   },
 
@@ -749,6 +826,13 @@ export const POSTS = [
       { type: 'heading', text: 'CISD vs MSS — The Distinction' },
       { type: 'paragraph', text: 'The Market Structure Shift (MSS) and CISD are closely related but not identical. The MSS is the structural break that confirms the new direction — it is essentially the CISD confirmed by structure. In practice, many traders use the terms interchangeably, but the technical distinction is that a CISD can be identified in the moment it occurs (the displacement candle), while the MSS is confirmed only after the close of that candle or candles.' },
       { type: 'highlight', text: 'Practice identifying CISDs on a lower timeframe (1-minute or 5-minute chart) during Silver Bullet windows. The CISD within the Silver Bullet window — when the algorithm shifts from the sweep direction into the trade direction — is one of the cleanest and most precise entry signals in all of ICT methodology.' },
+    ,
+      {"type":"heading","text":"Worked hypothetical example: define a CISD label"},
+      {"type":"paragraph","text":"A trader defines a bullish CISD candidate as a candle close above a specified prior bearish candle's opening price after a downward sequence. If the next candle fails to hold that level, the case is still recorded but flagged as failed follow-through. This rule creates a repeatable label without assuming an algorithm switched direction."},
+      {"type":"heading","text":"Failure case and what to test"},
+      {"type":"paragraph","text":"CISD definitions vary, and a close across a reference level may occur during noise or continue in the prior direction. Compare close-based versus wick-based rules and define how much follow-through is needed before evaluating any trade model."},
+      {"type":"heading","text":"Test checklist"},
+      {"type":"list","items":["Specify the reference candle and exact level being crossed.","Define whether the condition is a wick, close or multi-candle sequence.","Record the next fixed number of bars and any invalidation.","Measure false signals and continuation rates on unseen samples."]}
     ],
   },
 
@@ -824,6 +908,13 @@ export const POSTS = [
       { type: 'paragraph', text: 'CRT\'s power multiplies when applied to weekly and monthly candles. The weekly candle almost always follows the same AMD pattern: the week opens, price moves to sweep one side of the previous week\'s range (the weekly manipulation), and then the true weekly direction plays out in the other direction. Identifying which side of the previous weekly range will be swept first gives you the weekly bias.' },
       { type: 'paragraph', text: 'The classic CRT pattern on the weekly chart: Monday and Tuesday produce the manipulation (wick) to one side. Wednesday marks the turning point. Thursday and Friday deliver the true weekly direction. ICT refers to this as the TGIF (Thank God It\'s Friday) pattern — the Friday close frequently aligns with the true weekly delivery direction, opposite to the Monday-Tuesday manipulation.' },
       { type: 'highlight', text: 'CRT is the bridge between macro ICT analysis and micro execution. Once you internalize that every candle is a miniature market with its own AMD cycle, you stop being surprised by wicks and false moves. They are not random noise — they are the algorithmic manipulation phase of that candle\'s delivery cycle, and they tell you exactly where the true move is going.' },
+    ,
+      {"type":"heading","text":"Worked hypothetical example: test a candle-range hypothesis"},
+      {"type":"paragraph","text":"A learner marks the prior hourly candle's high and low before the next hour starts. Price first trades above the high, then returns inside the range and approaches the midpoint. The learner records the observed sequence under a sweep-and-return rule but does not assume every hourly candle must follow three phases or target the opposite boundary."},
+      {"type":"heading","text":"Failure case and what to test"},
+      {"type":"paragraph","text":"Price may break one side and trend, cross both sides, or stay within the range. The outcome depends on candle timeframe, session, volatility and the definition of a valid return. Avoid selecting only days that fit an AMD-style narrative."},
+      {"type":"heading","text":"Test checklist"},
+      {"type":"list","items":["Fix the candle timeframe and when each range becomes active.","Define a sweep, close-back-inside, midpoint and range invalidation.","Record single-side breaks, two-sided breaks and no-break cases.","Compare any trade rule with a naive range-break baseline after costs."]}
     ],
   },
 
@@ -936,6 +1027,13 @@ export const POSTS = [
       { type: 'heading', text: 'The London Close Profile' },
       { type: 'paragraph', text: 'The London close (11:00 AM – 12:00 PM New York time) produces its own consistent profile. As London banks close their books for the day, they often retrace against the London session move to close positions. If London ran higher, the London close retraces lower before New York takes over. If London ran lower, the London close bounces. This retracement is often the setup for the New York continuation trade — entering at the London close retracement in the direction of the overall daily bias.' },
       { type: 'highlight', text: 'Study the London session on 20-30 historical charts before trading it live. Mark the Asian range, note which side was swept, note the time of the sweep (is it within the first 30 or 60 minutes of London open?), and document the direction of the session after the sweep. You will find the sweep-and-reverse profile appearing in 60-70% of London sessions — this consistency is the edge.' },
+    ,
+      {"type":"heading","text":"Worked hypothetical example: classify a London-session profile"},
+      {"type":"paragraph","text":"Before London opens, a trader chooses a profile rule based on the Asian range, an initial range break and the location of the subsequent close. On one hypothetical day the range expands upward, revisits the boundary and closes near the high; it receives the predefined label. The label must be based on information available at the classification time, not the day's final high and low."},
+      {"type":"heading","text":"Failure case and what to test"},
+      {"type":"paragraph","text":"Sessions can reverse, range, or break both sides, so a profile name should not be used to claim the day's direction before its conditions are met. Test how often each profile can be identified in real time and whether it adds value beyond range and volatility measures."},
+      {"type":"heading","text":"Test checklist"},
+      {"type":"list","items":["Define each profile's objective conditions and latest classification time.","Avoid using future candles when assigning the profile.","Track unclassifiable and mixed-profile sessions as well as clean examples.","Measure incremental value on held-out data, including costs and slippage."]}
     ],
   },
 
@@ -968,6 +1066,13 @@ export const POSTS = [
       { type: 'heading', text: 'NWOG and NDOG in the DOL Framework' },
       { type: 'paragraph', text: 'In ICT\'s Draw on Liquidity framework, NWOGs and NDOGs are classified as Internal Range Liquidity (IRL) targets. They sit inside the current dealing range and represent price imbalances that some traders monitor as potential revisit areas. Like other FVG references, they can remain unfilled and should be tested rather than assumed to be future targets. seek before reaching the External Range Liquidity (the swing highs and lows beyond the range).' },
       { type: 'highlight', text: 'A practical weekly workflow: every Sunday evening, mark the NWOG on your major pairs. Every day, mark the NDOG. Then as you conduct your session analysis, note whether the ICT setup you are considering has the NWOG or NDOG as a natural target. When your entry, your PD Array, and an opening gap fill all align on the same trade, the probability and conviction behind that setup significantly increases.' },
+    ,
+      {"type":"heading","text":"Worked hypothetical example: record an opening-gap revisit"},
+      {"type":"paragraph","text":"A learner marks a week's opening gap between 420 and 424 at the moment it forms. The plan defines a revisit as a trade back into the gap before Friday's close and a full fill as reaching the far boundary. If price trades to 422 but never reaches 424 before the horizon ends, the outcome is logged as partial, not a full fill."},
+      {"type":"heading","text":"Failure case and what to test"},
+      {"type":"paragraph","text":"A gap may remain open across multiple sessions, and different feeds or session definitions can show different gap boundaries. Test fixed observation horizons and distinguish no revisit, partial fill and full fill. A reference gap does not guarantee a future target."},
+      {"type":"heading","text":"Test checklist"},
+      {"type":"list","items":["Define the market close/open times and price-feed convention.","Freeze gap boundaries when they are first observable.","Set a fixed horizon and definitions for touch, partial fill and full fill.","Count unfilled gaps and include any execution costs in trade tests."]}
     ],
   },
 
@@ -1083,6 +1188,13 @@ export const POSTS = [
       { type: 'paragraph', text: 'The Judas Swing is the manipulation component of AMD — the false breakout that precedes the true move. Identifying it is the key practical skill of AMD trading. A Judas Swing is characterized by a sharp, fast move in one direction that takes out a swing high or low (collecting the liquidity), followed by an equally sharp reversal. It often occurs during the first 30-60 minutes of the London session.' },
       { type: 'paragraph', text: 'After the Judas Swing reversal, look for the first displacement move in the true direction. This displacement will leave a Fair Value Gap — your entry on the retracement. The complete AMD trade entry: wait for the Judas Swing, confirm the reversal with a displacement + FVG in the true direction, enter at the FVG CE, target the daily liquidity pool.' },
       { type: 'highlight', text: 'To internalize AMD, study 50 consecutive daily charts on any instrument. Mark the accumulation zone, identify the Judas Swing (the false move), and note where the distribution delivered to. You will find that 60-70% of days follow the AMD template clearly. The 30-40% that do not are typically days with major economic news releases that override the typical algorithmic delivery.' },
+    ,
+      {"type":"heading","text":"Worked hypothetical example: compare AMD labels with fixed rules"},
+      {"type":"paragraph","text":"On a hypothetical session, a learner freezes a 30-minute opening range. Price consolidates, breaks below the range by a fixed threshold, returns inside, then rallies above the range. If the written rule labels the downside break as manipulation and the later rally as expansion, this is one recorded observation—not proof of deliberate trapping or evidence that all candles follow AMD."},
+      {"type":"heading","text":"Failure case and what to test"},
+      {"type":"paragraph","text":"The sequence may never appear, may expand in the same direction as the first break, or may break both sides. Apply the same definitions prospectively and compare classifications with an ordinary opening-range breakout baseline. Avoid narrating phases from the completed session alone."},
+      {"type":"heading","text":"Test checklist"},
+      {"type":"list","items":["Define the range, minimum break and return-to-range rules.","Specify the latest time by which each phase must occur.","Record counterexamples, ambiguous sessions and absent setups.","Test on held-out instruments/dates with spread, commissions and slippage."]}
     ],
   },
 
@@ -1242,6 +1354,13 @@ export const POSTS = [
       { type: 'heading', text: 'Criterion 5 — Session Timing' },
       { type: 'paragraph', text: 'Valid FVGs for intraday entries should be created and tested during active sessions — London and New York. An FVG created during the Asian session low-volume period or during a bank holiday has less institutional significance because the institutional participation required to create a genuine imbalance was not present at the time of creation.' },
       { type: 'highlight', text: 'Create a checklist for every FVG you consider trading: (1) Was it created by a genuine displacement? (2) Does it align with the HTF bias? (3) Is it the first FVG in the displacement sequence? (4) Has it been previously violated? (5) Was it created during an active session? Only FVGs passing all five criteria qualify for trade consideration.' },
+    ,
+      {"type":"heading","text":"Worked hypothetical example: screen an FVG with fixed criteria"},
+      {"type":"paragraph","text":"A trader sets a minimum FVG width of 0.25 ATR and requires the middle candle's true range to exceed a predefined threshold. A three-candle formation qualifies only if the first and third candle extremes create the required interval and a nearby close meets the confirmation rule. A narrower gap is skipped under the written rule, even if it later produces a visually attractive bounce."},
+      {"type":"heading","text":"Failure case and what to test"},
+      {"type":"paragraph","text":"Changing minimum width, displacement, timeframe or context can produce very different samples. A selected gap may fail to react or never be revisited. Compare the filter to unfiltered FVGs and avoid describing a gap as valid solely because its eventual path looks successful."},
+      {"type":"heading","text":"Test checklist"},
+      {"type":"list","items":["Set minimum width and displacement rules before sampling.","Define which context filters are mandatory and how they are measured.","Log every qualifying gap, not only those later touched.","Report rejected entries, failed reactions and results after costs."]}
     ],
   },
 
@@ -1746,6 +1865,13 @@ export const POSTS = [
       { type: 'heading', text: 'Using HRLR/LRLR for Position Sizing' },
       { type: 'paragraph', text: 'HRLR and LRLR also guide initial position sizing. When the HTF context and daily bias suggest an LRLR is setting up — clean displacement from a significant PD Array with strong structural alignment — this warrants a full-sized position. When the HTF context is mixed or the entry zone is less clean, suggesting an HRLR is more likely, reduce position size by 25-50% to accommodate the messier price action and wider stop requirement.' },
       { type: 'highlight', text: 'The best ICT trades are LLRs from the very first candle. When you enter at an FVG or OB and the first candle after your entry is a large-bodied displacement candle in your direction — with no immediate pullback — you are in an LRLR. Move your stop to breakeven after the first FVG is left behind and let the run carry to the target without micromanaging. The worst thing you can do in an LRLR is move your stop too soon and get taken out before the full delivery.' },
+    ,
+      {"type":"heading","text":"Worked hypothetical example: quantify resistance along a run"},
+      {"type":"paragraph","text":"Suppose price travels toward a prior swing high over 12 bars, with four counter-directional swings and several pauses. Under a predefined rule based on travel time and counter-swings, the path may receive a high-resistance label. Another path reaches a similar target in three directional bars with fewer interruptions. Record the measures instead of relying on 'grind' or 'explosive' as subjective labels."},
+      {"type":"heading","text":"Failure case and what to test"},
+      {"type":"paragraph","text":"A slow path can still break the level, while a fast path can reverse. Terms such as HRLR and LRLR may be defined differently, and classification after reaching the target risks hindsight bias. Test whether the selected measures add anything beyond volatility and distance-to-target baselines."},
+      {"type":"heading","text":"Test checklist"},
+      {"type":"list","items":["Choose observable resistance measures, lookback and thresholds.","Fix the target level before measuring the path.","Record paths that fail, reverse early or do not reach a target.","Compare labels with simple speed/volatility metrics on held-out data."]}
     ],
   },
 
@@ -2534,6 +2660,13 @@ export const POSTS = [
       { type: 'heading', text: 'The Mental Framework of the 2022 Model' },
       { type: 'paragraph', text: 'Beyond the technical framework, the 2022 model includes a specific mental approach. ICT emphasizes: "Be a sniper, not a machine gunner." One high-quality trade per session, maximum. Patient waiting for the Judas Swing rather than trying to catch every move. Accepting that missing a setup is preferable to forcing a low-probability entry. The discipline to follow the model without deviation, even when the market appears to be offering something else.' },
       { type: 'highlight', text: 'The 2022 model can be summarized in one sentence: wait for a liquidity sweep during a Killzone within the direction of your HTF bias, confirm the MSS after the sweep, enter the FVG created by the post-sweep displacement, and target the next liquidity pool. Everything else in ICT — every PD Array, every structural concept, every timing tool — serves to refine and confirm this core sequence. Master the 2022 model and you have mastered the practical application of ICT.' },
+    ,
+      {"type":"heading","text":"Worked hypothetical example: specify a 2022-model checklist"},
+      {"type":"paragraph","text":"For practice, a trader predefines a higher-timeframe directional condition, a marked reference level, a session window, and a lower-timeframe entry trigger. On a hypothetical day, the first three conditions occur but the entry trigger does not; the session is logged as no trade. The trader does not manufacture an entry because the model is expected to work or because a target appears likely in hindsight."},
+      {"type":"heading","text":"Failure case and what to test"},
+      {"type":"paragraph","text":"The setup can fail at the bias step, miss its time window, trigger and stop out, or never form. Model definitions differ between traders, so performance claims are meaningful only when exact rules, market, period, costs and sample count are supplied. Do not treat course examples as verified live or backtest results."},
+      {"type":"heading","text":"Test checklist"},
+      {"type":"list","items":["Write each model condition in observable terms, including no-trade rules.","Record every eligible session from the start of the sample.","Track stop-outs, skipped trades, drawdown and transaction costs.","Keep a holdout period and avoid tuning multiple rules to the same data."]}
     ],
   },
 
@@ -2565,6 +2698,13 @@ export const POSTS = [
       { type: 'heading', text: 'Liquidity as the Draw on Liquidity Target' },
       { type: 'paragraph', text: 'Every ICT trade has a Draw on Liquidity (DOL) — the specific liquidity pool that price is being delivered toward. Before entering any trade, you must identify the DOL: which pool of liquidity is the algorithm targeting in the current session? Is it the previous week\'s high (BSL above) or the previous day\'s low (SSL below)? The DOL is your target, and all other ICT tools — OBs, FVGs, OTE zones — are simply the entry mechanisms for getting into the trade that delivers to the DOL.' },
       { type: 'highlight', text: 'Shift your mental model: stop thinking about price going "up" or "down" and start thinking about price going toward the nearest liquidity pool. Before every session, ask: "Where is the nearest significant liquidity pool — BSL above or SSL below?" The answer to that question is your daily target. Everything else is the path to reach it.' },
+    ,
+      {"type":"heading","text":"Worked hypothetical example: test a forex swing-level event"},
+      {"type":"paragraph","text":"A trader marks the previous day's high on EUR/USD and defines a crossing as at least one pip above the level, followed by a 15-minute close back below it. When the event occurs, the trader records the next five-bar path using a predefined outcome such as continuation, reversal or range. This describes observed prices; it does not confirm the full order book or exact reasons for the move."},
+      {"type":"heading","text":"Failure case and what to test"},
+      {"type":"paragraph","text":"Forex is fragmented across venues, and a broker's candle feed may differ from another's. Price can continue after crossing a swing, while spread expands around news. Test the rule on the same defined feed and session, with weekends, news and variable spread handled consistently."},
+      {"type":"heading","text":"Test checklist"},
+      {"type":"list","items":["Name the currency pair, price feed, timezone and session.","Define swing equality and crossing/close conditions.","Record continuation and range outcomes as well as reversals.","Include spread, commissions, slippage, news windows and a holdout sample."]}
     ],
   },
 
@@ -2961,6 +3101,13 @@ export const POSTS = [
       { type: 'heading', text: 'The Judas Swing as an Entry Filter' },
       { type: 'paragraph', text: 'The Judas Swing functions as a waiting period as much as it is a signal. Many ICT traders lose money by entering before the Judas Swing occurs — they see the daily bias is bullish and enter long before the Judas Swing sweeps the lows. The correct discipline is to wait. Do not enter before the Judas Swing. Once the sweep has occurred and the reversal MSS has formed, the trade has dramatically higher probability because the manipulation phase is complete and the distribution phase has begun.' },
       { type: 'highlight', text: 'Every time you consider entering a trade without having first seen the Judas Swing, ask yourself: "Has the manipulation phase occurred? Has the algorithm already swept the liquidity it needed?" If the answer is no — if the trade is based on the first move of the session without a prior sweep in the other direction — you may be entering during the Judas Swing itself, not after it. Wait for the sweep. The entry opportunity will still be there after the Judas Swing confirms.' },
+    ,
+      {"type":"heading","text":"Worked hypothetical example: classify a Judas-swing hypothesis"},
+      {"type":"paragraph","text":"Before London opens, a trader records the Asian range and defines a minimum break beyond one side followed by a close back into the range. Price later crosses above the Asian high, closes inside, and breaks a short-term low. The sequence qualifies only under the prewritten rule; calling it a Judas Swing does not prove the move was deliberately designed to trap traders."},
+      {"type":"heading","text":"Failure case and what to test"},
+      {"type":"paragraph","text":"Price may break the range and continue, sweep both sides or give no confirming structure break. Results are sensitive to the Asian-session definition, minimum overshoot, and daylight-saving handling. Include days without a qualifying setup, not only the classic textbook examples."},
+      {"type":"heading","text":"Test checklist"},
+      {"type":"list","items":["Fix the Asian range window in New York local time or another explicitly named timezone.","Define overshoot, return-inside and confirmation conditions.","Set invalidation, target, time stop and maximum risk before entry.","Record continuations, two-sided breaks and no-signal days with costs."]}
     ],
   },
 
