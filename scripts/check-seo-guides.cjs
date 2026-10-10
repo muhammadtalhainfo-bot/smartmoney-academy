@@ -56,6 +56,7 @@ const glossaryTerms = [...glossary.matchAll(/\{\s*term:\s*"([^"]+)",\s*full:\s*"
 if (glossaryTerms.length === 0) errors.push('No glossary terms found.');
 if (new Set(glossaryTerms).size !== glossaryTerms.length) errors.push('Glossary terms must be unique; duplicates make the reference misleading.');
 const glossaryCount = glossaryTerms.length;
+if (glossaryCount !== 84) errors.push('Update the documented glossary count only after reviewing the unique catalogue; expected the audited count of 84.');
 for (const [label, input] of [['app/glossary/page.js', glossary], ['app/glossary/layout.js', glossaryMetadata]]) {
   const claimedCounts = [...input.matchAll(/\b(\d+)\s*\+?\s*(?:ICT\s*&\s*SMC\s*)?(?:trading\s+)?terms?\b/gi)].map((match) => Number(match[1]));
   if (claimedCounts.some((count) => count > glossaryCount)) {
