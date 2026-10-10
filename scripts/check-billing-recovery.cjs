@@ -45,12 +45,10 @@ if (!adminActions.includes("async function cancelCustomerSubscriptions(stripe, c
   errors.push('Subscription cancellation must paginate all Stripe subscriptions for the customer.');
 }
 
-console.log('Billing recovery and admin deletion safety guards passed.');
-
 if (errors.length) {
   for (const error of errors) console.error('Billing recovery guard failed: ' + error);
   process.exit(1);
 }
-console.log('Billing recovery guard passed: linked past-due customers can reach the authenticated, rate-limited Stripe portal.');
+console.log('Billing recovery and admin deletion safety guards passed.');
 
 
