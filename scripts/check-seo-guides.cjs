@@ -49,6 +49,14 @@ for (const chunk of guideChunks) {
 // The glossary is a browsable reference, so its visible list and metadata
 // must use the real unique-term count rather than a stale aspirational count.
 const glossaryPath = 'app/glossary/page.js';
+const glossaryMetadataPath = 'app/glossary/layout.js';
+const glossary = fs.readFileSync(glossaryPath, 'utf8');
+const glossaryMetadata = fs.readFileSync(glossaryMetadataPath, 'utf8');
+const glossaryTerms = glossary.split(/\r?\n/).map((line) => line.match(/^\s*\{\s*term:\s*"([^"]+)"/)).filter(Boolean).map((match) => match[1]);
+if (glossaryTerms.length === 0) errors.push('No glossary terms found.');
+if (new Set(glossaryTerms).size !== glossaryTerms.length) errors.push('Glossary terms must be unique; duplicates make the reference misleading.');
+const glossaryCount = glossaryTerms.length;
+
 const publicCountFiles = [
   ['app/page.js', fs.readFileSync('app/page.js', 'utf8')],
   ['app/about/page.js', fs.readFileSync('app/about/page.js', 'utf8')],
@@ -66,13 +74,6 @@ for (const [label, content] of publicCountFiles) {
   }
 }
 
-const glossaryMetadataPath = 'app/glossary/layout.js';
-const glossary = fs.readFileSync(glossaryPath, 'utf8');
-const glossaryMetadata = fs.readFileSync(glossaryMetadataPath, 'utf8');
-const glossaryTerms = glossary.split(/\r?\n/).map((line) => line.match(/^\s*\{\s*term:\s*"([^"]+)"/)).filter(Boolean).map((match) => match[1]);
-if (glossaryTerms.length === 0) errors.push('No glossary terms found.');
-if (new Set(glossaryTerms).size !== glossaryTerms.length) errors.push('Glossary terms must be unique; duplicates make the reference misleading.');
-const glossaryCount = glossaryTerms.length;
 if (glossaryCount !== 89) errors.push('Update the documented glossary count only after reviewing the unique catalogue; expected the audited count of 89.');
 for (const [label, input] of [['app/glossary/page.js', glossary], ['app/glossary/layout.js', glossaryMetadata]]) {
   const claimedCounts = [...input.matchAll(/\b(\d+)\s*\+?\s*(?:ICT\s*&\s*SMC\s*)?(?:trading\s+)?terms?\b/gi)].map((match) => Number(match[1]));
