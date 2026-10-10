@@ -56,8 +56,11 @@ export async function POST(req) {
       .eq('id', user.id)
       .maybeSingle();
 
-    if (!profile?.is_pro || !profile?.stripe_customer_id) {
-      return privateJson({ error: 'Pro access required.' }, { status: 403 });
+    // Billing access must not depend on the local Pro entitlement flag: the webhook
+    // intentionally clears is_pro for past_due subscriptions, but those customers
+    // still need the Stripe portal to update payment methods or recover service.
+    if (!profile?.stripe_customer_id) {
+      return privateJson({ error: 'No billing account is linked to this user.' }, { status: 403 });
     }
 
     const serviceKey = process.env.SUPABASE_SERVICE_KEY;
