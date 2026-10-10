@@ -5,6 +5,8 @@ import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 
 const TERMS = [
+  { term: "BE", full: "Break Even", cat: "ICT & SMC", def: "Moving a stop-loss to the entry price after a trade has moved in favor. This can reduce planned downside from that point, but slippage, fees and execution conditions can still produce a loss." },
+  { term: "EQ", full: "Equilibrium", cat: "ICT & SMC", def: "The midpoint of a selected price range. Within this framework, traders may classify prices below the midpoint as discount and above it as premium; the labels do not independently determine a buy or sell." },
   { term: "BB", full: "Breaker Block", cat: "ICT", def: "A zone derived from an order-block area after price breaks through it; traders may interpret the former zone with an opposite role. Definitions vary, and the label alone does not establish support or resistance." },
   { term: "COT", full: "Commitment of Traders", cat: "ICT", def: "A weekly report from the U.S. Commodity Futures Trading Commission summarizing futures and options positioning by trader categories. Some traders use it as macro context, but the lagged report does not identify every institutional participant or determine near-term direction." },
   { term: "AMD", full: "Accumulation, Manipulation, Distribution", cat: "ICT", def: "ICT's Power of Three (AMD) is a framework that some traders use to organize a possible sequence across sessions. It should not be assumed to repeat identically every day." },
