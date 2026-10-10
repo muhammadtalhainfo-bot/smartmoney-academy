@@ -56,11 +56,13 @@ const publicCountFiles = [
   ['app/admin/page.js', fs.readFileSync('app/admin/page.js', 'utf8')],
 ];
 for (const [label, content] of publicCountFiles) {
-  if (/\b97\+?\s*(?:unique\s+)?terms?\b/i.test(content)) {
-    errors.push(label + ' contains the obsolete 97-term glossary count; current unique count is ' + glossaryCount + '.');
+  const countClaims = [...content.matchAll(/(?:GLOSSARY|Glossary|glossary)[^\n]{0,120}?(\d+)\+?\s*terms?\b/gi)]
+    .map((match) => Number(match[1]));
+  if (countClaims.some((count) => count !== glossaryCount)) {
+    errors.push(label + ' has a glossary count inconsistent with the unique catalogue (' + glossaryCount + ').');
   }
-  if (/Glossary.{0,40}\b(?:100|90|80)\+?\s*terms?\b/i.test(content)) {
-    errors.push(label + ' contains a stale glossary count claim.');
+  if (/\b97\+?\s*(?:unique\s+)?terms?\b/i.test(content)) {
+    errors.push(label + ' contains the retired 97-term glossary claim.');
   }
 }
 
