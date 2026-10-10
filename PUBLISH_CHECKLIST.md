@@ -74,6 +74,10 @@ Also test signup/login, lesson completion, quiz submission, journal entry creati
 
 The previous ZIP contained a Finnhub credential in source. It has been removed from the active code. **Rotate/revoke that credential before publishing the revised project.** Do not paste the replacement key into source control; set it only as a deployment secret.
 
+- [ ] Confirm the previously exposed Finnhub key has been revoked in the Finnhub account (not merely removed from Git history/source).
+- [ ] Add any replacement as `FINNHUB_API_KEY` only in the production deployment environment; never commit it.
+- [ ] Verify the market ticker works with the rotated key and fails closed without fabricated prices.
+
 ## Verification status
 
 The production build is verified in GitHub Actions on the current `main` commit, including a clean `npm ci` and `npm run build`. The latest Vercel commit status is also successful. Custom-domain/browser smoke tests and the Vercel project environment-variable values still require access to the live Vercel dashboard/browser; secrets are intentionally not stored in the repository.
