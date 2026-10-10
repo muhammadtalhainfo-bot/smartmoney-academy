@@ -23,11 +23,12 @@ for (const phrase of requiredChecklist) {
 
 
 const deploymentGate = [
-  "GitHub's Vercel commit status for current `main` is currently **failed**",
-  'Deployment failure recovery gate',
-  'npx vercel inspect dpl_4GLRbTJg7sKhLYcjJ9gxjZ6JCsAY --logs',
-  'do not assume GitHub Actions success means the Vercel deployment passed',
+  'The most recent verified GitHub Vercel commit status for the current `main` SHA must be `success`',
+  'Deployment verification and failure recovery gate',
+  'If the latest `main` deployment fails, inspect that specific deployment',
+  'Recheck the exact `main` SHA\'s Vercel status after every production release',
 ];
+
 for (const phrase of deploymentGate) {
   if (!checklist.includes(phrase)) errors.push('PUBLISH_CHECKLIST.md is missing the deployment-status release gate: ' + phrase);
 }
