@@ -83,7 +83,7 @@ export default function HomePage() {
         </p>
 
         <p className="fade-up d3" style={{ color:'rgba(232,197,71,0.7)', fontFamily:'DM Mono,monospace', fontSize:'11px', letterSpacing:'0.12em', marginBottom:'36px' }}>
-          A GROWING COMMUNITY OF TRADERS
+          STRUCTURED LEARNING FOR TRADERS
         </p>
 
         <div className="fade-up d4" style={{ display:'flex', flexWrap:'wrap', gap:'12px', justifyContent:'center', marginBottom:'56px' }}>
