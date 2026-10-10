@@ -55,7 +55,7 @@ const ALL_MODULES = CURRICULUM_MODULES;
 const NAV_PAGES = [
   { href: '/',            label: 'Home',              desc: 'Landing page' },
   { href: '/courses',     label: 'Courses',           desc: '38 modules listing' },
-  { href: '/glossary',    label: 'Glossary',          desc: 'ICT/SMC terms (97+)' },
+  { href: '/glossary',    label: 'Glossary',          desc: 'ICT/SMC terms (89 unique terms)' },
   { href: '/practice',    label: 'Practice',          desc: 'Quiz practice questions' },
   { href: '/strategies',  label: 'Strategies',        desc: 'ICT strategy breakdowns' },
   { href: '/mentorship',  label: 'Mentorship',        desc: '2022 ICT Mentorship sessions' },
@@ -877,7 +877,7 @@ function SEOSection() {
 
 // ─── PRICING SECTION ──────────────────────────────────────────────────────────
 function PricingSection() {
-  const [freeFeatures, setFreeFeatures] = useState(['All 38 modules and 203+ lessons', 'ICT Glossary (97+ terms)', 'Daily practice challenges', 'Trade Journal', 'AI trade coaching in the journal']);
+  const [freeFeatures, setFreeFeatures] = useState(['All 38 modules and 203+ lessons', 'ICT Glossary (89 terms)', 'Daily practice challenges', 'Trade Journal', 'AI trade coaching in the journal']);
   const [proFeatures, setProFeatures] = useState(['Everything in Free', 'Certificate of completion', 'Professional trading-plan template', 'Ad-free learning experience', 'Cancel anytime']);
   const [monthlyPrice, setMonthlyPrice] = useState(String(PRO_MONTHLY_PRICE_USD));
   const [annualPrice, setAnnualPrice] = useState(String(PRO_ANNUAL_PRICE_USD));

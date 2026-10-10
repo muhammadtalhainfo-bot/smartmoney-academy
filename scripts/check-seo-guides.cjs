@@ -56,6 +56,24 @@ const glossaryTerms = glossary.split(/\r?\n/).map((line) => line.match(/^\s*\{\s
 if (glossaryTerms.length === 0) errors.push('No glossary terms found.');
 if (new Set(glossaryTerms).size !== glossaryTerms.length) errors.push('Glossary terms must be unique; duplicates make the reference misleading.');
 const glossaryCount = glossaryTerms.length;
+
+const publicCountFiles = [
+  ['app/page.js', fs.readFileSync('app/page.js', 'utf8')],
+  ['app/about/page.js', fs.readFileSync('app/about/page.js', 'utf8')],
+  ['app/pricing/page.js', fs.readFileSync('app/pricing/page.js', 'utf8')],
+  ['app/admin/page.js', fs.readFileSync('app/admin/page.js', 'utf8')],
+];
+for (const [label, content] of publicCountFiles) {
+  const countClaims = [...content.matchAll(/(?:GLOSSARY|Glossary|glossary)[^\n]{0,120}?(\d+)\+?\s*terms?\b/gi)]
+    .map((match) => Number(match[1]));
+  if (countClaims.some((count) => count !== glossaryCount)) {
+    errors.push(label + ' has a glossary count inconsistent with the unique catalogue (' + glossaryCount + ').');
+  }
+  if (/\b97\+?\s*(?:unique\s+)?terms?\b/i.test(content)) {
+    errors.push(label + ' contains the retired 97-term glossary claim.');
+  }
+}
+
 if (glossaryCount !== 89) errors.push('Update the documented glossary count only after reviewing the unique catalogue; expected the audited count of 89.');
 for (const [label, input] of [['app/glossary/page.js', glossary], ['app/glossary/layout.js', glossaryMetadata]]) {
   const claimedCounts = [...input.matchAll(/\b(\d+)\s*\+?\s*(?:ICT\s*&\s*SMC\s*)?(?:trading\s+)?terms?\b/gi)].map((match) => Number(match[1]));
