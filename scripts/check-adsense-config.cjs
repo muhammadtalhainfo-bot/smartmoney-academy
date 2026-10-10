@@ -6,6 +6,7 @@ const layoutPath = 'app/layout.js';
 const adsTxtPath = 'public/ads.txt';
 
 const loader = fs.readFileSync(loaderPath, 'utf8');
+const loaderClient = loader.match(/const ADSENSE_CLIENT = process\\.env\\.NEXT_PUBLIC_ADSENSE_CLIENT \\|\\| ['"`]{0,1}([^'"`]*)['"`]/)?.[1];
 const adSlot = fs.readFileSync(adSlotPath, 'utf8');
 const layout = fs.readFileSync(layoutPath, 'utf8');
 const adsTxt = fs.readFileSync(adsTxtPath, 'utf8');
