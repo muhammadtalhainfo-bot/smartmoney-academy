@@ -78,6 +78,15 @@ The previous ZIP contained a Finnhub credential in source. It has been removed f
 - [ ] Add any replacement as `FINNHUB_API_KEY` only in the production deployment environment; never commit it.
 - [ ] Verify the market ticker works with the rotated key and fails closed without fabricated prices.
 
+
+## Deployment failure recovery gate
+
+- [ ] Inspect the Vercel failure for the current `main` SHA in the Vercel dashboard or CLI (`npx vercel inspect dpl_4GLRbTJg7sKhLYcjJ9gxjZ6JCsAY --logs`).
+- [ ] Fix the actual build/configuration error; do not assume GitHub Actions success means the Vercel deployment passed.
+- [ ] Verify the next Vercel deployment is Ready and its commit SHA matches the intended `main` commit.
+- [ ] Smoke-test `https://ictflow.com` and the key routes above against the deployed build.
+- [ ] Recheck this section after every production release; never copy an earlier successful Vercel result into the latest status.
+
 ## Verification status
 
-The production build is verified in GitHub Actions on the current `main` commit, including a clean `npm ci` and `npm run build`. The latest Vercel commit status is also successful. Custom-domain/browser smoke tests and the Vercel project environment-variable values still require access to the live Vercel dashboard/browser; secrets are intentionally not stored in the repository.
+The production build is verified in GitHub Actions on the current `main` commit, including a clean `npm ci` and `npm run build`. GitHub's Vercel commit status for current `main` is currently **failed** (deployment `dpl_4GLRbTJg7sKhLYcjJ9gxjZ6JCsAY`; see the status link on the merge commit). Do not treat this release as deployment-verified until the Vercel build failure is diagnosed and a subsequent deployment reports success. The connected Vercel integration currently returns a 403 for the project's team scope, so build logs, production aliases, custom-domain smoke tests and live environment-variable values remain unverified. Do not paste secrets into source control or this checklist.
