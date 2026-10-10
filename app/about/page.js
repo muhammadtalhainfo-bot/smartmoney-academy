@@ -6,7 +6,7 @@ import { CURRICULUM_STATS } from '@/lib/curriculum';
 const STATS = [
   { value: String(CURRICULUM_STATS.moduleCount), label: 'ICT Modules' },
   { value: `${CURRICULUM_STATS.lessonCount}+`, label: 'Lessons Built' },
-  { value: '97+', label: 'Glossary Terms' },
+  { value: '89', label: 'Glossary Terms' },
   { value: '100%', label: 'Free to Start' },
 ];
 
