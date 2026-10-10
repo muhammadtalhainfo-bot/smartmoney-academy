@@ -77,6 +77,9 @@ jobs:
       - name: Validate AdSense publisher and ads.txt consistency
         run: node scripts/check-adsense-config.cjs
 
+      - name: Validate release documentation includes credential-rotation gate
+        run: node scripts/check-release-security-docs.cjs
+
       - name: Lint changed JavaScript/JSX
         shell: bash
         run: |
