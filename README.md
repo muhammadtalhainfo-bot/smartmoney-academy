@@ -55,3 +55,5 @@ AdSense account/site approval, ad serving settings, and regional consent configu
 ## Security
 
 The previous project archive contained a Finnhub credential in source. That credential has been removed from active source. **Rotate/revoke the exposed credential before using the revised project in production.**
+
+**Release gate:** do not enable production market-data access until the old Finnhub key has been revoked and a replacement key has been set only in the deployment provider's encrypted environment variables. Source-code removal does not invalidate an already exposed key.
