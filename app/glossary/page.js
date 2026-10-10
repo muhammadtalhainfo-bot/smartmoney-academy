@@ -32,8 +32,7 @@ const TERMS = [
   { term: "HTF", full: "Higher Time Frame", cat: "ICT & SMC", def: "Monthly, Weekly, Daily, and 4-Hour charts. Used for directional bias. HTF context is commonly given greater weight than LTF signals in this framework." },
   { term: "Hidden OB", full: "Hidden Order Block", cat: "ICT", def: "An ICT term for a PD Array that is easier to identify on a higher timeframe; the exact formation rules vary by source. It should be tested rather than assumed to be an extremely precise reaction zone." },
   { term: "IDM", full: "Inducement", cat: "ICT & SMC", def: "An ICT-style concept describing a possible move that may attract early entries or stops before a larger move. Treat it as a hypothesis to test rather than an assumption, and do not require it after every BOS." },
-  { term: "IFVG", full: "Inversion Fair Value Gap", cat: "ICT", def: "An FVG that price has completely violated. It inverts polarity — a bullish IFVG becomes bearish resistance." },
-  { term: "IOFED", full: "Institutional Order Flow Entry Drill", cat: "ICT", def: "An ICT entry-drill framework that studies FVG mitigation and directional context. The chart alone cannot confirm institutional order flow, so define the rules and test outcomes." },
+    { term: "IOFED", full: "Institutional Order Flow Entry Drill", cat: "ICT", def: "An ICT entry-drill framework that studies FVG mitigation and directional context. The chart alone cannot confirm institutional order flow, so define the rules and test outcomes." },
   { term: "IOF", full: "Institutional Order Flow", cat: "ICT", def: "An ICT-style interpretation of directional bias and price movement. References to institutional buying or selling are interpretations of the framework, not directly observable facts from a chart." },
   { term: "IPDA", full: "Interbank Price Delivery Algorithm", cat: "ICT", def: "A theoretical model in ICT education used to interpret price behavior around liquidity and time-based references; it should not be treated as independently verified market mechanics." },
   { term: "IRL", full: "Internal Range Liquidity", cat: "ICT", def: "A framework label for liquidity/reference areas inside the current range, including areas some traders associate with FVGs or other PD arrays." },
@@ -91,18 +90,11 @@ const TERMS = [
   { term: "Accumulation", full: "Accumulation Phase", cat: "ICT", def: "The first phase in the AMD (Accumulation, Manipulation, Distribution) framework, often described as a period of range formation. The chart does not show which participants are accumulating, and the range need not precede a specific directional move." },
   { term: "Algorithm", full: "Trading Algorithm / IPDA", cat: "ICT", def: "A term used in ICT education for a theoretical price-delivery model. The label does not establish the existence or operation of a specific algorithm from chart data alone." },
   { term: "Balanced Price Range", full: "BPR", cat: "ICT", def: "An area where opposing Fair Value Gaps overlap. Some traders study the overlap as a potential reaction reference, but it does not predict that consolidation or an explosive move must follow." },
-  { term: "CE", full: "Consequent Encroachment", cat: "ICT", def: "The exact 50% midpoint level of a Fair Value Gap. A commonly studied 50% reference point within an FVG; its usefulness should be evaluated with the chosen rules and market. -- often where precise LTF entries are taken." },
-  { term: "Dealing Range", full: "Dealing Range / DR", cat: "ICT", def: "Price range between significant swing high and low. Exists at every timeframe, nested inside each other. Defines premium (above 50%) and discount (below 50%) zones." },
+    { term: "Dealing Range", full: "Dealing Range / DR", cat: "ICT", def: "Price range between significant swing high and low. Exists at every timeframe, nested inside each other. Defines premium (above 50%) and discount (below 50%) zones." },
   { term: "Distribution", full: "Distribution Phase", cat: "ICT", def: "The third phase of the AMD framework, commonly described as distribution; specific market behavior can vary." },
-  { term: "ERL", full: "External Range Liquidity", cat: "ICT", def: "Liquidity sitting outside the current dealing range -- above swing highs (BSL) or below swing lows (SSL). A potential external liquidity target within the ICT framework." },
-  { term: "IFVG", full: "Implied Fair Value Gap", cat: "ICT", def: "A term used for an FVG that has been violated and is interpreted with the opposite polarity. Some ICT traders study it as a potential reference; it does not by itself prove manipulation or guarantee a reaction." },
-  { term: "IPDA", full: "Interbank Price Delivery Algorithm", cat: "ICT", def: "A theoretical ICT concept used to interpret price movement through time and liquidity references. The concept does not independently verify that a specific algorithm controls price or follows a fixed delivery process." },
-  { term: "IRL", full: "Internal Range Liquidity", cat: "ICT", def: "A framework label for potential liquidity references inside a dealing range, such as selected FVGs, order blocks or gaps. Traders may use IRL and ERL to organize entry scenarios and target hypotheses, but neither role is automatic." },
-  { term: "MMBM", full: "Market Maker Buy Model", cat: "ICT", def: "An ICT bullish framework that organizes a possible accumulate → manipulate (SSL sweep) → rally toward BSL sequence. Treat the narrative as a hypothesis and define the conditions that would invalidate it." },
-  { term: "MMSM", full: "Market Maker Sell Model", cat: "ICT", def: "An ICT bearish framework that organizes a possible accumulate → manipulate (BSL sweep) → decline toward SSL sequence. Treat the narrative as a hypothesis and define the conditions that would invalidate it." },
-  { term: "Reclaimed OB", full: "Reclaimed Order Block", cat: "ICT", def: "An Order Block initially violated by price that price later returns to and trades back inside. Some traders study the reclaim as relevant context, but its original institutional role is not directly observable or guaranteed to reassert." },
-  { term: "TGIF Setup", full: "TGIF (Thank God It's Friday)", cat: "ICT", def: "Friday price action that reveals the true weekly delivery direction. Some ICT traders study Friday price behavior for potential weekly reversal or retracement patterns; outcomes vary." },
-  { term: "Vacuum Block", full: "Vacuum Block", cat: "ICT", def: "An area where price moves rapidly due to lack of opposing orders. Similar to a liquidity void -- price passes through these zones without meaningful retracement." },
+    { term: "IFVG", full: "Implied Fair Value Gap", cat: "ICT", def: "A term used for an FVG that has been violated and is interpreted with the opposite polarity. Some ICT traders study it as a potential reference; it does not by itself prove manipulation or guarantee a reaction." },
+            { term: "TGIF Setup", full: "TGIF (Thank God It's Friday)", cat: "ICT", def: "Friday price action that some ICT traders study for a possible continuation, reversal or retracement scenario; the weekly direction cannot be established from this label alone." },
+  { term: "Vacuum Block", full: "Vacuum Block", cat: "ICT", def: "A chart area associated in ICT education with a rapid move and limited visible overlap. The candle pattern alone does not establish order-book depth or guarantee that later price will cross the area without retracement." },
 ];
 
 const CATS = ['All', 'ICT', 'SMC', 'ICT & SMC'];
@@ -184,7 +176,7 @@ export default function GlossaryPage() {
             <span className="gold-gradient">GLOSSARY</span>
           </h1>
           <p className="text-gray-200 max-w-lg mx-auto text-sm" style={{ fontWeight: 300 }}>
-            Every term from ICT&apos;s YouTube channel and mentorship series. The complete reference — no fluff.
+            A practical reference to common ICT and Smart Money Concepts terminology. Definitions describe the framework and should not be read as verified market mechanics or trading guarantees.
           </p>
         </div>
       </section>
