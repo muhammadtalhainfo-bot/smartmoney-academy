@@ -80,7 +80,7 @@ jobs:
       - name: Validate release documentation includes credential-rotation and deployment-status gates
         run: node scripts/check-release-security-docs.cjs
 
-      - name: Validate billing recovery behavior
+      - name: Validate billing recovery and admin deletion safety
         run: node scripts/check-billing-recovery.cjs
 
       - name: Lint changed JavaScript/JSX
