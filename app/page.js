@@ -328,7 +328,7 @@ export default function HomePage() {
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(280px, 1fr))', gap:'16px' }}>
             {[
               ['CURRICULUM', '38 modules', 'Progress from trading foundations to advanced ICT and SMC concepts.'],
-              ['GLOSSARY', '97 terms', 'Quick definitions for the vocabulary used throughout the lessons.'],
+              ['GLOSSARY', '89 terms', 'A practical reference to unique ICT and SMC terms used throughout the lessons.'],
               ['PRACTICE', 'Daily checks', 'Use quizzes to test recall instead of rereading everything.'],
               ['JOURNAL', 'Trade review', 'Record setups, outcomes and observations in a dedicated workspace.'],
             ].map(([k, v, d]) => (
