@@ -11,10 +11,10 @@ const layout = fs.readFileSync(layoutPath, 'utf8');
 const adsTxt = fs.readFileSync(adsTxtPath, 'utf8');
 const errors = [];
 
-if (/NEXT_PUBLIC_ADSENSE_CLIENT\\s*\\|\\|\\s*['"`]ca-pub-/.test(loader)) {
+if (/NEXT_PUBLIC_ADSENSE_CLIENT\s*\|\|\s*['"`]ca-pub-/.test(loader)) {
   errors.push('Do not silently fall back to a hard-coded AdSense publisher ID.');
 }
-if (!/const ADSENSE_CLIENT = process\\.env\\.NEXT_PUBLIC_ADSENSE_CLIENT \\|\\| ['"`]{0,1}['"`]/.test(loader)) {
+if (!/const ADSENSE_CLIENT = process\.env\.NEXT_PUBLIC_ADSENSE_CLIENT \|\| ['"`]{0,1}['"`]/.test(loader)) {
   errors.push('Resolve the optional publisher ID explicitly from NEXT_PUBLIC_ADSENSE_CLIENT.');
 }
 if (!loader.includes('{ADSENSE_CLIENT ? (')) {
@@ -28,8 +28,8 @@ if (!adSlot.includes('const client = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;') |
   errors.push('Ad slots must remain disabled unless both publisher and slot IDs are explicitly configured.');
 }
 const publisherMeta = layout.match(/name="google-adsense-account" content="([^"]+)"/)?.[1];
-const adsTxtPublisher = adsTxt.match(/^google\\.com,\\s*pub-(\\d+),\\s*DIRECT,/m)?.[1];
-if (!publisherMeta || !/^ca-pub-\\d+$/.test(publisherMeta)) {
+const adsTxtPublisher = adsTxt.match(/^google\.com,\s*pub-(\d+),\s*DIRECT,/m)?.[1];
+if (!publisherMeta || !/^ca-pub-\d+$/.test(publisherMeta)) {
   errors.push('The AdSense account meta tag must contain a valid configured-style publisher ID.');
 }
 if (!adsTxtPublisher) {
