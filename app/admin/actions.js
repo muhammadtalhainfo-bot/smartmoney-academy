@@ -3,6 +3,7 @@
 import { cookies, headers } from 'next/headers';
 import crypto from 'node:crypto';
 import { createClient } from '@supabase/supabase-js';
+import Stripe from 'stripe';
 import { POSTS } from '@/app/blog/posts';
 
 const COOKIE_NAME = 'ictflow_admin_session';
@@ -220,6 +221,27 @@ async function requireAdmin() {
   if (!session?.ok) throw new Error('Unauthorized');
 }
 
+async function cancelCustomerSubscriptions(stripe, customerId) {
+  let startingAfter;
+  let cancelled = 0;
+  for (;;) {
+    const page = await stripe.subscriptions.list({
+      customer: customerId,
+      status: 'all',
+      limit: 100,
+      ...(startingAfter ? { starting_after: startingAfter } : {}),
+    });
+    for (const subscription of page.data || []) {
+      if (['active', 'trialing', 'past_due', 'incomplete'].includes(subscription.status)) {
+        await stripe.subscriptions.cancel(subscription.id);
+        cancelled += 1;
+      }
+    }
+    if (!page.has_more || !page.data?.length) return cancelled;
+    startingAfter = page.data[page.data.length - 1].id;
+  }
+}
+
 export async function adminDb(action, payload = {}) {
   await requireAdmin();
   const supabase = adminDbClient();
@@ -278,9 +300,24 @@ export async function adminDb(action, payload = {}) {
     }
     case 'profile.delete': {
       const userId = requireUuid(payload.id);
-      const { error } = await supabase.auth.admin.deleteUser(userId);
-      if (error) throw error;
-      return { ok: true };
+      const { data: profile, error: profileError } = await supabase
+        .from('profiles')
+        .select('stripe_customer_id')
+        .eq('id', userId)
+        .maybeSingle();
+      if (profileError) throw profileError;
+
+      // Fail closed: don't delete an account while Stripe can still bill it.
+      if (profile?.stripe_customer_id) {
+        const stripeSecret = process.env.STRIPE_SECRET_KEY;
+        if (!stripeSecret) throw new Error('Stripe is not configured; account was not deleted.');
+        const stripe = new Stripe(stripeSecret, { timeout: 20_000 });
+        await cancelCustomerSubscriptions(stripe, profile.stripe_customer_id);
+      }
+
+      const { error: deleteError } = await supabase.auth.admin.deleteUser(userId);
+      if (deleteError) throw deleteError;
+      return { ok: true, billingCancelled: Boolean(profile?.stripe_customer_id) };
     }
     case 'blog.list':
       return { data: await loadAdminBlogPosts(supabase) };
