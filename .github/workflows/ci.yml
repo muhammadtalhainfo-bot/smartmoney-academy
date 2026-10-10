@@ -71,6 +71,9 @@ jobs:
       - name: Validate blog article schema and breadcrumbs
         run: node scripts/check-blog-article-schema.cjs
 
+      - name: Validate AdSense publisher and ads.txt consistency
+        run: node scripts/check-adsense-config.cjs
+
       - name: Lint changed JavaScript/JSX
         shell: bash
         run: |

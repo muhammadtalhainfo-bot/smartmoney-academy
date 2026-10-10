@@ -5,7 +5,7 @@ import Script from 'next/script';
 
 const CONSENT_KEY = 'cookies_accepted';
 const CONSENT_EVENT = 'ictflow-cookie-consent';
-const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT || 'ca-pub-4615893071983318';
+const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT || '';
 
 export default function ThirdPartyScripts() {
   const [consent, setConsent] = useState(false);
@@ -38,7 +38,7 @@ export default function ThirdPartyScripts() {
         gtag('config', 'G-HRGZYFXQ5W');
       `}</Script>
 
-      {process.env.NEXT_PUBLIC_ADSENSE_CLIENT ? (
+      {ADSENSE_CLIENT ? (
         <Script
           strategy="lazyOnload"
           async
