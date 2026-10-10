@@ -5,6 +5,8 @@ import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 
 const TERMS = [
+  { term: "BB", full: "Breaker Block", cat: "ICT", def: "A zone derived from an order-block area after price breaks through it; traders may interpret the former zone with an opposite role. Definitions vary, and the label alone does not establish support or resistance." },
+  { term: "COT", full: "Commitment of Traders", cat: "ICT", def: "A weekly report from the U.S. Commodity Futures Trading Commission summarizing futures and options positioning by trader categories. Some traders use it as macro context, but the lagged report does not identify every institutional participant or determine near-term direction." },
   { term: "AMD", full: "Accumulation, Manipulation, Distribution", cat: "ICT", def: "ICT's Power of Three (AMD) is a framework that some traders use to organize a possible sequence across sessions. It should not be assumed to repeat identically every day." },
   { term: "AR", full: "Asian Range", cat: "ICT", def: "The high-to-low range observed during a defined Asian session window. Traders may use its boundaries as references, but the window must specify timezone and daylight-saving convention; a later sweep or reversal is not guaranteed." },
   { term: "BISI", full: "Buy Side Imbalance Sell Side Inefficiency", cat: "ICT", def: "An ICT term associated with a bullish Fair Value Gap. Traders may study the imbalance as a reference area if price revisits it; it does not prove which participants caused the move or guarantee support." },
