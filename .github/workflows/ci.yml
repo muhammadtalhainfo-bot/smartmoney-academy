@@ -77,7 +77,7 @@ jobs:
       - name: Validate AdSense publisher and ads.txt consistency
         run: node scripts/check-adsense-config.cjs
 
-      - name: Validate release documentation includes credential-rotation gate
+      - name: Validate release documentation includes credential-rotation and deployment-status gates
         run: node scripts/check-release-security-docs.cjs
 
       - name: Validate billing recovery behavior
