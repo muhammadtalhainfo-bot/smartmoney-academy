@@ -45,6 +45,30 @@ for (const chunk of guideChunks) {
   }
 }
 
+
+// The glossary is a browsable reference, so its visible list and metadata
+// must use the real unique-term count rather than a stale aspirational count.
+const glossaryPath = 'app/glossary/page.js';
+const glossaryMetadataPath = 'app/glossary/layout.js';
+const glossary = fs.readFileSync(glossaryPath, 'utf8');
+const glossaryMetadata = fs.readFileSync(glossaryMetadataPath, 'utf8');
+const glossaryTerms = [...glossary.matchAll(/\{\s*term:\s*"([^"]+)",\s*full:\s*"([^"]+)",\s*cat:\s*"([^"]+)",\s*def:\s*"([^"]+)"\s*\}/g)].map((match) => match[1]);
+if (glossaryTerms.length === 0) errors.push('No glossary terms found.');
+if (new Set(glossaryTerms).size !== glossaryTerms.length) errors.push('Glossary terms must be unique; duplicates make the reference misleading.');
+const glossaryCount = glossaryTerms.length;
+for (const [label, input] of [['app/glossary/page.js', glossary], ['app/glossary/layout.js', glossaryMetadata]]) {
+  const claimedCounts = [...input.matchAll(/\b(\d+)\s*\+?\s*(?:ICT\s*&\s*SMC\s*)?(?:trading\s+)?terms?\b/gi)].map((match) => Number(match[1]));
+  if (claimedCounts.some((count) => count > glossaryCount)) {
+    errors.push(label + ' claims more glossary terms than the unique catalogue contains (' + glossaryCount + ').');
+  }
+}
+if (/Every term from ICT['’]s YouTube channel|The complete reference — no fluff/i.test(glossary)) {
+  errors.push('The glossary must not claim exhaustive coverage of an external channel or mentorship series.');
+}
+if (/true weekly delivery direction|without meaningful retracement/i.test(glossary)) {
+  errors.push('The glossary must avoid deterministic weekly-profile and liquidity-void outcome claims.');
+}
+
 if (errors.length) {
   for (const error of errors) console.error(`SEO guide quality guard failed: ${error}`);
   process.exit(1);
