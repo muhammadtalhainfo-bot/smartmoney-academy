@@ -49,6 +49,21 @@ for (const chunk of guideChunks) {
 // The glossary is a browsable reference, so its visible list and metadata
 // must use the real unique-term count rather than a stale aspirational count.
 const glossaryPath = 'app/glossary/page.js';
+const publicCountFiles = [
+  ['app/page.js', fs.readFileSync('app/page.js', 'utf8')],
+  ['app/about/page.js', fs.readFileSync('app/about/page.js', 'utf8')],
+  ['app/pricing/page.js', fs.readFileSync('app/pricing/page.js', 'utf8')],
+  ['app/admin/page.js', fs.readFileSync('app/admin/page.js', 'utf8')],
+];
+for (const [label, content] of publicCountFiles) {
+  if (/\b97\+?\s*(?:unique\s+)?terms?\b/i.test(content)) {
+    errors.push(label + ' contains the obsolete 97-term glossary count; current unique count is ' + glossaryCount + '.');
+  }
+  if (/Glossary.{0,40}\b(?:100|90|80)\+?\s*terms?\b/i.test(content)) {
+    errors.push(label + ' contains a stale glossary count claim.');
+  }
+}
+
 const glossaryMetadataPath = 'app/glossary/layout.js';
 const glossary = fs.readFileSync(glossaryPath, 'utf8');
 const glossaryMetadata = fs.readFileSync(glossaryMetadataPath, 'utf8');
