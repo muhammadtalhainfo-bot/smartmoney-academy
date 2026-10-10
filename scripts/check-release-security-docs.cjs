@@ -23,7 +23,7 @@ for (const phrase of requiredChecklist) {
 
 
 const deploymentGate = [
-  "GitHub's Vercel commit status for current \`main\` is currently **failed**",
+  "GitHub's Vercel commit status for current `main` is currently **failed**",
   'Deployment failure recovery gate',
   'npx vercel inspect dpl_4GLRbTJg7sKhLYcjJ9gxjZ6JCsAY --logs',
   'do not assume GitHub Actions success means the Vercel deployment passed',
