@@ -59,6 +59,7 @@ if (index.includes('delivered weekly')) {
 }
 
 const detailedPostSlugs = [
+
   'ict-ipda-interbank-price-delivery',
   'backtest-ict-strategies',
   'ict-consequent-encroachment-explained',
@@ -119,6 +120,27 @@ const detailedPostSlugs = [
   'ict-daily-bias-trick',
   'draw-on-liquidity-ict',
   'ict-smt-divergence-complete-guide',
+  'what-is-ict-trading',
+  'how-to-trade-fair-value-gaps',
+  'understanding-order-blocks',
+  'ict-market-structure-complete-guide',
+  'liquidity-in-ict-trading',
+  'ict-killzones-guide',
+  'power-of-three-amd-model',
+  'ict-premium-discount-zones',
+  'ict-breaker-block-explained',
+  'ict-turtle-soup-pattern-guide',
+  'ict-pd-array-matrix-explained',
+  'ict-cisd-change-in-state-of-delivery',
+  'ict-candle-range-theory-crt',
+  'ict-intraday-profiles-london',
+  'ict-nwog-ndog-opening-gaps',
+  'ict-power-of-three-amd-complete',
+  'ict-valid-fair-value-gap',
+  'ict-hrlr-lrlr-liquidity-run',
+  'ict-complete-2022-trading-strategy',
+  'ict-liquidity-forex-trading',
+  'ict-judas-swing-complete',
 ];
 const starts = [...posts.matchAll(/(?:^|\n)\s*\{\n\s+slug:\s*'([^']+)'/g)];
 const postChunks = starts.map((match, index) => {
