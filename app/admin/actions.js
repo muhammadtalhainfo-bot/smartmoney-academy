@@ -278,6 +278,62 @@ export async function adminDb(action, payload = {}) {
     }
     case 'profile.delete': {
       const userId = requireUuid(payload.id);
+      const { data: profile, error: profileLookupError } = await supabase
+        .from('profiles')
+        .select('stripe_customer_id')
+        .eq('id', userId)
+        .maybeSingle();
+      if (profileLookupError) throw profileLookupError;
+
+      const customerId = profile?.stripe_customer_id;
+      if (customerId) {
+        const stripeSecret = process.env.STRIPE_SECRET_KEY;
+        if (!stripeSecret) {
+          throw new Error('Stripe is not configured; account deletion is blocked to prevent orphaned billing.');
+        }
+
+        const Stripe = (await import('stripe')).default;
+        const stripe = new Stripe(stripeSecret, { timeout: 20_000 });
+        let startingAfter;
+        while (true) {
+          const page = await stripe.subscriptions.list({
+            customer: customerId,
+            status: 'all',
+            limit: 100,
+            ...(startingAfter ? { starting_after: startingAfter } : {}),
+          });
+
+          for (const subscription of page.data) {
+            if (['active', 'trialing', 'past_due', 'unpaid', 'incomplete'].includes(subscription.status)) {
+              await stripe.subscriptions.cancel(subscription.id);
+            }
+          }
+
+          if (!page.has_more || page.data.length === 0) break;
+          startingAfter = page.data[page.data.length - 1].id;
+        }
+
+        // Deletion is allowed only when Stripe confirms no billable subscription remains.
+        let remainingAfterCancel;
+        let checkAfter;
+        do {
+          checkAfter = await stripe.subscriptions.list({
+            customer: customerId,
+            status: 'all',
+            limit: 100,
+            ...(remainingAfterCancel ? { starting_after: remainingAfterCancel } : {}),
+          });
+          const billable = checkAfter.data.filter((subscription) =>
+            ['active', 'trialing', 'past_due', 'unpaid', 'incomplete'].includes(subscription.status)
+          );
+          if (billable.length) {
+            throw new Error('Stripe still reports billable subscriptions; account deletion is blocked.');
+          }
+          if (!checkAfter.has_more || checkAfter.data.length === 0) break;
+          remainingAfterCancel = checkAfter.data[checkAfter.data.length - 1].id;
+        } while (true);
+      }
+
       const { error } = await supabase.auth.admin.deleteUser(userId);
       if (error) throw error;
       return { ok: true };
