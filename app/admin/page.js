@@ -2,7 +2,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { adminDb } from './actions';
 import { getAdminSession, loginAdmin, logoutAdmin } from './actions';
-import { MODULES as CURRICULUM_MODULES } from '@/lib/curriculum';
+import { MODULES as CURRICULUM_MODULES, CURRICULUM_STATS } from '@/lib/curriculum';
 import { PRO_ANNUAL_PRICE_USD, PRO_MONTHLY_PRICE_USD } from '@/lib/pricing';
 
 const G = '#E8C547';
@@ -54,7 +54,7 @@ const ALL_MODULES = CURRICULUM_MODULES;
 
 const NAV_PAGES = [
   { href: '/',            label: 'Home',              desc: 'Landing page' },
-  { href: '/courses',     label: 'Courses',           desc: '38 modules listing' },
+  { href: '/courses',     label: 'Courses',           desc: `${CURRICULUM_STATS.moduleCount} modules listing` },
   { href: '/glossary',    label: 'Glossary',          desc: 'ICT/SMC terms (89 unique terms)' },
   { href: '/practice',    label: 'Practice',          desc: 'Quiz practice questions' },
   { href: '/strategies',  label: 'Strategies',        desc: 'ICT strategy breakdowns' },
@@ -877,7 +877,7 @@ function SEOSection() {
 
 // ─── PRICING SECTION ──────────────────────────────────────────────────────────
 function PricingSection() {
-  const [freeFeatures, setFreeFeatures] = useState(['All 38 modules and 203+ lessons', 'ICT Glossary (89 terms)', 'Daily practice challenges', 'Trade Journal', 'AI trade coaching in the journal']);
+  const [freeFeatures, setFreeFeatures] = useState([`All ${CURRICULUM_STATS.moduleCount} modules and ${CURRICULUM_STATS.lessonCount}+ lessons`, 'ICT Glossary (89 terms)', 'Daily practice challenges', 'Trade Journal', 'AI trade coaching in the journal']);
   const [proFeatures, setProFeatures] = useState(['Everything in Free', 'Certificate of completion', 'Professional trading-plan template', 'Ad-free learning experience', 'Cancel anytime']);
   const [monthlyPrice, setMonthlyPrice] = useState(String(PRO_MONTHLY_PRICE_USD));
   const [annualPrice, setAnnualPrice] = useState(String(PRO_ANNUAL_PRICE_USD));

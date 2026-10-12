@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
+import { CURRICULUM_STATS } from '@/lib/curriculum';
 
 export default function NotFound() {
   useEffect(() => {
@@ -22,7 +23,7 @@ export default function NotFound() {
           <p style={{ color: '#B9C1CC', lineHeight: 1.7, fontSize: '15px', margin: '0 auto 32px', maxWidth: '480px' }}>That page does not exist or may have moved. Continue from the curriculum or return home.</p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', flexWrap: 'wrap' }}>
             <Link href="/" style={{ background: '#E8C547', color: '#080808', padding: '14px 26px', borderRadius: '10px', textDecoration: 'none', fontWeight: 700 }}>Back Home →</Link>
-            <Link href="/courses" style={{ border: '1px solid rgba(232,197,71,0.3)', color: '#E8C547', padding: '14px 26px', borderRadius: '10px', textDecoration: 'none' }}>Browse 38 Modules</Link>
+            <Link href="/courses" style={{ border: '1px solid rgba(232,197,71,0.3)', color: '#E8C547', padding: '14px 26px', borderRadius: '10px', textDecoration: 'none' }}>Browse {CURRICULUM_STATS.moduleCount} Modules</Link>
           </div>
         </div>
       </div>

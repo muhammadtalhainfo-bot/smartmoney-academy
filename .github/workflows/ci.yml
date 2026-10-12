@@ -47,6 +47,9 @@ jobs:
       - name: Guard against retired site claims
         run: node scripts/check-retired-site-claims.cjs
 
+      - name: Validate public curriculum count copy
+        run: node scripts/check-curriculum-count-copy.cjs
+
       - name: Validate robots.txt and noindex alignment
         run: node scripts/check-robots-indexing.cjs
 
