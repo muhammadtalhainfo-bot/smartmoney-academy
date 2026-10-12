@@ -44,6 +44,20 @@ if (!adminActions.includes("async function cancelCustomerSubscriptions(stripe, c
     !adminActions.includes("starting_after: startingAfter")) {
   errors.push('Subscription cancellation must paginate all Stripe subscriptions for the customer.');
 }
+if (!adminActions.includes("const TERMINAL_STRIPE_SUBSCRIPTION_STATUSES = new Set(['canceled', 'incomplete_expired'])")) {
+  errors.push('Admin deletion must explicitly treat only canceled and incomplete_expired subscriptions as terminal.');
+}
+if (!adminActions.includes("async function assertCustomerSubscriptionsTerminal(stripe, customerId)") ||
+    !adminActions.includes("await assertCustomerSubscriptionsTerminal(stripe, customerId)")) {
+  errors.push('Admin deletion must re-list Stripe subscriptions and verify terminal states before Auth deletion.');
+}
+if (!adminActions.includes("if (!TERMINAL_STRIPE_SUBSCRIPTION_STATUSES.has(subscription.status))")) {
+  errors.push('Admin deletion must also handle unpaid, paused, and unrecognized non-terminal subscription states.');
+}
+const adminPage = fs.readFileSync('app/admin/page.js', 'utf8');
+if (!adminPage.includes('cancels linked Stripe subscriptions first')) {
+  errors.push('Admin confirmation must disclose that account deletion cancels linked Stripe subscriptions.');
+}
 
 if (errors.length) {
   for (const error of errors) console.error('Billing recovery guard failed: ' + error);

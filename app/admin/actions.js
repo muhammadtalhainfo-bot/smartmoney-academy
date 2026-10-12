@@ -221,9 +221,10 @@ async function requireAdmin() {
   if (!session?.ok) throw new Error('Unauthorized');
 }
 
+const TERMINAL_STRIPE_SUBSCRIPTION_STATUSES = new Set(['canceled', 'incomplete_expired']);
+
 async function cancelCustomerSubscriptions(stripe, customerId) {
   let startingAfter;
-  let cancelled = 0;
   for (;;) {
     const page = await stripe.subscriptions.list({
       customer: customerId,
@@ -232,13 +233,39 @@ async function cancelCustomerSubscriptions(stripe, customerId) {
       ...(startingAfter ? { starting_after: startingAfter } : {}),
     });
     for (const subscription of page.data || []) {
-      if (['active', 'trialing', 'past_due', 'incomplete'].includes(subscription.status)) {
+      // Only explicitly terminal states are safe to leave linked to a deleted account.
+      // This includes unpaid and paused subscriptions, and fails closed for new Stripe states.
+      if (!TERMINAL_STRIPE_SUBSCRIPTION_STATUSES.has(subscription.status)) {
         await stripe.subscriptions.cancel(subscription.id);
-        cancelled += 1;
       }
     }
-    if (!page.has_more || !page.data?.length) return cancelled;
+    if (!page.has_more || !page.data?.length) break;
     startingAfter = page.data[page.data.length - 1].id;
+  }
+
+  await assertCustomerSubscriptionsTerminal(stripe, customerId);
+}
+
+async function assertCustomerSubscriptionsTerminal(stripe, customerId) {
+  let startingAfter;
+  const remaining = [];
+  for (;;) {
+    const page = await stripe.subscriptions.list({
+      customer: customerId,
+      status: 'all',
+      limit: 100,
+      ...(startingAfter ? { starting_after: startingAfter } : {}),
+    });
+    for (const subscription of page.data || []) {
+      if (!TERMINAL_STRIPE_SUBSCRIPTION_STATUSES.has(subscription.status)) {
+        remaining.push(subscription.id + ' (' + subscription.status + ')');
+      }
+    }
+    if (!page.has_more || !page.data?.length) break;
+    startingAfter = page.data[page.data.length - 1].id;
+  }
+  if (remaining.length) {
+    throw new Error('Stripe still reports non-terminal subscriptions; account was not deleted.');
   }
 }
 
