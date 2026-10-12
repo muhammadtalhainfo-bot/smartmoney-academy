@@ -101,7 +101,7 @@ export default async function SEOGuide({ params }) {
             })}
           </div>
           <div style={{display:'flex',flexWrap:'wrap',gap:10,marginTop:24}}>
-            <Link href="/courses" style={{color:'#E8C547',border:'1px solid rgba(232,197,71,.3)',padding:'11px 15px',borderRadius:8,textDecoration:'none'}}>Explore 38 Modules →</Link>
+            <Link href="/courses" style={{color:'#E8C547',border:'1px solid rgba(232,197,71,.3)',padding:'11px 15px',borderRadius:8,textDecoration:'none'}}>Explore {CURRICULUM_STATS.moduleCount} Modules →</Link>
             <Link href="/tools" style={{color:'#E8C547',border:'1px solid rgba(232,197,71,.3)',padding:'11px 15px',borderRadius:8,textDecoration:'none'}}>Free Trading Tools →</Link>
             <Link href="/glossary" style={{color:'#E8C547',border:'1px solid rgba(232,197,71,.3)',padding:'11px 15px',borderRadius:8,textDecoration:'none'}}>ICT Glossary →</Link>
           </div>
