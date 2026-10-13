@@ -44,6 +44,9 @@ jobs:
       - name: Audit production dependencies for high-severity vulnerabilities
         run: npm audit --omit=dev --audit-level=high
 
+      - name: Generate and validate Open Graph PNG
+        run: node scripts/generate-og-image.cjs
+
       - name: Guard against retired site claims
         run: node scripts/check-retired-site-claims.cjs
 
