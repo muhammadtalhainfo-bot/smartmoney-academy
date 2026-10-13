@@ -3,13 +3,22 @@ const fs = require('node:fs');
 const curriculum = fs.readFileSync('lib/curriculum.js', 'utf8');
 const quizAnswers = fs.readFileSync('lib/lesson-quiz-answers.js', 'utf8');
 const completionApi = fs.readFileSync('app/api/lesson-completion/route.js', 'utf8');
+const lessonDataSources = [
+  ['app/lesson/[id]/lesson-data.js', fs.readFileSync('app/lesson/[id]/lesson-data.js', 'utf8')],
+  ['app/lesson/[id]/lessons-data.js', fs.readFileSync('app/lesson/[id]/lessons-data.js', 'utf8')],
+];
+
 const certificateApi = fs.readFileSync('app/api/certificate/route.js', 'utf8');
 const errors = [];
 
 const moduleIds = [...curriculum.matchAll(/^\s*id:\s*(\d+),\s*module:\s*["'][^"']+["']/gm)]
   .map((match) => Number(match[1]));
-const quizIds = [...quizAnswers.matchAll(/(?:^|[,\n])\s*(\d+)\s*:\s*\[/g)]
-  .map((match) => Number(match[1]));
+const quizEntries = [...quizAnswers.matchAll(/(?:^|[,\n])\s*(\d+)\s*:\s*\[([^\]]+)\]/g)]
+  .map((match) => ({
+    id: Number(match[1]),
+    answerCount: match[2].split(',').map((value) => value.trim()).filter(Boolean).length,
+  }));
+const quizIds = quizEntries.map((entry) => entry.id);
 
 if (!moduleIds.length) errors.push('No curriculum module IDs found.');
 if (new Set(moduleIds).size !== moduleIds.length) errors.push('Curriculum module IDs must be unique.');
@@ -19,6 +28,42 @@ for (const id of moduleIds) {
 }
 for (const id of quizIds) {
   if (!moduleIds.includes(id)) errors.push('Quiz answer key ' + id + ' does not map to a curriculum module.');
+}
+
+
+const lessonEntries = [];
+for (const [file, source] of lessonDataSources) {
+  const blocks = [...source.matchAll(/^  (\d+): \{\s*$/gm)];
+  for (let index = 0; index < blocks.length; index += 1) {
+    const start = blocks[index].index;
+    const end = index + 1 < blocks.length ? blocks[index + 1].index : source.length;
+    const body = source.slice(start, end);
+    lessonEntries.push({
+      file,
+      id: Number(blocks[index][1]),
+      questionCount: (body.match(/\{\s*q\s*:/g) || []).length,
+    });
+  }
+}
+if (new Set(lessonEntries.map((entry) => entry.id)).size !== lessonEntries.length) {
+  errors.push('Lesson page data must not define duplicate route IDs across lesson data files.');
+}
+for (const lesson of lessonEntries) {
+  if (!moduleIds.includes(lesson.id)) {
+    errors.push(lesson.file + ' defines lesson ID ' + lesson.id + ' outside the curriculum module list.');
+  }
+  const answerKey = quizEntries.find((entry) => entry.id === lesson.id);
+  if (!answerKey) {
+    errors.push(lesson.file + ' defines lesson ID ' + lesson.id + ' without a server-side answer key.');
+  } else if (!lesson.questionCount || lesson.questionCount !== answerKey.answerCount) {
+    errors.push(lesson.file + ' lesson ' + lesson.id + ' has ' + lesson.questionCount +
+      ' quiz questions but ' + answerKey.answerCount + ' server-side answers.');
+  }
+}
+for (const id of moduleIds) {
+  if (!lessonEntries.some((entry) => entry.id === id)) {
+    errors.push('Curriculum module ' + id + ' has no lesson page data.');
+  }
 }
 
 if (!completionApi.includes('LESSON_QUIZ_ANSWERS[lessonId]') ||
