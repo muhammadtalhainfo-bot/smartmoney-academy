@@ -33,7 +33,7 @@ const staticBlock = staticStart >= 0 && staticEnd > staticStart
   : '';
 const staticPaths = [];
 if (/^\s*\[BASE\s*,/m.test(staticBlock)) staticPaths.push('/');
-for (const match of staticBlock.matchAll(/\x60\\$\\{BASE\\}\/([^\x60]+)\x60/g)) {
+for (const match of staticBlock.matchAll(/\x60\$\{BASE\}\/([^\x60]+)\x60/g)) {
   staticPaths.push('/' + match[1]);
 }
 if (!staticPaths.length) fail('No static sitemap routes were parsed.');
@@ -100,7 +100,7 @@ for (const id of lessonMetaIds) {
 if (!sitemap.includes('const lessonPages = MODULES.map(({ id })')) {
   fail('Sitemap lesson URLs must derive from the canonical MODULES list.');
 }
-if (!/\\$\\{BASE\\}\/lesson\/\\$\\{id\\}/.test(sitemap)) {
+if (!/\$\{BASE\}\/lesson\/\$\{id\}/.test(sitemap)) {
   fail('Sitemap lesson URL template must use the canonical host and module ID.');
 }
 
