@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "predev": "node scripts/generate-og-image.cjs",
+    "prebuild": "node scripts/generate-og-image.cjs"
   },
   "dependencies": {
     "@stripe/stripe-js": "^8.9.0",
