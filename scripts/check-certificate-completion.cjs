@@ -43,9 +43,9 @@ for (const [file, source] of lessonDataSources) {
       id: Number(blocks[index][1]),
       questionAnswers: (() => {
         const quizStart = body.indexOf('quiz: [');
-        const quizEnd = body.indexOf('\\n    ],', quizStart);
+        const quizEnd = body.indexOf('\n    ],', quizStart);
         const quizBlock = quizStart >= 0 && quizEnd > quizStart ? body.slice(quizStart, quizEnd) : '';
-        return [...quizBlock.matchAll(/\\banswer:\\s*(\\d+)/g)].map((match) => Number(match[1]));
+        return [...quizBlock.matchAll(/\banswer:\s*(\d+)/g)].map((match) => Number(match[1]));
       })(),
     });
   }
