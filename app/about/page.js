@@ -122,7 +122,7 @@ export default function AboutPage() {
         <div style={{ maxWidth: '500px', margin: '0 auto' }}>
           <h2 className="font-display shine" style={{ fontSize: '52px', lineHeight: 1, marginBottom: '16px' }}>START LEARNING TODAY</h2>
           <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '15px', marginBottom: '32px', fontWeight: 300 }}>
-            Study all 38 structured modules covering ICT and Smart Money Concepts. Start free, then upgrade only if you want the premium tools and ad-free experience.
+            Study all {CURRICULUM_STATS.moduleCount} structured modules covering ICT and Smart Money Concepts. Start free, then upgrade only if you want the premium tools and ad-free experience.
           </p>
           <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/courses" style={{ padding: '14px 32px', background: 'linear-gradient(135deg,#E8C547,#8A6B28)', borderRadius: '10px', color: 'black', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600 }}>
