@@ -28,6 +28,8 @@ for (const item of stalePatterns) {
 const countFiles = [
   'app/page.js',
   'app/courses/layout.js',
+  'app/about/page.js',
+  'app/blog/[slug]/page.js',
   'app/auth/page.js',
   'app/not-found.js',
   'app/learn/[slug]/page.js',
