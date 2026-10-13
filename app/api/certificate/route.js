@@ -81,34 +81,21 @@ export async function GET() {
 
     if (profile?.is_pro !== true) return noStore({ error: 'Pro membership required.' }, 403);
 
+    // The lesson route and atomic completion RPC both key completion rows by
+    // the curriculum module ID, not by the sequential count of lesson units.
+    // Count only passing quiz completions for IDs in the canonical module list.
     const passedCompletions = (completions || []).filter((row) => Number(row.quiz_score) >= 70);
-    const completedLessonIds = new Set(
+    const requiredModuleIdSet = new Set(requiredModuleIds);
+    const completedModuleIdsSet = new Set(
       passedCompletions
         .map((row) => Number(row.lesson_id))
-        .filter((lessonId) => Number.isSafeInteger(lessonId) && lessonId >= 1 && lessonId <= totalLessons)
+        .filter((moduleId) => Number.isSafeInteger(moduleId) && requiredModuleIdSet.has(moduleId))
     );
-
-    // Lesson IDs are sequential across the curriculum. A module is complete only
-    // when every lesson assigned to that module has a passing completion.
-    let lessonCursor = 1;
-    const completedModuleIds = [];
-    for (const module of MODULES) {
-      const lessonCount = Number(module.lessons || 0);
-      let moduleComplete = lessonCount > 0;
-      for (let offset = 0; offset < lessonCount; offset += 1) {
-        if (!completedLessonIds.has(lessonCursor + offset)) {
-          moduleComplete = false;
-          break;
-        }
-      }
-      if (moduleComplete) completedModuleIds.push(module.id);
-      lessonCursor += lessonCount;
-    }
-
+    const completedModuleIds = requiredModuleIds.filter((moduleId) => completedModuleIdsSet.has(moduleId));
     const eligible = completedModuleIds.length === requiredModuleIds.length;
 
-    const latestCompletion = (completions || [])
-       .filter((row) => completedIds.has(Number(row.lesson_id)) && row.completed_at)
+    const latestCompletion = passedCompletions
+      .filter((row) => completedModuleIdsSet.has(Number(row.lesson_id)) && row.completed_at)
       .map((row) => new Date(row.completed_at).getTime())
       .filter(Number.isFinite)
       .reduce((latest, value) => Math.max(latest, value), 0);
