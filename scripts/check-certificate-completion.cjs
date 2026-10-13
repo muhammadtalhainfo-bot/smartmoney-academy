@@ -16,7 +16,7 @@ const moduleIds = [...curriculum.matchAll(/^\s*id:\s*(\d+),\s*module:\s*["'][^"'
 const quizEntries = [...quizAnswers.matchAll(/(?:^|[,\n])\s*(\d+)\s*:\s*\[([^\]]+)\]/g)]
   .map((match) => ({
     id: Number(match[1]),
-    answerCount: match[2].split(',').map((value) => value.trim()).filter(Boolean).length,
+    answerIndices: match[2].split(',').map((value) => Number(value.trim())),
   }));
 const quizIds = quizEntries.map((entry) => entry.id);
 
@@ -41,7 +41,12 @@ for (const [file, source] of lessonDataSources) {
     lessonEntries.push({
       file,
       id: Number(blocks[index][1]),
-      questionCount: (body.match(/\{\s*q\s*:/g) || []).length,
+      questionAnswers: (() => {
+        const quizStart = body.indexOf('quiz: [');
+        const quizEnd = body.indexOf('\n    ],', quizStart);
+        const quizBlock = quizStart >= 0 && quizEnd > quizStart ? body.slice(quizStart, quizEnd) : '';
+        return [...quizBlock.matchAll(/\banswer:\s*(\d+)/g)].map((match) => Number(match[1]));
+      })(),
     });
   }
 }
@@ -55,9 +60,13 @@ for (const lesson of lessonEntries) {
   const answerKey = quizEntries.find((entry) => entry.id === lesson.id);
   if (!answerKey) {
     errors.push(lesson.file + ' defines lesson ID ' + lesson.id + ' without a server-side answer key.');
-  } else if (!lesson.questionCount || lesson.questionCount !== answerKey.answerCount) {
-    errors.push(lesson.file + ' lesson ' + lesson.id + ' has ' + lesson.questionCount +
-      ' quiz questions but ' + answerKey.answerCount + ' server-side answers.');
+  } else if (
+    !lesson.questionAnswers.length ||
+    JSON.stringify(lesson.questionAnswers) !== JSON.stringify(answerKey.answerIndices)
+  ) {
+    errors.push(lesson.file + ' lesson ' + lesson.id +
+      ' has quiz answer indices that do not match the server-side answer key. Lesson: ' +
+      JSON.stringify(lesson.questionAnswers) + '; server: ' + JSON.stringify(answerKey.answerIndices));
   }
 }
 for (const id of moduleIds) {
