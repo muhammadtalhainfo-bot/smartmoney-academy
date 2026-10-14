@@ -394,6 +394,38 @@ for (const post of postChunks) {
   }
 }
 
+
+const focusedSeoRegressions = [
+  ['killzone time certainty', /The London Killzone is often the most deceptive period of the trading day/i],
+  ['New York session institutional-volume certainty', /The New York AM session is the most important trading window of the entire day/i],
+  ['deepest weekly liquidity claim', /creates the deepest liquidity of the week/i],
+  ['London reversal certainty', /the classic London session pattern:[\s\S]{0,500}day's true bearish move/i],
+  ['breaker institutional-exit motive', /the smart money used the return to the OB to exit, not to enter/i],
+  ['breaker retest superlative', /The cleanest Breaker Block entry occurs at the first retest/i],
+  ['breaker reward-to-risk promise', /Risk-to-reward ratios of 3:1 or better are common with Breaker Block entries/i],
+  ['breaker buy-stop certainty', /taking out all the buy-stop orders above/i],
+  ['breaker institutional-control conclusion', /confirms the bears are fully in control/i],
+  ['fixed EST session label', /Asian Session \(7 PM – 12 AM EST\)/i],
+  ['NYSE regular-session opening mislabeled as 10 AM', /10:00 AM EST — NYSE Open Macro — full NYSE liquidity comes online/i],
+];
+for (const [label, pattern] of focusedSeoRegressions) {
+  if (pattern.test(posts)) errors.push('Unsupported claim regression: ' + label + '.');
+}
+
+const requiredSeoContext = [
+  ['killzone title aligns with search wording', /title: 'ICT Killzone Times: Asian, London & New York Sessions'/],
+  ['killzone clock uses New York local time', /Asian Session \(7 PM – 12 AM New York time\)/],
+  ['macro timestamps are described as references to test', /Some ICT sources discuss specific macro timestamps, but labels and definitions can differ/i],
+  ['NYSE open is not mislabeled as 10 AM', /the regular NYSE core session opens at 9:30 AM ET/i],
+  ['IFVG title uses inverted wording', /title: 'Inverted Fair Value Gap \(IFVG\): ICT Rules and Retests'/],
+  ['inducement title targets forex query', /title: 'What Is Inducement in Forex\? ICT Concept and Examples'/],
+  ['breaker explanations avoid institutional-motive inference', /Candles do not show whether institutional buyers abandoned the area/i],
+  ['breaker retest entry is framed as a variant to test', /One entry variant some ICT traders test is a first retest/i],
+];
+for (const [label, pattern] of requiredSeoContext) {
+  if (!pattern.test(posts)) errors.push('Expected SEO/editorial context missing: ' + label + '.');
+}
+
 if (errors.length) {
   for (const error of errors) console.error('Blog editorial guard failed: ' + error);
   process.exit(1);
