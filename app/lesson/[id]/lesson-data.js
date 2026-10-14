@@ -377,7 +377,7 @@ ICT teaching commonly divides the day into four named Killzones and assigns poss
 ICT label sometimes used: accumulation. The range may be a useful reference, but it does not confirm participant positioning. ICT teaching sometimes frames this session as accumulation, but actual participant positioning cannot be confirmed from the chart alone. The high and low of the Asian session = critical levels. Price may revisit or sweep one of these levels during London or New York. Mark them every single day.
 
 London Killzone (2:00 AM – 5:00 AM EST):
-ICT label sometimes used: possible manipulation/Judas Swing; it is a hypothesis, and outcomes vary by market and day. Price may sweep one side of the Asian range before reversing, but the move, participant intent, and direction can vary by market and day. This is ICT's "don't trade the first 15 minutes of London" rule. The sweep of Asian high/low during this window = a liquidity grab signal.
+ICT label sometimes used: possible manipulation/Judas Swing; it is a hypothesis, and outcomes vary by market and day. Price may sweep one side of the Asian range before reversing, but the move, participant intent, and direction can vary by market and day. Some ICT traders avoid opening minutes or watch for a move beyond the Asian range. This is a model-specific filter, not a universal rule; define the time and sweep conditions and test the results.
 
 New York AM Killzone (7:00 AM – 10:00 AM EST) — or 8:30-11:00 AM:
 ICT label sometimes used: distribution. Directional expansion can occur, but the session's role is not fixed. Volatility and directional behavior can vary by market and day, and institutional positioning cannot be confirmed from the chart alone. The Silver Bullet trade runs entirely within this window (specifically 10:00-11:00 AM EST for the NY AM Silver Bullet).
@@ -418,7 +418,7 @@ Daily routine:
 4. Track whether price reversed, continued or remained in a range.
 5. Use the result as one observation, not a standalone NY AM directional bias.
 
-The Asian-range sweep-and-reversal setup is an example traders may study; reported profitability depends on the trader, market, execution, costs, and rules used.`,
+The Asian-range sweep-and-reversal setup is an example traders may study; reported profitability depends on the trader, market, execution, costs, and rules used. The initial sweep does not prove the next move will go in the opposite direction or establish a New York bias.`,
         highlight: '📌 Marking the Asian Range can provide session context. London may sweep one side, both sides, or neither; use the result as one input rather than a guaranteed NY bias.',
       },
     ],
@@ -503,9 +503,10 @@ Weekly AMD:
 • Thursday/Friday: later-week expansion may occur, but weekday alone does not establish direction
 
 Monthly AMD:
-• Week 1: Accumulation
-• Week 2: Manipulation
-• Weeks 3-4: Distribution
+• Some narratives treat the first week as range formation.
+• A later move against that range is sometimes labelled manipulation.
+• Later-week expansion is sometimes labelled distribution.
+These weekday labels are hypotheses to test, not fixed phases of every month.
 
 Weekly AMD is one narrative that traders can define and test. A sweep on a Tuesday does not determine the eventual weekly close; record both successful and failed scenarios and compare with a baseline.
 
