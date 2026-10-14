@@ -21,7 +21,7 @@ export const LESSONS_EXTRA = {
       {
         title: `The Top-Down Hierarchy  --  Monthly to Daily`,
         content: `Daily bias is never determined from the daily chart alone. It is the synthesis of three higher timeframes:\n\nMONTHLY CHART:\nThe macro context. Is price in a monthly uptrend (HH/HL) or downtrend (LH/LL)? Are we approaching a major monthly premium or discount zone? What is the monthly draw on liquidity  --  which major swing high or low has not been taken yet?\n\nWEEKLY CHART:\nThe intermediate context. Did last week close bullish or bearish? Is the weekly structure aligned with the monthly? Where is the weekly draw on liquidity? Has the weekly AMD cycle just started (Monday) or is it in distribution (Wednesday-Thursday)?\n\nDAILY CHART:\nThe specific bias. What is the daily structure? Did yesterday close bullish or bearish? Is there an open daily FVG or OB that price should return to? What is the daily draw on liquidity  --  the nearest unmitigated BSL or SSL?\n\nOnly when all three timeframes align does daily bias carry maximum probability. Monthly bullish + weekly bullish + daily bullish = highest conviction long bias.`,
-        highlight: `📌 The hierarchy: Monthly sets the macro direction. Weekly confirms the intermediate trend. Daily gives you the specific day's bias. All three must align for maximum conviction.`,
+        highlight: `📌 One possible top-down workflow uses monthly and weekly context to inform a daily plan. The timeframes do not have to align in every model; define the role of each and test whether alignment improves results.`,
       },
       {
         title: `Previous Day Reference Levels`,
@@ -66,7 +66,7 @@ export const LESSONS_EXTRA = {
       {
         title: `What Is the Draw on Liquidity?`,
         content: `Draw on Liquidity (DOL) is used by some ICT traders to nominate a possible price objective, often a prior high or low. These areas may coincide with orders, but a chart alone cannot confirm the exact orders present or the reason price might approach a level.\n\nThe DOL concept is built on a simple truth: price never moves randomly from one level to another. Price does not have a guaranteed destination; a marked level is only a possible objective to test. Once you can identify that destination, you know where to place your take-profit, how far to expect price to travel, and whether a developing move is likely to continue or reverse.\n\nThink of it like a chess game. Amateur players react to the last move. Masters see five moves ahead. ICT traders identify the DOL before the move starts  --  then enter at the pullback and ride price to the target.`,
-        highlight: `📌 The DOL is always a liquidity pool  --  BSL above a high, SSL below a low, or an institutional zone like a FVG. Price does not move to arbitrary levels  --  it moves from one pool to the next.`,
+        highlight: `📌 In ICT terminology, a DOL is a candidate price objective often marked around a prior high, low or other defined reference. Price may react elsewhere, so map alternatives and invalidation rather than assuming it will move from one pool to the next.`,
       },
       {
         title: `External Range Liquidity (ERL) vs Internal Range Liquidity (IRL)`,
@@ -76,7 +76,7 @@ export const LESSONS_EXTRA = {
       {
         title: `Identifying Your DOL Before the Session`,
         content: `Before every trading session, run this DOL identification process:\n\nSTEP 1  --  Mark all ERL above price:\n• Previous swing highs\n• Equal highs (EQH)\n• Previous day high, previous week high\n• Round numbers above current price\n\nSTEP 2  --  Mark all ERL below price:\n• Previous swing lows\n• Equal lows (EQL)\n• Previous day low, previous week low\n• Round numbers below current price\n\nSTEP 3  --  Mark all IRL:\n• Open FVGs on 4-hour and daily charts\n• Unmitigated Order Blocks within the current range\n• NWOG and NDOG gaps\n\nSTEP 4  --  Determine which DOL is most likely:\nGiven your daily bias, which liquidity pool is the algorithm most likely targeting today? In a bullish bias, the DOL is likely the nearest ERL above price (BSL at a swing high or equal highs). In a bearish bias, the DOL is the nearest ERL below price.\n\nSTEP 5  --  Treat this as a candidate target; compare it with invalidation, risk, and your tested exit rules before entering.`,
-        highlight: `📌 Your DOL is your TP target  --  identified BEFORE entry. Never enter a trade without knowing where it is going. The DOL tells you: this is where price is being delivered, and this is where I exit.`,
+        highlight: `📌 You may use a DOL as a preplanned target, but it is a hypothesis rather than a destination price must reach. Define alternative exits and invalidation before entry.`,
       },
       {
         title: `The DOL Sequence in Real Trades`,
@@ -86,7 +86,7 @@ export const LESSONS_EXTRA = {
       {
         title: `Common DOL Mistakes`,
         content: `A DOL plan can become unreliable when a trader treats a marked level as inevitable, moves a target after price changes, or labels every subsequent move as confirmation. Mark candidate levels before the session, identify alternative scenarios, and specify what would invalidate each one.\n\nCompare the nearest candidate level with more distant levels using consistent rules. Track frequency, maximum adverse excursion, time to target, and expectancy after costs; do not assume a closer level must be reached first.`,
-        highlight: `📌 Always ask: is this a LRLR (clean path to target) or HRLR (multiple obstacles)? LRLR setups reach their DOL reliably. HRLR setups frequently fail before reaching the target.`,
+        highlight: `📌 LRLR and HRLR are labels some ICT traders use for a perceived clear path or a path with obstacles. Do not assume a clean path will reach a target or that obstacles guarantee failure; define measurable criteria and backtest.`,
       },
     ],
     quiz: [
@@ -111,7 +111,7 @@ export const LESSONS_EXTRA = {
       {
         title: `What Is a Dealing Range?`,
         content: `A dealing range is a price interval defined by a trader, often between a swing high and low. Premium and discount are labels relative to the range midpoint; they do not mean that a price is objectively expensive or cheap, nor do they prove where institutions are buying or selling.\n\nSome ICT traders use these zones to organize directional scenarios. Define the swing points and midpoint consistently, then test whether a premium/discount filter adds value to your setup. Lower-timeframe and higher-timeframe ranges can disagree, so define which range controls your rule instead of treating one timeframe as universally dominant.`,
-        highlight: `📌 Only buy in discount (below 50% EQ). Only sell in premium (above 50% EQ). This single rule eliminates the majority of low-probability trades that most ICT beginners take.`,
+        highlight: `📌 Premium and discount can be context filters in an ICT model, but the 50% level is not a standalone buy or sell command. Compare results with and without this filter before claiming it improves trade selection.`,
       },
       {
         title: `The Full PD Array Matrix  --  Ranked by Strength`,
@@ -121,17 +121,17 @@ export const LESSONS_EXTRA = {
       {
         title: `Nested Dealing Ranges  --  Operating at Multiple Levels`,
         content: `Traders can mark ranges on monthly, weekly, daily and intraday charts, but there is no universal rule that a higher timeframe must override every lower-timeframe signal. A higher-timeframe range may be useful context while a lower-timeframe signal may be used for execution. Define the priority in your written model and test it.\n\nFor example, you might require the 1-hour range to set a directional filter and use a 5-minute pattern to trigger an entry. Record the cases where the filter helps and where it excludes otherwise profitable setups. Do not call a setup low probability without measured evidence.`,
-        highlight: `📌 Higher timeframe dealing ranges override lower timeframe signals. A 5-minute pattern inside an opposing 1-hour dealing range is low probability. Always check which dealing range you are operating within.`,
+        highlight: `📌 Higher-timeframe ranges may provide context but do not automatically override lower-timeframe signals. Specify how the timeframes interact in your model and test the combined rule.`,
       },
       {
         title: `Stacking PD Arrays for Confluence`,
         content: `Some traders prefer locations where multiple reference features overlap—for example, a dealing-range discount, a bullish FVG and a structure level. This can be logged as a confluence score, but more labels do not automatically mean higher probability. Define each feature without looking ahead, compare results with setups having fewer features, and account for how extra filters reduce the number of trades.`,
-        highlight: `📌 Stack PD Arrays for confluence: OB + FVG + BPR in discount zone = A+ setup. A single FVG with no other confluence = C setup. Only take A and A+ trades. Wait for confluence.`,
+        highlight: `📌 OB, FVG and BPR overlap is one possible confluence rule. Grades such as A+ or C are subjective unless defined in advance; test whether each added condition improves results instead of assuming a universal ranking.`,
       },
       {
         title: `How to Draw PD Arrays Correctly`,
         content: `DRAWING ORDER BLOCKS:\nMark the body of the last bearish candle before a bullish displacement (for bullish OB). The OB zone spans from the candle's body high to body low. Some practitioners use wick-to-wick  --  ICT traditionally uses body only for the core zone.\n\nDRAWING FVGs:\nMark the high of candle 1 and the low of candle 3 for a bullish FVG. The midpoint is the Consequent Encroachment (CE)  --  your primary entry level within the gap.\n\nDRAWING BREAKER BLOCKS:\nWhen an OB is violated (price completely trades through it), flip its polarity. Mark it as a Breaker Block  --  it becomes resistance for a bullish OB that was broken, or support for a bearish OB that was broken.\n\nDRAWING BPR:\nIdentify a bullish FVG and a bearish FVG in the same area. The overlapping zone between them is the BPR.\n\nKEY RULE  --  REMOVE MITIGATED ARRAYS:\nOnce price has returned to an array and traded through its entire range, that array is consumed. Remove it from your chart. Leaving consumed arrays creates false signals and chart clutter. Only active, unmitigated arrays belong on your working chart.`,
-        highlight: `📌 Remove mitigated PD Arrays from your chart immediately. A consumed OB or FVG is no longer valid. Leaving old arrays creates false signals. Only keep active, unmitigated zones.`,
+        highlight: `📌 Some ICT models treat a revisited or crossed zone as mitigated. Define mitigation precisely and apply that rule consistently; a zone's usefulness cannot be established by its label alone.`,
       },
     ],
     quiz: [
@@ -211,7 +211,7 @@ export const LESSONS_EXTRA = {
       {
         title: `Why Time Matters in ICT`,
         content: `Markets are not equally active throughout the 24-hour trading day. Liquidity  --  the volume of institutional orders hitting the market  --  ebbs and flows dramatically based on which institutional centers are active.\n\nA session may coincide with tighter spreads or more activity for some instruments, but this does not mean setups necessarily work cleanly during that window. When European traders are at lunch and New York has not fully engaged, price chops  --  market activity may be quieter, but a chart does not reveal an algorithm's mandate or intent.\n\nTest differences between 10 AM and 3 PM New York time using a representative sample that includes costs, slippage, losses and no-trade sessions. It is not the setup that changed  --  it is the institutional participation that changed.\n\nTrading during institutional hours is not a filter that improves your results marginally. It is the primary environmental factor that determines whether your setups work at all. Professional ICT traders do not fight this  --  they adapt their entire schedule around it.`,
-        highlight: `📌 The same setup can produce very different results at different times. Institutional participation  --  not the pattern itself  --  determines whether a setup delivers. Trade during institutional hours only.`,
+        highlight: `📌 The same setup can produce different results across session windows. Price timing alone does not reveal who participated or guarantee an edge; test named windows against an appropriate baseline before restricting trading to them.`,
       },
       {
         title: `Asian Session (7 PM - 12 AM New York time)  --  Range Building`,
@@ -261,12 +261,12 @@ export const LESSONS_EXTRA = {
       {
         title: `Building the Monthly → Weekly Layer`,
         content: `MONTHLY LAYER:\n\nQuestion 1: What is the monthly structure?\nAre monthly candles making Higher Highs / Higher Lows (bullish) or Lower Highs / Lower Lows (bearish)?\n\nQuestion 2: Where is the monthly draw on liquidity?\nWhat is the nearest unswept monthly swing high (BSL) or swing low (SSL)? This is the macro target for the next several months.\n\nQuestion 3: Is price in monthly premium or discount?\nDraw the Fibonacci from the last monthly swing. Is current price above or below the 50% EQ? Premium = sell zone, discount = buy zone.\n\nWEEKLY LAYER:\n\nQuestion 1: Does weekly structure confirm the monthly bias?\nIf monthly is bullish, is weekly also making HH/HL? Confirmation = higher probability. Conflict = stay out.\n\nQuestion 2: Where is the weekly draw on liquidity?\nWhat is the nearest weekly swing high (BSL) or swing low (SSL)? This is the target for the current week.\n\nQuestion 3: What is the weekly AMD phase?\nMonday = accumulation. Tuesday/Wednesday = manipulation or early distribution. Thursday/Friday = primary distribution or reversal. What phase does today fall into?\n\nThese two layers define the macro context that makes or breaks every trade below them.`,
-        highlight: `📌 Monthly and weekly layers define the macro context. If they conflict, do not trade. If they confirm, every lower timeframe trade in that direction carries institutional support.`,
+        highlight: `📌 Monthly and weekly context can conflict. Record the scenarios and decide in advance how conflict affects your model; alignment does not prove institutional support or make every lower-timeframe setup valid.`,
       },
       {
         title: `Building the Daily Layer`,
         content: `The daily layer is where the specific trading bias for the current day is confirmed or denied:\n\nDAILY STRUCTURE:\nIs the daily chart making HH/HL (bullish) or LH/LL (bearish)? Does this match the weekly and monthly direction?\n\nDAILY DRAW ON LIQUIDITY:\nWhat is the nearest unmitigated daily level? Previous day high (PDH) or previous day low (PDL)? An open daily FVG? A daily OB that has not been returned to? This is today's primary target.\n\nDAILY AMD PHASE:\nWhich phase of the daily AMD cycle are we in?\n• Price near midnight open with minimal movement = Accumulation\n• Price made a false move in one direction = Manipulation (look for the reversal)\n• Price has committed directionally after the false move = Distribution\n\nDAILY PD ARRAY STATUS:\nAre there any open FVGs or OBs on the daily timeframe that price is near? These are high-priority reaction zones that often define the session's key turning point.\n\nAfter completing the daily layer, you should have a specific price zone to watch for the day's primary trade  --  either a buy zone (FVG/OB in discount) or a sell zone (FVG/OB in premium).`,
-        highlight: `📌 The daily layer gives you one specific trade zone for the day  --  a PD Array in premium or discount that aligns with all higher timeframe analysis. This is where you focus. Nothing else matters.`,
+        highlight: `📌 A daily plan may focus on a candidate PD Array within a defined range, but it remains one scenario. Keep alternative levels and invalidation visible rather than assuming one zone is all that matters.`,
       },
       {
         title: `Building the Session-Level Narrative`,
@@ -291,7 +291,7 @@ export const LESSONS_EXTRA = {
       {
         title: `Full Narrative Walkthrough Example`,
         content: `Here is a complete narrative example on XAUUSD (Gold):\n\nMONTHLY: Bullish structure (HH/HL sequence intact). Monthly draw on liquidity is at 2,450 (previous monthly high). Price currently at 2,310  --  in monthly discount below the 2,380 equilibrium.\n\nWEEKLY: Bullish structure confirming monthly. Weekly draw is previous week's high at 2,340. Price is in weekly discount.\n\nDAILY: Bullish structure. Open bullish FVG on daily at 2,298-2,305 from Tuesday's displacement. PDL is at 2,291  --  SSL that has not been swept.\n\nSESSION NARRATIVE: London will likely sweep below PDL (2,291) to collect SSL. This is the Judas Swing. After sweep, price reverses bullish. NY AM Silver Bullet window sees price return to the daily FVG (2,298-2,305). Entry at FVG CE (2,301.50). Stop below PDL sweep at 2,288. Target: weekly draw at 2,340. R:R = 3.8:1.\n\nINVALIDATION: If price gaps above the FVG on open and closes above 2,308 without reversal, setup is invalidated. Do not chase.\n\nThis is a complete institutional narrative. Written before London opens. Executed during NY AM. Based on alignment from monthly to entry. This is professional ICT trading.`,
-        highlight: `📌 Every narrative includes: monthly direction, weekly direction, daily bias, session sequence, entry level and reason, stop level, target level, and invalidation. All seven elements. No exceptions.`,
+        highlight: `📌 A narrative can record higher-timeframe context, session scenario, entry rationale, stop, target and invalidation. Adapt the checklist to your strategy rather than treating one fixed list as mandatory for every model.`,
       },
     ],
     quiz: [
@@ -321,7 +321,7 @@ export const LESSONS_EXTRA = {
       {
         title: `Q1: The January Effect and Accumulation Logic`,
         content: `Some market commentary discusses a January Effect or seasonal tendencies early in the year, while ICT Quarterly Theory may interpret Q1 through an accumulation label. Neither label reliably determines a year's direction. If you use the quarter as context, compare instrument-specific returns, range, drawdown and direction over multiple years and specify what would falsify the hypothesis.`,
-        highlight: `📌 January establishes the year's direction. Strong bullish January = bullish Q1 bias for all trades. Fade the Q2 manipulation against Q1's direction. Resume Q1 direction in Q3.`,
+        highlight: `📌 Some traders study quarterly patterns such as January context and possible later reversals. These are hypotheses, not calendar rules; test defined conditions across instruments and periods before using them.`,
       },
       {
         title: `Q2: Spring Manipulation  --  The Most Dangerous Quarter`,
@@ -336,7 +336,7 @@ export const LESSONS_EXTRA = {
       {
         title: `Integrating Quarterly Theory into Your Analysis`,
         content: `Adding Quarterly Theory to your ICT analysis creates a five-layer framework:\n\n1. QUARTERLY LAYER (macro bias):\nWhich quarter are we in? What is the expected institutional behavior for this quarter? Does this quarter confirm or conflict with the annual trend?\n\n2. MONTHLY LAYER:\nMonthly structure and draw on liquidity (as previously discussed)\n\n3. WEEKLY LAYER:\nWeekly structure and draw on liquidity\n\n4. DAILY LAYER:\nDaily bias and specific trade zone\n\n5. SESSION LAYER:\nEntry execution during killzone\n\nA plan may score alignment across quarterly, monthly, weekly and daily charts as confluence. Alignment is not evidence of institutional positions or, by itself, proof of better results; test whether it improves outcomes relative to a simpler baseline. These trades, when the entry setup also forms correctly, are among the most powerful in the entire ICT framework.\n\nPRACTICAL IMPLEMENTATION:\nAt the start of each quarter, take 30 minutes to assess: What quarter are we entering? What was Q1's direction (if applicable)? Does current price action confirm the quarterly bias? How does this affect my monthly and weekly analysis? Update your macro bias document and refer to it before every trading week.`,
-        highlight: `📌 Five-layer framework: Quarterly → Monthly → Weekly → Daily → Session. When all five align, position sizing should be maximum. When quarterly and monthly conflict with weekly and daily, reduce size significantly.`,
+        highlight: `📌 The quarterly-to-session hierarchy is one way to organize context. Multiple aligned timeframes do not automatically justify maximum size; risk should reflect tested expectancy, volatility and drawdown limits.`,
       },
     ],
     quiz: [
@@ -456,7 +456,7 @@ export const LESSONS_EXTRA = {
       {
         title: `Identifying Turtle Soup Setup Conditions`,
         content: `Some traders test whether a Turtle Soup definition works better when the reference high or low is visible on a higher timeframe, when a close-back condition occurs, or when a lower-timeframe structure break follows. These are candidate filters, not proven requirements or a universal ranking. Set rules before reviewing results and include examples where an apparently obvious level breaks and continues.`,
-        highlight: `📌 Best Turtle Soup conditions: obvious EQH/EQL level + HTF alignment + killzone timing + immediate displacement reversal after sweep. All four = A+ setup. Missing any reduces probability.`,
+        highlight: `📌 A potential Turtle Soup setup might combine a marked high or low, contextual alignment, a defined session window and a reversal trigger. Define each condition and test whether it adds value instead of assigning preset A+ grades.`,
       },
       {
         title: `Entry Logic After the Sweep`,
@@ -551,7 +551,7 @@ export const LESSONS_EXTRA = {
       {
         title: `Why BPR Creates Extreme Reactions`,
         content: `A Balanced Price Range (BPR) is commonly described in ICT material as the overlap between bullish and bearish Fair Value Gap zones. Some traders monitor the overlap as a possible reaction area, but an overlap does not prove that institutional orders are concentrated there or that price will react sharply. Define the candle rules, boundaries and reaction condition, then evaluate outcomes including complete violations and no reaction.`,
-        highlight: `📌 BPR reactions are sharper because two sets of institutional orders converge at the same zone. The opposing institutional pressure has been consumed, leaving only orders aligned with the current direction.`,
+        highlight: `📌 Some ICT explanations define a BPR as an overlap of bullish and bearish fair value gaps. The overlap does not identify institutional orders or guarantee a sharper reaction; define the zone rule and test it.`,
       },
       {
         title: `Identifying BPR on Any Timeframe`,
@@ -566,7 +566,7 @@ export const LESSONS_EXTRA = {
       {
         title: `Partial BPR Fills and Continuation`,
         content: `A price move may enter part of a BPR and then reverse, continue through the entire zone, or remain inside it. The midpoint (sometimes called consequent encroachment) is one reference price some traders watch; it does not inherently provide the best reward-to-risk ratio or reveal where orders are concentrated. Define partial versus full fill and compare midpoint entries with alternative rules, including slippage and missed fills.`,
-        highlight: `📌 Target the BPR midpoint (CE) for the highest R:R entry. A full fill to the far edge is a secondary entry. If price closes beyond the far edge  --  BPR is mitigated, remove it, reassess your narrative.`,
+        highlight: `📌 The BPR midpoint can be tested as an entry reference, but it is not automatically the highest-R:R or best fill. Compare midpoint and edge entries using the same stop, target and market sample; define mitigation before testing.`,
       },
     ],
     quiz: [
@@ -601,12 +601,12 @@ export const LESSONS_EXTRA = {
       {
         title: `Take Profit at Liquidity Targets`,
         content: `Take profit placement in ICT is always at an identified Draw on Liquidity  --  a specific liquidity pool, not an arbitrary level:\n\nTP1  --  INTERNAL RANGE LIQUIDITY (IRL):\nThe first TP is at the nearest significant IRL target  --  an open FVG above price (for longs), an unmitigated OB above, or a recent swing high that represents BSL. This should typically be 2:1 or better R:R from your entry.\n\nTP2  --  EXTERNAL RANGE LIQUIDITY (ERL):\nThe second TP (for partial positions) is at the session's primary draw on liquidity  --  PDH, PDL, weekly high/low, or a significant swing that has not been swept. This is typically 3:1 to 5:1 R:R.\n\nTP3  --  MACRO DRAW:\nIf the trade is a larger swing with weekly/monthly context, the third TP is at a macro draw on liquidity  --  a monthly high/low, a major round number, or a quarterly target.\n\nNEVER PLACE TP AT RANDOM PRICE:\nThe most common amateur mistake  --  placing TP at "50 pips" or "2:1 R:R" without identifying whether that specific level has liquidity significance. If your TP is not at an actual liquidity pool (BSL or SSL), price may stop just before it and reverse.\n\nMARK YOUR TP BEFORE ENTRY:\nIdentify your TP level during pre-session analysis  --  before the trade forms. You should know where you are exiting before you know where you are entering.`,
-        highlight: `📌 TP is always at a Draw on Liquidity  --  identified BEFORE entry. TP1 = nearest IRL. TP2 = session ERL. TP3 = macro draw. Never at an arbitrary price or "feels right" level.`,
+        highlight: `📌 Some ICT plans use a candidate DOL as one possible target. Define target-selection and invalidation rules before entry; a marked liquidity level is not a required destination, and a fixed three-target sequence is only one model.`,
       },
       {
         title: `Partial Profits  --  When and How Much`,
         content: `Partial profit taking is a risk management and psychological tool. Used correctly, it removes stress from winning trades and lets profits run to maximum targets:\n\nWHEN TO TAKE PARTIALS:\n• When price reaches the first identified liquidity target (TP1)\n• When price reaches a significant HTF PD Array that might create a temporary reaction\n• When holding the full position becomes emotionally difficult  --  taking a partial reduces stress without fully closing\n\nHOW MUCH TO TAKE:\n• TP1  --  Take 25-50% of position at first target\n• Move stop to breakeven after TP1 is hit  --  the remaining position is now risk-free\n• TP2  --  Take another 25-50% of the remaining position at the second target\n• Let the final 25-50% run to the macro draw or a trailing stop exit\n\nTHE PSYCHOLOGY OF PARTIALS:\nPartial profits serve a critical psychological function  --  they prove the trade is working before the final target is reached. This reduces the emotional impulse to close the entire position prematurely when price has a brief adverse retracement on the way to the target.\n\nTHE DANGER OF PARTIALS:\nTaking partials too early (before any target is reached) simply because you are nervous is NOT partial profit taking  --  it is fear-based early exit. Wait for a defined target before taking any profits.`,
-        highlight: `📌 Take 25-50% at TP1 → move stop to breakeven → hold remaining position to TP2 and beyond. Partials reduce stress and let winners run. Never take partials before reaching a defined liquidity target.`,
+        highlight: `📌 Partial exits, breakeven moves and holding for another target are alternative management rules. Compare their effects on expectancy and drawdown before adopting a fixed percentage or sequence.`,
       },
       {
         title: `Break Even Logic and Trail Stops`,
@@ -616,7 +616,7 @@ export const LESSONS_EXTRA = {
       {
         title: `Position Sizing and Risk Per Trade`,
         content: `MAXIMUM RISK PER TRADE:\n• Standard ICT position sizing: 1% of account per trade\n• For beginners learning the methodology: 0.5% per trade\n• For experienced traders with proven edge: up to 1.5% on A+ setups only\n• Never risk more than 2% on any single trade regardless of conviction\n\nCALCULATING POSITION SIZE:\n1. Determine account balance: $50,000\n2. Determine risk amount: 1% = $500\n3. Determine entry price: 1.0825\n4. Determine stop price: 1.0800 (25 pips stop)\n5. Position size = Risk Amount / (Stop Distance × Pip Value)\n6. Example: $500 / (25 pips × $10/pip per standard lot) = 2 standard lots\n\nSCALING BY SETUP QUALITY:\n• A+ setup (maximum confluence): 1% risk\n• A setup (strong confluence): 0.75% risk\n• B setup (moderate confluence): 0.5% risk\n• C setup: 0  --  do not trade\n\nDAILY AND WEEKLY LOSS LIMITS:\n• Maximum daily loss: 2-3% of account\n• If daily limit is hit → stop trading for the day\n• Maximum weekly loss: 5% of account\n• If weekly limit is hit → stop trading for the week\n\nThis discipline around loss limits is not optional  --  it is the mechanism that prevents one bad day from destroying a month of gains.`,
-        highlight: `📌 Risk 1% maximum per trade. Scale by setup quality: A+ = 1%, A = 0.75%, B = 0.5%, C = no trade. Daily loss limit: 2-3%. Weekly loss limit: 5%. When limits are hit  --  stop. No exceptions.`,
+        highlight: `📌 Example risk framework, not a universal prescription: set a per-trade cap and daily or weekly stop based on your tested strategy, account limits and ability to tolerate drawdown. A subjective setup grade alone does not justify increasing risk.`,
       },
       {
         title: `The Psychology of Execution`,
@@ -702,12 +702,12 @@ export const LESSONS_EXTRA = {
       {
         title: `The 1% Rule (And When to Break It)`,
         content: `The 1% rule states that you should never risk more than 1% of your total account balance on any single trade.\n\nCALCULATING POSITION SIZE:\nAccount Balance: $10,000\nRisk Per Trade: 1% = $100\nStop Loss Distance: 20 pips\nPip Value: $10 per pip (standard lot)\nPosition Size: $100 / (20 pips x $1 per pip) = 0.5 mini lots\n\nWHEN TO USE 0.5%:\n- During your first 3 months of live trading\n- When trading a new strategy\n- During high-volatility periods (NFP week, FOMC)\n- When your win rate is below 40%\n\nWHEN TO USE 2%:\n- After 6 months of consistent profitability\n- When your win rate is above 50%\n- During your best-performing sessions (e.g., NY AM)\n\nNEVER EXCEED 2%:\nEven professional ICT traders with 5+ years of experience rarely risk more than 2% per trade.`,
-        highlight: `📌 Start with 0.5% risk per trade for your first month. Only increase to 1% after 30 profitable trades. Never exceed 2% regardless of your confidence level.`,
+        highlight: `📌 Start with a small risk allocation that you can afford to lose and verify in simulation. Do not increase risk after an arbitrary streak of profitable trades; use a representative sample and written risk limits.`,
       },
       {
         title: `Risk-to-Reward Ratio (R:R)`,
         content: `The risk-to-reward ratio measures how much you stand to gain relative to how much you risk. ICT traders should aim for a minimum of 1:3.\n\nUNDERSTANDING R:R:\n1:1 R:R -- You risk $100 to make $100. Need 50% win rate to break even.\n1:2 R:R -- You risk $100 to make $200. Need 33% win rate to break even.\n1:3 R:R -- You risk $100 to make $300. Need 25% win rate to break even. The ICT standard.\n1:5 R:R -- You risk $100 to make $500. Need 17% win rate to break even.\n\nHOW ICT NATURALLY CREATES HIGH R:R:\nICT concepts are designed for high risk-to-reward trades:\n- Order Blocks provide precise entries with tight stops\n- Fair Value Gaps show exactly where price is inefficient\n- Liquidity sweeps create low-risk entry points\n- Dealing ranges show where price is likely to deliver\n\nEXAMPLE ICT SETUP:\nEntry: Bullish Order Block in discount\nStop Loss: Below the OB (15 pips)\nTake Profit: Previous Day High (60 pips)\nR:R Ratio: 1:4\n\nWith a 1:4 R:R, you can lose 3 trades and win 1 trade and still be profitable.`,
-        highlight: `📌 Never take a trade with less than 1:3 risk-to-reward. If the setup does not offer at least 3R, wait for a better setup.`,
+        highlight: `📌 No single risk-to-reward ratio suits every setup. Evaluate win rate, costs, average win and loss, and drawdown for the full strategy instead of rejecting all trades below 3R.`,
       },
       {
         title: `Stop Loss Placement for ICT Traders`,
@@ -743,17 +743,17 @@ export const LESSONS_EXTRA = {
       {
         title: `The Kelly Criterion for ICT Traders`,
         content: `The Kelly Criterion is a mathematical formula used to determine the optimal size of a series of bets. Professional traders use a fractional version for safety.\n\nTHE FORMULA:\nf = (bp - q) / b\nWhere: f = fraction of bankroll to risk, b = average win amount (R multiple), p = probability of winning (win rate), q = probability of losing (1 - p)\n\nEXAMPLE CALCULATION:\nWin Rate: 45% (p = 0.45), Average Win: 3R (b = 3)\nf = (3 x 0.45 - 0.55) / 3 = 0.80 / 3 = 0.267 or 26.7%\n\nTHE FRACTIONAL KELLY:\nNever risk the full Kelly percentage. Professional ICT traders use:\n- Quarter Kelly: 26.7% / 4 = 6.7% (too high for forex)\n- Eighth Kelly: 26.7% / 8 = 3.3% (acceptable for high-confidence setups)\n- Sixteenth Kelly: 26.7% / 16 = 1.7% (standard for most ICT setups)\n\nWHEN TO USE KELLY:\n- After 100+ tracked trades with stable win rate and R:R\n- Never use Kelly until you have at least 3 months of data\n- Never risk more than 2% regardless of what the formula suggests`,
-        highlight: `📌 The Kelly Criterion is powerful but dangerous. Always use fractional Kelly (1/8 or 1/16) and never risk more than 2% per trade regardless of what the formula suggests.`,
+        highlight: `📌 Kelly sizing depends on reliable estimates of edge and payoff, which are easy to misestimate. Fractional Kelly reduces exposure versus full Kelly but is not a guarantee of sustainability; simpler fixed-risk limits may be more appropriate for many traders.`,
       },
       {
         title: `Correlation Risk: The Hidden Account Killer`,
         content: `Correlation risk is when you take multiple trades that move in the same direction, effectively increasing your risk without realizing it.\n\nHIGH CORRELATION PAIRS:\nEURUSD & GBPUSD: 85-90% correlated\nEURUSD & AUDUSD: 70-75% correlated\nNAS100 & US30: 80-85% correlated\nXAUUSD & EURUSD: 60-70% correlated (inverse USD)\n\nTHE CORRELATION TRAP:\nYou risk 1% on EURUSD long + 1% on GBPUSD long.\nYou think your total risk is 2%.\nREALITY: Because these pairs are 85% correlated, your actual risk is closer to 1.85%. Both will likely stop out together.\n\nCORRELATION RULES:\nRule 1: Never trade more than 2 correlated pairs simultaneously\nRule 2: If trading correlated pairs, reduce risk to 0.5% each\nRule 3: Diversify with uncorrelated pairs (e.g., EURUSD + USDJPY + XAUUSD)\n\nSAFE PAIR COMBINATIONS:\n- EURUSD + USDJPY + XAUUSD\n- GBPUSD + AUDUSD + NAS100\n\nAVOID:\n- EURUSD + GBPUSD + AUDUSD (all correlated)\n- NAS100 + US30 + SPX500 (all indices)`,
-        highlight: `📌 Trading 3 correlated pairs at 1% each is NOT 3% risk -- it is effectively 2.5-2.8% risk because they move together. Always diversify with uncorrelated markets.`,
+        highlight: `📌 Correlated positions can concentrate risk because losses may occur together. Estimate portfolio-level exposure from the instruments and position sizes; do not assume a fixed risk multiplier or that markets are uncorrelated.`,
       },
       {
         title: `Drawdown Recovery Strategies`,
         content: `Drawdown is the peak-to-trough decline in your account. Every trader experiences drawdown. How you handle it determines your longevity.\n\nPHASE 1: NORMAL DRAWDOWN (0-5%)\nAction: Continue normal trading, review recent trades\nRisk: Reduce to 0.75% per trade until recovery\n\nPHASE 2: MODERATE DRAWDOWN (5-10%)\nAction: Reduce risk to 0.5%, trade only A+ setups\nBreak: Take 2-3 days off to reset mentally\n\nPHASE 3: SEVERE DRAWDOWN (10-20%)\nAction: STOP trading immediately\nReset: Paper trade for 2 weeks before returning to live\nRisk: Return at 0.25% until account recovers to -5%\n\nTHE RECOVERY FORMULA:\nTo recover from a 20% drawdown, you need a 25% gain.\nTo recover from a 50% drawdown, you need a 100% gain.\n\nThis is why protecting your account is exponentially more important than making profits.`,
-        highlight: `📌 A 50% drawdown requires a 100% gain to recover. A 20% drawdown requires only 25%. The math is brutal -- never let drawdown exceed 10%.`,
+        highlight: `📌 Recovery math is asymmetric: larger drawdowns require disproportionately larger gains to recover. Choose a drawdown limit based on strategy volatility and risk capacity; 10% can be a personal policy, not a universal threshold.`,
       },
       {
         title: `Position Sizing for Different Account Sizes`,
@@ -804,7 +804,7 @@ export const LESSONS_EXTRA = {
       {
         title: `Index-Specific Risk Management`,
         content: `Indices require stricter risk management than forex due to larger moves and gap risk.\n\nPOSITION SIZING:\nFormula: Risk $ / (Stop distance in points x Point value)\n\nNAS100 Example:\n- Account: $20,000, Risk: 1% = $200\n- Stop: 100 points, Point value: $1 per point (micro contract)\n- Position size: $200 / (100 x $1) = 2 micro contracts\n\nUS30 Example:\n- Account: $20,000, Risk: 1% = $200\n- Stop: 80 points, Point value: $0.50 per point (micro)\n- Position size: $200 / (80 x $0.50) = 5 micro contracts\n\nGAP RISK MANAGEMENT:\n1. Never hold positions overnight unless you accept gap risk\n2. Reduce position size by 50% before earnings season\n3. Close all positions before 3-day weekends\n\nVOLATILITY ADJUSTMENT:\nDuring high volatility (earnings, Fed days):\n- Reduce risk to 0.5% per trade, widen stops by 50%\n\nDuring low volatility (holiday weeks):\n- Reduce risk to 0.5%, consider not trading at all`,
-        highlight: `📌 Indices need 50% smaller position sizes than forex due to larger moves. Never risk more than 1% per index trade.`,
+        highlight: `📌 Size index positions from contract specifications, stop distance, volatility and total account risk. No universal percentage reduction versus forex applies across brokers and instruments.`,
       },
     ],
     quiz: [
@@ -876,7 +876,7 @@ export const LESSONS_EXTRA = {
       {
         title: `Crypto-Specific Risk Management`,
         content: `Crypto risk management is MORE important than forex due to extreme volatility.\n\nLEVERAGE RULES:\n- NEVER use more than 5x leverage for ICT trading\n- 3x leverage is recommended for beginners\n- 10x+ leverage is gambling, not trading\n- Remember: 10x leverage + 10% move = 100% gain OR 100% loss\n\nSTOP LOSS RULES:\n- Bitcoin: 3-5% stop minimum\n- Ethereum: 4-6% stop minimum\n- Altcoins: 8-12% stop minimum (more volatile)\n- Never use fixed pip stops -- use percentage stops\n\nEXCHANGE RISK:\n- Use reputable exchanges (Binance, Coinbase, Kraken)\n- Never keep more than 50% of capital on an exchange\n- Use hardware wallets for long-term holds\n- Enable 2FA on all accounts\n- Diversify across 2-3 exchanges\n\nThe Golden Rule for Crypto: If a 20% move against you would cause emotional distress, your position size is too large. Size down until you are comfortable with the worst-case scenario.`,
-        highlight: `📌 Max 5x leverage. Bitcoin stops: 3-5%. Ethereum: 4-6%. Altcoins: 8-12%. Never keep 100% on one exchange.`,
+        highlight: `📌 Crypto volatility and liquidity vary by asset and venue. Use position sizing and invalidation rules suited to the specific market; fixed stop-width bands or a blanket leverage cap are not universally suitable. Consider counterparty and custody risk when choosing where to hold assets.`,
       },
       {
         title: `The Bitcoin Halving Cycle Strategy`,
@@ -908,7 +908,7 @@ export const LESSONS_EXTRA = {
       {
         title: `The #1 Rule: Protect Your Capital`,
         content: `The single most important rule in trading is this: never risk more than you can afford to lose on a single trade. Professional traders treat their trading account like a business -- they protect the capital at all costs.\n\nHere is why most traders fail:\n\n1. They risk 5-10% per trade, thinking they need to go big to make money\n2. They have no stop loss, hoping the market will come back\n3. They revenge trade after losses, doubling position sizes\n4. They trade without a plan, making emotional decisions\n\nThe mathematics of drawdown are brutal:\n\n- Risk 10% per trade = 10 consecutive losses = account destroyed\n- Risk 5% per trade = 10 consecutive losses = 60% drawdown (need 150% gain to recover)\n- Risk 2% per trade = 10 consecutive losses = 18% drawdown (need 22% gain to recover)\n- Risk 1% per trade = 10 consecutive losses = 9.5% drawdown (need 10.5% gain to recover)\n\nThe difference between 2% and 5% risk is the difference between a recoverable setback and account destruction.`,
-        highlight: `📌 Risk 1-2% per trade maximum. This single rule separates professionals from gamblers.`,
+        highlight: `📌 Per-trade risk limits vary by strategy and account constraints. A percentage alone does not make a trader professional; consistent execution, transparent performance data and bounded drawdown matter.`,
       },
       {
         title: `Position Sizing: The Formula`,
@@ -918,7 +918,7 @@ export const LESSONS_EXTRA = {
       {
         title: `The Risk-Reward Ratio (R:R)`,
         content: `The risk-reward ratio measures how much you stand to gain versus how much you risk.\n\nMinimum Acceptable R:R: ICT traders should aim for a minimum 1:3 risk-reward ratio. This means risking $100 to make $300.\n\nWhy 1:3?\n\nWith a 1:3 R:R, you can be wrong 70% of the time and still be profitable:\n- 30% win rate x $300 profit = $9,000\n- 70% loss rate x $100 loss = $7,000\n- Net profit: $2,000 on 100 trades\n\nCompare to a 1:1 R:R with 50% win rate:\n- 50% win rate x $100 profit = $5,000\n- 50% loss rate x $100 loss = $5,000\n- Net profit: $0 (you break even after commissions)\n\nNever take a trade with less than 1:2 R:R unless it is a high-probability setup with multiple confluences.`,
-        highlight: `📌 Minimum 1:3 R:R for standard setups. Only accept 1:2 for A+ confluence setups.`,
+        highlight: `📌 Choose an acceptable risk-to-reward profile from tested win rate, execution costs, average win and loss, and drawdown. Do not assign a ratio solely from a subjective A+ label.`,
       },
       {
         title: `Setting Stop Losses Like a Pro`,
@@ -928,7 +928,7 @@ export const LESSONS_EXTRA = {
       {
         title: `Daily, Weekly & Monthly Loss Limits`,
         content: `Professional traders have circuit breakers -- automatic rules that stop them from trading when things go wrong.\n\nRecommended Loss Limits:\n- Daily Loss Limit: 3% of account\n- Weekly Loss Limit: 5% of account\n- Monthly Loss Limit: 10% of account\n\nWhen you hit your daily limit:\n1. Stop trading immediately\n2. Close all positions\n3. Step away from the charts\n4. Review your trades in your journal\n5. Do not trade again until tomorrow\n\nThe 3-Trade Rule: If you lose 3 trades in a row, stop trading for the day. Three consecutive losses usually means your read on the market is wrong today, market conditions have changed, or you are trading emotionally rather than technically. Step away. Come back tomorrow with fresh eyes.`,
-        highlight: `📌 3% daily loss limit. 3 consecutive losses = stop for the day. Protect your capital above all else.`,
+        highlight: `📌 A daily stop or pause after consecutive losses can help limit uncontrolled trading, but its threshold should fit your strategy and account rather than be treated as universal.`,
       },
     ],
     quiz: [
@@ -954,7 +954,7 @@ export const LESSONS_EXTRA = {
       {
         title: `Portfolio Heat: Total Account Exposure`,
         content: `Portfolio heat is the total percentage of your account at risk across ALL open positions at any moment.\n\nThe Rule: Never exceed 6% portfolio heat. This means if you have 3 positions open each risking 2%, your total heat is 6% -- the maximum.\n\nWhy 6%?\n- 6% heat = 5 consecutive losing days of max heat = 30% drawdown (recoverable)\n- 10% heat = 5 consecutive losing days = 50% drawdown (very difficult to recover)\n- 15% heat = 5 consecutive losing days = 75% drawdown (account essentially destroyed)\n\nPortfolio Heat Calculation:\nPosition 1: 2% risk\nPosition 2: 1.5% risk\nPosition 3: 2% risk\nTotal Heat: 5.5% (Under 6% limit)\n\nIf you want to add Position 4, you must reduce risk on existing positions or wait for one to close.`,
-        highlight: `📌 Maximum 6% portfolio heat across all open positions. Never exceed this limit.`,
+        highlight: `📌 Track aggregate open-position risk, correlations and gap risk. Set an exposure ceiling that fits your account and strategy; a fixed 6% figure is not suitable for everyone.`,
       },
       {
         title: `Correlated Pairs: Hidden Risk`,
@@ -964,17 +964,17 @@ export const LESSONS_EXTRA = {
       {
         title: `Scaling In and Out of Positions`,
         content: `Scaling is the art of adding to winning positions or reducing losing ones -- done correctly, it amplifies profits while protecting capital.\n\nScaling INTO Winners (Pyramiding):\n1. Enter initial position at 1% risk\n2. Move stop to breakeven when price reaches 1:1 R:R\n3. Add second position at 0.5% risk when new setup forms in profit direction\n4. Trail stops on all positions to lock in profits\n\nRules for Scaling In:\n- Only add to winners, never losers\n- Each new position must have its own stop loss\n- Total heat must stay under 6%\n- Move stops to breakeven before adding\n\nScaling OUT of Positions (Partial Closes):\n1. Close 50% at 1:2 R:R (covers risk, guarantees profit)\n2. Move stop to breakeven on remaining 50%\n3. Close 25% at 1:3 R:R\n4. Let final 25% run with trailing stop`,
-        highlight: `📌 Scale into winners, never losers. Close 50% at 1:2 R:R, let the rest run with a trailing stop.`,
+        highlight: `📌 Scaling, partial exits and trailing stops are strategy choices. Define them before testing and compare the results; do not assume one management sequence fits all instruments.`,
       },
       {
         title: `The Kelly Criterion for Optimal Risk`,
         content: `The Kelly Criterion is a mathematical formula used by professional traders to determine the optimal percentage of capital to risk on each trade.\n\nThe Formula:\nKelly % = (Win Rate x Average Win) - (Loss Rate x Average Loss) / Average Win\n\nExample:\n- Win rate: 40%, Average win: $300 (3R), Average loss: $100 (1R)\n- Kelly % = (0.40 x 300) - (0.60 x 100) / 300\n- Kelly % = 120 - 60 / 300 = 0.20 = 20%\n\nWARNING: Full Kelly is extremely aggressive. Professional traders use Half Kelly or Quarter Kelly:\n- Full Kelly: 20% per trade (dangerous)\n- Half Kelly: 10% per trade (aggressive)\n- Quarter Kelly: 5% per trade (conservative, sustainable)\n\nFor ICT traders with 30-40% win rates and 1:3 R:R, Quarter Kelly is appropriate. However, most ICT mentors recommend the simpler 1-2% rule for consistency and psychological comfort.`,
-        highlight: `📌 Use Quarter Kelly (25% of full Kelly) for sustainable growth. Never use full Kelly -- it causes massive drawdowns.`,
+        highlight: `📌 Full Kelly can be very sensitive to estimation error and produce large drawdowns. Fractional approaches are one option, not a universal rule; use conservative exposure limits and test assumptions carefully.`,
       },
       {
         title: `Risk Management Checklist`,
         content: `Before EVERY trade, run through this checklist. Do not deviate.\n\nPRE-TRADE CHECKLIST:\n- Identified the daily bias (bullish/bearish/neutral)\n- Found a valid PD Array in premium/discount zone\n- Confirmed killzone timing (London/NY/Asian)\n- Placed stop loss at technical invalidation\n- Calculated position size for 1-2% risk\n- Verified R:R is minimum 1:2 (preferably 1:3+)\n- Checked portfolio heat (under 6% total)\n- Checked correlated pairs (not doubling risk)\n- Set take profit targets (1:2, 1:3, 1:5)\n- Written trade plan in journal\n\nPOST-TRADE CHECKLIST:\n- Recorded entry, exit, and result in journal\n- Noted what worked and what did not\n- Identified any emotional decisions\n- Updated win rate and average R:R statistics\n- Reviewed if setup followed ICT rules perfectly\n\nThis checklist takes 30 seconds but saves accounts. Professional traders treat it as non-negotiable.`,
-        highlight: `📌 The 30-second pre-trade checklist that separates professional traders from amateurs. Never skip it.`,
+        highlight: `📌 A short pre-trade checklist can reduce omissions. Tailor it to observable entry, stop, target, risk and invalidation rules rather than treating a fixed duration as a measure of professionalism.`,
       },
     ],
     quiz: [
