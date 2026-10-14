@@ -5,8 +5,24 @@ const portal = fs.readFileSync('app/api/create-portal/route.js', 'utf8');
 const webhook = fs.readFileSync('app/api/webhook/route.js', 'utf8');
 const errors = [];
 
-if (!checkout.includes("['active', 'trialing', 'past_due'].includes(subscription.status)")) {
-  errors.push('Checkout must prevent duplicate subscriptions for active, trialing, and past-due customers.');
+if (!checkout.includes('customerHasEntitledSubscription(stripe, stripeCustomerId)')) {
+  errors.push('Checkout must use the shared paginated subscription scan to prevent duplicate subscriptions.');
+}
+if (!webhook.includes('customerHasEntitledSubscription(stripe, customerId)')) {
+  errors.push('Webhook entitlement recalculation must use the shared paginated subscription scan.');
+}
+const subscriptionHelper = fs.readFileSync('lib/stripe-subscriptions.js', 'utf8');
+if (!subscriptionHelper.includes("const ENTITLED_SUBSCRIPTION_STATUSES = new Set(['active', 'trialing', 'past_due'])")) {
+  errors.push('Shared subscription scan must preserve active, trialing, and past-due entitlement semantics.');
+}
+if (!subscriptionHelper.includes('starting_after: startingAfter') ||
+    !subscriptionHelper.includes('page.has_more') ||
+    !subscriptionHelper.includes("limit: 100")) {
+  errors.push('Shared subscription scan must paginate Stripe list results using starting_after.');
+}
+if (checkout.includes('const subscriptions = await stripe.subscriptions.list({') ||
+    webhook.includes('async function customerHasActiveSubscription')) {
+  errors.push('Checkout and webhook must not retain separate non-paginated subscription scans.');
 }
 if (!portal.includes("if (!profile?.stripe_customer_id)")) {
   errors.push('Billing portal must require a linked Stripe customer.');
@@ -20,8 +36,8 @@ if (!portal.includes("await supabase.auth.getUser()")) {
 if (!portal.includes("consume_api_rate_limit") || !portal.includes("allowed !== true")) {
   errors.push('Billing portal must preserve the server-side rate limit.');
 }
-if (!webhook.includes("['active', 'trialing', 'past_due'].includes(subscription.status)")) {
-  errors.push('Webhook and checkout must agree on which subscription states retain Pro entitlement.');
+if (!webhook.includes('customerHasEntitledSubscription(stripe, customerId)')) {
+  errors.push('Webhook entitlement recalculation must use the same status-aware helper as checkout.');
 }
 
 const adminActions = fs.readFileSync('app/admin/actions.js', 'utf8');

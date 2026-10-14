@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import { customerHasEntitledSubscription } from '@/lib/stripe-subscriptions';
 
 export const runtime = 'nodejs';
 
@@ -20,18 +21,6 @@ async function findProfileByCustomer(supabase, customerId) {
     .eq('stripe_customer_id', customerId)
     .maybeSingle();
   return data || null;
-}
-
-async function customerHasActiveSubscription(stripe, customerId) {
-  if (!customerId) return false;
-  const subscriptions = await stripe.subscriptions.list({
-    customer: customerId,
-    status: 'all',
-    limit: 100,
-  });
-  return subscriptions.data.some((subscription) =>
-    ['active', 'trialing', 'past_due'].includes(subscription.status)
-  );
 }
 
 async function findUserByEmail(supabase, email) {
@@ -262,7 +251,7 @@ export async function POST(req) {
       if (profile) {
         // Recompute from the customer's current Stripe state so an old
         // subscription cannot revoke Pro while another subscription is active.
-        const active = await customerHasActiveSubscription(stripe, customerId);
+        const active = await customerHasEntitledSubscription(stripe, customerId);
         const { error: profileError } = await supabase
           .from('profiles')
           .update({ is_pro: active })

@@ -1,4 +1,5 @@
 import Stripe from 'stripe';
+import { customerHasEntitledSubscription } from '@/lib/stripe-subscriptions';
 import { createHash } from 'node:crypto';
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
@@ -161,14 +162,7 @@ export async function POST(req) {
       .maybeSingle();
 
     const stripeCustomerId = await ensureStripeCustomer(stripe, admin, profile, user);
-    const subscriptions = await stripe.subscriptions.list({
-      customer: stripeCustomerId,
-      status: 'all',
-      limit: 100,
-    });
-    const hasActiveSubscription = subscriptions.data.some((subscription) =>
-      ['active', 'trialing', 'past_due'].includes(subscription.status)
-    );
+    const hasActiveSubscription = await customerHasEntitledSubscription(stripe, stripeCustomerId);
     if (hasActiveSubscription) {
       return privateJson({
         error: 'You already have a Pro subscription. Manage it from Billing instead of starting another subscription.',
