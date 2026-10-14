@@ -193,8 +193,8 @@ export const POSTS = [
 
   {
     slug: 'liquidity-in-ict-trading',
-    title: 'Liquidity in ICT Trading — Why Price Really Moves (Not Supply and Demand)',
-    description: 'Liquidity is the real reason price moves. Not supply and demand. Not retail buying and selling. This guide explains the complete ICT liquidity framework — buy-side, sell-side, engineering, and how to trade it.',
+    title: 'Liquidity in ICT Trading: Chart References and Market Drivers',
+    description: 'Explore how ICT traders use buy-side and sell-side liquidity references, why visible levels do not reveal every order or participant motive, and how to test target hypotheses against broader market context.',
     category: 'Beginner',
     readTime: '16 min read',
     date: 'March 25, 2026',
@@ -203,10 +203,10 @@ export const POSTS = [
       { type: 'intro', text: 'One ICT interpretation is that price may move toward areas where orders cluster. This is one lens for analyzing price action, not a replacement for supply and demand, news, positioning or ordinary order flow. Large participants may seek liquidity when executing large orders, but the chart alone cannot prove that a move was engineered to trigger retail stops or identify who filled which orders. Treat this explanation as a hypothesis to test before reversing.' },
       { type: 'heading', text: 'What Liquidity Actually Means in Markets' },
       { type: 'paragraph', text: 'In financial markets, liquidity refers to the availability of orders to trade against. When you buy, someone must sell to you. When you sell, someone must buy from you. Retail traders provide liquidity through their stop losses — when a stop loss is triggered, it creates a market order that the institution on the other side of the trade can fill against.' },
-      { type: 'paragraph', text: 'This is why banks do not "move price" the way many traders imagine — they do not push price with unlimited buying or selling power. Instead, they engineer scenarios that cause retail traders to create the orders the bank needs to fill. Stop losses become the bank\'s buy orders. Pending breakout orders become the bank\'s sell orders. The entire manipulation phase of AMD is designed to collect this retail-generated liquidity.' },
+      { type: 'paragraph', text: 'Large market orders can consume available liquidity and affect prices, depending on depth and conditions. Candle charts alone do not establish that banks engineer scenarios to trigger retail stops or create orders they need to fill; distinguish an ICT interpretation from observable market data.' },
       { type: 'heading', text: 'Buy-Side Liquidity (BSL) — Where the Stops Are Above Price' },
       { type: 'paragraph', text: 'Buy-Side Liquidity consists of buy-stop orders and stop losses from short sellers clustered above current price. These exist at swing highs, at equal highs, above round numbers, at previous day highs, previous week highs, and at any level where retail traders are likely to have placed their stop losses on short trades or their buy-stop entries for breakout strategies.' },
-      { type: 'paragraph', text: 'When the algorithm needs to deliver price higher — perhaps to reach a major distribution zone or complete a weekly range — it will target the Buy-Side Liquidity above. Price moves up, triggers all the buy stops and short stop losses above the swing high, collects that liquidity, and then reverses from the distribution level. Retail breakout traders who bought the high are now trapped in losing positions.' },
+      { type: 'paragraph', text: 'Some ICT traders interpret a move above a prior high as a possible buy-side liquidity sweep. The chart does not reveal an algorithm\'s target or prove that all buy stops were triggered; price may continue higher, reverse or consolidate.' },
       { type: 'heading', text: 'Sell-Side Liquidity (SSL) — Where the Stops Are Below Price' },
       { type: 'paragraph', text: 'Sell-Side Liquidity consists of sell-stop orders and stop losses from long traders clustered below current price. These exist at swing lows, at equal lows, below round numbers, at previous day lows, and at any level where long traders have placed their stop losses.' },
       { type: 'paragraph', text: 'Equal Lows (EQL) and Equal Highs (EQH) are among the most important liquidity reference points in ICT methodology. When price creates two or more lows at approximately the same level, every retail trader who can see the chart knows those lows are significant support. This means every long trader in that position has their stop loss just below those lows — creating a massive pool of Sell-Side Liquidity that the algorithm is almost certain to target before a major reversal.' },
@@ -236,8 +236,8 @@ export const POSTS = [
 
   {
     slug: 'ict-killzones-guide',
-    title: 'ICT Killzones Explained: London and New York Session Filters',
-    description: 'Learn how ICT traders use London and New York session windows as observation filters, and how to test whether the timing adds value for a specific instrument and rule set.',
+    title: 'ICT Killzones: Time Windows and Trading Context',
+    description: 'Learn how ICT traders use London and New York session windows as observation filters, and test their value for a specific instrument and rule set without assuming a fixed quality or volume advantage.',
     category: 'Intermediate',
     readTime: '14 min read',
     date: 'April 1, 2026',
@@ -245,8 +245,8 @@ export const POSTS = [
     content: [
       { type: 'intro', text: 'ICT Killzones are session windows that traders use to focus chart review. Liquidity and volatility can vary across sessions, but these windows do not guarantee cleaner price action or higher win rates. Test a time filter on your instrument, timeframe and rules.' },
       { type: 'heading', text: 'Why Time Matters More Than Most Traders Think' },
-      { type: 'paragraph', text: 'Markets are not equally active throughout the 24-hour day. Liquidity ebbs and flows as different institutional centers open and close — Tokyo, London, New York. The overlapping periods between major sessions, and the opening of key sessions, are when the largest volume of institutional orders hit the market.' },
-      { type: 'paragraph', text: 'Understanding session timing transforms how you read price action. A setup that looks perfect at 3 PM New York time — well into the afternoon session — has a completely different probability profile than the same setup appearing at 10 AM during the primary New York distribution window. Time is context. Without it, you are trading patterns without understanding the conditions that make those patterns work.' },
+      { type: 'paragraph', text: 'Market activity and volatility vary by instrument, session and news conditions. Session overlaps can coincide with higher activity, but a chart does not show that the largest institutional orders always enter during a particular window.' },
+      { type: 'paragraph', text: 'A setup\'s outcome may differ by session, but assigning it a different probability requires a defined instrument, rule set and sample. Do not infer that the same chart pattern is more reliable just because it appears during a named window.' },
       { type: 'heading', text: 'Asian Session (7 PM – 12 AM EST) — Range Building' },
       { type: 'paragraph', text: 'The Asian session is primarily a consolidation and range-building phase. Major institutions in Tokyo, Singapore, and Hong Kong participate during this time, but volume is significantly lower than during the London and New York sessions. Price typically oscillates within a defined range — the "Asian Range" — without strong directional commitment.' },
       { type: 'paragraph', text: 'The Asian Range becomes critically important as a reference for the London session. The high and low of the Asian session are major liquidity pools — Buy-Side Liquidity above the high, Sell-Side Liquidity below the low. London traders will frequently target one or both of these levels as part of the Judas Swing manipulation before committing to the day\'s true direction.' },
@@ -447,14 +447,14 @@ export const POSTS = [
 
   {
     slug: 'daily-bias-ict-how-to-determine',
-    title: 'ICT Daily Bias: Building a Directional Thesis Before a Session',
-    description: 'A process for forming a conditional daily thesis from prior ranges, higher-timeframe structure and session context without assuming the market must follow one direction.',
+    title: 'ICT Daily Bias: Building and Testing a Conditional Thesis',
+    description: 'A process for forming a directional thesis from higher-timeframe structure and reference levels, with rules for invalidation and neutral conditions rather than assuming a correct forecast is knowable in advance.',
     category: 'Intermediate',
     readTime: '15 min read',
     date: 'April 8, 2026',
     image: '/images/market-structure.png',
     content: [
-      { type: 'intro', text: 'Daily bias is your directional conviction before any price moves during the trading session. It is the determination — made from higher timeframe analysis before the market opens — of whether you will be looking for long trades, short trades, or no trades that day. Getting daily bias correct means your entries have institutional order flow supporting them. Getting it wrong means you are fighting the algorithm.' },
+      { type: 'intro', text: 'Daily bias is a directional thesis formed from selected higher-timeframe structure and reference levels. A thesis made before a session can be wrong or remain neutral; do not treat it as proof that institutional order flow supports the chosen direction.' },
       { type: 'heading', text: 'The Top-Down Hierarchy for Bias Determination' },
       { type: 'paragraph', text: 'Daily bias is not determined from the daily chart alone — it is the synthesis of analysis from monthly, weekly, and daily timeframes. The higher timeframes establish the macro context within which the daily bias exists. A bearish daily setup within a weekly uptrend is a counter-trend fade — lower probability than a bearish daily setup within a weekly downtrend.' },
       { type: 'list', items: [
@@ -465,8 +465,8 @@ export const POSTS = [
         'Step 5: Determine Bias — If monthly and weekly are bullish, and daily structure is bullish with a discount zone entry area available, daily bias is bullish',
       ]},
       { type: 'heading', text: 'The Midnight Open — The True Daily Reference' },
-      { type: 'paragraph', text: 'ICT uses midnight New York time as the "True Daily Open" — the reference point from which the day\'s AMD cycle begins. This is different from the 9:30 AM NYSE open that most retail traders use as their daily reference. The True Daily Open is where accumulation begins for the coming day\'s delivery.' },
-      { type: 'paragraph', text: 'The relationship between current price and the midnight open tells you which AMD phase you are in. If price is near the midnight open and it is 3 AM London time — you are likely in the Accumulation/Manipulation phase. If price has already moved significantly away from the midnight open and it is 10 AM NY time — you are likely in the Distribution phase and should be cautious about chasing.' },
+      { type: 'paragraph', text: 'Some ICT approaches use midnight New York time as a chart reference. Calling it the True Daily Open or linking it to an AMD phase is a framework convention; that timestamp does not establish when accumulation starts or determine the day\'s direction.' },
+      { type: 'paragraph', text: 'Price relative to midnight open can be logged as one contextual variable, but it does not by itself identify an AMD phase. Specify the other observable conditions in advance and allow the session to remain unclassified when they do not appear.' },
       { type: 'heading', text: 'When to Trade With No Bias (Neutral Days)' },
       { type: 'paragraph', text: 'One of the most underappreciated skills in ICT trading is knowing when NOT to have a bias. On days when the monthly and weekly picture is mixed, when the daily chart is in clear consolidation without directional commitment, when a major economic event is scheduled — these are neutral days where forcing a bias leads to poor-quality trades.' },
       { type: 'paragraph', text: 'Professional ICT traders protect their mental capital as much as their financial capital. Trading on low-conviction days produces marginal, uncertain setups that create psychological damage when they fail. The discipline to sit on your hands on neutral days is what allows you to trade aggressively on high-conviction days.' },
@@ -487,20 +487,20 @@ export const POSTS = [
 
   {
     slug: 'draw-on-liquidity-ict',
-    title: 'ICT Draw on Liquidity: Mapping Potential Reference Levels',
-    description: 'Learn how traders select a potential Draw on Liquidity reference from prior highs, lows and range boundaries, while treating the target as a conditional hypothesis rather than a prediction.',
+    title: 'ICT Draw on Liquidity: Candidate Targets and Invalidations',
+    description: 'Learn how traders select possible target levels from prior highs, lows and range boundaries, define invalidation and log whether targets are reached without treating them as known destinations.',
     category: 'Advanced',
     readTime: '14 min read',
     date: 'April 9, 2026',
     image: '/images/liquidity.png',
     content: [
-      { type: 'intro', text: 'The Draw on Liquidity (DOL) is the most advanced and commonly discussed concept in ICT methodology. It is the ability to identify, before price moves, exactly where the algorithm is delivering price next. Not approximately where. Specifically where — a precise level on the chart that price is being magnetically drawn toward. Traders who master the DOL concept stop being surprised by market moves and start anticipating them.' },
+      { type: 'intro', text: 'Draw on Liquidity (DOL) is an ICT term for a possible target selected from references such as prior highs, lows or equal highs and lows. It is a pre-trade hypothesis, not a precise forecast of where an algorithm will deliver price.' },
       { type: 'heading', text: 'Why Price Has a Target Before It Starts Moving' },
       { type: 'paragraph', text: 'The ICT framework interprets price movement through selected reference levels, but it does not establish a single cause for every move. Every move from Point A to Point B is a delivery from one liquidity pool to another. The algorithm collects liquidity at Point A (through a stop hunt, through a squeeze, through a manipulation) and then delivers price to Point B (the next liquidity pool that needs to be reached). Understanding this means every significant move has a predetermined target.' },
       { type: 'paragraph', text: 'In this framework, a Draw on Liquidity (DOL) is commonly identified as a possible liquidity target — either Buy-Side Liquidity (above swing highs, equal highs, previous high levels) or Sell-Side Liquidity (below swing lows, equal lows, previous low levels). Price can move between many kinds of levels for many reasons; the next liquidity pool is a hypothesis, not a predetermined destination.' },
       { type: 'heading', text: 'Internal vs External Draw on Liquidity' },
       { type: 'paragraph', text: 'Internal Range Liquidity (IRL) refers to the targets within the current dealing range — FVGs, OBs, gaps, and imbalances inside the range. External Range Liquidity (ERL) refers to the targets outside the current range — the swing highs and lows beyond the range that represent the ultimate destination.' },
-      { type: 'paragraph', text: 'Understanding the hierarchy between IRL and ERL is critical. Price typically moves from ERL collection to IRL retracement, back to ERL collection, in a sequential cycle. When price has just swept External Liquidity — taken a major swing high or low — it will retrace to Internal Liquidity (a FVG or OB) before continuing to the next ERL. Identifying which phase you are in tells you whether to look for continuation entries or to wait for the retracement first.' },
+      { type: 'paragraph', text: 'IRL and ERL group possible internal and external reference levels. Price may move between them, skip one or break through the range; a sequential cycle should be treated as a testable scenario rather than a fixed rule.' },
       { type: 'list', items: [
         'After an ERL sweep (swing high taken), look for price to retrace into an IRL level (FVG or OB) before the next ERL target is reached',
         'Some ICT traders define rules for entries at IRL levels with a possible ERL target; test continuation and failure cases rather than assuming the target will be reached',
@@ -528,8 +528,8 @@ export const POSTS = [
 
 {
     slug: 'ict-breaker-block-explained',
-    title: 'ICT Breaker Block — What It Is and How to Trade It',
-    description: 'A Breaker Block is a failed Order Block that flips polarity. Once you understand why it forms and what it means, it becomes one of the cleanest entry tools in the ICT framework.',
+    title: 'ICT Breaker Blocks: Rules for Failed Order-Block Zones',
+    description: 'Learn how traders label a failed order-block area as a possible polarity change, specify boundaries and invalidation, and evaluate retests without inferring past institutional positions.',
     category: 'Intermediate',
     readTime: '12 min read',
     date: 'April 1, 2026',
@@ -547,7 +547,7 @@ export const POSTS = [
         'Step 3 — The Breaker Block is established: The failed OB is now a Breaker. On the first return to this zone from the other side, price should treat it as the new resistance (failed bullish OB) or new support (failed bearish OB).',
       ]},
       { type: 'heading', text: 'Why Breaker Blocks Work — The Institutional Logic' },
-      { type: 'paragraph', text: 'When an Order Block fails, it does not fail randomly. The institutions that placed orders at that level have now cleared their positions. They used the retail buying at the OB as an exit opportunity. Price then continues aggressively through the zone, taking out stop losses and trapping traders who bought expecting the OB to hold.' },
+      { type: 'paragraph', text: 'An order-block area can fail for many reasons. Candles do not reveal whether participants exited positions or used retail buying as liquidity; describe the observed break and define what would qualify as a retest rather than inferring motive.' },
       { type: 'paragraph', text: 'When price returns to that broken zone, the dynamic has completely reversed. The zone that previously attracted institutional buyers is now abandoned by them. Instead, it becomes a zone of institutional selling — the new short-term resistance. Retail traders who are long from below will be exiting near this level; institutional traders who are now short will be adding to their positions. Both actions create selling pressure at the Breaker Block.' },
       { type: 'heading', text: 'Bullish vs Bearish Breaker Blocks' },
       { type: 'paragraph', text: 'A Bullish Breaker Block forms when a bearish Order Block fails. This happens in a bullish market when price retraces into what appears to be a bearish OB but instead blows through it, taking the sell-side liquidity below. When price then rallies back up through that zone, the bearish OB has become a bullish Breaker — it now acts as support on the retest.' },
@@ -838,15 +838,15 @@ export const POSTS = [
 
   {
     slug: 'ict-unicorn-model-explained',
-    title: 'ICT Unicorn Model: Combining Mitigation and FVG Conditions',
-    description: 'An overview of the Unicorn label as a combination of mitigation-block and Fair Value Gap ideas, with an emphasis on consistent pattern rules and testing rather than assuming dual confirmation means a strong edge.',
+    title: 'ICT Unicorn Model: Defining Mitigation and FVG Overlap',
+    description: 'Explore the Unicorn label as a combination of mitigation-block and Fair Value Gap ideas, define the overlap consistently, and test all outcomes rather than assuming two chart labels imply a stronger edge.',
     category: 'Advanced',
     readTime: '11 min read',
     date: 'April 8, 2026',
     image: '/images/order-blocks.png',
     featured: false,
     content: [
-      { type: 'intro', text: 'The ICT Unicorn Model is named for its rarity and its power — it requires two separate ICT concepts to align simultaneously, which does not happen often, but when it does, the resulting setup is one of the highest-conviction entries in the framework. The Unicorn combines a Mitigation Block with a Fair Value Gap at the same price level, creating a zone of double institutional significance.' },
+      { type: 'intro', text: 'The Unicorn label in ICT education commonly combines a mitigation-block idea with an overlapping Fair Value Gap. The overlap can be defined from visible candle geometry, but it does not prove two independent signals or guarantee a high-conviction entry.' },
       { type: 'heading', text: 'The Two Components of a Unicorn' },
       { type: 'paragraph', text: 'Component One is the Mitigation Block. Recall that a Mitigation Block is a failed Order Block — an OB that was broken rather than respected. The break of an OB signifies that the smart money used that zone to offload positions rather than add to them. The zone now represents a level where institutions are positioned in the new direction, waiting for price to return so they can add more.' },
       { type: 'paragraph', text: 'Component Two is a Fair Value Gap that forms within the same zone. When the price displacement that created the Mitigation Block also left a Fair Value Gap at approximately the same price level, you have the Unicorn — both a structural element (the Mitigation Block) and a price imbalance (the FVG) at the same location. The convergence of these two signals at one level represents the maximum concentration of institutional interest.' },
@@ -1366,15 +1366,15 @@ export const POSTS = [
 
   {
     slug: 'ict-hidden-order-block',
-    title: 'ICT Hidden Order Block: Definitions and Chart Examples',
-    description: 'Review the Hidden Order Block label as used in ICT education, how traders mark candidate zones, and what evidence would be needed to evaluate the idea. Terminology alone is not a trading signal.',
+    title: 'ICT Hidden Order Blocks: Timeframe Definitions and Test Rules',
+    description: 'Review the Hidden Order Block label used in ICT education, how traders mark candidate zones across timeframes, and what evidence is needed to evaluate the idea. The name alone is not a trading signal.',
     category: 'Advanced',
     readTime: '11 min read',
     date: 'April 21, 2026',
     image: '/images/order-blocks.png',
     featured: false,
     content: [
-      { type: 'intro', text: 'The ICT Hidden Order Block is a PD Array concept that most ICT traders miss because it is literally invisible on the timeframe they are analyzing — it can only be seen by drilling down to a lower timeframe. The Hidden OB is derived from overlapping wicks between consecutive candles, revealing institutional orders that are concealed within the wick structure of a candle that appears to be simply a correction or consolidation on the higher timeframe.' },
+      { type: 'intro', text: 'A Hidden Order Block is a label sometimes applied to a lower-timeframe candle sequence inside a higher-timeframe wick or range. Its definition depends on the selected timeframe and source; it is not literally invisible, and traders can disagree on which candles qualify.' },
       { type: 'heading', text: 'What Makes an Order Block Hidden?' },
       { type: 'paragraph', text: 'A standard Order Block is visible on the timeframe you are analyzing — you can clearly see the last opposing candle before a major move. The Hidden OB is hidden because, on the higher timeframe, it appears to be a simple wick or a minor retracement. Only when you zoom into the lower timeframe does the actual Order Block structure become visible within those wicks.' },
       { type: 'paragraph', text: 'The mechanism: on a higher timeframe (say 1-hour), a candle may have a long lower wick that appears to simply represent a test and rejection of a level. But zoom into the 5-minute chart and you will find that within that wick, there was a specific last-bullish-before-bearish or last-bearish-before-bullish candle — a complete Order Block formation that is invisible at the higher timeframe.' },
@@ -1388,7 +1388,7 @@ export const POSTS = [
       ]},
       { type: 'heading', text: 'Why Hidden OBs Are Powerful' },
       { type: 'paragraph', text: 'Hidden Order Blocks are powerful precisely because most traders do not see them. When price returns to the level of a higher timeframe wick, the majority of traders expect a simple test of a minor level — they are not prepared for the sharp reaction that the Hidden OB produces. The institutional orders sitting at the Hidden OB level trigger, price reacts sharply, and traders who did not identify the Hidden OB are caught off-guard.' },
-      { type: 'paragraph', text: 'This element of surprise is what makes Hidden OBs among the commonly studied PD Array elements for entries. The lack of retail awareness means fewer competing orders at the level, which means institutional orders dominate the reaction — producing cleaner, faster moves than standard OBs that everyone has marked on their charts.' },
+      { type: 'paragraph', text: 'Do not infer surprise, institutional participation or cleaner reactions from the name Hidden Order Block. Specify the candle sequence, boundaries and invalidation, then compare outcomes with an ordinary order-block definition.' },
       { type: 'heading', text: 'Overlapping Wicks — The Hidden OB Cluster' },
       { type: 'paragraph', text: 'When multiple consecutive candles have overlapping wicks at the same price level — their wicks touch or overlap without the bodies trading through — this creates what ICT calls a Hidden OB cluster. This is essentially multiple Hidden Order Blocks stacked at the same level, each one adding to the institutional significance of the zone. These clusters are among the confluence-based PD Array elements in the advanced ICT toolkit.' },
       { type: 'highlight', text: 'Make Hidden OB hunting a regular practice by reviewing your higher timeframe analysis at the lower timeframe before each session. Specifically, look at all significant wick rejections on the daily or 4-hour chart and drill into them on the 15-minute chart. The Hidden OBs you find there will often be the commonly discussed entry zones of the upcoming session.' },
@@ -1449,18 +1449,18 @@ export const POSTS = [
 
   {
     slug: 'ict-1st-presented-fvg-opening-range',
-    title: 'ICT First-Presented FVG and Opening Range: How to Evaluate the Setup',
-    description: 'Learn how traders define a first-presented Fair Value Gap near the opening range, and why its timing or position alone does not make it the most significant gap of a session.',
+    title: 'ICT First-Presented FVG: A Session-Based Hypothesis',
+    description: 'Learn how traders define the first qualifying Fair Value Gap after a chosen session open, record missed retests and compare the rule with later gaps without assuming the first gap determines direction.',
     category: 'Intermediate',
     readTime: '11 min read',
     date: 'April 23, 2026',
     image: '/images/fvg.png',
     featured: false,
     content: [
-      { type: 'intro', text: 'Among all the Fair Value Gaps that form during a trading day, the 1st Presented FVG — the very first FVG created after the 9:30 AM New York Stock Exchange opening — holds special significance in ICT methodology. It represents the first institutional imbalance created in the official equity session, and it becomes a primary target for the algorithm to reprice during the opening range period. Understanding why this FVG is different from all others is key to extracting consistent edge from the opening range.' },
+      { type: 'intro', text: 'A first-presented FVG is a rule that selects the first gap meeting a defined three-candle criterion after a chosen session open. Its timing does not establish institutional significance or make it a primary target for an algorithm.' },
       { type: 'heading', text: 'The Opening Range and Why It Matters' },
       { type: 'paragraph', text: 'The Opening Range is defined as the price range established in the first 30-60 minutes after the 9:30 AM NYSE open. During this window, institutional orders that accumulated overnight and during the pre-market session are being executed. The high and low of the opening range represent the initial extremes of this execution, and they become liquidity pools that the algorithm will seek during the rest of the session.' },
-      { type: 'paragraph', text: 'The first significant displacement move that occurs during the opening range will create the 1st Presented FVG. This displacement is the algorithm\'s first directional commitment of the official session — it reveals the early institutional order flow direction. The FVG it creates is the first reprice target of the session: the algorithm will deliver back to fill this FVG before or during the next major move.' },
+      { type: 'paragraph', text: 'A trader can define the first qualifying FVG by choosing the session-open timestamp, timeframe and gap rule in advance. The first gap does not reveal an algorithm\'s directional commitment, and price may continue, reverse or never revisit it.' },
       { type: 'heading', text: 'How to Identify the 1st Presented FVG' },
       { type: 'list', items: [
         'At 9:30 AM New York time, switch to the 5-minute chart and watch for the first displacement move after the open.',
@@ -1491,18 +1491,18 @@ export const POSTS = [
 
   {
     slug: 'ict-seek-and-destroy-friday',
-    title: 'ICT Seek and Destroy Friday: A Framework for Testing News-Day Price Action',
-    description: 'Review the Seek and Destroy label as a hypothesis about choppy or conflicting price action around a selected Friday session, not a claim about algorithmic intent or a dependable news-day pattern.',
+    title: 'ICT Seek and Destroy Friday: A Hypothesis Around News Sessions',
+    description: 'Review the Seek and Destroy label as a hypothesis about choppy or conflicting price action before selected news events. Define the window in advance and record counterexamples rather than inferring algorithmic intent.',
     category: 'Strategy',
     readTime: '10 min read',
     date: 'April 24, 2026',
     image: '/images/killzones.png',
     featured: false,
     content: [
-      { type: 'intro', text: 'ICT Seek and Destroy Friday is a specific market behavior pattern that occurs when a major high-impact economic event — most commonly the Non-Farm Payroll (NFP) report released the first Friday of each month — is approaching. The algorithm, in anticipation of the large volume and volatility that will accompany the news release, engages in a "seek and destroy" pattern: hunting the liquidity on both sides of the market before the news, trapping traders in both directions, and then using the news event to deliver the true directional move.' },
+      { type: 'intro', text: 'The Seek and Destroy label is used by some ICT traders for choppy price action around selected news sessions. It should be defined through observable price behavior, not described as a process known to be initiated by an algorithm before an event.' },
       { type: 'heading', text: 'Why Friday Before NFP Is Different' },
       { type: 'paragraph', text: 'NFP is released at 8:30 AM New York time on the first Friday of each month. It is one of the highest-volatility events in the forex and equity markets — the kind of event that produces moves of 50-150 pips in seconds on major forex pairs. In the hours before the release, institutional traders are positioning, hedging, and accumulating. The algorithm takes advantage of this positioning period to collect liquidity from both sides before the event delivers the real move.' },
-      { type: 'paragraph', text: 'The "seek and destroy" characterization comes from the algorithm\'s behavior of systematically hunting the stop orders on both sides of the pre-NFP range. It will run stops to the upside, trapping shorts. Then it will run stops to the downside, trapping longs. Both sweeps serve to clean the tape — eliminating as many retail positions as possible before the news-driven delivery begins, ensuring maximum institutional participation in the post-news move.' },
+      { type: 'paragraph', text: 'A session that moves above and below a pre-news range can be classified as a double sweep under a written rule. Candle data does not prove an algorithm hunted stops or that the moves were designed to trap retail traders.' },
       { type: 'heading', text: 'The Seek and Destroy Pattern' },
       { type: 'list', items: [
         'Thursday afternoon/evening: The pre-NFP range begins forming. Price consolidates as traders position before Friday\'s release.',
@@ -1577,14 +1577,14 @@ export const POSTS = [
   {
     slug: 'ict-top-down-analysis-complete',
     title: 'ICT Top-Down Analysis: A Multi-Timeframe Planning Workflow',
-    description: 'A structured way to connect higher-timeframe context with lower-timeframe execution, while recording what would confirm or invalidate the directional idea.',
+    description: 'A structured way to connect higher-timeframe context with lower-timeframe execution, record conflicting signals and state what would confirm or invalidate the directional idea without assuming alignment guarantees an edge.',
     category: 'Intermediate',
     readTime: '14 min read',
     date: 'April 26, 2026',
     image: '/images/market-structure.png',
     featured: false,
     content: [
-      { type: 'intro', text: 'Top-down analysis is the methodological backbone of ICT trading — the process of building a complete picture of the market from the highest relevant timeframe down to the entry timeframe. It ensures that every trade decision is made in the context of larger institutional order flow, not in isolation on a single timeframe. Traders who skip top-down analysis and react to whatever they see on the 5-minute chart are gambling. Traders who execute top-down analysis systematically are operating with maximum clarity.' },
+      { type: 'intro', text: 'Top-down analysis is a planning workflow that places lower-timeframe observations in the context of higher-timeframe ranges and swing structure. It can organize a hypothesis, but it does not ensure that every entry is supported by institutional order flow or that a trade will succeed.' },
       { type: 'heading', text: 'The Top-Down Framework — Six Timeframes' },
       { type: 'paragraph', text: 'ICT\'s complete top-down analysis framework spans six timeframes in descending order. Each timeframe provides a specific layer of context that feeds into the next one below it. You begin at the monthly chart to establish the macro institutional bias and work down to the 1-minute chart for entry timing.' },
       { type: 'list', items: [
@@ -1599,7 +1599,7 @@ export const POSTS = [
       { type: 'paragraph', text: 'At each timeframe in the top-down analysis, ask three questions: (1) What is the direction of the institutional order flow? (2) Where is the Draw on Liquidity — what specific level is price being delivered toward? (3) What PD Arrays exist between current price and the DOL target? These three questions, answered at each timeframe, give you a complete map of the market before you execute a single trade.' },
       { type: 'heading', text: 'Timeframe Confluence — The Trade Filter' },
       { type: 'paragraph', text: 'The commonly discussed trades in ICT methodology occur when multiple timeframes point to the same conclusion. A bullish 15-minute FVG entry that aligns with a bullish 4-hour OB, a bullish daily bias, and a bullish weekly draw on liquidity — all four timeframes aligned — is a high-conviction, high-probability trade. A bullish 15-minute FVG that is counter-trend on the 4-hour and daily is a low-probability, low-conviction attempt.' },
-      { type: 'paragraph', text: 'Use timeframe alignment as your primary filter. You do not need perfect alignment on all six timeframes — but the three most relevant timeframes (daily, 4-hour, and 15-minute or 5-minute entry) should all be pointing in the same direction. When they do, your trade has maximum institutional backing. When even one of the three is opposed, the probability drops significantly.' },
+      { type: 'paragraph', text: 'Alignment across timeframes can be recorded as a filter, but it does not establish positive expectancy. Define how alignment is measured and compare results against a simpler baseline.' },
       { type: 'heading', text: 'Pre-Session Top-Down Checklist' },
       { type: 'list', items: [
         'Weekly: Mark NWOG. Identify weekly bias (HH/HL or LH/LL). Identify weekly DOL.',
@@ -2130,8 +2130,8 @@ export const POSTS = [
 
   {
     slug: 'ict-internal-external-range-liquidity',
-    title: 'ICT IRL vs ERL: Organizing Internal and External Reference Levels',
-    description: 'Understand how ICT traders distinguish internal range references from external swing extremes, and how to test a target-selection hypothesis without assuming price must travel from one to the other.',
+    title: 'ICT IRL vs ERL: Internal and External Reference Levels',
+    description: 'Learn how ICT traders distinguish internal range references from external swing extremes, define candidate target rules and test whether the framework adds value without assuming price must travel from one level to the other.',
     category: 'Intermediate',
     readTime: '11 min read',
     date: 'May 9, 2026',
@@ -2143,7 +2143,7 @@ export const POSTS = [
       { type: 'paragraph', text: 'A dealing range is any defined price range bounded by a significant swing high (the top of the range) and a significant swing low (the bottom of the range). The boundaries of the range are the External Range Liquidity levels — the swing high holds Buy-Side Liquidity (BSL) above it, and the swing low holds Sell-Side Liquidity (SSL) below it.' },
       { type: 'paragraph', text: 'Within the range, between the high and the low, sits the Internal Range Liquidity — all the PD Arrays (FVGs, OBs, BPRs, etc.) that were created as price moved from one extreme of the range to the other. These internal elements are the retracement targets and entry zones within the range.' },
       { type: 'heading', text: 'How Price Moves Between IRL and ERL' },
-      { type: 'paragraph', text: 'Price delivery follows a predictable pattern within the IRL/ERL framework. The algorithm moves price from an ERL level (a swing extreme) through the range, hitting IRL targets (FVGs and OBs) along the way, until it reaches the opposite ERL level (the other swing extreme). Then it may reverse from the ERL and begin delivering back through the range in the opposite direction, again hitting IRL targets.' },
+      { type: 'paragraph', text: 'The IRL/ERL framework groups possible internal and external reference levels. Price may move between them, skip a level or break the range; a sequential route is a hypothesis to test, not a predictable delivery rule.' },
       { type: 'paragraph', text: 'Understanding this cycle tells you where you are in the delivery sequence. If price has just swept an ERL (taken a swing high) and is now retracing, it is in an IRL delivery phase — targeting the FVGs and OBs inside the range. Once those internal elements are hit, price will resume toward the opposite ERL. Your trade targets change depending on which phase you are in: IRL targets during retracements, ERL targets during the primary delivery phase.' },
       { type: 'heading', text: 'Practical IRL/ERL Application' },
       { type: 'list', items: [
@@ -2155,7 +2155,7 @@ export const POSTS = [
         'For entries: enter at IRL elements (FVGs/OBs) when in an ERL delivery phase — you are buying the retracement within a continuation move.',
       ]},
       { type: 'heading', text: 'IRL First, Then ERL — The Sequence' },
-      { type: 'paragraph', text: 'A crucial ICT rule: price almost always delivers to IRL targets first before reaching the ERL. When you identify a bullish daily bias targeting the previous week\'s high (ERL), price will not go directly there in a straight line. It will first hit internal FVGs and OBs (IRL) along the way. Understanding this means you do not set your stop just below your entry and target the ERL directly from the start — you manage the trade to give price room to hit the IRL targets while keeping the ERL as your full profit target.' },
+      { type: 'paragraph', text: 'Do not treat IRL as a required waypoint before ERL. Price may reach the external extreme directly, pause at an internal reference, or invalidate the target thesis; record each path under the same rule.' },
       { type: 'highlight', text: 'The IRL/ERL framework is the solution to the most common ICT targeting problem: "I was right about the direction but took profit too early." By identifying all the IRL targets between your entry and the ERL, you can plan your partial profit-taking at each IRL while running a portion of the position to the full ERL target. This is how ICT traders capture the full range of a delivery rather than exiting at the first touch of any resistance.' },
       { type: 'heading', text: 'Worked hypothetical example' },
       { type: 'paragraph', text: 'A trader defines a dealing range between two confirmed swing extremes and marks an imbalance inside it as an internal reference. The outer high is tagged as an external reference. Price revisits the internal area and then turns before reaching the external high, which is recorded as one possible path rather than a broken rule.' },
@@ -2173,20 +2173,20 @@ export const POSTS = [
 
   {
     slug: 'ict-displacement-move-explained',
-    title: 'ICT Displacement: Defining Strong Price Movement for Testing',
-    description: 'Learn how ICT traders describe displacement and how to turn that visual concept into a measurable rule. A sharp move can be useful context but does not by itself prove an institutional cause or validate an entry.',
+    title: 'ICT Displacement: Measurable Candle-Movement Criteria',
+    description: 'Learn how ICT traders describe displacement and convert the visual concept into a measurable rule. A sharp move can provide chart context but does not by itself prove institutional cause or validate an entry.',
     category: 'Beginner',
     readTime: '10 min read',
     date: 'May 10, 2026',
     image: '/images/market-structure.png',
     featured: false,
     content: [
-      { type: 'intro', text: 'The displacement move is the backbone of ICT price action analysis. It is the first thing ICT teaches for a reason: without understanding displacement, you cannot identify valid FVGs, you cannot recognize genuine Order Block formations, and you cannot distinguish institutional moves from random noise. The displacement move is the fingerprint of institutional participation — when you see it, you know the algorithm is actively executing. When you do not see it, you are looking at retail noise.' },
+      { type: 'intro', text: 'Displacement is a term ICT traders use for a relatively strong, directional move. It can be operationalized with rules such as candle-body size, overlap or a close beyond a defined swing, but it does not by itself identify institutional participants.' },
       { type: 'heading', text: 'What Is a Displacement Move?' },
       { type: 'paragraph', text: 'A displacement move is a series of candles that moves aggressively and decisively in one direction, characterized by large candle bodies, minimal wicks, minimal overlap between consecutive candles, and a notable increase in the distance covered per candle compared to the surrounding price action. The displacement "displaces" price rapidly from one level to another, leaving imbalances (FVGs) in its wake.' },
       { type: 'paragraph', text: 'The most important characteristics of a genuine displacement: (1) the candles are large-bodied — the body (open to close) represents 60-80% or more of the total candle range (high to low), (2) consecutive candles have minimal overlap — the open of the next candle is near the close of the previous one, (3) the move covers significantly more ground per candle than the consolidation that preceded it, and (4) FVGs exist within the displacement sequence.' },
       { type: 'heading', text: 'Why Displacement Signals Institutional Participation' },
-      { type: 'paragraph', text: 'Retail price action is characterized by overlapping, choppy candles — buyers and sellers fighting with neither side dominating. When institutions execute large orders, they overwhelm the opposing side with volume, creating the one-sided momentum that appears as displacement. The large candle bodies reflect the absence of meaningful opposition. The FVGs left within the displacement reflect the speed at which institutional orders were executed — so fast that both sides of the market could not participate at every price level.' },
+      { type: 'paragraph', text: 'Candle overlap alone cannot distinguish retail activity from institutional execution. Large directional candles can have multiple causes, so define measurable criteria and avoid using the word institutional as a conclusion drawn from candle shape.' },
       { type: 'paragraph', text: 'This is why ICT insists that every valid FVG and every significant Order Block must be associated with a displacement move. Without displacement, the FVG or OB was created by balanced retail participation — both buyers and sellers engaged. There is no institutional footprint. The zone has no special significance.' },
       { type: 'heading', text: 'Identifying Displacement — Checklist' },
       { type: 'list', items: [
