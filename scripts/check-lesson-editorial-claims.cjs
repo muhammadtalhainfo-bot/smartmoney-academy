@@ -369,6 +369,92 @@ const forbidden = [
     pattern: /the annual market script/i,
   },
 
+  {
+    source: 'legacy',
+    label: 'TP presented as always DOL-only',
+    pattern: /Take profit placement in ICT is always at an identified Draw on Liquidity/i,
+  },
+  {
+    source: 'legacy',
+    label: 'fixed 2R/3R-5R target tiers presented as ICT requirements',
+    pattern: /This should typically be 2:1 or better R:R from your entry[\s\S]{0,260}This is typically 3:1 to 5:1 R:R/i,
+  },
+  {
+    source: 'legacy',
+    label: 'missing liquidity target said to cause reversal before target',
+    pattern: /If your TP is not at an actual liquidity pool \(BSL or SSL\), price may stop just before it and reverse/i,
+  },
+  {
+    source: 'legacy',
+    label: 'midnight open asserted to start a market algorithm cycle',
+    pattern: /the algorithm begins delivering price from midnight onwards/i,
+  },
+  {
+    source: 'legacy',
+    label: 'fixed 6% portfolio-heat maximum',
+    pattern: /The Rule: Never exceed 6% portfolio heat/i,
+  },
+  {
+    source: 'legacy',
+    label: 'portfolio heat incorrectly converted to five-day fixed drawdown claims',
+    pattern: /6% heat = 5 consecutive losing days of max heat = 30% drawdown/i,
+  },
+  {
+    source: 'legacy',
+    label: 'correlation coefficients fixed across markets',
+    pattern: /EURUSD & GBPUSD \(90%\+ correlation\)/i,
+  },
+  {
+    source: 'legacy',
+    label: 'correlation stated to create fixed effective risk',
+    pattern: /your effective risk is nearly 4% because both pairs will likely move in the same direction/i,
+  },
+  {
+    source: 'legacy',
+    label: 'partial exit described as guaranteeing profit',
+    pattern: /Close 50% at 1:2 R:R \(covers risk, guarantees profit\)/i,
+  },
+  {
+    source: 'legacy',
+    label: 'index products assigned fixed daily point ranges and cleaner setups',
+    pattern: /More volatile -- 200-500 point daily ranges[\s\S]{0,240}Cleaner FVGs and Order Blocks/i,
+  },
+  {
+    source: 'legacy',
+    label: 'crypto leverage cap declared universal',
+    pattern: /NEVER use more than 5x leverage for ICT trading/i,
+  },
+  {
+    source: 'legacy',
+    label: 'crypto stop percentages prescribed by coin',
+    pattern: /Bitcoin: 3-5% stop minimum[\s\S]{0,120}Ethereum: 4-6% stop minimum[\s\S]{0,120}Altcoins: 8-12% stop minimum/i,
+  },
+  {
+    source: 'legacy',
+    label: 'fixed maximum percent of capital on any exchange',
+    pattern: /Never keep more than 50% of capital on an exchange/i,
+  },
+  {
+    source: 'legacy',
+    label: 'halving used as an unqualified entry calendar strategy',
+    pattern: /ICT play: Buy discount zones, hold for 6\+ months/i,
+  },
+  {
+    source: 'legacy',
+    label: 'drawdown math says 10% risk destroys account after ten losses',
+    pattern: /Risk 10% per trade = 10 consecutive losses = account destroyed/i,
+  },
+  {
+    source: 'legacy',
+    label: 'five-percent risk loss sequence uses incorrect 60% drawdown',
+    pattern: /Risk 5% per trade = 10 consecutive losses = 60% drawdown/i,
+  },
+  {
+    source: 'legacy',
+    label: 'risk management intro promises an account blowup as inevitable',
+    pattern: /Without proper risk controls, even the best ICT strategy will eventually blow your account/i,
+  },
+
 ];
 
 const required = [
@@ -565,6 +651,52 @@ const required = [
     source: 'legacy',
     label: 'crypto leverage and stop quizzes require model-specific sizing',
     pattern: /Define invalidation, account for volatility\/execution, then size the position/i,
+  },
+
+  {
+    source: 'legacy',
+    label: 'target-selection lesson permits tested exit alternatives',
+    pattern: /Some ICT traders use candidate Draws on Liquidity \(DOL\) as targets; others use a fixed-R multiple, timed exit, volatility-based exit or a combination/i,
+  },
+  {
+    source: 'legacy',
+    label: 'midnight open does not confirm a phase or forecast direction',
+    pattern: /it does not establish that a daily AMD cycle begins at midnight/i,
+  },
+  {
+    source: 'legacy',
+    label: 'portfolio heat sums planned risks with a caveat',
+    pattern: /The sum of these planned stop risks is 5\.5% before execution differences/i,
+  },
+  {
+    source: 'legacy',
+    label: 'correlated pair body acknowledges variable relationships',
+    pattern: /Relationships vary by measurement period, timeframe and market regime/i,
+  },
+  {
+    source: 'legacy',
+    label: 'scaling body rejects guaranteed profit from partial closes',
+    pattern: /A 50% exit at 1:2 does not guarantee profit on the full trade or account/i,
+  },
+  {
+    source: 'legacy',
+    label: 'index comparison requires common assumptions and product details',
+    pattern: /Compare the same entry and exit definitions, express outcomes in risk units, and account for fees and slippage/i,
+  },
+  {
+    source: 'legacy',
+    label: 'crypto leverage and stop distances depend on product risk inputs',
+    pattern: /Choose exposure from a predefined account-risk limit, the instrument's contract rules, entry\/stop distance, maintenance margin and possible liquidation price/i,
+  },
+  {
+    source: 'legacy',
+    label: 'drawdown math explains its assumptions and gives corrected values',
+    pattern: /After 10 consecutive losses:[\s\S]{0,220}about a 65\.1% drawdown[\s\S]{0,250}about a 40\.1% drawdown/i,
+  },
+  {
+    source: 'legacy',
+    label: 'stop-loss section explains execution can exceed planned risk',
+    pattern: /A stop order does not guarantee the amount lost/i,
   },
 
 ];
