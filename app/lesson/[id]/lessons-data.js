@@ -90,7 +90,7 @@ export const LESSONS_EXTRA = {
       },
     ],
     quiz: [
-      { q: `The Draw on Liquidity is always...`, options: ['The nearest support/resistance line', 'A specific liquidity pool where institutional orders rest', 'A 2:1 R:R target', 'The previous day close'], answer: 1 },
+      { q: `In an ICT-style plan, a Draw on Liquidity is best described as...`, options: ['A guaranteed destination price', 'A candidate price objective chosen from a defined reference area', 'A fixed 2:1 R:R target', 'The previous day close in every market'], answer: 1 },
       { q: `External Range Liquidity (ERL) refers to...`, options: ['FVGs inside the current range', 'Order Blocks within the dealing range', 'Swing highs and lows outside the current range', 'The midnight open level'], answer: 2 },
       { q: `The correct DOL trade sequence is...`, options: ['Enter anywhere → hope for movement → exit randomly', 'Identify ERL → wait for IRL retracement → enter at IRL → TP at ERL', 'Buy at support → sell at resistance', 'Enter after news → exit at round number'], answer: 1 },
     ],
@@ -340,8 +340,8 @@ export const LESSONS_EXTRA = {
       },
     ],
     quiz: [
-      { q: `Which quarter is typically the most deceptive and dangerous for trend followers?`, options: ['Q1', 'Q2', 'Q3', 'Q4'], answer: 1 },
-      { q: `Q1 is primarily characterized by...`, options: ['Volatility and reversals', 'Institutional accumulation and trend establishment', 'Distribution and delivery', 'Year-end repositioning'], answer: 1 },
+      { q: `How should quarterly or seasonal ICT patterns be evaluated?`, options: ['As fixed calendar rules for all markets', 'As hypotheses to test across defined instruments and periods', 'As a substitute for risk management', 'As guaranteed reversals'], answer: 1 },
+      { q: `Which statement about Q1 in a quarterly ICT narrative is most defensible?`, options: ['Q1 always establishes the year’s direction', 'Q1 can be treated as a context variable, but its directional value must be tested', 'Q1 determines all later-quarter moves', 'Q1 guarantees institutional accumulation'], answer: 1 },
       { q: `How should seasonal tendencies be used in ICT analysis?`, options: ['As the primary trading signal', 'To override ICT analysis when they conflict', 'As an additional probability filter alongside ICT analysis', 'Only for equity markets, not forex'], answer: 2 },
     ],
     nextLesson: { id: 22, title: `Liquidity Voids & Gaps` },
@@ -387,7 +387,7 @@ export const LESSONS_EXTRA = {
     quiz: [
       { q: `A New Week Opening Gap (NWOG) forms when...`, options: ['Price breaks a weekly high', 'The forex market opens Sunday at a different price than Friday\'s close', 'Monthly candles overlap', 'The Asian session closes'], answer: 1 },
       { q: `The CE (Consequent Encroachment) of a gap is...`, options: ['The top of the gap', 'The bottom of the gap', 'The exact 50% midpoint of the gap', 'The original closing price before the gap'], answer: 2 },
-      { q: `A NDOG (New Day Opening Gap) is most frequently filled during...`, options: ['The New York PM session', 'The Asian or early London session', 'The NYSE open at 9:30 AM', 'Friday afternoon'], answer: 1 },
+      { q: `How should a trader evaluate when an NDOG may be revisited?`, options: ['Assume the New York PM session will fill it', 'Compare predefined session windows and fill outcomes in historical data', 'Assume it fills in Asian or early London sessions', 'Treat Friday afternoon as a universal rule'], answer: 1 },
     ],
     nextLesson: { id: 23, title: `Time & Price Theory` },
     prevLesson: { id: 21, title: `Quarterly Theory` },
@@ -431,8 +431,8 @@ export const LESSONS_EXTRA = {
     ],
     quiz: [
       { q: `Which time window is commonly associated with the Silver Bullet model in ICT material?`, options: ['2:33 AM London Open', '8:50 AM Pre-New York', '10:00 AM Silver Bullet', '1:10 PM London Close'], answer: 2 },
-      { q: `The 20-Minute Rule states that after a reversal signal...`, options: ['You must wait 20 minutes before entering', 'Price should show directional commitment within 20 minutes', 'The trade is valid for exactly 20 minutes', 'Stops should be set 20 pips away'], answer: 1 },
-      { q: `In the Time-Price Matrix, a valid setup at the wrong time...`, options: ['Has the same probability as at the correct time', 'Has higher probability because institutions are absent', 'Has lower probability due to reduced institutional participation', 'Should always be taken'], answer: 2 },
+      { q: `In a model that uses a 20-minute rule, what is the intended use?`, options: ['A universal delay before every entry', 'A predefined window for checking whether a move gains follow-through', 'A fixed duration for all trades', 'A rule for choosing a 20-pip stop'], answer: 1 },
+      { q: `How should a named time window be evaluated in a trading model?`, options: ['Assume every valid setup works better in that window', 'Treat the time label as proof of institutional activity', 'Test whether the window changes results relative to a defined baseline', 'Take every setup regardless of invalidation'], answer: 2 },
     ],
     nextLesson: { id: 24, title: `Turtle Soup & Stop Hunts` },
     prevLesson: { id: 22, title: `Liquidity Voids & Gaps` },
@@ -571,7 +571,7 @@ export const LESSONS_EXTRA = {
     ],
     quiz: [
       { q: `A Balanced Price Range (BPR) forms when...`, options: ['Price makes equal highs and equal lows', 'A bullish FVG and bearish FVG overlap at the same price zone', 'An Order Block is fully mitigated', 'Price reaches the 50% equilibrium level'], answer: 1 },
-      { q: `Why do BPR reactions tend to be sharper than single FVG reactions?`, options: ['Because BPRs are larger zones with more price area', 'Because two sets of institutional orders converge at the same zone simultaneously', 'Because retail traders avoid BPR zones', 'Because BPRs only form during killzones'], answer: 1 },
+      { q: `In an ICT framework, why might a trader mark a BPR?`, options: ['It proves two sets of institutional orders converged', 'It labels an overlap between defined bullish and bearish FVGs that can be tested', 'It guarantees a sharper reaction', 'It forms only during killzones'], answer: 1 },
       { q: `If price closes beyond the far edge of a BPR, you should...`, options: ['Enter a larger position  --  the BPR is now more powerful', 'Consider the BPR mitigated and remove it from your chart', 'Wait for price to return to the BPR midpoint', 'Move your stop to the far edge of the BPR'], answer: 1 },
     ],
     nextLesson: { id: 27, title: `Execution & Trade Management` },
@@ -625,8 +625,8 @@ export const LESSONS_EXTRA = {
       },
     ],
     quiz: [
-      { q: `When should you use a LIMIT order for ICT entries?`, options: ['When price is moving fast and you need to catch it', 'At predefined PD Array levels  --  FVG CE, OB top, BPR midpoint', 'After news events when spreads are tight', 'Only during the Asian session'], answer: 1 },
-      { q: `In ICT, take profit is ALWAYS placed at...`, options: ['2:1 R:R from entry', 'A round number above/below entry', 'An identified Draw on Liquidity  --  BSL or SSL', 'The previous day close'], answer: 2 },
+      { q: `How should order type be chosen for an ICT-style entry?`, options: ['Use a market order whenever price moves fast', 'Follow a predefined execution rule that fits the setup, spread and slippage assumptions', 'Always use limit orders at every PD Array', 'Use limit orders only during the Asian session'], answer: 1 },
+      { q: `In a trading plan that uses DOL, which is one possible preplanned target?`, options: ['A fixed 2:1 R:R in every trade', 'A round number in every market', 'A candidate draw on liquidity selected by the defined model', 'The previous day close in every trade'], answer: 2 },
       { q: `The correct time to move your stop to breakeven is...`, options: ['The moment the trade becomes positive', 'After price has moved 1R AND cleared the first PD Array AND LTF BOS confirmed', 'After 30 minutes regardless of price action', 'When you feel nervous about the trade'], answer: 1 },
     ],
     nextLesson: { id: 28, title: `Backtesting & Model Development` },
@@ -722,7 +722,7 @@ export const LESSONS_EXTRA = {
     ],
     quiz: [
       { q: `What is the maximum recommended risk per trade for a beginner ICT trader?`, options: ['5%', '2%', '1%', '0.5%'], answer: 3 },
-      { q: `What is the minimum Risk-to-Reward ratio for an ICT setup?`, options: ['1:1', '1:2', '1:3', '1:5'], answer: 2 },
+      { q: `Which evidence should inform a strategy’s minimum risk-to-reward filter?`, options: ['An arbitrary fixed ratio', 'A common social-media recommendation', 'Tested win rate, execution costs, average win/loss and drawdown', 'A grade such as A+ on its own'], answer: 2 },
       { q: `Where should you place your stop loss on a bullish Order Block entry?`, options: ['10 pips below entry', 'Below the OB low', 'At the previous day low', 'At breakeven'], answer: 1 },
       { q: `What should you do after 3 consecutive losing trades?`, options: ['Increase position size to recover', 'Stop trading for the day', 'Switch to a different strategy', 'Trade a different pair'], answer: 1 },
     ],
@@ -809,9 +809,9 @@ export const LESSONS_EXTRA = {
     ],
     quiz: [
       { q: `Which index is more volatile?`, options: ['US30', 'NAS100', 'Both the same', 'Depends on the day'], answer: 1 },
-      { q: `What is the most important killzone for indices?`, options: ['3AM New York time', '9:30AM New York time', '2PM New York time', '8PM New York time'], answer: 1 },
+      { q: `Which U.S. session period is commonly examined in some index strategies?`, options: ['3 AM New York time', '9:30 AM New York time', '2 PM New York time', '8 PM New York time'], answer: 1 },
       { q: `How correlated are NAS100 and US30?`, options: ['50%', '70%', '85%+', '30%'], answer: 2 },
-      { q: `What should you do before earnings season?`, options: ['Increase size', 'Reduce size by 50%', 'Trade normally', 'Only trade NAS100'], answer: 1 },
+      { q: `What should be planned before an earnings or event-risk period?`, options: ['Increase size', 'Apply a predefined event-risk plan based on exposure and model rules', 'Trade all instruments normally', 'Only trade NAS100'], answer: 1 },
     ],
     nextLesson: { id: 202, title: `ICT for Gold (XAU/USD)` },
     prevLesson: { id: 30, title: `Advanced Risk Management` },
@@ -847,7 +847,7 @@ export const LESSONS_EXTRA = {
       { q: `What is gold inversely correlated with?`, options: ['EURUSD', 'USD (DXY)', 'Oil', 'Stocks'], answer: 1 },
       { q: `When is the London Gold Fix?`, options: ['8AM GMT', '10AM GMT', '12PM GMT', '2PM GMT'], answer: 1 },
       { q: `How wide are typical gold FVGs?`, options: ['1-2 pips', '5-10 pips', '20-30 pips', '50+ pips'], answer: 1 },
-      { q: `What drives gold during safe-haven events?`, options: ['London only', 'NY only', 'Asian session', 'Aggressive institutional buying at any time'], answer: 3 },
+      { q: `How should gold be approached around a safe-haven event?`, options: ['Assume London alone drives moves', 'Assume New York alone drives moves', 'Assume the Asian session determines direction', 'Treat the reaction as uncertain and account for event, liquidity and volatility conditions'], answer: 3 },
     ],
     nextLesson: { id: 301, title: `ICT for Crypto: Bitcoin & Ethereum` },
     prevLesson: { id: 201, title: `ICT for NAS100 & US30` },
@@ -980,7 +980,7 @@ export const LESSONS_EXTRA = {
     quiz: [
       { q: `What is the maximum recommended portfolio heat?`, options: ['3%', '6%', '10%', '15%'], answer: 1 },
       { q: `Which pairs are highly correlated?`, options: ['EURUSD & USDJPY', 'EURUSD & GBPUSD', 'AUDUSD & USDCAD', 'XAUUSD & EURUSD'], answer: 1 },
-      { q: `When should you scale into a position?`, options: ['When it is losing', 'When it is winning at breakeven', 'At the very start', 'Never'], answer: 1 },
+      { q: `When should a trader scale into a position?`, options: ['Whenever it is losing', 'Only when a predefined, tested rule calls for scaling', 'Immediately after the initial entry', 'Never under any strategy'], answer: 1 },
       { q: `What percentage of a position should you close at 1:2 R:R?`, options: ['25%', '50%', '75%', '100%'], answer: 1 },
     ],
     nextLesson: { id: 103, title: `The Psychology of Risk` },
