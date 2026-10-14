@@ -10,7 +10,7 @@ export const LESSONS_EXTRA = {
     level: `Intermediate`,
     duration: `20 min read`,
     category: `Analysis`,
-    imageCaption: `Daily bias is determined before the session opens  --  from monthly down to daily timeframe alignment`,
+    imageCaption: `A pre-session daily-bias workflow can organize context; alignment is a filter to define and test`,
     intro: `A trader can define a Daily Bias before the session by studying higher-timeframe context. A useful bias is a testable scenario, not proof of institutional order flow or a guarantee about the day's direction.`,
     sections: [
       {
@@ -30,8 +30,8 @@ export const LESSONS_EXTRA = {
       },
       {
         title: `The Midnight Open  --  True Daily Reference`,
-        content: `ICT uses midnight New York time as the "True Daily Open"  --  not the NYSE open at 9:30 AM. This is the reference point from which the day's AMD cycle begins.\n\nWhy midnight? Because the algorithm begins delivering price from midnight onwards. The Asian session (7 PM-12 AM New York time) accumulates. The London session (2 AM-5 AM New York time) manipulates. The New York AM session (7 AM-11 AM New York time) distributes. The midnight open is the starting point of the full day's cycle.\n\nThe relationship between current price and the midnight open tells you the AMD phase:\n• Price near midnight open = still in accumulation/early manipulation\n• Price significantly above/below midnight open in London = manipulation phase (Judas Swing)\n• Price extending from the manipulation extreme in NY AM = distribution phase\n\nPractical application: if it is 10 AM New York time and price has already moved 50 points above the midnight open, you are likely in the distribution phase. Do not chase. If price is pulling back toward the midnight open level, watch for re-entry from an IRL level.`,
-        highlight: `📌 Some ICT traders use midnight New York time as a daily-open reference. It is one chart level to test—not proof that an AMD cycle has begun or a forecast of delivery.`,
+        content: `ICT materials may use midnight New York time as a “True Daily Open” reference, distinct from the 9:30 AM NYSE open. The reference can be included in a chart study, but it does not establish that a daily AMD cycle begins at midnight or that a particular session must accumulate, manipulate or distribute.\n\nOne ICT narrative associates different windows with possible phases: Asian trading with accumulation, London with a possible Judas-style move, and New York morning with possible directional expansion. These are interpretations to test against defined session and price rules, not verified descriptions of an algorithm's actions.\n\nThe relationship between price and the midnight open is a chart observation; it does not, by itself, determine an AMD phase or forecast direction. If the reference is part of your model, specify the market, timezone, session window, setup trigger and invalidation, then compare outcomes with a baseline.`,
+        highlight: `📌 Midnight New York time can be studied as a daily-open reference; it does not prove an AMD phase, institutional activity or a future direction.`,
       },
       {
         title: `When to Trade With No Bias (Neutral Days)`,
@@ -47,7 +47,7 @@ export const LESSONS_EXTRA = {
     quiz: [
       { q: `Daily bias should be determined...`, options: ['During the NY AM session', 'Before the session opens using HTF analysis', 'After the first trade of the day', 'When price shows a clear pattern'], answer: 1 },
       { q: `The True Daily Open in ICT is...`, options: ['9:30 AM NYSE open', 'London open at 2 AM New York time', 'Midnight New York time', 'Asian session open at 7 PM New York time'], answer: 2 },
-      { q: `When should you trade with no bias?`, options: ['Never  --  always have a direction', 'When monthly and weekly timeframes conflict', 'Only on Mondays', 'When RSI is at 50'], answer: 1 },
+      { q: `When might a model signal a no-trade day?`, options: ['Always take a directional position', 'When required context is contradictory or a defined setup is absent', 'Only on Mondays', 'Whenever RSI is at 50'], answer: 1 },
     ],
     nextLesson: { id: 16, title: `Draw on Liquidity` },
     prevLesson: { id: 14, title: `Top-Down Analysis` },
