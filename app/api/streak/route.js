@@ -3,6 +3,7 @@ import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 import { createHash } from 'node:crypto';
+import { isBackdatedStreakDate } from '@/lib/streak-date';
 
 const WINDOW_SECONDS = 5 * 60;
 const MAX_REQUESTS = 10;
@@ -126,6 +127,16 @@ export async function POST(req) {
         longest_streak: profile.longest_streak || 0,
         last_active: profile.last_active,
       }, { headers: { 'Cache-Control': 'private, no-store' } });
+    }
+
+    // The timezone header is client-supplied. Do not let a timezone change
+    // rewind the persisted date, which would permit repeated same-day streak increments.
+    if (isBackdatedStreakDate(today, profile.last_active)) {
+      return privateJson({
+        streak: profile.streak || 0,
+        longest_streak: profile.longest_streak || 0,
+        last_active: profile.last_active,
+      });
     }
 
     const yesterday = previousDate(today);
