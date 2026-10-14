@@ -262,6 +262,62 @@ const forbidden = [
     pattern: /If any answer is No, do not take the trade\. No exceptions/i,
   },
 
+  {
+    source: 'legacy',
+    label: 'unsupported risk-of-ruin probability',
+    pattern: /99\.9% chance of blowing your account within 50 trades/i,
+  },
+  {
+    source: 'legacy',
+    label: 'risk percentage incorrectly changes break-even win rate',
+    pattern: /A trader who risks 5% per trade needs a 60% win rate just to break even/i,
+  },
+  {
+    source: 'legacy',
+    label: 'incorrect pip-value position-size example',
+    pattern: /\$100 \/ \(20 pips x \$1 per pip\) = 0\.5 mini lots/i,
+  },
+  {
+    source: 'legacy',
+    label: 'fixed 2-to-5 pip buffer stated as universal stop rule',
+    pattern: /Always add a 2-5 pip buffer to your stop loss/i,
+  },
+  {
+    source: 'legacy',
+    label: 'correlation converted into a fixed risk multiplier',
+    pattern: /actual risk is closer to 1\.85%/i,
+  },
+  {
+    source: 'legacy',
+    label: 'portfolio heat threshold stated as universally recommended',
+    pattern: /portfolio heat \(under 6% total\)/i,
+  },
+  {
+    source: 'legacy',
+    label: 'full-size position tied to subjective perfect setup grade',
+    pattern: /Correct narrative \+ perfect setup = A\+ trade \(full size\)/i,
+  },
+  {
+    source: 'legacy',
+    label: 'psychology represented as an unsupported fixed percentage',
+    pattern: /Trading is 80% psychology and 20% strategy/i,
+  },
+  {
+    source: 'legacy',
+    label: 'quiz asks for a universal maximum risk percentage',
+    pattern: /What is the maximum recommended risk per trade\?/i,
+  },
+  {
+    source: 'legacy',
+    label: 'quiz asks for a universal minimum ICT risk reward',
+    pattern: /What is the minimum acceptable Risk-Reward ratio for an ICT setup\?/i,
+  },
+  {
+    source: 'legacy',
+    label: 'quiz asks for a universal maximum portfolio heat',
+    pattern: /What is the maximum recommended portfolio heat\?/i,
+  },
+
 ];
 
 const required = [
@@ -386,6 +442,47 @@ const required = [
     source: 'legacy',
     label: 'correlated-pair quiz asks for combined exposure assessment',
     pattern: /Consider their correlation and combined exposure before choosing position sizes/i,
+  },
+
+  {
+    source: 'legacy',
+    label: 'risk-of-ruin section states its assumptions limitation',
+    pattern: /There is no universal probability of ruin based only on a stated risk percentage and win rate/i,
+  },
+  {
+    source: 'legacy',
+    label: 'break-even win rate is separated from risk percentage',
+    pattern: /does not by itself change the break-even win rate when the payoff ratio is unchanged/i,
+  },
+  {
+    source: 'legacy',
+    label: 'position-size example uses consistent standard-lot pip value',
+    pattern: /\$100 \/ \(20 pips × \$10 per pip\) = 0\.5 standard lots/i,
+  },
+  {
+    source: 'legacy',
+    label: 'correlation is not translated directly into a risk multiplier',
+    pattern: /Do not convert a correlation coefficient directly into a portfolio-risk multiplier/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Kelly formula includes correct parentheses and caveats',
+    pattern: /f = \(p × b − q\) \/ b, where p is the win probability/i,
+  },
+  {
+    source: 'legacy',
+    label: 'risk quiz asks for account-specific risk inputs',
+    pattern: /What should determine the risk you take on a single trade/i,
+  },
+  {
+    source: 'legacy',
+    label: 'portfolio-heat quiz asks what it measures',
+    pattern: /What does portfolio heat estimate/i,
+  },
+  {
+    source: 'legacy',
+    label: 'position size is not based on subjective narrative grading',
+    pattern: /A narrative or setup grade should not override the account risk cap/i,
   },
 
 ];
