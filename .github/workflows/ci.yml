@@ -83,6 +83,9 @@ jobs:
       - name: Validate billing recovery and admin deletion safety
         run: node scripts/check-billing-recovery.cjs
 
+      - name: Test paginated Stripe subscription lookup
+        run: node --experimental-default-type=module scripts/test-stripe-subscription-pagination.mjs
+
       - name: Lint changed JavaScript/JSX
         shell: bash
         run: |
