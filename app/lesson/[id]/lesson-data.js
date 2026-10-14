@@ -115,7 +115,7 @@ Within the ICT framework, traders may study BSL as an area where sell-side liqui
 You'll recognize BSL as: Equal Highs (EQH) on a chart, previous day/week highs, obvious resistance levels that everyone is watching, and round numbers like 1.1000 or 2000 on Gold.
 
 A common liquidity-sweep example is price approaching BSL, briefly trading above it, then potentially reversing. ICT education may call this a "stop hunt" or "liquidity sweep," but the chart alone cannot establish that stops were deliberately targeted.`,
-        highlight: '📌 Every time you see price spike above an obvious high and immediately reverse — that may be interpreted as a BSL sweep; institutional order flow cannot be confirmed from the chart alone.',
+        highlight: '📌 A price spike above an obvious high followed by an immediate reversal may be interpreted as a BSL sweep; institutional order flow cannot be confirmed from the chart alone.',
       },
       {
         title: 'Sell-Side Liquidity (SSL)',
@@ -307,7 +307,7 @@ In this ICT-style framework, traders may define an OB confirmation using a BOS/C
 
 4. Volume context — higher volume on the OB candle and the displacement move adds validity.
 
-5. Higher timeframe alignment — a Daily OB is more powerful than a 5-minute OB. Always note the timeframe of the OB.`,
+5. Higher-timeframe alignment — some traders use a Daily OB as context for a 5-minute OB. Whether this adds value depends on the model and should be tested. Always record the timeframe of the OB.`,
         highlight: '📌 OB validity checklist: (1) displacement after it ✓ (2) BOS or ChoCH after it ✓ (3) FVG in the displacement ✓ (4) HTF alignment ✓',
       },
       {
@@ -509,7 +509,7 @@ Monthly AMD:
 
 This means you can apply the AMD framework to weekly charts to determine which DIRECTION the week will ultimately close in. If you see the weekly sweep a key low on Tuesday — that's your weekly Judas Swing. Expect the week to close bullish.
 
-ICT specifically notes that TUESDAY is the most common day for the weekly Judas Swing. One ICT framework describes Tuesday as a common day for a weekly Judas Swing, followed by distribution later in the week; treat this as a framework to test, not a guarantee.`,
+Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, with a potential later-week directional move. Treat this as an attributed hypothesis rather than an established market regularity, and test defined rules across representative data.`,
         highlight: '📌 Weekly AMD: Monday = accumulate. Tuesday = Judas Swing (usually). Thursday-Friday = real directional move. This works with remarkable consistency.',
       },
     ],
@@ -538,7 +538,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
       },
       {
         title: 'The Optimal Trade Entry (OTE)',
-        content: `The Optimal Trade Entry (OTE) is ICT's specific buy/sell zone within the discount or premium area. It is defined by three Fibonacci levels:\n\nFor a BULLISH OTE (buy zone in discount):\n• 62% retracement — start of the OTE zone\n• 70.5% retracement — the deepest sweet spot\n• 79% retracement — the outer limit of the OTE zone\n\nWhen price pulls back into the 62-79% zone after a bullish BOS, you are in the OTE. This is where ICT traders place their buy limit orders.\n\nThese levels are part of the ICT OTE framework. Claims about institutional re-entry or consistent demand at a specific Fibonacci level are theoretical and should be tested rather than treated as established market mechanics.\n\nFor a BEARISH OTE (sell zone in premium):\n• 62% retracement of a swing high to low\n• 70.5% level\n• 79% level\n\nThe OTE is not a guarantee; within the ICT framework it is commonly studied as a potential entry zone, and its performance should be tested. It must be combined with a liquidity sweep, a Fair Value Gap or Order Block, and alignment with the higher timeframe narrative.`,
+        content: `In some ICT teachings, the Optimal Trade Entry (OTE) is a retracement zone placed within a defined premium or discount range. One common version uses three Fibonacci levels:\n\nFor a BULLISH OTE (buy zone in discount):\n• 62% retracement — start of the OTE zone\n• 70.5% retracement — the deepest sweet spot\n• 79% retracement — the outer limit of the OTE zone\n\nWhen price pulls back into the 62-79% zone after a bullish BOS, you are in the OTE. This is where ICT traders place their buy limit orders.\n\nThese levels are part of the ICT OTE framework. Claims about institutional re-entry or consistent demand at a specific Fibonacci level are theoretical and should be tested rather than treated as established market mechanics.\n\nFor a BEARISH OTE (sell zone in premium):\n• 62% retracement of a swing high to low\n• 70.5% level\n• 79% level\n\nThe OTE is not a guarantee; within the ICT framework it is commonly studied as a potential entry zone, and its performance should be tested. It must be combined with a liquidity sweep, a Fair Value Gap or Order Block, and alignment with the higher timeframe narrative.`,
         highlight: '📌 The OTE zone is 62%-79% of a Fibonacci retracement. Within the ICT framework, this zone is commonly studied as a potential entry area rather than evidence that "smart money" is re-entering. Define your entry and invalidation rules in advance and test them rather than assuming the zone should be traded.',
       },
       {
@@ -554,7 +554,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
       {
         title: 'Common Mistakes with Premium & Discount',
         content: `Even traders who understand the concept make critical errors in application:\n\nMistake 1 — Wrong swing selection:\nThe range you draw determines everything. Using the wrong swing high/low gives you the wrong premium/discount zones. Use a recent, meaningful swing that fits the range and timeframe you are analyzing; compare alternative swing selections when testing the framework.\n\nMistake 2 — Ignoring the higher timeframe:\nA lower-timeframe discount signal can conflict with a higher-timeframe premium context. Higher-timeframe context may carry more weight in this framework, but the appropriate hierarchy should be tested.\n\nMistake 3 — Entering at equilibrium:\nThe 50% level is not a buy or sell zone — it's neutral. Many traders try to enter at exactly 50% and get chopped up. The ICT OTE framework commonly uses a 62% starting level; this is a framework convention rather than evidence that 62% is inherently superior.\n\nMistake 4 — Abandoning the concept during strong trends:\nIn a very strong uptrend, price sometimes only retraces to the 38.2% or 50% level before continuing. In these cases, the OTE (62-79%) may not be reached. Don't force the framework — if price gives you a clear signal at a shallower retracement with a valid order block, take it.\n\nMistake 5 — No directional bias:\nWithin this framework, traders often combine premium/discount with a directional context from market structure. The exact sequence and filter can be tested rather than treated as mandatory.`,
-        highlight: '📌 The framework is only as good as the swing you draw it on. Always use the most significant, most recent swing high and low that the market is actively referencing.',
+        highlight: '📌 Swing selection affects a premium/discount analysis. Define what qualifies as the reference swing before reviewing outcomes, and apply that rule consistently during testing.',
       },
     ],
     quiz: [
