@@ -297,7 +297,7 @@ export const LESSONS_EXTRA = {
     quiz: [
       { q: `A trading narrative must include...`, options: ['Only the entry and stop loss', 'Direction on all relevant timeframes, entry, target, and invalidation', 'RSI and MACD readings', 'News events for the week'], answer: 1 },
       { q: `When your narrative is invalidated, you should...`, options: ['Widen your stop and wait', 'Close positions and step aside immediately', 'Add to the losing position', 'Switch to a different timeframe and look for confirmation'], answer: 1 },
-      { q: `A correct narrative with a mediocre setup should be traded at...`, options: ['Full position size', 'Reduced position size (half)', 'Zero size  --  do not trade', 'Double position size to compensate'], answer: 1 },
+      { q: `What should determine position size when narrative context and setup quality differ?`, options: ['Always use full size on a perfect-looking chart', 'A predefined, tested sizing rule within the account risk cap', 'Always use half size on an A setup', 'Double size to compensate for missed trades'], answer: 1 },
     ],
     nextLesson: { id: 21, title: `Quarterly Theory` },
     prevLesson: { id: 19, title: `Session Timing & Market Hours` },
@@ -310,7 +310,7 @@ export const LESSONS_EXTRA = {
     level: `Advanced`,
     duration: `20 min read`,
     category: `Advanced`,
-    imageCaption: `Q1-Q4 quarterly cycle: accumulation → manipulation → distribution → reversal  --  the annual market script`,
+    imageCaption: `Quarterly labels are one lens for studying seasonal behavior, not a fixed annual market script`,
     intro: `Quarterly Theory is an ICT framework that assigns labels such as accumulation, manipulation, distribution and repositioning to parts of the calendar year. Those labels should be treated as hypotheses about seasonality, not established descriptions of what institutions do. If you study quarterly effects, define the rules in advance and compare results with a baseline across multiple years and instruments.`,
     sections: [
       {
@@ -692,7 +692,7 @@ export const LESSONS_EXTRA = {
     duration: `18 min read`,
     category: `Risk Management`,
     imageCaption: `Risk management is not optional -- it is the foundation that separates professional traders from gamblers`,
-    intro: `Risk management is the single most important skill in trading. You can have the best ICT strategy, the perfect entry model, and flawless market structure analysis -- but without proper risk management, you will eventually blow your account. This lesson covers the core principles that every ICT trader must master before placing a single trade.`,
+    intro: `Risk management is one important part of a trading plan. A strategy can lose money even when position sizing and stops are used, but weak risk controls can magnify losses or expose an account to risks it cannot tolerate. This lesson covers risk examples and decisions to adapt to the strategy and account.`,
     sections: [
       {
         title: `Why Risk Management Matters More Than Strategy`,
@@ -721,7 +721,7 @@ export const LESSONS_EXTRA = {
       },
     ],
     quiz: [
-      { q: `What is the maximum recommended risk per trade for a beginner ICT trader?`, options: ['5%', '2%', '1%', '0.5%'], answer: 3 },
+      { q: `What is a cautious way to choose trade risk while testing a strategy?`, options: ['Use 5% to learn faster', 'Always use 2% because it is a universal rule', 'Increase risk after each loss', 'Choose a small predefined amount that fits account rules and validate in simulation'], answer: 3 },
       { q: `Which evidence should inform a strategy’s minimum risk-to-reward filter?`, options: ['An arbitrary fixed ratio', 'A common social-media recommendation', 'Tested win rate, execution costs, average win/loss and drawdown', 'A grade such as A+ on its own'], answer: 2 },
       { q: `Where should you place your stop loss on a bullish Order Block entry?`, options: ['10 pips below entry', 'Below the OB low', 'At the previous day low', 'At breakeven'], answer: 1 },
       { q: `What should you do after 3 consecutive losing trades?`, options: ['Increase position size to recover', 'Stop trading for the day', 'Switch to a different strategy', 'Trade a different pair'], answer: 1 },
@@ -738,7 +738,7 @@ export const LESSONS_EXTRA = {
     duration: `22 min read`,
     category: `Risk Management`,
     imageCaption: `Professional traders treat risk management as a science, not an afterthought`,
-    intro: `Once you understand the basics of the 1% rule and stop loss placement, it is time to master advanced risk management techniques. This lesson covers position sizing formulas, correlation risk, drawdown recovery strategies, and the psychological aspects of managing money like a professional ICT trader.`,
+    intro: `After studying single-trade risk and stop placement, this lesson covers position-sizing formulas, correlation risk, drawdown responses and the behavioral side of risk management. The 1% rule is one example of a personal or account limit, not a universal requirement.`,
     sections: [
       {
         title: `The Kelly Criterion for ICT Traders`,
@@ -783,11 +783,11 @@ export const LESSONS_EXTRA = {
     level: `Intermediate`,
     duration: `28 min read`,
     category: `Indices`,
-    imageCaption: `Indices move differently than forex -- understand the nuances to profit consistently`,
+    imageCaption: `Index products have distinct hours, costs, volatility and gap risks; test the rules for the instrument traded`,
     intro: `NAS100 and US30 are popular instruments among ICT traders, but they do not inherently offer cleaner structure, more predictable institutional behavior, or greater profitability than FX. Index futures, CFDs and cash-index products have different trading hours, costs and gap risks. This lesson covers practical features to define and test for the product you actually trade.`,
     sections: [
       {
-        title: `Why Indices Are Better for ICT`,
+        title: `How to Compare Indices for ICT`,
         content: `Rather than assuming indices are better, compare the product you trade with your FX alternatives. Index cash-session hours, futures hours, CFD hours, spreads, commissions, volatility and overnight financing can differ materially. Indices can have overnight sessions or gaps depending on the product and broker. Compare the same entry and exit definitions, express outcomes in risk units, and account for fees and slippage; no account-size threshold by itself makes one market more profitable.`,
         highlight: `📌 Indices offer cleaner ICT structure, larger moves, and predictable sessions. Ideal for traders with $5K+ accounts.`,
       },
@@ -808,9 +808,9 @@ export const LESSONS_EXTRA = {
       },
     ],
     quiz: [
-      { q: `Which index is more volatile?`, options: ['US30', 'NAS100', 'Both the same', 'Depends on the day'], answer: 1 },
+      { q: `What should guide position sizing across NAS100 and US30?`, options: ['Account balance alone', 'Volatility, contract specifications, stop distance and total risk', 'Always use smaller size on NAS100', 'Treat both products as identical'], answer: 1 },
       { q: `Which U.S. session period is commonly examined in some index strategies?`, options: ['3 AM New York time', '9:30 AM New York time', '2 PM New York time', '8 PM New York time'], answer: 1 },
-      { q: `How correlated are NAS100 and US30?`, options: ['50%', '70%', '85%+', '30%'], answer: 2 },
+      { q: `What should guide correlation estimates for NAS100 and US30?`, options: ['Assume a fixed 85%+ value', 'Use last week’s correlation forever', 'Measure the relationship over the relevant period and assess joint-loss risk', 'Treat all indices as identical'], answer: 2 },
       { q: `What should be planned before an earnings or event-risk period?`, options: ['Increase size', 'Apply a predefined event-risk plan based on exposure and model rules', 'Trade all instruments normally', 'Only trade NAS100'], answer: 1 },
     ],
     nextLesson: { id: 202, title: `ICT for Gold (XAU/USD)` },
@@ -860,11 +860,11 @@ export const LESSONS_EXTRA = {
     level: `Intermediate`,
     duration: `22 min read`,
     category: `Crypto`,
-    imageCaption: `Crypto markets run 24/7 -- ICT concepts work even better without session boundaries`,
-    intro: `Cryptocurrency markets never close. They run 24/7, 365 days a year. This creates unique opportunities for ICT traders -- no killzone limitations, no session gaps, and massive volatility. But crypto also has unique risks: exchange hacks, regulatory news, and extreme leverage. This module teaches you how to apply ICT safely in crypto markets.`,
+    imageCaption: `Crypto trades around the clock on many venues, but liquidity, costs and market behavior still vary`,
+    intro: `Many crypto spot markets trade around the clock, but exchange maintenance, outages, liquidity shifts and product-specific trading hours can still affect access and execution. Around-the-clock availability does not remove session-based behavior, gaps in liquidity or event risk. This module discusses how to define and test ICT-style rules while accounting for exchange, custody, volatility and leverage risks.`,
     sections: [
       {
-        title: `Why ICT Works Even Better in Crypto`,
+        title: `Applying ICT Concepts in Crypto Markets`,
         content: `Crypto markets trade around the clock, but liquidity, spread, volatility and price structure vary by asset, exchange and period. The presence of large holders or retail sentiment cannot be inferred reliably from a candlestick pattern alone, and 24/7 trading does not make ICT setups inherently cleaner or more profitable. Define the venue, pair, time zone, fees, funding costs, stop rule and exit conditions, then compare with a baseline.`,
         highlight: `📌 Crypto trades 24/7, but structure, costs and volatility vary. Size positions to a predefined risk limit and test session filters before relying on them.`,
       },
@@ -885,10 +885,10 @@ export const LESSONS_EXTRA = {
       },
     ],
     quiz: [
-      { q: `What is the maximum recommended leverage for crypto ICT?`, options: ['10x', '5x', '20x', '50x'], answer: 1 },
+      { q: `How should leverage be chosen for a crypto trading model?`, options: ['Use 10x on every trade', 'Stay within defined risk limits and account for volatility and liquidation distance', 'Use 20x for higher-confidence setups', 'Use 50x for Bitcoin only'], answer: 1 },
       { q: `When does Bitcoin halving occur?`, options: ['Every year', 'Every 2 years', 'Every 4 years', 'Every 6 years'], answer: 2 },
-      { q: `What is the best session for crypto swing entries?`, options: ['London', 'NY', 'Asian', 'Weekend'], answer: 2 },
-      { q: `What percentage stop is recommended for Bitcoin?`, options: ['1-2%', '3-5%', '8-10%', '15-20%'], answer: 1 },
+      { q: `How should a session window be selected for crypto swing entries?`, options: ['Always choose London', 'Always choose New York', 'Test relevant sessions with the same entry, exit and cost rules', 'Enter only on weekends'], answer: 2 },
+      { q: `What should determine a Bitcoin stop distance?`, options: ['Use 1–2% on every trade', 'Define invalidation, account for volatility/execution, then size the position', 'Always use 8–10%', 'Use 15–20% because crypto is volatile'], answer: 1 },
     ],
     nextLesson: null,
     prevLesson: { id: 202, title: `ICT for Gold (XAU/USD)` },
