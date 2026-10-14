@@ -455,6 +455,42 @@ const forbidden = [
     pattern: /Without proper risk controls, even the best ICT strategy will eventually blow your account/i,
   },
 
+  {
+    source: 'legacy',
+    label: 'execution lesson uses unsupported concepts-versus-execution 90/10 split',
+    pattern: /Most ICT learners spend 90% of their time on concepts and 10% on execution/i,
+  },
+  {
+    source: 'legacy',
+    label: 'execution subtitle assigns a fixed 40/60 split',
+    pattern: /Knowing the Setup Is 40% of Trading -- Execution Is the Other 60%/i,
+  },
+  {
+    source: 'legacy',
+    label: 'limit orders universally presented as preferred and better R:R',
+    pattern: /LIMIT ORDERS \(Preferred for ICT Entries\)[\s\S]{0,650}Better R:R because entry is at the optimal zone/i,
+  },
+  {
+    source: 'legacy',
+    label: 'market orders said to consistently create worse entries',
+    pattern: /This consistently produces entries at worse prices and tighter R:R/i,
+  },
+  {
+    source: 'legacy',
+    label: 'pattern-specific stop boundaries presented as universal rules',
+    pattern: /Stop goes beyond the ABSOLUTE EXTREME of the sweep wick[\s\S]{0,250}specifically to survive any secondary wick/i,
+  },
+  {
+    source: 'legacy',
+    label: 'stop order portrayed as exact guarantee',
+    pattern: /Your stop loss is your insurance policy\. It is not a suggestion -- it is a hard rule/i,
+  },
+  {
+    source: 'legacy',
+    label: 'drawdown recovery example uses incorrect five-percent ten-loss math',
+    pattern: /Risk 5% per trade = 10 consecutive losses = 60% drawdown/i,
+  },
+
 ];
 
 const required = [
@@ -697,6 +733,32 @@ const required = [
     source: 'legacy',
     label: 'stop-loss section explains execution can exceed planned risk',
     pattern: /A stop order does not guarantee the amount lost/i,
+  },
+
+  {
+    source: 'legacy',
+    label: 'execution lesson warns concept knowledge cannot ensure profitability',
+    pattern: /knowing a concept or executing it consistently does not guarantee a profitable result/i,
+  },
+  {
+    source: 'legacy',
+    label: 'order types are compared with missed fills and execution costs',
+    pattern: /Test missed fills as well as completed trades; a backtest that assumes every limit order fills when touched can overstate results/i,
+  },
+  {
+    source: 'legacy',
+    label: 'pattern-specific stop placement is defined before the outcome',
+    pattern: /Choose the stop from a rule that can be applied before knowing the outcome/i,
+  },
+  {
+    source: 'legacy',
+    label: 'risk example states assumptions for compounded losses',
+    pattern: /Assume each losing trade reduces the remaining account equity by a fixed percentage/i,
+  },
+  {
+    source: 'legacy',
+    label: 'drawdown recovery math uses corrected compounded figures',
+    pattern: /about a 65\.1% drawdown[\s\S]{0,250}about a 40\.1% drawdown/i,
   },
 
 ];
