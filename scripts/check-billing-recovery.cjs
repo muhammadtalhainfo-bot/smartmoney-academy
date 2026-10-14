@@ -40,6 +40,22 @@ if (!webhook.includes('customerHasEntitledSubscription(stripe, customerId)')) {
   errors.push('Webhook entitlement recalculation must use the same status-aware helper as checkout.');
 }
 
+const profileLookup = webhook.match(/async function findProfileByCustomer[\s\S]*?\n}\n/)?.[0] || '';
+if (!profileLookup.includes('const { data, error } = await supabase')) {
+  errors.push('Stripe webhook profile lookup must capture Supabase query errors.');
+}
+if (!profileLookup.includes('if (error) throw error;')) {
+  errors.push('Stripe webhook must fail the event when profile lookup fails so Stripe can retry it.');
+}
+if (profileLookup.indexOf('if (error) throw error;') < 0 ||
+    profileLookup.indexOf('return data || null;') < 0 ||
+    profileLookup.indexOf('if (error) throw error;') > profileLookup.indexOf('return data || null;')) {
+  errors.push('Webhook profile lookup must check the query error before treating a missing row as not found.');
+}
+if (!webhook.includes('await markWebhookFailed(supabase, claimedEventId, err)')) {
+  errors.push('Webhook lookup failures must continue through the failed-event ledger so the event can be retried.');
+}
+
 const adminActions = fs.readFileSync('app/admin/actions.js', 'utf8');
 const deleteCase = adminActions.match(/case 'profile\.delete': \{([\s\S]*?)\n    \}\n    case '/)?.[1] || '';
 if (!deleteCase.includes("select('stripe_customer_id')")) {
