@@ -59,6 +59,18 @@ const riskyClaims = [
   ['swing-high liquidity inference', /the more candles required to confirm the swing, the more liquidity has accumulated above it/i],
   ['OTE institutional-entry claim', /precise zone where institutional traders re-enter the market after a displacement move/i],
   ['CRT universal AMD claim', /the weekly candle almost always follows the same AMD pattern/i],
+
+  ['AMD price delivery every day', /how price is delivered every single day/i],
+  ['IOFED institutional commitment claim', /identifies the precise moment when institutional order flow has committed to a new direction/i],
+  ['IOFED unsupported reward-to-risk ratio', /typically produces R:R ratios of 3:1 to 8:1/i],
+  ['liquidity void no-activity assertion', /a price range where almost no trading activity occurred/i],
+  ['rejection-block deliberate institutional intent', /a deliberate rejection of that price area by institutional participants/i],
+  ['Silver Bullet precision promise', /one of the most precise and repeatable setups in ICT methodology/i],
+  ['SMT reveals true intent', /is showing you the true directional intent/i],
+  ['BPR unfilled institutional-order claim', /both buyers and sellers have unfilled institutional orders waiting to be satisfied/i],
+  ['MMSM universal blueprint', /the blueprint for every significant bearish move/i],
+  ['unsupported killzone win-rate statistic', /30-40% lower win rates/i],
+  ['CBDR daily-range certainty', /has a direct relationship to the expected daily range/i],
 ];
 for (const [label, pattern] of riskyClaims) {
   if (pattern.test(posts)) errors.push('Remove or qualify the unsupported blog claim: ' + label + '.');
@@ -197,6 +209,9 @@ const overclaimTitles = [
   ['single-candle transformational promise', /title:\s*'[^']*When One Candle Changes Everything/i],
   ['universal Judas Swing promise', /title:\s*'[^']*Precedes Every Real Move/i],
   ['precision trading promise', /title:\s*'[^']*Trade It Precisely/i],
+
+  ['AMD everyday guarantee', /title:\s*'[^']*Every Single Day/i],
+  ['MMSM universal blueprint title', /title:\s*'[^']*Complete Bearish Delivery Framework/i],
 ];
 for (const [label, pattern] of overclaimTitles) {
   if (pattern.test(posts)) errors.push('Avoid unsupported blog-title claim: ' + label + '.');
@@ -224,6 +239,21 @@ for (const post of postChunks) {
   const descriptionMatch = post.source.match(/description:\s*'((?:\\.|[^'\\])*)'/);
   const description = (descriptionMatch?.[1] || '').replace(/\\'/g, "'");
   for (const [label, pattern] of overclaimDescriptions) {
+    if (pattern.test(description)) errors.push('/blog/' + post.slug + ': unsupported description claim: ' + label + '.');
+  }
+}
+
+
+const overclaimDescriptionsBatch4 = [
+  ["AMD daily certainty", /every single day/i],
+  ["IOFED institutional certainty", /precise moment when institutional order flow has committed/i],
+  ["Silver Bullet edge promise", /most precise and repeatable setups/i],
+  ["MMSM every-move blueprint", /blueprint for every significant bearish move/i]
+];
+for (const post of postChunks) {
+  const descriptionMatch = post.source.match(/description:\s*'((?:\\.|[^'\\])*)'/);
+  const description = (descriptionMatch?.[1] || '').replace(/\\'/g, "'");
+  for (const [label, pattern] of overclaimDescriptionsBatch4) {
     if (pattern.test(description)) errors.push('/blog/' + post.slug + ': unsupported description claim: ' + label + '.');
   }
 }
