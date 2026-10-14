@@ -56,6 +56,14 @@ if (!webhook.includes('await markWebhookFailed(supabase, claimedEventId, err)'))
   errors.push('Webhook lookup failures must continue through the failed-event ledger so the event can be retried.');
 }
 
+const checkoutEvent = webhook.match(/if \(event\.type === 'checkout\.session\.completed'\) \{([\s\S]*?)\n    \}\n\n    if \(/)?.[1] || '';
+if (!checkoutEvent.includes('customerHasEntitledSubscription(stripe, customerId)')) {
+  errors.push('Checkout completion must derive Pro entitlement from the customer’s full subscription state.');
+}
+if (checkoutEvent.includes('stripe.subscriptions.retrieve(session.subscription)')) {
+  errors.push('Checkout completion must not overwrite aggregate Pro entitlement from only one subscription.');
+}
+
 const adminActions = fs.readFileSync('app/admin/actions.js', 'utf8');
 const deleteCase = adminActions.match(/case 'profile\.delete': \{([\s\S]*?)\n    \}\n    case '/)?.[1] || '';
 if (!deleteCase.includes("select('stripe_customer_id')")) {
