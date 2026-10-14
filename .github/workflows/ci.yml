@@ -68,6 +68,10 @@ jobs:
       - name: Validate public ICT lesson editorial claims
         run: node scripts/check-lesson-editorial-claims.cjs
 
+      - name: Validate lesson accordion rendering for SEO and accessibility
+        run: node scripts/check-lesson-accordion-rendering.cjs
+
+
       - name: Validate blog editorial claims and context
         run: node scripts/check-blog-editorial-claims.cjs
 

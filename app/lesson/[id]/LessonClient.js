@@ -37,8 +37,7 @@ function Section({ section, index, diagramSrc, diagramAlt }) {
         </div>
         <span className="text-[#D4A843] text-lg">{open ? '−' : '+'}</span>
       </button>
-      {open && (
-        <div id={`lesson-section-${index}`} className="px-5 pb-6 border-t border-[rgba(212,168,67,0.1)]">
+      <div id={`lesson-section-${index}`} hidden={!open} className="px-5 pb-6 border-t border-[rgba(212,168,67,0.1)]">
           <div className="pt-5 text-gray-300 leading-relaxed text-sm whitespace-pre-line mb-4" style={{ fontWeight: 300 }}>
             {section.content}
           </div>
@@ -48,8 +47,7 @@ function Section({ section, index, diagramSrc, diagramAlt }) {
               <div className="text-sm text-[#D4A843] leading-relaxed">{section.highlight}</div>
             </div>
           )}
-        </div>
-      )}
+      </div>
     </div>
   );
 }
