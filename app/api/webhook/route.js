@@ -15,11 +15,12 @@ const MAX_WEBHOOK_ERROR_LENGTH = 1000;
 
 async function findProfileByCustomer(supabase, customerId) {
   if (!customerId) return null;
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from('profiles')
     .select('id')
     .eq('stripe_customer_id', customerId)
     .maybeSingle();
+  if (error) throw error;
   return data || null;
 }
 
