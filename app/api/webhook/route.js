@@ -216,11 +216,12 @@ export async function POST(req) {
         return noStoreJson({ received: true }, { headers: { 'Cache-Control': 'no-store' } });
       }
 
-      let active = false;
-      if (session.subscription) {
-        const subscription = await stripe.subscriptions.retrieve(session.subscription);
-        active = ['active', 'trialing', 'past_due'].includes(subscription.status);
-      }
+      const customerId = typeof session.customer === 'string'
+        ? session.customer
+        : session.customer?.id;
+      // Keep entitlement derived from the customer's current complete Stripe state.
+      // A completed checkout for one subscription must not revoke access provided by another.
+      const active = await customerHasEntitledSubscription(stripe, customerId);
 
       const { data: existingProfile, error: profileLookupError } = await supabase
         .from('profiles')
@@ -234,7 +235,7 @@ export async function POST(req) {
         id: user.id,
         is_pro: active,
         pro_since: active ? (existingProfile?.pro_since || new Date().toISOString()) : null,
-        stripe_customer_id: typeof session.customer === 'string' ? session.customer : session.customer?.id || null,
+        stripe_customer_id: customerId || null,
       }, { onConflict: 'id' });
       if (profileError) throw profileError;
     }
