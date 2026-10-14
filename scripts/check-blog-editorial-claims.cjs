@@ -46,6 +46,19 @@ const riskyClaims = [
   ['certain stop-hunt prediction', /your stop will be hunted before the real move occurs/i],
   ['claimed automatic return', /the algorithm returns to fill them/i],
   ['unsupported divergence intent', /institutions are telling you exactly where the real move is going/i],
+
+  ['bank-order certainty', /exact zones where banks placed their orders/i],
+  ['deterministic premium-discount rule', /institutions only buy when price is cheap and sell when it is expensive/i],
+  ['invented London profile rate', /60-70% of London sessions/i],
+  ['invented AMD rate', /60-70% of days follow the AMD template/i],
+  ['SCOB reward-to-risk promise', /you will consistently find R:R ratios of 5:1 to 10:1 on clean SCOB setups/i],
+  ['market-maker motive assertion', /the market maker \(institutional algorithm\) needs to build a large long position/i],
+  ['universal Judas Swing claim', /every significant daily and weekly move has a Judas Swing/i],
+  ['backtest certainty claim', /after 100 backtested trades, you will know your actual win rate/i],
+  ['propulsion causation claim', /the algorithm's final compression before release/i],
+  ['swing-high liquidity inference', /the more candles required to confirm the swing, the more liquidity has accumulated above it/i],
+  ['OTE institutional-entry claim', /precise zone where institutional traders re-enter the market after a displacement move/i],
+  ['CRT universal AMD claim', /the weekly candle almost always follows the same AMD pattern/i],
 ];
 for (const [label, pattern] of riskyClaims) {
   if (pattern.test(posts)) errors.push('Remove or qualify the unsupported blog claim: ' + label + '.');
@@ -178,9 +191,41 @@ const overclaimTitles = [
   ['exclusive session promise', /title:\s*'[^']*The Only Hours That Matter/i],
   ['certain reversal promise', /title:\s*'[^']*Catch Institutional Reversals/i],
   ['certain entry power claim', /title:\s*'[^']*Powers Every Entry/i],
+
+  ['overstated swing mastery', /title:\s*'[^']*The Foundation Every Trader Must Master/i],
+  ['universal entry promise', /title:\s*'[^']*Defines Every Entry/i],
+  ['single-candle transformational promise', /title:\s*'[^']*When One Candle Changes Everything/i],
+  ['universal Judas Swing promise', /title:\s*'[^']*Precedes Every Real Move/i],
+  ['precision trading promise', /title:\s*'[^']*Trade It Precisely/i],
 ];
 for (const [label, pattern] of overclaimTitles) {
   if (pattern.test(posts)) errors.push('Avoid unsupported blog-title claim: ' + label + '.');
+}
+
+
+const overclaimDescriptions = [
+  ["bank orders stated as fact", /exact zones where banks placed their orders/i],
+  ["market-structure absolutism", /every other concept falls apart/i],
+  ["institutional premium-discount certainty", /institutions only buy when price is cheap/i],
+  ["PD Array rank implies probability", /ranked from highest to lowest probability/i],
+  ["session profile guarantees direction", /tells you the direction and structure of the entire session before it unfolds/i],
+  ["AMD applies to every candle", /behind every candle, every session, and every weekly cycle/i],
+  ["FVG validity guarantees quality", /high-probability FVGs from noise/i],
+  ["RDRB reveals intent", /reveals institutional intent at key turning points/i],
+  ["order-block entry guarantee", /consistently produces high-probability, high-reward trades/i],
+  ["SCOB quality certainty", /most precise and reliable OB types/i],
+  ["liquidity as universal market engine", /the engine that drives every significant price move/i],
+  ["SIBI proves institutional delivery", /identify one-sided institutional delivery/i],
+  ["MMBM universal blueprint", /complete blueprint for bullish institutional delivery/i],
+  ["Judas Swing intent", /the deliberate false move the algorithm makes to trap retail traders/i],
+  ["backtest proves edge", /backtesting is how you prove your edge/i]
+];
+for (const post of postChunks) {
+  const descriptionMatch = post.source.match(/description:\s*'((?:\\.|[^'\\])*)'/);
+  const description = (descriptionMatch?.[1] || '').replace(/\\'/g, "'");
+  for (const [label, pattern] of overclaimDescriptions) {
+    if (pattern.test(description)) errors.push('/blog/' + post.slug + ': unsupported description claim: ' + label + '.');
+  }
 }
 
 if (errors.length) {
