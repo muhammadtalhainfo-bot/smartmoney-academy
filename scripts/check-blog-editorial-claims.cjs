@@ -106,6 +106,32 @@ const riskyClaims = [
   ['institutional flow future guarantee', /price will ultimately move higher regardless of what retail sentiment says/i],
   ['institutions only buy discount', /institutions only buy when prices are cheap/i],
   ['70.5 ratio as precise OTE entry', /70.5% (the precise OTE entry)/i],
+
+  ['FTMO fixed challenge figures', /The standard FTMO Challenge requires a 10% profit target with a maximum daily loss of 5% and maximum overall loss of 10%/i],
+  ['FTMO unsourced failure timing', /the majority of failed challenges blow out in the first 7 days/i],
+  ['FTMO Silver Bullet best-model claim', /is arguably the best FTMO challenge setup/i],
+  ['Asian range nightly guarantee', /the Asian session creates a tight consolidation range every night/i],
+  ['Asian session systematic-sweep claim', /London and New York sessions systematically sweep one side of that range/i],
+  ['Asian range algorithm collects all stops', /it triggers all those stops \(providing the liquidity the algorithm needs\)/i],
+  ['CE single most specific entry', /the single most specific, objectively defined entry point within/i],
+  ['CE institutional order zone claim', /closer to the actual institutional order zone/i],
+  ['TGIF algorithm tendency', /capitalizes on the algorithm's tendency to retrace earlier in the week's extreme/i],
+  ['TGIF consistent pattern', /the TGIF reveals a consistent pattern/i],
+  ['Friday retracement causal certainty', /All three forces consistently produce a Friday retracement/i],
+  ['MSS true delivery certainty', /confirms the Judas Swing has ended and the true delivery has begun/i],
+  ['MSS eliminates most trap entries', /eliminates the majority of counter-trend trap entries/i],
+  ['Inducement intentional trapping', /the algorithm deliberately creates apparent entry signals/i],
+  ['Inducement algorithm knows order placement', /the algorithm knows where these orders will be placed/i],
+  ['Deepest PD Array guarantees institutional reaction', /where the true institutional reaction will occur/i],
+  ['S&D orders react as fact', /institutional orders are placed in these zones, and when price returns, those orders activate again/i],
+  ['FVG unsupported probabilistic edge', /gives FVG entries a probabilistic edge that pure S&D zones lack/i],
+  ['Pullback guarantees trend resumption', /a retracement that will resume the trend/i],
+  ['Pullback profitability superlative', /the skill that separates profitable ICT traders from struggling ones/i],
+  ['Reversal strategy reliability superlative', /the most common and reliable ICT reversal pattern/i],
+  ['SMT described as institutional signal', /SMT Divergence \(the institutional signal\)/i],
+  ['Mitigation assumes filled institutional orders', /those orders were either fully filled/i],
+  ['Mitigation guaranteed sharp first reaction', /the reaction tends to be sharp/i],
+  ['Instrument-specific OB failure claim', /NAS100\) break OBs more frequently than others/i],
 ];
 for (const [label, pattern] of riskyClaims) {
   if (pattern.test(posts)) errors.push('Remove or qualify the unsupported blog claim: ' + label + '.');
@@ -319,6 +345,20 @@ for (const post of postChunks) {
   const descriptionMatch = post.source.match(/description:\s*'((?:\\.|[^'\\])*)'/);
   const description = (descriptionMatch?.[1] || '').replace(/\\'/g, "'");
   for (const [label, pattern] of overclaimDescriptionsBatch6) {
+    if (pattern.test(description)) errors.push('/blog/' + post.slug + ': unsupported description claim: ' + label + '.');
+  }
+}
+
+
+const overclaimDescriptionsBatch7 = [
+  ["FTMO guaranteed setup", /is arguably the best FTMO challenge setup because of its defined time window/i],
+  ["Asian range probability promise", /high-probability directional bias for the day/i],
+  ["Friday setup guarantee", /consistent Friday retracement pattern/i]
+];
+for (const post of postChunks) {
+  const descriptionMatch = post.source.match(/description:\s*'((?:\\.|[^'\\])*)'/);
+  const description = (descriptionMatch?.[1] || '').replace(/\\'/g, "'");
+  for (const [label, pattern] of overclaimDescriptionsBatch7) {
     if (pattern.test(description)) errors.push('/blog/' + post.slug + ': unsupported description claim: ' + label + '.');
   }
 }
