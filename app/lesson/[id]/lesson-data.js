@@ -374,16 +374,16 @@ ICT teaching commonly divides the day into four named Killzones and assigns poss
       {
         title: 'The Four Killzones',
         content: `Asian Killzone (8:00 PM – 12:00 AM EST):
-Role: ACCUMULATION. Price consolidates and builds the Asian Range. ICT teaching sometimes frames this session as accumulation, but actual participant positioning cannot be confirmed from the chart alone. The high and low of the Asian session = critical levels. Price may revisit or sweep one of these levels during London or New York. Mark them every single day.
+ICT label sometimes used: accumulation. The range may be a useful reference, but it does not confirm participant positioning. ICT teaching sometimes frames this session as accumulation, but actual participant positioning cannot be confirmed from the chart alone. The high and low of the Asian session = critical levels. Price may revisit or sweep one of these levels during London or New York. Mark them every single day.
 
 London Killzone (2:00 AM – 5:00 AM EST):
-Role: MANIPULATION / JUDAS SWING. ICT teaching often frames this window as the Manipulation/Judas Swing phase. Price may sweep one side of the Asian range before reversing, but the move, participant intent, and direction can vary by market and day. This is ICT's "don't trade the first 15 minutes of London" rule. The sweep of Asian high/low during this window = a liquidity grab signal.
+ICT label sometimes used: possible manipulation/Judas Swing; it is a hypothesis, and outcomes vary by market and day. Price may sweep one side of the Asian range before reversing, but the move, participant intent, and direction can vary by market and day. This is ICT's "don't trade the first 15 minutes of London" rule. The sweep of Asian high/low during this window = a liquidity grab signal.
 
 New York AM Killzone (7:00 AM – 10:00 AM EST) — or 8:30-11:00 AM:
-Role: DISTRIBUTION. ICT teaching often frames NY AM as a primary distribution window. Volatility and directional behavior can vary by market and day, and institutional positioning cannot be confirmed from the chart alone. The Silver Bullet trade runs entirely within this window (specifically 10:00-11:00 AM EST for the NY AM Silver Bullet).
+ICT label sometimes used: distribution. Directional expansion can occur, but the session's role is not fixed. Volatility and directional behavior can vary by market and day, and institutional positioning cannot be confirmed from the chart alone. The Silver Bullet trade runs entirely within this window (specifically 10:00-11:00 AM EST for the NY AM Silver Bullet).
 
 London Close Killzone (10:00 AM – 12:00 PM EST):
-Role: REVERSAL / PROFIT TAKING. Some ICT traders interpret London Close activity as potential profit-taking or a retracement/reversal window. The behavior varies by session and market, and specific bank positioning cannot be confirmed from a chart. ICT traders either close positions here or look for a fade trade.`,
+Possible interpretation: reversal or profit-taking. The behavior varies by session and market; this is not a fixed role. The behavior varies by session and market, and specific bank positioning cannot be confirmed from a chart. ICT traders either close positions here or look for a fade trade.`,
         highlight: '📌 London = fake out (Judas). NY AM = real move. This two-step pattern is commonly taught within the AMD framework; its occurrence and usefulness should be evaluated across the market and session being studied.',
       },
       {
@@ -460,15 +460,15 @@ ICT teaching often frames this window as "Distribution" after the earlier sessio
         content: `Within ICT teaching, a “Judas Swing” is a label for a possible move against a subsequent directional scenario. The label does not establish that traders were deliberately deceived or reveal who placed orders.
 
 How it works on a bullish day:
-• Asian session creates a range (say 1.0800 – 1.0850)
-• During London, price drops below 1.0800 (sweeping Asian lows)
-• Retail traders see a "breakdown" and short the market
-• Their stop-losses are placed above 1.0850
-• Price has now swept SSL and collected retail sell orders
+• Example: a session range is marked between 1.0800 and 1.0850.
+• Price trades below the lower reference; record whether it meets the predefined sweep rule.
+• The chart alone does not show how retail traders positioned.
+• Other traders' stop placement cannot be inferred from this chart pattern alone.
+• Under this model, the move may be classified as a sell-side reference interaction; actual order flow is not verified.
 • In ICT-style explanations, traders may interpret sell-side liquidity as an area where buy orders could be filled; actual institutional transactions cannot be observed directly.
-• Price reverses and shoots up through 1.0850 during NY AM
-• Now retail shorts are stopped out (more fuel for the up move)
-• The real bullish daily candle is complete
+• Price may reverse, continue downward or remain in a range; record each outcome.
+• Subsequent stop-outs and their effect on price cannot be confirmed from the chart alone.
+• A bullish close describes the final candle but does not prove the preceding phase labels.
 
 The Judas-style sequence can recur across sessions, but its consistency varies. A lower-timeframe ChoCH can be one confirmation method within this framework, not proof that the pattern has completed.`,
         highlight: '📌 A Judas-style move is a possible ICT interpretation, not a rule that London’s first move is usually wrong. Define the confirmation and invalidation conditions before testing it.',
@@ -575,7 +575,7 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
     sections: [
       {
         title: 'The Foundation: What Makes a Valid ICT Entry',
-        content: `One commonly taught ICT entry checklist includes the following candidate conditions; no single list is a universal requirement for every strategy:\n\n1. HIGHER TIMEFRAME BIAS — You must know the HTF direction before any entry. No bias = no trade.\n\n2. LIQUIDITY SWEEP — Price must take out a pool of liquidity before a valid entry. The sweep is the fuel that powers the reversal.\n\n3. DISPLACEMENT — After the sweep, price must show a strong, impulsive move in the opposite direction. A weak, grinding reversal is not displacement.\n\n4. ENTRY ARRAY — The actual entry is placed at a FVG or Order Block within the OTE zone.\n\n5. STOP LOSS — Placed beyond the liquidity sweep.\n\n6. TARGET — The next liquidity pool in the direction of the move.\n\nWhen these six elements are present, the example matches this lesson's checklist. Traders can define their own minimum requirements and test whether each element adds value.`,
+        content: `One commonly taught ICT entry checklist includes the following candidate conditions; no single list is a universal requirement for every strategy:\n\n1. CONTEXT — Define higher-timeframe conditions if the model uses them; specify how neutral or conflicting context affects a trade.\n\n2. REFERENCE LEVEL/TRIGGER — If the model requires a sweep, define the level and what counts as a break; a sweep alone does not prove a reversal.\n\n3. CONFIRMATION — Define displacement or structure conditions when the model requires them; do not assume every reversal must be impulsive.\n\n4. ENTRY — Specify whether and how FVG, OB or OTE references matter to this model, and state the exact entry trigger.\n\n5. INVALIDATION — Set the stop from a written invalidation rule; a beyond-sweep stop is one option when the model calls for it.\n\n6. EXIT — Define target selection in advance; a liquidity level is one possible target, not a required destination.\n\nWhen these six elements are present, the example matches this lesson's checklist. Traders can define their own minimum requirements and test whether each element adds value.`,
         highlight: '📌 One example ICT checklist is HTF bias + liquidity sweep + displacement + entry array + clear target. Treat these as testable criteria rather than universal requirements.',
       },
       {
@@ -595,7 +595,7 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
       },
       {
         title: 'Entry Model 4: The Breaker Block',
-        content: `A Breaker Block forms when an Order Block FAILS — when price sweeps through an OB, consuming the liquidity there. Within this ICT interpretation, a former OB may be marked as a potential role-reversal zone; it does not necessarily become support or resistance after a break.\n\nHOW A BREAKER FORMS:\n• A Bullish OB exists\n• Price sweeps THROUGH the OB (structure breaks)\n• Within the ICT model, the former OB may be marked as a Bearish Breaker candidate\n• Price pulls back to this zone — it now acts as resistance\n\nTHE SEQUENCE (Bearish Breaker):\nStep 1 — Former Bullish OB swept through\nStep 2 — HTF must be bearish\nStep 3 — Price pulls back UP to the Breaker\nStep 4 — Look for rejection (bearish FVG or LTF ChoCH)\nStep 5 — Enter short at the Breaker\nStep 6 — Stop: above the Breaker zone\nStep 7 — Target: next SSL below\n\nWithin ICT terminology, Breakers are studied as failed Order Blocks that may change role; claims about “exhausted liquidity” are an interpretation and should be tested.`,
+        content: `Some ICT models label an Order Block that price trades through as a potential Breaker candidate; the label does not prove liquidity was consumed. Within this ICT interpretation, a former OB may be marked as a potential role-reversal zone; it does not necessarily become support or resistance after a break.\n\nHOW A BREAKER FORMS:\n• A Bullish OB exists\n• Price sweeps THROUGH the OB (structure breaks)\n• Within the ICT model, the former OB may be marked as a Bearish Breaker candidate\n• Price pulls back to this zone — it now acts as resistance\n\nTHE SEQUENCE (Bearish Breaker):\nStep 1 — Former Bullish OB swept through\nStep 2 — HTF must be bearish\nStep 3 — Price pulls back UP to the Breaker\nStep 4 — Look for rejection (bearish FVG or LTF ChoCH)\nStep 5 — Enter short at the Breaker\nStep 6 — Stop: above the Breaker zone\nStep 7 — Target: next SSL below\n\nWithin ICT terminology, Breakers are studied as failed Order Blocks that may change role; claims about “exhausted liquidity” are an interpretation and should be tested.`,
         highlight: '📌 In ICT terminology a Breaker is a failed-OB reference some traders interpret as a possible role reversal; define confirmation and invalidation rather than assuming a flip.',
       },
     ],
