@@ -510,7 +510,7 @@ Monthly AMD:
 Weekly AMD is one narrative that traders can define and test. A sweep on a Tuesday does not determine the eventual weekly close; record both successful and failed scenarios and compare with a baseline.
 
 Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, with a potential later-week directional move. Treat this as an attributed hypothesis rather than an established market regularity, and test defined rules across representative data.`,
-        highlight: '📌 Weekly AMD: Monday = accumulate. Tuesday = Judas Swing (usually). Thursday-Friday = real directional move. This works with remarkable consistency.',
+        highlight: '📌 Some ICT narratives map weekly phases to specific weekdays. Treat this as a calendar hypothesis to define and test, not a reliable Monday-to-Friday market script.',
       },
     ],
     quiz: [
