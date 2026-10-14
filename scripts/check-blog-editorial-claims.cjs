@@ -132,6 +132,23 @@ const riskyClaims = [
   ['Mitigation assumes filled institutional orders', /those orders were either fully filled/i],
   ['Mitigation guaranteed sharp first reaction', /the reaction tends to be sharp/i],
   ['Instrument-specific OB failure claim', /NAS100\) break OBs more frequently than others/i],
+
+  ['ICT single underlying theory absolutism', /a single underlying theory: that price may be interpreted through/i],
+  ['Venom precision model certainty', /a precision entry model built on the/i],
+  ['Venom all stops collected', /collecting the stops and pending orders resting at that level/i],
+  ['Suspension algorithmic accumulation claim', /the suspension creates an area of algorithmic accumulation/i],
+  ['Suspension institutional significance asserted', /a specific price zone of institutional significance/i],
+  ['HRLR participant-interest inference', /institutional interest in the move is moderate, not dominant/i],
+  ['LRLR institutional commitment claim', /strong institutional commitment/i],
+  ['MSS/ChoCH new-direction certainty', /the change is real and the new direction is established/i],
+  ['Weekly profiles as forecasting certainty', /most advanced and powerful forecasting tools/i],
+  ['OSOK highest-quality setup certainty', /the single setup is the highest-quality opportunity/i],
+  ['Reclaimed OB double institutional confirmation', /double confirmation of institutional interest/i],
+  ['2022 model as complete strategy claim', /the culmination of Michael Huddleston's decades of market research and teaching/i],
+  ['2022 model arbitrary daily risk rule', /Maximum daily loss: 3% of account/i],
+  ['ICT institutional price movement as fact', /based on how institutional traders -- banks, hedge funds, and central banks -- move price/i],
+  ['SMC teaches exact institutional replication', /teaches retail traders to trade like smart money \(institutions\)/i],
+  ['ICT-SMC zones asserted equal institutional zones', /institutional zones \(Order Blocks in ICT equal Supply and Demand in SMC\)/i],
 ];
 for (const [label, pattern] of riskyClaims) {
   if (pattern.test(posts)) errors.push('Remove or qualify the unsupported blog claim: ' + label + '.');
@@ -359,6 +376,20 @@ for (const post of postChunks) {
   const descriptionMatch = post.source.match(/description:\s*'((?:\\.|[^'\\])*)'/);
   const description = (descriptionMatch?.[1] || '').replace(/\\'/g, "'");
   for (const [label, pattern] of overclaimDescriptionsBatch7) {
+    if (pattern.test(description)) errors.push('/blog/' + post.slug + ': unsupported description claim: ' + label + '.');
+  }
+}
+
+
+const overclaimDescriptionsBatch8 = [
+  ["Venom as precision model", /precision entry model built on the combination of/i],
+  ["weekly profile forecast certainty", /forecasts the weekly high and low using a predictable five-day pattern/i],
+  ["2022 model complete framework superiority", /the complete trading framework Michael Huddleston revealed/i]
+];
+for (const post of postChunks) {
+  const descriptionMatch = post.source.match(/description:\s*'((?:\\.|[^'\\])*)'/);
+  const description = (descriptionMatch?.[1] || '').replace(/\\'/g, "'");
+  for (const [label, pattern] of overclaimDescriptionsBatch8) {
     if (pattern.test(description)) errors.push('/blog/' + post.slug + ': unsupported description claim: ' + label + '.');
   }
 }
