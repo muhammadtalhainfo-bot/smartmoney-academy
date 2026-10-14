@@ -491,6 +491,36 @@ const forbidden = [
     pattern: /Risk 5% per trade = 10 consecutive losses = 60% drawdown/i,
   },
 
+  {
+    source: 'primary',
+    label: 'weekly AMD weekday sequence promoted as consistently predictive',
+    pattern: /Weekly AMD: Monday = accumulate\. Tuesday = Judas Swing \(usually\)\. Thursday-Friday = real directional move\. This works with remarkable consistency/i,
+  },
+  {
+    source: 'primary',
+    label: 'daily AMD title claims every trading day is engineered',
+    pattern: /The Daily Market Script — How Every Trading Day Is Engineered/i,
+  },
+  {
+    source: 'primary',
+    label: 'Silver Bullet fixed 2R minimum treated as universal',
+    pattern: /Target: 2:1 minimum to next liquidity/i,
+  },
+  {
+    source: 'primary',
+    label: 'sweep-reversal entry presented as fundamental and superior',
+    pattern: /The most fundamental ICT entry model[\s\S]{0,500}Master this before anything else/i,
+  },
+  {
+    source: 'primary',
+    label: 'OB zone breaks automatically require immediate exit',
+    pattern: /If price sweeps through — exit immediately/i,
+  },
+  {
+    source: 'primary',
+    label: 'breaker block flip presented as guaranteed',
+    pattern: /When an OB is swept through — it becomes a Breaker Block and flips polarity/i,
+  },
 ];
 
 const required = [
@@ -761,6 +791,26 @@ const required = [
     pattern: /about a 65\.1% drawdown[\s\S]{0,250}about a 40\.1% drawdown/i,
   },
 
+  {
+    source: 'primary',
+    label: 'weekly AMD timing is framed as a hypothesis',
+    pattern: /Treat this as a calendar hypothesis to define and test, not a reliable Monday-to-Friday market script/i,
+  },
+  {
+    source: 'primary',
+    label: 'entry model body encourages testing all qualifying examples',
+    pattern: /The sequence can fail or never trigger\. Candle counts, entry location and target behavior vary/i,
+  },
+  {
+    source: 'primary',
+    label: 'Silver Bullet claims account for timezone and testing limits',
+    pattern: /A 2:1 target is one possible strategy rule, not a universal requirement for the Silver Bullet label/i,
+  },
+  {
+    source: 'primary',
+    label: 'Asian range sweep does not determine New York bias',
+    pattern: /The initial sweep does not prove the next move will go in the opposite direction or establish a New York bias/i,
+  },
 ];
 
 const failures = [];
