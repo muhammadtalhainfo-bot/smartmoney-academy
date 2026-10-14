@@ -368,7 +368,7 @@ How to determine which to use:
 
 Outside of Killzones, market behavior can vary in liquidity and activity. Some ICT traders restrict entries to these windows, while others use them as one contextual filter; the choice should be evaluated against a defined trading plan.
 
-There are four main Killzones, each serving a specific role in the daily narrative. Understanding which session is doing what is the key to reading the daily AMD (Accumulate-Manipulate-Distribute) cycle.`,
+ICT teaching commonly divides the day into four named Killzones and assigns possible roles within a daily narrative. These labels organize one interpretive framework; they do not show that each session has a fixed purpose or that a daily AMD sequence will occur.`,
         highlight: '📌 Some traders use Killzones as an execution filter; whether to restrict entries to those windows depends on the tested trading plan. Outside those windows, market behavior can still occur; whether a session window improves a setup should be tested in the trader\'s own plan.',
       },
       {
@@ -414,9 +414,9 @@ London and New York sessions can interact with the Asian range. A sweep of one o
 Daily routine:
 1. At midnight EST, mark the Asian Range High and Low
 2. During London open (2-5 AM), watch which side gets swept first
-3. The sweep direction = Judas Swing (wrong direction)
-4. After the sweep, the real move goes the OTHER way
-5. That gives you your NY AM directional bias
+3. Record whether a sweep occurred; do not label it a Judas Swing without defined criteria.
+4. Track whether price reversed, continued or remained in a range.
+5. Use the result as one observation, not a standalone NY AM directional bias.
 
 The Asian-range sweep-and-reversal setup is an example traders may study; reported profitability depends on the trader, market, execution, costs, and rules used.`,
         highlight: '📌 Marking the Asian Range can provide session context. London may sweep one side, both sides, or neither; use the result as one input rather than a guaranteed NY bias.',
@@ -434,11 +434,11 @@ The Asian-range sweep-and-reversal setup is an example traders may study; report
   6: {
     id: 6,
     title: 'Power of Three (AMD)',
-    subtitle: 'The Daily Market Script — How Every Trading Day Is Engineered',
+    subtitle: 'Using AMD to Study Possible Intraday Price Sequences',
     level: 'Intermediate',
     duration: '17 min read',
     category: 'Market Mechanics',
-    imageCaption: 'AMD: price accumulates in Asia, manipulates (Judas) in London, distributes in New York',
+    imageCaption: 'AMD: an ICT framework for interpreting a possible Asia-London-New York sequence',
     intro: `The Power of Three (PO3), also known as AMD (Accumulate, Manipulate, Distribute), is an ICT framework for interpreting a possible sequence in price delivery; it should not be treated as a description of every trading day. The three-phase model can help organize a daily narrative, but it will not explain every market session. Losing trades can have many causes, including execution, risk management, market conditions and flaws in a tested rule set.`,
     sections: [
       {
@@ -457,7 +457,7 @@ ICT teaching often frames this window as "Distribution" after the earlier sessio
       },
       {
         title: 'The Judas Swing in Detail',
-        content: `The Judas Swing is the most important sub-concept within AMD. It is named after Judas Iscariot — the betrayer — because it tricks retail traders into a false position before the real move begins.
+        content: `Within ICT teaching, a “Judas Swing” is a label for a possible move against a subsequent directional scenario. The label does not establish that traders were deliberately deceived or reveal who placed orders.
 
 How it works on a bullish day:
 • Asian session creates a range (say 1.0800 – 1.0850)
@@ -471,7 +471,7 @@ How it works on a bullish day:
 • The real bullish daily candle is complete
 
 The Judas-style sequence can recur across sessions, but its consistency varies. A lower-timeframe ChoCH can be one confirmation method within this framework, not proof that the pattern has completed.`,
-        highlight: '📌 The Judas Swing: first move of London is usually wrong. Wait for the fake-out to complete (LTF ChoCH) then enter in the true direction.',
+        highlight: '📌 A Judas-style move is a possible ICT interpretation, not a rule that London’s first move is usually wrong. Define the confirmation and invalidation conditions before testing it.',
       },
       {
         title: 'Reading the Daily Candle as AMD',
@@ -524,7 +524,7 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
   7: {
     id: 7,
     title: 'Premium & Discount',
-    subtitle: 'The Price Delivery Framework — Where Institutions Buy and Where They Sell',
+    subtitle: 'Premium and Discount: Comparing Price Within a Defined Range',
     level: 'Intermediate',
     duration: '22 min read',
     category: 'Price Theory',
@@ -538,7 +538,7 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
       },
       {
         title: 'The Optimal Trade Entry (OTE)',
-        content: `In some ICT teachings, the Optimal Trade Entry (OTE) is a retracement zone placed within a defined premium or discount range. One common version uses three Fibonacci levels:\n\nFor a BULLISH OTE (buy zone in discount):\n• 62% retracement — start of the OTE zone\n• 70.5% retracement — the deepest sweet spot\n• 79% retracement — the outer limit of the OTE zone\n\nWhen price pulls back into the 62-79% zone after a bullish BOS, you are in the OTE. This is where ICT traders place their buy limit orders.\n\nThese levels are part of the ICT OTE framework. Claims about institutional re-entry or consistent demand at a specific Fibonacci level are theoretical and should be tested rather than treated as established market mechanics.\n\nFor a BEARISH OTE (sell zone in premium):\n• 62% retracement of a swing high to low\n• 70.5% level\n• 79% level\n\nThe OTE is not a guarantee; within the ICT framework it is commonly studied as a potential entry zone, and its performance should be tested. It must be combined with a liquidity sweep, a Fair Value Gap or Order Block, and alignment with the higher timeframe narrative.`,
+        content: `In some ICT teachings, the Optimal Trade Entry (OTE) is a retracement zone placed within a defined premium or discount range. One common version uses three Fibonacci levels:\n\nFor a BULLISH OTE (buy zone in discount):\n• 62% retracement — start of the OTE zone\n• 70.5% retracement — the deepest sweet spot\n• 79% retracement — the outer limit of the OTE zone\n\nIf price retraces into the defined 62–79% zone after a bullish BOS, an ICT trader using this OTE version may consider it a candidate entry area. The retracement does not itself establish a valid entry, institutional buying or a successful reversal; apply the model's other conditions and invalidation rules.\n\nThese levels are part of the ICT OTE framework. Claims about institutional re-entry or consistent demand at a specific Fibonacci level are theoretical and should be tested rather than treated as established market mechanics.\n\nFor a BEARISH OTE (sell zone in premium):\n• 62% retracement of a swing high to low\n• 70.5% level\n• 79% level\n\nThe OTE is not a guarantee; within the ICT framework it is commonly studied as a potential entry zone, and its performance should be tested. It must be combined with a liquidity sweep, a Fair Value Gap or Order Block, and alignment with the higher timeframe narrative.`,
         highlight: '📌 The OTE zone is 62%-79% of a Fibonacci retracement. Within the ICT framework, this zone is commonly studied as a potential entry area rather than evidence that "smart money" is re-entering. Define your entry and invalidation rules in advance and test them rather than assuming the zone should be traded.',
       },
       {
