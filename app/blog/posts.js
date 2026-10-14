@@ -256,8 +256,8 @@ export const POSTS = [
       { type: 'heading', text: 'New York AM Killzone (7 AM – 11 AM New York time) — Session Context' },
       { type: 'paragraph', text: 'Some ICT strategies examine the New York morning and the commonly cited 10–11 AM Silver Bullet window. This does not establish that it is the most important window for every instrument, that institutional orders are highest then, or that a setup has an edge. Define the model and compare results across windows.' },
       { type: 'paragraph', text: 'The London–New York overlap is one period traders may choose to study. It does not by itself show that liquidity is deepest for every instrument or that London has established the day\\\'s direction. Test any overlap filter against a comparison window using identical entry, exit and risk rules.' },
+      { type: 'heading', text: 'Named ICT Macro Times — Context, Not a Schedule' },
       { type: 'paragraph', text: 'Some ICT sources discuss specific macro timestamps, but labels and definitions can differ. The times below are New York local time; account for daylight-saving changes. Treat them as reference points to test, not evidence of a scheduled algorithmic event or guaranteed price behavior.' },
-      { type: 'list', items: [
       { type: 'list', items: [
         '2:33 AM New York time — an example London-session reference cited in some ICT materials',
         '4:03 AM New York time — another London-session reference cited in some ICT materials',
