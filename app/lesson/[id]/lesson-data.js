@@ -115,7 +115,7 @@ Within the ICT framework, traders may study BSL as an area where sell-side liqui
 You'll recognize BSL as: Equal Highs (EQH) on a chart, previous day/week highs, obvious resistance levels that everyone is watching, and round numbers like 1.1000 or 2000 on Gold.
 
 A common liquidity-sweep example is price approaching BSL, briefly trading above it, then potentially reversing. ICT education may call this a "stop hunt" or "liquidity sweep," but the chart alone cannot establish that stops were deliberately targeted.`,
-        highlight: '📌 Every time you see price spike above an obvious high and immediately reverse — that may be interpreted as a BSL sweep; institutional order flow cannot be confirmed from the chart alone.',
+        highlight: '📌 A price spike above an obvious high followed by an immediate reversal may be interpreted as a BSL sweep; institutional order flow cannot be confirmed from the chart alone.',
       },
       {
         title: 'Sell-Side Liquidity (SSL)',
@@ -307,7 +307,7 @@ In this ICT-style framework, traders may define an OB confirmation using a BOS/C
 
 4. Volume context — higher volume on the OB candle and the displacement move adds validity.
 
-5. Higher timeframe alignment — a Daily OB is more powerful than a 5-minute OB. Always note the timeframe of the OB.`,
+5. Higher-timeframe alignment — some traders use a Daily OB as context for a 5-minute OB. Whether this adds value depends on the model and should be tested. Always record the timeframe of the OB.`,
         highlight: '📌 OB validity checklist: (1) displacement after it ✓ (2) BOS or ChoCH after it ✓ (3) FVG in the displacement ✓ (4) HTF alignment ✓',
       },
       {
@@ -346,7 +346,7 @@ How to determine which to use:
     quiz: [
       { q: 'A Bullish Order Block is identified as...', options: ['Last bullish candle before a bearish move', 'Last bearish candle before a bullish move', 'First candle of the day', 'A candle with a very long wick'], answer: 1 },
       { q: 'A Breaker Block forms when...', options: ['An OB produces a very strong reaction', 'An OB fails and price blasts through it', 'Two OBs overlap at the same level', 'Price first touches the OB'], answer: 1 },
-      { q: 'The most powerful ICT entry zone combines...', options: ['Two FVGs on the same level', 'An OB and an FVG at the same zone', 'Three OBs in sequence', 'BSL and SSL at the same price'], answer: 1 },
+      { q: 'Which combination is commonly studied as a confluence example in ICT-style entries?', options: ['Two FVGs on the same level', 'An OB and an FVG at the same zone', 'Three OBs in sequence', 'BSL and SSL at the same price'], answer: 1 },
     ],
     nextLesson: { id: 5, title: 'Killzones & Macro Times' },
     prevLesson: { id: 3, title: 'Fair Value Gaps' },
@@ -368,22 +368,22 @@ How to determine which to use:
 
 Outside of Killzones, market behavior can vary in liquidity and activity. Some ICT traders restrict entries to these windows, while others use them as one contextual filter; the choice should be evaluated against a defined trading plan.
 
-There are four main Killzones, each serving a specific role in the daily narrative. Understanding which session is doing what is the key to reading the daily AMD (Accumulate-Manipulate-Distribute) cycle.`,
+ICT teaching commonly divides the day into four named Killzones and assigns possible roles within a daily narrative. These labels organize one interpretive framework; they do not show that each session has a fixed purpose or that a daily AMD sequence will occur.`,
         highlight: '📌 Some traders use Killzones as an execution filter; whether to restrict entries to those windows depends on the tested trading plan. Outside those windows, market behavior can still occur; whether a session window improves a setup should be tested in the trader\'s own plan.',
       },
       {
         title: 'The Four Killzones',
         content: `Asian Killzone (8:00 PM – 12:00 AM EST):
-Role: ACCUMULATION. Price consolidates and builds the Asian Range. ICT teaching sometimes frames this session as accumulation, but actual participant positioning cannot be confirmed from the chart alone. The high and low of the Asian session = critical levels. Price may revisit or sweep one of these levels during London or New York. Mark them every single day.
+ICT label sometimes used: accumulation. The range may be a useful reference, but it does not confirm participant positioning. ICT teaching sometimes frames this session as accumulation, but actual participant positioning cannot be confirmed from the chart alone. The high and low of the Asian session = critical levels. Price may revisit or sweep one of these levels during London or New York. Mark them every single day.
 
 London Killzone (2:00 AM – 5:00 AM EST):
-Role: MANIPULATION / JUDAS SWING. ICT teaching often frames this window as the Manipulation/Judas Swing phase. Price may sweep one side of the Asian range before reversing, but the move, participant intent, and direction can vary by market and day. This is ICT's "don't trade the first 15 minutes of London" rule. The sweep of Asian high/low during this window = a liquidity grab signal.
+ICT label sometimes used: possible manipulation/Judas Swing; it is a hypothesis, and outcomes vary by market and day. Price may sweep one side of the Asian range before reversing, but the move, participant intent, and direction can vary by market and day. Some ICT traders avoid opening minutes or watch for a move beyond the Asian range. This is a model-specific filter, not a universal rule; define the time and sweep conditions and test the results.
 
 New York AM Killzone (7:00 AM – 10:00 AM EST) — or 8:30-11:00 AM:
-Role: DISTRIBUTION. ICT teaching often frames NY AM as a primary distribution window. Volatility and directional behavior can vary by market and day, and institutional positioning cannot be confirmed from the chart alone. The Silver Bullet trade runs entirely within this window (specifically 10:00-11:00 AM EST for the NY AM Silver Bullet).
+ICT label sometimes used: distribution. Directional expansion can occur, but the session's role is not fixed. Volatility and directional behavior can vary by market and day, and institutional positioning cannot be confirmed from the chart alone. The Silver Bullet trade runs entirely within this window (specifically 10:00-11:00 AM EST for the NY AM Silver Bullet).
 
 London Close Killzone (10:00 AM – 12:00 PM EST):
-Role: REVERSAL / PROFIT TAKING. Some ICT traders interpret London Close activity as potential profit-taking or a retracement/reversal window. The behavior varies by session and market, and specific bank positioning cannot be confirmed from a chart. ICT traders either close positions here or look for a fade trade.`,
+Possible interpretation: reversal or profit-taking. The behavior varies by session and market; this is not a fixed role. The behavior varies by session and market, and specific bank positioning cannot be confirmed from a chart. ICT traders either close positions here or look for a fade trade.`,
         highlight: '📌 London = fake out (Judas). NY AM = real move. This two-step pattern is commonly taught within the AMD framework; its occurrence and usefulness should be evaluated across the market and session being studied.',
       },
       {
@@ -414,11 +414,11 @@ London and New York sessions can interact with the Asian range. A sweep of one o
 Daily routine:
 1. At midnight EST, mark the Asian Range High and Low
 2. During London open (2-5 AM), watch which side gets swept first
-3. The sweep direction = Judas Swing (wrong direction)
-4. After the sweep, the real move goes the OTHER way
-5. That gives you your NY AM directional bias
+3. Record whether a sweep occurred; do not label it a Judas Swing without defined criteria.
+4. Track whether price reversed, continued or remained in a range.
+5. Use the result as one observation, not a standalone NY AM directional bias.
 
-The Asian-range sweep-and-reversal setup is an example traders may study; reported profitability depends on the trader, market, execution, costs, and rules used.`,
+The Asian-range sweep-and-reversal setup is an example traders may study; reported profitability depends on the trader, market, execution, costs, and rules used. The initial sweep does not prove the next move will go in the opposite direction or establish a New York bias.`,
         highlight: '📌 Marking the Asian Range can provide session context. London may sweep one side, both sides, or neither; use the result as one input rather than a guaranteed NY bias.',
       },
     ],
@@ -434,11 +434,11 @@ The Asian-range sweep-and-reversal setup is an example traders may study; report
   6: {
     id: 6,
     title: 'Power of Three (AMD)',
-    subtitle: 'The Daily Market Script — How Every Trading Day Is Engineered',
+    subtitle: 'Using AMD to Study Possible Intraday Price Sequences',
     level: 'Intermediate',
     duration: '17 min read',
     category: 'Market Mechanics',
-    imageCaption: 'AMD: price accumulates in Asia, manipulates (Judas) in London, distributes in New York',
+    imageCaption: 'AMD: an ICT framework for interpreting a possible Asia-London-New York sequence',
     intro: `The Power of Three (PO3), also known as AMD (Accumulate, Manipulate, Distribute), is an ICT framework for interpreting a possible sequence in price delivery; it should not be treated as a description of every trading day. The three-phase model can help organize a daily narrative, but it will not explain every market session. Losing trades can have many causes, including execution, risk management, market conditions and flaws in a tested rule set.`,
     sections: [
       {
@@ -457,21 +457,21 @@ ICT teaching often frames this window as "Distribution" after the earlier sessio
       },
       {
         title: 'The Judas Swing in Detail',
-        content: `The Judas Swing is the most important sub-concept within AMD. It is named after Judas Iscariot — the betrayer — because it tricks retail traders into a false position before the real move begins.
+        content: `Within ICT teaching, a “Judas Swing” is a label for a possible move against a subsequent directional scenario. The label does not establish that traders were deliberately deceived or reveal who placed orders.
 
 How it works on a bullish day:
-• Asian session creates a range (say 1.0800 – 1.0850)
-• During London, price drops below 1.0800 (sweeping Asian lows)
-• Retail traders see a "breakdown" and short the market
-• Their stop-losses are placed above 1.0850
-• Price has now swept SSL and collected retail sell orders
+• Example: a session range is marked between 1.0800 and 1.0850.
+• Price trades below the lower reference; record whether it meets the predefined sweep rule.
+• The chart alone does not show how retail traders positioned.
+• Other traders' stop placement cannot be inferred from this chart pattern alone.
+• Under this model, the move may be classified as a sell-side reference interaction; actual order flow is not verified.
 • In ICT-style explanations, traders may interpret sell-side liquidity as an area where buy orders could be filled; actual institutional transactions cannot be observed directly.
-• Price reverses and shoots up through 1.0850 during NY AM
-• Now retail shorts are stopped out (more fuel for the up move)
-• The real bullish daily candle is complete
+• Price may reverse, continue downward or remain in a range; record each outcome.
+• Subsequent stop-outs and their effect on price cannot be confirmed from the chart alone.
+• A bullish close describes the final candle but does not prove the preceding phase labels.
 
 The Judas-style sequence can recur across sessions, but its consistency varies. A lower-timeframe ChoCH can be one confirmation method within this framework, not proof that the pattern has completed.`,
-        highlight: '📌 The Judas Swing: first move of London is usually wrong. Wait for the fake-out to complete (LTF ChoCH) then enter in the true direction.',
+        highlight: '📌 A Judas-style move is a possible ICT interpretation, not a rule that London’s first move is usually wrong. Define the confirmation and invalidation conditions before testing it.',
       },
       {
         title: 'Reading the Daily Candle as AMD',
@@ -479,15 +479,15 @@ The Judas-style sequence can recur across sessions, but its consistency varies. 
 
 A Bullish Daily Candle:
 • Open (midnight open)
-• Wick DOWN = the manipulation (Judas Swing sweep of lows)
-• Long green body = the distribution phase (real bullish move)
+• A lower wick may be interpreted as a possible move against the close direction; this does not verify manipulation
+• A long green body describes net upward movement; it does not establish a distribution phase
 • Small wick UP = sometimes a minor London Close reversal
 • Close near the high
 
 A Bearish Daily Candle:
 • Open
-• Wick UP = manipulation (Judas sweep of highs)
-• Long red body = distribution (real bearish move)
+• An upper wick may be interpreted as a possible move against the close direction; this does not verify manipulation
+• A long red body describes net downward movement; it does not establish a distribution phase
 • Close near the low
 
 A daily candle with a long lower wick and bullish body can be interpreted through the AMD framework as possible accumulation/manipulation/distribution, but a single candle cannot confirm those underlying events.`,
@@ -498,25 +498,26 @@ A daily candle with a long lower wick and bullish body can be interpreted throug
         content: `ICT describes PO3/AMD as a fractal framework that can be applied across timeframes; whether the sequence transfers consistently across timeframes is an empirical question.
 
 Weekly AMD:
-• Monday: Accumulation (weekly range starts forming)
-• Tuesday/Wednesday: Manipulation (Judas Swing of weekly highs or lows)
-• Thursday/Friday: Distribution (real weekly directional move)
+• Monday: some narratives treat early-week price as range formation; test this definition
+• Tuesday/Wednesday: a move against a later direction is one possible hypothesis, not a fixed phase
+• Thursday/Friday: later-week expansion may occur, but weekday alone does not establish direction
 
 Monthly AMD:
-• Week 1: Accumulation
-• Week 2: Manipulation
-• Weeks 3-4: Distribution
+• Some narratives treat the first week as range formation.
+• A later move against that range is sometimes labelled manipulation.
+• Later-week expansion is sometimes labelled distribution.
+These weekday labels are hypotheses to test, not fixed phases of every month.
 
-This means you can apply the AMD framework to weekly charts to determine which DIRECTION the week will ultimately close in. If you see the weekly sweep a key low on Tuesday — that's your weekly Judas Swing. Expect the week to close bullish.
+Weekly AMD is one narrative that traders can define and test. A sweep on a Tuesday does not determine the eventual weekly close; record both successful and failed scenarios and compare with a baseline.
 
-ICT specifically notes that TUESDAY is the most common day for the weekly Judas Swing. One ICT framework describes Tuesday as a common day for a weekly Judas Swing, followed by distribution later in the week; treat this as a framework to test, not a guarantee.`,
-        highlight: '📌 Weekly AMD: Monday = accumulate. Tuesday = Judas Swing (usually). Thursday-Friday = real directional move. This works with remarkable consistency.',
+Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, with a potential later-week directional move. Treat this as an attributed hypothesis rather than an established market regularity, and test defined rules across representative data.`,
+        highlight: '📌 Some ICT narratives map weekly phases to specific weekdays. Treat this as a calendar hypothesis to define and test, not a reliable Monday-to-Friday market script.',
       },
     ],
     quiz: [
-      { q: 'In AMD, what does the "M" (Manipulation) phase represent?', options: ['The real directional move', 'The Judas Swing fake-out', 'Institutional accumulation', 'Profit taking at day close'], answer: 1 },
+      { q: 'In some ICT descriptions, what does the "M" (Manipulation) phase refer to?', options: ['The real directional move', 'A possible Judas Swing or move against the later direction', 'Institutional accumulation as a verified fact', 'Profit taking at day close'], answer: 1 },
       { q: 'On a bullish AMD day, the lower wick of the daily candle represents...', options: ['Strong support', 'The distribution phase', 'The Judas Swing / liquidity sweep below', 'End of trend'], answer: 2 },
-      { q: 'According to ICT, which day of the week is most common for the weekly Judas Swing?', options: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], answer: 1 },
+      { q: 'How should the claim that Tuesday is common for a weekly Judas Swing be treated?', options: ['As a universal market fact', 'As an attributed hypothesis that needs testing', 'As a guaranteed reversal signal', 'As proof of institutional activity'], answer: 1 },
     ],
     nextLesson: { id: 7, title: 'Premium & Discount Zones' },
     prevLesson: { id: 5, title: 'Killzones & Macro Times' },
@@ -524,7 +525,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
   7: {
     id: 7,
     title: 'Premium & Discount',
-    subtitle: 'The Price Delivery Framework — Where Institutions Buy and Where They Sell',
+    subtitle: 'Premium and Discount: Comparing Price Within a Defined Range',
     level: 'Intermediate',
     duration: '22 min read',
     category: 'Price Theory',
@@ -538,7 +539,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
       },
       {
         title: 'The Optimal Trade Entry (OTE)',
-        content: `The Optimal Trade Entry (OTE) is ICT's specific buy/sell zone within the discount or premium area. It is defined by three Fibonacci levels:\n\nFor a BULLISH OTE (buy zone in discount):\n• 62% retracement — start of the OTE zone\n• 70.5% retracement — the deepest sweet spot\n• 79% retracement — the outer limit of the OTE zone\n\nWhen price pulls back into the 62-79% zone after a bullish BOS, you are in the OTE. This is where ICT traders place their buy limit orders.\n\nThese levels are part of the ICT OTE framework. Claims about institutional re-entry or consistent demand at a specific Fibonacci level are theoretical and should be tested rather than treated as established market mechanics.\n\nFor a BEARISH OTE (sell zone in premium):\n• 62% retracement of a swing high to low\n• 70.5% level\n• 79% level\n\nThe OTE is not a guarantee; within the ICT framework it is commonly studied as a potential entry zone, and its performance should be tested. It must be combined with a liquidity sweep, a Fair Value Gap or Order Block, and alignment with the higher timeframe narrative.`,
+        content: `In some ICT teachings, the Optimal Trade Entry (OTE) is a retracement zone placed within a defined premium or discount range. One common version uses three Fibonacci levels:\n\nFor a BULLISH OTE (buy zone in discount):\n• 62% retracement — start of the OTE zone\n• 70.5% retracement — the deepest sweet spot\n• 79% retracement — the outer limit of the OTE zone\n\nIf price retraces into the defined 62–79% zone after a bullish BOS, an ICT trader using this OTE version may consider it a candidate entry area. The retracement does not itself establish a valid entry, institutional buying or a successful reversal; apply the model's other conditions and invalidation rules.\n\nThese levels are part of the ICT OTE framework. Claims about institutional re-entry or consistent demand at a specific Fibonacci level are theoretical and should be tested rather than treated as established market mechanics.\n\nFor a BEARISH OTE (sell zone in premium):\n• 62% retracement of a swing high to low\n• 70.5% level\n• 79% level\n\nThe OTE is not a guarantee; within the ICT framework it is commonly studied as a potential entry zone, and its performance should be tested. It must be combined with a liquidity sweep, a Fair Value Gap or Order Block, and alignment with the higher timeframe narrative.`,
         highlight: '📌 The OTE zone is 62%-79% of a Fibonacci retracement. Within the ICT framework, this zone is commonly studied as a potential entry area rather than evidence that "smart money" is re-entering. Define your entry and invalidation rules in advance and test them rather than assuming the zone should be traded.',
       },
       {
@@ -554,53 +555,53 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
       {
         title: 'Common Mistakes with Premium & Discount',
         content: `Even traders who understand the concept make critical errors in application:\n\nMistake 1 — Wrong swing selection:\nThe range you draw determines everything. Using the wrong swing high/low gives you the wrong premium/discount zones. Use a recent, meaningful swing that fits the range and timeframe you are analyzing; compare alternative swing selections when testing the framework.\n\nMistake 2 — Ignoring the higher timeframe:\nA lower-timeframe discount signal can conflict with a higher-timeframe premium context. Higher-timeframe context may carry more weight in this framework, but the appropriate hierarchy should be tested.\n\nMistake 3 — Entering at equilibrium:\nThe 50% level is not a buy or sell zone — it's neutral. Many traders try to enter at exactly 50% and get chopped up. The ICT OTE framework commonly uses a 62% starting level; this is a framework convention rather than evidence that 62% is inherently superior.\n\nMistake 4 — Abandoning the concept during strong trends:\nIn a very strong uptrend, price sometimes only retraces to the 38.2% or 50% level before continuing. In these cases, the OTE (62-79%) may not be reached. Don't force the framework — if price gives you a clear signal at a shallower retracement with a valid order block, take it.\n\nMistake 5 — No directional bias:\nWithin this framework, traders often combine premium/discount with a directional context from market structure. The exact sequence and filter can be tested rather than treated as mandatory.`,
-        highlight: '📌 The framework is only as good as the swing you draw it on. Always use the most significant, most recent swing high and low that the market is actively referencing.',
+        highlight: '📌 Swing selection affects a premium/discount analysis. Define what qualifies as the reference swing before reviewing outcomes, and apply that rule consistently during testing.',
       },
     ],
     quiz: [
-      { q: 'Where do institutions buy according to ICT\'s premium/discount framework?', options: ['In premium (above 50%)', 'At exactly 50% equilibrium', 'In discount (below 50%)', 'At previous highs'], answer: 2 },
+      { q: 'Within ICT\'s premium/discount framework, which area is commonly taught as a candidate for bullish setups?', options: ['In premium (above 50%)', 'At exactly 50% equilibrium', 'In discount (below 50%)', 'At previous highs'], answer: 2 },
       { q: 'What are the three Fibonacci levels that define the OTE zone?', options: ['38.2%, 50%, 61.8%', '62%, 70.5%, 79%', '50%, 61.8%, 78.6%', '23.6%, 38.2%, 50%'], answer: 1 },
-      { q: 'What does it mean when weekly, daily, and 4H all show price in discount?', options: ['Price is about to crash', 'Maximum institutional alignment for buys', 'The trend is reversing', 'Time to sell'], answer: 1 },
+      { q: 'If weekly, daily, and 4H price are all in discount under their defined ranges, what does that establish?', options: ['Price is about to crash', 'Discount context on several timeframes, not proof of institutional alignment', 'The trend is reversing', 'Time to sell'], answer: 1 },
     ],
   },
   8: {
     id: 8,
     title: 'ICT Entry Models',
-    subtitle: 'The Exact Frameworks ICT Uses to Enter Trades With Precision',
+    subtitle: 'Common ICT Entry Models: Rules to Define and Test',
     level: 'Intermediate',
     duration: '25 min read',
     category: 'Execution',
-    imageCaption: 'ICT entry models combine liquidity sweeps, displacement, and FVG/OB entries for precision execution',
+    imageCaption: 'Examples of ICT entry rules that traders can define, test and adapt',
     intro: `Having all the concepts in your head means nothing if you don't know HOW to combine them into a concrete trade entry. ICT entry models are structured, repeatable frameworks for defining potential entries. Their rules can be precise, but meeting the conditions does not guarantee a high-probability or profitable outcome.`,
     sections: [
       {
         title: 'The Foundation: What Makes a Valid ICT Entry',
-        content: `Before learning specific entry models, understand the core requirements that every valid ICT entry must have:\n\n1. HIGHER TIMEFRAME BIAS — You must know the HTF direction before any entry. No bias = no trade.\n\n2. LIQUIDITY SWEEP — Price must take out a pool of liquidity before a valid entry. The sweep is the fuel that powers the reversal.\n\n3. DISPLACEMENT — After the sweep, price must show a strong, impulsive move in the opposite direction. A weak, grinding reversal is not displacement.\n\n4. ENTRY ARRAY — The actual entry is placed at a FVG or Order Block within the OTE zone.\n\n5. STOP LOSS — Placed beyond the liquidity sweep.\n\n6. TARGET — The next liquidity pool in the direction of the move.\n\nWhen these five elements are present, the setup matches this lesson's ICT checklist. Traders can define their own minimum requirements and test whether each element adds value.`,
+        content: `One commonly taught ICT entry checklist includes the following candidate conditions; no single list is a universal requirement for every strategy:\n\n1. CONTEXT — Define higher-timeframe conditions if the model uses them; specify how neutral or conflicting context affects a trade.\n\n2. REFERENCE LEVEL/TRIGGER — If the model requires a sweep, define the level and what counts as a break; a sweep alone does not prove a reversal.\n\n3. CONFIRMATION — Define displacement or structure conditions when the model requires them; do not assume every reversal must be impulsive.\n\n4. ENTRY — Specify whether and how FVG, OB or OTE references matter to this model, and state the exact entry trigger.\n\n5. INVALIDATION — Set the stop from a written invalidation rule; a beyond-sweep stop is one option when the model calls for it.\n\n6. EXIT — Define target selection in advance; a liquidity level is one possible target, not a required destination.\n\nWhen these six elements are present, the example matches this lesson's checklist. Traders can define their own minimum requirements and test whether each element adds value.`,
         highlight: '📌 One example ICT checklist is HTF bias + liquidity sweep + displacement + entry array + clear target. Treat these as testable criteria rather than universal requirements.',
       },
       {
         title: 'Entry Model 1: The Classic Liquidity Sweep Reversal',
-        content: `This is the most fundamental ICT entry model.\n\nTHE SEQUENCE:\nStep 1 — Identify the SSL level (old lows, equal lows)\nStep 2 — Wait for price to push DOWN into that level during a killzone\nStep 3 — Watch for the sweep (price wicks below, triggering stops)\nStep 4 — Look for immediate displacement upward (sharp move, FVGs left behind)\nStep 5 — Price pulls back into the FVG created by the displacement\nStep 6 — Enter long at the FVG (50% of the gap)\nStep 7 — Stop loss: below the sweep wick\nStep 8 — Target: Buy-side liquidity above\n\nThe entire sequence from sweep to entry can happen in 2-10 candles on the 5-minute chart.`,
-        highlight: '📌 The classic sequence: HTF bullish → LTF sweeps SSL → displacement up → enter at FVG → target BSL. Master this before anything else.',
+        content: `This is one illustrative ICT-style entry model; its rules and results should be tested rather than treated as universally fundamental.\n\nEXAMPLE SEQUENCE:\n1. Define a prior low or equal-low reference using a consistent swing rule.\n2. Record whether price moves below the reference during the selected window.\n3. If the model requires reversal confirmation, define an observable trigger such as a structure shift.\n4. Define an entry condition rather than assuming every return to an FVG is tradable.\n5. Set the stop from the model's invalidation rule and specify a target before entry.\n\nThe sequence can fail or never trigger. Candle counts, entry location and target behavior vary, so define the rules in advance and measure them across all qualifying examples.`,
+        highlight: '📌 A liquidity-sweep reversal is one model to define and test. Specify the reference level, trigger, entry, stop, target and invalidation; it is not universally required or superior.',
       },
       {
         title: 'Entry Model 2: The Order Block Entry',
-        content: `The Order Block entry is used when price returns to the last opposing candle before a strong move.\n\nTHE SEQUENCE:\nStep 1 — Identify the OB: the last bearish candle before the bullish displacement\nStep 2 — Mark the OB zone: high and low of that candle\nStep 3 — Wait for price to pull back INTO the OB during a killzone\nStep 4 — Look for LTF BOS or FVG forming within the OB\nStep 5 — Enter at the 50% of the OB candle\nStep 6 — Stop: below the bottom of the OB\nStep 7 — Target: Next liquidity pool\n\nOB REFINEMENT: Traders often study the first return to an Order Block as a potential mitigation entry; test this condition against your own data rather than assuming it has universal priority. If price sweeps through — exit immediately.`,
+        content: `ILLUSTRATIVE ORDER-BLOCK MODEL:\nSome ICT traders label the last opposing candle before a strong directional move as an Order Block. To test an OB entry, define which candle qualifies, whether the reference is the candle body or full range, the entry trigger, stop/invalidation and target.\n\nSome models study the first return to a marked OB or use a retracement such as its midpoint. Neither a touch nor a trade through the zone has a universal meaning; write down exactly what constitutes entry, mitigation and invalidation for the strategy being tested.`,
         highlight: '📌 📌 Some ICT traders prioritize the first return to an OB. Define the entry, invalidation and management rules in advance and validate them with historical data.',
       },
       {
         title: 'Entry Model 3: The Silver Bullet',
-        content: `The Silver Bullet trades only during specific 60-minute windows:\n• 3:00 AM – 4:00 AM EST (London open)\n• 10:00 AM – 11:00 AM EST (NY AM — commonly studied)\n• 2:00 PM – 3:00 PM EST (NY PM — commonly studied as a separate window)\n\nTHE SEQUENCE:\nStep 1 — Wait for the window to open\nStep 2 — HTF must show clear directional bias\nStep 3 — Price sweeps a liquidity level within the window\nStep 4 — A FVG forms on the 1M or 5M after the sweep\nStep 5 — Enter at the 50% of that FVG\nStep 6 — Stop: beyond the sweep\nStep 7 — Target: 2:1 minimum to next liquidity\n\nIf the window closes and no valid setup formed — do NOT trade. Wait for the next window.`,
-        highlight: '📌 Silver Bullet windows: 3-4 AM, 10-11 AM, 2-3 PM EST. Sweep → displacement → 1M FVG entry. If no setup in the window — no trade. Time discipline is everything.',
+        content: `One commonly taught Silver Bullet version is associated with named 60-minute New York or London windows. Document the timezone and daylight-saving convention used by your source, since clock labels can differ.\n\nEXAMPLE CONDITIONS TO DEFINE:\n1. Specify the selected time window.\n2. Define higher-timeframe context if required by the model.\n3. State exactly what counts as a liquidity interaction or sweep.\n4. Define the structure/FVG condition and entry price.\n5. Set invalidation and exit rules, including any risk-to-reward filter.\n\nThe setup does not have to appear every day, and neither a window nor a named pattern guarantees a valid or profitable trade. A 2:1 target is one possible strategy rule, not a universal requirement for the Silver Bullet label.`,
+        highlight: '📌 Silver Bullet is an ICT-labelled time-window model. Define the timezone and conditions, then test whether the window adds value; the label itself is not an edge.',
       },
       {
         title: 'Entry Model 4: The Breaker Block',
-        content: `A Breaker Block forms when an Order Block FAILS — when price sweeps through an OB, consuming the liquidity there. The former OB flips polarity and becomes a resistance zone.\n\nHOW A BREAKER FORMS:\n• A Bullish OB exists\n• Price sweeps THROUGH the OB (structure breaks)\n• The former OB is now a Bearish Breaker\n• Price pulls back to this zone — it now acts as resistance\n\nTHE SEQUENCE (Bearish Breaker):\nStep 1 — Former Bullish OB swept through\nStep 2 — HTF must be bearish\nStep 3 — Price pulls back UP to the Breaker\nStep 4 — Look for rejection (bearish FVG or LTF ChoCH)\nStep 5 — Enter short at the Breaker\nStep 6 — Stop: above the Breaker zone\nStep 7 — Target: next SSL below\n\nWithin ICT terminology, Breakers are studied as failed Order Blocks that may change role; claims about “exhausted liquidity” are an interpretation and should be tested.`,
-        highlight: '📌 When an OB is swept through — it becomes a Breaker Block and flips polarity. Former support becomes resistance. Former resistance becomes support.',
+        content: `Some ICT models label an Order Block that price trades through as a potential Breaker candidate; the label does not prove liquidity was consumed. Within this ICT interpretation, a former OB may be marked as a potential role-reversal zone; it does not necessarily become support or resistance after a break.\n\nHOW A BREAKER FORMS:\n• A Bullish OB exists\n• Price sweeps THROUGH the OB (structure breaks)\n• Within the ICT model, the former OB may be marked as a Bearish Breaker candidate\n• Price pulls back to this zone — it now acts as resistance\n\nTHE SEQUENCE (Bearish Breaker):\nStep 1 — Former Bullish OB swept through\nStep 2 — HTF must be bearish\nStep 3 — Price pulls back UP to the Breaker\nStep 4 — Look for rejection (bearish FVG or LTF ChoCH)\nStep 5 — Enter short at the Breaker\nStep 6 — Stop: above the Breaker zone\nStep 7 — Target: next SSL below\n\nWithin ICT terminology, Breakers are studied as failed Order Blocks that may change role; claims about “exhausted liquidity” are an interpretation and should be tested.`,
+        highlight: '📌 In ICT terminology a Breaker is a failed-OB reference some traders interpret as a possible role reversal; define confirmation and invalidation rather than assuming a flip.',
       },
     ],
     quiz: [
-      { q: 'What are the 5 required elements of every valid ICT entry?', options: ['Chart pattern, indicator, news, volume, trend', 'HTF bias, liquidity sweep, displacement, entry array, clear target', 'Support, resistance, RSI, MACD, volume', 'Fibonacci, MA, candlestick, trend, time'], answer: 1 },
+      { q: 'Which list matches the example checklist in this lesson?', options: ['Chart pattern, indicator, news, volume, trend', 'HTF bias, liquidity sweep, displacement, entry array, stop and target', 'Support, resistance, RSI, MACD, volume', 'Fibonacci, MA, candlestick, trend, time'], answer: 1 },
       { q: 'The Silver Bullet 10:00 AM window closes at?', options: ['10:30 AM', '11:30 AM', '11:00 AM', '12:00 PM'], answer: 2 },
       { q: 'What happens when an Order Block is swept through?', options: ['It becomes stronger', 'It disappears', 'It becomes a Breaker Block', 'Nothing changes'], answer: 2 },
     ],
@@ -686,7 +687,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
     quiz: [
       { q: 'What is the core idea behind SMT divergence?', options: ['A guaranteed reversal', 'Non-confirmation between related markets', 'A fixed risk percentage', 'A moving average crossover'], answer: 1 },
       { q: 'SMT divergence by itself should be treated as...', options: ['A guaranteed entry', 'Proof of institutional orders', 'Context or confirmation to be tested', 'A guaranteed target'], answer: 2 },
-      { q: 'What should remain consistent during an SMT test?', options: ['Only winning examples', 'The instrument relationship and swing/timeframe rules', 'The rules after each trade', 'The target after entry'], answer: 2 },
+      { q: 'What should remain consistent during an SMT test?', options: ['Only winning examples', 'The instrument relationship and swing/timeframe rules', 'The rules after each trade', 'The target after entry'], answer: 1 },
     ],
   },
   11: {
@@ -768,8 +769,8 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
       },
     ],
     quiz: [
-      { q: 'How should newer ICT concepts be handled when testing them?', options: ['Treat every label as a guaranteed edge', 'Define the rules precisely and test them', 'Change the rules after every loss', 'Ignore invalidation'], answer: 2 },
-      { q: 'What is the purpose of separating a source model from your variation?', options: ['To make the strategy look more complex', 'To know which rules were actually tested', 'To guarantee higher win rate', 'To avoid journaling'], answer: 2 },
+      { q: 'How should newer ICT concepts be handled when testing them?', options: ['Treat every label as a guaranteed edge', 'Define the rules precisely and test them', 'Change the rules after every loss', 'Ignore invalidation'], answer: 1 },
+      { q: 'What is the purpose of separating a source model from your variation?', options: ['To make the strategy look more complex', 'To know which rules were actually tested', 'To guarantee higher win rate', 'To avoid journaling'], answer: 1 },
       { q: 'How should weekly profile templates be used?', options: ['As guaranteed predictions', 'As planning hypotheses that can be invalidated', 'As automatic entries', 'As fixed targets every week'], answer: 1 },
     ],
   },
