@@ -479,14 +479,14 @@ The Judas-style sequence can recur across sessions, but its consistency varies. 
 
 A Bullish Daily Candle:
 • Open (midnight open)
-• Wick DOWN = the manipulation (Judas Swing sweep of lows)
+• A lower wick may be interpreted as a possible move against the close direction; this does not verify manipulation
 • Long green body = the distribution phase (real bullish move)
 • Small wick UP = sometimes a minor London Close reversal
 • Close near the high
 
 A Bearish Daily Candle:
 • Open
-• Wick UP = manipulation (Judas sweep of highs)
+• An upper wick may be interpreted as a possible move against the close direction; this does not verify manipulation
 • Long red body = distribution (real bearish move)
 • Close near the low
 
@@ -580,22 +580,22 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
       },
       {
         title: 'Entry Model 1: The Classic Liquidity Sweep Reversal',
-        content: `This is the most fundamental ICT entry model.\n\nTHE SEQUENCE:\nStep 1 — Identify the SSL level (old lows, equal lows)\nStep 2 — Wait for price to push DOWN into that level during a killzone\nStep 3 — Watch for the sweep (price wicks below, triggering stops)\nStep 4 — Look for immediate displacement upward (sharp move, FVGs left behind)\nStep 5 — Price pulls back into the FVG created by the displacement\nStep 6 — Enter long at the FVG (50% of the gap)\nStep 7 — Stop loss: below the sweep wick\nStep 8 — Target: Buy-side liquidity above\n\nThe entire sequence from sweep to entry can happen in 2-10 candles on the 5-minute chart.`,
-        highlight: '📌 The classic sequence: HTF bullish → LTF sweeps SSL → displacement up → enter at FVG → target BSL. Master this before anything else.',
+        content: `This is one illustrative ICT-style entry model; its rules and results should be tested rather than treated as universally fundamental.\n\nEXAMPLE SEQUENCE:\n1. Define a prior low or equal-low reference using a consistent swing rule.\n2. Record whether price moves below the reference during the selected window.\n3. If the model requires reversal confirmation, define an observable trigger such as a structure shift.\n4. Define an entry condition rather than assuming every return to an FVG is tradable.\n5. Set the stop from the model's invalidation rule and specify a target before entry.\n\nThe sequence can fail or never trigger. Candle counts, entry location and target behavior vary, so define the rules in advance and measure them across all qualifying examples.`,
+        highlight: '📌 A liquidity-sweep reversal is one model to define and test. Specify the reference level, trigger, entry, stop, target and invalidation; it is not universally required or superior.',
       },
       {
         title: 'Entry Model 2: The Order Block Entry',
-        content: `The Order Block entry is used when price returns to the last opposing candle before a strong move.\n\nTHE SEQUENCE:\nStep 1 — Identify the OB: the last bearish candle before the bullish displacement\nStep 2 — Mark the OB zone: high and low of that candle\nStep 3 — Wait for price to pull back INTO the OB during a killzone\nStep 4 — Look for LTF BOS or FVG forming within the OB\nStep 5 — Enter at the 50% of the OB candle\nStep 6 — Stop: below the bottom of the OB\nStep 7 — Target: Next liquidity pool\n\nOB REFINEMENT: Traders often study the first return to an Order Block as a potential mitigation entry; test this condition against your own data rather than assuming it has universal priority. If price sweeps through — exit immediately.`,
+        content: `ILLUSTRATIVE ORDER-BLOCK MODEL:\nSome ICT traders label the last opposing candle before a strong directional move as an Order Block. To test an OB entry, define which candle qualifies, whether the reference is the candle body or full range, the entry trigger, stop/invalidation and target.\n\nSome models study the first return to a marked OB or use a retracement such as its midpoint. Neither a touch nor a trade through the zone has a universal meaning; write down exactly what constitutes entry, mitigation and invalidation for the strategy being tested.`,
         highlight: '📌 📌 Some ICT traders prioritize the first return to an OB. Define the entry, invalidation and management rules in advance and validate them with historical data.',
       },
       {
         title: 'Entry Model 3: The Silver Bullet',
-        content: `The Silver Bullet trades only during specific 60-minute windows:\n• 3:00 AM – 4:00 AM EST (London open)\n• 10:00 AM – 11:00 AM EST (NY AM — commonly studied)\n• 2:00 PM – 3:00 PM EST (NY PM — commonly studied as a separate window)\n\nTHE SEQUENCE:\nStep 1 — Wait for the window to open\nStep 2 — HTF must show clear directional bias\nStep 3 — Price sweeps a liquidity level within the window\nStep 4 — A FVG forms on the 1M or 5M after the sweep\nStep 5 — Enter at the 50% of that FVG\nStep 6 — Stop: beyond the sweep\nStep 7 — Target: 2:1 minimum to next liquidity\n\nIf the window closes and no valid setup formed — do NOT trade. Wait for the next window.`,
-        highlight: '📌 Silver Bullet windows: 3-4 AM, 10-11 AM, 2-3 PM EST. Sweep → displacement → 1M FVG entry. If no setup in the window — no trade. Time discipline is everything.',
+        content: `One commonly taught Silver Bullet version is associated with named 60-minute New York or London windows. Document the timezone and daylight-saving convention used by your source, since clock labels can differ.\n\nEXAMPLE CONDITIONS TO DEFINE:\n1. Specify the selected time window.\n2. Define higher-timeframe context if required by the model.\n3. State exactly what counts as a liquidity interaction or sweep.\n4. Define the structure/FVG condition and entry price.\n5. Set invalidation and exit rules, including any risk-to-reward filter.\n\nThe setup does not have to appear every day, and neither a window nor a named pattern guarantees a valid or profitable trade. A 2:1 target is one possible strategy rule, not a universal requirement for the Silver Bullet label.`,
+        highlight: '📌 Silver Bullet is an ICT-labelled time-window model. Define the timezone and conditions, then test whether the window adds value; the label itself is not an edge.',
       },
       {
         title: 'Entry Model 4: The Breaker Block',
-        content: `A Breaker Block forms when an Order Block FAILS — when price sweeps through an OB, consuming the liquidity there. The former OB flips polarity and becomes a resistance zone.\n\nHOW A BREAKER FORMS:\n• A Bullish OB exists\n• Price sweeps THROUGH the OB (structure breaks)\n• The former OB is now a Bearish Breaker\n• Price pulls back to this zone — it now acts as resistance\n\nTHE SEQUENCE (Bearish Breaker):\nStep 1 — Former Bullish OB swept through\nStep 2 — HTF must be bearish\nStep 3 — Price pulls back UP to the Breaker\nStep 4 — Look for rejection (bearish FVG or LTF ChoCH)\nStep 5 — Enter short at the Breaker\nStep 6 — Stop: above the Breaker zone\nStep 7 — Target: next SSL below\n\nWithin ICT terminology, Breakers are studied as failed Order Blocks that may change role; claims about “exhausted liquidity” are an interpretation and should be tested.`,
+        content: `A Breaker Block forms when an Order Block FAILS — when price sweeps through an OB, consuming the liquidity there. The former OB flips polarity and becomes a resistance zone.\n\nHOW A BREAKER FORMS:\n• A Bullish OB exists\n• Price sweeps THROUGH the OB (structure breaks)\n• Within the ICT model, the former OB may be marked as a Bearish Breaker candidate\n• Price pulls back to this zone — it now acts as resistance\n\nTHE SEQUENCE (Bearish Breaker):\nStep 1 — Former Bullish OB swept through\nStep 2 — HTF must be bearish\nStep 3 — Price pulls back UP to the Breaker\nStep 4 — Look for rejection (bearish FVG or LTF ChoCH)\nStep 5 — Enter short at the Breaker\nStep 6 — Stop: above the Breaker zone\nStep 7 — Target: next SSL below\n\nWithin ICT terminology, Breakers are studied as failed Order Blocks that may change role; claims about “exhausted liquidity” are an interpretation and should be tested.`,
         highlight: '📌 When an OB is swept through — it becomes a Breaker Block and flips polarity. Former support becomes resistance. Former resistance becomes support.',
       },
     ],
