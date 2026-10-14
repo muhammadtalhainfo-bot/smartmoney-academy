@@ -166,6 +166,46 @@ const forbidden = [
     label: 'fixed fractional-Kelly prescription presented as universal',
     pattern: /Use Quarter Kelly \(25% of full Kelly\) for sustainable growth/i,
   },
+  {
+    source: 'legacy',
+    label: 'DOL sequence presented as required every session',
+    pattern: /All three levels defined before entry\. No guessing/i,
+  },
+  {
+    source: 'legacy',
+    label: 'seasonal tendencies claimed to be probability filters by default',
+    pattern: /Seasonal tendencies are probability filters/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Judas entry variants asserted to share fixed stop and target rules',
+    pattern: /All have stop beyond the sweep wick\. All target the daily\/weekly draw/i,
+  },
+  {
+    source: 'legacy',
+    label: 'OB and BPR combination ranked as maximum stacking',
+    pattern: /OB \+ BPR confluence = maximum PD Array stacking/i,
+  },
+  {
+    source: 'legacy',
+    label: 'order type instructions presented as universal',
+    pattern: /Default to limit orders at your PD Array level/i,
+  },
+  {
+    source: 'legacy',
+    label: 'loss review claimed to guarantee the filter that fixes a system',
+    pattern: /The patterns in your losses reveal the filters that will fix your system/i,
+  },
+  {
+    source: 'legacy',
+    label: '50-trade forward sample claimed to certify robustness',
+    pattern: /Forward test for minimum 50 trades on demo/i,
+  },
+  {
+    source: 'legacy',
+    label: '10-point win-rate difference claimed to certify robustness',
+    pattern: /If forward test win rate is within 10% of backtest win rate/i,
+  },
 ];
 
 const required = [
@@ -228,6 +268,22 @@ const required = [
     source: 'primary',
     label: 'source-model quiz marks rule separation as correct',
     pattern: /What is the purpose of separating a source model from your variation\?.*answer:\s*1/,
+  },
+
+  {
+    source: 'legacy',
+    label: 'forward-testing text rejects universal sample and win-rate thresholds',
+    pattern: /A 50-trade minimum or a 10-percentage-point win-rate difference cannot certify robustness on its own/i,
+  },
+  {
+    source: 'legacy',
+    label: 'execution guidance acknowledges fill and slippage tradeoffs',
+    pattern: /Limit and market orders have different fill, slippage and missed-trade tradeoffs/i,
+  },
+  {
+    source: 'legacy',
+    label: 'losses are reviewed as hypotheses rather than guaranteed fixes',
+    pattern: /review loss types as hypotheses for process improvements/i,
   },
 
 ];
