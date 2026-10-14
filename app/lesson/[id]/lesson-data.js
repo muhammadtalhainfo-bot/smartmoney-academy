@@ -566,16 +566,16 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
   8: {
     id: 8,
     title: 'ICT Entry Models',
-    subtitle: 'The Exact Frameworks ICT Uses to Enter Trades With Precision',
+    subtitle: 'Common ICT Entry Models: Rules to Define and Test',
     level: 'Intermediate',
     duration: '25 min read',
     category: 'Execution',
-    imageCaption: 'ICT entry models combine liquidity sweeps, displacement, and FVG/OB entries for precision execution',
+    imageCaption: 'Examples of ICT entry rules that traders can define, test and adapt',
     intro: `Having all the concepts in your head means nothing if you don't know HOW to combine them into a concrete trade entry. ICT entry models are structured, repeatable frameworks for defining potential entries. Their rules can be precise, but meeting the conditions does not guarantee a high-probability or profitable outcome.`,
     sections: [
       {
         title: 'The Foundation: What Makes a Valid ICT Entry',
-        content: `Before learning specific entry models, understand the core requirements that every valid ICT entry must have:\n\n1. HIGHER TIMEFRAME BIAS — You must know the HTF direction before any entry. No bias = no trade.\n\n2. LIQUIDITY SWEEP — Price must take out a pool of liquidity before a valid entry. The sweep is the fuel that powers the reversal.\n\n3. DISPLACEMENT — After the sweep, price must show a strong, impulsive move in the opposite direction. A weak, grinding reversal is not displacement.\n\n4. ENTRY ARRAY — The actual entry is placed at a FVG or Order Block within the OTE zone.\n\n5. STOP LOSS — Placed beyond the liquidity sweep.\n\n6. TARGET — The next liquidity pool in the direction of the move.\n\nWhen these five elements are present, the setup matches this lesson's ICT checklist. Traders can define their own minimum requirements and test whether each element adds value.`,
+        content: `One commonly taught ICT entry checklist includes the following candidate conditions; no single list is a universal requirement for every strategy:\n\n1. HIGHER TIMEFRAME BIAS — You must know the HTF direction before any entry. No bias = no trade.\n\n2. LIQUIDITY SWEEP — Price must take out a pool of liquidity before a valid entry. The sweep is the fuel that powers the reversal.\n\n3. DISPLACEMENT — After the sweep, price must show a strong, impulsive move in the opposite direction. A weak, grinding reversal is not displacement.\n\n4. ENTRY ARRAY — The actual entry is placed at a FVG or Order Block within the OTE zone.\n\n5. STOP LOSS — Placed beyond the liquidity sweep.\n\n6. TARGET — The next liquidity pool in the direction of the move.\n\nWhen these six elements are present, the example matches this lesson's checklist. Traders can define their own minimum requirements and test whether each element adds value.`,
         highlight: '📌 One example ICT checklist is HTF bias + liquidity sweep + displacement + entry array + clear target. Treat these as testable criteria rather than universal requirements.',
       },
       {
@@ -600,7 +600,7 @@ ICT specifically notes that TUESDAY is the most common day for the weekly Judas 
       },
     ],
     quiz: [
-      { q: 'What are the 5 required elements of every valid ICT entry?', options: ['Chart pattern, indicator, news, volume, trend', 'HTF bias, liquidity sweep, displacement, entry array, clear target', 'Support, resistance, RSI, MACD, volume', 'Fibonacci, MA, candlestick, trend, time'], answer: 1 },
+      { q: 'Which list matches the example checklist in this lesson?', options: ['Chart pattern, indicator, news, volume, trend', 'HTF bias, liquidity sweep, displacement, entry array, stop and target', 'Support, resistance, RSI, MACD, volume', 'Fibonacci, MA, candlestick, trend, time'], answer: 1 },
       { q: 'The Silver Bullet 10:00 AM window closes at?', options: ['10:30 AM', '11:30 AM', '11:00 AM', '12:00 PM'], answer: 2 },
       { q: 'What happens when an Order Block is swept through?', options: ['It becomes stronger', 'It disappears', 'It becomes a Breaker Block', 'Nothing changes'], answer: 2 },
     ],
