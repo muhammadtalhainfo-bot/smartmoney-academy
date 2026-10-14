@@ -318,6 +318,57 @@ const forbidden = [
     pattern: /What is the maximum recommended portfolio heat\?/i,
   },
 
+  {
+    source: 'legacy',
+    label: 'execution outcome overstated with unsupported 90/10 statistic',
+    pattern: /Most ICT learners spend 90% of their time on concepts and 10% on execution/i,
+  },
+  {
+    source: 'legacy',
+    label: 'risk management stated as the single most important skill with a guaranteed account outcome',
+    pattern: /without proper risk management, you will eventually blow your account/i,
+  },
+  {
+    source: 'legacy',
+    label: 'indices promoted as a route to consistent profit',
+    pattern: /Indices move differently than forex -- understand the nuances to profit consistently/i,
+  },
+  {
+    source: 'legacy',
+    label: 'crypto availability presented as eliminating all session limits and gaps',
+    pattern: /Cryptocurrency markets never close\. They run 24\/7, 365 days a year\.[\s\S]{0,200}no killzone limitations, no session gaps/i,
+  },
+  {
+    source: 'legacy',
+    label: 'subjective narrative grade mandates half or full position size',
+    pattern: /A correct narrative with a mediocre setup should be traded at/i,
+  },
+  {
+    source: 'legacy',
+    label: 'beginner risk quiz presents one percentage as a recommendation',
+    pattern: /What is the maximum recommended risk per trade for a beginner ICT trader/i,
+  },
+  {
+    source: 'legacy',
+    label: 'crypto session quiz asserts one universal best session',
+    pattern: /What is the best session for crypto swing entries/i,
+  },
+  {
+    source: 'legacy',
+    label: 'crypto quiz mandates a fixed stop width',
+    pattern: /What percentage stop is recommended for Bitcoin/i,
+  },
+  {
+    source: 'legacy',
+    label: 'index correlation quiz states an unchanging coefficient',
+    pattern: /How correlated are NAS100 and US30/i,
+  },
+  {
+    source: 'legacy',
+    label: 'quarterly image caption presents a fixed annual script',
+    pattern: /the annual market script/i,
+  },
+
 ];
 
 const required = [
@@ -483,6 +534,37 @@ const required = [
     source: 'legacy',
     label: 'position size is not based on subjective narrative grading',
     pattern: /A narrative or setup grade should not override the account risk cap/i,
+  },
+
+  {
+    source: 'legacy',
+    label: 'execution lesson states performance depends on several testable factors',
+    pattern: /Execution quality can affect realized trading results alongside strategy design, market conditions, costs and risk management/i,
+  },
+  {
+    source: 'legacy',
+    label: 'indices lesson compares products instead of promoting consistent returns',
+    pattern: /Index products have distinct hours, costs, volatility and gap risks/i,
+  },
+  {
+    source: 'legacy',
+    label: 'crypto lesson caveats around-the-clock availability',
+    pattern: /Around-the-clock availability does not remove session-based behavior, gaps in liquidity or event risk/i,
+  },
+  {
+    source: 'legacy',
+    label: 'narrative sizing quiz reinforces tested rules and account risk caps',
+    pattern: /A predefined, tested sizing rule within the account risk cap/i,
+  },
+  {
+    source: 'legacy',
+    label: 'beginner risk quiz recommends a small predefined risk during testing',
+    pattern: /Choose a small predefined amount that fits account rules and validate in simulation/i,
+  },
+  {
+    source: 'legacy',
+    label: 'crypto leverage and stop quizzes require model-specific sizing',
+    pattern: /Define invalidation, account for volatility\/execution, then size the position/i,
   },
 
 ];
