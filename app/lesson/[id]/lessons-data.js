@@ -190,7 +190,7 @@ export const LESSONS_EXTRA = {
       },
     ],
     quiz: [
-      { q: `Why do banks engineer stop hunts?`, options: ['To punish retail traders', 'To generate the order flow they need to fill large positions', 'Because of random price movement', 'To follow technical analysis patterns'], answer: 1 },
+      { q: `What can a chart establish about a suspected stop hunt?`, options: ['The bank that caused it', 'The exact orders that were triggered', 'A price pattern that can be defined and tested', 'A guaranteed reversal'], answer: 2 },
       { q: `A displacement candle is characterized by...`, options: ['Small body with large wicks', 'Large body with minimal wicks, moving aggressively in one direction', 'Equal open and close', 'Gap from the previous close'], answer: 1 },
       { q: `The Distribution phase ends when...`, options: ['Price reaches equilibrium', 'The ERL target is swept', 'The Asian session opens', 'RSI reaches overbought'], answer: 1 },
     ],
@@ -762,7 +762,7 @@ export const LESSONS_EXTRA = {
       },
       {
         title: `The Psychology of Risk`,
-        content: `Risk management is 80% psychological and 20% mathematical.\n\nTHE FEAR OF LOSS:\nHumans feel losses 2.5x more intensely than equivalent gains. This causes:\n- Moving stop losses to avoid realizing a loss\n- Closing winning trades too early to secure profits\n- Revenge trading after losses\n- Avoiding valid setups due to recent losses\n\nTHE GREED TRAP:\nAfter a winning streak, traders often:\n- Increase position size (I am on fire!)\n- Take lower-quality setups\n- Remove stop losses\n\nTHE SOLUTION -- THE ROBOT RULE:\nBefore every trade, ask yourself: Would a robot take this trade?\nA robot does not have emotions. It follows rules:\n- Is the setup an A+ setup? Yes/No\n- Is the R:R at least 1:3? Yes/No\n- Is the risk 1% or less? Yes/No\n- Is my bias confirmed? Yes/No\n\nIf any answer is No, do not take the trade. No exceptions.`,
+        content: `Risk management combines sizing, execution, strategy design and behavior; a fixed 80/20 split is not a universal measurement.\n\nTHE FEAR OF LOSS:\nPeople may react asymmetrically to losses and gains, but the size of the effect varies by study and context; avoid treating a single multiplier as universal. This causes:\n- Moving stop losses to avoid realizing a loss\n- Closing winning trades too early to secure profits\n- Revenge trading after losses\n- Avoiding valid setups due to recent losses\n\nTHE GREED TRAP:\nAfter a winning streak, traders often:\n- Increase position size (I am on fire!)\n- Take lower-quality setups\n- Remove stop losses\n\nTHE SOLUTION -- THE ROBOT RULE:\nBefore every trade, ask yourself: Would a robot take this trade?\nA robot does not have emotions. It follows rules:\n- Is the setup an A+ setup? Yes/No\n- Is the R:R at least 1:3? Yes/No\n- Is the risk 1% or less? Yes/No\n- Is my bias confirmed? Yes/No\n\nIf any answer is No, do not take the trade. No exceptions.`,
         highlight: `📌 The best trade is often the one you do not take. Missing a trade costs nothing. Taking a bad trade costs money, confidence, and account equity.`,
       },
     ],
