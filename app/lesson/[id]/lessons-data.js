@@ -285,8 +285,8 @@ export const LESSONS_EXTRA = {
       },
       {
         title: `The Narrative vs the Trade`,
-        content: `An important distinction: the narrative and the trade are separate things.\n\nThe narrative records a scenario you plan to monitor, not what the algorithm will do.\n\nThe trade is the EXECUTION that occurs when price confirms a specific entry sequence within that narrative.\n\nYou can have a correct narrative (bullish daily bias, Judas Swing expected) and still have no trade  --  because the specific entry sequence (sweep + ChoCH + FVG entry in killzone) does not materialize that day.\n\nThis is completely fine. The narrative gives you context and patience. It prevents you from taking low-quality trades out of boredom. It keeps you from chasing price that has already left your entry zone.\n\nSome days the narrative is clear but no setup forms. Some days the narrative is uncertain. Some days narrative AND setup are both perfect  --  these are your A+ days. Trade with maximum conviction on A+ days. Reduce size on A days. Take nothing on B or C days.\n\nNarrative quality and setup quality together determine position sizing. This is how professional traders compound capital consistently while managing risk across varying market conditions.`,
-        highlight: `📌 Correct narrative + perfect setup = A+ trade (full size). Correct narrative + mediocre setup = A trade (half size). Unclear narrative = no trade regardless of how good the setup looks.`,
+        content: `An important distinction: the narrative and the trade are separate things.\n\nThe narrative records a scenario you plan to monitor, not what the algorithm will do.\n\nThe trade is the EXECUTION that occurs when price confirms a specific entry sequence within that narrative.\n\nYou can have a correct narrative (bullish daily bias, Judas Swing expected) and still have no trade  --  because the specific entry sequence (sweep + ChoCH + FVG entry in killzone) does not materialize that day.\n\nThis is completely fine. The narrative gives you context and patience. It prevents you from taking low-quality trades out of boredom. It keeps you from chasing price that has already left your entry zone.\n\nSome days the narrative is clear but no setup forms. Some days the narrative is uncertain. Some days narrative AND setup are both perfect  --  these are your A+ days. If you use A/B/C grades, define them in observable terms and size positions according to tested rules, stop distance and the account risk cap rather than subjective conviction alone.\n\nA narrative and setup checklist may contribute to a written risk plan when its criteria are observable and tested. A narrative or setup grade should not override the account risk cap or justify a larger position by itself. No process guarantees consistent compounding.`,
+        highlight: `📌 Use narrative to organize a scenario, not to justify full or half size by itself. Define setup grades in observable terms and size positions from tested rules, stop distance and total account exposure.`,
       },
       {
         title: `Full Narrative Walkthrough Example`,
@@ -994,7 +994,7 @@ export const LESSONS_EXTRA = {
     level: `Intermediate`,
     duration: `20 min read`,
     category: `Risk Management`,
-    imageCaption: `Trading is 80% psychology and 20% strategy`,
+    imageCaption: `Trading psychology affects decisions, but its impact varies by person and context`,
     intro: `Fear, greed, frustration and overconfidence can affect trading decisions, but their impact varies by person and situation. A useful psychology process identifies observable behaviors—such as moving a stop, skipping a valid setup, or increasing size after a loss—and ties them to a written rule. Avoid unsourced percentages about the share of traders who fail or how strongly losses are felt.`,
     sections: [
       {
