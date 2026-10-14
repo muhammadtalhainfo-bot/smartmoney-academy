@@ -71,6 +71,23 @@ const riskyClaims = [
   ['MMSM universal blueprint', /the blueprint for every significant bearish move/i],
   ['unsupported killzone win-rate statistic', /30-40% lower win rates/i],
   ['CBDR daily-range certainty', /has a direct relationship to the expected daily range/i],
+
+  ['banks engineer retail stop scenarios', /they engineer scenarios that cause retail traders to create the orders the bank needs to fill/i],
+  ['algorithm delivery destination asserted as fact', /when the algorithm needs to deliver price higher/i],
+  ['institutional volume certainty by session', /the largest volume of institutional orders hit the market/i],
+  ['unmeasured session probability profile', /a completely different probability profile than the same setup/i],
+  ['midnight open starts AMD cycle', /the reference point from which the day's AMD cycle begins/i],
+  ['midnight open identifies AMD phase', /tells you which AMD phase you are in/i],
+  ['DOL exact algorithm destination', /a precise level on the chart that price is being magnetically drawn toward/i],
+  ['IRL ERL fixed sequential cycle', /price typically moves from ERL collection to IRL retracement, back to ERL collection, in a sequential cycle/i],
+  ['breaker assumes institutional exit motive', /they used the retail buying at the OB as an exit opportunity/i],
+  ['hidden OB institutional dominance', /institutional orders dominate the reaction/i],
+  ['Unicorn high-conviction promise', /one of the highest-conviction entries in the framework/i],
+  ['first FVG as algorithm commitment', /the algorithm's first directional commitment of the official session/i],
+  ['Seek and Destroy intent assertion', /algorithm's behavior of systematically hunting the stop orders on both sides/i],
+  ['top-down institutional backing certainty', /your trade has maximum institutional backing/i],
+  ['IRL always precedes ERL', /price almost always delivers to IRL targets first before reaching the ERL/i],
+  ['displacement reveals institutional identity', /the fingerprint of institutional/i],
 ];
 for (const [label, pattern] of riskyClaims) {
   if (pattern.test(posts)) errors.push('Remove or qualify the unsupported blog claim: ' + label + '.');
@@ -212,6 +229,8 @@ const overclaimTitles = [
 
   ['AMD everyday guarantee', /title:\s*'[^']*Every Single Day/i],
   ['MMSM universal blueprint title', /title:\s*'[^']*Complete Bearish Delivery Framework/i],
+
+  ['liquidity-only price causation title', /title:\s*'[^']*Why Price Really Moves/i],
 ];
 for (const [label, pattern] of overclaimTitles) {
   if (pattern.test(posts)) errors.push('Avoid unsupported blog-title claim: ' + label + '.');
@@ -254,6 +273,18 @@ for (const post of postChunks) {
   const descriptionMatch = post.source.match(/description:\s*'((?:\\.|[^'\\])*)'/);
   const description = (descriptionMatch?.[1] || '').replace(/\\'/g, "'");
   for (const [label, pattern] of overclaimDescriptionsBatch4) {
+    if (pattern.test(description)) errors.push('/blog/' + post.slug + ': unsupported description claim: ' + label + '.');
+  }
+}
+
+
+const overclaimDescriptionsBatch5 = [
+  ["liquidity as sole price driver", /Liquidity is the real reason price moves/i]
+];
+for (const post of postChunks) {
+  const descriptionMatch = post.source.match(/description:\s*'((?:\\.|[^'\\])*)'/);
+  const description = (descriptionMatch?.[1] || '').replace(/\\'/g, "'");
+  for (const [label, pattern] of overclaimDescriptionsBatch5) {
     if (pattern.test(description)) errors.push('/blog/' + post.slug + ': unsupported description claim: ' + label + '.');
   }
 }
