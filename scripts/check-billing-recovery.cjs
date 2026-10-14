@@ -36,8 +36,8 @@ if (!portal.includes("await supabase.auth.getUser()")) {
 if (!portal.includes("consume_api_rate_limit") || !portal.includes("allowed !== true")) {
   errors.push('Billing portal must preserve the server-side rate limit.');
 }
-if (!webhook.includes("['active', 'trialing', 'past_due'].includes(subscription.status)")) {
-  errors.push('Webhook and checkout must agree on which subscription states retain Pro entitlement.');
+if (!webhook.includes('customerHasEntitledSubscription(stripe, customerId)')) {
+  errors.push('Webhook entitlement recalculation must use the same status-aware helper as checkout.');
 }
 
 const adminActions = fs.readFileSync('app/admin/actions.js', 'utf8');
