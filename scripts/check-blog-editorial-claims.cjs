@@ -88,6 +88,24 @@ const riskyClaims = [
   ['top-down institutional backing certainty', /your trade has maximum institutional backing/i],
   ['IRL always precedes ERL', /price almost always delivers to IRL targets first before reaching the ERL/i],
   ['displacement reveals institutional identity', /the fingerprint of institutional/i],
+
+  ['FVG means no participation at the same prices', /both buyers and sellers could not participate at the same prices/i],
+  ['FVG reveals algorithm target', /when the algorithm needs to deliver price rapidly to a specific target/i],
+  ['SMT proves institutional force', /institutional participants are forcing one market to make a new high/i],
+  ['SMT proves buying is false', /the institutional buying driving the first market higher is not genuine or sustainable/i],
+  ['Turtle Soup algorithm stop certainty', /the algorithm does not break above a swing high because the market is genuinely bullish/i],
+  ['Turtle Soup proves necessary liquidity collection', /the algorithm has collected the sell-side liquidity it needed at that level/i],
+  ['Macro algorithmic peak claim', /the precise 20-minute periods of peak algorithmic activity/i],
+  ['scalping fixed pip target promise', /targeting 20-50 pip moves during high-probability time windows/i],
+  ['identical FVG significance across timeframes', /carries the same institutional significance as a 4-hour FVG/i],
+  ['QML predicts reversal', /identifies the moment when a trend has overextended, swept the final liquidity pool, and is about to reverse/i],
+  ['short-term swing proves order locations', /hold the smallest pools of liquidity/i],
+  ['inducement deliberate trap assertion', /the algorithm's deliberate creation of a setup that appears tradeable but is actually designed to trap traders/i],
+  ['liquidity run institutional motive', /the algorithm needed those orders to fill its position before continuing to the larger ERL target beyond/i],
+  ['BOS ChoCH universal classification', /every structural change on every timeframe is classified as either a BOS/i],
+  ['institutional flow future guarantee', /price will ultimately move higher regardless of what retail sentiment says/i],
+  ['institutions only buy discount', /institutions only buy when prices are cheap/i],
+  ['70.5 ratio as precise OTE entry', /70.5% (the precise OTE entry)/i],
 ];
 for (const [label, pattern] of riskyClaims) {
   if (pattern.test(posts)) errors.push('Remove or qualify the unsupported blog claim: ' + label + '.');
@@ -231,6 +249,9 @@ const overclaimTitles = [
   ['MMSM universal blueprint title', /title:\s*'[^']*Complete Bearish Delivery Framework/i],
 
   ['liquidity-only price causation title', /title:\s*'[^']*Why Price Really Moves/i],
+
+  ['Turtle Soup cleanest strategy title', /title:\s*'[^']*cleanest reversal strategies/i],
+  ['ICT complete guide absolutism title', /title:\s*'[^']*Complete ICT Trading Guide/i],
 ];
 for (const [label, pattern] of overclaimTitles) {
   if (pattern.test(posts)) errors.push('Avoid unsupported blog-title claim: ' + label + '.');
@@ -285,6 +306,19 @@ for (const post of postChunks) {
   const descriptionMatch = post.source.match(/description:\s*'((?:\\.|[^'\\])*)'/);
   const description = (descriptionMatch?.[1] || '').replace(/\\'/g, "'");
   for (const [label, pattern] of overclaimDescriptionsBatch5) {
+    if (pattern.test(description)) errors.push('/blog/' + post.slug + ': unsupported description claim: ' + label + '.');
+  }
+}
+
+
+const overclaimDescriptionsBatch6 = [
+  ["Turtle Soup cleanest strategy promise", /one of ICT's cleanest reversal strategies/i],
+  ["FVG most-traded superlative", /the most traded ICT concept — and the most misunderstood/i]
+];
+for (const post of postChunks) {
+  const descriptionMatch = post.source.match(/description:\s*'((?:\\.|[^'\\])*)'/);
+  const description = (descriptionMatch?.[1] || '').replace(/\\'/g, "'");
+  for (const [label, pattern] of overclaimDescriptionsBatch6) {
     if (pattern.test(description)) errors.push('/blog/' + post.slug + ': unsupported description claim: ' + label + '.');
   }
 }
