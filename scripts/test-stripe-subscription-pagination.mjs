@@ -1,5 +1,9 @@
 import assert from 'node:assert/strict';
-import { customerHasEntitledSubscription } from '../lib/stripe-subscriptions.js';
+import { readFile } from 'node:fs/promises';
+
+const helperSource = await readFile(new URL('../lib/stripe-subscriptions.js', import.meta.url), 'utf8');
+const helperModuleUrl = 'data:text/javascript;base64,' + Buffer.from(helperSource).toString('base64');
+const { customerHasEntitledSubscription } = await import(helperModuleUrl);
 
 function subscription(id, status) {
   return { id, status };
