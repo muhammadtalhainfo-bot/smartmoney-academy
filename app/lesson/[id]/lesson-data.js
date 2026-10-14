@@ -480,14 +480,14 @@ The Judas-style sequence can recur across sessions, but its consistency varies. 
 A Bullish Daily Candle:
 • Open (midnight open)
 • A lower wick may be interpreted as a possible move against the close direction; this does not verify manipulation
-• Long green body = the distribution phase (real bullish move)
+• A long green body describes net upward movement; it does not establish a distribution phase
 • Small wick UP = sometimes a minor London Close reversal
 • Close near the high
 
 A Bearish Daily Candle:
 • Open
 • An upper wick may be interpreted as a possible move against the close direction; this does not verify manipulation
-• Long red body = distribution (real bearish move)
+• A long red body describes net downward movement; it does not establish a distribution phase
 • Close near the low
 
 A daily candle with a long lower wick and bullish body can be interpreted through the AMD framework as possible accumulation/manipulation/distribution, but a single candle cannot confirm those underlying events.`,
@@ -498,16 +498,16 @@ A daily candle with a long lower wick and bullish body can be interpreted throug
         content: `ICT describes PO3/AMD as a fractal framework that can be applied across timeframes; whether the sequence transfers consistently across timeframes is an empirical question.
 
 Weekly AMD:
-• Monday: Accumulation (weekly range starts forming)
-• Tuesday/Wednesday: Manipulation (Judas Swing of weekly highs or lows)
-• Thursday/Friday: Distribution (real weekly directional move)
+• Monday: some narratives treat early-week price as range formation; test this definition
+• Tuesday/Wednesday: a move against a later direction is one possible hypothesis, not a fixed phase
+• Thursday/Friday: later-week expansion may occur, but weekday alone does not establish direction
 
 Monthly AMD:
 • Week 1: Accumulation
 • Week 2: Manipulation
 • Weeks 3-4: Distribution
 
-This means you can apply the AMD framework to weekly charts to determine which DIRECTION the week will ultimately close in. If you see the weekly sweep a key low on Tuesday — that's your weekly Judas Swing. Expect the week to close bullish.
+Weekly AMD is one narrative that traders can define and test. A sweep on a Tuesday does not determine the eventual weekly close; record both successful and failed scenarios and compare with a baseline.
 
 Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, with a potential later-week directional move. Treat this as an attributed hypothesis rather than an established market regularity, and test defined rules across representative data.`,
         highlight: '📌 Weekly AMD: Monday = accumulate. Tuesday = Judas Swing (usually). Thursday-Friday = real directional move. This works with remarkable consistency.',
@@ -595,8 +595,8 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
       },
       {
         title: 'Entry Model 4: The Breaker Block',
-        content: `A Breaker Block forms when an Order Block FAILS — when price sweeps through an OB, consuming the liquidity there. The former OB flips polarity and becomes a resistance zone.\n\nHOW A BREAKER FORMS:\n• A Bullish OB exists\n• Price sweeps THROUGH the OB (structure breaks)\n• Within the ICT model, the former OB may be marked as a Bearish Breaker candidate\n• Price pulls back to this zone — it now acts as resistance\n\nTHE SEQUENCE (Bearish Breaker):\nStep 1 — Former Bullish OB swept through\nStep 2 — HTF must be bearish\nStep 3 — Price pulls back UP to the Breaker\nStep 4 — Look for rejection (bearish FVG or LTF ChoCH)\nStep 5 — Enter short at the Breaker\nStep 6 — Stop: above the Breaker zone\nStep 7 — Target: next SSL below\n\nWithin ICT terminology, Breakers are studied as failed Order Blocks that may change role; claims about “exhausted liquidity” are an interpretation and should be tested.`,
-        highlight: '📌 When an OB is swept through — it becomes a Breaker Block and flips polarity. Former support becomes resistance. Former resistance becomes support.',
+        content: `A Breaker Block forms when an Order Block FAILS — when price sweeps through an OB, consuming the liquidity there. Within this ICT interpretation, a former OB may be marked as a potential role-reversal zone; it does not necessarily become support or resistance after a break.\n\nHOW A BREAKER FORMS:\n• A Bullish OB exists\n• Price sweeps THROUGH the OB (structure breaks)\n• Within the ICT model, the former OB may be marked as a Bearish Breaker candidate\n• Price pulls back to this zone — it now acts as resistance\n\nTHE SEQUENCE (Bearish Breaker):\nStep 1 — Former Bullish OB swept through\nStep 2 — HTF must be bearish\nStep 3 — Price pulls back UP to the Breaker\nStep 4 — Look for rejection (bearish FVG or LTF ChoCH)\nStep 5 — Enter short at the Breaker\nStep 6 — Stop: above the Breaker zone\nStep 7 — Target: next SSL below\n\nWithin ICT terminology, Breakers are studied as failed Order Blocks that may change role; claims about “exhausted liquidity” are an interpretation and should be tested.`,
+        highlight: '📌 In ICT terminology a Breaker is a failed-OB reference some traders interpret as a possible role reversal; define confirmation and invalidation rather than assuming a flip.',
       },
     ],
     quiz: [
