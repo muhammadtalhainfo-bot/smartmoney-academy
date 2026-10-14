@@ -81,7 +81,7 @@ export const LESSONS_EXTRA = {
       {
         title: `The DOL Sequence in Real Trades`,
         content: `Consider a hypothetical chart where prior equal highs are visible above price and a bullish structure pattern has formed. An ICT trader may nominate those highs as a possible objective and an FVG as a potential retracement area. This is a planning scenario—not a known algorithmic destination. Price may reach the highs, reverse first, or continue elsewhere.\n\nBefore entering, define the setup trigger, invalidation, stop, exit rule and maximum acceptable risk. Record whether the target was reached under a fixed time horizon, and include cases where no trade triggered or the thesis failed. Avoid changing the target after observing the outcome.`,
-        highlight: `📌 The DOL trade: identify ERL target → wait for IRL retracement → enter at IRL → stop beyond sweep → TP at ERL. All three levels defined before entry. No guessing.`,
+        highlight: `📌 One DOL-based example is to mark a candidate ERL, wait for a defined IRL retracement, and specify stop, target and invalidation before entry. This is a model to test, not a required path every session follows.`,
       },
       {
         title: `Common DOL Mistakes`,
@@ -331,7 +331,7 @@ export const LESSONS_EXTRA = {
       {
         title: `Monthly Seasonal Tendencies by Pair`,
         content: `Beyond the quarterly framework, specific months have historically reliable seasonal tendencies for major forex pairs and instruments:\n\nFOREX SEASONAL PATTERNS:\n• EURUSD: tends to be weak in Q1 and Q3, stronger in Q2 and Q4 in years of dollar weakness\n• GBPUSD: historically stronger in April-May and weaker in September-October\n• USDJPY: tends to be bullish in Q1 (dollar strengthening) and weaker in Q3\n• XAUUSD (Gold): January historically strong, August-September frequently bullish\n\nINDICES SEASONAL PATTERNS:\n• NAS100/SP500: January Effect, summer dip in Q3, year-end rally in Q4 are well-documented\n• "Sell in May and go away"  --  the tendency for equity weakness between May and October  --  corresponds to Q2 manipulation and Q3 caution before Q4 repositioning\n\nIMPORTANT CAVEAT:\nSeasonal tendencies are biases  --  not certainties. They inform your probability framework but do not override your top-down ICT analysis. Use seasonal tendencies as an additional filter: if ICT analysis says bullish AND seasonality says bullish → higher conviction. If they conflict → be cautious.`,
-        highlight: `📌 Seasonal tendencies are probability filters  --  not trading signals. Use them to add or reduce conviction in your ICT analysis, never as standalone reasons to enter or exit trades.`,
+        highlight: `📌 Seasonal tendencies are calendar-based hypotheses, not established filters by default. Test whether they add out-of-sample value beyond the base model before adjusting conviction; never use them alone as entry or exit signals.`,
       },
       {
         title: `Integrating Quarterly Theory into Your Analysis`,
@@ -516,7 +516,7 @@ export const LESSONS_EXTRA = {
       {
         title: `Entries After Judas Completion`,
         content: `Three entry approaches for the Judas Swing reversal, ranging from most aggressive to most conservative:\n\nENTRY 1  --  AGGRESSIVE (Sweep + LTF Candle):\nEnter immediately when a reversal candle forms at the Judas target  --  before a formal LTF structure break. Higher risk (may not be the real reversal) but better price if correct.\n\nENTRY 2  --  MODERATE (Sweep + 5M ChoCH + Retracement):\nWait for the Judas sweep → wait for a 5-minute ChoCH in the reversal direction → enter on the first retracement into the 5-minute FVG after the ChoCH. This is the standard ICT Judas Swing entry  --  balances risk and reward.\n\nENTRY 3  --  CONSERVATIVE (Full Confirmation + Continuation):\nWait for the full 5-minute structure to shift → wait for a pullback to the 15-minute or 1-hour FVG from the initial reversal move → enter on the second push in the reversal direction. Lowest risk, smallest R:R, best for beginners.\n\nSTOP PLACEMENT FOR ALL ENTRIES:\nStop goes below the absolute low of the Judas wick (for bullish reversal) or above the absolute high (for bearish reversal). Never inside the wick.\n\nTARGET PLACEMENT:\nFirst target: Previous day high (for bullish reversal) or previous day low (for bearish reversal). Second target: weekly draw on liquidity.`,
-        highlight: `📌 Three Judas entries: aggressive (immediate reversal candle), moderate (5M ChoCH + FVG retracement), conservative (15M/1H FVG retracement). All have stop beyond the sweep wick. All target the daily/weekly draw.`,
+        highlight: `📌 Some ICT traders describe aggressive, moderate and conservative Judas-style entry variants. These are alternative examples, not universal entries; define each trigger, stop, target and invalidation before testing instead of assuming every setup uses the same rules.`,
       },
       {
         title: `Confirming Judas vs Real Breakout`,
@@ -561,7 +561,7 @@ export const LESSONS_EXTRA = {
       {
         title: `BPR + OB Confluence`,
         content: `Some traders study whether a BPR overlapping an order block performs differently from either feature alone. The overlap is a chart relationship; it does not demonstrate that institutional orders were placed there or that multiple sets of orders are present. Define both patterns independently, then compare BPR-only, order-block-only and combined cases with the same entry, stop, target and cost assumptions.`,
-        highlight: `📌 OB + BPR confluence = maximum PD Array stacking. This combination appears less frequently but may provide useful confluence when the conditions align. Wait patiently for these setups.`,
+        highlight: `📌 OB + BPR overlap can be evaluated as one confluence condition. A label such as maximum PD Array stacking does not prove a stronger edge; compare the combined rule with a simpler baseline.`,
       },
       {
         title: `Partial BPR Fills and Continuation`,
@@ -591,7 +591,7 @@ export const LESSONS_EXTRA = {
       {
         title: `Entry Precision  --  Limit vs Market Orders`,
         content: `LIMIT ORDERS (Preferred for ICT Entries):\nA limit order is placed at a specific price level  --  typically the CE of a FVG, the top of an OB, or the middle of a BPR. Price must reach your level for the order to fill. You enter at the level you chose, not wherever price happens to be when you decide to trade.\n\nADVANTAGES:\n• Precise entry at your chosen PD Array level\n• Better R:R because entry is at the optimal zone\n• No emotional pressure  --  the order fills automatically if your level is reached\n• Eliminates impulse entries that often occur at worse prices\n\nMARKET ORDERS (Used for Confirmation Entries):\nA market order fills immediately at the current best price. Used when waiting for a limit order would mean missing the move  --  specifically after seeing a 1-minute ChoCH or displacement candle that confirms the move has begun.\n\nWHEN TO USE MARKET vs LIMIT:\n• Use LIMIT at FVG CE, OB top, BPR midpoint  --  known PD Array levels\n• Use MARKET after a 1-minute structure break that confirms reversal (aggressive confirmation entry)\n• Never use market orders to "chase" a move that has already departed from your intended entry level\n\nThe most common execution mistake: using a market order because "price is moving and I don't want to miss it." This consistently produces entries at worse prices and tighter R:R.`,
-        highlight: `📌 Default to limit orders at your PD Array level. Use market orders only for confirmation entries after a 1-minute structure break. Never chase with a market order  --  if you missed the level, wait for the next setup.`,
+        highlight: `📌 Limit and market orders have different fill, slippage and missed-trade tradeoffs. Choose order type through a predefined execution rule suited to spread, volatility and the setup; do not generalize one order type across every model.`,
       },
       {
         title: `Stop Loss Placement Logic`,
@@ -656,7 +656,7 @@ export const LESSONS_EXTRA = {
       {
         title: `What to Record in Every Backtest`,
         content: `A backtest record that does not capture sufficient detail is nearly useless for analysis. Here is the minimum required data for each backtested trade:\n\nTRADE IDENTIFICATION:\n• Trade number (sequential)\n• Date and time of entry\n• Instrument traded (EURUSD, NAS100, XAUUSD)\n• Session (London, NY AM)\n• Direction (Long / Short)\n\nSETUP QUALITY:\n• Setup type (FVG entry, OB entry, BPR entry, Turtle Soup, etc.)\n• HTF alignment: Monthly direction, Weekly direction, Daily bias\n• Was price in discount (for longs) or premium (for shorts)?\n• Killzone: Yes / No\n• Liquidity sweep present: Yes / No\n• Entry criteria checklist: which items were confirmed?\n\nTRADE MECHANICS:\n• Entry price\n• Stop loss price and distance in pips\n• Planned TP1, TP2\n• Initial planned R:R\n\nOUTCOME:\n• Exit price\n• Actual R:R achieved\n• Result: Win / Loss / Breakeven\n• Did price reach TP1 before TP2? Before stop?\n• Were there any execution errors (entered late, moved stop, exited early)?\n\nPOST-TRADE NOTES:\n• What worked about this trade?\n• What would you do differently?\n• Confidence level in setup (1-10)`,
-        highlight: `📌 Record every triggered setup  --  wins AND losses. Losses contain the most valuable information. A backtest that only records wins is useless. The patterns in your losses reveal the filters that will fix your system.`,
+        highlight: `📌 Record every triggered setup, wins and losses, using the same criteria. Excluding losses biases the sample; review loss types as hypotheses for process improvements, then test any proposed filter separately before relying on it.`,
       },
       {
         title: `Sample Size  --  Minimum for Statistical Significance`,
@@ -671,7 +671,7 @@ export const LESSONS_EXTRA = {
       {
         title: `Forward Testing Your Model on Demo`,
         content: `After defining your model from backtesting, the next step is forward testing on a demo account  --  trading the model in real time on paper money to validate that it performs similarly in live market conditions:\n\nWHY FORWARD TNew York timeING MATTERS:\nBacktesting, even done perfectly, has limitations:\n• You know roughly what price does in the data you are reviewing\n• Emotional pressure is absent\n• Execution is hypothetical\n\nForward testing on demo introduces:\n• Real-time uncertainty  --  you do not know what price will do\n• Real-time emotional pressure  --  even on paper money, decisions feel more real\n• Real execution practice  --  actually placing orders, managing positions\n\nFORWARD TNew York time REQUIREMENTS:\n• Trade the EXACT same rules from your backtest model  --  no modifications\n• Record every triggered trade with the same detail as backtesting\n• Minimum 50 forward-tested trades before considering live trading\n• Target: 50 consecutive trades following ALL rules of your model (including staying out when conditions are not met)\n\nWHEN FORWARD TNew York time RESULTS MATCH BACKTNew York time:\nSimilar backtest and forward-test win rates alone do not prove robustness or readiness for live trading. Compare expectancy, drawdown, trade frequency, costs, and rule adherence on an independent sample.\n\nWHEN THEY DON\'T MATCH:\nIf forward test results are significantly worse than backtest  --  either your backtest had replay bias, or there are real-time conditions that affect the model that were not present in historical data. Identify the discrepancies and fix them before going live.`,
-        highlight: `📌 Forward test for minimum 50 trades on demo. If forward test win rate is within 10% of backtest win rate  --  the model is robust. If not  --  identify and fix the discrepancies before risking real capital.`,
+        highlight: `📌 Forward-test on demo with a sample large and representative enough for the setup’s frequency and variability. A 50-trade minimum or a 10-percentage-point win-rate difference cannot certify robustness on its own; compare costs, expectancy, drawdown, execution quality and out-of-sample performance before risking capital.`,
       },
     ],
     quiz: [
