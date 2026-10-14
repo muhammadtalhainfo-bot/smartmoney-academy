@@ -206,6 +206,62 @@ const forbidden = [
     label: '10-point win-rate difference claimed to certify robustness',
     pattern: /If forward test win rate is within 10% of backtest win rate/i,
   },
+  {
+    source: 'legacy',
+    label: 'price movement described as never random',
+    pattern: /price never moves randomly from one level to another/i,
+  },
+  {
+    source: 'legacy',
+    label: 'ERL targets described as known institutional destinations',
+    pattern: /where major institutional orders are resting and where the algorithm delivers price as its primary objective/i,
+  },
+  {
+    source: 'legacy',
+    label: 'IRL fills described as required delivery steps',
+    pattern: /price fills these as part of the delivery path before continuing to the ERL target/i,
+  },
+  {
+    source: 'legacy',
+    label: 'DOL direction asserted as algorithm knowledge',
+    pattern: /which liquidity pool is the algorithm most likely targeting today/i,
+  },
+  {
+    source: 'legacy',
+    label: 'fixed standard risk percentage attributed to ICT universally',
+    pattern: /Standard ICT position sizing: 1% of account per trade/i,
+  },
+  {
+    source: 'legacy',
+    label: 'fixed risk ceiling declared universal',
+    pattern: /Never risk more than 2% on any single trade regardless of conviction/i,
+  },
+  {
+    source: 'legacy',
+    label: 'monthly trading return target attributed to most ICT traders',
+    pattern: /Most ICT traders aim for 5-8% with proper execution/i,
+  },
+  {
+    source: 'legacy',
+    label: 'profitable expectancy claimed from win rate and R multiple without assumptions',
+    pattern: /A 40% win rate with 1:3 R:R is highly profitable over 100 trades/i,
+  },
+  {
+    source: 'legacy',
+    label: 'trading return claimed to beat nearly all investments',
+    pattern: /That beats nearly every investment in the world/i,
+  },
+  {
+    source: 'legacy',
+    label: 'monthly 5% compound value framed as practical reassurance',
+    pattern: /A \$10,000 account compounding at 5% monthly becomes \$186,000 in 5 years/i,
+  },
+  {
+    source: 'legacy',
+    label: 'rigid robot checklist mandates fixed R:R and risk for every trader',
+    pattern: /If any answer is No, do not take the trade\. No exceptions/i,
+  },
+
 ];
 
 const required = [
@@ -284,6 +340,52 @@ const required = [
     source: 'legacy',
     label: 'losses are reviewed as hypotheses rather than guaranteed fixes',
     pattern: /review loss types as hypotheses for process improvements/i,
+  },
+
+  {
+    source: 'legacy',
+    label: 'DOL body treats price objectives as hypotheses',
+    pattern: /Actual moves can be influenced by many factors and may not reach a marked level/i,
+  },
+  {
+    source: 'legacy',
+    label: 'ERL and IRL labels do not prove orders or required delivery',
+    pattern: /The label does not prove that institutional orders are resting there/i,
+  },
+  {
+    source: 'legacy',
+    label: 'position sizing is calculated using the risk cap and instrument specifics',
+    pattern: /Convert the stop distance into monetary risk using the instrument's contract size/i,
+  },
+  {
+    source: 'legacy',
+    label: 'drawdown thresholds are explicitly examples, not universal guidance',
+    pattern: /EXAMPLE OF A REVIEW PROCESS \(NOT UNIVERSAL THRESHOLDS\)/i,
+  },
+  {
+    source: 'legacy',
+    label: 'account growth arithmetic is explicitly hypothetical',
+    pattern: /This is an illustration, not an achievable or expected return target/i,
+  },
+  {
+    source: 'legacy',
+    label: 'expected strategy value example states its assumptions and costs caveat',
+    pattern: /That is an illustration, not a forecast; fees, slippage, changing conditions and estimation error/i,
+  },
+  {
+    source: 'legacy',
+    label: 'discipline rules are described as adaptable examples',
+    pattern: /The following are examples to adapt to a specific strategy, not universal requirements/i,
+  },
+  {
+    source: 'legacy',
+    label: 'risk quiz assesses risk calculation inputs instead of a universal percentage',
+    pattern: /Which inputs matter most when calculating position risk/i,
+  },
+  {
+    source: 'legacy',
+    label: 'correlated-pair quiz asks for combined exposure assessment',
+    pattern: /Consider their correlation and combined exposure before choosing position sizes/i,
   },
 
 ];
