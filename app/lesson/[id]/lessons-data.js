@@ -830,12 +830,12 @@ export const LESSONS_EXTRA = {
       {
         title: `What Drives Gold Prices`,
         content: `Gold prices may respond to real yields, the U.S. dollar, inflation expectations, central-bank activity, risk sentiment and other macroeconomic factors. These relationships are not fixed: they can weaken, change sign over short periods, or be overwhelmed by other news. A single correlation figure should not be presented as constant. ICT traders may overlay structure and chart features on this context, but a catalyst does not guarantee a direction.`,
-        highlight: `📌 Gold is driven by safe-haven flows, USD inverse correlation, inflation, and central bank buying. More predictable than forex.`,
+        highlight: `📌 Gold can respond to rates, the USD, inflation, risk sentiment and other forces. These factors do not make its direction reliably predictable or establish that it is more predictable than another market.`,
       },
       {
         title: `Gold-Specific ICT Adaptations`,
         content: `Gold's range and spread can change sharply around data releases and market transitions. Stop distances, FVG widths and session activity should be measured from the product and timeframe you trade rather than set from universal pip ranges. Broker quote conventions also affect what a pip means for XAU/USD. The London fix and U.S. data windows are potential times to study, not guarantees of predictable volatility or direction.`,
-        highlight: `📌 Gold needs wider stops, respects Asian session, and has massive FVGs. London fix at 10AM GMT is the key time.`,
+        highlight: `📌 Gold's stop distances and session behavior vary by quote convention, broker, timeframe and market conditions. Define the instrument's units and test session windows rather than assuming a universal stop width or key time.`,
       },
       {
         title: `The Gold Safe-Haven Setup`,
@@ -932,9 +932,9 @@ export const LESSONS_EXTRA = {
       },
     ],
     quiz: [
-      { q: `What is the maximum recommended risk per trade?`, options: ['5%', '2%', '10%', '1%'], answer: 1 },
-      { q: `What is the minimum acceptable Risk-Reward ratio for an ICT setup?`, options: ['1:1', '1:2', '1:3', '1:5'], answer: 2 },
-      { q: `What should you do after 3 consecutive losses?`, options: ['Increase position size', 'Stop trading for the day', 'Switch to a different strategy', 'Trade a different pair'], answer: 1 },
+      { q: `What should determine the risk you take on a single trade?`, options: ['A universal percentage used by all ICT traders', 'A predefined cap grounded in tested performance, account rules and total exposure', 'The size of your previous win', 'The setup label alone'], answer: 1 },
+      { q: `What should guide a strategy’s minimum risk-to-reward filter?`, options: ['A fixed rule every setup must meet', 'A preferred social-media ratio', 'Tested win rate, execution costs, average win/loss and drawdown', 'The setup label alone'], answer: 2 },
+      { q: `What should happen when your predefined daily pause rule is reached?`, options: ['Increase position size', 'Pause new entries and review the plan', 'Switch strategies without reviewing', 'Trade a different pair'], answer: 1 },
       { q: `Where should you place your stop loss?`, options: ['At a round number', 'At technical invalidation', '20 pips away always', 'Wherever you feel comfortable'], answer: 1 },
     ],
     nextLesson: { id: 102, title: `Advanced Position Sizing & Portfolio Heat` },
@@ -973,15 +973,15 @@ export const LESSONS_EXTRA = {
       },
       {
         title: `Risk Management Checklist`,
-        content: `Before EVERY trade, run through this checklist. Do not deviate.\n\nPRE-TRADE CHECKLIST:\n- Identified the daily bias (bullish/bearish/neutral)\n- Found a valid PD Array in premium/discount zone\n- Confirmed killzone timing (London/NY/Asian)\n- Placed stop loss at technical invalidation\n- Calculated position size for 1-2% risk\n- Verified R:R is minimum 1:2 (preferably 1:3+)\n- Checked portfolio heat (under 6% total)\n- Checked correlated pairs (not doubling risk)\n- Set take profit targets (1:2, 1:3, 1:5)\n- Written trade plan in journal\n\nPOST-TRADE CHECKLIST:\n- Recorded entry, exit, and result in journal\n- Noted what worked and what did not\n- Identified any emotional decisions\n- Updated win rate and average R:R statistics\n- Reviewed if setup followed ICT rules perfectly\n\nThis checklist takes 30 seconds but saves accounts. Professional traders treat it as non-negotiable.`,
+        content: `PRE-TRADE CHECKLIST (ADAPT TO YOUR STRATEGY):\n- Confirm the scenario and required entry conditions are defined and observable.\n- Mark stop, target and invalidation before entry.\n- Calculate size from planned risk, stop distance, instrument value and execution costs.\n- Check aggregate exposure, including positions that may be correlated.\n- Confirm the order type and slippage assumptions fit the model.\n- Record the setup and the reason for any no-trade decision.\n\nPOST-TRADE REVIEW:\n- Record entry, exit, result and execution costs.\n- Note whether rules were followed and classify any errors.\n- Review wins and losses using the same criteria.\n- Update performance statistics when the sample is sufficient and uncertainty is reported.\n\nA checklist can reduce omissions, but no fixed risk percentage, payoff ratio, portfolio-heat threshold or checklist duration guarantees safety. Tailor it to your tested strategy and account constraints.`,
         highlight: `📌 A short pre-trade checklist can reduce omissions. Tailor it to observable entry, stop, target, risk and invalidation rules rather than treating a fixed duration as a measure of professionalism.`,
       },
     ],
     quiz: [
-      { q: `What is the maximum recommended portfolio heat?`, options: ['3%', '6%', '10%', '15%'], answer: 1 },
-      { q: `Which pairs are highly correlated?`, options: ['EURUSD & USDJPY', 'EURUSD & GBPUSD', 'AUDUSD & USDCAD', 'XAUUSD & EURUSD'], answer: 1 },
+      { q: `What does portfolio heat estimate?`, options: ['Only the latest trade’s risk', 'Combined planned exposure across open positions, including correlated risk', 'The daily profit target', 'The amount of margin available'], answer: 1 },
+      { q: `Which statement about correlation risk is most accurate?`, options: ['Correlation stays fixed at one percentage', 'Correlation can change, so assess relevant data and combined exposure', 'Different tickers never correlate', 'Correlation alone reveals exact portfolio risk'], answer: 1 },
       { q: `When should a trader scale into a position?`, options: ['Whenever it is losing', 'Only when a predefined, tested rule calls for scaling', 'Immediately after the initial entry', 'Never under any strategy'], answer: 1 },
-      { q: `What percentage of a position should you close at 1:2 R:R?`, options: ['25%', '50%', '75%', '100%'], answer: 1 },
+      { q: `What should guide the percentage closed at a partial target?`, options: ['Always close 25%', 'A predefined, tested exit plan', 'Always close 75%', 'Always close the entire position'], answer: 1 },
     ],
     nextLesson: { id: 103, title: `The Psychology of Risk` },
     prevLesson: { id: 101, title: `Risk Management Fundamentals` },
