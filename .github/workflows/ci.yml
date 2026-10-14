@@ -83,6 +83,9 @@ jobs:
       - name: Validate billing recovery and admin deletion safety
         run: node scripts/check-billing-recovery.cjs
 
+      - name: Validate Supabase SECURITY DEFINER search paths
+        run: node scripts/check-supabase-security-definers.cjs
+
       - name: Test streak date monotonicity
         run: node scripts/test-streak-date-monotonicity.mjs
 
