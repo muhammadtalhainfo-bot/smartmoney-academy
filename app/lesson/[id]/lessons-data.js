@@ -92,7 +92,7 @@ export const LESSONS_EXTRA = {
     quiz: [
       { q: `In an ICT-style plan, a Draw on Liquidity is best described as...`, options: ['A guaranteed destination price', 'A candidate price objective chosen from a defined reference area', 'A fixed 2:1 R:R target', 'The previous day close in every market'], answer: 1 },
       { q: `External Range Liquidity (ERL) refers to...`, options: ['FVGs inside the current range', 'Order Blocks within the dealing range', 'Swing highs and lows outside the current range', 'The midnight open level'], answer: 2 },
-      { q: `The correct DOL trade sequence is...`, options: ['Enter anywhere → hope for movement → exit randomly', 'Identify ERL → wait for IRL retracement → enter at IRL → TP at ERL', 'Buy at support → sell at resistance', 'Enter after news → exit at round number'], answer: 1 },
+      { q: `What is one possible DOL-based scenario a trader could test?`, options: ['Enter anywhere → hope for movement → exit randomly', 'Mark a candidate ERL, require a predefined IRL condition, then apply entry, stop, target and invalidation rules', 'Buy at support → sell at resistance', 'Enter after news → exit at round number'], answer: 1 },
     ],
     nextLesson: { id: 17, title: `Dealing Ranges & PD Arrays` },
     prevLesson: { id: 15, title: `Daily Bias Framework` },
