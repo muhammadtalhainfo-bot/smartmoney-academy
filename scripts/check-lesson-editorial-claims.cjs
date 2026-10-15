@@ -1115,6 +1115,80 @@ const quarterlyGapRiskForbidden = [
 ];
 for (const check of quarterlyGapRiskForbidden) forbidden.push(check);
 
+const strategyRiskUnitsForbidden = [
+  {
+    source: 'legacy',
+    label: 'Judas-style move is not asserted to occur in the New York AM session as a fixed fact',
+    pattern: /The Judas Swing also occurs during the New York AM session/i,
+  },
+  {
+    source: 'legacy',
+    label: 'aggressive Judas entry is not promised to provide a better price',
+    pattern: /better price if correct/i,
+  },
+  {
+    source: 'legacy',
+    label: 'London Judas quiz does not prescribe an opposite-direction move',
+    pattern: /After the London Judas Swing completes, price should/i,
+  },
+  {
+    source: 'legacy',
+    label: 'risk management is not said to ensure a loss series cannot destroy an account',
+    pattern: /ensuring that no single loss \(or series of losses\) can destroy your account/i,
+  },
+  {
+    source: 'legacy',
+    label: '1 percent risk is not framed as a rule to break',
+    pattern: /The 1% Rule \(And When to Break It\)/i,
+  },
+  {
+    source: 'legacy',
+    label: 'risk controls are not marketed as how all professional ICT traders protect capital',
+    pattern: /How Professional ICT Traders Protect Capital in All Market Conditions/i,
+  },
+  {
+    source: 'legacy',
+    label: 'risk management is not ungroundedly branded as a science used by professionals',
+    pattern: /Professional traders treat risk management as a science/i,
+  },
+  {
+    source: 'legacy',
+    label: 'correlation is not labelled the hidden account killer',
+    pattern: /Correlation Risk: The Hidden Account Killer/i,
+  },
+  {
+    source: 'legacy',
+    label: 'position-size formula does not claim exact sizing in all products',
+    pattern: /calculate exactly how many lots to trade based on your stop loss distance and account size/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold stop width is not assigned a universal 15 to 25 pip range',
+    pattern: /usually 15-25 pips/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold targets are not assigned a fixed usual 3 to 5R return',
+    pattern: /usually 3-5R/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold $25 stop distance is not called 25 pips without quote-unit qualification',
+    pattern: /25 pips below FVG/i,
+  },
+  {
+    source: 'legacy',
+    label: 'crypto windows are not prescribed as fixed universal killzones',
+    pattern: /Crypto killzones: Asian \(8PM-12AM\), London \(3-5AM\), NY \(9:30AM-4PM\)/i,
+  },
+  {
+    source: 'legacy',
+    label: 'a fixed 10 to 20 percent drawdown does not trigger a universal stop-trading prescription',
+    pattern: /What should you do during a 10-20% drawdown/i,
+  },
+];
+for (const check of strategyRiskUnitsForbidden) forbidden.push(check);
+
 const required = [
   {
     source: 'primary',
@@ -1740,6 +1814,45 @@ const quarterlyGapRiskRequired = [
   },
 ];
 required.push(...quarterlyGapRiskRequired);
+
+const strategyRiskUnitsRequired = [
+  {
+    source: 'legacy',
+    label: 'risk limits acknowledge that ruin remains possible',
+    pattern: /Risk management does not eliminate the possibility of ruin/i,
+  },
+  {
+    source: 'legacy',
+    label: 'one percent is presented as an example and not a universal requirement',
+    pattern: /Choosing a Risk Ceiling \(1% as One Example\)/i,
+  },
+  {
+    source: 'legacy',
+    label: 'position sizing formula is qualified by product conventions and costs',
+    pattern: /verify the calculation for the specific instrument/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold stop example expresses price distance and warns about quote units',
+    pattern: /a \$25\.00 price-distance from the \$1,920 entry; verify the broker's XAU\/USD quote units/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold target multiple is not assumed in advance',
+    pattern: /calculate R from the actual entry, stop and target rather than assuming a fixed multiple/i,
+  },
+  {
+    source: 'legacy',
+    label: 'crypto session windows are explicitly non-universal and testable',
+    pattern: /These are example windows some traders study, not universal crypto killzones/i,
+  },
+  {
+    source: 'legacy',
+    label: 'drawdown response is tied to a predefined threshold',
+    pattern: /If you reach your predefined drawdown review threshold/i,
+  },
+];
+required.push(...strategyRiskUnitsRequired);
 
 const failures = [];
 for (const check of forbidden) {
