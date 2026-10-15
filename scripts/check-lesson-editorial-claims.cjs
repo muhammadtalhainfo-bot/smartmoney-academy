@@ -903,6 +903,45 @@ const bprResidualForbidden = [
 ];
 for (const check of bprResidualForbidden) forbidden.push(check);
 
+const sessionTimingForbidden = [
+  {
+    source: 'legacy',
+    label: 'market liquidity is not equated to institutional order volume',
+    pattern: /volume of institutional orders hitting the market/i,
+  },
+  {
+    source: 'legacy',
+    label: 'lunch-time price chop is not stated as a universal rule',
+    pattern: /When European traders are at lunch and New York has not fully engaged, price chops/i,
+  },
+  {
+    source: 'legacy',
+    label: 'session timing is not called the primary determinant of strategy success',
+    pattern: /primary environmental factor that determines whether your setups work at all/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Asian range levels are not prescribed as the primary London targets',
+    pattern: /they become the London session's primary liquidity targets/i,
+  },
+  {
+    source: 'legacy',
+    label: 'London session does not have a mandatory first-hour sweep and reversal',
+    pattern: /first hour → immediately reverses → real daily direction begins/i,
+  },
+  {
+    source: 'legacy',
+    label: 'post-11AM probability is not asserted without evidence',
+    pattern: /After 11 AM New York time, probability drops significantly/i,
+  },
+  {
+    source: 'legacy',
+    label: 'London is not universally labelled the AMD manipulation phase in the quiz',
+    pattern: /Which session is described as the "Manipulation Phase" of the AMD cycle/i,
+  },
+];
+for (const check of sessionTimingForbidden) forbidden.push(check);
+
 const required = [
   {
     source: 'primary',
@@ -1426,6 +1465,30 @@ const bprResidualRequired = [
   },
 ];
 required.push(...bprResidualRequired);
+
+const sessionTimingRequired = [
+  {
+    source: 'legacy',
+    label: 'session activity and institutional attribution are treated cautiously',
+    pattern: /Liquidity is not simply the volume of institutional orders, and a chart cannot identify which participant groups caused a change/i,
+  },
+  {
+    source: 'legacy',
+    label: 'London range interactions include continued moves as alternatives',
+    pattern: /Neither a sweep nor a reversal is required, and the eventual daily direction is not known from the first move/i,
+  },
+  {
+    source: 'legacy',
+    label: 'later-session trading restrictions are based on evidence and prewritten rules',
+    pattern: /a time alone does not establish a lower probability or a reversal[\\s\\S]{0,240}rather than imposing a universal ban/i,
+  },
+  {
+    source: 'legacy',
+    label: 'timing filters are compared with a baseline',
+    pattern: /Test whether it adds value beyond a clear baseline before restricting your trading hours/i,
+  },
+];
+required.push(...sessionTimingRequired);
 
 const failures = [];
 for (const check of forbidden) {
