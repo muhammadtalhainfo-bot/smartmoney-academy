@@ -1539,7 +1539,7 @@ const sessionTimingRequired = [
   {
     source: 'legacy',
     label: 'later-session trading restrictions are based on evidence and prewritten rules',
-    pattern: /a time alone does not establish a lower probability or a reversal[\\s\\S]{0,240}rather than imposing a universal ban/i,
+    pattern: /a time alone does not establish a lower probability or a reversal[\s\S]{0,240}rather than imposing a universal ban/i,
   },
   {
     source: 'legacy',
