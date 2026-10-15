@@ -1329,17 +1329,17 @@ const foundationalBatchRequired = [
   {
     source: 'primary',
     label: 'FVG revisit performance must be evaluated rather than presumed',
-    pattern: /does not verify a particular cause or guarantee a revisit[\\s\\S]{0,220}consistent FVG definition and recorded outcomes/i,
+    pattern: /does not verify a particular cause or guarantee a revisit[\s\S]{0,220}consistent FVG definition and recorded outcomes/i,
   },
   {
     source: 'primary',
     label: 'FVG execution considers missed fills and stop placement rules',
-    pattern: /a limit order may be missed or filled without a favorable reaction[\\s\\S]{0,350}does not universally invalidate the chart pattern/i,
+    pattern: /a limit order may be missed or filled without a favorable reaction[\s\S]{0,350}does not universally invalidate the chart pattern/i,
   },
   {
     source: 'primary',
     label: 'FVG targets are presented as alternatives instead of guaranteed destinations',
-    pattern: /a fixed risk multiple or a time-based exit[\\s\\S]{0,220}not a guaranteed destination/i,
+    pattern: /a fixed risk multiple or a time-based exit[\s\S]{0,220}not a guaranteed destination/i,
   },
 ];
 required.push(...foundationalBatchRequired);
@@ -1383,7 +1383,7 @@ const legacyReversalRiskRequired = [
   {
     source: 'legacy',
     label: 'backtesting labels are restored to readable terminology',
-    pattern: /BACKTESTING[\\s\\S]{0,500}FOREX TESTER|FOREX TESTER[\\s\\S]{0,500}BACKTESTING/i,
+    pattern: /BACKTESTING[\s\S]{0,500}FOREX TESTER|FOREX TESTER[\s\S]{0,500}BACKTESTING/i,
   },
 ];
 required.push(...legacyReversalRiskRequired);
