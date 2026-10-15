@@ -278,7 +278,7 @@ Risk/reward outcomes vary by setup and market; use the target and stop rules def
     sections: [
       {
         title: 'What Is an Order Block?',
-        content: `An Order Block is the last opposing candle before a strong impulse move. It represents the candle where an institution was absorbing all retail orders — quietly filling their position against the crowd — before launching price in their intended direction.
+        content: `An Order Block is the last opposing candle before a strong impulse move. ICT interpretations sometimes describe this candle as a possible area of institutional activity, but a chart pattern cannot show whether institutions absorbed retail orders, who traded, or what participants intended. Treat the candle as a reproducible marking rule and test what happened after the move.
 
 Bullish Order Block:
 • The last BEARISH (red) candle before a significant bullish move
@@ -301,14 +301,14 @@ In this ICT-style framework, traders may define an OB confirmation using a BOS/C
 
 1. Some ICT traders look for displacement after an OB, often accompanied by large directional candles and FVGs. A slower move may be treated differently depending on the model; test the rule rather than assume it is universally valid.
 
-2. The move must include a BOS or ChoCH — confirming that structure shifted after the OB candle. This is interpreted within the ICT model as evidence of a potential structural shift; institutional intent cannot be confirmed from chart structure alone.
+2. Some OB definitions require a BOS or ChoCH after the candidate candle. If your model uses that rule, define structure consistently and test whether it adds information; the shift is not confirmation of institutional intent.
 
 3. Mitigation threshold — once price returns to the OB, it should react within the body of the OB candle. Specifically, ICT says a bullish OB is valid if price holds above the 50% level of the OB candle (the midpoint between open and close).
 
 4. Volume context — higher volume on the OB candle and the displacement move adds validity.
 
 5. Higher-timeframe alignment — some traders use a Daily OB as context for a 5-minute OB. Whether this adds value depends on the model and should be tested. Always record the timeframe of the OB.`,
-        highlight: '📌 OB validity checklist: (1) displacement after it ✓ (2) BOS or ChoCH after it ✓ (3) FVG in the displacement ✓ (4) HTF alignment ✓',
+        highlight: '📌 Possible OB filter set: define displacement, any BOS/ChoCH condition, FVG criteria and the role of HTF context. These are model choices to test, not universal requirements or proof of institutional activity.',
       },
       {
         title: 'Order Block Variations',
@@ -539,7 +539,7 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
       },
       {
         title: 'The Optimal Trade Entry (OTE)',
-        content: `In some ICT teachings, the Optimal Trade Entry (OTE) is a retracement zone placed within a defined premium or discount range. One common version uses three Fibonacci levels:\n\nFor a BULLISH OTE (buy zone in discount):\n• 62% retracement — start of the OTE zone\n• 70.5% retracement — the deepest sweet spot\n• 79% retracement — the outer limit of the OTE zone\n\nIf price retraces into the defined 62–79% zone after a bullish BOS, an ICT trader using this OTE version may consider it a candidate entry area. The retracement does not itself establish a valid entry, institutional buying or a successful reversal; apply the model's other conditions and invalidation rules.\n\nThese levels are part of the ICT OTE framework. Claims about institutional re-entry or consistent demand at a specific Fibonacci level are theoretical and should be tested rather than treated as established market mechanics.\n\nFor a BEARISH OTE (sell zone in premium):\n• 62% retracement of a swing high to low\n• 70.5% level\n• 79% level\n\nThe OTE is not a guarantee; within the ICT framework it is commonly studied as a potential entry zone, and its performance should be tested. It must be combined with a liquidity sweep, a Fair Value Gap or Order Block, and alignment with the higher timeframe narrative.`,
+        content: `In some ICT teachings, the Optimal Trade Entry (OTE) is a retracement zone placed within a defined premium or discount range. One common version uses three Fibonacci levels:\n\nFor a BULLISH OTE (buy zone in discount):\n• 62% retracement — start of the OTE zone\n• 70.5% retracement — the deepest sweet spot\n• 79% retracement — the outer limit of the OTE zone\n\nIf price retraces into the defined 62–79% zone after a bullish BOS, an ICT trader using this OTE version may consider it a candidate entry area. The retracement does not itself establish a valid entry, institutional buying or a successful reversal; apply the model's other conditions and invalidation rules.\n\nThese levels are part of the ICT OTE framework. Claims about institutional re-entry or consistent demand at a specific Fibonacci level are theoretical and should be tested rather than treated as established market mechanics.\n\nFor a BEARISH OTE (sell zone in premium):\n• 62% retracement of a swing high to low\n• 70.5% level\n• 79% level\n\nThe OTE is not a guarantee; within the ICT framework it is commonly studied as a potential entry zone, and its performance should be tested. Some OTE variants combine a liquidity sweep, an FVG or Order Block reference, and higher-timeframe context. Define each filter in advance and measure whether it adds value rather than assuming every OTE setup must use the same checklist.`,
         highlight: '📌 The OTE zone is 62%-79% of a Fibonacci retracement. Within the ICT framework, this zone is commonly studied as a potential entry area rather than evidence that "smart money" is re-entering. Define your entry and invalidation rules in advance and test them rather than assuming the zone should be traded.',
       },
       {
