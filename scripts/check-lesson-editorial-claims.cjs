@@ -1874,7 +1874,7 @@ const sessionLabelResidualForbidden = [
   {
     source: 'primary',
     label: 'New York killzone definitions are mixed with an unqualified alternate window',
-    pattern: /New York AM Killzone \\(7:00 AM – 10:00 AM EST\\) — or 8:30-11:00 AM/i,
+    pattern: /New York AM Killzone \(7:00 AM – 10:00 AM EST\) — or 8:30-11:00 AM/i,
   },
   {
     source: 'primary',
@@ -1884,7 +1884,7 @@ const sessionLabelResidualForbidden = [
   {
     source: 'primary',
     label: 'macro time labels are universally EST',
-    pattern: /The key Macro Times \\(all EST\\)|20-minute precision windows/i,
+    pattern: /The key Macro Times \(all EST\)|20-minute precision windows/i,
   },
   {
     source: 'primary',
@@ -1954,7 +1954,7 @@ const amdOteResidualForbidden = [
   {
     source: 'primary',
     label: 'daily candle boundary assumed to be midnight for every provider',
-    pattern: /Open \\(midnight open\\)/i,
+    pattern: /Open \(midnight open\)/i,
   },
   {
     source: 'primary',
