@@ -1854,6 +1854,96 @@ const strategyRiskUnitsRequired = [
 ];
 required.push(...strategyRiskUnitsRequired);
 
+
+const sessionLabelResidualForbidden = [
+  {
+    source: 'primary',
+    label: 'order block incorrectly claims to identify institutional entry',
+    pattern: /Order Block = WHERE institutions entered|the candle they used to build their position/i,
+  },
+  {
+    source: 'primary',
+    label: 'session-window subtitle claims timing itself is an edge',
+    pattern: /Time Is Your Edge — Studying Institutional Trading Windows/i,
+  },
+  {
+    source: 'primary',
+    label: 'Asian-session boundaries stated as critical every-day levels',
+    pattern: /The high and low of the Asian session = critical levels|Mark them every single day/i,
+  },
+  {
+    source: 'primary',
+    label: 'New York killzone definitions are mixed with an unqualified alternate window',
+    pattern: /New York AM Killzone \\(7:00 AM – 10:00 AM EST\\) — or 8:30-11:00 AM/i,
+  },
+  {
+    source: 'primary',
+    label: 'Silver Bullet window incorrectly asserted to fit wholly inside one killzone definition',
+    pattern: /Silver Bullet trade runs entirely within this window/i,
+  },
+  {
+    source: 'primary',
+    label: 'macro time labels are universally EST',
+    pattern: /The key Macro Times \\(all EST\\)|20-minute precision windows/i,
+  },
+  {
+    source: 'primary',
+    label: 'killzone quiz treats session labels as fixed roles',
+    pattern: /The London Killzone is primarily known for|The New York AM Killzone serves the role of/i,
+  },
+  {
+    source: 'primary',
+    label: 'Order Blocks and FVGs are universally ranked by trading timeframe',
+    pattern: /OBs are better for swing trades and higher timeframe setups|FVGs are better for intraday precision entries/i,
+  },
+  {
+    source: 'primary',
+    label: 'Asian range is tied to a mandatory fixed EST routine',
+    pattern: /At midnight EST, mark the Asian Range High and Low/i,
+  },
+];
+
+const sessionLabelResidualRequired = [
+  {
+    source: 'primary',
+    label: 'order-block label does not imply observable institutional entry',
+    pattern: /The chart does not reveal where institutions entered or whether they used that candle to build a position/i,
+  },
+  {
+    source: 'primary',
+    label: 'time windows are explicitly tied to a documented daylight-saving convention',
+    pattern: /confirm the source's ET\/daylight-saving convention/i,
+  },
+  {
+    source: 'primary',
+    label: 'alternate Silver Bullet and killzone windows are not treated as identical',
+    pattern: /Do not treat that window as wholly inside the 7:00–10:00 convention/i,
+  },
+  {
+    source: 'primary',
+    label: 'macro times are tested against a baseline rather than treated as a schedule',
+    pattern: /test whether they add useful information beyond a baseline/i,
+  },
+  {
+    source: 'primary',
+    label: 'Asian range journaling allows no sweep, one sweep or two sweeps',
+    pattern: /neither, one, or both boundaries were crossed/i,
+  },
+  {
+    source: 'primary',
+    label: 'killzone quiz identifies the Judas Swing label as a variable hypothesis',
+    pattern: /possible Judas Swing hypothesis whose frequency and outcome vary/i,
+  },
+  {
+    source: 'primary',
+    label: 'New York AMD role is described as a possible label, not a fixed fact',
+    pattern: /A possible distribution phase, not a fixed session role/i,
+  },
+];
+
+forbidden.push(...sessionLabelResidualForbidden);
+required.push(...sessionLabelResidualRequired);
+
 const failures = [];
 for (const check of forbidden) {
   if (check.pattern.test(text[check.source])) {
