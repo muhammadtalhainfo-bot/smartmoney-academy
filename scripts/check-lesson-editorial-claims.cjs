@@ -1711,7 +1711,7 @@ const quarterlyGapRiskRequired = [
   {
     source: 'legacy',
     label: 'narrative testing guards against hindsight bias',
-    pattern: /reconstruct only the information available before that session/i,
+    pattern: /what bias would my prewritten rules have assigned before the session/i,
   },
   {
     source: 'legacy',
