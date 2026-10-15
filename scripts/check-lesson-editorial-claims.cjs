@@ -750,6 +750,105 @@ const foundationalBatchForbidden = [
 ];
 for (const check of foundationalBatchForbidden) forbidden.push(check);
 
+const legacyReversalRiskForbidden = [
+  {
+    source: 'legacy',
+    label: 'Turtle Soup is not attributed to institutional stop-taking',
+    pattern: /institutions sweep obvious highs\/lows to collect liquidity/i,
+  },
+  {
+    source: 'legacy',
+    label: 'lower-timeframe break does not prove the sweep is complete',
+    pattern: /price must break below a recent 1-minute high to confirm that the reversal has begun/i,
+  },
+  {
+    source: 'legacy',
+    label: 'FVG pullback is not claimed as usual or certain after a structure break',
+    pattern: /price will usually pull back briefly before continuing lower/i,
+  },
+  {
+    source: 'legacy',
+    label: 'liquidity target is not prescribed as the only exit',
+    pattern: /The take-profit is the next significant Sell-Side Liquidity pool below price/i,
+  },
+  {
+    source: 'legacy',
+    label: 'larger timeframe is not said to produce the largest Turtle Soup moves',
+    pattern: /4-hour Turtle Soups produce the largest moves/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Judas Swing is not described as deception and real institutional delivery',
+    pattern: /A false move in the wrong direction that deceives retail traders into positioning opposite to the day's real institutional delivery/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Judas Swing does not predict the next direction deterministically',
+    pattern: /If the false move goes DOWN, the real move goes UP/i,
+  },
+  {
+    source: 'legacy',
+    label: 'New York open reversal is not claimed to usually happen in 15 to 20 minutes',
+    pattern: /Within 15-20 minutes, this initial move reverses into the real directional delivery/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Judas Swing is not given a universal 60 to 90 minute completion rule',
+    pattern: /The London Judas typically completes within the first 60-90 minutes/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Asian range is not claimed as the most frequent Judas target without evidence',
+    pattern: /The Asian High or Low is the nearest significant liquidity pool and the most frequently swept level in London/i,
+  },
+  {
+    source: 'legacy',
+    label: 'FVG contact is not claimed to often end and reverse the Judas move',
+    pattern: /The Judas frequently ends precisely when it reaches/i,
+  },
+  {
+    source: 'legacy',
+    label: 'an entry variant is not labelled inherently best for beginners',
+    pattern: /Lowest risk, smallest R:R, best for beginners/i,
+  },
+  {
+    source: 'legacy',
+    label: 'unsupported majority statistic about ICT traders is removed',
+    pattern: /majority of traders who learn ICT concepts never systematically backtest/i,
+  },
+  {
+    source: 'legacy',
+    label: 'backtesting is not said to prove live execution skill',
+    pattern: /Backtesting proves you can execute the strategy/i,
+  },
+  {
+    source: 'legacy',
+    label: 'a fixed count is not required before considering live trading',
+    pattern: /Minimum 50 forward-tested trades before considering live trading/i,
+  },
+  {
+    source: 'legacy',
+    label: 'a 50-trade consecutive streak is not a readiness certificate',
+    pattern: /50 consecutive trades following ALL rules/i,
+  },
+  {
+    source: 'legacy',
+    label: 'a stop hit is not said to have saved a trader from a bigger loss',
+    pattern: /it saved you from a bigger loss/i,
+  },
+  {
+    source: 'legacy',
+    label: 'a fixed 2-3 pip stop buffer is not universal',
+    pattern: /plus 2-3 pips buffer/i,
+  },
+  {
+    source: 'legacy',
+    label: 'malformed backtesting labels must not return',
+    pattern: /BACKTNew York timeING|FORWARD TNew York timeING|FOREX TNew York timeER|BNew York time PERFORMING FILTERS|FORWARD TNew York time REQUIREMENTS/i,
+  },
+];
+for (const check of legacyReversalRiskForbidden) forbidden.push(check);
+
 const required = [
   {
     source: 'primary',
@@ -1200,6 +1299,50 @@ const foundationalBatchRequired = [
   },
 ];
 required.push(...foundationalBatchRequired);
+
+const legacyReversalRiskRequired = [
+  {
+    source: 'legacy',
+    label: 'Turtle Soup includes continuations as possible outcomes',
+    pattern: /The chart does not establish institutional intent or guarantee a return inside the level; include continuations in the test/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Judas Swing label does not establish institutional delivery',
+    pattern: /does not establish deception, institutional delivery, or that a reversal will occur/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Judas time cutoff is not assumed without instrument-specific evidence',
+    pattern: /Do not assume a fixed 60–90-minute completion rule without instrument-specific evidence/i,
+  },
+  {
+    source: 'legacy',
+    label: 'backtesting is distinguished from live execution skill',
+    pattern: /Backtesting can estimate how a written rule performed on historical data, but it cannot prove live execution skill/i,
+  },
+  {
+    source: 'legacy',
+    label: 'forward-test sample size is not a universal readiness threshold',
+    pattern: /no fixed count certifies readiness/i,
+  },
+  {
+    source: 'legacy',
+    label: 'stop policy avoids discretionary widening outside the plan',
+    pattern: /Do not widen a stop outside the predefined risk plan/i,
+  },
+  {
+    source: 'legacy',
+    label: 'pause procedure is tied to a written threshold',
+    pattern: /Pause new entries and review the written plan/i,
+  },
+  {
+    source: 'legacy',
+    label: 'backtesting labels are restored to readable terminology',
+    pattern: /BACKTESTING[\\s\\S]{0,500}FOREX TESTER|FOREX TESTER[\\s\\S]{0,500}BACKTESTING/i,
+  },
+];
+required.push(...legacyReversalRiskRequired);
 
 const failures = [];
 for (const check of forbidden) {
