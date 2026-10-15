@@ -636,12 +636,12 @@ export const LESSONS_EXTRA = {
   28: {
     id: 28,
     title: `Backtesting & Model Development`,
-    subtitle: `No Edge Can Be Trusted Until It Has Been Proven Across Hundreds of Historical Setups`,
+    subtitle: `Building, Evaluating and Validating a Trading Model`,
     level: `Advanced`,
     duration: `22 min read`,
     category: `Strategy`,
-    imageCaption: `The backtesting process: 100+ historical trades → statistical analysis → defined model → forward test → live trading`,
-    intro: `The most dangerous phrase in trading is "I think this setup works." ICT traders do not think  --  they know, because they have tested their setup across hundreds of historical occurrences and measured the results statistically. Backtesting is not busywork. It is the process that transforms a set of interesting concepts into a provable, statistical edge  --  the foundation of consistent profitability.`,
+    imageCaption: `A research workflow: specify rules → test historical data → validate out of sample → forward-test execution before deciding whether to risk capital`,
+    intro: `Backtesting can help evaluate a trading hypothesis, but it does not prove a durable edge. Historical results depend on rule definitions, data quality, transaction costs, selection of rules and out-of-sample performance. Use testing to estimate uncertain performance and identify failure modes, not as a guarantee of consistent profitability.`,
     sections: [
       {
         title: `Why Most Traders Skip This and Fail`,
@@ -659,14 +659,14 @@ export const LESSONS_EXTRA = {
         highlight: `📌 Record every triggered setup, wins and losses, using the same criteria. Excluding losses biases the sample; review loss types as hypotheses for process improvements, then test any proposed filter separately before relying on it.`,
       },
       {
-        title: `Sample Size  --  Minimum for Statistical Significance`,
+        title: `Sample Size — Planning Evidence and Uncertainty`,
         content: `There is no universal number of trades that guarantees statistical significance or proves a trading model is ready for live use. The amount of data required depends on the effect size being tested, variability, the number of filters, and how independent the observations are. Use a documented sample plan, avoid changing rules after reviewing outcomes, and separate rule development from out-of-sample validation. Report trade count, expectancy, uncertainty, drawdown, market coverage and costs; then forward-test before risking material capital.`,
         highlight: `📌 There is no universal minimum sample size that guarantees statistical significance or production confidence. Choose a sample strategy based on setup variability, and include out-of-sample and forward testing. Test EXACTLY the rules you will trade live  --  no mid-backtest modifications. Record every triggered setup, wins and losses equally.`,
       },
       {
         title: `Turning Results Into a Defined Model`,
-        content: `After completing 100+ backtested trades, analyze the data systematically to build your defined trading model:\n\nKEY METRICS TO CALCULATE:\n\nWIN RATE:\n(Winning trades / Total trades) × 100\nNo universal win-rate target applies across instruments, rules, and costs.\n\nAVERAGE R ON WINNERS:\nSum of all winner R multiples / Number of winners\nNo universal average-R target applies across strategies.\n\nAVERAGE R ON LOSERS:\nSum of all loser R multiples / Number of losers\nTarget: should be -1R (full stop hit)\n\nEXPECTANCY:\n(Win rate × Average R winner) - (Loss rate × Average R loser)\nEstimate expectancy on a representative sample and account for uncertainty and costs; do not assume a universal 0.5R threshold.\n\nMAXIMUM CONSECUTIVE LOSSES:\nThe longest losing streak in your 100-trade sample\nThis determines how much drawdown to expect during the inevitable bad runs\n\nBNew York time PERFORMING FILTERS:\nAnalyze which criteria, when present, correlated with the highest win rates:\n• Setup type: which PD Array performed best?\n• Session: London or NY AM?\n• HTF alignment: did 3-timeframe alignment outperform 2-timeframe?\n• AMD phase: did distribution phase entries outperform manipulation entries?\n\nMODIFICATIONS BASED ON DATA:\nIf certain criteria consistently appear in losers but rarely in winners  --  add them as EXCLUSION filters. If certain criteria consistently appear in winners  --  make them REQUIRED. Build the final model from what the data tells you, not what feels right.`,
-        highlight: `📌 Calculate: win rate, average R, expectancy, max consecutive losses. Add criteria that consistently appear in winners as requirements. Remove criteria that consistently appear in losers as exclusions.`,
+        content: `After completing 100+ backtested trades, analyze the data systematically to build your defined trading model:\n\nKEY METRICS TO CALCULATE:\n\nWIN RATE:\n(Winning trades / Total trades) × 100\nNo universal win-rate target applies across instruments, rules, and costs.\n\nAVERAGE R ON WINNERS:\nSum of all winner R multiples / Number of winners\nNo universal average-R target applies across strategies.\n\nAVERAGE R ON LOSERS:\nSum of all loser R multiples / Number of losers\nTarget: should be -1R (full stop hit)\n\nEXPECTANCY:\n(Win rate × Average R winner) - (Loss rate × Average R loser)\nEstimate expectancy on a representative sample and account for uncertainty and costs; do not assume a universal 0.5R threshold.\n\nMAXIMUM CONSECUTIVE LOSSES:\nThe longest losing streak in your 100-trade sample\nThis determines how much drawdown to expect during the inevitable bad runs\n\nBNew York time PERFORMING FILTERS:\nAnalyze which criteria, when present, correlated with the highest win rates:\n• Setup type: which PD Array performed best?\n• Session: London or NY AM?\n• HTF alignment: did 3-timeframe alignment outperform 2-timeframe?\n• AMD phase: did distribution phase entries outperform manipulation entries?\n\nMODIFICATIONS BASED ON DATA:\nUse discovery data to propose one change at a time, not to automatically promote every feature that separates winners and losers. More filters and rule changes increase the risk of fitting noise. Freeze the definitions, test each proposed change on untouched out-of-sample data, and compare it with a simple baseline after realistic costs. If the evidence is weak or inconsistent, report that uncertainty rather than optimizing until the historical results look good.`,
+        highlight: `📌 Measure win rate, average R, expectancy and drawdown. Treat patterns among winners and losers as hypotheses, not automatic rules; validate changes on untouched data to reduce overfitting.`,
       },
       {
         title: `Forward Testing Your Model on Demo`,
@@ -675,9 +675,9 @@ export const LESSONS_EXTRA = {
       },
     ],
     quiz: [
-      { q: `The minimum number of trades required for statistically significant backtesting is...`, options: ['10 trades', '50 trades', '100 trades', '500 trades'], answer: 2 },
+      { q: `What determines how much backtest data is needed?`, options: ['A fixed minimum of 10 trades', 'A fixed minimum of 50 trades', 'The question, effect size, variability, dependence and number of filters; there is no universal threshold', 'A fixed minimum of 500 trades'], answer: 2 },
       { q: `Expectancy in backtesting is calculated as...`, options: ['Win rate × Average R', '(Win rate × Avg R winner) - (Loss rate × Avg R loser)', 'Total wins / Total losses', 'Average R × position size'], answer: 1 },
-      { q: `If forward test win rate is significantly lower than backtest win rate, you should...`, options: ['Trade live anyway  --  demo is always different', 'Identify and fix the discrepancies before risking real capital', 'Increase position size to compensate', 'Accept the lower win rate and adjust expectations'], answer: 1 },
+      { q: `If forward-test results are weaker than backtest results, what is the best response?`, options: ['Trade live anyway because demo results are always different', 'Investigate data definitions, fill/cost assumptions, sampling variation and market conditions; validate any change out of sample', 'Increase position size to compensate', 'Keep changing filters until the backtest improves'], answer: 1 },
     ],
     nextLesson: null,
     prevLesson: { id: 27, title: `Execution & Trade Management` },
@@ -820,12 +820,12 @@ export const LESSONS_EXTRA = {
   202: {
     id: 202,
     title: `ICT for Gold (XAU/USD)`,
-    subtitle: `How Smart Money Moves Gold and How to Trade It`,
+    subtitle: `Studying Gold with ICT Concepts: Drivers, Sessions and Risk`,
     level: `Intermediate`,
     duration: `24 min read`,
     category: `Commodities`,
-    imageCaption: `Gold follows ICT principles but with unique characteristics driven by safe-haven flows`,
-    intro: `Gold (XAU/USD) is the ultimate safe-haven asset. When markets crash, gold rises. When inflation fears spike, gold rises. Understanding how institutional money flows into gold is essential for ICT traders who want to diversify beyond forex and indices.`,
+    imageCaption: `Gold prices can respond to macroeconomic forces, liquidity, volatility and product-specific execution`,
+    intro: `Gold is often treated as a potential safe-haven asset, but it does not always rise during market stress or every inflation scare. Price can respond to real yields, the U.S. dollar, investor demand, central-bank activity, positioning and other factors; relationships can change across periods. ICT-style chart setups are hypotheses to test, not evidence of institutional intent or a substitute for understanding the product's trading hours and costs.`,
     sections: [
       {
         title: `What Drives Gold Prices`,
@@ -844,9 +844,9 @@ export const LESSONS_EXTRA = {
       },
     ],
     quiz: [
-      { q: `What is gold inversely correlated with?`, options: ['EURUSD', 'USD (DXY)', 'Oil', 'Stocks'], answer: 1 },
-      { q: `When is the London Gold Fix?`, options: ['8AM GMT', '10AM GMT', '12PM GMT', '2PM GMT'], answer: 1 },
-      { q: `How wide are typical gold FVGs?`, options: ['1-2 pips', '5-10 pips', '20-30 pips', '50+ pips'], answer: 1 },
+      { q: `How should the relationship between gold and the U.S. dollar (DXY) be treated?`, options: ['It is always negative and works as a standalone signal', 'It has often been negative over some periods, but varies and can sometimes turn positive', 'There is no relationship in any period', 'Gold always follows DXY exactly one session later'], answer: 1 },
+      { q: `When do the LBMA Gold Price auctions commence?`, options: ['08:00 and 12:00 London time', '10:30 and 15:00 London time', '12:00 and 16:00 London time', 'One auction at 10:00 GMT'], answer: 1 },
+      { q: `How should FVG size be defined when studying XAU/USD?`, options: ['Use a fixed 1–2 pips on every broker', 'Use a consistent product-specific price/tick convention, then measure outcomes with costs and market conditions', 'Assume gold FVGs are always 20–30 pips', 'Assume an FVG must be at least 50 pips'], answer: 1 },
       { q: `How should gold be approached around a safe-haven event?`, options: ['Assume London alone drives moves', 'Assume New York alone drives moves', 'Assume the Asian session determines direction', 'Treat the reaction as uncertain and account for event, liquidity and volatility conditions'], answer: 3 },
     ],
     nextLesson: { id: 301, title: `ICT for Crypto: Bitcoin & Ethereum` },
@@ -886,7 +886,7 @@ export const LESSONS_EXTRA = {
     ],
     quiz: [
       { q: `How should leverage be chosen for a crypto trading model?`, options: ['Use 10x on every trade', 'Stay within defined risk limits and account for volatility and liquidation distance', 'Use 20x for higher-confidence setups', 'Use 50x for Bitcoin only'], answer: 1 },
-      { q: `When does Bitcoin halving occur?`, options: ['Every year', 'Every 2 years', 'Every 4 years', 'Every 6 years'], answer: 2 },
+      { q: `What triggers a Bitcoin halving?`, options: ['A calendar date every year', 'A price decline of 50%', 'A block-subsidy reduction every 210,000 blocks, roughly four years at expected block times', 'A vote by major exchanges'], answer: 2 },
       { q: `How should a session window be selected for crypto swing entries?`, options: ['Always choose London', 'Always choose New York', 'Test relevant sessions with the same entry, exit and cost rules', 'Enter only on weekends'], answer: 2 },
       { q: `What should determine a Bitcoin stop distance?`, options: ['Use 1–2% on every trade', 'Define invalidation, account for volatility/execution, then size the position', 'Always use 8–10%', 'Use 15–20% because crypto is volatile'], answer: 1 },
     ],
