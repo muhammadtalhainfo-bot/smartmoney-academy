@@ -61,7 +61,7 @@ export const LESSONS_EXTRA = {
     duration: `18 min read`,
     category: `Analysis`,
     imageCaption: `Draw on Liquidity: possible objectives marked by ICT traders, not guaranteed destinations`,
-    intro: `The Draw on Liquidity (DOL) is the concept that separates traders who anticipate from traders who react. While retail traders wonder "where will price go?" after it has already moved, ICT traders identify the next liquidity target BEFORE price reaches it. This is a hypothesis about possible price objectives, not evidence of an algorithmic sequence or a forecast.`,
+    intro: `Draw on Liquidity (DOL) is an ICT term some traders use to record a possible price objective before a move occurs. While retail traders wonder "where will price go?" after it has already moved, It can help structure a conditional plan, but it does not establish an advantage over other approaches or show that a target will be reached. Treat each nominated level as a hypothesis and record alternatives and invalidation. This is a hypothesis about possible price objectives, not evidence of an algorithmic sequence or a forecast.`,
     sections: [
       {
         title: `What Is the Draw on Liquidity?`,
@@ -106,7 +106,7 @@ export const LESSONS_EXTRA = {
     duration: `22 min read`,
     category: `PD Arrays`,
     imageCaption: `Examples of PD Array labels used in ICT material; any ranking of them needs a defined test`,
-    intro: `PD Arrays—Price Delivery Arrays—are chart features named in ICT methodology, such as FVGs, order blocks, breakers, and related zones. Traders may use them as reference areas, but chart patterns do not confirm underlying institutional orders or algorithmic intent. Understanding which arrays exist, how to rank them by strength, and how to use them in order of priority is what separates advanced ICT practitioners from beginners who draw random boxes and call them Order Blocks.`,
+    intro: `PD Arrays—Price Delivery Arrays—are chart features named in ICT methodology, such as FVGs, order blocks, breakers, and related zones. Traders may use them as reference areas, but chart patterns do not confirm underlying institutional orders or algorithmic intent. Understanding the definitions, consistent marking rules and measured outcomes of these arrays is more useful than relying on labels alone. Traders should distinguish reproducible criteria from subjective grading and test whether an array-based rule adds value.`,
     sections: [
       {
         title: `What Is a Dealing Range?`,
@@ -114,7 +114,7 @@ export const LESSONS_EXTRA = {
         highlight: `📌 Premium and discount can be context filters in an ICT model, but the 50% level is not a standalone buy or sell command. Compare results with and without this filter before claiming it improves trade selection.`,
       },
       {
-        title: `The Full PD Array Matrix  --  Ranked by Strength`,
+        title: `Comparing PD Array Definitions and Results`,
         content: `ICT material describes chart features such as breakers, order blocks, FVGs, BISI/SIBI and other arrays, and some traders rank them by preference. There is no universal, independently established ranking that guarantees one array will produce a stronger reaction than another. The appearance, definition and result can depend on the market, timeframe and trader's rules.\n\nIf you rank arrays, write the exact definition for each one and score all examples before knowing their outcome. Compare each category with a consistent baseline using the same instruments, periods, stop and target rules, spread, slippage and management assumptions. Avoid presenting personal grading as a measured probability unless representative data supports it.`,
         highlight: `📌 Treat array rankings as hypotheses. A chart label does not prove institutional orders or reaction strength; define your rules and compare results with a baseline.`,
       },
@@ -130,14 +130,14 @@ export const LESSONS_EXTRA = {
       },
       {
         title: `How to Draw PD Arrays Correctly`,
-        content: `DRAWING ORDER BLOCKS:\nMark the body of the last bearish candle before a bullish displacement (for bullish OB). The OB zone spans from the candle's body high to body low. Some practitioners use wick-to-wick  --  ICT traditionally uses body only for the core zone.\n\nDRAWING FVGs:\nMark the high of candle 1 and the low of candle 3 for a bullish FVG. The midpoint is the Consequent Encroachment (CE)  --  your primary entry level within the gap.\n\nDRAWING BREAKER BLOCKS:\nWhen an OB is violated (price completely trades through it), flip its polarity. Mark it as a Breaker Block  --  it becomes resistance for a bullish OB that was broken, or support for a bearish OB that was broken.\n\nDRAWING BPR:\nIdentify a bullish FVG and a bearish FVG in the same area. The overlapping zone between them is the BPR.\n\nKEY RULE  --  REMOVE MITIGATED ARRAYS:\nOnce price has returned to an array and traded through its entire range, that array is consumed. Remove it from your chart. Leaving consumed arrays creates false signals and chart clutter. Only active, unmitigated arrays belong on your working chart.`,
+        content: `DRAWING ORDER BLOCKS:\nMark the body of the last bearish candle before a bullish displacement (for bullish OB). The OB zone spans from the candle's body high to body low. Some practitioners use wick-to-wick  --  ICT traditionally uses body only for the core zone.\n\nDRAWING FVGs:\nMark the high of candle 1 and the low of candle 3 for a bullish FVG. The midpoint is called Consequent Encroachment (CE) in some ICT usage; treat it as one possible reference to test, not a universally optimal entry.\n\nDRAWING BREAKER BLOCKS:\nSome ICT variants label a previously defined order block a Breaker Block after price violates it, then study a possible change in polarity on a later revisit. Define the violation and retest criteria in advance; a former zone is not guaranteed to act as support or resistance.\n\nDRAWING BPR:\nIdentify a bullish FVG and a bearish FVG in the same area. The overlapping zone between them is the BPR.\n\nKEY RULE  --  REMOVE MITIGATED ARRAYS:\nSome ICT models mark an array as mitigated after price returns to it or trades through a defined part of the zone. Specify whether your rule uses a touch, partial fill, full traversal or close beyond a boundary, then apply it consistently. A previously crossed zone is not automatically useless under every model.`,
         highlight: `📌 Some ICT models treat a revisited or crossed zone as mitigated. Define mitigation precisely and apply that rule consistently; a zone's usefulness cannot be established by its label alone.`,
       },
     ],
     quiz: [
-      { q: `In a dealing range, institutions buy in...`, options: ['Premium zone (above 50% EQ)', 'Equilibrium (exactly 50%)', 'Discount zone (below 50% EQ)', 'Any zone regardless of price'], answer: 2 },
-      { q: `Which PD Array ranks highest in the matrix?`, options: ['Fair Value Gap', 'Order Block', 'Breaker Block', 'Mitigation Block'], answer: 2 },
-      { q: `When should a PD Array be removed from your chart?`, options: ['After 24 hours', 'When price approaches it', 'Once price has fully traded through it (mitigated)', 'At the end of each week'], answer: 2 },
+      { q: `In some ICT models, which range location may be evaluated as a candidate long context?`, options: ['Premium zone (above 50% EQ)', 'Equilibrium (exactly 50%)', 'Discount relative to the defined range, subject to the model’s other rules and testing', 'Any zone regardless of price'], answer: 2 },
+      { q: `What is the most defensible way to compare PD Array types?`, options: ['Assume each label has a fixed rank', 'Rank by visual appeal', 'Define each pattern and compare outcomes with a consistent baseline', 'Always prioritize Breaker Blocks'], answer: 2 },
+      { q: `Under a model that defines full traversal as mitigation, when might a PD Array be marked inactive?`, options: ['After 24 hours', 'When price approaches it', 'After price trades fully through it under the model’s prewritten mitigation rule', 'At the end of each week'], answer: 2 },
     ],
     nextLesson: { id: 18, title: `Institutional Order Flow` },
     prevLesson: { id: 16, title: `Draw on Liquidity` },
@@ -154,7 +154,7 @@ export const LESSONS_EXTRA = {
     intro: `ICT/SMC traders often use terms such as order flow, accumulation, displacement and liquidity sweeps to describe price behavior. Candlestick charts show price and, depending on the market, volume; they do not directly reveal a participant's identity, intention, inventory, or the reason for a move. This lesson separates observable chart features from interpretations and shows how to turn those interpretations into rules that can be tested.`,
     sections: [
       {
-        title: `Why Banks Cannot Trade Like Retail`,
+        title: `Execution Constraints for Large Orders`,
         content: `Large orders can create execution challenges, including market impact and slippage, so some institutions use execution strategies that split orders across time or venues. The exact methods vary by market, instrument, liquidity and mandate. A chart by itself does not reveal the size of an order, who placed it, or whether a consolidation reflects accumulation. Treat AMD as a framework some ICT traders use to interpret ranges and directional moves—not as a verified account of every institutional transaction.`,
         highlight: `📌 Large orders may require careful execution, but chart patterns cannot establish which participant is trading, the size of its position, or its motive. Define observable conditions before testing an ICT interpretation.`,
       },
@@ -164,7 +164,7 @@ export const LESSONS_EXTRA = {
         highlight: `📌 Consolidation is observable; hidden accumulation and the direction of a later breakout are interpretations. Record the range and the following outcome rather than assuming a sweep or reversal will occur.`,
       },
       {
-        title: `Stop Hunt Engineering  --  The Deliberate Manipulation`,
+        title: `False Breakouts and Stop-Hunt Interpretations`,
         content: `A false breakout occurs when price moves beyond a visible level but fails to sustain the break under a trader's predefined rule. ICT material may interpret this pattern as a stop hunt or manipulation, but price action alone cannot show whether a bank caused the move, which orders were triggered, or why the price reversed.\n\nA testable example is to mark a prior high or low, define the required penetration and close-back condition, specify an entry trigger and invalidation level, and record every qualifying instance—including cases that continue in the breakout direction. Separate the observed pattern from the explanation assigned to it. Do not assume a reversal simply because price crossed a level.`,
         highlight: `📌 A false breakout is a price pattern, not proof of a stop hunt. Define the level, penetration, close-back rule, trigger and invalidation in advance, then measure results on a representative sample.`,
       },
@@ -184,7 +184,7 @@ export const LESSONS_EXTRA = {
         highlight: `📌 Use a fixed checklist of observable conditions. The checklist only has value if representative testing shows that it improves your process or results; it does not verify who is trading.`,
       },
       {
-        title: `The Distribution Phase  --  Delivering to Target`,
+        title: `Distribution as a Price-Action Hypothesis`,
         content: `In the AMD framework, distribution describes a directional move away from a range toward a potential objective. A trader can record directional candles, retracements, range expansion, and interaction with prior highs or lows. Those observations do not establish that institutions are executing a coordinated delivery plan.\n\nDefine a possible end condition in advance—for example, price reaching a marked level, a structure change, a time limit, or a protective stop. Price may pass a target, reverse before reaching it, or continue beyond it. Use the same exit rule in backtests and forward tests, including costs and adverse outcomes.`,
         highlight: `📌 A move may approach or pass a marked liquidity level, but that does not prove a distribution phase has ended. Decide the exit and invalidation rules before the trade.`,
       },
@@ -192,7 +192,7 @@ export const LESSONS_EXTRA = {
     quiz: [
       { q: `What can a chart establish about a suspected stop hunt?`, options: ['The bank that caused it', 'The exact orders that were triggered', 'A price pattern that can be defined and tested', 'A guaranteed reversal'], answer: 2 },
       { q: `A displacement candle is characterized by...`, options: ['Small body with large wicks', 'Large body with minimal wicks, moving aggressively in one direction', 'Equal open and close', 'Gap from the previous close'], answer: 1 },
-      { q: `The Distribution phase ends when...`, options: ['Price reaches equilibrium', 'The ERL target is swept', 'The Asian session opens', 'RSI reaches overbought'], answer: 1 },
+      { q: `In a model that uses the AMD framework, what is a defensible way to define the end of a distribution scenario?`, options: ['Price reaches equilibrium', 'Apply a predefined exit or invalidation condition that fits the tested model', 'The Asian session opens', 'RSI reaches overbought'], answer: 1 },
     ],
     nextLesson: { id: 19, title: `Session Timing & Market Hours` },
     prevLesson: { id: 17, title: `Dealing Ranges & PD Arrays` },
@@ -424,7 +424,7 @@ export const LESSONS_EXTRA = {
         highlight: `📌 A time limit can be a management rule, but it must be tested for your instrument and setup. Lack of momentum is not proof that an algorithm or narrative is wrong.`,
       },
       {
-        title: `Using Time to Predict Price`,
+        title: `Using Time as a Context Filter`,
         content: `Use a named macro window to prepare a conditional plan rather than predict a fixed price sequence. For example: mark the Asian-session high and low, specify what price would need to do to qualify as a sweep, define the structure-break trigger, and state where the idea is invalid. If the sequence does not occur, record no trade.\n\nReview the plan after the session and include failed or ambiguous cases. A clock time may help organize observations, but it does not direct the market or make execution intrinsically more precise.`,
         highlight: `📌 Prepare scenarios before a session; do not assume a certain sequence must occur at the next macro window.`,
       },
