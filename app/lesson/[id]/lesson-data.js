@@ -333,17 +333,17 @@ Reclaimed OB (2024): If an OB gets swept through but price quickly returns insid
         title: 'Order Block vs Fair Value Gap — Key Differences',
         content: `Both can be studied as potential entry zones within the framework, but they are fundamentally different:
 
-Order Block = WHERE institutions entered (the candle they used to build their position). It's about position accumulation.
+Order Block = a candle or zone identified by a chosen ICT rule before a subsequent directional move. The chart does not reveal where institutions entered or whether they used that candle to build a position.
 
-Fair Value Gap = WHERE price moved too fast and left an imbalance. It's about price inefficiency.
+Fair Value Gap = a three-candle price formation defined by a selected candle-range convention. Some ICT explanations interpret it as an imbalance; the formation alone does not establish its cause or predict a revisit.
 
 An OB that overlaps an FVG is one commonly studied ICT confluence pattern; whether it improves outcomes should be tested. ICT calls this a "confluence" zone. When an Order Block and FVG overlap, traders may treat the combination as additional confluence; its effectiveness should be tested rather than assumed.
 
 How to determine which to use:
-• OBs are better for swing trades and higher timeframe setups
-• FVGs are better for intraday precision entries on 5m/15m
-• When they overlap, some traders treat the area as additional confluence; confidence and performance should be evaluated rather than assumed.
-• Consider both as part of the checklist if your tested strategy uses them.`,
+• Some strategies use OBs as higher-timeframe context, while others apply them intraday; the timeframe is a model choice to define and test.
+• Some strategies use FVGs for intraday entries or other purposes; a particular timeframe does not make an FVG inherently more precise or profitable.
+• When they overlap, some traders treat the area as additional confluence; compare it with the same setup without the added condition.
+• Include either reference only when its definition and role are explicit in the strategy being tested.`,
         highlight: '📌 OB + FVG overlap can provide additional confluence in an ICT-style setup; it does not guarantee a better outcome.',
       },
     ],
@@ -359,7 +359,7 @@ How to determine which to use:
   5: {
     id: 5,
     title: 'Killzones & Macro Times',
-    subtitle: 'Time Is Your Edge — Studying Institutional Trading Windows',
+    subtitle: 'Studying Session Windows as a Testable Context Filter',
     level: 'Intermediate',
     duration: '15 min read',
     category: 'Time & Sessions',
@@ -377,24 +377,24 @@ ICT teaching commonly divides the day into four named Killzones and assigns poss
       },
       {
         title: 'The Four Killzones',
-        content: `Asian Killzone (8:00 PM – 12:00 AM EST):
-ICT label sometimes used: accumulation. The range may be a useful reference, but it does not confirm participant positioning. ICT teaching sometimes frames this session as accumulation, but actual participant positioning cannot be confirmed from the chart alone. The high and low of the Asian session = critical levels. Price may revisit or sweep one of these levels during London or New York. Mark them every single day.
+        content: `Asian Killzone (8:00 PM – 12:00 AM New York time; confirm the source's ET/daylight-saving convention):
+ICT teaching sometimes labels this window as accumulation. The range can be used as a reference, but it does not confirm participant positioning. The Asian-session high and low are candidate levels that some traders mark; price may revisit, sweep, break through, or ignore either level. Marking the range is a journaling convention, not a requirement for every strategy.
 
-London Killzone (2:00 AM – 5:00 AM EST):
-ICT label sometimes used: possible manipulation/Judas Swing; it is a hypothesis, and outcomes vary by market and day. Price may sweep one side of the Asian range before reversing, but the move, participant intent, and direction can vary by market and day. Some ICT traders avoid opening minutes or watch for a move beyond the Asian range. This is a model-specific filter, not a universal rule; define the time and sweep conditions and test the results.
+London Killzone (2:00 AM – 5:00 AM New York time; confirm the source's ET/daylight-saving convention):
+Some ICT traders interpret a move during this window as a possible manipulation phase or Judas Swing. This is a hypothesis, and the move, participant intent, and direction can vary by market and day. Some models watch for a move beyond the Asian range; this is a model-specific filter, not a universal rule. Define the time and sweep conditions and test the results.
 
-New York AM Killzone (7:00 AM – 10:00 AM EST) — or 8:30-11:00 AM:
-ICT label sometimes used: distribution. Directional expansion can occur, but the session's role is not fixed. Volatility and directional behavior can vary by market and day, and institutional positioning cannot be confirmed from the chart alone. The Silver Bullet trade runs entirely within this window (specifically 10:00-11:00 AM EST for the NY AM Silver Bullet).
+New York AM Killzone (one common convention is 7:00 AM – 10:00 AM New York time; other ICT sources use different windows, including 8:30–11:00 AM):
+Some ICT teaching labels this window as a possible distribution phase. Directional expansion can occur, but the session's role is not fixed. Volatility and directional behavior vary by market and day, and institutional positioning cannot be confirmed from the chart alone. One commonly taught New York Silver Bullet window is 10:00–11:00 AM New York time. Do not treat that window as wholly inside the 7:00–10:00 convention; choose and document the exact windows from your source and account for daylight saving.
 
-London Close Killzone (10:00 AM – 12:00 PM EST):
-Possible interpretation: reversal or profit-taking. The behavior varies by session and market; this is not a fixed role. The behavior varies by session and market, and specific bank positioning cannot be confirmed from a chart. ICT traders either close positions here or look for a fade trade.`,
-        highlight: '📌 London = fake out (Judas). NY AM = real move. This two-step pattern is commonly taught within the AMD framework; its occurrence and usefulness should be evaluated across the market and session being studied.',
+London Close Killzone (one commonly listed window is 10:00 AM – 12:00 PM New York time; confirm your source's convention):
+Some ICT traders study this period for possible reversals or position-management decisions. The behavior varies by session and market, and specific bank positioning cannot be confirmed from a chart. Whether to close a position or test a fade setup should follow the strategy's written rules, not the time label alone.`,
+        highlight: '📌 London can be interpreted as a possible counter-directional phase and New York AM as possible expansion in one AMD narrative; the sequence and direction are not fixed, and both should be tested.'
       },
       {
         title: 'ICT Macro Times',
-        content: `Beyond Killzones, ICT introduced "Macro Times" — 20-minute windows within sessions that some ICT teachings use as additional timing references; traders can test whether they add useful context.
+        content: `Beyond Killzones, some ICT teachings list "Macro Times" as short intraday windows to study alongside other conditions. The windows vary by source and are not a verified institutional schedule; test whether they add useful information beyond a baseline.
 
-The key Macro Times (all EST):
+The illustrative clock labels below are in New York local time; confirm the source's daylight-saving convention before applying or converting them:
 • London Macro 1: 2:33 AM – 3:00 AM
 • London Macro 2: 4:03 AM – 4:30 AM
 • New York AM Macro 1: 8:50 AM – 9:10 AM
@@ -405,31 +405,31 @@ The key Macro Times (all EST):
 • Last Hour Macro: 3:15 PM – 3:45 PM
 
 Some ICT teachings describe these windows as periods when price may move toward a liquidity reference. The chart does not establish that a specific algorithm causes the move or that a target will be reached. The Silver Bullet is commonly studied during selected windows, but its effectiveness should be tested against clearly defined rules.`,
-        highlight: '📌 Macro Times are ICT time-window concepts that some traders study for session behavior. Their precision and usefulness should be evaluated for the market and strategy being tested.',
+        highlight: '📌 Macro Times are ICT time-window concepts, not guaranteed market-moving periods. Record the exact source definition and test whether the chosen window adds value for the market and rules being studied.',
       },
       {
         title: 'The Asian Range — Your Daily Map',
-        content: `One of the most practical applications of the session framework is marking the Asian Range every single day. Here's why it matters:
+        content: `One possible use of the session framework is to record the Asian Range. Whether to mark it every day depends on the instrument and the strategy being tested:
 
 The Asian session commonly forms a definable high-low range. ICT traders may interpret this range as an accumulation reference, but institutional positioning cannot be confirmed from the range alone.
 
 London and New York sessions can interact with the Asian range. A sweep of one or both sides is not required, and target reliability varies by market and conditions.
 
-Daily routine:
-1. At midnight EST, mark the Asian Range High and Low
-2. During London open (2-5 AM), watch which side gets swept first
-3. Record whether a sweep occurred; do not label it a Judas Swing without defined criteria.
-4. Track whether price reversed, continued or remained in a range.
-5. Use the result as one observation, not a standalone NY AM directional bias.
+Optional logging routine:
+1. Choose and document one consistent Asian-session definition, using New York time or UTC with daylight-saving handling.
+2. Record the range high and low if they are part of your model.
+3. During your predefined London window, record whether neither, one, or both boundaries were crossed; do not assume one side must be swept first.
+4. Track whether price reversed, continued, or remained in a range.
+5. Treat each observation as one data point, not a standalone New York directional bias.
 
 The Asian-range sweep-and-reversal setup is an example traders may study; reported profitability depends on the trader, market, execution, costs, and rules used. The initial sweep does not prove the next move will go in the opposite direction or establish a New York bias.`,
         highlight: '📌 Marking the Asian Range can provide session context. London may sweep one side, both sides, or neither; use the result as one input rather than a guaranteed NY bias.',
       },
     ],
     quiz: [
-      { q: 'The London Killzone is primarily known for...', options: ['The real directional move', 'The Judas Swing / fake-out', 'Profit taking and reversals', 'Asian range consolidation'], answer: 1 },
-      { q: 'The New York AM Killzone serves the role of...', options: ['Accumulation', 'Manipulation', 'Distribution', 'Consolidation'], answer: 2 },
-      { q: 'Macro Times are approximately...', options: ['1-hour windows', '20-minute precision windows', 'The entire trading session', '4-hour windows'], answer: 1 },
+      { q: 'Within one ICT interpretation, how is the London window sometimes described?', options: ['As a guaranteed directional move', 'As a possible Judas Swing hypothesis whose frequency and outcome vary', 'As a period when price cannot reverse', 'As proof of institutional positioning'], answer: 1 },
+      { q: 'In one common ICT AMD narrative, New York AM is described as...', options: ['Always accumulation', 'Always manipulation', 'A possible distribution phase, not a fixed session role', 'A guaranteed reversal'], answer: 2 },
+      { q: 'How should named ICT Macro Times be used?', options: ['As guaranteed precision entries', 'As time-window hypotheses to test against a baseline', 'As a universal institutional schedule', 'Only after a trade loses'], answer: 1 },
     ],
     nextLesson: { id: 6, title: 'Power of Three (AMD)' },
     prevLesson: { id: 4, title: 'Order Blocks' },
@@ -591,7 +591,7 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
       {
         title: 'Entry Model 2: The Order Block Entry',
         content: `ILLUSTRATIVE ORDER-BLOCK MODEL:\nSome ICT traders label the last opposing candle before a strong directional move as an Order Block. To test an OB entry, define which candle qualifies, whether the reference is the candle body or full range, the entry trigger, stop/invalidation and target.\n\nSome models study the first return to a marked OB or use a retracement such as its midpoint. Neither a touch nor a trade through the zone has a universal meaning; write down exactly what constitutes entry, mitigation and invalidation for the strategy being tested.`,
-        highlight: '📌 📌 Some ICT traders prioritize the first return to an OB. Define the entry, invalidation and management rules in advance and validate them with historical data.',
+        highlight: '📌 Some ICT traders prioritize the first return to an OB. Define the entry, invalidation and management rules in advance and validate them with historical data.',
       },
       {
         title: 'Entry Model 3: The Silver Bullet',
