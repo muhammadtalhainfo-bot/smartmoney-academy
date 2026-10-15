@@ -479,13 +479,13 @@ The Judas-style sequence can recur across sessions, but its consistency varies. 
       },
       {
         title: 'Reading the Daily Candle as AMD',
-        content: `One of the most profound insights ICT offers is that you can read the STRUCTURE of a single daily candle as an AMD story:
+        content: `One way some ICT traders interpret a completed daily candle is through the AMD framework. The candle's shape is observable; phase labels are hypotheses rather than verified events:
 
 A Bullish Daily Candle:
-• Open (midnight open)
+• Open, based on the chart's daily-session boundary; the boundary can vary by provider and timezone
 • A lower wick may be interpreted as a possible move against the close direction; this does not verify manipulation
 • A long green body describes net upward movement; it does not establish a distribution phase
-• Small wick UP = sometimes a minor London Close reversal
+• A small upper wick records a limited move above the body; by itself it does not identify a London Close reversal
 • Close near the high
 
 A Bearish Daily Candle:
@@ -520,7 +520,7 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
     ],
     quiz: [
       { q: 'In some ICT descriptions, what does the "M" (Manipulation) phase refer to?', options: ['The real directional move', 'A possible Judas Swing or move against the later direction', 'Institutional accumulation as a verified fact', 'Profit taking at day close'], answer: 1 },
-      { q: 'On a bullish AMD day, the lower wick of the daily candle represents...', options: ['Strong support', 'The distribution phase', 'The Judas Swing / liquidity sweep below', 'End of trend'], answer: 2 },
+      { q: 'Within one ICT interpretation, how might a long lower wick on a bullish daily candle be read?', options: ['As proof of strong support', 'As a confirmed distribution phase', 'As a possible move below the range, not proof of a Judas Swing', 'As proof the trend has ended'], answer: 2 },
       { q: 'How should the claim that Tuesday is common for a weekly Judas Swing be treated?', options: ['As a universal market fact', 'As an attributed hypothesis that needs testing', 'As a guaranteed reversal signal', 'As proof of institutional activity'], answer: 1 },
     ],
     nextLesson: { id: 7, title: 'Premium & Discount Zones' },
@@ -558,7 +558,7 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
       },
       {
         title: 'Common Mistakes with Premium & Discount',
-        content: `Even traders who understand the concept make critical errors in application:\n\nMistake 1 — Wrong swing selection:\nThe range you draw determines everything. Using the wrong swing high/low gives you the wrong premium/discount zones. Use a recent, meaningful swing that fits the range and timeframe you are analyzing; compare alternative swing selections when testing the framework.\n\nMistake 2 — Ignoring the higher timeframe:\nA lower-timeframe discount signal can conflict with a higher-timeframe premium context. Higher-timeframe context may carry more weight in this framework, but the appropriate hierarchy should be tested.\n\nMistake 3 — Entering at equilibrium:\nThe 50% level is not a buy or sell zone — it's neutral. Many traders try to enter at exactly 50% and get chopped up. The ICT OTE framework commonly uses a 62% starting level; this is a framework convention rather than evidence that 62% is inherently superior.\n\nMistake 4 — Abandoning the concept during strong trends:\nIn a very strong uptrend, price sometimes only retraces to the 38.2% or 50% level before continuing. In these cases, the OTE (62-79%) may not be reached. Don't force the framework — if price gives you a clear signal at a shallower retracement with a valid order block, take it.\n\nMistake 5 — No directional bias:\nWithin this framework, traders often combine premium/discount with a directional context from market structure. The exact sequence and filter can be tested rather than treated as mandatory.`,
+        content: `Even traders who understand the concept make critical errors in application:\n\nMistake 1 — Wrong swing selection:\nThe range you draw determines everything. Using the wrong swing high/low gives you the wrong premium/discount zones. Use a recent, meaningful swing that fits the range and timeframe you are analyzing; compare alternative swing selections when testing the framework.\n\nMistake 2 — Ignoring the higher timeframe:\nA lower-timeframe discount signal can conflict with a higher-timeframe premium context. Higher-timeframe context may carry more weight in this framework, but the appropriate hierarchy should be tested.\n\nMistake 3 — Treating equilibrium as an entry signal:\nThe 50% level is the equilibrium reference in this framework, not an entry signal by itself. If your model uses it as an entry condition, define the trigger and invalidation and test it rather than assuming the level is inherently reliable or unreliable. The ICT OTE framework commonly uses a 62% starting level; this is a framework convention rather than evidence that 62% is inherently superior.\n\nMistake 4 — Changing the entry rule after the setup is missed:\nPrice may reverse or continue before reaching the defined OTE zone. That is a possible missed setup, not a reason to add a new entry rule after seeing the outcome. If a separate shallower-retracement setup belongs to your prewritten plan, define and test it as a separate variant, including invalidation and risk. Otherwise, record no trade under the OTE rules.\n\nMistake 5 — No directional bias:\nWithin this framework, traders often combine premium/discount with a directional context from market structure. The exact sequence and filter can be tested rather than treated as mandatory.`,
         highlight: '📌 Swing selection affects a premium/discount analysis. Define what qualifies as the reference swing before reviewing outcomes, and apply that rule consistently during testing.',
       },
     ],
