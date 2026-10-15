@@ -1944,6 +1944,71 @@ const sessionLabelResidualRequired = [
 forbidden.push(...sessionLabelResidualForbidden);
 required.push(...sessionLabelResidualRequired);
 
+
+const amdOteResidualForbidden = [
+  {
+    source: 'primary',
+    label: 'daily candle described as a definitive AMD insight',
+    pattern: /One of the most profound insights ICT offers is that you can read the STRUCTURE of a single daily candle as an AMD story/i,
+  },
+  {
+    source: 'primary',
+    label: 'daily candle boundary assumed to be midnight for every provider',
+    pattern: /Open \\(midnight open\\)/i,
+  },
+  {
+    source: 'primary',
+    label: 'upper wick attributed directly to a London Close reversal',
+    pattern: /Small wick UP = sometimes a minor London Close reversal/i,
+  },
+  {
+    source: 'primary',
+    label: 'bullish daily wick quiz treats Judas Swing as a known fact',
+    pattern: /On a bullish AMD day, the lower wick of the daily candle represents/i,
+  },
+  {
+    source: 'primary',
+    label: 'equilibrium entry asserted to cause getting chopped up',
+    pattern: /Many traders try to enter at exactly 50% and get chopped up/i,
+  },
+  {
+    source: 'primary',
+    label: 'students instructed to take a new shallow entry after missing OTE',
+    pattern: /if price gives you a clear signal at a shallower retracement with a valid order block, take it/i,
+  },
+];
+
+const amdOteResidualRequired = [
+  {
+    source: 'primary',
+    label: 'AMD candle phase labels are explicitly hypotheses',
+    pattern: /The candle's shape is observable; phase labels are hypotheses rather than verified events/i,
+  },
+  {
+    source: 'primary',
+    label: 'daily session boundary is qualified by provider and timezone',
+    pattern: /chart's daily-session boundary; the boundary can vary by provider and timezone/i,
+  },
+  {
+    source: 'primary',
+    label: 'AMD quiz does not equate a wick with a proven Judas Swing',
+    pattern: /possible move below the range, not proof of a Judas Swing/i,
+  },
+  {
+    source: 'primary',
+    label: 'missed OTE is not permission to add a post-hoc entry rule',
+    pattern: /That is a possible missed setup, not a reason to add a new entry rule after seeing the outcome/i,
+  },
+  {
+    source: 'primary',
+    label: 'unqualified OTE variant results in no trade rather than an improvised entry',
+    pattern: /record no trade under the OTE rules/i,
+  },
+];
+
+forbidden.push(...amdOteResidualForbidden);
+required.push(...amdOteResidualRequired);
+
 const failures = [];
 for (const check of forbidden) {
   if (check.pattern.test(text[check.source])) {
