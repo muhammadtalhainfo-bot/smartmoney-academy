@@ -239,7 +239,7 @@ export const POSTS = [
     title: 'ICT Killzone Times: Asian, London & New York Sessions',
     description: 'ICT killzone times for Asian, London and New York sessions in New York time, with setup context and reminders that session windows do not guarantee direction or results.',
     category: 'Intermediate',
-    readTime: '14 min read',
+    readTime: '4 min read',
     date: 'April 1, 2026',
     image: '/images/killzones.png',
     content: [
