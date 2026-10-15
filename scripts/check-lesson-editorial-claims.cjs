@@ -942,6 +942,65 @@ const sessionTimingForbidden = [
 ];
 for (const check of sessionTimingForbidden) forbidden.push(check);
 
+const pdOrderFlowForbidden = [
+  {
+    source: 'legacy',
+    label: 'DOL is not presented as separating superior traders from retail',
+    pattern: /concept that separates traders who anticipate from traders who react/i,
+  },
+  {
+    source: 'legacy',
+    label: 'PD Array expertise is not presented as a subjective ranking advantage',
+    pattern: /what separates advanced ICT practitioners from beginners who draw random boxes/i,
+  },
+  {
+    source: 'legacy',
+    label: 'PD Array matrix heading does not imply a universal strength ranking',
+    pattern: /The Full PD Array Matrix\s+--\s+Ranked by Strength/i,
+  },
+  {
+    source: 'legacy',
+    label: 'CE is not described as the primary entry for every FVG',
+    pattern: /your primary entry level within the gap/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Breaker Blocks are not assigned an inevitable support/resistance role',
+    pattern: /it becomes resistance for a bullish OB that was broken/i,
+  },
+  {
+    source: 'legacy',
+    label: 'mitigated arrays are not universally described as consumed',
+    pattern: /Only active, unmitigated arrays belong on your working chart/i,
+  },
+  {
+    source: 'legacy',
+    label: 'a quiz does not claim institutions buy in a range discount zone as a fact',
+    pattern: /In a dealing range, institutions buy in/i,
+  },
+  {
+    source: 'legacy',
+    label: 'PD Array quiz does not imply a universal highest-ranked type',
+    pattern: /Which PD Array ranks highest in the matrix/i,
+  },
+  {
+    source: 'legacy',
+    label: 'AMD distribution does not have a universal exit event',
+    pattern: /The Distribution phase ends when/i,
+  },
+  {
+    source: 'legacy',
+    label: 'DOL sequence is not a mandatory ERL-to-IRL trade path',
+    pattern: /The correct DOL trade sequence is/i,
+  },
+  {
+    source: 'legacy',
+    label: 'time is not described as directly predicting price',
+    pattern: /Using Time to Predict Price/i,
+  },
+];
+for (const check of pdOrderFlowForbidden) forbidden.push(check);
+
 const required = [
   {
     source: 'primary',
@@ -1489,6 +1548,40 @@ const sessionTimingRequired = [
   },
 ];
 required.push(...sessionTimingRequired);
+
+const pdOrderFlowRequired = [
+  {
+    source: 'legacy',
+    label: 'DOL is framed as a conditional objective',
+    pattern: /Draw on Liquidity \(DOL\) is an ICT term some traders use to record a possible price objective/i,
+  },
+  {
+    source: 'legacy',
+    label: 'CE midpoint is presented as a reference to test, not a universal entry',
+    pattern: /treat it as one possible reference to test, not a universally optimal entry/i,
+  },
+  {
+    source: 'legacy',
+    label: 'order-block polarity conventions are framed as variants to define',
+    pattern: /Define the violation and retest criteria in advance; a former zone is not guaranteed to act as support or resistance/i,
+  },
+  {
+    source: 'legacy',
+    label: 'array mitigation uses a prewritten, model-specific rule',
+    pattern: /Specify whether your rule uses a touch, partial fill, full traversal or close beyond a boundary/i,
+  },
+  {
+    source: 'legacy',
+    label: 'DOL scenario does not guarantee the objective',
+    pattern: /a hypothesis rather than a destination price must reach/i,
+  },
+  {
+    source: 'legacy',
+    label: 'distribution exit is tied to a tested prewritten rule',
+    pattern: /Apply a predefined exit or invalidation condition that fits the tested model/i,
+  },
+];
+required.push(...pdOrderFlowRequired);
 
 const failures = [];
 for (const check of forbidden) {
