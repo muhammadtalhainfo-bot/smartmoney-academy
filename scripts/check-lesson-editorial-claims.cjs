@@ -523,6 +523,50 @@ const forbidden = [
   },
 ];
 
+const focusedForbidden = [
+  {
+    source: 'legacy',
+    label: 'daily bias presented as a strict pre-session deadline',
+    pattern: /Daily bias is determined BEFORE the session opens[\s\S]{0,180}already too late/i,
+  },
+  {
+    source: 'legacy',
+    label: 'breakeven timing prescribed universally despite conditional body',
+    pattern: /Move to breakeven when: price moved 1R \+ cleared first PD Array \+ LTF BOS confirmed/i,
+  },
+  {
+    source: 'legacy',
+    label: 'narrative walkthrough presents gold session sequence as likely institutional delivery',
+    pattern: /London will likely sweep below PDL[\s\S]{0,900}This is a complete institutional narrative/i,
+  },
+  {
+    source: 'legacy',
+    label: 'fixed maximum two trades per day presented as universal solution',
+    pattern: /Solution: maximum two trades per day\. After two, close all charts/i,
+  },
+  {
+    source: 'legacy',
+    label: 'partial at TP1 claimed to solve premature exits',
+    pattern: /Solution: partial profits at TP1 reduce this fear/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold narrative reports a fixed return multiple before actual execution',
+    pattern: /Target: weekly draw at 2,340\. R:R = 3\.8:1[\s\S]{0,240}This is professional ICT trading/i,
+  },
+  {
+    source: 'legacy',
+    label: 'arbitrary directional-accuracy threshold certifies readiness for live trading',
+    pattern: /70%\+ direction accuracy = you are ready to trade the narrative live/i,
+  },
+  {
+    source: 'legacy',
+    label: 'weekly AMD assigns fixed phases to weekdays',
+    pattern: /Monday = accumulation\. Tuesday\/Wednesday = manipulation or early distribution\. Thursday\/Friday = primary distribution or reversal/i,
+  },
+];
+for (const check of focusedForbidden) forbidden.push(check);
+
 const required = [
   {
     source: 'primary',
@@ -811,6 +855,52 @@ const required = [
     label: 'Asian range sweep does not determine New York bias',
     pattern: /The initial sweep does not prove the next move will go in the opposite direction or establish a New York bias/i,
   },
+  {
+    source: 'legacy',
+    label: 'daily bias can be reassessed when rules or information change',
+    pattern: /A pre-session bias can organize a plan, but it is a conditional scenario, not a deadline/i,
+  },
+  {
+    source: 'legacy',
+    label: 'breakeven highlight qualifies trigger as model-specific',
+    pattern: /none is a universal breakeven rule/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold walkthrough is explicitly hypothetical rather than a forecast',
+    pattern: /HYPOTHETICAL XAUUSD SCENARIO \(NOT A FORECAST\)[\s\S]{0,1400}not an institutional narrative, guaranteed sequence or recommendation to trade gold/i,
+  },
+  {
+    source: 'legacy',
+    label: 'position management avoids universal daily trade-count prescription',
+    pattern: /there is no universal two-trade daily limit/i,
+  },
+  {
+    source: 'legacy',
+    label: 'partial exit is identified as a variant to test',
+    pattern: /A partial at TP1 is one variant to test, not a guaranteed way to reduce fear or improve returns/i,
+  },
+  {
+    source: 'legacy',
+    label: 'breakeven stop rule quiz tests model-specific decision-making',
+    pattern: /How should a breakeven-stop rule be chosen[\s\S]{0,300}Use a predefined, tested trigger that fits the strategy and accounts for costs and stop-out tradeoffs/i,
+  },
+  {
+    source: 'legacy',
+    label: 'narrative testing does not use directional accuracy as readiness certificate',
+    pattern: /Directional accuracy alone, including a 70% result, does not establish a durable edge or prove readiness for live trading/i,
+  },
+  {
+    source: 'legacy',
+    label: 'conditional scenario notes setup may not trigger',
+    pattern: /Price may instead continue lower, reverse without reaching the FVG, or never trigger the entry/i,
+  },
+  {
+    source: 'legacy',
+    label: 'weekly phase definitions are testable hypotheses',
+    pattern: /no weekday is a reliable phase assignment by itself/i,
+  },
+
 ];
 
 const failures = [];
