@@ -2,59 +2,59 @@ const LESSONS = {
   1: {
     id: 1,
     title: 'Market Structure',
-    subtitle: 'The Language of Price — How to Read What the Market Is Actually Saying',
+    subtitle: 'A Framework for Describing Price Structure',
     level: 'Beginner',
     duration: '18 min read',
     category: 'Foundation',
-    imageCaption: 'BOS vs ChoCH — the two most critical market structure signals in ICT',
-    intro: `Before you can trade ICT, you need to understand one thing: price can exhibit recurring patterns and structure. Learning to read those patterns can provide a framework for interpreting charts. Market structure is the foundation of everything in ICT. It tells you the direction price is going, when that direction is changing, and when a new move is starting.`,
+    imageCaption: 'BOS and ChoCH/MSS are common labels for describing price structure in ICT',
+    intro: `Before you can trade ICT, you need to understand one thing: price can exhibit recurring patterns and structure. Learning to read those patterns can provide a framework for interpreting charts. Market structure is one framework used in ICT analysis. It helps describe recent price direction and possible changes, but a swing sequence does not identify the cause of a move or predict the next one with certainty.`,
     sections: [
       {
         title: 'What Is Market Structure?',
         content: `Market structure is the sequence of highs and lows that price creates as it moves. Those patterns can help traders describe whether recent price action is making higher highs and higher lows or lower highs and lower lows, but they do not by themselves reveal every participant's intent.
 
-In an uptrend, price creates Higher Highs (HH) and Higher Lows (HL). Each new push up goes higher than the last. Each pullback stops higher than the previous pullback. Buyers are in full control.
+In an uptrend, price creates Higher Highs (HH) and Higher Lows (HL). Each push reaches a higher level and each pullback holds above the prior pullback in this simplified description. This pattern describes price action; it does not establish that buyers are uniformly in control.
 
-In a downtrend, price creates Lower Highs (LH) and Lower Lows (LL). Each rally stops lower than the last. Each drop goes deeper. Sellers are in full control.
+In a downtrend, price creates Lower Highs (LH) and Lower Lows (LL). Each rally reaches a lower level and each drop reaches a lower level in this simplified description. This pattern describes price action; it does not establish that sellers are uniformly in control.
 
 This sounds simple — and it is. Many retail traders struggle to apply this consistently. They try to buy in downtrends and sell in uptrends and wonder why they keep losing.`,
         highlight: '📌 Rule #1: Some traders filter setups by higher-timeframe structure; test whether this filter improves your results.',
       },
       {
         title: 'Break of Structure (BOS)',
-        content: `A Break of Structure (BOS) happens when price breaks through the most recent swing high (in an uptrend) or swing low (in a downtrend). It confirms that the current trend is continuing.
+        content: `In one common ICT convention, a Break of Structure (BOS) is a break beyond a defined swing high in an uptrend or swing low in a downtrend. Traders may interpret it as continuation evidence, but swing selection, closing-price rules and the following response vary by model; a break does not confirm continuation by itself.
 
 Here's how to identify a Bullish BOS: Price is in an uptrend (HH, HL sequence). Price pulls back, creates a new Higher Low. Then price pushes up and breaks above the last Higher High. That break above the previous swing high = BOS. This can support a continuation interpretation; any directional trade should still follow a defined, tested plan.
 
-Bearish BOS is the opposite: price breaks below the most recent swing low, confirming continuation of the downtrend.
+A bearish BOS is commonly marked when price breaks below a defined swing low; whether that supports continuation depends on the trader’s rules and subsequent price action.
 
-The BOS is not your entry signal — it's your confirmation that the trend is still running. Your entry comes from the pullback that follows.`,
+A BOS is not an entry signal by itself. Some strategies wait for a pullback after the break, while others define different triggers; specify the rules before testing them.`,
         highlight: '📌 BOS is commonly used as a continuation reference in ICT analysis; it does not by itself confirm institutional intent or guarantee continuation.',
       },
       {
         title: 'Change of Character (ChoCH / MSS)',
-        content: `This is where it gets powerful. A Change of Character (ChoCH) — also called a Market Structure Shift (MSS) — is the signal that the trend is REVERSING.
+        content: `A Change of Character (ChoCH) or Market Structure Shift (MSS) is often used for a break against previously identified structure. Terminology and swing-selection rules differ among ICT variants; the label marks a possible change, not proof that a reversal is underway.
 
-In a downtrend, price is making LH and LL. Then suddenly, price shoots up and breaks above the most recent Lower High. That break = ChoCH. It means buyers have stepped in aggressively enough to break the bearish structure. This can be an early sign that the prior downtrend may be weakening or changing.
+In a downtrend, price is making LH and LL. Then suddenly, price shoots up and breaks above the most recent Lower High. Some ICT traders label that break a bullish ChoCH or MSS. It can be interpreted as evidence that prior bearish structure is weakening, but price alone does not identify who stepped in or guarantee the next direction.
 
-In an uptrend, if price breaks below the most recent Higher Low in one aggressive move — that's a bearish ChoCH. Sellers just took control.
+In an uptrend, some ICT traders label a break below a defined Higher Low a bearish ChoCH or MSS. It can suggest that the prior bullish structure is weakening, but it does not prove sellers have taken control.
 
 The key difference between BOS and ChoCH is direction:
 • BOS breaks in the direction of the current trend = continuation
 • ChoCH breaks AGAINST the current trend = potential reversal
 
 This is one framework ICT traders use to study potential turning points; interpretations about institutional positioning are not directly observable from price alone.`,
-        highlight: '📌 ChoCH = The first warning sign that trend is reversing. Don\'t jump in immediately — wait for confirmation and a PD Array to enter from.',
+        highlight: '📌 A ChoCH/MSS is one framework for flagging a possible structural change. Define swing points and confirmation rules, and do not treat the label alone as a reversal or entry confirmation.',
       },
       {
         title: 'Internal vs External Structure',
         content: `ICT goes deeper than just "uptrend/downtrend." He breaks structure into two layers:
 
-External Structure (swing highs/lows visible on your current timeframe) — these are the major turning points. They create the overall bias.
+External Structure (swing highs/lows visible on your current timeframe) refers to larger turning points that some traders use to frame context and possible bias.
 
-Internal Structure (the smaller movements WITHIN the external swings) — these are the Lower Timeframe (LTF) details that give you precise entries.
+Internal Structure (the smaller movements WITHIN the external swings) refers to lower-timeframe details that some traders use to refine, but not guarantee, an entry.
 
-For example, you might be looking at a 1-hour bullish trend (external structure). Inside that, on the 5-minute chart, you'll see a mini downtrend creating the pullback. When that internal bearish structure shifts to bullish (internal ChoCH on 5min) — THAT is your precise entry trigger.
+For example, you might be looking at a 1-hour bullish trend (external structure). Inside that, on the 5-minute chart, you'll see a mini downtrend creating the pullback. Some models use an internal bearish-to-bullish shift on the 5-minute chart as a candidate entry condition; test whether it adds value under explicit rules.
 
 This nested view is one way ICT traders distinguish higher-timeframe context from lower-timeframe execution.`,
         highlight: '📌 Higher-timeframe context can inform bias while lower timeframes can refine entries. Test the exact sequence and rules that fit your strategy.',
@@ -65,11 +65,11 @@ This nested view is one way ICT traders distinguish higher-timeframe context fro
 
 Step 1 — Check the Daily chart. Is it making HH/HL (bullish) or LH/LL (bearish)? This is your macro bias. Use this as a directional filter if it is part of your tested plan.
 
-Step 2 — Move to the 1-Hour or 4-Hour chart. Confirm the same structure direction. Look for where the last BOS happened to know how deep the pullback could go.
+Step 2 — Move to the 1-Hour or 4-Hour chart. Confirm the same structure direction. Note the last BOS as context, without assuming it predicts how deep a pullback will go.
 
-Step 3 — When price pulls back, drop to the 15-minute or 5-minute chart. Watch for a ChoCH in the direction of your HTF bias. This is your LTF confirmation.
+Step 3 — When price pulls back, drop to the 15-minute or 5-minute chart. Watch for a ChoCH in the direction of your HTF bias if that condition is part of your tested model; it is a candidate filter, not confirmation of a profitable setup.
 
-Step 4 — After LTF ChoCH, look for a PD Array (FVG, OB, etc.) nearby to enter from. Set your stop below the swing low that caused the ChoCH.
+Step 4 — After LTF ChoCH, look for a PD Array (FVG, OB, etc.) nearby to enter from. Define invalidation and stop placement from tested model and position-sizing rules; a swing low is one possible reference for a bullish setup.
 
 This is one possible top-down analysis framework; traders can adapt the timeframes and rules to their instrument and tested plan.`,
         highlight: '📌 The trade entry is on the LOWER timeframe, but the bias comes from the HIGHER timeframe. This is a commonly emphasized ICT guideline; traders should test the timeframes and rules that fit their plan.',
@@ -77,8 +77,8 @@ This is one possible top-down analysis framework; traders can adapt the timefram
     ],
     quiz: [
       { q: 'In a downtrend, price creates...', options: ['Higher Highs and Higher Lows', 'Lower Highs and Lower Lows', 'Equal Highs and Equal Lows', 'Higher Highs and Lower Lows'], answer: 1 },
-      { q: 'A BOS (Break of Structure) signals...', options: ['Trend reversal', 'Trend continuation', 'No trading signal', 'Liquidity sweep only'], answer: 1 },
-      { q: 'A ChoCH in a downtrend means...', options: ['Sellers got stronger', 'Buyers broke above a Lower High', 'Price reached premium zone', 'Asian session opened'], answer: 1 },
+      { q: 'In one common ICT convention, a BOS is interpreted as...', options: ['Proof of institutional intent', 'A possible continuation reference, depending on the model and later price action', 'A guaranteed trend continuation', 'Evidence that no liquidity is nearby'], answer: 1 },
+      { q: 'In one common ICT convention, a bullish ChoCH/MSS in a downtrend is marked when...', options: ['Price forms another lower low', 'Price breaks above a defined Lower High', 'Price reaches premium zone', 'The Asian session opens'], answer: 1 },
     ],
     nextLesson: { id: 2, title: 'Liquidity Concepts' },
     prevLesson: null,
@@ -105,12 +105,14 @@ This is a central ICT interpretation of liquidity; not every market move needs t
       },
       {
         title: 'Buy-Side Liquidity (BSL)',
-        content: `Buy-Side Liquidity (BSL) sits ABOVE price, at levels where:
-• Retail traders have placed stop-losses on their short positions
-• Buy-stop orders from breakout traders are waiting
-• Equal highs or swing highs that everyone can see on the chart
+        content: `Buy-Side Liquidity (BSL) is the ICT label for potential buy-stop liquidity above a chosen high, often discussed around:
+• Areas where traders may place buy stops to manage short positions
+• Levels where breakout traders may place buy-stop entry orders
+• Equal highs or visible swing highs that market participants may watch
 
-Within the ICT framework, traders may study BSL as an area where sell-side liquidity and potential reactions can occur. Actual participant intent and the resulting direction are not directly observable from the chart.
+The chart does not reveal the actual orders or prove that a particular level contains a large cluster of stops.
+
+Within the ICT framework, traders may study BSL as a reference above watched highs where buy-stop orders could be present or where a break may attract momentum orders. The chart does not reveal the actual order book, participant intent or the direction of any later reaction.
 
 You'll recognize BSL as: Equal Highs (EQH) on a chart, previous day/week highs, obvious resistance levels that everyone is watching, and round numbers like 1.1000 or 2000 on Gold.
 
@@ -119,12 +121,14 @@ A common liquidity-sweep example is price approaching BSL, briefly trading above
       },
       {
         title: 'Sell-Side Liquidity (SSL)',
-        content: `Sell-Side Liquidity (SSL) is the mirror image — it sits BELOW price, at levels where:
-• Retail longs have their stop-losses
-• Sell-stop orders from breakout sellers are resting
-• Equal lows, swing lows, support levels
+        content: `Sell-Side Liquidity (SSL) is the ICT label for potential sell-stop liquidity below a chosen low, often discussed around:
+• Areas where traders may place sell stops to manage long positions
+• Levels where breakout traders may place sell-stop entry orders
+• Equal lows, visible swing lows or commonly watched support areas
 
-ICT teachings commonly interpret sell-side liquidity as an area where buy-side orders may be filled. Some ICT explanations describe price moving below obvious lows before reversing, but the chart alone cannot establish that institutions deliberately triggered stops or accumulated positions there.
+The chart alone does not establish which orders are present or how much liquidity sits at a level.
+
+Some ICT explanations hypothesize that a move below SSL can interact with available orders and may be followed by a rebound. A chart alone cannot establish who triggered the move, whether institutions accumulated positions, or whether price will reverse.
 
 You'll identify SSL as: Equal Lows (EQL), previous day/week lows, obvious support levels, and round numbers below current price.
 
@@ -148,11 +152,11 @@ Step 1 — Identify your HTF bias (bullish or bearish) using market structure.
 
 Step 2 — Mark all visible BSL (above recent highs) and SSL (below recent lows) on your chart.
 
-Step 3 — In a bullish bias, watch for price to sweep below SSL (a fake breakdown). This is the institution filling buys.
+Step 3 — In a bullish scenario, a model may look for price to move below an identified low. Treat this as a candidate liquidity interaction; the chart alone cannot identify who traded or why.
 
-Step 4 — After the sweep, wait for a ChoCH or BOS to the upside on the LTF. This confirms the sweep is done and price is reversing.
+Step 4 — Some models require a later upside structure break on a lower timeframe. It can be a defined condition to test, but it does not prove the sweep is complete or that a durable reversal has begun.
 
-Step 5 — Enter from a nearby FVG or OB that forms after the sweep/ChoCH.
+Step 5 — If the tested model calls for it, consider a nearby FVG or OB formed after the move. Define entry, invalidation, missed-fill handling and position size before judging results.
 
 A commonly studied ICT sequence is Liquidity Sweep → Structure Shift → Entry from a PD Array. It appears in several ICT-style models, but individual models and criteria differ.`,
         highlight: '📌 Example setup: SSL sweep → bullish structure shift → FVG/OB entry. Treat this as a testable setup, not a guaranteed or universally superior trade.',
@@ -161,7 +165,7 @@ A commonly studied ICT sequence is Liquidity Sweep → Structure Shift → Entry
     quiz: [
       { q: 'Buy-side liquidity (BSL) is located...', options: ['Below recent lows', 'Above recent highs', 'At the 50% Fibonacci level', 'During the Asian session'], answer: 1 },
       { q: 'What can happen after a liquidity sweep?', options: ['Price may continue, reverse, or consolidate depending on conditions', 'Price reverses sharply in every case', 'Price consolidates for weeks', 'Volume disappears'], answer: 0 },
-      { q: 'Equal Highs (EQH) in ICT represent...', options: ['Strong resistance to sell from', 'Resting buy-side liquidity above', 'A bullish continuation pattern', 'Order block validation'], answer: 1 },
+      { q: 'In ICT terminology, equal highs are commonly treated as...', options: ['Guaranteed resistance to sell from', 'A potential reference for buy-side liquidity above the highs', 'A bullish continuation signal on its own', 'Proof that an order block is valid'], answer: 1 },
     ],
     nextLesson: { id: 3, title: 'Fair Value Gaps (FVG)' },
     prevLesson: { id: 1, title: 'Market Structure' },
@@ -179,7 +183,7 @@ A commonly studied ICT sequence is Liquidity Sweep → Structure Shift → Entry
     sections: [
       {
         title: 'What Is a Fair Value Gap?',
-        content: `A Fair Value Gap (FVG) is a three-candle price formation where the middle candle moves so aggressively that it leaves a price gap — a zone where no two-sided trading occurred.
+        content: `A Fair Value Gap (FVG) is a three-candle chart formation in which the first and third candles' wicks do not overlap under a chosen definition. The chart pattern describes candle ranges; it does not mean that no trading occurred in the zone.
 
 Here's how to identify a Bullish FVG:
 • Candle 1: any candle
@@ -187,36 +191,36 @@ Here's how to identify a Bullish FVG:
 • Candle 3: the next candle
 • The FVG = the gap between the HIGH of Candle 1 and the LOW of Candle 3
 
-If Candle 3's low is ABOVE Candle 1's high — there is a gap where price skipped. That gap is the FVG. Price passed through it so fast that buyers and sellers couldn't meet there. The market is "imbalanced" in that zone.
+If Candle 3's low is above Candle 1's high, the non-overlapping interval is commonly marked as a bullish FVG. This is a chart-based definition; it does not show that buyers and sellers could not trade there or establish why the formation occurred.
 
 Bearish FVG is the mirror: Candle 3's HIGH is below Candle 1's LOW after a large bearish displacement candle.`,
         highlight: '📌 The FVG is the gap between Candle 1\'s high and Candle 3\'s low (bullish). Mark it on your chart — price may revisit this zone; revisit frequency and reaction should be tested.',
       },
       {
         title: 'Why Does Price Return to FVGs?',
-        content: `Price returns to FVGs because of the mechanics of how large institutional orders get filled. When a bank places a massive order, it creates a displacement move — price moves so fast that many orders can't get filled at those levels. The Some ICT teachings describe this as an algorithmic explanation, but it is not a directly verified mechanism.
+        content: `There is no established rule that every FVG will be revisited. Some ICT explanations hypothesize that price returns to these zones as part of repricing or later order flow, but the candle pattern alone does not verify a particular cause or guarantee a revisit. The usefulness of the hypothesis should be measured using a consistent FVG definition and recorded outcomes.
 
 Think of it this way: imagine you're at an auction and the bidding jumps from $100 to $150 in one instant. Someone missed their chance to bid at $120. A market may revisit prior prices, but the auction analogy does not establish why any specific FVG will be revisited. That's the FVG.
 
 For ICT traders, FVGs can serve as potential areas of interest or confluence. Their usefulness should be evaluated with market context and personal testing rather than assumed to outperform other forms of analysis.`,
-        highlight: '📌 FVGs aren\'t just patterns — they represent unfilled institutional orders. Some ICT teachings use an algorithmic explanation for FVG behavior, but the mechanism and performance should be treated as a hypothesis to test.',
+        highlight: '📌 An FVG is a chart-defined price formation. Some ICT explanations attribute its behavior to institutional orders or algorithms, but those mechanisms are not verified by the pattern alone; test revisit and outcome rates using a consistent definition.',
       },
       {
         title: 'Bullish vs Bearish FVG',
-        content: `Bullish FVG (Buy from here in a bullish bias):
+        content: `Bullish FVG (potential long context in a bullish scenario):
 • Forms during a bullish displacement (large upward candle)
 • Located BELOW current price after the move
 • Price comes back down into this zone = retracement
 • In a bullish bias, this can be a potential buy area when supported by a tested setup
 • Entry: wait for price to enter the FVG, look for a reaction candle
 
-Bearish FVG (Sell from here in a bearish bias):
+Bearish FVG (potential short context in a bearish scenario):
 • Forms during a bearish displacement (large downward candle)
 • Located ABOVE current price after the move
 • Price comes back up into this zone = retracement
 • In a bearish bias, this can be a potential sell area when supported by a tested setup
 
-A common filtering rule is to align FVG direction with higher-timeframe bias; test whether this improves your setup quality. Using an FVG against the HTF bias is one of the most common mistakes ICT beginners make.`,
+Some traders use higher-timeframe alignment as an FVG filter. Test whether it improves results after costs and missed fills; using an FVG against the higher-timeframe direction is not automatically a mistake or a losing setup.`,
         highlight: '📌 Some traders use HTF alignment as an FVG filter. Treat it as contextual information to test, not a guarantee that opposing setups are traps.',
       },
       {
@@ -225,42 +229,42 @@ A common filtering rule is to align FVG direction with higher-timeframe bias; te
 
 Consequent Encroachment (CE): The 50% midpoint of the FVG. Some ICT traders monitor this midpoint when studying FVG revisits. A reaction there can be treated as a testable entry condition rather than a guaranteed reversal.
 
-Inverse FVG (IFVG): When an FVG gets fully filled and price passes through it — the FVG "inverts" its polarity. A bullish FVG that gets completely filled becomes a bearish resistance zone on re-test.
+Inverse FVG (IFVG): Some ICT variants use this label when price fully fills and then breaks through an FVG, treating the former zone as a candidate area of opposite polarity on a later revisit. Whether it acts as resistance or support is an outcome to test, not an automatic consequence.
 
-Balanced Price Range (BPR): When a bullish FVG and bearish FVG overlap on different timeframes, creating an exceptionally strong zone that is a higher-confluence zone in this framework; any performance difference should be tested.
+Balanced Price Range (BPR): Some ICT variants mark an overlap between bullish and bearish FVGs as a confluence area. Overlap alone does not establish that the zone is exceptionally strong or more predictive; evaluate it under a consistent definition.
 
-1st Presented FVG: In any displacement, the FIRST FVG that forms is the most important. ICT specifically targets the first one because it is closest to where the institutional order was placed.
+1st Presented FVG: Some ICT variants prioritize the first FVG identified after a displacement. The claim that it is always most important or closest to an institutional order is a theoretical explanation, not something a candle chart can verify; compare it with alternatives in testing.
 
 BISI (Buy-side Imbalance, Sell-side Inefficiency): A bullish FVG — price imbalanced to the buy-side.
 SIBI (Sell-side Imbalance, Buy-side Inefficiency): A bearish FVG — price imbalanced to the sell-side.`,
-        highlight: '📌 Most important variations: CE (50% of FVG), IFVG (inverted after full fill), BPR (overlapping FVGs = double strength).',
+        highlight: '📌 Common variations include CE (the 50% midpoint), IFVG (a former FVG treated as a possible opposite-polarity zone under some rules), and BPR (overlapping opposing FVG zones). Labels do not establish relative predictive strength; test each definition.',
       },
       {
         title: 'Trading FVGs — The Complete Process',
         content: `Here is how to trade an FVG from start to finish:
 
-Step 1 — Establish HTF Bias. Check Daily/4H. Is structure bullish or bearish? Only use FVGs that align.
+Step 1 — Define higher-timeframe context on Daily/4H if your model uses it. Test whether aligning FVG direction with that context improves outcomes; do not assume this filter is universally superior.
 
-Step 2 — Identify a Liquidity Sweep. Price sweeps SSL (in bullish scenario). This starts the reversal.
+Step 2 — If required by the tested model, mark a move below a defined low. A sweep label does not establish that a reversal has started or that a stop hunt occurred.
 
 Step 3 — Find the FVG. After the sweep, a bullish displacement move forms. Mark the FVG (gap between candle 1 high and candle 3 low).
 
-Step 4 — Wait for Price to Return. Price pulls back into the FVG zone. You're not chasing — you're waiting.
+Step 4 — A later return to the FVG may or may not occur. Define how you handle a missed fill and test outcomes for filled trades as well as setups that never trigger.
 
-Step 5 — Entry Trigger. Look for a small bullish confirmation candle inside the FVG. Or simply enter at the CE (50%) of the FVG with a limit order.
+Step 5 — Define the entry rule in advance. A confirmation candle or a limit order near the CE (50%) are different variants; a limit order may be missed or filled without a favorable reaction.
 
-Step 6 — Stop Loss. Below the low of the FVG (for bullish trades). This invalidates the FVG if hit.
+Step 6 — Define the stop from the setup's prewritten invalidation and account-risk rules. Some variants use an FVG boundary or nearby swing, but a stop being hit does not universally invalidate the chart pattern.
 
-Step 7 — Target. The next liquidity pool above (BSL, previous high, etc.).
+Step 7 — Choose a predefined target rule, such as a relevant high, a fixed risk multiple or a time-based exit, and evaluate it after costs. A nearby liquidity reference is one option, not a guaranteed destination.
 
 Risk/reward outcomes vary by setup and market; use the target and stop rules defined by your tested plan.`,
-        highlight: '📌 A commonly studied ICT sequence is SSL Sweep → Bullish Displacement → FVG → potential entry near CE. Treat it as a testable setup, not a guaranteed outcome.',
+        highlight: '📌 One ICT-style variant combines a move below a chosen low, bullish displacement and a possible FVG entry near CE. Define every step, include missed fills and alternative outcomes, and test it as a hypothesis rather than a guaranteed sequence.',
       },
     ],
     quiz: [
-      { q: 'A Fair Value Gap forms between...', options: ['Two consecutive candle bodies', 'Candle 1\'s high and Candle 3\'s low', 'The open and close of one candle', 'Two daily session opens'], answer: 1 },
+      { q: 'A bullish Fair Value Gap is commonly defined using the non-overlap between...', options: ['Two consecutive candle bodies', 'Candle 1’s high and Candle 3’s low', 'The open and close of one candle', 'Two daily session opens'], answer: 1 },
       { q: 'CE (Consequent Encroachment) refers to...', options: ['The full fill of the FVG', 'The 50% midpoint of the FVG', 'A second FVG forming inside the first', 'The candle that creates the FVG'], answer: 1 },
-      { q: 'An Inverse FVG (IFVG) forms when...', options: ['The FVG is very large', 'The original FVG gets completely filled', 'Two FVGs overlap', 'Price gaps overnight'], answer: 1 },
+      { q: 'In some ICT variants, an IFVG candidate is marked when...', options: ['The FVG is especially large', 'Price fully fills and breaks through the original FVG under the model’s definition', 'Two FVGs overlap', 'Price gaps overnight'], answer: 1 },
     ],
     nextLesson: { id: 4, title: 'Order Blocks' },
     prevLesson: { id: 2, title: 'Liquidity Concepts' },
