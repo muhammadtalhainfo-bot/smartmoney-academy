@@ -1001,6 +1001,120 @@ const pdOrderFlowForbidden = [
 ];
 for (const check of pdOrderFlowForbidden) forbidden.push(check);
 
+const quarterlyGapRiskForbidden = [
+  {
+    source: 'legacy',
+    label: 'quarter mapping is not presented as clean and deterministic',
+    pattern: /Q1 = accumulation \(clean trend\)\. Q2 = manipulation/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Q2 is not called the most dangerous quarter',
+    pattern: /Q2 is the most dangerous quarter for trend followers/i,
+  },
+  {
+    source: 'legacy',
+    label: 'unsupported EURUSD quarterly direction claims are removed',
+    pattern: /tends to be weak in Q1 and Q3, stronger in Q2 and Q4/i,
+  },
+  {
+    source: 'legacy',
+    label: 'unsupported GBPUSD month pattern is removed',
+    pattern: /historically stronger in April-May and weaker in September-October/i,
+  },
+  {
+    source: 'legacy',
+    label: 'unsupported gold calendar direction claim is removed',
+    pattern: /January historically strong, August-September frequently bullish/i,
+  },
+  {
+    source: 'legacy',
+    label: 'unsupported index seasonality is not called well-documented without a source',
+    pattern: /January Effect, summer dip in Q3, year-end rally in Q4 are well-documented/i,
+  },
+  {
+    source: 'legacy',
+    label: 'quarterly labels are not claimed to transform trading bias',
+    pattern: /The Macro Rhythm That Transforms Your Bias/i,
+  },
+  {
+    source: 'legacy',
+    label: 'narrative backtesting is not presented as the only way to trust a method',
+    pattern: /The only way to trust your narrative-building skill/i,
+  },
+  {
+    source: 'legacy',
+    label: 'narrative scoring does not ask for the correct bias after the result',
+    pattern: /what was the correct daily bias/i,
+  },
+  {
+    source: 'legacy',
+    label: 'daily AMD phase labels are not presented as direct facts',
+    pattern: /Price near midnight open with minimal movement = Accumulation/i,
+  },
+  {
+    source: 'legacy',
+    label: '30 sessions are not presented as an automatic review threshold',
+    pattern: /A journal of 30 or more sessions can reveal/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gap full-fill does not predict continuation',
+    pattern: /After a full fill, the zone is typically neutralized and price continues in the pre-fill direction/i,
+  },
+  {
+    source: 'legacy',
+    label: 'CE is not described as triggering institutional orders',
+    pattern: /price fills to the CE and immediately reacts as institutional orders at the CE level are triggered/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gaps are not expected to fill to CE as the primary entry',
+    pattern: /expect a partial fill to CE as the primary entry zone/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gaps are not said frequently to fill midpoint and react',
+    pattern: /Gaps frequently fill to the 50% midpoint/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gap geometry does not imply the path of least resistance',
+    pattern: /path of least resistance between current price and the DOL/i,
+  },
+  {
+    source: 'legacy',
+    label: 'a gap is not automatically called support or resistance',
+    pattern: /Gaps below a rising market are bullish support zones/i,
+  },
+  {
+    source: 'legacy',
+    label: 'fixed 100-trade sample is not used to forecast losing streak drawdown',
+    pattern: /longest losing streak in your 100-trade sample/i,
+  },
+  {
+    source: 'legacy',
+    label: 'future losing periods are not described as inevitable bad runs',
+    pattern: /inevitable bad runs/i,
+  },
+  {
+    source: 'legacy',
+    label: 'backtest records are not dismissed as nearly useless',
+    pattern: /nearly useless for analysis/i,
+  },
+  {
+    source: 'legacy',
+    label: 'win rate alone is not claimed to be required for correct position sizing',
+    pattern: /Without knowing your win rate, you cannot size positions correctly/i,
+  },
+  {
+    source: 'legacy',
+    label: 'a missed trade is not said to cost nothing',
+    pattern: /Missing a trade costs nothing/i,
+  },
+];
+for (const check of quarterlyGapRiskForbidden) forbidden.push(check);
+
 const required = [
   {
     source: 'primary',
@@ -1582,6 +1696,50 @@ const pdOrderFlowRequired = [
   },
 ];
 required.push(...pdOrderFlowRequired);
+
+const quarterlyGapRiskRequired = [
+  {
+    source: 'legacy',
+    label: 'quarterly labels are explicitly described as a template to test',
+    pattern: /No quarter must behave this way; define the classification and test its value against a baseline/i,
+  },
+  {
+    source: 'legacy',
+    label: 'seasonal filters require out-of-sample evaluation',
+    pattern: /Test whether it adds out-of-sample value beyond the base strategy after costs/i,
+  },
+  {
+    source: 'legacy',
+    label: 'narrative testing guards against hindsight bias',
+    pattern: /reconstruct only the information available before that session/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gap fill does not predict later movement',
+    pattern: /it does not by itself predict continuation, reversal/i,
+  },
+  {
+    source: 'legacy',
+    label: 'CE is one reference rather than a required entry',
+    pattern: /CE is one possible reference, not a required fill or guaranteed reaction point/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gap-based exits follow prewritten rules',
+    pattern: /follow the strategy's predefined, tested rules/i,
+  },
+  {
+    source: 'legacy',
+    label: 'losing streak is described as a sample observation',
+    pattern: /It describes that sample, not a guaranteed maximum or a prediction of future drawdown/i,
+  },
+  {
+    source: 'legacy',
+    label: 'position sizing includes risk cap, stop and instrument costs',
+    pattern: /defined risk cap, stop distance, instrument value, costs/i,
+  },
+];
+required.push(...quarterlyGapRiskRequired);
 
 const failures = [];
 for (const check of forbidden) {
