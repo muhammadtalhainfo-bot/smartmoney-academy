@@ -567,6 +567,100 @@ const focusedForbidden = [
 ];
 for (const check of focusedForbidden) forbidden.push(check);
 
+const curriculumBatchForbidden = [
+  {
+    source: 'primary',
+    label: 'order block falsely described as confirmed institutional absorption',
+    pattern: /It represents the candle where an institution was absorbing all retail orders[\s\S]{0,180}before launching price in their intended direction/i,
+  },
+  {
+    source: 'primary',
+    label: 'order-block structure shift made universally mandatory',
+    pattern: /The move must include a BOS or ChoCH — confirming that structure shifted after the OB candle/i,
+  },
+  {
+    source: 'primary',
+    label: 'OTE made to require one fixed combination of filters',
+    pattern: /It must be combined with a liquidity sweep, a Fair Value Gap or Order Block, and alignment with the higher timeframe narrative/i,
+  },
+  {
+    source: 'legacy',
+    label: 'premium and discount stated as universal buy and sell zones',
+    pattern: /Premium = sell zone, discount = buy zone/i,
+  },
+  {
+    source: 'legacy',
+    label: 'daily draw on liquidity presented as the definite primary target',
+    pattern: /This is today's primary target/i,
+  },
+  {
+    source: 'legacy',
+    label: 'PD arrays presented as often defining the session turn',
+    pattern: /These are high-priority reaction zones that often define the session's key turning point/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Turtle Soup described as consistently reliable due to predictable institutional stop hunting',
+    pattern: /It is one of the most consistently reliable setups in the entire ICT framework[\s\S]{0,220}single most predictable institutional behavior/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Turtle Soup stop prescribed beyond the entire wick as a guarantee',
+    pattern: /The stop must be above the (?:maximum sweep point|absolute high of the wick)/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Turtle Soup quiz treats higher-timeframe alignment as mandatory',
+    pattern: /A Turtle Soup setup requires HTF alignment because/i,
+  },
+  {
+    source: 'legacy',
+    label: 'backtesting claims an edge is proven by hundreds of observations',
+    pattern: /ICT traders do not think[\s\S]{0,240}provable, statistical edge/i,
+  },
+  {
+    source: 'legacy',
+    label: 'backtesting subtitle suggests hundreds prove an edge',
+    pattern: /No Edge Can Be Trusted Until It Has Been Proven Across Hundreds of Historical Setups/i,
+  },
+  {
+    source: 'legacy',
+    label: 'backtesting sample-size quiz asserts a universal 100-trade minimum',
+    pattern: /The minimum number of trades required for statistically significant backtesting/i,
+  },
+  {
+    source: 'legacy',
+    label: 'backtest filter changes promoted automatically based on winners and losers',
+    pattern: /Add criteria that consistently appear in winners as requirements\. Remove criteria that consistently appear in losers as exclusions/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold presented as rising whenever markets crash or inflation fears rise',
+    pattern: /Gold \(XAU\/USD\) is the ultimate safe-haven asset\. When markets crash, gold rises\. When inflation fears spike, gold rises/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold-dollar relationship taught as a fixed inverse correlation',
+    pattern: /What is gold inversely correlated with/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold benchmark auction time taught as 10AM GMT',
+    pattern: /When is the London Gold Fix[\s\S]{0,180}10AM GMT/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold FVG size taught as fixed pip bands',
+    pattern: /How wide are typical gold FVGs/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Bitcoin halving presented as an exact four-calendar-year schedule in quiz',
+    pattern: /When does Bitcoin halving occur[\s\S]{0,150}Every 4 years/i,
+  },
+];
+for (const check of curriculumBatchForbidden) forbidden.push(check);
+
 const required = [
   {
     source: 'primary',
@@ -899,6 +993,82 @@ const required = [
     source: 'legacy',
     label: 'weekly phase definitions are testable hypotheses',
     pattern: /no weekday is a reliable phase assignment by itself/i,
+  },
+
+  {
+    source: 'primary',
+    label: 'order-block chart candle is not proof of institutional absorption',
+    pattern: /a chart pattern cannot show whether institutions absorbed retail orders, who traded, or what participants intended/i,
+  },
+  {
+    source: 'primary',
+    label: 'OB confirmation rule is framed as a model-specific filter',
+    pattern: /Some OB definitions require a BOS or ChoCH after the candidate candle/i,
+  },
+  {
+    source: 'primary',
+    label: 'OTE filters are identified as variant-specific and testable',
+    pattern: /Some OTE variants combine a liquidity sweep, an FVG or Order Block reference, and higher-timeframe context/i,
+  },
+  {
+    source: 'legacy',
+    label: 'premium and discount are contextual rather than automatic trade directions',
+    pattern: /premium may be studied as potential short context and discount as potential long context\. Neither is an entry signal by itself/i,
+  },
+  {
+    source: 'legacy',
+    label: 'daily targets are candidate reference areas',
+    pattern: /These are candidate reference areas, not necessarily today's target/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Turtle Soup description allows a breakout to continue',
+    pattern: /This pattern does not establish that retail stops were targeted, predict a reversal, or rank the setup's reliability; breakouts can continue/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Turtle Soup stop is selected from model invalidation and sized to distance',
+    pattern: /Define the stop from the model's invalidation rule, then size the position for that distance/i,
+  },
+  {
+    source: 'legacy',
+    label: 'backtesting acknowledges uncertain inference and out-of-sample performance',
+    pattern: /Backtesting can help evaluate a trading hypothesis, but it does not prove a durable edge/i,
+  },
+  {
+    source: 'legacy',
+    label: 'backtest sample-size quiz does not impose a fixed threshold',
+    pattern: /What determines how much backtest data is needed[\s\S]{0,300}there is no universal threshold/i,
+  },
+  {
+    source: 'legacy',
+    label: 'backtest filter selection warns about overfitting and uses untouched data',
+    pattern: /More filters and rule changes increase the risk of fitting noise[\s\S]{0,240}untouched out-of-sample data/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold intro describes safe-haven behavior as conditional',
+    pattern: /Gold is often treated as a potential safe-haven asset, but it does not always rise during market stress or every inflation scare/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold-dollar relationship is framed as varying',
+    pattern: /It has often been negative over some periods, but varies and can sometimes turn positive/i,
+  },
+  {
+    source: 'legacy',
+    label: 'LBMA Gold Price auctions stated at official commencement times',
+    pattern: /When do the LBMA Gold Price auctions commence[\s\S]{0,300}10:30 and 15:00 London time/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold FVG sizing uses a consistent product-specific convention',
+    pattern: /Use a consistent product-specific price\/tick convention, then measure outcomes with costs and market conditions/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Bitcoin halving quiz ties subsidy reduction to 210,000 blocks',
+    pattern: /A block-subsidy reduction every 210,000 blocks, roughly four years at expected block times/i,
   },
 
 ];
