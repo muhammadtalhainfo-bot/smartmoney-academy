@@ -849,6 +849,50 @@ const legacyReversalRiskForbidden = [
 ];
 for (const check of legacyReversalRiskForbidden) forbidden.push(check);
 
+const bprResidualForbidden = [
+  {
+    source: 'legacy',
+    label: 'Turtle Soup does not assume that later reversal is the expected outcome',
+    pattern: /watches the real trade work without them/i,
+  },
+  {
+    source: 'legacy',
+    label: 'higher-timeframe mismatch is not assumed to prove a continuation stop hunt',
+    pattern: /many "Turtle Soups" are actually continuation stop hunts/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Judas outcomes are not classified by a fixed categorical stereotype',
+    pattern: /Genuine Judas: fast sweep → immediate reversal → large reversal candles with FVGs/i,
+  },
+  {
+    source: 'legacy',
+    label: 'BPR is not claimed to create the sharpest reactions',
+    pattern: /dual institutional zone that creates the sharpest reactions/i,
+  },
+  {
+    source: 'legacy',
+    label: 'BPR overlap is not claimed to concentrate institutional interest most',
+    pattern: /most concentrated institutional interest of any entry zone/i,
+  },
+  {
+    source: 'legacy',
+    label: 'BPR is not described as simultaneously triggering both institutional order sets',
+    pattern: /BOTH sets of orders are triggered simultaneously/i,
+  },
+  {
+    source: 'legacy',
+    label: 'BPR is not presented as stronger or more complete by default',
+    pattern: /Reactions from BPRs are typically sharper, faster, and more complete/i,
+  },
+  {
+    source: 'legacy',
+    label: 'narrow BPR is not said to indicate precise institutional concentration',
+    pattern: /The smaller the overlap zone, the more precise the institutional concentration/i,
+  },
+];
+for (const check of bprResidualForbidden) forbidden.push(check);
+
 const required = [
   {
     source: 'primary',
@@ -1343,6 +1387,25 @@ const legacyReversalRiskRequired = [
   },
 ];
 required.push(...legacyReversalRiskRequired);
+
+const bprResidualRequired = [
+  {
+    source: 'legacy',
+    label: 'BPR predictive strength is framed as an empirical question',
+    pattern: /Whether price reacts there more often, more sharply or more completely than at other zones is an empirical question/i,
+  },
+  {
+    source: 'legacy',
+    label: 'BPR test compares with individual FVGs and a simple reference',
+    pattern: /Test this hypothesis against each individual FVG and a simple reference strategy/i,
+  },
+  {
+    source: 'legacy',
+    label: 'BPR geometry does not imply a stronger order book',
+    pattern: /A narrow overlap is more precise geometrically, but that does not establish a more concentrated order book or better trading performance/i,
+  },
+];
+required.push(...bprResidualRequired);
 
 const failures = [];
 for (const check of forbidden) {
