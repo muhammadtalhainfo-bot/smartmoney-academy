@@ -661,6 +661,95 @@ const curriculumBatchForbidden = [
 ];
 for (const check of curriculumBatchForbidden) forbidden.push(check);
 
+const foundationalBatchForbidden = [
+  {
+    source: 'primary',
+    label: 'market structure does not assign total control to buyers or sellers',
+    pattern: /Buyers are in full control|Sellers are in full control/i,
+  },
+  {
+    source: 'primary',
+    label: 'BOS is not claimed to confirm continuation by itself',
+    pattern: /It confirms that the current trend is continuing|confirming continuation of the downtrend/i,
+  },
+  {
+    source: 'primary',
+    label: 'ChoCH is not described as proof of a trend reversal',
+    pattern: /is the signal that the trend is REVERSING/i,
+  },
+  {
+    source: 'primary',
+    label: 'a structure break does not claim to identify buyers stepping in',
+    pattern: /It means buyers have stepped in aggressively enough/i,
+  },
+  {
+    source: 'primary',
+    label: 'internal structure is not called a precise entry trigger',
+    pattern: /THAT is your precise entry trigger/i,
+  },
+  {
+    source: 'primary',
+    label: 'a prior BOS does not predict pullback depth',
+    pattern: /know how deep the pullback could go/i,
+  },
+  {
+    source: 'primary',
+    label: 'BSL does not assert a known, present cluster of short-stop orders',
+    pattern: /Retail traders have placed stop-losses on their short positions|Buy-stop orders from breakout traders are waiting/i,
+  },
+  {
+    source: 'primary',
+    label: 'a sweep is not presented as institutional buying',
+    pattern: /This is the institution filling buys/i,
+  },
+  {
+    source: 'primary',
+    label: 'a sweep and structure break do not guarantee reversal',
+    pattern: /This confirms the sweep is done and price is reversing/i,
+  },
+  {
+    source: 'primary',
+    label: 'FVG is not said to be a zone with no two-sided trading',
+    pattern: /a zone where no two-sided trading occurred/i,
+  },
+  {
+    source: 'primary',
+    label: 'FVG revisits are not assigned a verified institutional-order cause',
+    pattern: /Price returns to FVGs because of the mechanics of how large institutional orders get filled/i,
+  },
+  {
+    source: 'primary',
+    label: 'FVGs are not described as unfilled institutional orders',
+    pattern: /represent unfilled institutional orders/i,
+  },
+  {
+    source: 'primary',
+    label: 'first-presented FVG is not claimed to be universally most important',
+    pattern: /FIRST FVG that forms is the most important/i,
+  },
+  {
+    source: 'primary',
+    label: 'BPR overlap is not described as double strength',
+    pattern: /overlapping FVGs = double strength/i,
+  },
+  {
+    source: 'primary',
+    label: 'an SSL sweep is not said to start a reversal',
+    pattern: /This starts the reversal/i,
+  },
+  {
+    source: 'primary',
+    label: 'FVG alignment is not a universal mandatory filter',
+    pattern: /Only use FVGs that align/i,
+  },
+  {
+    source: 'primary',
+    label: 'a stop hit is not said to invalidate every FVG',
+    pattern: /This invalidates the FVG if hit/i,
+  },
+];
+for (const check of foundationalBatchForbidden) forbidden.push(check);
+
 const required = [
   {
     source: 'primary',
@@ -1072,6 +1161,45 @@ const required = [
   },
 
 ];
+
+const foundationalBatchRequired = [
+  {
+    source: 'primary',
+    label: 'BOS and ChoCH/MSS definitions are model-dependent interpretations',
+    pattern: /Terminology and swing-selection rules differ among ICT variants; the label marks a possible change, not proof that a reversal is underway/i,
+  },
+  {
+    source: 'primary',
+    label: 'liquidity labels do not expose actual participant orders',
+    pattern: /The chart does not reveal the actual orders or prove that a particular level contains a large cluster of stops/i,
+  },
+  {
+    source: 'primary',
+    label: 'sweep examples do not identify the trader or cause of a move',
+    pattern: /the chart alone cannot identify who traded or why/i,
+  },
+  {
+    source: 'primary',
+    label: 'FVG definition distinguishes candle geometry from actual trading',
+    pattern: /The chart pattern describes candle ranges; it does not mean that no trading occurred in the zone/i,
+  },
+  {
+    source: 'primary',
+    label: 'FVG revisit performance must be evaluated rather than presumed',
+    pattern: /does not verify a particular cause or guarantee a revisit[\\s\\S]{0,220}consistent FVG definition and recorded outcomes/i,
+  },
+  {
+    source: 'primary',
+    label: 'FVG execution considers missed fills and stop placement rules',
+    pattern: /a limit order may be missed or filled without a favorable reaction[\\s\\S]{0,350}does not universally invalidate the chart pattern/i,
+  },
+  {
+    source: 'primary',
+    label: 'FVG targets are presented as alternatives instead of guaranteed destinations',
+    pattern: /a fixed risk multiple or a time-based exit[\\s\\S]{0,220}not a guaranteed destination/i,
+  },
+];
+required.push(...foundationalBatchRequired);
 
 const failures = [];
 for (const check of forbidden) {
