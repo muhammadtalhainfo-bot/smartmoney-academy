@@ -890,6 +890,16 @@ const bprResidualForbidden = [
     label: 'narrow BPR is not said to indicate precise institutional concentration',
     pattern: /The smaller the overlap zone, the more precise the institutional concentration/i,
   },
+  {
+    source: 'legacy',
+    label: 'BPR reaction section title does not promise extreme reactions',
+    pattern: /title: \`Why BPR Creates Extreme Reactions\`/i,
+  },
+  {
+    source: 'legacy',
+    label: 'BPR invalidation is not universalized through a quiz answer',
+    pattern: /Consider the BPR mitigated and remove it from your chart/i,
+  },
 ];
 for (const check of bprResidualForbidden) forbidden.push(check);
 
@@ -1403,6 +1413,16 @@ const bprResidualRequired = [
     source: 'legacy',
     label: 'BPR geometry does not imply a stronger order book',
     pattern: /A narrow overlap is more precise geometrically, but that does not establish a more concentrated order book or better trading performance/i,
+  },
+  {
+    source: 'legacy',
+    label: 'BPR direction convention is not presented as a universal outcome rule',
+    pattern: /One naming convention may label an overlap bullish or bearish using a predefined dealing-range reference/i,
+  },
+  {
+    source: 'legacy',
+    label: 'BPR quiz uses a predefined invalidation rule',
+    pattern: /Apply your predefined invalidation rule; some models mark the zone inactive after a close through it/i,
   },
 ];
 required.push(...bprResidualRequired);
