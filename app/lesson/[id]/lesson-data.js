@@ -294,40 +294,40 @@ Bearish Order Block:
 • The last BULLISH (green) candle before a significant bearish move
 • ICT interpretations may describe this candle as an area of institutional selling; actual participant positioning cannot be confirmed from the candle alone.
 • The OB zone = the body of that last bullish candle
-• Price returns here as resistance
+• A later revisit may be studied as possible resistance under a defined model; it can also fail or be crossed without a reaction.
 
 In this ICT-style framework, traders may define an OB confirmation using a BOS/ChoCH, an FVG, and displacement; these are model criteria to test rather than universal validation rules.`,
         highlight: '📌 In ICT terminology, an Order Block is studied as a candle/zone associated with a subsequent displacement move. Claims about unfilled institutional orders should be treated as a theoretical interpretation.',
       },
       {
         title: 'How to Identify a Valid Order Block',
-        content: `Not every candle before a move is a valid Order Block. ICT gives specific criteria for validity:
+        content: `Not every candle before a move is an Order Block under a given strategy. Definitions and validity criteria differ across ICT variants, so state the rules you use:
 
 1. Some ICT traders look for displacement after an OB, often accompanied by large directional candles and FVGs. A slower move may be treated differently depending on the model; test the rule rather than assume it is universally valid.
 
 2. Some OB definitions require a BOS or ChoCH after the candidate candle. If your model uses that rule, define structure consistently and test whether it adds information; the shift is not confirmation of institutional intent.
 
-3. Mitigation threshold — once price returns to the OB, it should react within the body of the OB candle. Specifically, ICT says a bullish OB is valid if price holds above the 50% level of the OB candle (the midpoint between open and close).
+3. Mitigation threshold — definitions vary. Some traders assess whether price holds above or below the OB candle's 50% level (the midpoint between open and close); others use a different boundary or close rule. Specify one definition and record failures as well as reactions.
 
-4. Volume context — higher volume on the OB candle and the displacement move adds validity.
+4. Volume context — some traders include volume as a filter where the data represents the market they trade. Volume availability and meaning vary by venue and instrument; test whether the filter adds value instead of assuming that higher volume validates an OB.
 
-5. Higher-timeframe alignment — some traders use a Daily OB as context for a 5-minute OB. Whether this adds value depends on the model and should be tested. Always record the timeframe of the OB.`,
+5. Higher-timeframe alignment — some traders use a Daily OB as context for a 5-minute OB. Whether this adds value depends on the model and should be tested. Record the timeframe used.`,
         highlight: '📌 Possible OB filter set: define displacement, any BOS/ChoCH condition, FVG criteria and the role of HTF context. These are model choices to test, not universal requirements or proof of institutional activity.',
       },
       {
         title: 'Order Block Variations',
-        content: `ICT has developed several OB variations over the years:
+        content: `ICT teaching uses several Order Block variations, but their naming rules differ by source and model:
 
-Breaker Block: An Order Block that FAILED. When price returns to an OB and instead of reversing, it blasts through — that OB is now a Breaker Block. In a bullish scenario: a bearish OB that gets violated to the upside becomes a support zone (breaker). Within the ICT interpretation, a breaker may be discussed as a former OB that changes role after being violated; the chart alone cannot confirm that institutions defended or added to a position.
+Breaker Block: Some ICT variants label a former OB a Breaker after price violates it, then study whether it may act as a reference on a later revisit. A bullish or bearish polarity change is a hypothesis, not a guaranteed result. Define the violation (wick or close), retest condition, entry trigger and invalidation before testing it.
 
-Mitigation Block: When an OB is partially filled — price enters the OB but not fully. ICT considers partially mitigated OBs as still valid for future tests.
+Mitigation Block: Some traders use this label for a particular type of retracement or partial return to a former zone. Definitions differ; do not assume partial entry into an OB preserves its future validity without a specific rule and evidence.
 
-Rejection Block: The WICK of a candle before a strong move, rather than the body. When price creates a long wick before launching, that wick zone is a rejection block — slightly different from a standard OB.
+Rejection Block: Some ICT definitions focus on a wick or rejection area rather than the OB candle body. Define the candle, wick boundary and qualifying move explicitly; a long wick alone does not establish future support or resistance.
 
-Hidden OB: An OB that exists on a higher timeframe but is not visible when looking at a lower timeframe alone. Requires multi-timeframe analysis to identify.
+Hidden OB: Some traders use this label for a candidate zone identified on a higher timeframe that is less apparent on a lower-timeframe chart. The designation depends on the chosen zone definition and timeframe.
 
-Reclaimed OB (2024): If an OB gets swept through but price quickly returns inside it — the OB is "reclaimed" and is still valid for trading.`,
-        highlight: '📌 Breaker Block is the OB that failed. When an OB gets broken through, it inverts polarity and becomes support (if bullish) or resistance (if bearish).',
+Reclaimed OB: Some variants use this label when price trades through a candidate OB and then returns inside it. A reclaim label does not itself prove the zone remains valid for a future entry; define the return condition, invalidation and trade trigger before testing the variant.`,
+        highlight: '📌 A Breaker is one ICT label for a failed zone that may later change role. Define its violation and retest criteria; a polarity change or reaction is not guaranteed.',
       },
       {
         title: 'Order Block vs Fair Value Gap — Key Differences',
@@ -548,12 +548,12 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
       },
       {
         title: 'Premium and Discount Arrays — The Full Spectrum',
-        content: `Within the premium and discount framework, ICT identifies specific price delivery arrays — zones that the framework treats as potential reaction areas. From most premium to most discount:\n\nPREMIUM ARRAYS (selling opportunities):\n1. Old Highs / Buy-Side Liquidity (BSL) — most premium\n2. Bearish Order Blocks\n3. Bearish Fair Value Gaps (FVGs)\n4. Equilibrium (50%) — the dividing line\n5. Bullish Fair Value Gaps\n6. Bullish Order Blocks\n7. Old Lows / Sell-Side Liquidity (SSL) — most discount\n\nThis spectrum provides a way to organize potential resistance in premium and support in discount; actual reactions vary by instrument, timeframe, and market conditions.\n\nUnderstanding this spectrum can help organize setups by context. An old SSL combined with bullish OB/FVG confluence may be treated as a higher-confluence example within this framework, but it does not establish the highest-quality outcome or guarantee undervaluation.`,
+        content: `Within the premium/discount framework, traders may group ICT price arrays by their location relative to a chosen dealing range. The outline below is one common way to organize candidate references from higher-price to lower-price context; it is not a validated ranking of predictive power or trade quality:\n\nPOTENTIAL PREMIUM CONTEXT (above the range's 50% equilibrium):\n• Prior highs / buy-side liquidity references\n• Bearish Order Blocks, under a chosen OB definition\n• Bearish Fair Value Gaps, under a chosen FVG definition\n\nEQUILIBRIUM:\n• The 50% level divides the defined range; it is not, by itself, a buy or sell signal.\n\nPOTENTIAL DISCOUNT CONTEXT (below the range's 50% equilibrium):\n• Bullish Fair Value Gaps, under a chosen FVG definition\n• Bullish Order Blocks, under a chosen OB definition\n• Prior lows / sell-side liquidity references\n\nThe relative ordering of these references inside premium or discount is convention-dependent. Their price location can help describe context, but does not imply a specific reaction, identify the best entry, or show that the market is overvalued or undervalued. A prior low overlapping a bullish OB/FVG is a possible confluence condition to define and test—not proof of a higher-quality trade.`,
         highlight: '📌 The premium/discount spectrum organizes zones by their position in a range. Extremes can be studied as potential reaction areas, but reversal probability varies with market conditions.',
       },
       {
         title: 'Applying Premium & Discount Across Timeframes',
-        content: `The premium/discount framework is fractal — it applies at every timeframe simultaneously. This is where ICT's multi-timeframe analysis becomes powerful.\n\nThe process:\n1. Weekly chart: Identify the major swing high and low. Is price in weekly premium or discount?\n2. Daily chart: Identify the daily swing. Is price in daily premium or discount?\n3. 4H chart: Same analysis\n4. 1H/15M: Find your entry within the OTE\n\nSome traders look for greater confluence when multiple timeframes agree:\n• Weekly: Discount (bullish bias)\n• Daily: Discount (bullish bias)\n• 4H: Pullback into discount after BOS\n• 1H/15M: OTE entry with FVG or OB\n\nWhen multiple ranges show discount, the framework may provide additional context for a potential long setup. This does not reveal what institutional traders are doing or guarantee that price is at the cheapest possible level.\n\nThe opposite alignment can be studied as premium context for potential short setups; it should not be treated as an exclusive sell condition.`,
+        content: `Some traders apply the premium/discount convention to ranges on more than one timeframe. Each timeframe can produce a different swing selection and different premium/discount location, so the results are not a single objective reading that applies identically everywhere.\n\nThe process:\n1. Weekly chart: Identify the major swing high and low. Is price in weekly premium or discount?\n2. Daily chart: Identify the daily swing. Is price in daily premium or discount?\n3. 4H chart: Same analysis\n4. 1H/15M: Find your entry within the OTE\n\nSome traders look for greater confluence when multiple timeframes agree:\n• Weekly: Discount (bullish bias)\n• Daily: Discount (bullish bias)\n• 4H: Pullback into discount after BOS\n• 1H/15M: OTE entry with FVG or OB\n\nWhen multiple ranges show discount, the framework may provide additional context for a potential long setup. This does not reveal what institutional traders are doing or guarantee that price is at the cheapest possible level.\n\nThe opposite alignment can be studied as premium context for potential short setups; it should not be treated as an exclusive sell condition.`,
         highlight: '📌 Multi-timeframe discount alignment can provide additional confluence in this framework. It does not guarantee institutional backing or a trading outcome.',
       },
       {
