@@ -2229,6 +2229,66 @@ const expectancySignResidualRequired = [
 forbidden.push(...expectancySignResidualForbidden);
 required.push(...expectancySignResidualRequired);
 
+
+const modelSpecificationResidualForbidden = [
+  {
+    source: 'primary',
+    label: 'Silver Bullet quiz presents one clock window as universally defined',
+    pattern: /The Silver Bullet 10:00 AM window closes at\?/i,
+  },
+  {
+    source: 'primary',
+    label: 'top-down checklist implies every strategy requires every listed timeframe',
+    pattern: /If any required layer is missing, mark the trade as “not qualified” instead of filling the gap with hindsight/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold context criteria leave the OR/AND relationship ambiguous',
+    pattern: /Stock market is selling off \(S&P 500 down 1%\+\) OR\\n- Geopolitical tensions are rising OR\\n- Inflation data surprised to the upside\\n- DXY is weakening/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold entry conditions treat an undefined zone touch as an entry',
+    pattern: /Wait for price to return to a bullish PD array\\n- Enter during London or NY killzone/i,
+  },
+];
+
+const modelSpecificationResidualRequired = [
+  {
+    source: 'primary',
+    label: 'Silver Bullet quiz qualifies the example by its stated time convention',
+    pattern: /For the Silver Bullet example variant defined as 10:00–11:00 AM New York time, when does that window close/i,
+  },
+  {
+    source: 'primary',
+    label: 'top-down process uses only the timeframes required by the tested strategy',
+    pattern: /Use only the layers required by the strategy you are testing/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold macro context variants are written down before testing',
+    pattern: /Choose and document one context variant[\s\S]{0,500}Do not switch between these alternatives after seeing the chart outcome/i,
+  },
+  {
+    source: 'legacy',
+    label: 'DXY filter status is fixed in advance',
+    pattern: /decide in advance whether it is a required condition or a separate filter to test/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold structure requirements distinguish conditions from optional filters',
+    pattern: /State whether all three conditions must be present or whether they are being tested as separate filters/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold entry zones require a defined trigger and documented time convention',
+    pattern: /Define the qualifying bullish PD-array return and the observable entry trigger before testing[\s\S]{0,200}exact window and New York time\/daylight-saving convention/i,
+  },
+];
+
+forbidden.push(...modelSpecificationResidualForbidden);
+required.push(...modelSpecificationResidualRequired);
+
 const failures = [];
 for (const check of forbidden) {
   if (check.pattern.test(text[check.source])) {
