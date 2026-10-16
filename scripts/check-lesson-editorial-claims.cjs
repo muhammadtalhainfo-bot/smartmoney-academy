@@ -2289,6 +2289,71 @@ const modelSpecificationResidualRequired = [
 forbidden.push(...modelSpecificationResidualForbidden);
 required.push(...modelSpecificationResidualRequired);
 
+
+const rangeAndTimeframeResidualForbidden = [
+  {
+    source: 'primary',
+    label: 'premium/discount opening overstates objective price quality',
+    pattern: /there is no such thing as an objectively \\"good\\" or \\"bad\\" price/i,
+  },
+  {
+    source: 'primary',
+    label: 'premium/discount framed as ICT answering whether an entry is good',
+    pattern: /The Premium & Discount framework is ICT's answer to the question every trader asks/i,
+  },
+  {
+    source: 'primary',
+    label: 'premium/discount claimed to apply identically at every timeframe',
+    pattern: /The premium\/discount framework is fractal — it applies at every timeframe simultaneously/i,
+  },
+  {
+    source: 'primary',
+    label: 'multi-timeframe approach is described as inherently powerful',
+    pattern: /This is where ICT's multi-timeframe analysis becomes powerful/i,
+  },
+  {
+    source: 'primary',
+    label: 'SMT is categorically barred from being a standalone model',
+    pattern: /SMT should usually be a confluence or filter, not the complete entry model/i,
+  },
+  {
+    source: 'primary',
+    label: '4H is presented as a universal confirmation timeframe',
+    pattern: /title: '4H Confirmation'/i,
+  },
+  {
+    source: 'primary',
+    label: '15M and 5M are presented as universal entry timeframes',
+    pattern: /title: '15M and 5M Entry Timeframes'/i,
+  },
+];
+
+const rangeAndTimeframeResidualRequired = [
+  {
+    source: 'primary',
+    label: 'premium/discount is described as location, not objective valuation',
+    pattern: /this is a location convention, not an objective valuation of the asset/i,
+  },
+  {
+    source: 'primary',
+    label: 'SMT alternatives allow standalone testing with defined trade rules',
+    pattern: /A standalone SMT strategy can also be tested, but its entry trigger, invalidation and risk rules must be defined separately/i,
+  },
+  {
+    source: 'primary',
+    label: 'top-down execution timeframes are described as optional and model-specific',
+    pattern: /15M and 5M are examples, not universal requirements/i,
+  },
+  {
+    source: 'primary',
+    label: '4H context is conditional on the chosen model',
+    pattern: /A 4H chart is not a required confirmation layer for every ICT-style model/i,
+  },
+];
+
+forbidden.push(...rangeAndTimeframeResidualForbidden);
+required.push(...rangeAndTimeframeResidualRequired);
+
 const failures = [];
 for (const check of forbidden) {
   if (check.pattern.test(text[check.source])) {
