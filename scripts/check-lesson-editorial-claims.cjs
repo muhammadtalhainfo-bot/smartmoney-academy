@@ -2157,7 +2157,7 @@ const executionPsychResidualRequired = [
   {
     source: 'legacy',
     label: 'average losing R reflects actual fills and management rather than a fixed minus one R',
-    pattern: /Actual average losses can differ with partial exits, early exits, slippage, gaps and costs/i,
+    pattern: /Realized losses can differ from the full planned stop because of partial exits, early exits, slippage, gaps and costs/i,
   },
   {
     source: 'legacy',
