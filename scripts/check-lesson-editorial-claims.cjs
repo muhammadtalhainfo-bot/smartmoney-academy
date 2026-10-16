@@ -2244,12 +2244,12 @@ const modelSpecificationResidualForbidden = [
   {
     source: 'legacy',
     label: 'gold context criteria leave the OR/AND relationship ambiguous',
-    pattern: /Stock market is selling off \(S&P 500 down 1%\+\) OR\\n- Geopolitical tensions are rising OR\\n- Inflation data surprised to the upside\\n- DXY is weakening/i,
+    pattern: /Stock market is selling off \(S&P 500 down 1%\+\) OR[\s\S]{0,150}Geopolitical tensions are rising OR[\s\S]{0,150}Inflation data surprised to the upside[\s\S]{0,100}DXY is weakening/i,
   },
   {
     source: 'legacy',
     label: 'gold entry conditions treat an undefined zone touch as an entry',
-    pattern: /Wait for price to return to a bullish PD array\\n- Enter during London or NY killzone/i,
+    pattern: /Wait for price to return to a bullish PD array[\s\S]{0,100}Enter during London or NY killzone/i,
   },
 ];
 
