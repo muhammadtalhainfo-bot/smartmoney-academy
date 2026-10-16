@@ -2189,6 +2189,46 @@ const executionPsychResidualRequired = [
 forbidden.push(...executionPsychResidualForbidden);
 required.push(...executionPsychResidualRequired);
 
+
+const expectancySignResidualForbidden = [
+  {
+    source: 'legacy',
+    label: 'average loser is defined as a signed value but later subtracted as a loss magnitude',
+    pattern: /AVERAGE R ON LOSERS:/i,
+  },
+  {
+    source: 'legacy',
+    label: 'expectancy formula subtracts an ambiguously signed average loser',
+    pattern: /\(Win rate × Average R winner\) - \(Loss rate × Average R loser\)/i,
+  },
+  {
+    source: 'legacy',
+    label: 'expectancy quiz repeats an ambiguously signed average loser',
+    pattern: /\(Win rate × Avg R winner\) - \(Loss rate × Avg R loser\)/i,
+  },
+];
+
+const expectancySignResidualRequired = [
+  {
+    source: 'legacy',
+    label: 'average loss is defined as a positive magnitude',
+    pattern: /AVERAGE LOSS MAGNITUDE \(POSITIVE VALUE\):[\s\S]{0,200}absolute values of losing-trade R multiples/i,
+  },
+  {
+    source: 'legacy',
+    label: 'expectancy subtracts the positive average loss magnitude',
+    pattern: /\(Win rate × Average R winner\) - \(Loss rate × Average loss magnitude\)/i,
+  },
+  {
+    source: 'legacy',
+    label: 'expectancy quiz uses the same sign-safe definition',
+    pattern: /\(Win rate × Avg R winner\) - \(Loss rate × Average loss magnitude\)/i,
+  },
+];
+
+forbidden.push(...expectancySignResidualForbidden);
+required.push(...expectancySignResidualRequired);
+
 const failures = [];
 for (const check of forbidden) {
   if (check.pattern.test(text[check.source])) {
