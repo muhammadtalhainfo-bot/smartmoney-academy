@@ -426,6 +426,187 @@ for (const [label, pattern] of requiredSeoContext) {
   if (!pattern.test(posts)) errors.push('Expected SEO/editorial context missing: ' + label + '.');
 }
 
+
+const articleBodyRegressionChecks = [
+  {
+    slug: 'ict-pd-array-matrix-explained',
+    forbidden: [
+      ['PD Array probability hierarchy presented as fact', /ICT ranks PD Arrays from highest to lowest probability/i],
+      ['premium and discount as mandatory buy/sell zones', /You only buy PD Arrays in discount[\s\S]{0,120}You only sell PD Arrays in premium/i],
+      ['premium/discount claimed to reveal institutional buyers and sellers', /the institutional sellers will be at those levels/i],
+      ['BPR reactions ranked as sharpest and fastest', /Reactions at BPRs are typically the sharpest and fastest/i],
+      ['BPR overlap treated as stacked institutional orders', /both types of institutional imbalance are stacked at the same price level/i],
+    ],
+    required: [
+      ['PD Array ranking is explicitly unvalidated', /no universal, independently validated probability ranking/i],
+      ['premium/discount framed as contextual', /Premium and discount describe location relative to a chosen range midpoint/i],
+      ['BPR is defined as visible overlap, not orders', /an overlap of candle-defined price areas; it does not prove that institutional orders remain at that level/i],
+    ],
+    readTime: /readTime:\s*'4 min read'/,
+  },
+  {
+    slug: 'ict-liquidity-forex-trading',
+    forbidden: [
+      ['BSL described as algorithm-engineered to fill institutional orders', /When the algorithm needs to fill large buy orders, it drives price above BSL levels/i],
+      ['SSL described as algorithm-engineered to fill institutional orders', /When the algorithm needs to fill large sell orders[\s\S]{0,300}it drives price below SSL levels/i],
+      ['all traders assumed to place stops at equal highs', /every trader who looks at the chart will see those equal highs and place stop orders/i],
+    ],
+    required: [
+      ['liquidity is separated from observed order-book contents', /A chart does not show the complete order book or confirm which orders are present/i],
+      ['BSL outcome is described as a hypothesis', /Some ICT narratives hypothesize that a move above a BSL reference may trigger stops/i],
+    ],
+    readTime: /readTime:\s*'3 min read'/,
+  },
+  {
+    slug: 'ict-balanced-price-range-bpr',
+    forbidden: [
+      ['FVG described as proof that one side could not participate', /a gap where (?:sellers|buyers) could not participate/i],
+    ],
+    required: [
+      ['BPR definition remains grounded in chart overlap', /The overlap can be marked as a Balanced Price Range/i],
+    ],
+    readTime: /readTime:\s*'3 min read'/,
+  },
+  {
+    slug: 'power-of-three-amd-model',
+    forbidden: [
+      ['AMD tied to a fixed weekday schedule', /Monday is often the Accumulation day[\s\S]{0,180}Tuesday is often the Manipulation day/i],
+      ['London declared the most deceptive session', /the most deceptive session of the day/i],
+      ['distribution asserted as institutional delivery', /The Distribution phase is when institutions deliver price to their target/i],
+      ['AMD stated as a universal fractal cycle', /The same three-phase pattern that describes a single day also describes an entire week/i],
+    ],
+    required: [
+      ['AMD phase timing is a testable hypothesis', /Those calendar associations are hypotheses, not reliable schedules/i],
+      ['AMD timeframe patterns are not universal cycles', /do not establish a universal fractal cycle/i],
+    ],
+    readTime: /readTime:\s*'4 min read'/,
+  },
+  {
+    slug: 'ict-killzones-guide',
+    forbidden: [
+      ['killzones treated as guaranteed win-rate advantage', /These windows guarantee cleaner price action or higher win rates/i],
+    ],
+    required: [
+      ['session windows are described as filters to test', /do not guarantee cleaner price action or higher win rates/i],
+    ],
+    readTime: /readTime:\s*'4 min read'/,
+  },
+  {
+    slug: 'ict-mss-vs-choch-explained',
+    forbidden: [
+      ['MSS universally required after every ChoCH', /Never enter on a ChoCH alone[\s\S]{0,180}Wait for the MSS/i],
+    ],
+    required: [
+      ['structure labels treated as model-specific conventions', /Some ICT models require a second structure event after a ChoCH, while others define their trigger differently/i],
+    ],
+    readTime: /readTime:\s*'3 min read'/,
+  },
+  {
+    slug: 'what-is-ict-trading',
+    forbidden: [
+      ['unverified education-library superlative', /one of the most comprehensive free trading education libraries in the world/i],
+      ['all retail traders stereotyped as relying on lagging indicators', /They use lagging indicators designed to describe what already happened\. They chase patterns/i],
+    ],
+    required: [
+      ['retail trading approaches are not generalized as one group', /No single description applies to all retail traders/i],
+    ],
+    readTime: /readTime:\s*'5 min read'/,
+  },
+  {
+    slug: 'ict-mitigation-block-guide',
+    forbidden: [
+      ['Order Block reaction portrayed as confirmation that it will hold', /the OB has been tested and confirmed[\s\S]{0,100}the original move resumes/i],
+      ['mitigation block lifecycle declared universally', /The zone is now a Mitigation Block/i],
+    ],
+    required: [
+      ['mitigation-block terminology is qualified by convention', /Some educators label a zone that price has crossed a mitigation block, while others use different conventions/i],
+    ],
+    readTime: /readTime:\s*'3 min read'/,
+  },
+  {
+    slug: 'ict-sibi-bisi-explained',
+    forbidden: [
+      ['SIBI/BISI assumed to identify participant absence', /sellers were entirely absent|buyers were entirely absent/i],
+      ['SIBI/BISI treated as absolute buy/sell instructions', /Never buy a SIBI and never sell a BISI|Only buy BISI zones in bullish institutional order flow/i],
+      ['SIBI/BISI said to reveal institutional buying/selling', /overwhelming institutional buying that drove price|institutional selling so dominant/i],
+    ],
+    required: [
+      ['BISI is a candle-pattern label rather than participant evidence', /A BISI \(bullish FVG\) is one ICT label for a bullish three-candle gap/i],
+      ['SIBI/BISI benefits are not presumed without testing', /labels themselves do not prove directional intent or an edge/i],
+    ],
+    readTime: /readTime:\s*'3 min read'/,
+  },
+  {
+    slug: 'draw-on-liquidity-ict',
+    forbidden: [
+      ['all price movement reduced to deterministic liquidity delivery', /every significant move has a predetermined target/i],
+      ['DOL required as every take-profit method', /Your DOL becomes your take-profit target before you ever enter a trade/i],
+      ['DOL practice promises fast improvement', /dramatically better at reading the market[\\]?'s intentions within 60-90 days/i],
+    ],
+    required: [
+      ['DOL path is explicitly a hypothesis', /One ICT narrative describes some moves as transitions between candidate liquidity references/i],
+      ['DOL is one exit method among alternatives', /A candidate DOL can be one preplanned exit method, alongside fixed-R, time-based or other tested rules/i],
+    ],
+    readTime: /readTime:\s*'6 min read'/,
+  },
+  {
+    slug: 'ict-implied-fair-value-gap-ifvg',
+    forbidden: [
+      ['IFVG declared to flip automatically after violation', /IFVGs \(fully violated and flipped\)/i],
+      ['every violated gap treated as an expensive mistake', /one of the most expensive mistakes in ICT trading/i],
+    ],
+    required: [
+      ['close-through does not guarantee a role reversal', /A close through does not guarantee a role reversal/i],
+    ],
+    readTime: /readTime:\s*'3 min read'/,
+  },
+  {
+    slug: 'ict-market-structure-complete-guide',
+    forbidden: [
+      ['structure labels said to explain everything about trend', /tells you everything you need to know about trend direction and strength/i],
+      ['external swing break declared a genuine reversal', /Only when a major external structural high is taken out does a genuine trend reversal occur/i],
+      ['BOS and ChoCH treated as universal outcome rules', /A BOS confirms the trend — it is a continuation signal\. Only a ChoCH signals a potential reversal/i],
+    ],
+    required: [
+      ['external/internal structure remains convention-based', /Some ICT conventions call larger swings external structure and smaller swings within the current range internal structure/i],
+      ['structure labels do not guarantee outcomes', /Educators define these labels differently; neither label guarantees continuation or reversal/i],
+    ],
+    readTime: /readTime:\s*'4 min read'/,
+  },
+  {
+    slug: 'ict-1st-presented-fvg-opening-range',
+    forbidden: [
+      ['opening range claims institutional execution without evidence', /institutional orders that accumulated overnight and during the pre-market session are being executed/i],
+      ['opening range targets described as algorithm destination', /liquidity pools that the algorithm will seek during the rest of the session/i],
+      ['retracement labeled most common without measured evidence', /The first opportunity is the most common/i],
+      ['first-presented FVG ranked as the single most important', /single most important FVG to mark each trading day/i],
+      ['opening range highs and lows guaranteed as primary targets', /are the primary liquidity targets of the opening session/i],
+    ],
+    required: [
+      ['first-presented FVG is framed as a reference rule', /The first qualifying FVG after a selected open is one reproducible reference rule/i],
+      ['entry rule explicitly accounts for misses and costs', /The setup may not trigger; include missed fills and execution costs in the test/i],
+    ],
+    readTime: /readTime:\s*'3 min read'/,
+  },
+];
+
+for (const check of articleBodyRegressionChecks) {
+  const post = postChunks.find((item) => item.slug === check.slug);
+  if (!post) {
+    errors.push('Missing article required for body-regression checks: ' + check.slug);
+    continue;
+  }
+  for (const [label, pattern] of check.forbidden) {
+    if (pattern.test(post.source)) errors.push('/blog/' + check.slug + ': body overclaim regression: ' + label + '.');
+  }
+  for (const [label, pattern] of check.required) {
+    if (!pattern.test(post.source)) errors.push('/blog/' + check.slug + ': expected body safeguard missing: ' + label + '.');
+  }
+  if (check.readTime && !check.readTime.test(post.source)) {
+    errors.push('/blog/' + check.slug + ': reading-time label no longer matches the audited estimate.');
+  }
+}
+
 if (errors.length) {
   for (const error of errors) console.error('Blog editorial guard failed: ' + error);
   process.exit(1);

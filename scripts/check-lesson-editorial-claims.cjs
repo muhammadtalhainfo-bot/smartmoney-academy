@@ -523,6 +523,672 @@ const forbidden = [
   },
 ];
 
+const focusedForbidden = [
+  {
+    source: 'legacy',
+    label: 'daily bias presented as a strict pre-session deadline',
+    pattern: /Daily bias is determined BEFORE the session opens[\s\S]{0,180}already too late/i,
+  },
+  {
+    source: 'legacy',
+    label: 'breakeven timing prescribed universally despite conditional body',
+    pattern: /Move to breakeven when: price moved 1R \+ cleared first PD Array \+ LTF BOS confirmed/i,
+  },
+  {
+    source: 'legacy',
+    label: 'narrative walkthrough presents gold session sequence as likely institutional delivery',
+    pattern: /London will likely sweep below PDL[\s\S]{0,900}This is a complete institutional narrative/i,
+  },
+  {
+    source: 'legacy',
+    label: 'fixed maximum two trades per day presented as universal solution',
+    pattern: /Solution: maximum two trades per day\. After two, close all charts/i,
+  },
+  {
+    source: 'legacy',
+    label: 'partial at TP1 claimed to solve premature exits',
+    pattern: /Solution: partial profits at TP1 reduce this fear/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold narrative reports a fixed return multiple before actual execution',
+    pattern: /Target: weekly draw at 2,340\. R:R = 3\.8:1[\s\S]{0,240}This is professional ICT trading/i,
+  },
+  {
+    source: 'legacy',
+    label: 'arbitrary directional-accuracy threshold certifies readiness for live trading',
+    pattern: /70%\+ direction accuracy = you are ready to trade the narrative live/i,
+  },
+  {
+    source: 'legacy',
+    label: 'weekly AMD assigns fixed phases to weekdays',
+    pattern: /Monday = accumulation\. Tuesday\/Wednesday = manipulation or early distribution\. Thursday\/Friday = primary distribution or reversal/i,
+  },
+];
+for (const check of focusedForbidden) forbidden.push(check);
+
+const curriculumBatchForbidden = [
+  {
+    source: 'primary',
+    label: 'order block falsely described as confirmed institutional absorption',
+    pattern: /It represents the candle where an institution was absorbing all retail orders[\s\S]{0,180}before launching price in their intended direction/i,
+  },
+  {
+    source: 'primary',
+    label: 'order-block structure shift made universally mandatory',
+    pattern: /The move must include a BOS or ChoCH — confirming that structure shifted after the OB candle/i,
+  },
+  {
+    source: 'primary',
+    label: 'OTE made to require one fixed combination of filters',
+    pattern: /It must be combined with a liquidity sweep, a Fair Value Gap or Order Block, and alignment with the higher timeframe narrative/i,
+  },
+  {
+    source: 'legacy',
+    label: 'premium and discount stated as universal buy and sell zones',
+    pattern: /Premium = sell zone, discount = buy zone/i,
+  },
+  {
+    source: 'legacy',
+    label: 'daily draw on liquidity presented as the definite primary target',
+    pattern: /This is today's primary target/i,
+  },
+  {
+    source: 'legacy',
+    label: 'PD arrays presented as often defining the session turn',
+    pattern: /These are high-priority reaction zones that often define the session's key turning point/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Turtle Soup described as consistently reliable due to predictable institutional stop hunting',
+    pattern: /It is one of the most consistently reliable setups in the entire ICT framework[\s\S]{0,220}single most predictable institutional behavior/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Turtle Soup stop prescribed beyond the entire wick as a guarantee',
+    pattern: /The stop must be above the (?:maximum sweep point|absolute high of the wick)/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Turtle Soup quiz treats higher-timeframe alignment as mandatory',
+    pattern: /A Turtle Soup setup requires HTF alignment because/i,
+  },
+  {
+    source: 'legacy',
+    label: 'backtesting claims an edge is proven by hundreds of observations',
+    pattern: /ICT traders do not think[\s\S]{0,240}provable, statistical edge/i,
+  },
+  {
+    source: 'legacy',
+    label: 'backtesting subtitle suggests hundreds prove an edge',
+    pattern: /No Edge Can Be Trusted Until It Has Been Proven Across Hundreds of Historical Setups/i,
+  },
+  {
+    source: 'legacy',
+    label: 'backtesting sample-size quiz asserts a universal 100-trade minimum',
+    pattern: /The minimum number of trades required for statistically significant backtesting/i,
+  },
+  {
+    source: 'legacy',
+    label: 'backtest filter changes promoted automatically based on winners and losers',
+    pattern: /Add criteria that consistently appear in winners as requirements\. Remove criteria that consistently appear in losers as exclusions/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold presented as rising whenever markets crash or inflation fears rise',
+    pattern: /Gold \(XAU\/USD\) is the ultimate safe-haven asset\. When markets crash, gold rises\. When inflation fears spike, gold rises/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold-dollar relationship taught as a fixed inverse correlation',
+    pattern: /What is gold inversely correlated with/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold benchmark auction time taught as 10AM GMT',
+    pattern: /When is the London Gold Fix[\s\S]{0,180}10AM GMT/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold FVG size taught as fixed pip bands',
+    pattern: /How wide are typical gold FVGs/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Bitcoin halving presented as an exact four-calendar-year schedule in quiz',
+    pattern: /When does Bitcoin halving occur[\s\S]{0,150}Every 4 years/i,
+  },
+];
+for (const check of curriculumBatchForbidden) forbidden.push(check);
+
+const foundationalBatchForbidden = [
+  {
+    source: 'primary',
+    label: 'market structure does not assign total control to buyers or sellers',
+    pattern: /Buyers are in full control|Sellers are in full control/i,
+  },
+  {
+    source: 'primary',
+    label: 'BOS is not claimed to confirm continuation by itself',
+    pattern: /It confirms that the current trend is continuing|confirming continuation of the downtrend/i,
+  },
+  {
+    source: 'primary',
+    label: 'ChoCH is not described as proof of a trend reversal',
+    pattern: /is the signal that the trend is REVERSING/i,
+  },
+  {
+    source: 'primary',
+    label: 'a structure break does not claim to identify buyers stepping in',
+    pattern: /It means buyers have stepped in aggressively enough/i,
+  },
+  {
+    source: 'primary',
+    label: 'internal structure is not called a precise entry trigger',
+    pattern: /THAT is your precise entry trigger/i,
+  },
+  {
+    source: 'primary',
+    label: 'a prior BOS does not predict pullback depth',
+    pattern: /know how deep the pullback could go/i,
+  },
+  {
+    source: 'primary',
+    label: 'BSL does not assert a known, present cluster of short-stop orders',
+    pattern: /Retail traders have placed stop-losses on their short positions|Buy-stop orders from breakout traders are waiting/i,
+  },
+  {
+    source: 'primary',
+    label: 'a sweep is not presented as institutional buying',
+    pattern: /This is the institution filling buys/i,
+  },
+  {
+    source: 'primary',
+    label: 'a sweep and structure break do not guarantee reversal',
+    pattern: /This confirms the sweep is done and price is reversing/i,
+  },
+  {
+    source: 'primary',
+    label: 'FVG is not said to be a zone with no two-sided trading',
+    pattern: /a zone where no two-sided trading occurred/i,
+  },
+  {
+    source: 'primary',
+    label: 'FVG revisits are not assigned a verified institutional-order cause',
+    pattern: /Price returns to FVGs because of the mechanics of how large institutional orders get filled/i,
+  },
+  {
+    source: 'primary',
+    label: 'FVGs are not described as unfilled institutional orders',
+    pattern: /represent unfilled institutional orders/i,
+  },
+  {
+    source: 'primary',
+    label: 'first-presented FVG is not claimed to be universally most important',
+    pattern: /FIRST FVG that forms is the most important/i,
+  },
+  {
+    source: 'primary',
+    label: 'BPR overlap is not described as double strength',
+    pattern: /overlapping FVGs = double strength/i,
+  },
+  {
+    source: 'primary',
+    label: 'an SSL sweep is not said to start a reversal',
+    pattern: /This starts the reversal/i,
+  },
+  {
+    source: 'primary',
+    label: 'FVG alignment is not a universal mandatory filter',
+    pattern: /Only use FVGs that align/i,
+  },
+  {
+    source: 'primary',
+    label: 'a stop hit is not said to invalidate every FVG',
+    pattern: /This invalidates the FVG if hit/i,
+  },
+];
+for (const check of foundationalBatchForbidden) forbidden.push(check);
+
+const legacyReversalRiskForbidden = [
+  {
+    source: 'legacy',
+    label: 'Turtle Soup is not attributed to institutional stop-taking',
+    pattern: /institutions sweep obvious highs\/lows to collect liquidity/i,
+  },
+  {
+    source: 'legacy',
+    label: 'lower-timeframe break does not prove the sweep is complete',
+    pattern: /price must break below a recent 1-minute high to confirm that the reversal has begun/i,
+  },
+  {
+    source: 'legacy',
+    label: 'FVG pullback is not claimed as usual or certain after a structure break',
+    pattern: /price will usually pull back briefly before continuing lower/i,
+  },
+  {
+    source: 'legacy',
+    label: 'liquidity target is not prescribed as the only exit',
+    pattern: /The take-profit is the next significant Sell-Side Liquidity pool below price/i,
+  },
+  {
+    source: 'legacy',
+    label: 'larger timeframe is not said to produce the largest Turtle Soup moves',
+    pattern: /4-hour Turtle Soups produce the largest moves/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Judas Swing is not described as deception and real institutional delivery',
+    pattern: /A false move in the wrong direction that deceives retail traders into positioning opposite to the day's real institutional delivery/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Judas Swing does not predict the next direction deterministically',
+    pattern: /If the false move goes DOWN, the real move goes UP/i,
+  },
+  {
+    source: 'legacy',
+    label: 'New York open reversal is not claimed to usually happen in 15 to 20 minutes',
+    pattern: /Within 15-20 minutes, this initial move reverses into the real directional delivery/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Judas Swing is not given a universal 60 to 90 minute completion rule',
+    pattern: /The London Judas typically completes within the first 60-90 minutes/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Asian range is not claimed as the most frequent Judas target without evidence',
+    pattern: /The Asian High or Low is the nearest significant liquidity pool and the most frequently swept level in London/i,
+  },
+  {
+    source: 'legacy',
+    label: 'FVG contact is not claimed to often end and reverse the Judas move',
+    pattern: /The Judas frequently ends precisely when it reaches/i,
+  },
+  {
+    source: 'legacy',
+    label: 'an entry variant is not labelled inherently best for beginners',
+    pattern: /Lowest risk, smallest R:R, best for beginners/i,
+  },
+  {
+    source: 'legacy',
+    label: 'unsupported majority statistic about ICT traders is removed',
+    pattern: /majority of traders who learn ICT concepts never systematically backtest/i,
+  },
+  {
+    source: 'legacy',
+    label: 'backtesting is not said to prove live execution skill',
+    pattern: /Backtesting proves you can execute the strategy/i,
+  },
+  {
+    source: 'legacy',
+    label: 'a fixed count is not required before considering live trading',
+    pattern: /Minimum 50 forward-tested trades before considering live trading/i,
+  },
+  {
+    source: 'legacy',
+    label: 'a 50-trade consecutive streak is not a readiness certificate',
+    pattern: /50 consecutive trades following ALL rules/i,
+  },
+  {
+    source: 'legacy',
+    label: 'a stop hit is not said to have saved a trader from a bigger loss',
+    pattern: /it saved you from a bigger loss/i,
+  },
+  {
+    source: 'legacy',
+    label: 'a fixed 2-3 pip stop buffer is not universal',
+    pattern: /plus 2-3 pips buffer/i,
+  },
+  {
+    source: 'legacy',
+    label: 'malformed backtesting labels must not return',
+    pattern: /BACKTNew York timeING|FORWARD TNew York timeING|FOREX TNew York timeER|BNew York time PERFORMING FILTERS|FORWARD TNew York time REQUIREMENTS/i,
+  },
+];
+for (const check of legacyReversalRiskForbidden) forbidden.push(check);
+
+const bprResidualForbidden = [
+  {
+    source: 'legacy',
+    label: 'Turtle Soup does not assume that later reversal is the expected outcome',
+    pattern: /watches the real trade work without them/i,
+  },
+  {
+    source: 'legacy',
+    label: 'higher-timeframe mismatch is not assumed to prove a continuation stop hunt',
+    pattern: /many "Turtle Soups" are actually continuation stop hunts/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Judas outcomes are not classified by a fixed categorical stereotype',
+    pattern: /Genuine Judas: fast sweep → immediate reversal → large reversal candles with FVGs/i,
+  },
+  {
+    source: 'legacy',
+    label: 'BPR is not claimed to create the sharpest reactions',
+    pattern: /dual institutional zone that creates the sharpest reactions/i,
+  },
+  {
+    source: 'legacy',
+    label: 'BPR overlap is not claimed to concentrate institutional interest most',
+    pattern: /most concentrated institutional interest of any entry zone/i,
+  },
+  {
+    source: 'legacy',
+    label: 'BPR is not described as simultaneously triggering both institutional order sets',
+    pattern: /BOTH sets of orders are triggered simultaneously/i,
+  },
+  {
+    source: 'legacy',
+    label: 'BPR is not presented as stronger or more complete by default',
+    pattern: /Reactions from BPRs are typically sharper, faster, and more complete/i,
+  },
+  {
+    source: 'legacy',
+    label: 'narrow BPR is not said to indicate precise institutional concentration',
+    pattern: /The smaller the overlap zone, the more precise the institutional concentration/i,
+  },
+  {
+    source: 'legacy',
+    label: 'BPR reaction section title does not promise extreme reactions',
+    pattern: /title: \`Why BPR Creates Extreme Reactions\`/i,
+  },
+  {
+    source: 'legacy',
+    label: 'BPR invalidation is not universalized through a quiz answer',
+    pattern: /Consider the BPR mitigated and remove it from your chart/i,
+  },
+];
+for (const check of bprResidualForbidden) forbidden.push(check);
+
+const sessionTimingForbidden = [
+  {
+    source: 'legacy',
+    label: 'market liquidity is not equated to institutional order volume',
+    pattern: /volume of institutional orders hitting the market/i,
+  },
+  {
+    source: 'legacy',
+    label: 'lunch-time price chop is not stated as a universal rule',
+    pattern: /When European traders are at lunch and New York has not fully engaged, price chops/i,
+  },
+  {
+    source: 'legacy',
+    label: 'session timing is not called the primary determinant of strategy success',
+    pattern: /primary environmental factor that determines whether your setups work at all/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Asian range levels are not prescribed as the primary London targets',
+    pattern: /they become the London session's primary liquidity targets/i,
+  },
+  {
+    source: 'legacy',
+    label: 'London session does not have a mandatory first-hour sweep and reversal',
+    pattern: /first hour → immediately reverses → real daily direction begins/i,
+  },
+  {
+    source: 'legacy',
+    label: 'post-11AM probability is not asserted without evidence',
+    pattern: /After 11 AM New York time, probability drops significantly/i,
+  },
+  {
+    source: 'legacy',
+    label: 'London is not universally labelled the AMD manipulation phase in the quiz',
+    pattern: /Which session is described as the "Manipulation Phase" of the AMD cycle/i,
+  },
+];
+for (const check of sessionTimingForbidden) forbidden.push(check);
+
+const pdOrderFlowForbidden = [
+  {
+    source: 'legacy',
+    label: 'DOL is not presented as separating superior traders from retail',
+    pattern: /concept that separates traders who anticipate from traders who react/i,
+  },
+  {
+    source: 'legacy',
+    label: 'PD Array expertise is not presented as a subjective ranking advantage',
+    pattern: /what separates advanced ICT practitioners from beginners who draw random boxes/i,
+  },
+  {
+    source: 'legacy',
+    label: 'PD Array matrix heading does not imply a universal strength ranking',
+    pattern: /The Full PD Array Matrix\s+--\s+Ranked by Strength/i,
+  },
+  {
+    source: 'legacy',
+    label: 'CE is not described as the primary entry for every FVG',
+    pattern: /your primary entry level within the gap/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Breaker Blocks are not assigned an inevitable support/resistance role',
+    pattern: /it becomes resistance for a bullish OB that was broken/i,
+  },
+  {
+    source: 'legacy',
+    label: 'mitigated arrays are not universally described as consumed',
+    pattern: /Only active, unmitigated arrays belong on your working chart/i,
+  },
+  {
+    source: 'legacy',
+    label: 'a quiz does not claim institutions buy in a range discount zone as a fact',
+    pattern: /In a dealing range, institutions buy in/i,
+  },
+  {
+    source: 'legacy',
+    label: 'PD Array quiz does not imply a universal highest-ranked type',
+    pattern: /Which PD Array ranks highest in the matrix/i,
+  },
+  {
+    source: 'legacy',
+    label: 'AMD distribution does not have a universal exit event',
+    pattern: /The Distribution phase ends when/i,
+  },
+  {
+    source: 'legacy',
+    label: 'DOL sequence is not a mandatory ERL-to-IRL trade path',
+    pattern: /The correct DOL trade sequence is/i,
+  },
+  {
+    source: 'legacy',
+    label: 'time is not described as directly predicting price',
+    pattern: /Using Time to Predict Price/i,
+  },
+];
+for (const check of pdOrderFlowForbidden) forbidden.push(check);
+
+const quarterlyGapRiskForbidden = [
+  {
+    source: 'legacy',
+    label: 'quarter mapping is not presented as clean and deterministic',
+    pattern: /Q1 = accumulation \(clean trend\)\. Q2 = manipulation/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Q2 is not called the most dangerous quarter',
+    pattern: /Q2 is the most dangerous quarter for trend followers/i,
+  },
+  {
+    source: 'legacy',
+    label: 'unsupported EURUSD quarterly direction claims are removed',
+    pattern: /tends to be weak in Q1 and Q3, stronger in Q2 and Q4/i,
+  },
+  {
+    source: 'legacy',
+    label: 'unsupported GBPUSD month pattern is removed',
+    pattern: /historically stronger in April-May and weaker in September-October/i,
+  },
+  {
+    source: 'legacy',
+    label: 'unsupported gold calendar direction claim is removed',
+    pattern: /January historically strong, August-September frequently bullish/i,
+  },
+  {
+    source: 'legacy',
+    label: 'unsupported index seasonality is not called well-documented without a source',
+    pattern: /January Effect, summer dip in Q3, year-end rally in Q4 are well-documented/i,
+  },
+  {
+    source: 'legacy',
+    label: 'quarterly labels are not claimed to transform trading bias',
+    pattern: /The Macro Rhythm That Transforms Your Bias/i,
+  },
+  {
+    source: 'legacy',
+    label: 'narrative backtesting is not presented as the only way to trust a method',
+    pattern: /The only way to trust your narrative-building skill/i,
+  },
+  {
+    source: 'legacy',
+    label: 'narrative scoring does not ask for the correct bias after the result',
+    pattern: /what was the correct daily bias/i,
+  },
+  {
+    source: 'legacy',
+    label: 'daily AMD phase labels are not presented as direct facts',
+    pattern: /Price near midnight open with minimal movement = Accumulation/i,
+  },
+  {
+    source: 'legacy',
+    label: '30 sessions are not presented as an automatic review threshold',
+    pattern: /A journal of 30 or more sessions can reveal/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gap full-fill does not predict continuation',
+    pattern: /After a full fill, the zone is typically neutralized and price continues in the pre-fill direction/i,
+  },
+  {
+    source: 'legacy',
+    label: 'CE is not described as triggering institutional orders',
+    pattern: /price fills to the CE and immediately reacts as institutional orders at the CE level are triggered/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gaps are not expected to fill to CE as the primary entry',
+    pattern: /expect a partial fill to CE as the primary entry zone/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gaps are not said frequently to fill midpoint and react',
+    pattern: /Gaps frequently fill to the 50% midpoint/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gap geometry does not imply the path of least resistance',
+    pattern: /path of least resistance between current price and the DOL/i,
+  },
+  {
+    source: 'legacy',
+    label: 'a gap is not automatically called support or resistance',
+    pattern: /Gaps below a rising market are bullish support zones/i,
+  },
+  {
+    source: 'legacy',
+    label: 'fixed 100-trade sample is not used to forecast losing streak drawdown',
+    pattern: /longest losing streak in your 100-trade sample/i,
+  },
+  {
+    source: 'legacy',
+    label: 'future losing periods are not described as inevitable bad runs',
+    pattern: /inevitable bad runs/i,
+  },
+  {
+    source: 'legacy',
+    label: 'backtest records are not dismissed as nearly useless',
+    pattern: /nearly useless for analysis/i,
+  },
+  {
+    source: 'legacy',
+    label: 'win rate alone is not claimed to be required for correct position sizing',
+    pattern: /Without knowing your win rate, you cannot size positions correctly/i,
+  },
+  {
+    source: 'legacy',
+    label: 'a missed trade is not said to cost nothing',
+    pattern: /Missing a trade costs nothing/i,
+  },
+];
+for (const check of quarterlyGapRiskForbidden) forbidden.push(check);
+
+const strategyRiskUnitsForbidden = [
+  {
+    source: 'legacy',
+    label: 'Judas-style move is not asserted to occur in the New York AM session as a fixed fact',
+    pattern: /The Judas Swing also occurs during the New York AM session/i,
+  },
+  {
+    source: 'legacy',
+    label: 'aggressive Judas entry is not promised to provide a better price',
+    pattern: /better price if correct/i,
+  },
+  {
+    source: 'legacy',
+    label: 'London Judas quiz does not prescribe an opposite-direction move',
+    pattern: /After the London Judas Swing completes, price should/i,
+  },
+  {
+    source: 'legacy',
+    label: 'risk management is not said to ensure a loss series cannot destroy an account',
+    pattern: /ensuring that no single loss \(or series of losses\) can destroy your account/i,
+  },
+  {
+    source: 'legacy',
+    label: '1 percent risk is not framed as a rule to break',
+    pattern: /The 1% Rule \(And When to Break It\)/i,
+  },
+  {
+    source: 'legacy',
+    label: 'risk controls are not marketed as how all professional ICT traders protect capital',
+    pattern: /How Professional ICT Traders Protect Capital in All Market Conditions/i,
+  },
+  {
+    source: 'legacy',
+    label: 'risk management is not ungroundedly branded as a science used by professionals',
+    pattern: /Professional traders treat risk management as a science/i,
+  },
+  {
+    source: 'legacy',
+    label: 'correlation is not labelled the hidden account killer',
+    pattern: /Correlation Risk: The Hidden Account Killer/i,
+  },
+  {
+    source: 'legacy',
+    label: 'position-size formula does not claim exact sizing in all products',
+    pattern: /calculate exactly how many lots to trade based on your stop loss distance and account size/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold stop width is not assigned a universal 15 to 25 pip range',
+    pattern: /usually 15-25 pips/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold targets are not assigned a fixed usual 3 to 5R return',
+    pattern: /usually 3-5R/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold $25 stop distance is not called 25 pips without quote-unit qualification',
+    pattern: /25 pips below FVG/i,
+  },
+  {
+    source: 'legacy',
+    label: 'crypto windows are not prescribed as fixed universal killzones',
+    pattern: /Crypto killzones: Asian \(8PM-12AM\), London \(3-5AM\), NY \(9:30AM-4PM\)/i,
+  },
+  {
+    source: 'legacy',
+    label: 'a fixed 10 to 20 percent drawdown does not trigger a universal stop-trading prescription',
+    pattern: /What should you do during a 10-20% drawdown/i,
+  },
+];
+for (const check of strategyRiskUnitsForbidden) forbidden.push(check);
+
 const required = [
   {
     source: 'primary',
@@ -811,7 +1477,882 @@ const required = [
     label: 'Asian range sweep does not determine New York bias',
     pattern: /The initial sweep does not prove the next move will go in the opposite direction or establish a New York bias/i,
   },
+  {
+    source: 'legacy',
+    label: 'daily bias can be reassessed when rules or information change',
+    pattern: /A pre-session bias can organize a plan, but it is a conditional scenario, not a deadline/i,
+  },
+  {
+    source: 'legacy',
+    label: 'breakeven highlight qualifies trigger as model-specific',
+    pattern: /none is a universal breakeven rule/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold walkthrough is explicitly hypothetical rather than a forecast',
+    pattern: /HYPOTHETICAL XAUUSD SCENARIO \(NOT A FORECAST\)[\s\S]{0,1400}not an institutional narrative, guaranteed sequence or recommendation to trade gold/i,
+  },
+  {
+    source: 'legacy',
+    label: 'position management avoids universal daily trade-count prescription',
+    pattern: /there is no universal two-trade daily limit/i,
+  },
+  {
+    source: 'legacy',
+    label: 'partial exit is identified as a variant to test',
+    pattern: /A partial at TP1 is one variant to test, not a guaranteed way to reduce fear or improve returns/i,
+  },
+  {
+    source: 'legacy',
+    label: 'breakeven stop rule quiz tests model-specific decision-making',
+    pattern: /How should a breakeven-stop rule be chosen[\s\S]{0,300}Use a predefined, tested trigger that fits the strategy and accounts for costs and stop-out tradeoffs/i,
+  },
+  {
+    source: 'legacy',
+    label: 'narrative testing does not use directional accuracy as readiness certificate',
+    pattern: /Directional accuracy alone, including a 70% result, does not establish a durable edge or prove readiness for live trading/i,
+  },
+  {
+    source: 'legacy',
+    label: 'conditional scenario notes setup may not trigger',
+    pattern: /Price may instead continue lower, reverse without reaching the FVG, or never trigger the entry/i,
+  },
+  {
+    source: 'legacy',
+    label: 'weekly phase definitions are testable hypotheses',
+    pattern: /no weekday is a reliable phase assignment by itself/i,
+  },
+
+  {
+    source: 'primary',
+    label: 'order-block chart candle is not proof of institutional absorption',
+    pattern: /a chart pattern cannot show whether institutions absorbed retail orders, who traded, or what participants intended/i,
+  },
+  {
+    source: 'primary',
+    label: 'OB confirmation rule is framed as a model-specific filter',
+    pattern: /Some OB definitions require a BOS or ChoCH after the candidate candle/i,
+  },
+  {
+    source: 'primary',
+    label: 'OTE filters are identified as variant-specific and testable',
+    pattern: /Some OTE variants combine a liquidity sweep, an FVG or Order Block reference, and higher-timeframe context/i,
+  },
+  {
+    source: 'legacy',
+    label: 'premium and discount are contextual rather than automatic trade directions',
+    pattern: /premium may be studied as potential short context and discount as potential long context\. Neither is an entry signal by itself/i,
+  },
+  {
+    source: 'legacy',
+    label: 'daily targets are candidate reference areas',
+    pattern: /These are candidate reference areas, not necessarily today's target/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Turtle Soup description allows a breakout to continue',
+    pattern: /This pattern does not establish that retail stops were targeted, predict a reversal, or rank the setup's reliability; breakouts can continue/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Turtle Soup stop is selected from model invalidation and sized to distance',
+    pattern: /Define the stop from the model's invalidation rule, then size the position for that distance/i,
+  },
+  {
+    source: 'legacy',
+    label: 'backtesting acknowledges uncertain inference and out-of-sample performance',
+    pattern: /Backtesting can help evaluate a trading hypothesis, but it does not prove a durable edge/i,
+  },
+  {
+    source: 'legacy',
+    label: 'backtest sample-size quiz does not impose a fixed threshold',
+    pattern: /What determines how much backtest data is needed[\s\S]{0,300}there is no universal threshold/i,
+  },
+  {
+    source: 'legacy',
+    label: 'backtest filter selection warns about overfitting and uses untouched data',
+    pattern: /More filters and rule changes increase the risk of fitting noise[\s\S]{0,240}untouched out-of-sample data/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold intro describes safe-haven behavior as conditional',
+    pattern: /Gold is often treated as a potential safe-haven asset, but it does not always rise during market stress or every inflation scare/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold-dollar relationship is framed as varying',
+    pattern: /It has often been negative over some periods, but varies and can sometimes turn positive/i,
+  },
+  {
+    source: 'legacy',
+    label: 'LBMA Gold Price auctions stated at official commencement times',
+    pattern: /When do the LBMA Gold Price auctions commence[\s\S]{0,300}10:30 and 15:00 London time/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold FVG sizing uses a consistent product-specific convention',
+    pattern: /Use a consistent product-specific price\/tick convention, then measure outcomes with costs and market conditions/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Bitcoin halving quiz ties subsidy reduction to 210,000 blocks',
+    pattern: /A block-subsidy reduction every 210,000 blocks, roughly four years at expected block times/i,
+  },
+
 ];
+
+const foundationalBatchRequired = [
+  {
+    source: 'primary',
+    label: 'BOS and ChoCH/MSS definitions are model-dependent interpretations',
+    pattern: /Terminology and swing-selection rules differ among ICT variants; the label marks a possible change, not proof that a reversal is underway/i,
+  },
+  {
+    source: 'primary',
+    label: 'liquidity labels do not expose actual participant orders',
+    pattern: /The chart does not reveal the actual orders or prove that a particular level contains a large cluster of stops/i,
+  },
+  {
+    source: 'primary',
+    label: 'sweep examples do not identify the trader or cause of a move',
+    pattern: /the chart alone cannot identify who traded or why/i,
+  },
+  {
+    source: 'primary',
+    label: 'FVG definition distinguishes candle geometry from actual trading',
+    pattern: /The chart pattern describes candle ranges; it does not mean that no trading occurred in the zone/i,
+  },
+  {
+    source: 'primary',
+    label: 'FVG revisit performance must be evaluated rather than presumed',
+    pattern: /does not verify a particular cause or guarantee a revisit[\s\S]{0,220}consistent FVG definition and recorded outcomes/i,
+  },
+  {
+    source: 'primary',
+    label: 'FVG execution considers missed fills and stop placement rules',
+    pattern: /a limit order may be missed or filled without a favorable reaction[\s\S]{0,350}does not universally invalidate the chart pattern/i,
+  },
+  {
+    source: 'primary',
+    label: 'FVG targets are presented as alternatives instead of guaranteed destinations',
+    pattern: /a fixed risk multiple or a time-based exit[\s\S]{0,220}not a guaranteed destination/i,
+  },
+];
+required.push(...foundationalBatchRequired);
+
+const legacyReversalRiskRequired = [
+  {
+    source: 'legacy',
+    label: 'Turtle Soup includes continuations as possible outcomes',
+    pattern: /The chart does not establish institutional intent or guarantee a return inside the level; include continuations in the test/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Judas Swing label does not establish institutional delivery',
+    pattern: /does not establish deception, institutional delivery, or that a reversal will occur/i,
+  },
+  {
+    source: 'legacy',
+    label: 'Judas time cutoff is not assumed without instrument-specific evidence',
+    pattern: /Do not assume a fixed 60–90-minute completion rule without instrument-specific evidence/i,
+  },
+  {
+    source: 'legacy',
+    label: 'backtesting is distinguished from live execution skill',
+    pattern: /Backtesting can estimate how a written rule performed on historical data, but it cannot prove live execution skill/i,
+  },
+  {
+    source: 'legacy',
+    label: 'forward-test sample size is not a universal readiness threshold',
+    pattern: /no fixed count certifies readiness/i,
+  },
+  {
+    source: 'legacy',
+    label: 'stop policy avoids discretionary widening outside the plan',
+    pattern: /Do not widen a stop outside the predefined risk plan/i,
+  },
+  {
+    source: 'legacy',
+    label: 'pause procedure is tied to a written threshold',
+    pattern: /Pause new entries and review the written plan/i,
+  },
+  {
+    source: 'legacy',
+    label: 'backtesting labels are restored to readable terminology',
+    pattern: /BACKTESTING[\s\S]{0,500}FOREX TESTER|FOREX TESTER[\s\S]{0,500}BACKTESTING/i,
+  },
+];
+required.push(...legacyReversalRiskRequired);
+
+const bprResidualRequired = [
+  {
+    source: 'legacy',
+    label: 'BPR predictive strength is framed as an empirical question',
+    pattern: /Whether price reacts there more often, more sharply or more completely than at other zones is an empirical question/i,
+  },
+  {
+    source: 'legacy',
+    label: 'BPR test compares with individual FVGs and a simple reference',
+    pattern: /Test this hypothesis against each individual FVG and a simple reference strategy/i,
+  },
+  {
+    source: 'legacy',
+    label: 'BPR geometry does not imply a stronger order book',
+    pattern: /A narrow overlap is more precise geometrically, but that does not establish a more concentrated order book or better trading performance/i,
+  },
+  {
+    source: 'legacy',
+    label: 'BPR direction convention is not presented as a universal outcome rule',
+    pattern: /One naming convention may label an overlap bullish or bearish using a predefined dealing-range reference/i,
+  },
+  {
+    source: 'legacy',
+    label: 'BPR quiz uses a predefined invalidation rule',
+    pattern: /Apply your predefined invalidation rule; some models mark the zone inactive after a close through it/i,
+  },
+];
+required.push(...bprResidualRequired);
+
+const sessionTimingRequired = [
+  {
+    source: 'legacy',
+    label: 'session activity and institutional attribution are treated cautiously',
+    pattern: /Liquidity is not simply the volume of institutional orders, and a chart cannot identify which participant groups caused a change/i,
+  },
+  {
+    source: 'legacy',
+    label: 'London range interactions include continued moves as alternatives',
+    pattern: /Neither a sweep nor a reversal is required, and the eventual daily direction is not known from the first move/i,
+  },
+  {
+    source: 'legacy',
+    label: 'later-session trading restrictions are based on evidence and prewritten rules',
+    pattern: /a time alone does not establish a lower probability or a reversal[\s\S]{0,240}rather than imposing a universal ban/i,
+  },
+  {
+    source: 'legacy',
+    label: 'timing filters are compared with a baseline',
+    pattern: /Test whether it adds value beyond a clear baseline before restricting your trading hours/i,
+  },
+];
+required.push(...sessionTimingRequired);
+
+const pdOrderFlowRequired = [
+  {
+    source: 'legacy',
+    label: 'DOL is framed as a conditional objective',
+    pattern: /Draw on Liquidity \(DOL\) is an ICT term some traders use to record a possible price objective/i,
+  },
+  {
+    source: 'legacy',
+    label: 'CE midpoint is presented as a reference to test, not a universal entry',
+    pattern: /treat it as one possible reference to test, not a universally optimal entry/i,
+  },
+  {
+    source: 'legacy',
+    label: 'order-block polarity conventions are framed as variants to define',
+    pattern: /Define the violation and retest criteria in advance; a former zone is not guaranteed to act as support or resistance/i,
+  },
+  {
+    source: 'legacy',
+    label: 'array mitigation uses a prewritten, model-specific rule',
+    pattern: /Specify whether your rule uses a touch, partial fill, full traversal or close beyond a boundary/i,
+  },
+  {
+    source: 'legacy',
+    label: 'DOL scenario does not guarantee the objective',
+    pattern: /a hypothesis rather than a destination price must reach/i,
+  },
+  {
+    source: 'legacy',
+    label: 'distribution exit is tied to a tested prewritten rule',
+    pattern: /Apply a predefined exit or invalidation condition that fits the tested model/i,
+  },
+];
+required.push(...pdOrderFlowRequired);
+
+const quarterlyGapRiskRequired = [
+  {
+    source: 'legacy',
+    label: 'quarterly labels are explicitly described as a template to test',
+    pattern: /No quarter must behave this way; define the classification and test its value against a baseline/i,
+  },
+  {
+    source: 'legacy',
+    label: 'seasonal filters require out-of-sample evaluation',
+    pattern: /Test whether it adds out-of-sample value beyond the base strategy after costs/i,
+  },
+  {
+    source: 'legacy',
+    label: 'narrative testing guards against hindsight bias',
+    pattern: /what bias would my prewritten rules have assigned before the session/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gap fill does not predict later movement',
+    pattern: /it does not by itself predict continuation, reversal/i,
+  },
+  {
+    source: 'legacy',
+    label: 'CE is one reference rather than a required entry',
+    pattern: /CE is one possible reference, not a required fill or guaranteed reaction point/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gap-based exits follow prewritten rules',
+    pattern: /follow the strategy's predefined, tested rules/i,
+  },
+  {
+    source: 'legacy',
+    label: 'losing streak is described as a sample observation',
+    pattern: /It describes that sample, not a guaranteed maximum or a prediction of future drawdown/i,
+  },
+  {
+    source: 'legacy',
+    label: 'position sizing includes risk cap, stop and instrument costs',
+    pattern: /defined risk cap, stop distance, instrument value, costs/i,
+  },
+];
+required.push(...quarterlyGapRiskRequired);
+
+const strategyRiskUnitsRequired = [
+  {
+    source: 'legacy',
+    label: 'risk limits acknowledge that ruin remains possible',
+    pattern: /Risk management does not eliminate the possibility of ruin/i,
+  },
+  {
+    source: 'legacy',
+    label: 'one percent is presented as an example and not a universal requirement',
+    pattern: /Choosing a Risk Ceiling \(1% as One Example\)/i,
+  },
+  {
+    source: 'legacy',
+    label: 'position sizing formula is qualified by product conventions and costs',
+    pattern: /verify the calculation for the specific instrument/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold stop example expresses price distance and warns about quote units',
+    pattern: /a \$25\.00 price-distance from the \$1,920 entry; verify the broker's XAU\/USD quote units/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold target multiple is not assumed in advance',
+    pattern: /calculate R from the actual entry, stop and target rather than assuming a fixed multiple/i,
+  },
+  {
+    source: 'legacy',
+    label: 'crypto session windows are explicitly non-universal and testable',
+    pattern: /These are example windows some traders study, not universal crypto killzones/i,
+  },
+  {
+    source: 'legacy',
+    label: 'drawdown response is tied to a predefined threshold',
+    pattern: /If you reach your predefined drawdown review threshold/i,
+  },
+];
+required.push(...strategyRiskUnitsRequired);
+
+
+const sessionLabelResidualForbidden = [
+  {
+    source: 'primary',
+    label: 'order block incorrectly claims to identify institutional entry',
+    pattern: /Order Block = WHERE institutions entered|the candle they used to build their position/i,
+  },
+  {
+    source: 'primary',
+    label: 'session-window subtitle claims timing itself is an edge',
+    pattern: /Time Is Your Edge — Studying Institutional Trading Windows/i,
+  },
+  {
+    source: 'primary',
+    label: 'Asian-session boundaries stated as critical every-day levels',
+    pattern: /The high and low of the Asian session = critical levels|Mark them every single day/i,
+  },
+  {
+    source: 'primary',
+    label: 'New York killzone definitions are mixed with an unqualified alternate window',
+    pattern: /New York AM Killzone \(7:00 AM – 10:00 AM EST\) — or 8:30-11:00 AM/i,
+  },
+  {
+    source: 'primary',
+    label: 'Silver Bullet window incorrectly asserted to fit wholly inside one killzone definition',
+    pattern: /Silver Bullet trade runs entirely within this window/i,
+  },
+  {
+    source: 'primary',
+    label: 'macro time labels are universally EST',
+    pattern: /The key Macro Times \(all EST\)|20-minute precision windows/i,
+  },
+  {
+    source: 'primary',
+    label: 'killzone quiz treats session labels as fixed roles',
+    pattern: /The London Killzone is primarily known for|The New York AM Killzone serves the role of/i,
+  },
+  {
+    source: 'primary',
+    label: 'Order Blocks and FVGs are universally ranked by trading timeframe',
+    pattern: /OBs are better for swing trades and higher timeframe setups|FVGs are better for intraday precision entries/i,
+  },
+  {
+    source: 'primary',
+    label: 'Asian range is tied to a mandatory fixed EST routine',
+    pattern: /At midnight EST, mark the Asian Range High and Low/i,
+  },
+];
+
+const sessionLabelResidualRequired = [
+  {
+    source: 'primary',
+    label: 'order-block label does not imply observable institutional entry',
+    pattern: /The chart does not reveal where institutions entered or whether they used that candle to build a position/i,
+  },
+  {
+    source: 'primary',
+    label: 'time windows are explicitly tied to a documented daylight-saving convention',
+    pattern: /confirm the source's ET\/daylight-saving convention/i,
+  },
+  {
+    source: 'primary',
+    label: 'alternate Silver Bullet and killzone windows are not treated as identical',
+    pattern: /Do not treat that window as wholly inside the 7:00–10:00 convention/i,
+  },
+  {
+    source: 'primary',
+    label: 'macro times are tested against a baseline rather than treated as a schedule',
+    pattern: /test whether they add useful information beyond a baseline/i,
+  },
+  {
+    source: 'primary',
+    label: 'Asian range journaling allows no sweep, one sweep or two sweeps',
+    pattern: /neither, one, or both boundaries were crossed/i,
+  },
+  {
+    source: 'primary',
+    label: 'killzone quiz identifies the Judas Swing label as a variable hypothesis',
+    pattern: /possible Judas Swing hypothesis whose frequency and outcome vary/i,
+  },
+  {
+    source: 'primary',
+    label: 'New York AMD role is described as a possible label, not a fixed fact',
+    pattern: /A possible distribution phase, not a fixed session role/i,
+  },
+];
+
+forbidden.push(...sessionLabelResidualForbidden);
+required.push(...sessionLabelResidualRequired);
+
+
+const amdOteResidualForbidden = [
+  {
+    source: 'primary',
+    label: 'daily candle described as a definitive AMD insight',
+    pattern: /One of the most profound insights ICT offers is that you can read the STRUCTURE of a single daily candle as an AMD story/i,
+  },
+  {
+    source: 'primary',
+    label: 'daily candle boundary assumed to be midnight for every provider',
+    pattern: /Open \(midnight open\)/i,
+  },
+  {
+    source: 'primary',
+    label: 'upper wick attributed directly to a London Close reversal',
+    pattern: /Small wick UP = sometimes a minor London Close reversal/i,
+  },
+  {
+    source: 'primary',
+    label: 'bullish daily wick quiz treats Judas Swing as a known fact',
+    pattern: /On a bullish AMD day, the lower wick of the daily candle represents/i,
+  },
+  {
+    source: 'primary',
+    label: 'equilibrium entry asserted to cause getting chopped up',
+    pattern: /Many traders try to enter at exactly 50% and get chopped up/i,
+  },
+  {
+    source: 'primary',
+    label: 'students instructed to take a new shallow entry after missing OTE',
+    pattern: /if price gives you a clear signal at a shallower retracement with a valid order block, take it/i,
+  },
+];
+
+const amdOteResidualRequired = [
+  {
+    source: 'primary',
+    label: 'AMD candle phase labels are explicitly hypotheses',
+    pattern: /The candle's shape is observable; phase labels are hypotheses rather than verified events/i,
+  },
+  {
+    source: 'primary',
+    label: 'daily session boundary is qualified by provider and timezone',
+    pattern: /chart's daily-session boundary; the boundary can vary by provider and timezone/i,
+  },
+  {
+    source: 'primary',
+    label: 'AMD quiz does not equate a wick with a proven Judas Swing',
+    pattern: /possible move below the range, not proof of a Judas Swing/i,
+  },
+  {
+    source: 'primary',
+    label: 'missed OTE is not permission to add a post-hoc entry rule',
+    pattern: /That is a possible missed setup, not a reason to add a new entry rule after seeing the outcome/i,
+  },
+  {
+    source: 'primary',
+    label: 'unqualified OTE variant results in no trade rather than an improvised entry',
+    pattern: /record no trade under the OTE rules/i,
+  },
+];
+
+forbidden.push(...amdOteResidualForbidden);
+required.push(...amdOteResidualRequired);
+
+
+const breakerArrayResidualForbidden = [
+  {
+    source: 'primary',
+    label: 'Breaker retest stated to act as resistance as a fact',
+    pattern: /Price pulls back to this zone — it now acts as resistance/i,
+  },
+  {
+    source: 'primary',
+    label: 'bearish breaker context presented as mandatory',
+    pattern: /Step 2 — HTF must be bearish/i,
+  },
+  {
+    source: 'primary',
+    label: 'breaker entry stated as a universal short instruction',
+    pattern: /Step 5 — Enter short at the Breaker/i,
+  },
+  {
+    source: 'primary',
+    label: 'breaker target prescribed as the next SSL without qualification',
+    pattern: /Step 7 — Target: next SSL below/i,
+  },
+  {
+    source: 'primary',
+    label: 'any failed OB said to invert polarity automatically',
+    pattern: /When an OB gets broken through, it inverts polarity and becomes support|it is now a Breaker Block/i,
+  },
+  {
+    source: 'primary',
+    label: 'partial OB revisit asserted to preserve validity universally',
+    pattern: /ICT considers partially mitigated OBs as still valid for future tests/i,
+  },
+  {
+    source: 'primary',
+    label: 'premium arrays presented as defined selling opportunities',
+    pattern: /PREMIUM ARRAYS \\(selling opportunities\\)|From most premium to most discount/i,
+  },
+  {
+    source: 'primary',
+    label: 'premium and discount applied identically and objectively at all timeframes',
+    pattern: /The premium\/discount framework is fractal — it applies at every timeframe simultaneously/i,
+  },
+  {
+    source: 'primary',
+    label: 'OB validity claimed from an unqualified 50-percent reaction rule',
+    pattern: /Specifically, ICT says a bullish OB is valid if price holds above the 50% level/i,
+  },
+  {
+    source: 'primary',
+    label: 'higher volume stated to validate an order block as a rule',
+    pattern: /higher volume on the OB candle and the displacement move adds validity/i,
+  },
+];
+
+const breakerArrayResidualRequired = [
+  {
+    source: 'primary',
+    label: 'Breaker polarity treated as a hypothesis',
+    pattern: /A bullish or bearish polarity change is a hypothesis, not a guaranteed result/i,
+  },
+  {
+    source: 'primary',
+    label: 'Breaker variant includes no retest and failed-entry alternatives',
+    pattern: /Price may not retest, may continue through the former zone, or may react without meeting the entry rule/i,
+  },
+  {
+    source: 'primary',
+    label: 'Breaker entries use model-specific stop, invalidation and target rules',
+    pattern: /apply the model's predefined stop\/invalidation and target rules/i,
+  },
+  {
+    source: 'primary',
+    label: 'PD array list is not a validated ranking of trade quality',
+    pattern: /not a validated ranking of predictive power or trade quality/i,
+  },
+  {
+    source: 'primary',
+    label: 'interior PD array ordering is described as convention-dependent',
+    pattern: /The relative ordering of these references inside premium or discount is convention-dependent/i,
+  },
+  {
+    source: 'primary',
+    label: 'OB volume filter depends on instrument-specific data quality',
+    pattern: /Volume availability and meaning vary by venue and instrument/i,
+  },
+];
+
+forbidden.push(...breakerArrayResidualForbidden);
+required.push(...breakerArrayResidualRequired);
+
+
+const executionPsychResidualForbidden = [
+  {
+    source: 'legacy',
+    label: 'stop placement claims to prove the entire setup wrong',
+    pattern: /stop goes at the level that PROVES THE SETUP WRONG if reached/i,
+  },
+  {
+    source: 'legacy',
+    label: 'backtest average losing trade asserted to equal minus one R',
+    pattern: /Target: should be -1R \\(full stop hit\\)/i,
+  },
+  {
+    source: 'legacy',
+    label: 'filter discovery optimized by highest win rate alone',
+    pattern: /Analyze which criteria, when present, correlated with the highest win rates/i,
+  },
+  {
+    source: 'legacy',
+    label: 'portfolio methods are attributed broadly to professional ICT traders without support',
+    pattern: /advanced position sizing techniques used by professional ICT traders/i,
+  },
+  {
+    source: 'legacy',
+    label: 'emotion labels are declared the four account killers',
+    pattern: /the four account killers/i,
+  },
+  {
+    source: 'legacy',
+    label: 'trading psychology quiz imposes a universal maximum session duration',
+    pattern: /What is the maximum recommended trading session length\?/i,
+  },
+  {
+    source: 'legacy',
+    label: 'a single emotion is asserted to cause premature exits',
+    pattern: /Which emotion causes you to close winners too early\?/i,
+  },
+  {
+    source: 'legacy',
+    label: 'bullish order block stop quiz presents one boundary as universal',
+    pattern: /Where should you place your stop loss on a bullish Order Block entry\?/i,
+  },
+  {
+    source: 'legacy',
+    label: 'backtesting is described as universally mandatory without qualification',
+    pattern: /BACKTESTING IS NOT OPTIONAL:/i,
+  },
+];
+
+const executionPsychResidualRequired = [
+  {
+    source: 'legacy',
+    label: 'stop invalidation is qualified to the chosen model rather than all market theses',
+    pattern: /Reaching that level invalidates the setup under that model; it does not prove a broader market thesis wrong/i,
+  },
+  {
+    source: 'legacy',
+    label: 'average losing R reflects actual fills and management rather than a fixed minus one R',
+    pattern: /Realized losses can differ from the full planned stop because of partial exits, early exits, slippage, gaps and costs/i,
+  },
+  {
+    source: 'legacy',
+    label: 'filter comparison considers expectancy, drawdown and uncertainty beyond win rate',
+    pattern: /Compare pre-defined criteria with the baseline using expectancy, drawdown, sample size and uncertainty—not win rate alone/i,
+  },
+  {
+    source: 'legacy',
+    label: 'emotion labels are not treated as a single explanation for every loss',
+    pattern: /no single label explains every loss/i,
+  },
+  {
+    source: 'legacy',
+    label: 'session length is adapted rather than universal',
+    pattern: /How should you choose your trading-session length\?[\s\S]{0,300}Fit the schedule to your strategy, responsibilities and ability to monitor trades/i,
+  },
+  {
+    source: 'legacy',
+    label: 'bullish OB stop quiz is tied to a declared invalidation model',
+    pattern: /Under a model that defines the OB low as invalidation for a bullish Order Block entry, where may the stop be placed/i,
+  },
+  {
+    source: 'legacy',
+    label: 'backtesting section distinguishes evidence from proof',
+    pattern: /WHAT BACKTESTING CAN AND CANNOT ESTABLISH:/i,
+  },
+];
+
+forbidden.push(...executionPsychResidualForbidden);
+required.push(...executionPsychResidualRequired);
+
+
+const expectancySignResidualForbidden = [
+  {
+    source: 'legacy',
+    label: 'average loser is defined as a signed value but later subtracted as a loss magnitude',
+    pattern: /AVERAGE R ON LOSERS:/i,
+  },
+  {
+    source: 'legacy',
+    label: 'expectancy formula subtracts an ambiguously signed average loser',
+    pattern: /\(Win rate × Average R winner\) - \(Loss rate × Average R loser\)/i,
+  },
+  {
+    source: 'legacy',
+    label: 'expectancy quiz repeats an ambiguously signed average loser',
+    pattern: /\(Win rate × Avg R winner\) - \(Loss rate × Avg R loser\)/i,
+  },
+];
+
+const expectancySignResidualRequired = [
+  {
+    source: 'legacy',
+    label: 'average loss is defined as a positive magnitude',
+    pattern: /AVERAGE LOSS MAGNITUDE \(POSITIVE VALUE\):[\s\S]{0,200}absolute values of losing-trade R multiples/i,
+  },
+  {
+    source: 'legacy',
+    label: 'expectancy subtracts the positive average loss magnitude',
+    pattern: /\(Win rate × Average R winner\) - \(Loss rate × Average loss magnitude\)/i,
+  },
+  {
+    source: 'legacy',
+    label: 'expectancy quiz uses the same sign-safe definition',
+    pattern: /\(Win rate × Avg R winner\) - \(Loss rate × Average loss magnitude\)/i,
+  },
+];
+
+forbidden.push(...expectancySignResidualForbidden);
+required.push(...expectancySignResidualRequired);
+
+
+const modelSpecificationResidualForbidden = [
+  {
+    source: 'primary',
+    label: 'Silver Bullet quiz presents one clock window as universally defined',
+    pattern: /The Silver Bullet 10:00 AM window closes at\?/i,
+  },
+  {
+    source: 'primary',
+    label: 'top-down checklist implies every strategy requires every listed timeframe',
+    pattern: /If any required layer is missing, mark the trade as “not qualified” instead of filling the gap with hindsight/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold context criteria leave the OR/AND relationship ambiguous',
+    pattern: /Stock market is selling off \(S&P 500 down 1%\+\) OR[\s\S]{0,150}Geopolitical tensions are rising OR[\s\S]{0,150}Inflation data surprised to the upside[\s\S]{0,100}DXY is weakening/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold entry conditions treat an undefined zone touch as an entry',
+    pattern: /Wait for price to return to a bullish PD array[\s\S]{0,100}Enter during London or NY killzone/i,
+  },
+];
+
+const modelSpecificationResidualRequired = [
+  {
+    source: 'primary',
+    label: 'Silver Bullet quiz qualifies the example by its stated time convention',
+    pattern: /For the Silver Bullet example variant defined as 10:00–11:00 AM New York time, when does that window close/i,
+  },
+  {
+    source: 'primary',
+    label: 'top-down process uses only the timeframes required by the tested strategy',
+    pattern: /Use only the layers required by the strategy you are testing/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold macro context variants are written down before testing',
+    pattern: /Choose and document one context variant[\s\S]{0,500}Do not switch between these alternatives after seeing the chart outcome/i,
+  },
+  {
+    source: 'legacy',
+    label: 'DXY filter status is fixed in advance',
+    pattern: /decide in advance whether it is a required condition or a separate filter to test/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold structure requirements distinguish conditions from optional filters',
+    pattern: /State whether all three conditions must be present or whether they are being tested as separate filters/i,
+  },
+  {
+    source: 'legacy',
+    label: 'gold entry zones require a defined trigger and documented time convention',
+    pattern: /Define the qualifying bullish PD-array return and the observable entry trigger before testing[\s\S]{0,200}exact window and New York time\/daylight-saving convention/i,
+  },
+];
+
+forbidden.push(...modelSpecificationResidualForbidden);
+required.push(...modelSpecificationResidualRequired);
+
+
+const rangeAndTimeframeResidualForbidden = [
+  {
+    source: 'primary',
+    label: 'premium/discount opening overstates objective price quality',
+    pattern: /there is no such thing as an objectively "good" or "bad" price/i,
+  },
+  {
+    source: 'primary',
+    label: 'premium/discount framed as ICT answering whether an entry is good',
+    pattern: /The Premium & Discount framework is ICT's answer to the question every trader asks/i,
+  },
+  {
+    source: 'primary',
+    label: 'premium/discount claimed to apply identically at every timeframe',
+    pattern: /The premium\/discount framework is fractal — it applies at every timeframe simultaneously/i,
+  },
+  {
+    source: 'primary',
+    label: 'multi-timeframe approach is described as inherently powerful',
+    pattern: /This is where ICT's multi-timeframe analysis becomes powerful/i,
+  },
+  {
+    source: 'primary',
+    label: 'SMT is categorically barred from being a standalone model',
+    pattern: /SMT should usually be a confluence or filter, not the complete entry model/i,
+  },
+  {
+    source: 'primary',
+    label: '4H is presented as a universal confirmation timeframe',
+    pattern: /title: '4H Confirmation'/i,
+  },
+  {
+    source: 'primary',
+    label: '15M and 5M are presented as universal entry timeframes',
+    pattern: /title: '15M and 5M Entry Timeframes'/i,
+  },
+];
+
+const rangeAndTimeframeResidualRequired = [
+  {
+    source: 'primary',
+    label: 'premium/discount is described as location, not objective valuation',
+    pattern: /this is a location convention, not an objective valuation of the asset/i,
+  },
+  {
+    source: 'primary',
+    label: 'SMT alternatives allow standalone testing with defined trade rules',
+    pattern: /A standalone SMT strategy can also be tested, but its entry trigger, invalidation and risk rules must be defined separately/i,
+  },
+  {
+    source: 'primary',
+    label: 'top-down execution timeframes are described as optional and model-specific',
+    pattern: /15M and 5M are examples, not universal requirements/i,
+  },
+  {
+    source: 'primary',
+    label: '4H context is conditional on the chosen model',
+    pattern: /A 4H chart is not a required confirmation layer for every ICT-style model/i,
+  },
+];
+
+forbidden.push(...rangeAndTimeframeResidualForbidden);
+required.push(...rangeAndTimeframeResidualRequired);
 
 const failures = [];
 for (const check of forbidden) {
