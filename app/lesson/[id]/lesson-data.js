@@ -534,11 +534,11 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
     duration: '22 min read',
     category: 'Price Theory',
     imageCaption: 'Premium vs Discount: ICT premium/discount framing: traders study selling in premium and buying in discount relative to a swing range',
-    intro: `One important concept in ICT is this: ICT presents premium/discount as a framework for judging relative price within a defined range. It can be used as contextual information, but it does not determine every institutional transaction or guarantee better entries. The Premium & Discount framework is ICT's answer to the question every trader asks: "Is this a good price to enter?"`,
+    intro: `ICT presents premium/discount as a framework for describing price location within a defined range. It can be used as context, but it does not identify institutional positioning, establish objective value, or answer by itself whether an entry is favorable. Combine it with a defined setup and test whether it adds value to the trading plan.`,
     sections: [
       {
-        title: 'The Core Principle: Price Is Always Relative',
-        content: `Here is the fundamental insight: there is no such thing as an objectively "good" or "bad" price. Price is only good or bad RELATIVE to a range. A price that is cheap in one context is expensive in another.\n\nICT uses the Fibonacci retracement tool not to predict reversal levels — but to define premium and discount zones within any swing range.\n\nHere's how it works:\n• Identify a significant swing low and swing high (or high to low for bearish)\n• Draw a Fibonacci from the swing low to the swing high\n• The 50% level (equilibrium) divides the range in half\n• Everything ABOVE the 50% = Premium Zone (relatively higher within the range)\n• Everything BELOW the 50% = Discount Zone (relatively lower within the range)\n\nThis is a commonly taught ICT framing of price relative to a dealing range:\n• Traders may study discount areas (below 50%) for potential long setups\n• Traders may study premium areas (above 50%) for potential short setups\n• Actual order flow and future direction cannot be confirmed from premium/discount location alone\n\nThis framework is intended to help traders compare price relative to a range; it does not establish that retail traders consistently enter at extremes or that institutions systematically take the opposite side.`,
+        title: 'Price Relative to a Defined Range',
+        content: `In the premium/discount framework, price is classified as relatively high or low with reference to a chosen range; this is a location convention, not an objective valuation of the asset. A price that is lower within one range may still be high relative to a different range or timeframe.\n\nSome ICT traders use Fibonacci retracement levels to define premium and discount zones within a selected swing range. Those zones describe location; they do not predict reversal by themselves.\n\nHere's one way to define the range:\n• Identify a significant swing low and swing high (or high to low for bearish)\n• Draw a Fibonacci from the swing low to the swing high\n• The 50% level (equilibrium) divides the range in half\n• Everything ABOVE the 50% = Premium Zone (relatively higher within the range)\n• Everything BELOW the 50% = Discount Zone (relatively lower within the range)\n\nThis is a commonly taught ICT framing of price relative to a dealing range:\n• Traders may study discount areas (below 50%) for potential long setups\n• Traders may study premium areas (above 50%) for potential short setups\n• Actual order flow and future direction cannot be confirmed from premium/discount location alone\n\nThis framework is intended to help traders compare price relative to a range; it does not establish that retail traders consistently enter at extremes or that institutions systematically take the opposite side.`,
         highlight: '📌 Study guideline: Some ICT traders use discount/premium as a directional filter. Treat it as one contextual input and test whether it improves your entries.',
       },
       {
@@ -675,7 +675,7 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
       {
         title: 'SMT With Indices',
         content: `For index traders, NAS100 and S&P 500 are a common pair to study. Compare equivalent swing points rather than simply comparing whether one chart is higher or lower.\n\nA practical workflow:\n1. Establish the higher-timeframe level or liquidity reference.\n2. Mark the corresponding swing on both indices.\n3. Check whether one index breaks the prior extreme while the other does not.\n4. Wait for your separate entry model if SMT is only a confirmation filter.\n5. Define invalidation independently of the divergence.`,
-        highlight: '📌 SMT should usually be a confluence or filter, not the complete entry model.',
+        highlight: '📌 Many traders use SMT as a confluence or filter. A standalone SMT strategy can also be tested, but its entry trigger, invalidation and risk rules must be defined separately.',
       },
       {
         title: 'SMT Entry Confirmation',
@@ -841,13 +841,13 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
         highlight: '📌 A useful daily narrative contains conditions that can invalidate it. A directional statement without invalidation is only a prediction.',
       },
       {
-        title: '4H Confirmation',
-        content: `Use the 4H chart to refine structure between the daily narrative and intraday execution. Check whether the current swing sequence supports the scenario and where the nearest meaningful liquidity sits.\n\nDo not keep changing the higher-timeframe narrative every time a small 4H candle moves. Define the swing structure before the session begins and update it only when your structural rule is actually met.`,
+        title: '4H Context (If Used by the Model)',
+        content: `If your strategy includes a 4H layer, use it to refine the relationship between daily context and intraday execution. Check the swing sequence and candidate reference levels under your predefined rules. A 4H chart is not a required confirmation layer for every ICT-style model.\n\nDo not keep changing the higher-timeframe narrative every time a small 4H candle moves. Define the swing structure before the session begins and update it only when your structural rule is actually met.`,
         highlight: '📌 The 4H layer should refine the scenario, not create endless narrative changes during execution.',
       },
       {
-        title: '15M and 5M Entry Timeframes',
-        content: `Once context is established, move down to the execution environment. On 15M and 5M, mark session highs/lows, local liquidity and the setup zone.\n\nA lower-timeframe entry should have its own trigger—such as a defined displacement, structure shift or FVG rule. The exact trigger depends on the strategy being tested.\n\nAvoid entering merely because price reached a higher-timeframe level.`,
+        title: 'Intraday Entry Timeframes (Model-Specific)',
+        content: `For strategies that use intraday execution, choose and document the lower timeframes in advance; 15M and 5M are examples, not universal requirements. Mark session highs/lows and candidate setup zones only when they belong to the written model.\n\nA lower-timeframe entry should have its own trigger—such as a defined displacement, structure shift or FVG rule. The exact trigger and timeframe depend on the strategy being tested.\n\nAvoid entering merely because price reached a higher-timeframe level.`,
         highlight: '📌 A higher-timeframe level is context. The lower-timeframe trigger is what turns the context into a testable entry.',
       },
       {
