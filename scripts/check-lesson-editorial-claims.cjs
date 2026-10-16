@@ -2009,6 +2009,96 @@ const amdOteResidualRequired = [
 forbidden.push(...amdOteResidualForbidden);
 required.push(...amdOteResidualRequired);
 
+
+const breakerArrayResidualForbidden = [
+  {
+    source: 'primary',
+    label: 'Breaker retest stated to act as resistance as a fact',
+    pattern: /Price pulls back to this zone — it now acts as resistance/i,
+  },
+  {
+    source: 'primary',
+    label: 'bearish breaker context presented as mandatory',
+    pattern: /Step 2 — HTF must be bearish/i,
+  },
+  {
+    source: 'primary',
+    label: 'breaker entry stated as a universal short instruction',
+    pattern: /Step 5 — Enter short at the Breaker/i,
+  },
+  {
+    source: 'primary',
+    label: 'breaker target prescribed as the next SSL without qualification',
+    pattern: /Step 7 — Target: next SSL below/i,
+  },
+  {
+    source: 'primary',
+    label: 'any failed OB said to invert polarity automatically',
+    pattern: /When an OB gets broken through, it inverts polarity and becomes support|it is now a Breaker Block/i,
+  },
+  {
+    source: 'primary',
+    label: 'partial OB revisit asserted to preserve validity universally',
+    pattern: /ICT considers partially mitigated OBs as still valid for future tests/i,
+  },
+  {
+    source: 'primary',
+    label: 'premium arrays presented as defined selling opportunities',
+    pattern: /PREMIUM ARRAYS \\(selling opportunities\\)|From most premium to most discount/i,
+  },
+  {
+    source: 'primary',
+    label: 'premium and discount applied identically and objectively at all timeframes',
+    pattern: /The premium\/discount framework is fractal — it applies at every timeframe simultaneously/i,
+  },
+  {
+    source: 'primary',
+    label: 'OB validity claimed from an unqualified 50-percent reaction rule',
+    pattern: /Specifically, ICT says a bullish OB is valid if price holds above the 50% level/i,
+  },
+  {
+    source: 'primary',
+    label: 'higher volume stated to validate an order block as a rule',
+    pattern: /higher volume on the OB candle and the displacement move adds validity/i,
+  },
+];
+
+const breakerArrayResidualRequired = [
+  {
+    source: 'primary',
+    label: 'Breaker polarity treated as a hypothesis',
+    pattern: /A bullish or bearish polarity change is a hypothesis, not a guaranteed result/i,
+  },
+  {
+    source: 'primary',
+    label: 'Breaker variant includes no retest and failed-entry alternatives',
+    pattern: /Price may not retest, may continue through the former zone, or may react without meeting the entry rule/i,
+  },
+  {
+    source: 'primary',
+    label: 'Breaker entries use model-specific stop, invalidation and target rules',
+    pattern: /apply the model's predefined stop\/invalidation and target rules/i,
+  },
+  {
+    source: 'primary',
+    label: 'PD array list is not a validated ranking of trade quality',
+    pattern: /not a validated ranking of predictive power or trade quality/i,
+  },
+  {
+    source: 'primary',
+    label: 'interior PD array ordering is described as convention-dependent',
+    pattern: /The relative ordering of these references inside premium or discount is convention-dependent/i,
+  },
+  {
+    source: 'primary',
+    label: 'OB volume filter depends on instrument-specific data quality',
+    pattern: /Volume availability and meaning vary by venue and instrument/i,
+  },
+];
+
+forbidden.push(...breakerArrayResidualForbidden);
+required.push(...breakerArrayResidualRequired);
+
 const failures = [];
 for (const check of forbidden) {
   if (check.pattern.test(text[check.source])) {
