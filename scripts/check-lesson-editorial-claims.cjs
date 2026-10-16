@@ -2099,6 +2099,96 @@ const breakerArrayResidualRequired = [
 forbidden.push(...breakerArrayResidualForbidden);
 required.push(...breakerArrayResidualRequired);
 
+
+const executionPsychResidualForbidden = [
+  {
+    source: 'legacy',
+    label: 'stop placement claims to prove the entire setup wrong',
+    pattern: /stop goes at the level that PROVES THE SETUP WRONG if reached/i,
+  },
+  {
+    source: 'legacy',
+    label: 'backtest average losing trade asserted to equal minus one R',
+    pattern: /Target: should be -1R \\(full stop hit\\)/i,
+  },
+  {
+    source: 'legacy',
+    label: 'filter discovery optimized by highest win rate alone',
+    pattern: /Analyze which criteria, when present, correlated with the highest win rates/i,
+  },
+  {
+    source: 'legacy',
+    label: 'portfolio methods are attributed broadly to professional ICT traders without support',
+    pattern: /advanced position sizing techniques used by professional ICT traders/i,
+  },
+  {
+    source: 'legacy',
+    label: 'emotion labels are declared the four account killers',
+    pattern: /the four account killers/i,
+  },
+  {
+    source: 'legacy',
+    label: 'trading psychology quiz imposes a universal maximum session duration',
+    pattern: /What is the maximum recommended trading session length\?/i,
+  },
+  {
+    source: 'legacy',
+    label: 'a single emotion is asserted to cause premature exits',
+    pattern: /Which emotion causes you to close winners too early\?/i,
+  },
+  {
+    source: 'legacy',
+    label: 'bullish order block stop quiz presents one boundary as universal',
+    pattern: /Where should you place your stop loss on a bullish Order Block entry\?/i,
+  },
+  {
+    source: 'legacy',
+    label: 'backtesting is described as universally mandatory without qualification',
+    pattern: /BACKTESTING IS NOT OPTIONAL:/i,
+  },
+];
+
+const executionPsychResidualRequired = [
+  {
+    source: 'legacy',
+    label: 'stop invalidation is qualified to the chosen model rather than all market theses',
+    pattern: /Reaching that level invalidates the setup under that model; it does not prove a broader market thesis wrong/i,
+  },
+  {
+    source: 'legacy',
+    label: 'average losing R reflects actual fills and management rather than a fixed minus one R',
+    pattern: /Actual average losses can differ with partial exits, early exits, slippage, gaps and costs/i,
+  },
+  {
+    source: 'legacy',
+    label: 'filter comparison considers expectancy, drawdown and uncertainty beyond win rate',
+    pattern: /Compare pre-defined criteria with the baseline using expectancy, drawdown, sample size and uncertainty—not win rate alone/i,
+  },
+  {
+    source: 'legacy',
+    label: 'emotion labels are not treated as a single explanation for every loss',
+    pattern: /no single label explains every loss/i,
+  },
+  {
+    source: 'legacy',
+    label: 'session length is adapted rather than universal',
+    pattern: /How should you choose your trading-session length\?[\s\S]{0,300}Fit the schedule to your strategy, responsibilities and ability to monitor trades/i,
+  },
+  {
+    source: 'legacy',
+    label: 'bullish OB stop quiz is tied to a declared invalidation model',
+    pattern: /Under a model that defines the OB low as invalidation for a bullish Order Block entry, where may the stop be placed/i,
+  },
+  {
+    source: 'legacy',
+    label: 'backtesting section distinguishes evidence from proof',
+    pattern: /WHAT BACKTESTING CAN AND CANNOT ESTABLISH:/i,
+  },
+];
+
+forbidden.push(...executionPsychResidualForbidden);
+required.push(...executionPsychResidualRequired);
+
 const failures = [];
 for (const check of forbidden) {
   if (check.pattern.test(text[check.source])) {
