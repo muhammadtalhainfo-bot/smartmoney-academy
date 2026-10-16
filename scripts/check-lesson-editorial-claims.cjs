@@ -2294,7 +2294,7 @@ const rangeAndTimeframeResidualForbidden = [
   {
     source: 'primary',
     label: 'premium/discount opening overstates objective price quality',
-    pattern: /there is no such thing as an objectively \\"good\\" or \\"bad\\" price/i,
+    pattern: /there is no such thing as an objectively "good" or "bad" price/i,
   },
   {
     source: 'primary',
