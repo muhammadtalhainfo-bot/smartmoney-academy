@@ -2376,7 +2376,7 @@ const dolPreparationResidualForbidden = [
 const dolPreparationResidualRequired = [
   {
     source: 'legacy',
-    label: 'DOL mapping is conditional on the trader's written model',
+    label: "DOL mapping is conditional on the trader's written model",
     pattern: /If DOL mapping is part of your written model, you can use this routine/i,
   },
   {
