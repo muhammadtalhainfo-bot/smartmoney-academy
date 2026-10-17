@@ -2394,6 +2394,46 @@ const dolPreparationResidualRequired = [
 forbidden.push(...dolPreparationResidualForbidden);
 required.push(...dolPreparationResidualRequired);
 
+
+const workflowTestingResidualForbidden = [
+  {
+    source: 'primary',
+    label: 'SMC checklist claims every component must be tested independently',
+    pattern: /Every component should be testable independently\./i,
+  },
+  {
+    source: 'primary',
+    label: 'top-down workflow is ranked strongest without a defined comparison',
+    pattern: /The strongest top-down process is the one you can repeat without changing definitions after seeing the result/i,
+  },
+  {
+    source: 'primary',
+    label: 'entry-model introduction dismisses prior learning without an instructional basis',
+    pattern: /Having all the concepts in your head means nothing if you don't know HOW to combine them/i,
+  },
+];
+
+const workflowTestingResidualRequired = [
+  {
+    source: 'primary',
+    label: 'SMC components are evaluated incrementally and then as a combined workflow',
+    pattern: /Where feasible, test each component's incremental contribution against the same baseline\. Then test the combined workflow as a whole/i,
+  },
+  {
+    source: 'primary',
+    label: 'top-down workflow guidance emphasizes repeatability, not unsupported ranking',
+    pattern: /A useful top-down process is one you can apply consistently without changing definitions after seeing the result/i,
+  },
+  {
+    source: 'primary',
+    label: 'entry-model introduction distinguishes concepts from a complete plan',
+    pattern: /Knowing individual ICT concepts is not the same as having a complete entry plan/i,
+  },
+];
+
+forbidden.push(...workflowTestingResidualForbidden);
+required.push(...workflowTestingResidualRequired);
+
 const failures = [];
 for (const check of forbidden) {
   if (check.pattern.test(text[check.source])) {
