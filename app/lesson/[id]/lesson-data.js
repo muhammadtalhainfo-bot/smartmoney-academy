@@ -576,7 +576,7 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
     duration: '25 min read',
     category: 'Execution',
     imageCaption: 'Examples of ICT entry rules that traders can define, test and adapt',
-    intro: `Having all the concepts in your head means nothing if you don't know HOW to combine them into a concrete trade entry. ICT entry models are structured, repeatable frameworks for defining potential entries. Their rules can be precise, but meeting the conditions does not guarantee a high-probability or profitable outcome.`,
+    intro: `Knowing individual ICT concepts is not the same as having a complete entry plan. Entry models combine selected conditions into a potential setup; define the rules clearly and remember that meeting them does not guarantee a profitable outcome.`,
     sections: [
       {
         title: 'The Foundation: What Makes a Valid ICT Entry',
@@ -810,7 +810,7 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
       },
       {
         title: 'Inducement and the SMC Trade Framework',
-        content: `Inducement is commonly used for a price feature that attracts traders before a larger move. Because intent cannot be observed directly, use it as a chart hypothesis rather than a statement about what participants were thinking.\n\nA complete SMC workflow can be written as:\n1. Higher-timeframe context\n2. Liquidity reference\n3. Structure condition\n4. Setup zone\n5. Entry trigger\n6. Invalidation\n7. Target\n8. Risk and review rules\n\nEvery component should be testable independently.`,
+        content: `Inducement is commonly used for a price feature that attracts traders before a larger move. Because intent cannot be observed directly, use it as a chart hypothesis rather than a statement about what participants were thinking.\n\nA complete SMC workflow can be written as:\n1. Higher-timeframe context\n2. Liquidity reference\n3. Structure condition\n4. Setup zone\n5. Entry trigger\n6. Invalidation\n7. Target\n8. Risk and review rules\n\nWhere feasible, test each component's incremental contribution against the same baseline. Then test the combined workflow as a whole, because filters can interact and a component that helps alone may not improve the combined model.`,
         highlight: '📌 SMC becomes a system only when context, setup, trigger, invalidation, target and risk are all written as rules.',
       },
     ],
@@ -853,7 +853,7 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
       {
         title: 'Full Trade Walkthrough',
         content: `A complete top-down routine can be written as:\n1. Monthly/weekly: major context and liquidity\n2. Daily: current narrative and scenarios\n3. 4H: structural context, if used by the model\n4. 15M: session structure and setup zone, if required\n5. 5M/1M: entry trigger and invalidation\n6. Trade: predefined target and risk\n7. Review: screenshot the relevant layers and record whether each prewritten condition was present\n\nUse only the layers required by the strategy you are testing. If a required condition is missing, mark the setup as “not qualified” rather than filling the gap with hindsight; do not assume every ICT-style strategy must use all of these timeframes.`,
-        highlight: '📌 The strongest top-down process is the one you can repeat without changing definitions after seeing the result.',
+        highlight: '📌 A useful top-down process is one you can apply consistently without changing definitions after seeing the result.',
       },
     ],
     quiz: [
