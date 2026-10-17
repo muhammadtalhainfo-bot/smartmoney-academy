@@ -450,10 +450,17 @@ const articleBodyRegressionChecks = [
       ['BSL described as algorithm-engineered to fill institutional orders', /When the algorithm needs to fill large buy orders, it drives price above BSL levels/i],
       ['SSL described as algorithm-engineered to fill institutional orders', /When the algorithm needs to fill large sell orders[\s\S]{0,300}it drives price below SSL levels/i],
       ['all traders assumed to place stops at equal highs', /every trader who looks at the chart will see those equal highs and place stop orders/i],
+      ['equal highs and lows claimed to be the most heavily targeted pools', /the most heavily targeted liquidity pools/i],
+      ['sweeps treated as necessary before a directional move', /Expect price to take out equal lows before a bullish move/i],
+      ['touch-count claimed to prove more orders and a stronger reaction', /the more liquidity has accumulated there, and the stronger the reaction after the sweep will be/i],
+      ['DOL required for every ICT trade', /Every ICT trade has a Draw on Liquidity/i],
+      ['nearest liquidity pool promised as the daily target', /The answer to that question is your daily target/i],
     ],
     required: [
       ['liquidity is separated from observed order-book contents', /A chart does not show the complete order book or confirm which orders are present/i],
       ['BSL outcome is described as a hypothesis', /Some ICT narratives hypothesize that a move above a BSL reference may trigger stops/i],
+      ['equal highs and lows are candidate areas rather than universal targets', /They are candidate reference areas, not automatically the primary targets in every session/i],
+      ['DOL remains a candidate target hypothesis', /Some ICT models use a Draw on Liquidity \\(DOL\\) as a candidate target hypothesis/i],
     ],
     readTime: /readTime:\s*'3 min read'/,
   },
@@ -461,9 +468,14 @@ const articleBodyRegressionChecks = [
     slug: 'ict-balanced-price-range-bpr',
     forbidden: [
       ['FVG described as proof that one side could not participate', /a gap where (?:sellers|buyers) could not participate/i],
+      ['BPR presented as typically producing fixed high R multiples', /typically produces R:R ratios of 5:1 or better/i],
+      ['BPR alignment treated as a priority entry by default', /it is your priority entry/i],
+      ['counter-bias BPR treated as guaranteed stop-management reaction', /expect a reaction there even while in a profitable trade/i],
     ],
     required: [
       ['BPR definition remains grounded in chart overlap', /The overlap can be marked as a Balanced Price Range/i],
+      ['BPR reward-risk claims are explicitly not assumed', /does not establish a typical 5:1-or-better result/i],
+      ['BPR boundary and entry rules are model-specific', /Possible test rules include entry at the overlap midpoint/i],
     ],
     readTime: /readTime:\s*'3 min read'/,
   },
@@ -588,6 +600,162 @@ const articleBodyRegressionChecks = [
     ],
     readTime: /readTime:\s*'3 min read'/,
   },
+
+  {
+    slug: 'how-to-trade-fair-value-gaps',
+    forbidden: [
+      ['CE called the primary entry target and best gap-fill level', /CE is the primary entry target when price returns to an FVG|best balance between entry precision and gap fill probability/i],
+      ['FVG definition claims one side could not participate', /buyers were so aggressive that sellers could not participate|sellers moved price down so aggressively that buyers could not participate/i],
+      ['all FVGs require high-timeframe agreement', /FVGs only have high probability when they align with the broader institutional order flow direction/i],
+      ['displacement proves institutional orders were triggered', /confirmation that institutional orders are being triggered/i],
+    ],
+    required: [
+      ['CE is an optional reference rather than a required target', /Some ICT variants use CE as a possible entry reference/i],
+      ['FVG non-revisit and failed-reaction cases are recorded', /log no-revisit, partial-fill, full-fill and continuation cases/i],
+    ],
+  },
+  {
+    slug: 'understanding-order-blocks',
+    forbidden: [
+      ['order block claims to identify institutional accumulation and unfilled orders', /highest concentration of unfilled orders|The final candle of this accumulation phase/i],
+      ['order-block revisit said to activate orders and create a strong reaction', /When price returns to this zone, those orders are activated again/i],
+      ['breaker block universally ranked above standard OBs', /Breaker Blocks are actually considered higher quality than standard OBs/i],
+      ['propulsion block ranked among the strongest entries', /among the strongest entry zones in the entire framework/i],
+      ['lower-timeframe move described as proof of institutional activation', /confirmation that institutional orders are being triggered/i],
+    ],
+    required: [
+      ['order-block mechanism claims are framed as interpretations', /A chart cannot identify who traded there, establish hidden accumulation/i],
+      ['OB setup includes missed and failed examples', /A zone can fail, be skipped or never be revisited/i],
+    ],
+  },
+  {
+    slug: 'smt-divergence-ict-explained',
+    forbidden: [
+      ['SMT examples predict a required reversal', /signal to expect (?:EURUSD|GBPUSD) to reverse/i],
+      ['SMT used at an HTF level declared mandatory', /The divergence must occur at a significant price level/i],
+      ['killzone timing asserts peak institutional participation', /SMT Divergence works best during killzone hours when institutional volume is present/i],
+      ['SMT confluence claimed to provide exceptional confidence', /adding SMT Divergence as the entry trigger gives you exceptional confidence/i],
+    ],
+    required: [
+      ['cross-market relationship is measured, not assumed constant', /Measure the relationship over the timeframe and sample relevant to the model/i],
+      ['session performance is an empirical question', /Whether SMT performs differently by session is an empirical question/i],
+    ],
+  },
+  {
+    slug: 'ict-valid-fair-value-gap',
+    forbidden: [
+      ['visual displacement automatically defines a valid FVG', /If yes — genuine displacement, valid FVG\\. If no — the FVG is noise/i],
+      ['HTF direction treated as a universal FVG validity rule', /A valid FVG must align with the institutional order flow/i],
+      ['first-presented FVG declared to carry full institutional significance', /only the first one[\\s\\S]{0,180}carries full institutional significance/i],
+      ['fully crossed FVG banned universally or assigned automatic polarity', /A fully mitigated FVG is no longer a valid entry zone/i],
+      ['active sessions treated as required institutional participation', /Valid FVGs for intraday entries should be created and tested during active sessions/i],
+      ['five FVG conditions treated as universal requirements', /Only FVGs passing all five criteria qualify for trade consideration/i],
+    ],
+    required: [
+      ['FVG criterion labels do not prove institutional significance', /none of those labels alone demonstrates institutional significance/i],
+      ['FVG checklist criteria are model-specific and testable', /Treat each condition as model-specific and test whether it adds value/i],
+    ],
+    readTime: /readTime:\\s*'11 min read'/,
+  },
+  {
+    slug: 'ict-bullish-order-block-complete',
+    forbidden: [
+      ['bullish OB defined as proven institutional accumulation', /institutions needed to fill their buy orders|same institutional buyers are waiting with additional orders/i],
+      ['discount location alone described as low probability in premium', /Buying a bullish OB in premium is a low-probability trade/i],
+      ['liquidity sweep claimed to have collected orders for institutions', /The SSL sweep collected the sell orders/i],
+      ['bullish OB claimed to almost always show immediate momentum', /A valid bullish OB entry almost always shows immediate directional momentum/i],
+    ],
+    required: [
+      ['bullish OB label is not proof of institutional buying', /The visual area cannot show that buyers accumulated there/i],
+      ['entry conditions are tested rather than assumed', /test the full distribution of outcomes/i],
+    ],
+  },
+  {
+    slug: 'ict-reclaimed-order-block',
+    forbidden: [
+      ['second retest automatically dictates an entry', /On the second approach to the zone, enter at the midpoint/i],
+      ['FVG/BPR confluence automatically creates a top-tier setup', /the confluence makes it a top-tier setup/i],
+      ['reclaimed OB is called highly reliable', /Why the Reclaimed OB Is Highly Reliable/i],
+    ],
+    required: [
+      ['reclaim classification depends on predefined rules', /classify a reclaim only if it meets the predefined close, wick or follow-through rule/i],
+      ['extra confluence is empirically evaluated', /test whether it improves results rather than ranking the combined setup in advance/i],
+    ],
+  },
+  {
+    slug: 'ict-suspension-block-2025',
+    forbidden: [
+      ['suspension block said to reveal smart-money accumulation', /The suspension indicates more deliberate, extended accumulation by smart money/i],
+      ['suspension block said to predict stronger future reaction', /more explosive move when it releases and a more reliable reaction when price returns/i],
+    ],
+    required: [
+      ['suspension-block shape is not participant evidence', /The cluster does not reveal accumulation by smart money or predict a more explosive move or stronger reaction/i],
+    ],
+  },
+  {
+    slug: 'ict-market-maker-buy-model-mmbm',
+    forbidden: [
+      ['MMBM phases described as verified market-maker activity', /the market maker is building its long position|the market maker has finished accumulating/i],
+      ['MMBM retracement called second-best and lower-risk by default', /second-best MMBM entry|These are lower-risk entries/i],
+      ['MMBM session timing described as its greatest predictive feature', /This temporal pattern is the MMBM.s greatest predictive feature/i],
+    ],
+    required: [
+      ['MMBM narrative is not proof of market-maker intent', /a chart cannot show that a market maker is building a position/i],
+      ['MMBM entry variants require comparison rather than ranking', /should not be ranked as the second-best or lower-risk entry without comparable data/i],
+    ],
+  },
+  {
+    slug: 'ict-one-shot-one-kill-model',
+    forbidden: [
+      ['3:1 ratio presented as a universal ICT recommendation', /ICT typically recommends a minimum of 3:1/i],
+      ['single setup discipline claimed to create consistent profitability', /transforms average ICT students into consistently profitable traders/i],
+    ],
+    required: [
+      ['risk-to-reward threshold depends on tested distribution and costs', /A fixed 3:1 ratio is not a universal ICT requirement/i],
+      ['OSOK is not treated as a guarantee of profitability', /neither waiting for a single setup nor following the OSOK label guarantees profitability/i],
+    ],
+  },
+  {
+    slug: 'ict-scalping-strategy',
+    forbidden: [
+      ['scalping windows claimed to have the highest setup frequency', /offer the highest frequency of qualifying setups per week/i],
+      ['fixed trade count and percentage risk claimed as mandatory', /maximum 3 attempts per session[\\s\\S]{0,180}strict 0\\.5% risk per trade/i],
+      ['universal 3–6 month readiness timeline', /spend at least 3-6 months there before moving to 1-minute scalping/i],
+    ],
+    required: [
+      ['scalping stops and targets depend on tested instrument volatility', /set targets and stops from a tested plan and actual instrument volatility/i],
+      ['risk rules remain strategy-specific', /Set trade-count, loss-limit, risk and session rules for the particular strategy/i],
+      ['readiness is not based on a universal timeline', /Readiness is not established by confidence or a universal 3–6 month timeline/i],
+    ],
+  },
+  {
+    slug: 'ict-top-down-analysis-complete',
+    forbidden: [
+      ['six timeframes presented as the only complete framework', /complete top-down analysis framework spans six timeframes/i],
+      ['monthly context said to govern every lower layer', /This context governs everything below it/i],
+      ['multi-timeframe alignment labeled high probability by itself', /is a high-conviction, high-probability trade/i],
+      ['pre-session analysis claimed to improve performance most dramatically', /single practice that will improve your trading performance most dramatically/i],
+      ['traders who skip analysis stereotyped as providing liquidity to others', /The traders who skip it and react in real-time[\\s\\S]{0,120}providing the liquidity/i],
+    ],
+    required: [
+      ['timeframe count is strategy-specific', /there is no universal six-timeframe requirement/i],
+      ['timeframe confluence is measured against a baseline', /does not by itself establish high probability or positive expectancy/i],
+      ['analysis benefit is not promised or attributed to other traders', /does not guarantee better performance or show that traders who skip it provide liquidity/i],
+    ],
+  },
+  {
+    slug: 'ict-single-candle-order-block-scob',
+    forbidden: [
+      ['SCOB precision claimed to guarantee better reward-to-risk', /Tighter stops \\+ same targets = better risk-to-reward ratios/i],
+      ['body size percentage claimed to prove institutional placement', /80%\\+ of its range as body[\\s\\S]{0,160}institutional order placement/i],
+      ['SCOB described as free of ambiguity', /In an SCOB, there is no ambiguity/i],
+    ],
+    required: [
+      ['body threshold is only a testable candle-shape filter', /no percentage confirms institutional order placement or makes a SCOB premium/i],
+      ['tighter stops are evaluated against stop-outs and expectancy', /A tighter stop can change the nominal ratio while also increasing stop-outs/i],
+    ],
+  },
+
 ];
 
 for (const check of articleBodyRegressionChecks) {
