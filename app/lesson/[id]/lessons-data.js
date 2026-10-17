@@ -26,7 +26,7 @@ export const LESSONS_EXTRA = {
       {
         title: `Previous Day Reference Levels`,
         content: `Before each session, traders can mark these reference levels as possible areas of interest:\n\nPREVIOUS DAY HIGH (PDH):\nICT traders often label the area above PDH as potential buy-side liquidity. In a bearish scenario, some watch for a move above PDH followed by a bearish response, but neither the sweep nor the reversal is assured.\n\nPREVIOUS DAY LOW (PDL):\nICT traders often label the area below PDL as potential sell-side liquidity. In a bullish scenario, some watch for a move below PDL followed by a bullish response, but neither the sweep nor the reversal is assured.\n\nPREVIOUS DAY CLOSE:\nThe overnight gap between the previous close and the current day's open is significant. Some traders monitor this gap as a reference area, but it may remain open or be filled at an unpredictable time.\n\nPREVIOUS WEEK HIGH / LOW:\nWeekly highs and lows can provide broader context than prior-day levels, but their relevance varies and they do not define the maximum possible daily range.\n\nThese are candidate reference levels, not guaranteed boundaries of the day's range. Use them where your model calls for them and keep alternative scenarios visible.`,
-        highlight: `📌 Mark PDH, PDL, previous week high and low before every session. These are potential reference areas for a daily plan, not guaranteed targets.`,
+        highlight: `📌 Prior-day and prior-week highs/lows are optional reference areas. Mark the levels that fit your written model and test whether they add value; no fixed checklist is required for every session.`,
       },
       {
         title: `The Midnight Open  --  True Daily Reference`,
@@ -61,7 +61,7 @@ export const LESSONS_EXTRA = {
     duration: `18 min read`,
     category: `Analysis`,
     imageCaption: `Draw on Liquidity: possible objectives marked by ICT traders, not guaranteed destinations`,
-    intro: `Draw on Liquidity (DOL) is an ICT term some traders use to record a possible price objective before a move occurs. While retail traders wonder "where will price go?" after it has already moved, It can help structure a conditional plan, but it does not establish an advantage over other approaches or show that a target will be reached. Treat each nominated level as a hypothesis and record alternatives and invalidation. This is a hypothesis about possible price objectives, not evidence of an algorithmic sequence or a forecast.`,
+    intro: `Draw on Liquidity (DOL) is an ICT term some traders use to record a possible price objective before a move occurs. It can help organize a conditional plan, but it does not establish an advantage over other approaches or show that a target will be reached. Treat each nominated level as a hypothesis and record alternatives and invalidation. A DOL is not evidence of an algorithmic sequence or a forecast.`,
     sections: [
       {
         title: `What Is the Draw on Liquidity?`,
@@ -74,8 +74,8 @@ export const LESSONS_EXTRA = {
         highlight: `📌 ERL and IRL are ICT labels for candidate reference areas outside and inside a defined range. The sweep → retracement → continuation sequence is one scenario to test, not a rule that price must follow.`,
       },
       {
-        title: `Identifying Your DOL Before the Session`,
-        content: `Before every trading session, run this DOL identification process:\n\nSTEP 1  --  Mark all ERL above price:\n• Previous swing highs\n• Equal highs (EQH)\n• Previous day high, previous week high\n• Round numbers above current price\n\nSTEP 2  --  Mark all ERL below price:\n• Previous swing lows\n• Equal lows (EQL)\n• Previous day low, previous week low\n• Round numbers below current price\n\nSTEP 3  --  Mark all IRL:\n• Open FVGs on 4-hour and daily charts\n• Unmitigated Order Blocks within the current range\n• NWOG and NDOG gaps\n\nSTEP 4  --  Select candidate reference areas:\nUsing your written model, identify which marked levels fit the current scenario. A bullish or bearish bias may help prioritize a candidate area, but it does not show which level the market will reach. Record alternative scenarios and define what would invalidate each one.\n\nSTEP 5  --  Treat this as a candidate target; compare it with invalidation, risk, and your tested exit rules before entering.`,
+        title: `Mapping Candidate DOL References`,
+        content: `If DOL mapping is part of your written model, you can use this routine. Adapt the list to your instrument and rules rather than assuming every reference is needed before every session:\n\nSTEP 1  --  Mark all ERL above price:\n• Previous swing highs\n• Equal highs (EQH)\n• Previous day high, previous week high\n• Round numbers above current price\n\nSTEP 2  --  Mark all ERL below price:\n• Previous swing lows\n• Equal lows (EQL)\n• Previous day low, previous week low\n• Round numbers below current price\n\nSTEP 3  --  Mark all IRL:\n• Open FVGs on 4-hour and daily charts\n• Unmitigated Order Blocks within the current range\n• NWOG and NDOG gaps\n\nSTEP 4  --  Select candidate reference areas:\nUsing your written model, identify which marked levels fit the current scenario. A bullish or bearish bias may help prioritize a candidate area, but it does not show which level the market will reach. Record alternative scenarios and define what would invalidate each one.\n\nSTEP 5  --  Treat this as a candidate target; compare it with invalidation, risk, and your tested exit rules before entering.`,
         highlight: `📌 You may use a DOL as a preplanned target, but it is a hypothesis rather than a destination price must reach. Define alternative exits and invalidation before entry.`,
       },
       {
