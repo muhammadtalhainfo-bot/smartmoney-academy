@@ -2434,6 +2434,46 @@ const workflowTestingResidualRequired = [
 forbidden.push(...workflowTestingResidualForbidden);
 required.push(...workflowTestingResidualRequired);
 
+
+const entryModelFramingForbidden = [
+  {
+    source: 'primary',
+    label: 'entry lesson title implies one universal definition of validity',
+    pattern: /What Makes a Valid ICT Entry/i,
+  },
+  {
+    source: 'primary',
+    label: 'top-down lesson subtitle implies every strategy executes on one-minute charts',
+    pattern: /From Monthly context to 1-minute execution/i,
+  },
+  {
+    source: 'primary',
+    label: 'entry checklist quiz lacks a reminder that it is only an example',
+    pattern: /Which list matches the example checklist in this lesson/i,
+  },
+];
+
+const entryModelFramingRequired = [
+  {
+    source: 'primary',
+    label: 'entry lesson frames rules as testable rather than universal',
+    pattern: /How to Define a Testable ICT Entry/i,
+  },
+  {
+    source: 'primary',
+    label: 'entry checklist quiz labels the checklist as an example',
+    pattern: /without making it a universal requirement/i,
+  },
+  {
+    source: 'primary',
+    label: 'top-down execution timeframe is explicitly model-specific',
+    pattern: /From Higher-Timeframe Context to Model-Specific Execution/i,
+  },
+];
+
+forbidden.push(...entryModelFramingForbidden);
+required.push(...entryModelFramingRequired);
+
 const failures = [];
 for (const check of forbidden) {
   if (check.pattern.test(text[check.source])) {
