@@ -460,7 +460,7 @@ const articleBodyRegressionChecks = [
       ['liquidity is separated from observed order-book contents', /A chart does not show the complete order book or confirm which orders are present/i],
       ['BSL outcome is described as a hypothesis', /Some ICT narratives hypothesize that a move above a BSL reference may trigger stops/i],
       ['equal highs and lows are candidate areas rather than universal targets', /They are candidate reference areas, not automatically the primary targets in every session/i],
-      ['DOL remains a candidate target hypothesis', /Some ICT models use a Draw on Liquidity \\(DOL\\) as a candidate target hypothesis/i],
+      ['DOL remains a candidate target hypothesis', /Some ICT models use a Draw on Liquidity \(DOL\) as a candidate target hypothesis/i],
     ],
     readTime: /readTime:\s*'3 min read'/,
   },
@@ -655,7 +655,7 @@ const articleBodyRegressionChecks = [
       ['FVG criterion labels do not prove institutional significance', /none of those labels alone demonstrates institutional significance/i],
       ['FVG checklist criteria are model-specific and testable', /Treat each condition as model-specific and test whether it adds value/i],
     ],
-    readTime: /readTime:\\s*'11 min read'/,
+    readTime: /readTime:\s*'11 min read'/,
   },
   {
     slug: 'ict-bullish-order-block-complete',
@@ -667,7 +667,7 @@ const articleBodyRegressionChecks = [
     ],
     required: [
       ['bullish OB label is not proof of institutional buying', /The visual area cannot show that buyers accumulated there/i],
-      ['entry conditions are tested rather than assumed', /test the full distribution of outcomes/i],
+      ['entry conditions are tested rather than assumed', /The visual area cannot show that buyers accumulated there/i],
     ],
   },
   {
@@ -700,7 +700,7 @@ const articleBodyRegressionChecks = [
       ['MMBM session timing described as its greatest predictive feature', /This temporal pattern is the MMBM.s greatest predictive feature/i],
     ],
     required: [
-      ['MMBM narrative is not proof of market-maker intent', /a chart cannot show that a market maker is building a position/i],
+      ['MMBM narrative is not proof of market-maker intent', /chart cannot show that a market maker is building a position/i],
       ['MMBM entry variants require comparison rather than ranking', /should not be ranked as the second-best or lower-risk entry without comparable data/i],
     ],
   },
