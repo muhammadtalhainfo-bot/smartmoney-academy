@@ -2354,6 +2354,46 @@ const rangeAndTimeframeResidualRequired = [
 forbidden.push(...rangeAndTimeframeResidualForbidden);
 required.push(...rangeAndTimeframeResidualRequired);
 
+
+const dolPreparationResidualForbidden = [
+  {
+    source: 'legacy',
+    label: 'DOL checklist is prescribed before every trading session',
+    pattern: /Before every trading session, run this DOL identification process/i,
+  },
+  {
+    source: 'legacy',
+    label: 'mandatory daily prior-day and prior-week level marking is implied',
+    pattern: /Mark PDH, PDL, previous week high and low before every session/i,
+  },
+  {
+    source: 'legacy',
+    label: 'DOL introduction uses a malformed sentence suggesting a universal advantage',
+    pattern: /While retail traders wonder "where will price go\?" after it has already moved, It can help structure/i,
+  },
+];
+
+const dolPreparationResidualRequired = [
+  {
+    source: 'legacy',
+    label: 'DOL mapping is conditional on the trader's written model',
+    pattern: /If DOL mapping is part of your written model, you can use this routine/i,
+  },
+  {
+    source: 'legacy',
+    label: 'DOL level list is adapted to market and rules rather than universal',
+    pattern: /Adapt the list to your instrument and rules rather than assuming every reference is needed/i,
+  },
+  {
+    source: 'legacy',
+    label: 'prior-period levels are optional rather than a mandatory daily checklist',
+    pattern: /Prior-day and prior-week highs\/lows are optional reference areas/i,
+  },
+];
+
+forbidden.push(...dolPreparationResidualForbidden);
+required.push(...dolPreparationResidualRequired);
+
 const failures = [];
 for (const check of forbidden) {
   if (check.pattern.test(text[check.source])) {
