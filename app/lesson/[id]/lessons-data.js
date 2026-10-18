@@ -446,7 +446,7 @@ export const LESSONS_EXTRA = {
     duration: `18 min read`,
     category: `Strategy`,
     imageCaption: `Turtle Soup-style hypothesis: a move beyond a reference may return inside, but confirmation and follow-through are uncertain`,
-    intro: `Turtle Soup originated as a failed-breakout strategy published by Linda Bradford Raschke and Laurence Connors in their book Street Smarts in the mid-1990s. ICT-oriented trading later adapted the idea into intraday variants described with liquidity sweeps, structure shifts and other model-specific rules. Those variants should not be conflated with one another or with every original Turtle Soup rule. A move beyond a visible high or low may return through it, but that does not establish that retail stops were targeted or predict a reversal; breakouts can continue. Define the source/version, trigger, stop, target and invalidation for the model being tested.`,
+    intro: `Turtle Soup originated as a failed-breakout strategy published by Linda Bradford Raschke and Laurence Connors in their book Street Smarts in the mid-1990s. ICT-oriented trading later adapted the idea into intraday variants described with liquidity sweeps, structure shifts and other model-specific rules. Those variants should not be conflated with one another or with every original Turtle Soup rule. A move beyond a visible high or low may return through it. This pattern does not establish that retail stops were targeted, predict a reversal, or rank the setup's reliability; breakouts can continue. Define the source/version, trigger, stop, target and invalidation for the model being tested.`,
     sections: [
       {
         title: `Original Turtle Soup and ICT-Style Variants`,
