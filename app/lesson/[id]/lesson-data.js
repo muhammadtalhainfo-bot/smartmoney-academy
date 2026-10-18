@@ -240,14 +240,14 @@ SIBI (Sell-side Imbalance, Buy-side Inefficiency): A bearish FVG — price imbal
         highlight: '📌 Common variations include CE (the 50% midpoint), IFVG (a former FVG treated as a possible opposite-polarity zone under some rules), and BPR (overlapping opposing FVG zones). Labels do not establish relative predictive strength; test each definition.',
       },
       {
-        title: 'Trading FVGs — The Complete Process',
-        content: `Here is how to trade an FVG from start to finish:
+        title: 'One FVG-Based Entry Variant',
+        content: `Here is one possible FVG-based entry variant to define and test:
 
 Step 1 — Define higher-timeframe context on Daily/4H if your model uses it. Test whether aligning FVG direction with that context improves outcomes; do not assume this filter is universally superior.
 
 Step 2 — If required by the tested model, mark a move below a defined low. A sweep label does not establish that a reversal has started or that a stop hunt occurred.
 
-Step 3 — Find the FVG. After the sweep, a bullish displacement move forms. Mark the FVG (gap between candle 1 high and candle 3 low).
+Step 3 — Apply the FVG definition. If the chosen setup produces a qualifying bullish displacement, mark the non-overlapping interval between Candle 1's high and Candle 3's low. Do not assume every sweep is followed by displacement or an FVG.
 
 Step 4 — A later return to the FVG may or may not occur. Define how you handle a missed fill and test outcomes for filled trades as well as setups that never trigger.
 
