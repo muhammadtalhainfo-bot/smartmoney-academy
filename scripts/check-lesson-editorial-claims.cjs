@@ -2674,6 +2674,36 @@ const extendedCurriculumResidualRequired = [
 forbidden.push(...extendedCurriculumResidualForbidden);
 required.push(...extendedCurriculumResidualRequired);
 
+
+const turtleSoupSequenceForbidden = [
+  {
+    source: 'legacy',
+    label: 'Lesson 24 presents one Turtle Soup entry sequence as universally correct',
+    pattern: /(?:^|\n)\s*24:\s*\{\s*id:\s*24,[\s\S]*?THE CORRECT ENTRY SEQUENCE[\s\S]*?(?=\n\s*25:\s*\{\s*id:\s*25,)/m,
+  },
+  {
+    source: 'legacy',
+    label: 'Lesson 24 presents the next sell-side liquidity level as a universal target',
+    pattern: /(?:^|\n)\s*24:\s*\{\s*id:\s*24,[\s\S]*?TARGET = NEXT SSL[\s\S]*?(?=\n\s*25:\s*\{\s*id:\s*25,)/m,
+  },
+];
+
+const turtleSoupSequenceRequired = [
+  {
+    source: 'legacy',
+    label: 'Lesson 24 labels the walkthrough as one possible entry sequence',
+    pattern: /(?:^|\n)\s*24:\s*\{\s*id:\s*24,[\s\S]*?ONE POSSIBLE ENTRY SEQUENCE[\s\S]*?(?=\n\s*25:\s*\{\s*id:\s*25,)/m,
+  },
+  {
+    source: 'legacy',
+    label: 'Lesson 24 requires its target rule to be defined in advance',
+    pattern: /(?:^|\n)\s*24:\s*\{\s*id:\s*24,[\s\S]*?DEFINE THE TARGET IN ADVANCE[\s\S]*?(?=\n\s*25:\s*\{\s*id:\s*25,)/m,
+  },
+];
+
+forbidden.push(...turtleSoupSequenceForbidden);
+required.push(...turtleSoupSequenceRequired);
+
 const failures = [];
 for (const check of forbidden) {
   if (check.pattern.test(text[check.source])) {
