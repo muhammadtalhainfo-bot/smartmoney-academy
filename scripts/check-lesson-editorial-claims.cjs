@@ -1198,7 +1198,7 @@ const required = [
   {
     source: 'primary',
     label: 'lesson 11 explains limits of algorithmic inference',
-    pattern: /(?:^|\\n)\\s*11:\\s*\\{\\s*id:\\s*11,[\\s\\S]*?a chart cannot independently verify a specific market algorithm, participant intent or a reliable trading edge[\\s\\S]*?(?=\\n\\s*12:\\s*\\{\\s*id:\\s*12,)/m,
+    pattern: /(?:^|\n)\s*11:\s*\{\s*id:\s*11,[\s\S]*?a chart cannot independently verify a specific market algorithm, participant intent or a reliable trading edge[\s\S]*?(?=\n\s*12:\s*\{\s*id:\s*12,)/m,
   },
   {
     source: 'legacy',
