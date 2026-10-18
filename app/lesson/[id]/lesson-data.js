@@ -748,7 +748,7 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
     sections: [
       {
         title: 'Venom Model',
-        content: `The Venom Model is a time-based ICT framework that combines session context, liquidity and price delivery into a defined setup sequence. When studying it, record the exact session window, liquidity condition, displacement or structure condition, entry trigger, invalidation and target from the source material you are following.\n\nDo not add a rule simply because it appears to improve historical examples. If you modify the model, label it as your own variant and test it separately.`,
+        content: `The Venom Model is taught with a defined reference range and a post-range liquidity-sweep hypothesis, but public explainers do not consistently specify the same range. Some describe an 08:00–09:30 New York-time pre-open range; other explainers describe a 09:30–10:00 New York-time opening range with a later sweep. These are different model specifications, not interchangeable times in one universal rule. Choose a named source/version before testing, and record its instrument, reference window, time-zone/daylight-saving convention, sweep/reclaim rule, displacement or structure condition, entry trigger, invalidation, target and outcome horizon. A sweep can fail or continue as a breakout rather than reverse.\n\nDo not add a rule simply because it appears to improve historical examples. If you modify the model, label it as your own variant and test it separately.`,
         highlight: '📌 Keep the published model and your personal variation separate. Otherwise you cannot tell which rules produced your results.',
       },
       {
