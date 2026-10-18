@@ -2509,7 +2509,7 @@ const marketMakerIntentForbidden = [
   {
     source: 'primary',
     label: 'Lesson 9 describes False Flag and Seek & Destroy as objectively deceptive behavior',
-    pattern: /(?:^|\\n)\\s*9:\\s*\\{\\s*id:\\s*9,[\\s\\S]*?False Flag and Seek & Destroy[\\s\\S]*?to describe deceptive or range-bound price behavior[\\s\\S]*?(?=\\n\\s*10:\\s*\\{\\s*id:\\s*10,)/m,
+    pattern: /(?:^|\n)\s*9:\s*\{\s*id:\s*9,[\s\S]*?False Flag and Seek & Destroy[\s\S]*?to describe deceptive or range-bound price behavior[\s\S]*?(?=\n\s*10:\s*\{\s*id:\s*10,)/m,
   },
 ];
 
@@ -2517,12 +2517,12 @@ const marketMakerIntentRequired = [
   {
     source: 'primary',
     label: 'Lesson 9 frames False Flag and Seek & Destroy as interpretive labels for price sequences',
-    pattern: /(?:^|\\n)\\s*9:\\s*\\{\\s*id:\\s*9,[\\s\\S]*?False Flag and Seek & Destroy as labels for certain price sequences[\\s\\S]*?(?=\\n\\s*10:\\s*\\{\\s*id:\\s*10,)/m,
+    pattern: /(?:^|\n)\s*9:\s*\{\s*id:\s*9,[\s\S]*?False Flag and Seek & Destroy as labels for certain price sequences[\s\S]*?(?=\n\s*10:\s*\{\s*id:\s*10,)/m,
   },
   {
     source: 'primary',
     label: 'Lesson 9 explicitly states that charts cannot establish deliberate deception or manipulation',
-    pattern: /(?:^|\\n)\\s*9:\\s*\\{\\s*id:\\s*9,[\\s\\S]*?a chart alone cannot establish deliberate deception or manipulation by market participants[\\s\\S]*?(?=\\n\\s*10:\\s*\\{\\s*id:\\s*10,)/m,
+    pattern: /(?:^|\n)\s*9:\s*\{\s*id:\s*9,[\s\S]*?a chart alone cannot establish deliberate deception or manipulation by market participants[\s\S]*?(?=\n\s*10:\s*\{\s*id:\s*10,)/m,
   },
 ];
 
