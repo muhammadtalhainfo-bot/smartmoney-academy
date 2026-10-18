@@ -632,7 +632,7 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
       },
       {
         title: 'False Flag and Seek & Destroy',
-        content: `ICT teachings use terms such as False Flag and Seek & Destroy to describe deceptive or range-bound price behavior around particular sessions or days.\n\nFor a test, define:\n• The day or session being studied\n• The reference range\n• What counts as the false move\n• What confirms the subsequent direction\n• The target and invalidation\n\nA Friday that behaves differently from the rest of the week is not automatically a Seek & Destroy or TGIF pattern. The label should only be applied when the predefined conditions are present.`,
+        content: `ICT teachings use terms such as False Flag and Seek & Destroy as labels for certain price sequences, including apparent failed moves or range-bound behavior around particular sessions or days. These labels describe an interpretation of price behavior; a chart alone cannot establish deliberate deception or manipulation by market participants.\n\nFor a test, define:\n• The day or session being studied\n• The reference range\n• What counts as the false move\n• What confirms the subsequent direction\n• The target and invalidation\n\nA Friday that behaves differently from the rest of the week is not automatically a Seek & Destroy or TGIF pattern. The label should only be applied when the predefined conditions are present.`,
         highlight: '📌 Narrative labels are useful only when they become measurable rules. Do not convert an interesting chart story into a trading rule without testing it.',
       },
       {
