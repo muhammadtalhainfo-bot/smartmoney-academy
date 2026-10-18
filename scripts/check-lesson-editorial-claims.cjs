@@ -2675,6 +2675,31 @@ forbidden.push(...extendedCurriculumResidualForbidden);
 required.push(...extendedCurriculumResidualRequired);
 
 
+const fvgWalkthroughConventionForbidden = [
+  {
+    source: 'primary',
+    label: 'Lesson 3 presents one FVG walkthrough as a complete universal process',
+    pattern: /(?:^|\n)\s*3:\s*\{\s*id:\s*3,[\s\S]*?Trading FVGs — The Complete Process[\s\S]*?(?=\n\s*4:\s*\{\s*id:\s*4,)/m,
+  },
+];
+
+const fvgWalkthroughConventionRequired = [
+  {
+    source: 'primary',
+    label: 'Lesson 3 identifies its FVG walkthrough as one possible model-specific variant',
+    pattern: /(?:^|\n)\s*3:\s*\{\s*id:\s*3,[\s\S]*?One FVG-Based Entry Variant[\s\S]*?one possible FVG-based entry variant to define and test[\s\S]*?(?=\n\s*4:\s*\{\s*id:\s*4,)/m,
+  },
+  {
+    source: 'primary',
+    label: 'Lesson 3 does not assume every sweep creates displacement and an FVG',
+    pattern: /(?:^|\n)\s*3:\s*\{\s*id:\s*3,[\s\S]*?Do not assume every sweep is followed by displacement or an FVG[\s\S]*?(?=\n\s*4:\s*\{\s*id:\s*4,)/m,
+  },
+];
+
+forbidden.push(...fvgWalkthroughConventionForbidden);
+required.push(...fvgWalkthroughConventionRequired);
+
+
 const turtleSoupSequenceForbidden = [
   {
     source: 'legacy',
