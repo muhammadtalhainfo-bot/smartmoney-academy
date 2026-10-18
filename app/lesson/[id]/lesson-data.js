@@ -744,7 +744,7 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
     duration: '75 min',
     category: 'NEWER',
     imageCaption: 'Newer ICT concepts can be studied as defined frameworks, but labels and interpretations should be checked against the source material and tested before use.',
-    intro: `This module collects newer concepts associated with ICT's 2024-era teaching, including the Venom Model, Propulsion Blocks, Quarterly Shifts, SCOB, QML and weekly profile templates. Because terminology and examples can evolve, treat the source material as the definition of the model and separate documented rules from your own interpretation.`,
+    intro: `This module focuses on newer concepts associated with ICT's 2024-era and later teaching, such as the Venom Model, Propulsion Blocks and Quarterly Shifts, alongside related terms (including SCOB and QML) that may have different origins or naming conventions. Because terminology and examples can evolve, treat each source's model definitions carefully and separate documented rules from your own interpretation.`,
     sections: [
       {
         title: 'Venom Model',
@@ -763,7 +763,7 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
       },
       {
         title: 'SCOB and QML',
-        content: `SCOB (Silver Bullet Order Block) and QML (Quasi Market Level) are newer terminology that can be incorporated into an ICT study process.\n\nFor either concept, preserve the source definition and then create a checklist: location, structure, liquidity, trigger, invalidation and target. If your definition differs from the source, document the difference.`,
+        content: `SCOB is commonly expanded as Single Candle Order Block in ICT-oriented reference material, while QML is often used for a Quasimodo pattern or level in broader price-action and SMC discussions. The labels do not imply that the concepts share the same origin or source series, and educators may define their rules differently.\n\nFor either concept, preserve the source definition and then create a checklist: location, structure, liquidity, trigger, invalidation and target. If your definition differs from the source, document the difference.`,
         highlight: '📌 New terminology is not automatically a new edge. Define it precisely, then test whether it adds information beyond your existing model.',
       },
       {
