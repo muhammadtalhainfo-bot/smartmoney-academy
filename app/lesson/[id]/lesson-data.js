@@ -702,7 +702,7 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
     duration: '50 min',
     category: 'ICT',
     imageCaption: 'IPDA and Candle Range Theory are educational frameworks for studying time and price behavior; they are not verified descriptions of a market-moving algorithm.',
-    intro: `IPDA (Interbank Price Delivery Algorithm) and Candle Range Theory (CRT) are ICT frameworks for interpreting price delivery, time and liquidity. These ideas can organize chart study, but a chart cannot independently verify the existence, intent or operation of a specific market algorithm.`,
+    intro: `IPDA (Interbank Price Delivery Algorithm) is part of ICT teaching that uses historical price ranges to frame analysis. Candle Range Theory (CRT) is also discussed in ICT-adjacent trading communities, but its attribution and exact rules vary by source; do not assume every CRT variant is an official ICT-authored model. Both can organize chart study, but a chart cannot independently verify a specific market algorithm, participant intent or a reliable trading edge.`,
     sections: [
       {
         title: 'IPDA and the 20/40/60-Day Lookback',
@@ -716,7 +716,7 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
       },
       {
         title: 'Candle Range Theory (CRT)',
-        content: `CRT is commonly taught around a range-forming candle and the idea that a later candle may sweep one side of that range before delivering toward the opposite side.\n\nA simple test requires fixed rules for:\n• The reference candle timeframe\n• The range high and low\n• What counts as a sweep\n• What confirms the directional move\n• Entry, invalidation and target\n\nThe model should be evaluated across many examples rather than selected from the cleanest historical charts.`,
+        content: `CRT is commonly described as using a chosen candle’s high and low as a reference range. Later price may trade beyond one boundary and then return inside the range, with a possible move toward the opposite boundary. This is a hypothesis, not a dependable prediction: a boundary break can continue as a breakout instead of reversing.\n\nDifferent CRT sources define the setup differently, so specify the version before testing. At minimum, record:\n• The reference candle and timeframe\n• What counts as a sweep (for example, a wick beyond the range or a defined candle-close condition)\n• Whether and when price must reclaim the range\n• The entry trigger, invalidation and target\n• The fixed time horizon for judging whether the opposite boundary was reached\n\nEvaluate all qualifying examples, including failed, losing and unresolved cases; do not select only clean historical charts.`,
         highlight: '📌 CRT becomes testable only when the reference candle, sweep and confirmation rules are defined in advance.',
       },
       {
