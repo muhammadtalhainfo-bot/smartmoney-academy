@@ -2559,6 +2559,41 @@ const smtCorrelationConventionRequired = [
 forbidden.push(...smtCorrelationConventionForbidden);
 required.push(...smtCorrelationConventionRequired);
 
+
+const ipdaCrtAttributionForbidden = [
+  {
+    source: 'primary',
+    label: 'Lesson 11 presents IPDA and CRT together as ICT-authored frameworks',
+    pattern: /(?:^|\n)\s*11:\s*\{\s*id:\s*11,[\s\S]*?IPDA and Candle Range Theory \(CRT\) are ICT frameworks[\s\S]*?(?=\n\s*12:\s*\{\s*id:\s*12,)/m,
+  },
+];
+
+const ipdaCrtSafeguardsRequired = [
+  {
+    source: 'primary',
+    label: 'Lesson 11 separates CRT attribution from ICT teaching',
+    pattern: /(?:^|\n)\s*11:\s*\{\s*id:\s*11,[\s\S]*?do not assume every CRT variant is an official ICT-authored model[\s\S]*?(?=\n\s*12:\s*\{\s*id:\s*12,)/m,
+  },
+  {
+    source: 'primary',
+    label: 'Lesson 11 acknowledges that a CRT boundary break may continue rather than reverse',
+    pattern: /(?:^|\n)\s*11:\s*\{\s*id:\s*11,[\s\S]*?a boundary break can continue as a breakout instead of reversing[\s\S]*?(?=\n\s*12:\s*\{\s*id:\s*12,)/m,
+  },
+  {
+    source: 'primary',
+    label: 'Lesson 11 requires a predefined CRT sweep/reclaim rule and outcome horizon',
+    pattern: /(?:^|\n)\s*11:\s*\{\s*id:\s*11,[\s\S]*?What counts as a sweep[\s\S]*?Whether and when price must reclaim the range[\s\S]*?The fixed time horizon for judging whether the opposite boundary was reached[\s\S]*?(?=\n\s*12:\s*\{\s*id:\s*12,)/m,
+  },
+  {
+    source: 'primary',
+    label: 'Lesson 11 requires failed, losing and unresolved CRT examples to be included',
+    pattern: /(?:^|\n)\s*11:\s*\{\s*id:\s*11,[\s\S]*?including failed, losing and unresolved cases[\s\S]*?(?=\n\s*12:\s*\{\s*id:\s*12,)/m,
+  },
+];
+
+forbidden.push(...ipdaCrtAttributionForbidden);
+required.push(...ipdaCrtSafeguardsRequired);
+
 const failures = [];
 for (const check of forbidden) {
   if (check.pattern.test(text[check.source])) {
