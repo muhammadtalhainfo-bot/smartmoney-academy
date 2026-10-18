@@ -2529,6 +2529,36 @@ const marketMakerIntentRequired = [
 forbidden.push(...marketMakerIntentForbidden);
 required.push(...marketMakerIntentRequired);
 
+
+const smtCorrelationConventionForbidden = [
+  {
+    source: 'primary',
+    label: 'Lesson 10 applies same-direction bullish/bearish examples without distinguishing pair type',
+    pattern: /(?:^|\n)\s*10:\s*\{\s*id:\s*10,[\s\S]*?A bullish SMT example occurs when one market makes a lower low while the correlated market fails to make a corresponding lower low\.[\s\S]*?(?=\n\s*11:\s*\{\s*id:\s*11,)/m,
+  },
+];
+
+const smtCorrelationConventionRequired = [
+  {
+    source: 'primary',
+    label: 'Lesson 10 scopes basic bullish/bearish labels to positively related pairs',
+    pattern: /(?:^|\n)\s*10:\s*\{\s*id:\s*10,[\s\S]*?These labels assume the pair is expected to move in the same direction\.[\s\S]*?(?=\n\s*11:\s*\{\s*id:\s*11,)/m,
+  },
+  {
+    source: 'primary',
+    label: 'Lesson 10 defines opposite-direction comparison for inverse pairs',
+    pattern: /(?:^|\n)\s*10:\s*\{\s*id:\s*10,[\s\S]*?For an inverse pair,[\s\S]*?compare opposite-direction expectations instead[\s\S]*?(?=\n\s*11:\s*\{\s*id:\s*11,)/m,
+  },
+  {
+    source: 'primary',
+    label: 'Lesson 10 requires direction labels for inverse SMT to be predefined',
+    pattern: /(?:^|\n)\s*10:\s*\{\s*id:\s*10,[\s\S]*?define in advance how the mismatch maps to a bullish or bearish hypothesis[\s\S]*?do not apply same-direction rules mechanically to an inverse pair[\s\S]*?(?=\n\s*11:\s*\{\s*id:\s*11,)/m,
+  },
+];
+
+forbidden.push(...smtCorrelationConventionForbidden);
+required.push(...smtCorrelationConventionRequired);
+
 const failures = [];
 for (const check of forbidden) {
   if (check.pattern.test(text[check.source])) {
