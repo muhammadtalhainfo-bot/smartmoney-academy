@@ -2479,12 +2479,12 @@ const newerConceptAttributionForbidden = [
   {
     source: 'primary',
     label: 'SCOB is incorrectly expanded as Silver Bullet Order Block in Lesson 12',
-    pattern: /(?:^|\\n)\\s*12:\\s*\\{\\s*id:\\s*12,[\\s\\S]*?SCOB\\s*\\(\\s*Silver Bullet Order Block\\s*\\)[\\s\\S]*?(?=\\n\\s*13:\\s*\\{\\s*id:\\s*13,)/m,
+    pattern: /(?:^|\n)\s*12:\s*\{\s*id:\s*12,[\s\S]*?SCOB\s*\(\s*Silver Bullet Order Block\s*\)[\s\S]*?(?=\n\s*13:\s*\{\s*id:\s*13,)/m,
   },
   {
     source: 'primary',
     label: 'Lesson 12 groups SCOB and QML as universally newer ICT terminology',
-    pattern: /(?:^|\\n)\\s*12:\\s*\\{\\s*id:\\s*12,[\\s\\S]*?SCOB[\\s\\S]*?and QML are newer terminology[\\s\\S]*?(?=\\n\\s*13:\\s*\\{\\s*id:\\s*13,)/m,
+    pattern: /(?:^|\n)\s*12:\s*\{\s*id:\s*12,[\s\S]*?SCOB[\s\S]*?and QML are newer terminology[\s\S]*?(?=\n\s*13:\s*\{\s*id:\s*13,)/m,
   },
 ];
 
@@ -2492,12 +2492,12 @@ const newerConceptAttributionRequired = [
   {
     source: 'primary',
     label: 'Lesson 12 expands SCOB as Single Candle Order Block and distinguishes QML terminology',
-    pattern: /(?:^|\\n)\\s*12:\\s*\\{\\s*id:\\s*12,[\\s\\S]*?SCOB[\\s\\S]{0,220}Single Candle Order Block[\\s\\S]*?QML[\\s\\S]{0,220}Quasimodo[\\s\\S]*?(?=\\n\\s*13:\\s*\\{\\s*id:\\s*13,)/m,
+    pattern: /(?:^|\n)\s*12:\s*\{\s*id:\s*12,[\s\S]*?SCOB[\s\S]{0,220}Single Candle Order Block[\s\S]*?QML[\s\S]{0,220}Quasimodo[\s\S]*?(?=\n\s*13:\s*\{\s*id:\s*13,)/m,
   },
   {
     source: 'primary',
     label: 'Lesson 12 cautions that these labels can have different origins and source-specific definitions',
-    pattern: /(?:^|\\n)\\s*12:\\s*\\{\\s*id:\\s*12,[\\s\\S]*?do not imply that the concepts share the same origin or source series[\\s\\S]*?educators may define their rules differently[\\s\\S]*?(?=\\n\\s*13:\\s*\\{\\s*id:\\s*13,)/m,
+    pattern: /(?:^|\n)\s*12:\s*\{\s*id:\s*12,[\s\S]*?do not imply that the concepts share the same origin or source series[\s\S]*?educators may define their rules differently[\s\S]*?(?=\n\s*13:\s*\{\s*id:\s*13,)/m,
   },
 ];
 
