@@ -2594,6 +2594,36 @@ const ipdaCrtSafeguardsRequired = [
 forbidden.push(...ipdaCrtAttributionForbidden);
 required.push(...ipdaCrtSafeguardsRequired);
 
+
+const venomRangeConventionForbidden = [
+  {
+    source: 'primary',
+    label: 'Lesson 12 presents the 08:00–09:30 Venom range as a universal rule',
+    pattern: /(?:^|\n)\s*12:\s*\{\s*id:\s*12,[\s\S]*?(?:always|universally) uses (?:the )?08:00–09:30 New York-time range[\s\S]*?(?=\n\s*13:\s*\{\s*id:\s*13,)/m,
+  },
+];
+
+const venomRangeConventionRequired = [
+  {
+    source: 'primary',
+    label: 'Lesson 12 discloses competing published Venom reference windows',
+    pattern: /(?:^|\n)\s*12:\s*\{\s*id:\s*12,[\s\S]*?Some describe an 08:00–09:30 New York-time pre-open range[\s\S]*?other explainers describe a 09:30–10:00 New York-time opening range with a later sweep[\s\S]*?(?=\n\s*13:\s*\{\s*id:\s*13,)/m,
+  },
+  {
+    source: 'primary',
+    label: 'Lesson 12 distinguishes Venom versions rather than mixing their timing rules',
+    pattern: /(?:^|\n)\s*12:\s*\{\s*id:\s*12,[\s\S]*?These are different model specifications, not interchangeable times in one universal rule[\s\S]*?(?=\n\s*13:\s*\{\s*id:\s*13,)/m,
+  },
+  {
+    source: 'primary',
+    label: 'Lesson 12 requires the Venom source, instrument, timezone convention and testable trade rules to be specified',
+    pattern: /(?:^|\n)\s*12:\s*\{\s*id:\s*12,[\s\S]*?record its instrument, reference window, time-zone\/daylight-saving convention, sweep\/reclaim rule, displacement or structure condition, entry trigger, invalidation, target and outcome horizon[\s\S]*?A sweep can fail or continue as a breakout rather than reverse[\s\S]*?(?=\n\s*13:\s*\{\s*id:\s*13,)/m,
+  },
+];
+
+forbidden.push(...venomRangeConventionForbidden);
+required.push(...venomRangeConventionRequired);
+
 const failures = [];
 for (const check of forbidden) {
   if (check.pattern.test(text[check.source])) {
