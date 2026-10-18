@@ -2624,6 +2624,56 @@ const venomRangeConventionRequired = [
 forbidden.push(...venomRangeConventionForbidden);
 required.push(...venomRangeConventionRequired);
 
+
+const extendedCurriculumResidualForbidden = [
+  {
+    source: 'legacy',
+    label: 'Lesson 15 quiz states daily bias must be determined once without allowing reassessment',
+    pattern: /(?:^|\n)\s*15:\s*\{\s*id:\s*15,[\s\S]*?Daily bias should be determined\.\.\.[\s\S]*?(?=\n\s*16:\s*\{\s*id:\s*16,)/m,
+  },
+  {
+    source: 'legacy',
+    label: 'Lesson 17 claims ICT universally uses body-only Order Block boundaries',
+    pattern: /(?:^|\n)\s*17:\s*\{\s*id:\s*17,[\s\S]*?ICT traditionally uses body only for the core zone[\s\S]*?(?=\n\s*18:\s*\{\s*id:\s*18,)/m,
+  },
+  {
+    source: 'legacy',
+    label: 'Lesson 23 advertises eight macro windows without specifying them',
+    pattern: /(?:^|\n)\s*23:\s*\{\s*id:\s*23,[\s\S]*?The 8 Macro Time Windows[\s\S]*?(?=\n\s*24:\s*\{\s*id:\s*24,)/m,
+  },
+  {
+    source: 'legacy',
+    label: 'Lesson 24 incorrectly attributes the original Turtle Soup strategy to ICT',
+    pattern: /(?:^|\n)\s*24:\s*\{\s*id:\s*24,[\s\S]*?Turtle Soup is an ICT term[\s\S]*?(?=\n\s*25:\s*\{\s*id:\s*25,)/m,
+  },
+];
+
+const extendedCurriculumResidualRequired = [
+  {
+    source: 'legacy',
+    label: 'Lesson 15 daily-bias quiz describes an initial hypothesis rather than a mandatory fixed decision',
+    pattern: /(?:^|\n)\s*15:\s*\{\s*id:\s*15,[\s\S]*?In the example pre-session workflow, when can a trader write an initial daily-bias hypothesis\?[\s\S]*?with later reassessment if rules or new information require it[\s\S]*?(?=\n\s*16:\s*\{\s*id:\s*16,)/m,
+  },
+  {
+    source: 'legacy',
+    label: 'Lesson 17 explicitly distinguishes Order Block boundary conventions',
+    pattern: /(?:^|\n)\s*17:\s*\{\s*id:\s*17,[\s\S]*?Zone boundaries are not standardized across all ICT\/SMC educators[\s\S]*?full candle range[\s\S]*?open-to-extreme range[\s\S]*?body only[\s\S]*?(?=\n\s*18:\s*\{\s*id:\s*18,)/m,
+  },
+  {
+    source: 'legacy',
+    label: 'Lesson 23 scopes its time-window material as a test method, not a universal list of eight',
+    pattern: /(?:^|\n)\s*23:\s*\{\s*id:\s*23,[\s\S]*?Testing Named Macro Time Windows[\s\S]*?rather than prescribing a universal list of eight clock times[\s\S]*?(?=\n\s*24:\s*\{\s*id:\s*24,)/m,
+  },
+  {
+    source: 'legacy',
+    label: 'Lesson 24 credits the original Turtle Soup strategy and distinguishes later ICT-style variants',
+    pattern: /(?:^|\n)\s*24:\s*\{\s*id:\s*24,[\s\S]*?original Turtle Soup strategy was published by Linda Bradford Raschke and Laurence Connors[\s\S]*?ICT-oriented variants later applied the failed-breakout idea[\s\S]*?instead of treating an ICT-style checklist as the historical original[\s\S]*?(?=\n\s*25:\s*\{\s*id:\s*25,)/m,
+  },
+];
+
+forbidden.push(...extendedCurriculumResidualForbidden);
+required.push(...extendedCurriculumResidualRequired);
+
 const failures = [];
 for (const check of forbidden) {
   if (check.pattern.test(text[check.source])) {
