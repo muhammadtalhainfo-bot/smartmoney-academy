@@ -8,6 +8,19 @@ const renderer = fs.readFileSync(rendererPath, 'utf8');
 const index = fs.readFileSync(indexPath, 'utf8');
 const errors = [];
 
+const killzoneMetadataMatch = posts.match(/slug:\s*'ict-killzones-guide',[\s\S]*?(?=\n  \},)/);
+const killzoneMetadata = killzoneMetadataMatch ? killzoneMetadataMatch[0] : '';
+if (!killzoneMetadata) {
+  errors.push('Killzone metadata regression guard could not find the article definition.');
+} else {
+  if (!/title:\s*'ICT Killzone Times: Asian, London & New York',/.test(killzoneMetadata)) {
+    errors.push('Killzone article title should target the core query while staying concise.');
+  }
+  if (!/description:\s*'ICT Asian, London and New York killzone times in New York local time \(EST\/EDT\), plus model context and testing tips\. Windows vary by source\.'/.test(killzoneMetadata)) {
+    errors.push('Killzone article description should disclose New York local time conventions and avoid promising outcomes.');
+  }
+}
+
 const slugs = [...posts.matchAll(/slug:\s*'([^']+)'/g)].map((match) => match[1]);
 if (slugs.length === 0) errors.push('No static blog posts found.');
 if (new Set(slugs).size !== slugs.length) errors.push('Blog slugs must be unique.');
