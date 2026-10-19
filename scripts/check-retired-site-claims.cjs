@@ -158,6 +158,42 @@ const curriculumCardForbidden = [
     name: 'PD Array card claims all twelve arrays have a universal ranking',
     pattern: /Full PD Array Matrix — All 12 Arrays Ranked/,
   },
+  {
+    name: 'SCOB card expands the acronym as Silver Bullet Order Block',
+    pattern: /SCOB — Silver Bullet Order Block/,
+  },
+  {
+    name: 'Session curriculum maps London to manipulation and New York AM to primary distribution',
+    pattern: /London Session — Manipulation & Displacement/,
+  },
+  {
+    name: 'Session curriculum maps New York AM to a fixed distribution phase',
+    pattern: /New York AM — Primary Distribution/,
+  },
+  {
+    name: 'Session curriculum presents London close and New York PM reversals as fixed logic',
+    pattern: /London Close & NY PM Reversal Logic/,
+  },
+  {
+    name: 'Macro-time curriculum claims a universal set of eight precise windows',
+    pattern: /Macro Time Windows \(8 precise windows\)/,
+  },
+  {
+    name: 'Turtle Soup curriculum describes a stop hunt as engineered intent',
+    pattern: /Engineering the Stop Hunt/,
+  },
+  {
+    name: 'Turtle Soup curriculum describes equal highs and lows as bait',
+    pattern: /Identifying the Setup: EQH\/EQL as Bait/,
+  },
+  {
+    name: 'Turtle Soup curriculum claims a single post-sweep entry logic',
+    pattern: /Entry Logic After the Sweep/,
+  },
+  {
+    name: 'Turtle Soup curriculum promises trade-killing error diagnoses',
+    pattern: /Common Errors That Kill the Trade/,
+  },
 ];
 const curriculumCardRequired = [
   {
@@ -175,6 +211,54 @@ const curriculumCardRequired = [
   {
     name: 'PD Array topic avoids a universal list and ranking claim',
     pattern: /PD Array Matrix — Commonly Taught Types & Conventions/,
+  },
+  {
+    name: 'SCOB acronym follows the lesson definition',
+    pattern: /SCOB — Single Candle Order Block/,
+  },
+  {
+    name: 'Asian session is framed as a reference range rather than a required phase',
+    pattern: /Asian Session — Range as a Reference/,
+  },
+  {
+    name: 'London session topic describes common patterns without asserting manipulation',
+    pattern: /London Session — Commonly Studied Patterns/,
+  },
+  {
+    name: 'New York morning is framed as session context rather than primary distribution',
+    pattern: /New York AM — Session Context and Models/,
+  },
+  {
+    name: 'London close and New York PM topic calls for evaluating outcomes',
+    pattern: /London Close & NY PM — Outcomes to Evaluate/,
+  },
+  {
+    name: 'Macro time curriculum acknowledges named windows and source variants',
+    pattern: /Named Macro Time Windows and Source Variants/,
+  },
+  {
+    name: 'Price delivery topic treats time-price relationships as hypotheses to test',
+    pattern: /Testing Time-and-Price Hypotheses/,
+  },
+  {
+    name: 'Time-based reversals are described as hypotheses to evaluate',
+    pattern: /Evaluating Time-Based Reversal Hypotheses/,
+  },
+  {
+    name: 'Turtle Soup curriculum defines a false-breakout condition rather than a stop hunt',
+    pattern: /Defining a False-Breakout Condition/,
+  },
+  {
+    name: 'Equal highs and lows are described as reference levels, not bait',
+    pattern: /EQH\/EQL as Reference Levels/,
+  },
+  {
+    name: 'Turtle Soup entries are identified as variants after a sweep',
+    pattern: /Entry Variants After the Sweep/,
+  },
+  {
+    name: 'Turtle Soup topic names definition and execution errors without promising outcomes',
+    pattern: /Definition and Execution Errors/,
   },
 ];
 for (const check of curriculumCardForbidden) {
