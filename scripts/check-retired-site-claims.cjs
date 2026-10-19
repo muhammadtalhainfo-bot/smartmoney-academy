@@ -175,6 +175,10 @@ const curriculumCardForbidden = [
     pattern: /London Close & NY PM Reversal Logic/,
   },
   {
+    name: 'Asian session is described as a required range-building phase',
+    pattern: /Asian Session — Range Building/,
+  },
+  {
     name: 'Macro-time curriculum claims a universal set of eight precise windows',
     pattern: /Macro Time Windows \(8 precise windows\)/,
   },
@@ -194,7 +198,32 @@ const curriculumCardForbidden = [
     name: 'Turtle Soup curriculum promises trade-killing error diagnoses',
     pattern: /Common Errors That Kill the Trade/,
   },
+  {
+    name: 'Risk checklist is presented as protecting an account',
+    pattern: /the daily checklist that protects your account/i,
+  },
+  {
+    name: 'Kelly Criterion topic claims universally optimal risk',
+    pattern: /The Kelly Criterion for Optimal Risk/,
+  },
+  {
+    name: 'Risk-control topic ranks risk management above strategy as a universal claim',
+    pattern: /Why Risk Management Beats Strategy/,
+  },
+  {
+    name: 'Risk curriculum encourages breaking the one-percent rule without context',
+    pattern: /The 1% Rule & When to Break It/,
+  },
+  {
+    name: 'Psychology topic frames four emotions as universally deadly',
+    pattern: /The Four Deadly Emotions/,
+  },
+  {
+    name: 'Psychology topic promises a winning mindset',
+    pattern: /The Winning Mindset/,
+  },
 ];
+
 const curriculumCardRequired = [
   {
     name: 'Market Structure card describes possible behavior shifts without guaranteeing a reversal',
@@ -260,7 +289,36 @@ const curriculumCardRequired = [
     name: 'Turtle Soup topic names definition and execution errors without promising outcomes',
     pattern: /Definition and Execution Errors/,
   },
+  {
+    name: 'Risk copy says checklist supports consistency but cannot eliminate risk',
+    pattern: /A daily checklist can support consistency, but it cannot eliminate trading risk\./,
+  },
+  {
+    name: 'Advanced risk curriculum describes Kelly assumptions and limitations',
+    pattern: /Study portfolio heat, correlated exposure, scaling and position sizing, including the assumptions and limitations of the Kelly Criterion\./,
+  },
+  {
+    name: 'Kelly topic covers assumptions and sizing trade-offs',
+    pattern: /Kelly Criterion: Assumptions and Sizing Trade-offs/,
+  },
+  {
+    name: 'Risk controls are positioned alongside strategy',
+    pattern: /Why Risk Controls Matter Alongside Strategy/,
+  },
+  {
+    name: 'One-percent topic includes its assumptions and exceptions',
+    pattern: /The 1% Rule, Its Assumptions and Exceptions/,
+  },
+  {
+    name: 'Psychology curriculum uses neutral wording for emotional triggers',
+    pattern: /Common Emotional Triggers in Trading/,
+  },
+  {
+    name: 'Psychology curriculum focuses on process rather than promising wins',
+    pattern: /A Process-Focused Trading Mindset/,
+  },
 ];
+
 for (const check of curriculumCardForbidden) {
   if (check.pattern.test(curriculumCardsSource)) {
     errors.push('Curriculum card guard failed (' + check.name + ').');
