@@ -256,13 +256,14 @@ export default function HomePage() {
           <div style={{ textAlign:'center', marginBottom:'40px' }}>
             <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'#D8B94F', letterSpacing:'0.15em', marginBottom:'10px' }}>{'// ICT DAILY BLUEPRINT'}</div>
             <h2 className="font-display" style={{ fontSize:'clamp(32px, 5vw, 56px)', color:'white' }}>A DAILY ICT-STYLE FRAMEWORK</h2>
+            <p style={{ maxWidth:'760px', margin:'14px auto 0', color:'#A7AFBB', fontSize:'13px', lineHeight:1.7 }}>Times use New York local time (ET; EST/EDT changes seasonally). These broad reference windows and phase interpretations vary by source and market; they are not a required four-phase script.</p>
           </div>
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(200px, 1fr))', gap:'12px' }}>
             {[
-              { time:'8PM–12AM EST', zone:'Asian', phase:'ACCUMULATION', desc:'Traders may study the Asian Range as context for session highs, lows and potential liquidity.', color:'#6366F1', bg:'rgba(99,102,241,0.06)' },
-              { time:'2AM–5AM EST', zone:'London', phase:'MANIPULATION', desc:'An opposite-direction move may be studied as a possible Judas Swing or liquidity sweep; participant intent cannot be confirmed from the chart.', color:'#F87171', bg:'rgba(248,113,113,0.06)' },
-              { time:'7AM–12PM EST', zone:'New York AM', phase:'DISTRIBUTION', desc:'Some ICT traders focus on this window for execution; setup quality and outcomes vary by market and day.', color:'#E8C547', bg:'rgba(232,197,71,0.06)' },
-              { time:'10AM–12PM EST', zone:'London Close', phase:'REVERSAL', desc:'Activity can change around the close as positions are adjusted; treat the move as a hypothesis, not a guarantee.', color:'#34D399', bg:'rgba(52,211,153,0.06)' },
+              { time:'8PM–12AM ET', zone:'Asian', phase:'POSSIBLE ACCUMULATION', desc:'Some ICT narratives label this window as accumulation. The range is a reference; it does not verify positioning or require a particular phase.', color:'#6366F1', bg:'rgba(99,102,241,0.06)' },
+              { time:'2AM–5AM ET', zone:'London', phase:'POSSIBLE MANIPULATION', desc:'Some ICT narratives interpret an opposite-direction move here as a possible Judas Swing or sweep. The pattern and participant intent cannot be confirmed from a chart.', color:'#F87171', bg:'rgba(248,113,113,0.06)' },
+              { time:'7AM–12PM ET', zone:'New York AM', phase:'NY AM SESSION', desc:'This is a broad morning-session reference; exact New York killzone windows vary by ICT source. Test the selected window and rules for the instrument.', color:'#E8C547', bg:'rgba(232,197,71,0.06)' },
+              { time:'10AM–12PM ET', zone:'London Close', phase:'LONDON CLOSE', desc:'Some traders study activity around the London close as context. Price may continue, reverse or range; reversal is not a fixed phase.', color:'#34D399', bg:'rgba(52,211,153,0.06)' },
             ].map((s, i) => (
               <div key={i} className="card-hover" style={{ padding:'20px', borderRadius:'14px', background:s.bg, textAlign:'center' }}>
                 <div style={{ fontFamily:'DM Mono,monospace', fontSize:'9px', letterSpacing:'0.15em', color:s.color, marginBottom:'8px' }}>{s.phase}</div>
