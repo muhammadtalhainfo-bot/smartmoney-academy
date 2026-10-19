@@ -2734,7 +2734,7 @@ const marketStructureWorkflowConventionForbidden = [
   {
     source: 'primary',
     label: 'Lesson 1 presents one top-down workflow as the complete required process',
-    pattern: /(?:^|\\n)\\s*1:\\s*\\{\\s*id:\\s*1,[\\s\\S]*?Here's the complete workflow:[\\s\\S]*?(?=\\n\\s*2:\\s*\\{\\s*id:\\s*2,)/m,
+    pattern: /(?:^|\n)\s*1:\s*\{\s*id:\s*1,[\s\S]*?Here's the complete workflow:[\s\S]*?(?=\n\s*2:\s*\{\s*id:\s*2,)/m,
   },
 ];
 
@@ -2742,7 +2742,7 @@ const marketStructureWorkflowConventionRequired = [
   {
     source: 'primary',
     label: 'Lesson 1 scopes its top-down sequence as one workflow to define and test',
-    pattern: /(?:^|\\n)\\s*1:\\s*\\{\\s*id:\\s*1,[\\s\\S]*?One possible top-down workflow to define and test is:[\\s\\S]*?This is one possible top-down analysis framework[\\s\\S]*?(?=\\n\\s*2:\\s*\\{\\s*id:\\s*2,)/m,
+    pattern: /(?:^|\n)\s*1:\s*\{\s*id:\s*1,[\s\S]*?One possible top-down workflow to define and test is:[\s\S]*?This is one possible top-down analysis framework[\s\S]*?(?=\n\s*2:\s*\{\s*id:\s*2,)/m,
   },
 ];
 
@@ -2754,7 +2754,7 @@ const liquiditySweepWorkflowConventionForbidden = [
   {
     source: 'primary',
     label: 'Lesson 2 presents one liquidity-sweep walkthrough as a complete universal trade setup',
-    pattern: /(?:^|\\n)\\s*2:\\s*\\{\\s*id:\\s*2,[\\s\\S]*?The complete liquidity sweep trade setup:[\\s\\S]*?(?=\\n\\s*3:\\s*\\{\\s*id:\\s*3,)/m,
+    pattern: /(?:^|\n)\s*2:\s*\{\s*id:\s*2,[\s\S]*?The complete liquidity sweep trade setup:[\s\S]*?(?=\n\s*3:\s*\{\s*id:\s*3,)/m,
   },
 ];
 
@@ -2762,7 +2762,7 @@ const liquiditySweepWorkflowConventionRequired = [
   {
     source: 'primary',
     label: 'Lesson 2 presents its liquidity-sweep sequence as one workflow to define and test',
-    pattern: /(?:^|\\n)\\s*2:\\s*\\{\\s*id:\\s*2,[\\s\\S]*?One possible liquidity-sweep workflow to define and test:[\\s\\S]*?individual models and criteria differ[\\s\\S]*?(?=\\n\\s*3:\\s*\\{\\s*id:\\s*3,)/m,
+    pattern: /(?:^|\n)\s*2:\s*\{\s*id:\s*2,[\s\S]*?One possible liquidity-sweep workflow to define and test:[\s\S]*?individual models and criteria differ[\s\S]*?(?=\n\s*3:\s*\{\s*id:\s*3,)/m,
   },
 ];
 
@@ -2774,7 +2774,7 @@ const orderBlockBoundaryConventionForbidden = [
   {
     source: 'primary',
     label: 'Lesson 4 states body-only Order Block boundaries without identifying a convention',
-    pattern: /(?:^|\\n)\\s*4:\\s*\\{\\s*id:\\s*4,[\\s\\S]*?The OB zone = the body of that last (?:bearish|bullish) candle[\\s\\S]*?(?=\\n\\s*5:\\s*\\{\\s*id:\\s*5,)/m,
+    pattern: /(?:^|\n)\s*4:\s*\{\s*id:\s*4,[\s\S]*?The OB zone = the body of that last (?:bearish|bullish) candle[\s\S]*?(?=\n\s*5:\s*\{\s*id:\s*5,)/m,
   },
 ];
 
@@ -2782,17 +2782,18 @@ const orderBlockBoundaryConventionRequired = [
   {
     source: 'primary',
     label: 'Lesson 4 discloses competing Order Block range conventions',
-    pattern: /(?:^|\\n)\\s*4:\\s*\\{\\s*id:\\s*4,[\\s\\S]*?Boundary conventions vary across ICT\\/SMC sources[\\s\\S]*?full candle range[\\s\\S]*?open-to-extreme range[\\s\\S]*?body-only example[\\s\\S]*?(?=\\n\\s*5:\\s*\\{\\s*id:\\s*5,)/m,
+    pattern: /(?:^|\n)\s*4:\s*\{\s*id:\s*4,[\s\S]*?Boundary conventions vary across ICT\/SMC sources[\s\S]*?full candle range[\s\S]*?open-to-extreme range[\s\S]*?body-only example[\s\S]*?(?=\n\s*5:\s*\{\s*id:\s*5,)/m,
   },
   {
     source: 'primary',
     label: 'Lesson 4 labels both bullish and bearish OB boundaries as body-only examples',
-    pattern: /(?:^|\\n)\\s*4:\\s*\\{\\s*id:\\s*4,[\\s\\S]*?Under this body-only example, the OB zone runs from the open to the close of that last bearish candle[\\s\\S]*?Under this body-only example, the OB zone runs from the open to the close of that last bullish candle[\\s\\S]*?(?=\\n\\s*5:\\s*\\{\\s*id:\\s*5,)/m,
+    pattern: /(?:^|\n)\s*4:\s*\{\s*id:\s*4,[\s\S]*?Under this body-only example, the OB zone runs from the open to the close of that last bearish candle[\s\S]*?Under this body-only example, the OB zone runs from the open to the close of that last bullish candle[\s\S]*?(?=\n\s*5:\s*\{\s*id:\s*5,)/m,
   },
 ];
 
 forbidden.push(...orderBlockBoundaryConventionForbidden);
 required.push(...orderBlockBoundaryConventionRequired);
+
 
 const failures = [];
 for (const check of forbidden) {
