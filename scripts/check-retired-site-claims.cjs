@@ -138,11 +138,45 @@ for (const check of homepageSessionRequired) {
   }
 }
 
+
+const curriculumCardsPath = path.join(process.cwd(), 'lib/curriculum.js');
+const curriculumCardsSource = fs.readFileSync(curriculumCardsPath, 'utf8');
+const curriculumCardForbidden = [
+  {
+    name: 'Market Structure card implies structure breaks signal reversals',
+    pattern: /The foundation of everything — how price creates trends, breaks structure, and signals reversals\./,
+  },
+  {
+    name: 'Top-Down Analysis card promises completeness and one-minute precision',
+    pattern: /The complete multi-timeframe methodology — from Monthly bias to 1-minute entry precision\./,
+  },
+];
+const curriculumCardRequired = [
+  {
+    name: 'Market Structure card describes possible behavior shifts without guaranteeing a reversal',
+    pattern: /Study how traders describe trends and structure breaks, including possible shifts in market behavior; these patterns do not guarantee a reversal\./,
+  },
+  {
+    name: 'Top-Down card labels its workflow as a hypothesis to define and test',
+    pattern: /A top-down multi-timeframe workflow from higher-timeframe context to lower-timeframe execution; timeframe choices are hypotheses to define and test, not a precision guarantee\./,
+  },
+];
+for (const check of curriculumCardForbidden) {
+  if (check.pattern.test(curriculumCardsSource)) {
+    errors.push('Curriculum card guard failed (' + check.name + ').');
+  }
+}
+for (const check of curriculumCardRequired) {
+  if (!check.pattern.test(curriculumCardsSource)) {
+    errors.push('Required curriculum card wording missing (' + check.name + ').');
+  }
+}
+
 if (errors.length) {
   for (const error of errors) console.error('Retired site claim guard failed: ' + error);
   process.exit(1);
 }
 
 console.log('Retired site claim guard passed: ' + RETIRED_CLAIMS.length +
-  ' claim patterns self-tested across app/, lib/, and public.; homepage session-map checks passed (' +
+  ' claim patterns self-tested across app/, lib/, and public. Homepage session-map checks passed (' +
   homepageSessionForbidden.length + ' forbidden patterns, ' + homepageSessionRequired.length + ' required conventions).');
