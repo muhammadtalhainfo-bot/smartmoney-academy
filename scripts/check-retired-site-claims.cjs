@@ -87,10 +87,62 @@ for (const root of ['app', 'lib', 'public']) {
   }
 }
 
+
+const homepagePath = path.join(process.cwd(), 'app/page.js');
+const homepage = fs.readFileSync(homepagePath, 'utf8');
+const homepageSessionForbidden = [
+  {
+    name: 'session card uses a fixed EST label for New York local time',
+    pattern: /time:'(?:8PM–12AM|2AM–5AM|7AM–12PM|10AM–12PM) EST'/,
+  },
+  {
+    name: 'session cards present the four narrative phases as fixed roles',
+    pattern: /phase:'(?:ACCUMULATION|MANIPULATION|DISTRIBUTION|REVERSAL)'/,
+  },
+];
+const homepageSessionRequired = [
+  {
+    name: 'New York time and seasonal EST/EDT change are disclosed',
+    pattern: /Times use New York local time \(ET; EST\/EDT changes seasonally\)/,
+  },
+  {
+    name: 'session-map copy says source and market conventions vary',
+    pattern: /broad reference windows and phase interpretations vary by source and market; they are not a required four-phase script/,
+  },
+  {
+    name: 'Asian phase is qualified as possible accumulation',
+    pattern: /phase:'POSSIBLE ACCUMULATION'/,
+  },
+  {
+    name: 'London phase is qualified as possible manipulation',
+    pattern: /phase:'POSSIBLE MANIPULATION'/,
+  },
+  {
+    name: 'New York card is identified as a session rather than a fixed phase',
+    pattern: /phase:'NY AM SESSION'/,
+  },
+  {
+    name: 'London close is identified as a window rather than a reversal phase',
+    pattern: /phase:'LONDON CLOSE'/,
+  },
+];
+
+for (const check of homepageSessionForbidden) {
+  if (check.pattern.test(homepage)) {
+    errors.push('Homepage session-map guard failed (' + check.name + ').');
+  }
+}
+for (const check of homepageSessionRequired) {
+  if (!check.pattern.test(homepage)) {
+    errors.push('Required homepage session-map convention missing (' + check.name + ').');
+  }
+}
+
 if (errors.length) {
   for (const error of errors) console.error('Retired site claim guard failed: ' + error);
   process.exit(1);
 }
 
 console.log('Retired site claim guard passed: ' + RETIRED_CLAIMS.length +
-  ' claim patterns self-tested across app/, lib/, and public/.');
+  ' claim patterns self-tested across app/, lib/, and public.; homepage session-map checks passed (' +
+  homepageSessionForbidden.length + ' forbidden patterns, ' + homepageSessionRequired.length + ' required conventions).');
