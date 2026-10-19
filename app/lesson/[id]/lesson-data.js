@@ -61,7 +61,7 @@ This nested view is one way ICT traders distinguish higher-timeframe context fro
       },
       {
         title: 'How to Use Market Structure in a Real Trade',
-        content: `Here's the complete workflow:
+        content: `One possible top-down workflow to define and test is:
 
 Step 1 — Check the Daily chart. Is it making HH/HL (bullish) or LH/LL (bearish)? This is your macro bias. Use this as a directional filter if it is part of your tested plan.
 
@@ -146,7 +146,7 @@ In ICT terminology: EQH = resting BSL above. EQL = resting SSL below. When you s
       },
       {
         title: 'How to Trade Liquidity Sweeps',
-        content: `The complete liquidity sweep trade setup:
+        content: `One possible liquidity-sweep workflow to define and test:
 
 Step 1 — Identify your HTF bias (bullish or bearish) using market structure.
 
@@ -284,16 +284,18 @@ Risk/reward outcomes vary by setup and market; use the target and stop rules def
         title: 'What Is an Order Block?',
         content: `An Order Block is the last opposing candle before a strong impulse move. ICT interpretations sometimes describe this candle as a possible area of institutional activity, but a chart pattern cannot show whether institutions absorbed retail orders, who traded, or what participants intended. Treat the candle as a reproducible marking rule and test what happened after the move.
 
+Boundary conventions vary across ICT/SMC sources: some use the full candle range, some use an open-to-extreme range, and others use the candle body. The bullets below show a body-only example; choose and document one convention before marking or testing an OB.
+
 Bullish Order Block:
 • The last BEARISH (red) candle before a significant bullish move
 • ICT interpretations may describe this candle as an area of institutional buying; actual participant positioning cannot be confirmed from the candle alone.
-• The OB zone = the body of that last bearish candle (open to close)
+• Under this body-only example, the OB zone runs from the open to the close of that last bearish candle.
 • Price may revisit this zone and react, but the response should be treated as a testable outcome rather than an expectation
 
 Bearish Order Block:
 • The last BULLISH (green) candle before a significant bearish move
 • ICT interpretations may describe this candle as an area of institutional selling; actual participant positioning cannot be confirmed from the candle alone.
-• The OB zone = the body of that last bullish candle
+• Under this body-only example, the OB zone runs from the open to the close of that last bullish candle.
 • A later revisit may be studied as possible resistance under a defined model; it can also fail or be crossed without a reaction.
 
 In this ICT-style framework, traders may define an OB confirmation using a BOS/ChoCH, an FVG, and displacement; these are model criteria to test rather than universal validation rules.`,
