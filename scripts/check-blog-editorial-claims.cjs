@@ -426,7 +426,7 @@ for (const [label, pattern] of focusedSeoRegressions) {
 }
 
 const requiredSeoContext = [
-  ['killzone title aligns with search wording', /title: 'ICT Killzone Times: Asian, London & New York Sessions'/],
+  ['killzone title aligns with search wording', /title: 'ICT Killzone Times: Asian, London & New York'/],
   ['killzone clock uses New York local time', /Asian Session \(7 PM – 12 AM New York time\)/],
   ['macro timestamps are described as references to test', /Some ICT sources discuss specific macro timestamps, but labels and definitions can differ/i],
   ['NYSE open is not mislabeled as 10 AM', /the regular NYSE core session opens at 9:30 AM ET/i],
