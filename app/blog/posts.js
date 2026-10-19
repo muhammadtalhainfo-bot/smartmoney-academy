@@ -237,7 +237,7 @@ export const POSTS = [
   {
     slug: 'ict-killzones-guide',
     title: 'ICT Killzone Times: Asian, London & New York',
-    description: 'ICT Asian, London and New York killzone times in New York local time (EST/EDT), plus model context and testing tips. Windows vary by source.'
+    description: 'ICT Asian, London and New York killzone times in New York local time (EST/EDT), plus model context and testing tips. Windows vary by source.',
     category: 'Intermediate',
     readTime: '4 min read',
     date: 'April 1, 2026',
