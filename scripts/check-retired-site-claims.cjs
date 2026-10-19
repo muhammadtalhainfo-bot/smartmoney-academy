@@ -219,8 +219,16 @@ const curriculumCardForbidden = [
     pattern: /The Four Deadly Emotions/,
   },
   {
-    name: 'Psychology topic promises a winning mindset',
-    pattern: /The Winning Mindset/,
+    name: 'QML curriculum uses the unsupported expansion Quasi Market Level',
+    pattern: /QML — Quasi Market Level/,
+  },
+  {
+    name: 'PD Array topic asserts a universal priority between block types',
+    pattern: /Breaker vs Mitigation vs Order Block Priority/,
+  },
+  {
+    name: 'PD Array topic promotes stacking as a universal confluence method',
+    pattern: /How to Stack PD Arrays for Confluence/,
   },
 ];
 
@@ -314,8 +322,16 @@ const curriculumCardRequired = [
     pattern: /Common Emotional Triggers in Trading/,
   },
   {
-    name: 'Psychology curriculum focuses on process rather than promising wins',
-    pattern: /A Process-Focused Trading Mindset/,
+    name: 'QML curriculum reflects the source-dependent Quasimodo terminology',
+    pattern: /QML — Quasimodo Pattern\/Level \(Definitions Vary\)/,
+  },
+  {
+    name: 'PD Array topic compares block variants without claiming a universal priority',
+    pattern: /Comparing Breaker, Mitigation & Order Block Variants/,
+  },
+  {
+    name: 'PD Array topic frames confluence as something to evaluate',
+    pattern: /Evaluating PD Array Confluence/,
   },
 ];
 
