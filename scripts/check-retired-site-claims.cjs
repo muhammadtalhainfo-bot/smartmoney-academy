@@ -150,6 +150,14 @@ const curriculumCardForbidden = [
     name: 'Top-Down Analysis card promises completeness and one-minute precision',
     pattern: /The complete multi-timeframe methodology — from Monthly bias to 1-minute entry precision\./,
   },
+  {
+    name: 'Daily Bias card implies bias can be determined before price moves',
+    pattern: /A key decision in many trading approaches — determining directional bias before price moves and building a narrative to guide entries\./,
+  },
+  {
+    name: 'PD Array card claims all twelve arrays have a universal ranking',
+    pattern: /Full PD Array Matrix — All 12 Arrays Ranked/,
+  },
 ];
 const curriculumCardRequired = [
   {
@@ -159,6 +167,14 @@ const curriculumCardRequired = [
   {
     name: 'Top-Down card labels its workflow as a hypothesis to define and test',
     pattern: /A top-down multi-timeframe workflow from higher-timeframe context to lower-timeframe execution; timeframe choices are hypotheses to define and test, not a precision guarantee\./,
+  },
+  {
+    name: 'Daily Bias card frames pre-session bias as a revisable hypothesis',
+    pattern: /Develop a pre-session directional hypothesis from higher-timeframe context, then revisit it when predefined rules or new information require a change\./,
+  },
+  {
+    name: 'PD Array topic avoids a universal list and ranking claim',
+    pattern: /PD Array Matrix — Commonly Taught Types & Conventions/,
   },
 ];
 for (const check of curriculumCardForbidden) {
