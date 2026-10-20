@@ -912,7 +912,7 @@ const articleBodyRegressionChecks = [
       ['CRT phases are labels and do not prove liquidity was deliberately collected', /labels do not prove that liquidity was deliberately collected/i],
       ['first move does not reliably identify which side will be crossed', /The first move does not reliably identify which side will be crossed/i],
       ['prior candle extremes are references, not confirmed stop locations', /do not label them as confirmed stop locations/i],
-      ['weekday phase assignment is not a universal schedule', /phase assignment is not a reliable schedule for every week/i],
+      ['weekday phase assignment is not a universal schedule', /Monday-through-Friday phase assignments are not a reliable universal schedule/i],
       ['a wick does not reveal an algorithmic cycle or future direction', /A wick can occur for many reasons and does not reveal a separate algorithmic cycle/i],
     ],
   },
