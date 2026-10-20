@@ -816,8 +816,8 @@ export const POSTS = [
       { type: 'paragraph', text: 'In one bullish CISD variant, a candle closes above a predefined short-term reference during a sequence of lower highs and lower lows. Record the exact reference and close rule; this event is a candidate chart classification, not proof that delivery has permanently transitioned to bullish.' },
       { type: 'paragraph', text: 'A bearish CISD variant applies the inverse rule to a sequence of higher highs and higher lows, using a predefined lower reference. A qualifying close is a label under that convention; subsequent price can still continue higher or range.' },
       { type: 'list', items: [
-        'In a bearish move, mark each short-term high as a reference point. When a candle closes above the most recent short-term high, this is the CISD — bullish delivery has begun.',
-        'In a bullish move, mark each short-term low. When a candle closes below the most recent short-term low, this is the CISD — bearish delivery has begun.',
+        'In a bearish sequence, a trader may record a close above a preselected short-term high as a bullish CISD candidate under this convention; the close does not prove that bullish delivery has begun.',
+        'In a bullish sequence, a trader may record a close below a preselected short-term low as a bearish CISD candidate under this convention; price can still reclaim the level, range or move higher.',
         'The CISD candle is often a displacement candle — it is large-bodied and closes decisively beyond the reference point, not just a wick penetration.',
         'Confirm on the timeframe appropriate to your trade — a 5-minute CISD for intraday entries, a 1-hour or 4-hour CISD for swing entries.',
       ]},
