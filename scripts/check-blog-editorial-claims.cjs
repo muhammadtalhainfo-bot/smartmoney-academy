@@ -599,6 +599,10 @@ const articleBodyRegressionChecks = [
     required: [
       ['external/internal structure remains convention-based', /Some ICT conventions call larger swings external structure and smaller swings within the current range internal structure/i],
       ['structure labels do not guarantee outcomes', /Educators define these labels differently; neither label guarantees continuation or reversal/i],
+      ['swing-tier terms and pivot rules vary by ICT source', /Some ICT sources distinguish short-term, intermediate-term and long-term swing labels, but terminology and pivot rules vary/i],
+      ['ChoCH/MSS definitions are source-dependent', /Some ICT sources use Change of Character \(ChoCH\) and Market Structure Shift \(MSS\) in overlapping ways/i],
+      ['BOS classification does not mandate an entry', /Treat it as a condition to test, not an automatic continuation signal or instruction to enter long/i],
+      ['ChoCH displacement threshold is predeclared rather than universal', /There is no universal rule that makes a weak-looking break invalid across every source/i]
     ],
     readTime: /readTime:\s*'4 min read'/,
   },
@@ -629,10 +633,6 @@ const articleBodyRegressionChecks = [
     required: [
       ['CE is an optional reference rather than a required target', /Some ICT variants use CE as a possible entry reference/i],
       ['FVG non-revisit and failed-reaction cases are recorded', /log no-revisit, partial-fill, full-fill and continuation cases/i],
-      ['swing-tier terms and pivot rules vary by ICT source', /Some ICT sources distinguish short-term, intermediate-term and long-term swing labels, but terminology and pivot rules vary/i],
-      ['ChoCH/MSS definitions are source-dependent', /Some ICT sources use Change of Character \(ChoCH\) and Market Structure Shift \(MSS\) in overlapping ways/i],
-      ['BOS classification does not mandate an entry', /Treat it as a condition to test, not an automatic continuation signal or instruction to enter long/i],
-      ['ChoCH displacement threshold is predeclared rather than universal', /There is no universal rule that makes a weak-looking break invalid across every source/i]
     ],
   },
   {
