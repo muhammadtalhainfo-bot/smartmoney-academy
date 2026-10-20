@@ -47,6 +47,21 @@ const RETIRED_CLAIMS = [
     pattern: /\$149\s*\/\s*year\b/i,
     examples: ['$149/year', '$149 / year'],
   },
+  {
+    name: 'mentorship metadata claims timestamps for episodes with no timestamp data',
+    pattern: /Every ICT 2022 YouTube mentorship episode summarised with key concepts, timestamps and takeaways\./i,
+    examples: ['Every ICT 2022 YouTube mentorship episode summarised with key concepts, timestamps and takeaways.'],
+  },
+  {
+    name: 'mentorship metadata claims to be the fastest way to absorb the full curriculum',
+    pattern: /The fastest way to absorb the full ICT 2022 curriculum\./i,
+    examples: ['The fastest way to absorb the full ICT 2022 curriculum.'],
+  },
+  {
+    name: 'strategy metadata claims complete strategy playbooks',
+    pattern: /complete ICT strategy playbooks with entry rules/i,
+    examples: ['complete ICT strategy playbooks with entry rules'],
+  },
 ];
 
 const errors = [];
@@ -138,6 +153,43 @@ for (const check of homepageSessionRequired) {
   }
 }
 
+
+const metadataCopyChecks = [
+  {
+    path: 'app/mentorship/layout.js',
+    name: 'mentorship metadata describes the 41 available episode summaries without promising timestamps',
+    required: [
+      /ICT 2022 Mentorship — 41 Episode Summaries \| ICT Flow/,
+      /Browse 41 organized summaries of the ICT 2022 mentorship, with key concepts, lessons and listed episode durations/,
+      /Study key concepts and lessons from 41 organized episode summaries, with listed durations for reference/,
+    ],
+    forbidden: [/timestamps and takeaways/i, /fastest way to absorb the full ICT 2022 curriculum/i],
+  },
+  {
+    path: 'app/strategies/layout.js',
+    name: 'strategy metadata presents example framework criteria without claiming completeness',
+    required: [
+      /Explore ICT-style strategy frameworks, example entry conditions, risk rules and testable criteria/,
+      /Outcomes vary by rules, market and execution\./,
+      /complete ICT strategy playbooks/i,
+    ],
+    forbidden: [/complete ICT strategy playbooks with entry rules/i],
+  },
+];
+
+for (const check of metadataCopyChecks) {
+  const source = fs.readFileSync(path.join(process.cwd(), check.path), 'utf8');
+  for (const pattern of check.required) {
+    if (!pattern.test(source)) {
+      errors.push('Required metadata copy missing (' + check.name + '): ' + pattern);
+    }
+  }
+  for (const pattern of check.forbidden) {
+    if (pattern.test(source)) {
+      errors.push('Metadata copy guard failed (' + check.name + '): ' + pattern);
+    }
+  }
+}
 
 const curriculumCardsPath = path.join(process.cwd(), 'lib/curriculum.js');
 const curriculumCardsSource = fs.readFileSync(curriculumCardsPath, 'utf8');
