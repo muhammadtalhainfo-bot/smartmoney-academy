@@ -859,7 +859,7 @@ export const POSTS = [
         'Step 4: If price later revisits the predefined overlap, record whether both boundaries are touched. The revisit is a candidate event, not an automatic entry or evidence that the area will hold.',
         'Step 5: If testing an entry at the FVG midpoint, define the stop, target, signal expiry and missed-fill rule in advance. Compare that entry with alternatives; the midpoint and next liquidity reference are choices, not universally validated rules.',
       ]},
-      { type: 'heading', text: 'Why the Unicorn Is High Probability' },
+      { type: 'heading', text: 'Testing the Unicorn Overlap Hypothesis' },
       { type: 'paragraph', text: 'The Unicorn combines two chart labels, but that does not establish that they are independent confirmations or that their probabilities multiply. Measure the combined condition on a defined sample and compare it with each component alone, including overlaps that fail and trades that never trigger.' },
       { type: 'paragraph', text: 'An FVG labels a three-candle price relationship under a chosen definition, while a Mitigation Block is a source-dependent chart label for a previously marked area. Neither reveals unfilled institutional orders. When price revisits an overlap, record whether it reacts, passes through or never returns rather than assuming a stronger reaction.' },
       { type: 'heading', text: 'Identifying Unicorn Setups on Your Chart' },
