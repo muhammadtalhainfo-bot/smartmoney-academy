@@ -120,11 +120,11 @@ const STRATEGIES = [
     avatar: 'SMA',
     color: '#6366F1',
     tags: ['Forex', 'Indices', 'Futures'],
-    description: 'Use the 12:00 AM New York-time candle open (ET) as a key reference level. Some traders study whether price revisits the midnight open during the trading day. Trade rejections and sweeps of this level.',
+    description: 'Use the 12:00 AM New York time candle open (ET) as a key reference level. Some traders study whether price revisits the midnight open during the trading day. Trade rejections and sweeps of this level.',
     stats: { winRate: 'Not verified', rr: 'Not verified', trades: 'Daily', type: 'Level-based' },
     content: [
       { heading: 'Overview', text: 'The Midnight Open (12:00 AM New York time, ET) is a reference level used in some ICT-style frameworks. Some traders use this level as a reference during the trading day; its usefulness should be evaluated with your own testing. Combined with session analysis, this level can provide predefined reference points for a testable entry and exit plan' },
-      { heading: 'How to Trade It', items: ['Mark the 12:00 AM New York-time (ET) candle open at the start of each day', 'Use price relative to the midnight open as one contextual input rather than a standalone bias rule', 'Look for price to sweep the midnight open and reverse', 'Or look for price to consolidate above/below and break with momentum', 'Use killzone timing for entries'] },
+      { heading: 'How to Trade It', items: ['Mark the 12:00 AM New York time (ET) candle open at the start of each day', 'Use price relative to the midnight open as one contextual input rather than a standalone bias rule', 'Look for price to sweep the midnight open and reverse', 'Or look for price to consolidate above/below and break with momentum', 'Use killzone timing for entries'] },
       { heading: 'Combining with Other Concepts', text: 'Some traders give the midnight open more weight when it aligns with an FVG, OB, or OTE zone. A midnight open that sits inside a daily bullish FVG, for example, can provide additional confluence for a buy setup.' },
     ],
   },
