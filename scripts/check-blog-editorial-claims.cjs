@@ -891,6 +891,7 @@ const articleBodyRegressionChecks = [
       ['full-conviction trading instruction', /trade it with full conviction/i],
     ],
     required: [
+      ['Unicorn heading frames the overlap as a hypothesis to test', /Testing the Unicorn Overlap Hypothesis/i],
       ['Mitigation Block definition is source-dependent', /the exact boundary and confirmation rules vary/i],
       ['overlap does not prove independent signals', /does not prove two independent signals or reveal a concentration of institutional interest/i],
       ['entry is a candidate event rather than automatic', /The revisit is a candidate event, not an automatic entry/i],
