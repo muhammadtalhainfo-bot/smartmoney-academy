@@ -1850,7 +1850,7 @@ export const POSTS = [
     content: [
       { type: 'intro', text: 'HRLR and LRLR are labels used in ICT education to describe relatively hesitant or direct movement toward a selected reference. They are chart classifications; they do not independently measure the order book, participant commitment or the probability of reaching a target.' },
       { type: 'heading', text: 'High Resistance Liquidity Run (HRLR)' },
-      { type: 'paragraph', text: 'A High Resistance Liquidity Run occurs when price is moving toward a liquidity target but encounters significant opposing pressure along the way. This manifests as overlapping candles, frequent pullbacks that retrace 50%+ of the prior swing, multiple small FVGs being left and immediately filled, and a general lack of momentum. Price is getting there — but slowly and with effort.' },
+      { type: 'paragraph', text: 'One way to define a high-resistance candidate is a path toward a preselected reference with overlapping candles, counter-swings or deeper pullbacks. The exact measures and thresholds are model choices, not universal definitions. Record them consistently and test whether the label adds information beyond speed, volatility and distance-to-target.' },
       { type: 'paragraph', text: 'Overlapping candles and pullbacks can define a high-resistance candidate, but they do not identify the participants on either side. Use observable criteria and check whether the category is associated with different outcomes in a recorded sample.' },
       { type: 'paragraph', text: 'Frequent pullbacks can affect trailing-stop performance, but outcomes depend on the instrument and stop rule. Compare fixed-stop, trailing-stop and partial-exit methods using identical entry conditions and realistic execution costs rather than assuming one approach is safer.' },
       { type: 'heading', text: 'Low Resistance Liquidity Run (LRLR)' },
@@ -1859,9 +1859,9 @@ export const POSTS = [
       { type: 'heading', text: 'Identifying HRLR vs LRLR in Real Time' },
       { type: 'list', items: [
         'Possible measure: calculate the share of counter-direction candles over a fixed segment. Choose thresholds before viewing outcomes and test sensitivity to those thresholds; 40% and 20% are examples only, not validated universal cutoffs.',
-        'Measure the retracement depth of pullbacks. Pullbacks retracing more than 50% of the previous swing = HRLR. Pullbacks retracing less than 30% = LRLR.',
-        'Check if FVGs left during the move are being immediately filled. Immediate FVG fills indicate HRLR. FVGs left open and respected indicate LRLR.',
-        'Monitor the candle body-to-wick ratio. High-wick candles with small bodies = HRLR. Large-bodied candles with minimal wicks = LRLR.',
+        'Possible measure: record each pullback as a fraction of the previous swing. Any cutoffs, including 50% or 30%, should be predeclared and compared across samples rather than treated as universal labels.',
+        'Possible measure: record whether a defined FVG is crossed within a chosen number of bars. A quick fill or an unfilled gap does not establish resistance or low resistance on its own; test whether this feature adds value to the other measures.',
+        'Possible measure: track candle body size relative to total range. Treat any body-to-wick threshold as a model parameter; large bodies and small wicks do not guarantee continuation.',
       ]},
       { type: 'heading', text: 'Using HRLR/LRLR for Position Sizing' },
       { type: 'paragraph', text: 'Do not size a position from an HRLR/LRLR label alone. Calculate risk from the entry, invalidation distance, instrument value and your predefined account limit; if a wider stop changes that calculation, reduce units accordingly. Any volatility- or label-based size adjustment should be a separately tested rule, not an assumed 25–50% reduction.' },
