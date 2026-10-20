@@ -716,9 +716,13 @@ const articleBodyRegressionChecks = [
     forbidden: [
       ['suspension block said to reveal smart-money accumulation', /The suspension indicates more deliberate, extended accumulation by smart money/i],
       ['suspension block said to predict stronger future reaction', /more explosive move when it releases and a more reliable reaction when price returns/i],
+      ['suspension block called among the cleanest PD Array reactions', /zones often produce some of the cleanest reactions in the entire PD Array hierarchy/i],
+      ['clean reaction attributed to deliberate institutional position loading', /the institutional position loading that created them was so deliberate/i],
     ],
     required: [
       ['suspension-block shape is not participant evidence', /The cluster does not reveal accumulation by smart money or predict a more explosive move or stronger reaction/i],
+      ['suspension cluster is not proof of institutional loading or clean reaction', /the cluster does not show deliberate institutional position loading or predict a clean reaction/i],
+      ['suspension timeframe is a test choice, not best condition', /The timeframe is a test choice, not a proven best setting/i],
     ],
   },
   {
@@ -1174,12 +1178,16 @@ const articleBodyRegressionChecks = [
       ['TGIF midpoint or gap midpoint prescribed as the target', /Target: the weekly midpoint[\s\S]{0,180}or the NWOG midpoint if the gap is unfilled/i],
       ['TGIF partial profit and breakeven rule prescribed universally', /Take partial profits at the first significant level[\s\S]{0,170}move the stop to breakeven/i],
       ['TGIF says not to hold into the final half hour as a universal rule', /Do not hold TGIF positions into Friday/i],
+      ['Thursday close and Friday reversal treated as required sequence', /Thursday closed near its extreme[sS]{0,300}During the London or early New York session on Friday, the algorithm reverses/i],
+      ['weekly midpoint or gap midpoint is prescribed as universal exit', /weekly midpoint[sS]{0,160}NWOG midpoint/i],
     ],
     required: [
       ['weekday setup is explicitly a hypothesis rather than a forecast', /the calendar day does not determine the true direction/i],
       ['Friday reversal is conditional and does not establish algorithmic intent', /A chart does not establish that an algorithm reversed the move/i],
       ['FVG entry is a variant with expiry and missed-fill rules', /One entry variant records an FVG formed after the predefined Friday return and displacement/i],
       ['TGIF risk-management rules are predeclared and tested', /Predefine any time stop, partial exit or breakeven rule and test it against alternatives/i],
+      ['TGIF preconditions are optional measurable filters', /A possible filter is a Thursday close near the week-to-date extreme/i],
+      ['risk-management choices are tested rather than universal', /Predefine any time stop, partial exit or breakeven rule and test it against alternatives/i],
     ],
   },
   {
@@ -1190,12 +1198,16 @@ const articleBodyRegressionChecks = [
       ['weekly profile expected to be identified by Tuesday', /By mid-Tuesday, you should be able to identify the likely profile/i],
       ['12 weeks said to provide a clear picture of profile frequencies', /After 12 weeks, you will have a clear picture of the most common profiles/i],
       ['weekly extreme labels said to be the targets for the new week', /these are the BSL and SSL targets for the new week/i],
+      ['weekly profiles give a specific Wednesday reversal entry', /Profile 3 — Wednesday Reversal Bullish|Profile 4 — Wednesday Reversal Bearish/i],
+      ['weekday profile is treated as an instruction to adjust later-week entries', /Adjust your daily bias entries for Wednesday, Thursday, and Friday based on the identified weekly profile/i],
     ],
     required: [
       ['weekday profiles are hypotheses rather than a forecast', /They are hypotheses, not validated forecasts/i],
       ['Wednesday profiles do not establish a required turning day', /Wednesday is not a required turning point/i],
       ['profile identification can remain unclassified', /Do not require a weekly profile to be identifiable by Tuesday/i],
       ['small samples require separate validation and uncertainty', /Twelve weeks may be too small to estimate stable frequencies/i],
+      ['weekly sample size limitations are explicit', /Twelve weeks may be too small to estimate stable frequencies/i],
+      ['weekday profile classification is conditional and can remain absent', /Keep the week unclassified until the prewritten conditions are met/i],
     ],
   },
   {
@@ -1208,6 +1220,9 @@ const articleBodyRegressionChecks = [
       ['QML claimed to confirm manipulation rather than continuation', /The HL breakdown is the confirmation that the sweep was manipulation/i],
       ['QML timeframes/killzones presented as the best conditions', /QML setups are commonly studied on the 1-hour and 4-hour charts during Killzone periods/i],
       ['entry at intermediate swing levels prescribed universally', /Enter short at the HL level/i],
+      ['QML intermediate swing says early smart money was positioned there', /the zone where early smart money positioned/i],
+      ['QML entry is prescribed automatically at the HL', /Mark the HL level — this is your entry zone on the retest/i],
+      ['QML is presented as an engineered sweep that traps buyers', /the second shoulder[sS]{0,250}specifically designed to trap breakout buyers/i],
     ],
     required: [
       ['QML label does not prove exhaustion or predict reversal', /It does not establish that the trend is exhausted or that price will reverse/i],
@@ -1215,6 +1230,8 @@ const articleBodyRegressionChecks = [
       ['swing-break pattern is a candidate rather than final confirmation', /record the QML candidate at that point/i],
       ['QML comparison avoids attributing deliberate intent', /The chart does not reveal an engineered sweep or prove an intent to trap breakout traders/i],
       ['timeframes and filters are research choices rather than proven best conditions', /Those are research choices rather than proven best conditions/i],
+      ['QML retest is a possible entry candidate, not institutional evidence', /A retest of the selected intermediate swing can be studied as an entry candidate/i],
+      ['QML swing points are fixed before evaluation', /Freeze pivot and entry rules before evaluating it/i],
     ],
   },
   {
@@ -1227,6 +1244,9 @@ const articleBodyRegressionChecks = [
       ['lower-timeframe MSS said to confirm institutional orders executing', /The LTF MSS is the real-time confirmation that institutional orders are executing/i],
       ['timeframe agreement called maximum confluence', /you have maximum confluence for your trading bias/i],
       ['structure-based stops claimed to prevent arbitrary stop errors categorically', /This principle prevents the common mistake of placing arbitrary stops/i],
+      ['daily entries are all prescribed to follow weekly direction', /all daily entries should be long/i],
+      ['intraday entries are all prescribed to follow daily direction', /all 15-minute and 5-minute entries should be long/i],
+      ['timeframe agreement claimed to provide maximum confluence', /you have maximum confluence for your trading bias/i],
     ],
     required: [
       ['order-flow analysis is distinct from chart interpretation', /Price candles alone do not identify institutional participants or quantify their directional pressure/i],
@@ -1235,6 +1255,22 @@ const articleBodyRegressionChecks = [
       ['MSS trigger does not confirm institutional order execution', /It does not confirm institutional orders are executing/i],
       ['timeframe agreement is a filter to test', /Agreement across weekly, daily and 4-hour labels is a filter to test/i],
       ['stop placement is compared against alternatives and account risk', /A structural stop is not inherently superior to a volatility- or time-based stop/i],
+      ['institutional order flow label is not direct participant-level evidence', /“Institutional order flow” in ICT chart commentary is often an interpretation, not direct participant-level evidence/i],
+      ['structural alignment is a tested filter rather than proof of edge', /Agreement across weekly, daily and 4-hour labels is a filter to test/i],
+    ],
+  },
+
+  {
+    slug: 'ict-complete-2022-trading-strategy',
+    forbidden: [
+      ['2022 model described as the complete practical application of all ICT', /Master the 2022 model and you have mastered the practical application of ICT/i],
+      ['all ICT concepts said to serve one core sequence', /Everything else in ICT[\s\S]{0,220}serves to refine and confirm this core sequence/i],
+      ['one high-quality trade per session stated as a universal maximum', /One high-quality trade per session, maximum/i],
+    ],
+    required: [
+      ['2022 model is explicitly one source-dependent variant', /One commonly taught 2022-model variant combines a selected liquidity interaction/i],
+      ['model is not a complete description of all ICT approaches', /This is one source-dependent framework, not a complete description of every ICT approach/i],
+      ['variant requires tests against simpler alternatives', /define each condition and test whether the sequence adds value over simpler alternatives/i],
     ],
   },
 
