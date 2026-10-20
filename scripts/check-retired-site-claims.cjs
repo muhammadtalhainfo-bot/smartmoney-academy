@@ -199,7 +199,7 @@ const strategyTimingChecks = {
     /3:00–4:00 AM New York time \(ET\) — London session \(optional\)/,
     /10:00–11:00 AM New York time \(ET\) — Primary NY macro window/,
     /2:00–3:00 PM New York time \(ET\) — Afternoon session/,
-    /12:00 AM New York time \(ET\)/,
+    /12:00 AM New York time/,
   ],
   forbidden: [
     /3:00-4:00 AM EST/,
