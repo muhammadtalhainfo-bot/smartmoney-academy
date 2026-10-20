@@ -769,6 +769,74 @@ const articleBodyRegressionChecks = [
     ],
   },
 
+  {
+    slug: 'ict-premium-discount-zones',
+    forbidden: [
+      ['premium/discount location presented as universal entry rule', /This framework is applied to every dealing range you identify/i],
+      ['discount position asserted to have a much higher probability', /carries significantly higher probability than an Order Block located in the Premium zone/i],
+      ['institutional buying inferred from a discount label', /discount location confirms that price has retraced to an area where institutional buyers would find attractive prices/i],
+      ['premium/discount presented as fractal on every timeframe', /Premium and Discount is fractal — it applies on every timeframe/i],
+      ['multitimeframe confluence said to produce the cleanest trades', /the type of confluence that produces the cleanest/i],
+      ['one Fibonacci anchor convention presented as the correct approach', /The correct approach is to draw from the most recently BROKEN swing/i],
+      ['OTE levels said to distinguish correction from reversal', /The OTE concept is that the deepest retracement into discount that still represents a genuine correction/i],
+    ],
+    required: [
+      ['premium/discount is described as context and location alone is not a signal', /Location alone is not an entry signal/i],
+      ['PD-array overlap is a candidate filter rather than probability proof', /The overlap is a candidate filter, not evidence of institutional buying or a higher-probability setup by itself/i],
+      ['multiple timeframes are optional and need explicit rules', /there is no requirement to use every timeframe or to interpret them identically/i],
+      ['cross-timeframe confluence is not ranked as cleaner or more profitable', /not evidence that the setup is cleaner or more profitable/i],
+      ['Fibonacci anchor convention is documented before review', /document your convention before reviewing the result/i],
+      ['OTE ratios are not a correction-versus-reversal rule', /These ratios do not distinguish a correction from a reversal on their own/i],
+    ],
+  },
+  {
+    slug: 'ict-optimal-trade-entry-ote',
+    forbidden: [
+      ['70.5% presented as the most precise OTE entry', /The 70\.5% level is the most precise entry point within the OTE/i],
+      ['OTE zone claimed to be where institutions re-enter', /the discount area of any swing where institutions re-enter/i],
+      ['70.5% called the primary entry target', /this is your primary entry target/i],
+      ['OTE band claimed to identify institutional accumulation prices', /exactly where institutions want to accumulate long positions/i],
+      ['OTE/OB/session combination ranked as maximal confluence', /example of maximal confluence/i],
+      ['session timing claimed to confirm algorithmic delivery', /session timing confirms the algorithmic delivery window/i],
+      ['OTE discipline described as separating profitable and unprofitable traders', /what separates OTE traders who profit from those who do not/i],
+    ],
+    required: [
+      ['OTE ratios described as chart references rather than institutional boundaries', /These are chosen Fibonacci ratios, not objective boundaries for institutional re-entry or measures of entry precision/i],
+      ['premium/discount labels are relative to the selected range', /labels are relative to the selected range, not objective valuations of expensive or cheap/i],
+      ['large candles are not evidence of institutional participation', /large candles do not establish institutional participation/i],
+      ['70.5% is a variant to test instead of a primary entry target', /If testing 70\.5%, record it as one entry variant rather than a default or primary entry target/i],
+      ['confluence is not objectively ranked and algorithmic delivery is not inferred', /not an objectively ranked “maximal” setup[\s\S]*?do not confirm algorithmic delivery or institutional intent/i],
+      ['OTE band alone does not establish a valid or profitable trade', /zone alone does not make a trade valid or establish profitability/i],
+    ],
+  },
+  {
+    slug: 'how-to-pass-ftmo-ict-strategy',
+    forbidden: [
+      ['NY AM window fixed to EST', /NY AM Killzone \(7 AM–11 AM EST\)/],
+      ['fixed winner count promised to hit evaluation target', /you need 5 winners to reach 10% profit target/i],
+      ['overtrading called the number one failure cause', /overtrading is the number one killer on FTMO challenges/i],
+      ['one loss imposed as a universal stop rule', /Stop trading for the day after one loss/i],
+      ['subjective A-plus setups imposed as universal rule', /Only A\+ setups/i],
+      ['universal 1R breakeven rule', /Never move stop to breakeven before 1R profit/i],
+      ['week-three profit goal prescribed', /Aim to reach 6-7% profit by the end of week 3/i],
+      ['evaluation model advertised as best', /The Best ICT Setups for FTMO Challenges/i],
+      ['week-four schedule prescribes a 6-7% balance checkpoint', /Week 4 strategy: If you are at 6-7% profit/i],
+      ['midnight-to-two fixed EST bias timing', /typically between midnight and 2 AM EST/i],
+      ['neutral-day trading advice stereotypes professional traders', /Professional ICT traders protect their mental capital/i],
+    ],
+    required: [
+      ['NY AM time filter uses New York local time and accounts for seasonal offset', /define it in New York local time \(ET; EST\/EDT changes seasonally\)/],
+      ['position-size calculation is explicitly an example, not a recommendation', /Treat position-size examples as arithmetic, not a risk recommendation/i],
+      ['daily trade cap is strategy- and rule-dependent', /Set a daily trade-count cap based on your written plan and the program terms/i],
+      ['daily stop condition is chosen in advance rather than universal', /A single losing trade does not create a universal stop rule for every strategy/i],
+      ['objective entry criteria replace A-plus labels', /Replace the subjective label A\+ with measurable criteria/i],
+      ['stop-management variants require testing', /test alternatives—such as a fixed stop, a 1R breakeven move or a time-based exit/i],
+      ['weekly profit target is not treated as owed', /the market does not owe a weekly profit target/i],
+      ['no-trade context is framed as a plan choice rather than universal rule', /A no-trade decision can be part of a written plan/i],
+      ['daily bias timing accounts for source and timezone variation', /Daily-bias review timing varies by the source model and chosen session window/i],
+    ],
+  },
+
 ];
 
 for (const check of articleBodyRegressionChecks) {
