@@ -1036,7 +1036,7 @@ const articleBodyRegressionChecks = [
     required: [
       ['resistance labels do not independently determine stop management or exposure', /An LRLR label should not by itself determine stop management or justify adding exposure/i],
       ['opposing-candle thresholds are examples, not validated cutoffs', /40% and 20% are examples only, not validated universal cutoffs/i],
-      ['position size derives from risk and invalidation, not a visual label', /Do not size a position from an HRLR\\/LRLR label alone/i],
+      ['position size derives from risk and invalidation, not a visual label', /Do not size a position from an HRLR.LRLR label alone/i],
       ['trailing/breakeven rules are compared against alternatives', /Test any breakeven or trailing-stop rule against fixed-stop alternatives/i],
       ['HRLR definition admits model-specific observable criteria', /The exact measures and thresholds are model choices, not universal definitions/i],
       ['position sizing depends on predeclared risk not a label', /Calculate risk from the entry, invalidation distance, instrument value and your predefined account limit/i],
