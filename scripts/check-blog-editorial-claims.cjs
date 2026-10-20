@@ -822,7 +822,7 @@ const articleBodyRegressionChecks = [
       ['evaluation model advertised as best', /The Best ICT Setups for FTMO Challenges/i],
       ['week-four schedule prescribes a 6-7% balance checkpoint', /Week 4 strategy: If you are at 6-7% profit/i],
       ['midnight-to-two fixed EST bias timing', /typically between midnight and 2 AM EST/i],
-      ['neutral-day trading advice stereotypes professional traders', /Professional ICT traders protect their mental capital/i],
+
     ],
     required: [
       ['NY AM time filter uses New York local time and accounts for seasonal offset', /define it in New York local time \(ET; EST\/EDT changes seasonally\)/],
@@ -832,6 +832,16 @@ const articleBodyRegressionChecks = [
       ['objective entry criteria replace A-plus labels', /Replace the subjective label A\+ with measurable criteria/i],
       ['stop-management variants require testing', /test alternatives—such as a fixed stop, a 1R breakeven move or a time-based exit/i],
       ['weekly profit target is not treated as owed', /the market does not owe a weekly profit target/i],
+    ],
+  },
+
+  {
+    slug: 'daily-bias-ict-how-to-determine',
+    forbidden: [
+      ['neutral-day advice stereotypes professional traders', /Professional ICT traders protect their mental capital/i],
+      ['daily-bias timing fixed to standard time year-round', /typically between midnight and 2 AM EST/i],
+    ],
+    required: [
       ['no-trade context is framed as a plan choice rather than universal rule', /A no-trade decision can be part of a written plan/i],
       ['daily bias timing accounts for source and timezone variation', /Daily-bias review timing varies by the source model and chosen session window/i],
     ],
