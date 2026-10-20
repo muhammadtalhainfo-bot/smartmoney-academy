@@ -975,6 +975,69 @@ const articleBodyRegressionChecks = [
     ],
   },
 
+  {
+    slug: 'ict-silver-bullet-strategy-complete',
+    forbidden: [
+      ['Silver Bullet window asserts routine algorithmic delivery', /The algorithm frequently delivers a Silver Bullet setup/i],
+      ['Silver Bullet filters claim to elevate probability as a fact', /The key qualifiers that elevate probability are/i],
+      ['daily institutional order flow is treated as confirmed context', /Is the institutional order flow bullish or bearish\?/i],
+      ['Silver Bullet is claimed to operate only in set windows', /The Silver Bullet only operates within its defined windows/i],
+      ['one attempt per window is claimed to be what makes the model work', /One Silver Bullet per window\.[\s\S]{0,220}makes this model work/i],
+    ],
+    required: [
+      ['Silver Bullet clock window is a source convention not a promise', /One commonly cited Silver Bullet window in ICT education[\s\S]{0,180}does not establish that opening volatility has settled or that a setup will appear/i],
+      ['time-window filters are tested rather than treated as inherent edge', /A time filter does not prove the pattern is absent or ineffective at other times/i],
+      ['candidate filters do not automatically imply probability lift', /These filters do not automatically elevate probability/i],
+      ['attempt count is a risk rule rather than a proven model requirement', /One attempt per window is a possible risk rule, not a proven requirement for the model/i],
+    ],
+  },
+  {
+    slug: 'ict-internal-external-range-liquidity',
+    forbidden: [
+      ['IRL/ERL is presented as an algorithmic target hierarchy for any range', /form the target hierarchy within any ICT dealing range/i],
+      ['ERL is described as the algorithm ultimate destination', /represent the algorithm\\?s ultimate delivery destinations/i],
+      ['an internal visit is said to guarantee resumed delivery toward opposite ERL', /price will resume toward the opposite ERL/i],
+      ['partial exits are described as capturing the full range', /capture the full range of a delivery/i],
+    ],
+    required: [
+      ['IRL/ERL are labels for chart-reference candidates', /labels some ICT traders use to organize price references inside a selected range/i],
+      ['internal/external path is a hypothesis rather than sequence rule', /Treat the proposed sequence as a hypothesis and record the actual path rather than assuming price resumes toward the opposite extreme/i],
+      ['IRL target is a candidate, with paths that turn early included', /define which internal level qualifies as a candidate target[\s\S]{0,140}price turns first or never reaches it/i],
+      ['ERL is a candidate objective not a required destination', /The range extreme is a candidate objective, not a target that every setup must reach/i],
+    ],
+  },
+  {
+    slug: 'ict-hrlr-lrlr-liquidity-run',
+    forbidden: [
+      ['LRLR is used to recommend scaling into positions as default', /consider scaling into additional entries[\s\S]{0,250}The strong institutional momentum suggests the target will be reached quickly/i],
+      ['LRLR requires a full-sized position', /this warrants a full-sized position/i],
+      ['HRLR automatically reduces position size by a fixed percentage', /reduce position size by 25-50%/i],
+      ['breakeven move after first FVG is prescribed', /Move your stop to breakeven after the first FVG is left behind/i],
+    ],
+    required: [
+      ['resistance labels do not independently determine stop management or exposure', /An LRLR label should not by itself determine stop management or justify adding exposure/i],
+      ['opposing-candle thresholds are examples, not validated cutoffs', /40% and 20% are examples only, not validated universal cutoffs/i],
+      ['position size derives from risk and invalidation, not a visual label', /Do not size a position from an HRLR\\/LRLR label alone/i],
+      ['trailing/breakeven rules are compared against alternatives', /Test any breakeven or trailing-stop rule against fixed-stop alternatives/i],
+    ],
+  },
+  {
+    slug: 'ict-judas-swing-complete',
+    forbidden: [
+      ['Judas Swing explicitly described as an algorithm-created false move', /It finds this liquidity by creating a false move in the opposite direction/i],
+      ['bullish setup says to expect London sweep and delivery higher', /expect the London session to sweep the Asian low[\s\S]{0,100}before delivering higher/i],
+      ['bearish setup says to expect London sweep and delivery lower', /expect the London session to sweep the Asian high[\s\S]{0,100}before delivering lower/i],
+      ['Judas Swing filter claims dramatically higher probability', /the trade has dramatically higher probability because the manipulation phase is complete/i],
+      ['waiting guarantees the entry opportunity remains', /The entry opportunity will still be there after the Judas Swing confirms/i],
+    ],
+    required: [
+      ['Judas Swing does not establish algorithmic intent or deliberate trapping', /Candle data alone does not show that an algorithm created the move, that stop losses were triggered, or that retail traders were deliberately trapped/i],
+      ['bullish and bearish variants are conditional hypotheses', /If testing a bullish-bias variant, record whether price moves below the Asian low/i],
+      ['a sweep-and-return is a model rule rather than universal requirement', /not a universal requirement for all ICT trades/i],
+      ['entry criteria are checked against invalidation before acting', /Before entry, ask whether the written conditions for your chosen setup are met and what would invalidate them/i],
+    ],
+  },
+
 ];
 
 for (const check of articleBodyRegressionChecks) {
