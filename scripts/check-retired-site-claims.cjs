@@ -192,6 +192,34 @@ for (const check of metadataCopyChecks) {
   }
 }
 
+const strategyTimingChecks = {
+  path: 'app/strategies/page.js',
+  required: [
+    /Session windows depend on the time-zone convention and daylight-saving period, so verify the applicable New York time before trading\./,
+    /3:00–4:00 AM New York time \(ET\) — London session \(optional\)/,
+    /10:00–11:00 AM New York time \(ET\) — Primary NY macro window/,
+    /2:00–3:00 PM New York time \(ET\) — Afternoon session/,
+    /12:00 AM New York time \(ET\)/,
+  ],
+  forbidden: [
+    /3:00-4:00 AM EST/,
+    /10:00-11:00 AM EST/,
+    /2:00-3:00 PM EST/,
+    /12 AM EST/,
+  ],
+};
+const strategyTimingSource = fs.readFileSync(path.join(process.cwd(), strategyTimingChecks.path), 'utf8');
+for (const pattern of strategyTimingChecks.required) {
+  if (!pattern.test(strategyTimingSource)) {
+    errors.push('Required strategy time-zone convention missing: ' + pattern);
+  }
+}
+for (const pattern of strategyTimingChecks.forbidden) {
+  if (pattern.test(strategyTimingSource)) {
+    errors.push('Strategy time-zone guard failed (fixed EST label): ' + pattern);
+  }
+}
+
 const curriculumCardsPath = path.join(process.cwd(), 'lib/curriculum.js');
 const curriculumCardsSource = fs.readFileSync(curriculumCardsPath, 'utf8');
 const curriculumCardForbidden = [
