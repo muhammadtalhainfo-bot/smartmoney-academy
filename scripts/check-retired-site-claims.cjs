@@ -171,7 +171,8 @@ const metadataCopyChecks = [
     required: [
       /Explore ICT-style strategy frameworks, example entry conditions, risk rules and testable criteria/,
       /Outcomes vary by rules, market and execution\./,
-      /complete ICT strategy playbooks/i,
+      /Explore Silver Bullet, AMD, Turtle Soup and other ICT-style models with example conditions to define and test/,
+      /Silver Bullet, AMD, Turtle Soup and related ICT-style models, with example conditions to evaluate/,
     ],
     forbidden: [/complete ICT strategy playbooks with entry rules/i],
   },
