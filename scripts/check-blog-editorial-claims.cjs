@@ -847,6 +847,133 @@ const articleBodyRegressionChecks = [
     ],
   },
 
+  {
+    slug: 'liquidity-in-ict-trading',
+    forbidden: [
+      ['equal highs and lows asserted to show known stop placement', /every long trader in that position has their stop loss just below those lows/i],
+      ['liquidity algorithm target asserted as nearly certain', /the algorithm is almost certain to target before a major reversal/i],
+      ['algorithm target presented as predictable from context', /determine which pool the algorithm is likely to target next/i],
+      ['all chart moves described as pool-to-pool delivery', /Every move you see on any chart is a delivery from the last liquidity pool/i],
+    ],
+    required: [
+      ['BSL levels are candidates and do not confirm orders or owners', /The chart alone cannot confirm the orders, their owners or their density/i],
+      ['SSL does not confirm orders at all marked levels', /A chart does not confirm that orders are present at every marked level or reveal who placed them/i],
+      ['liquidity engineering is a hypothesis rather than intent evidence', /This is a hypothesis about price behavior, not evidence that institutions deliberately create retail patterns/i],
+      ['liquidity target is a hypothesis, not a guaranteed destination', /This workflow does not reveal an algorithm target or guarantee that price will reach the chosen level/i],
+    ],
+  },
+  {
+    slug: 'ict-cisd-change-in-state-of-delivery',
+    forbidden: [
+      ['CISD asserts that an algorithm switched gears', /The CISD tells you the algorithm has switched gears right now/i],
+      ['bullish CISD guarantees a new delivery direction', /indicating the delivery has transitioned from bearish to bullish/i],
+      ['CISD FVG stated as the entry zone for new delivery', /represents the confluence-based entry zone for the new delivery direction/i],
+      ['algorithmic repricing and low-risk entry claimed', /The algorithm will often reprice into the CISD FVG/i],
+      ['CISD described as the cleanest and most precise signal', /one of the cleanest and most precise entry signals in all of ICT methodology/i],
+    ],
+    required: [
+      ['CISD does not show that an algorithm switched direction', /does not show that an algorithm switched direction or that a durable trend change has occurred/i],
+      ['CISD/FVG combination is tested against components alone', /Compare the combined rule with the CISD or FVG rule alone/i],
+      ['revisits and failures are acknowledged', /Price may not return, may trade through the gap, or may fail to continue after a fill/i],
+      ['CISD and MSS definitions are source-dependent', /Different ICT sources distinguish CISD from MSS in different ways/i],
+    ],
+  },
+  {
+    slug: 'ict-unicorn-model-explained',
+    forbidden: [
+      ['mitigation block asserted to reveal smart-money offloading', /The break of an OB signifies that the smart money used that zone to offload positions/i],
+      ['overlap called maximum institutional interest', /represents the maximum concentration of institutional interest/i],
+      ['Unicorn stated to be high probability as fact', /Why the Unicorn Is High Probability/i],
+      ['overlap probability described as multiplicative', /the probability is not simply additive — it is multiplicative/i],
+      ['institutional interest claimed to activate simultaneously', /both types of institutional interest activate simultaneously/i],
+      ['unsupported 20–30 percent frequency claim', /Perhaps 20-30% of Mitigation Blocks will qualify as Unicorns/i],
+      ['Unicorn unconditionally prioritized above other zones', /prioritize it above all other entry zones on that timeframe/i],
+      ['full-conviction trading instruction', /trade it with full conviction/i],
+    ],
+    required: [
+      ['Mitigation Block definition is source-dependent', /the exact boundary and confirmation rules vary/i],
+      ['overlap does not prove independent signals', /does not prove two independent signals or reveal a concentration of institutional interest/i],
+      ['entry is a candidate event rather than automatic', /The revisit is a candidate event, not an automatic entry/i],
+      ['no universal overlap frequency is claimed', /no frequency is established here/i],
+      ['filters are treated as hypotheses and risk rules remain defined', /Those filters are hypotheses to evaluate, not reasons to trade with full conviction or to ignore risk/i],
+    ],
+  },
+  {
+    slug: 'ict-candle-range-theory-crt',
+    forbidden: [
+      ['per-candle AMD phases presented as fact', /the algorithmic manipulation phase of that candle's delivery cycle/i],
+      ['prior candle low said to be swept before true bullish delivery', /the algorithm collects the sell-side liquidity before the true bullish delivery/i],
+      ['prior candle high said to be swept before true bearish delivery', /the algorithm first sweeps the previous candle's high before delivering lower/i],
+      ['previous daily extremes called levels the algorithm will likely sweep', /the algorithm will likely sweep during the new day/i],
+      ['weekly Monday-to-Friday manipulation schedule asserted as classic pattern', /The classic CRT pattern on the weekly chart/i],
+      ['CRT said to reveal the true move exactly', /they tell you exactly where the true move is going/i],
+    ],
+    required: [
+      ['CRT phases are labels and do not prove liquidity was deliberately collected', /labels do not prove that liquidity was deliberately collected/i],
+      ['first move does not reliably identify which side will be crossed', /The first move does not reliably identify which side will be crossed/i],
+      ['prior candle extremes are references, not confirmed stop locations', /do not label them as confirmed stop locations/i],
+      ['weekday phase assignment is not a universal schedule', /phase assignment is not a reliable schedule for every week/i],
+      ['a wick does not reveal an algorithmic cycle or future direction', /A wick can occur for many reasons and does not reveal a separate algorithmic cycle/i],
+    ],
+  },
+  {
+    slug: 'ict-smt-divergence-complete-guide',
+    forbidden: [
+      ['EURUSD/GBPUSD SMT asserted reliable', /SMT between these two is very common and reliable/i],
+      ['New York SMT reveals true intraday direction', /SMT during NY session opening often identifies the true intraday direction/i],
+      ['SMT divergence asserted to identify institutional positioning', /Divergence between them identifies institutional positioning/i],
+      ['non-confirming instrument said to reveal true intent', /the other reveals the true intent/i],
+      ['four SMT filters said to produce very high probability', /the SMT setup becomes a very high-probability trade/i],
+      ['fixed timeframe and session filters imposed universally', /Only use SMT on the 5-minute chart or higher, only during high-activity sessions/i],
+    ],
+    required: [
+      ['SMT does not show true intent or require reversal', /does not show that one market was swept or that the other reveals true intent/i],
+      ['session label does not prove manipulation or predictive value', /The session label alone does not prove high-volume institutional manipulation or greater predictive value/i],
+      ['timeframe and correlation filters are hypotheses to test', /as test parameters rather than universal requirements/i],
+      ['SMT setup is compared against a baseline', /test whether the comparison adds information beyond the primary instrument alone/i],
+    ],
+  },
+  {
+    slug: 'ict-institutional-order-flow-entry-drill',
+    forbidden: [
+      ['IOFED stated to require institutional participation', /The IOFED requires institutional participation/i],
+      ['FVG retracement asserted to happen', /price will retrace into the FVG/i],
+      ['displacement said to confirm institutional activation', /confirms that institutional order flow has activated in your direction/i],
+      ['Silver Bullet asserted to be a subset of IOFED', /The Silver Bullet is a subset of the IOFED framework/i],
+      ['fixed 1–2 pip stop buffer presented as precise universal parameter', /The IOFED has precise risk parameters/i],
+      ['IOFED marketed as complete ICT entry model', /you have the complete ICT entry model/i],
+    ],
+    required: [
+      ['higher-timeframe context does not confirm institutional order flow', /not a confirmation of institutional order flow or a requirement proven to work for every setup/i],
+      ['DOL is a planning hypothesis rather than a required destination', /A target is a planning hypothesis, not a destination that price must reach/i],
+      ['session filter does not prove participation', /A session label does not prove institutional participation/i],
+      ['retrace, missed fill and invalidation risks are specified', /Price may never retrace, may fill beyond the zone or may fail to continue after entry/i],
+      ['Silver Bullet/IOFED relationship is not assumed', /Do not assume that Silver Bullet is a subset of IOFED/i],
+      ['fixed pip buffer is not suitable for every market', /a fixed 1–2 pip buffer is not suitable for every market/i],
+    ],
+  },
+  {
+    slug: 'ict-power-of-three-amd-complete',
+    forbidden: [
+      ['AMD accumulation asserts institutions build positions', /institutions are quietly accumulating their full position size/i],
+      ['AMD manipulation asserts engineered false move and intent', /institutions now engineer a false move in the opposite direction/i],
+      ['distribution asserted to reach institutional target', /Price delivers rapidly and decisively to the institutional target/i],
+      ['weekday phases described as typical weekly schedule', /The accumulation typically occurs during the Asian session on Sunday night and Monday/i],
+      ['weekly direction said to reverse after Monday sweep', /Then, from Tuesday, price reverses and delivers higher through the rest of the week/i],
+      ['Asian/London/New York sessions assigned fixed AMD roles', /London Open = Manipulation:[\s\S]{0,170}New York Session = Distribution/i],
+      ['Judas Swing declared the key practical skill and common London event', /Identifying it is the key practical skill of AMD trading/i],
+      ['displacement/FVG claimed as complete universal AMD entry', /The complete AMD trade entry:/i],
+    ],
+    required: [
+      ['AMD range does not establish institutional positioning', /Price candles alone do not show that institutions are quietly building a position/i],
+      ['manipulation label does not prove intent or deliberate stops', /The chart does not prove that the move was engineered, that stops were deliberately triggered/i],
+      ['distribution does not establish true direction or target', /It does not establish a true direction or reveal an institutional target or position/i],
+      ['weekday phase assignment is not a reliable schedule', /the phase assignment is not a reliable schedule for every week/i],
+      ['session names do not establish manipulation or true direction', /Session names alone do not establish manipulation or a true daily direction/i],
+      ['Judas Swing timing and sequence are hypotheses to test', /The London timing and sequence should be treated as hypotheses to test/i],
+    ],
+  },
+
 ];
 
 for (const check of articleBodyRegressionChecks) {
