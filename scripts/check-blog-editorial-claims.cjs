@@ -591,6 +591,10 @@ const articleBodyRegressionChecks = [
       ['structure labels said to explain everything about trend', /tells you everything you need to know about trend direction and strength/i],
       ['external swing break declared a genuine reversal', /Only when a major external structural high is taken out does a genuine trend reversal occur/i],
       ['BOS and ChoCH treated as universal outcome rules', /A BOS confirms the trend — it is a continuation signal\. Only a ChoCH signals a potential reversal/i],
+      ['ChoCH displacement threshold stated as universal', /The displacement that creates a ChoCH must be significant/i],
+      ['BOS directly prescribes a trade on the next pullback', /trend continuation signal = look for longs on the next pullback/i],
+      ['weak-looking break universally excluded as a ChoCH', /a weak, hesitant break is not a true ChoCH/i],
+      ['ChoCH/MSS stated as universally equivalent and direction-confirming', /also called Market Structure Shift \(MSS\)[\s\S]{0,280}confirm(?:s|ing) the new bearish direction/i]
     ],
     required: [
       ['external/internal structure remains convention-based', /Some ICT conventions call larger swings external structure and smaller swings within the current range internal structure/i],
@@ -625,6 +629,10 @@ const articleBodyRegressionChecks = [
     required: [
       ['CE is an optional reference rather than a required target', /Some ICT variants use CE as a possible entry reference/i],
       ['FVG non-revisit and failed-reaction cases are recorded', /log no-revisit, partial-fill, full-fill and continuation cases/i],
+      ['swing-tier terms and pivot rules vary by ICT source', /Some ICT sources distinguish short-term, intermediate-term and long-term swing labels, but terminology and pivot rules vary/i],
+      ['ChoCH/MSS definitions are source-dependent', /Some ICT sources use Change of Character \(ChoCH\) and Market Structure Shift \(MSS\) in overlapping ways/i],
+      ['BOS classification does not mandate an entry', /Treat it as a condition to test, not an automatic continuation signal or instruction to enter long/i],
+      ['ChoCH displacement threshold is predeclared rather than universal', /There is no universal rule that makes a weak-looking break invalid across every source/i]
     ],
   },
   {
@@ -635,10 +643,18 @@ const articleBodyRegressionChecks = [
       ['breaker block universally ranked above standard OBs', /Breaker Blocks are actually considered higher quality than standard OBs/i],
       ['propulsion block ranked among the strongest entries', /among the strongest entry zones in the entire framework/i],
       ['lower-timeframe move described as proof of institutional activation', /confirmation that institutional orders are being triggered/i],
+      ['order-block mechanism asserted as universal institutional execution fact', /Large institutions — banks, hedge funds, central banks — cannot enter positions the way retail traders do/i],
+      ['large bank order said inevitably to move price significantly against itself', /A bank with a \$10 billion position cannot do this[\s\S]{0,200}before they have fully built their position/i],
+      ['heading states institutional mechanism as fact', /Why Order Blocks Work — The Institutional Logic/i],
+      ['valid OB criteria presented as universal', /Criterion 1: There must be a significant displacement move immediately following the OB candle/i],
     ],
     required: [
       ['order-block mechanism claims are framed as interpretations', /A chart cannot identify who traded there, establish hidden accumulation/i],
       ['OB setup includes missed and failed examples', /A zone can fail, be skipped or never be revisited/i],
+      ['order-block explanation distinguishes general execution impact from chart evidence', /The effect depends on instrument, venue, order size and conditions; this general market fact does not show that a particular order-block candle marks institutional activity/i],
+      ['order blocks are presented as a candidate label', /An Order Block is commonly defined in ICT education as an opposing candle or area before a displacement move/i],
+      ['heading describes studying the framework rather than proven mechanism', /Why Some Traders Study Order Blocks/i],
+      ['displacement is an optional model rule with measurable criteria', /If your chosen variant requires displacement after the candidate candle, define a measurable threshold/i]
     ],
   },
   {
@@ -1065,6 +1081,26 @@ const articleBodyRegressionChecks = [
       ['Asian range levels are reference candidates', /they are reference candidates, not known targets/i],
       ['bearish variant admits continuation and no-cross cases', /If testing a bearish-bias variant, record whether price moves above the Asian high/i],
       ['MSS is optional and does not guarantee reversal', /an MSS label does not guarantee a reversal/i],
+    ],
+  },
+
+  {
+    slug: 'ict-reversal-patterns-guide',
+    forbidden: [
+      ['Upthrust asserted to trigger buy stops and reverse immediately', /The ICT Upthrust is the bearish mirror[\s\S]{0,320}triggering buy stops[\s\S]{0,220}immediately reverses back inside the range/i],
+      ['upthrust required to show an aggressive immediate reversal', /Both patterns require the same confirmation[\s\S]{0,150}not a slow grind/i],
+      ['SMT plus MSS described as the most sophisticated reversing pattern', /The most sophisticated reversal pattern combines SMT Divergence with a structural break/i],
+      ['both instruments said to show MSS and confirm the reversal', /Simultaneously, both instruments show a Market Structure Shift[\s\S]{0,120}confirming the reversal/i],
+      ['sweep presented as a necessary difference between every reversal and retracement', /Reversals involve a clear liquidity sweep[\s\S]{0,150}Retracements do not involve liquidity sweeps/i],
+      ['MSS and displacement presented as universal reversal requirements', /Reversals show a Market Structure Shift on the lower timeframe[\s\S]{0,180}Retracements maintain the higher timeframe structure throughout/i],
+      ['PD Array membership claimed to distinguish reversals from retracements', /Reversals occur at significant PD Array elements[\s\S]{0,150}Retracements often occur at arbitrary price levels/i],
+    ],
+    required: [
+      ['Upthrust is described as an observable candidate, not proof of stop activity', /In one Wyckoff\/ICT comparison, an Upthrust candidate is a move above a selected range boundary followed by a return inside/i],
+      ['SMT/structure combination is a hypothesis rather than a ranked signal', /One reversal hypothesis combines SMT divergence with a separately defined structural break/i],
+      ['reversal features are model-dependent heuristics', /Some reversal models require a move beyond a selected level followed by return, while others do not/i],
+      ['lower-timeframe structure break is a filter rather than proof of reversal', /A lower-timeframe structure break may be used as a reversal filter, but definitions and timeframes vary/i],
+      ['PD Array is not required for every reversal or retracement', /Neither reversal nor retracement requires a named zone/i],
     ],
   },
 
