@@ -1167,6 +1167,77 @@ const articleBodyRegressionChecks = [
     ],
   },
 
+  {
+    slug: 'ict-tgif-setup-explained',
+    forbidden: [
+      ['TGIF checklist makes a Friday algorithm reversal a required condition', /During the London or early New York session on Friday, the algorithm reverses/i],
+      ['TGIF midpoint or gap midpoint prescribed as the target', /Target: the weekly midpoint[\s\S]{0,180}or the NWOG midpoint if the gap is unfilled/i],
+      ['TGIF partial profit and breakeven rule prescribed universally', /Take partial profits at the first significant level[\s\S]{0,170}move the stop to breakeven/i],
+      ['TGIF says not to hold into the final half hour as a universal rule', /Do not hold TGIF positions into Friday/i],
+    ],
+    required: [
+      ['weekday setup is explicitly a hypothesis rather than a forecast', /the calendar day does not determine the true direction/i],
+      ['Friday reversal is conditional and does not establish algorithmic intent', /A chart does not establish that an algorithm reversed the move/i],
+      ['FVG entry is a variant with expiry and missed-fill rules', /One entry variant records an FVG formed after the predefined Friday return and displacement/i],
+      ['TGIF risk-management rules are predeclared and tested', /Predefine any time stop, partial exit or breakeven rule and test it against alternatives/i],
+    ],
+  },
+  {
+    slug: 'ict-weekly-profiles-range-expansion',
+    forbidden: [
+      ['midweek low is prescribed as the weekly-high entry', /The Wednesday low is the entry point for the weekly high target/i],
+      ['midweek high is prescribed as the weekly-low entry', /The Wednesday high is the sell entry for the weekly low target/i],
+      ['weekly profile expected to be identified by Tuesday', /By mid-Tuesday, you should be able to identify the likely profile/i],
+      ['12 weeks said to provide a clear picture of profile frequencies', /After 12 weeks, you will have a clear picture of the most common profiles/i],
+      ['weekly extreme labels said to be the targets for the new week', /these are the BSL and SSL targets for the new week/i],
+    ],
+    required: [
+      ['weekday profiles are hypotheses rather than a forecast', /They are hypotheses, not validated forecasts/i],
+      ['Wednesday profiles do not establish a required turning day', /Wednesday is not a required turning point/i],
+      ['profile identification can remain unclassified', /Do not require a weekly profile to be identifiable by Tuesday/i],
+      ['small samples require separate validation and uncertainty', /Twelve weeks may be too small to estimate stable frequencies/i],
+    ],
+  },
+  {
+    slug: 'ict-qml-quasimodo-pattern',
+    forbidden: [
+      ['QML swing sequence said to signal exhausted trend', /This lower low is the structural failure that signals the trend has exhausted/i],
+      ['opposite QML structure said to confirm exhausted trend', /This structural failure confirms the downtrend has exhausted its final push/i],
+      ['QML retest zone said to be where smart money positioned', /the zone where early smart money positioned before the final sweep/i],
+      ['QML described as an engineered sweep designed to trap buyers', /the second shoulder[\s\S]{0,250}specifically designed to trap breakout buyers/i],
+      ['QML claimed to confirm manipulation rather than continuation', /The HL breakdown is the confirmation that the sweep was manipulation/i],
+      ['QML timeframes/killzones presented as the best conditions', /QML setups are commonly studied on the 1-hour and 4-hour charts during Killzone periods/i],
+      ['entry at intermediate swing levels prescribed universally', /Enter short at the HL level/i],
+    ],
+    required: [
+      ['QML label does not prove exhaustion or predict reversal', /It does not establish that the trend is exhausted or that price will reverse/i],
+      ['chart does not reveal institutional positioning or guarantee support/resistance', /the chart does not reveal where “smart money” positioned or guarantee support\/resistance/i],
+      ['swing-break pattern is a candidate rather than final confirmation', /record the QML candidate at that point/i],
+      ['QML comparison avoids attributing deliberate intent', /The chart does not reveal an engineered sweep or prove an intent to trap breakout traders/i],
+      ['timeframes and filters are research choices rather than proven best conditions', /Those are research choices rather than proven best conditions/i],
+    ],
+  },
+  {
+    slug: 'ict-market-order-flow-explained',
+    forbidden: [
+      ['market-order-flow paragraph describes institutions as a directional force without evidence', /Institutional order flow specifically refers to the directional pressure from large institutions/i],
+      ['structural labels said to prove dominant institutional direction changes', /Each of these events represents a moment when the dominant institutional direction has changed/i],
+      ['weekly structure said to require all daily entries to be long', /all daily entries should be long/i],
+      ['daily structure said to require all lower-timeframe entries to be long', /all 15-minute and 5-minute entries should be long/i],
+      ['lower-timeframe MSS said to confirm institutional orders executing', /The LTF MSS is the real-time confirmation that institutional orders are executing/i],
+      ['timeframe agreement called maximum confluence', /you have maximum confluence for your trading bias/i],
+      ['structure-based stops claimed to prevent arbitrary stop errors categorically', /This principle prevents the common mistake of placing arbitrary stops/i],
+    ],
+    required: [
+      ['order-flow analysis is distinct from chart interpretation', /Price candles alone do not identify institutional participants or quantify their directional pressure/i],
+      ['ChoCH/MSS/CISD are not evidence that institutions changed direction', /none of these chart events establishes that institutional participants changed direction/i],
+      ['weekly and daily structure are optional context filters, not all-entry direction rules', /Weekly higher highs\/higher lows do not require all daily trades to be long/i],
+      ['MSS trigger does not confirm institutional order execution', /It does not confirm institutional orders are executing/i],
+      ['timeframe agreement is a filter to test', /Agreement across weekly, daily and 4-hour labels is a filter to test/i],
+      ['stop placement is compared against alternatives and account risk', /A structural stop is not inherently superior to a volatility- or time-based stop/i],
+    ],
+  },
+
 ];
 
 for (const check of articleBodyRegressionChecks) {
