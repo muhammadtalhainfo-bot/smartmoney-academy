@@ -1345,6 +1345,61 @@ const articleBodyRegressionChecks = [
     ],
   },
 
+  {
+    slug: 'how-to-trade-fair-value-gaps',
+    forbidden: [
+      ['FVG heading presents an institutional-intent explanation as fact', /The Institutional Logic Behind Fair Value Gaps/i],
+    ],
+    required: [
+      ['FVG heading frames the section as an ICT interpretation', /How ICT Interprets Fair Value Gaps/i],
+    ],
+  },
+  {
+    slug: 'daily-bias-ict-how-to-determine',
+    forbidden: [
+      ['midnight open heading claims to be the true daily reference', /The Midnight Open — The True Daily Reference/i],
+    ],
+    required: [
+      ['midnight open heading marks the reference as source-specific', /The Midnight Open — A Source-Specific Reference/i],
+    ],
+  },
+  {
+    slug: 'ict-optimal-trade-entry-ote',
+    forbidden: [
+      ['OTE heading says the retracement zone is inherently institutional', /Why the 62-79% Zone Is Institutional/i],
+    ],
+    required: [
+      ['OTE heading attributes the concept to some ICT sources', /How Some ICT Sources Interpret the 62–79% Zone/i],
+    ],
+  },
+  {
+    slug: 'ict-scalping-strategy',
+    forbidden: [
+      ['scalping heading promises best pairs and sessions', /Best Pairs and Sessions for ICT Scalping/i],
+    ],
+    required: [
+      ['scalping heading frames instruments and sessions as a comparison', /Comparing Pairs and Sessions for ICT Scalping/i],
+    ],
+  },
+  {
+    slug: 'ict-asian-range-trading-strategy',
+    forbidden: [
+      ['Asian-range heading claims best pairs', /Best Pairs for Asian Range Trading/i],
+    ],
+    required: [
+      ['Asian-range heading frames pair choice as a test comparison', /Comparing Pairs for Asian-Range Tests/i],
+    ],
+  },
+  {
+    slug: 'ict-displacement-move-explained',
+    forbidden: [
+      ['displacement heading infers institutional participation from price pattern', /Why Displacement Signals Institutional Participation/i],
+    ],
+    required: [
+      ['displacement heading describes an observable price pattern', /Displacement as an Observable Price Pattern/i],
+    ],
+  },
+
 ];
 
 for (const check of articleBodyRegressionChecks) {
