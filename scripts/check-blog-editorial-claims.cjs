@@ -1274,6 +1274,75 @@ const articleBodyRegressionChecks = [
     ],
   },
 
+  {
+    slug: 'power-of-three-amd-model',
+    forbidden: [
+      ['daily AMD assigned to NY AM as the primary delivery window', /The Distribution phase on a daily timeframe corresponds to the New York AM session — the primary delivery window/i],
+      ['weekday/month phases presented as typical AMD schedule', /On a weekly basis, Wednesday through Thursday are typically the Distribution days/i],
+      ['daily open stated to be non-random and define the entire delivery sequence', /The Open of the daily candle is not random/i],
+      ['candle body/wicks treated as true move and manipulation proof', /The body of the daily candle represents the real move; the wicks represent the manipulation phases/i],
+      ['larger wick said to prove more liquidity swept and cleaner distribution', /The bigger the wick in one direction, the more liquidity was swept/i],
+      ['weekly distribution used to explain away contrary daily price action', /those daily manipulations are simply the internal AMD cycles within the larger weekly distribution/i],
+      ['historical candle inspection promoted as adequate real-time pattern identification', /Once you can consistently identify AMD in completed historical candles, begin watching for the pattern in real time/i],
+    ],
+    required: [
+      ['daily/weekly/monthly AMD phase timing labelled source-specific hypothesis', /These are source-specific hypotheses, not reliable schedules for daily, weekly or monthly price delivery/i],
+      ['True Daily Open described as a charting convention', /This is a charting convention, not a universal starting point or proof that the day follows an AMD delivery sequence/i],
+      ['candle body and wicks defined descriptively, not as motive evidence', /these shapes do not identify a manipulation phase or explain why price moved/i],
+      ['wick size not treated as order-count evidence', /Wick size measures the candle's excursion beyond its body, not how many orders were triggered/i],
+      ['higher-timeframe AMD labels are compared against a baseline', /measure whether the added context improves a baseline/i],
+      ['AMD study starts with prospective rules and consecutive candles', /define the range, excursion and later-expansion rules before reviewing a sample of consecutive candles/i],
+    ],
+  },
+  {
+    slug: 'ict-macro-times-explained',
+    forbidden: [
+      ['macro heading attributes objective actions to an algorithm', /What the Algorithm Does During Macros/i],
+    ],
+    required: [
+      ['macro heading distinguishes source interpretations from observable behaviour', /What Some ICT Sources Attribute to Macro Windows/i],
+      ['macro activity is not treated as verified institutional or algorithmic activity', /not verified periods of peak algorithmic or institutional activity/i],
+    ],
+  },
+  {
+    slug: 'ict-candle-range-theory-crt',
+    forbidden: [
+      ['previous candle extrema described as local liquidity pools without caveat', /The previous candle's high and low are local liquidity pools/i],
+      ['CRT imposes a mandatory sweep before buying', /wait for the sweep of the previous 15-minute low before entering/i],
+    ],
+    required: [
+      ['previous candle extremes are local references, not confirmed liquidity', /Those levels do not confirm that stop orders are present or that price must cross either one/i],
+      ['CRT bullish sweep is one test variant and not mandatory', /A sweep is not mandatory in every market condition, and the crossing alone is not an entry signal/i],
+    ],
+  },
+  {
+    slug: 'ict-one-shot-one-kill-model',
+    forbidden: [
+      ['a single most significant PD Array said to be the likely target and entry zone', /Identify the single most significant PD Array that price is most likely to deliver to during today's killzone\. This is your entry zone\./i],
+    ],
+    required: [
+      ['PD Array candidate zones and possible exits are separately defined', /mark candidate zones with a written boundary rule and separately define any possible exit reference/i],
+      ['PD Array is not automatically the entry or likely target', /Neither a PD Array nor a liquidity target is automatically the entry zone or the level price is most likely to reach/i],
+    ],
+  },
+  {
+    slug: 'ict-liquidity-void-explained',
+    forbidden: [
+      ['liquidity void guarantees acceleration and continued movement', /expect price to accelerate — do not take early profits within the void zone as the absence of resistance means the move will continue/i],
+      ['void is guaranteed to fill rapidly and defines a minimum target', /The void will be filled rapidly once price enters it/i],
+      ['stop placement inside a void is claimed to be hit even when direction is correct', /A stop in a void will be hit by the rapid price movement through the void/i],
+      ['every price inside a void deemed invalid support or resistance', /Any price level within a marked void is not valid support or resistance/i],
+      ['take-profit distance automatically extended to void fill', /your realistic minimum target is 30 pips/i],
+    ],
+    required: [
+      ['low-overlap area may accelerate, pause or reverse', /record whether it accelerates, pauses, reverses or remains inside the zone/i],
+      ['void fill is not assumed and exits remain rule-based', /do not treat a full fill or a rapid move as a minimum outcome/i],
+      ['stop is defined by invalidation and execution characteristics', /Place stops according to the predefined invalidation rule, instrument volatility and execution characteristics/i],
+      ['support/resistance inside candidate void is not ruled out automatically', /Do not automatically discard levels within the area as support or resistance without testing that rule/i],
+      ['void does not justify increasing take-profit distance', /does not justify increasing a take-profit distance or assuming the full area will be crossed/i],
+    ],
+  },
+
 ];
 
 for (const check of articleBodyRegressionChecks) {
