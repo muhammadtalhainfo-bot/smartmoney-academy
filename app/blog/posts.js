@@ -310,7 +310,7 @@ export const POSTS = [
         "Wick size measures the candle's excursion beyond its body, not how many orders were triggered or whether a later move will be cleaner",
       ]},
       { type: 'heading', text: 'AMD on Higher Timeframes — Weekly and Monthly' },
-      { type: 'paragraph', text: "Some ICT educators apply AMD labels across daily, weekly and monthly charts. Similar-looking sequences across timeframes do not establish a universal fractal cycle; define the rules separately for each timeframe and compare the added context against a baseline." },
+      { type: 'paragraph', text: "Some ICT educators apply AMD labels across daily, weekly and monthly charts. Similar-looking sequences across timeframes do not establish a universal fractal cycle; define the rules separately for each timeframe and measure whether the added context improves a baseline." },
       { type: 'paragraph', text: "A trader may record a weekly AMD hypothesis alongside daily chart observations, but should not assume Wednesday or Thursday is a delivery day or that contrary daily moves are nested manipulation phases. Treat each classification as provisional and update it only under the written rules." },
       { type: 'highlight', text: "When studying AMD, define the range, excursion and later-expansion rules before reviewing a sample of consecutive candles. Compare the label against a simple range-break baseline, record candles that do not fit, and only then forward-test the frozen rule; completed candles can make retrospective phase labels look clearer than they were live." },
     ,
