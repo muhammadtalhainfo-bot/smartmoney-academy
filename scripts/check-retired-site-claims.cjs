@@ -427,6 +427,133 @@ for (const check of curriculumCardRequired) {
   }
 }
 
+
+const strategiesPath = path.join(process.cwd(), 'app/strategies/page.js');
+const strategiesSource = fs.readFileSync(strategiesPath, 'utf8');
+
+// Keep the public strategy directory consistent with the lesson/article
+// standard: definitions are model variants to test, not universal entry advice.
+const strategyForbiddenChecks = [
+  {
+    name: 'Silver Bullet described as a precision model with three fixed windows',
+    pattern: /precision intraday framework using three specific one-hour windows/i,
+    example: 'A precision intraday framework using three specific one-hour windows.',
+  },
+  {
+    name: 'OTE zone presented as an automatic entry',
+    pattern: /enter at the 62-79% Fibonacci retracement/i,
+    example: 'Enter at the 62-79% Fibonacci retracement.',
+  },
+  {
+    name: 'Breaker block guarantees continuation after a failed order block',
+    pattern: /When an OB fails and price trades through it, re-enter at the breaker block for the continuation move/i,
+    example: 'When an OB fails and price trades through it, re-enter at the breaker block for the continuation move.',
+  },
+  {
+    name: 'Turtle Soup assumes an immediate reversal and next-liquidity target',
+    pattern: /When price makes a new high\/low then immediately reverses, enter the reversal with the next liquidity pool as target/i,
+    example: 'When price makes a new high/low then immediately reverses, enter the reversal with the next liquidity pool as target.',
+  },
+  {
+    name: 'One fixed five-pip FVG threshold is applied to all forex pairs',
+    pattern: /less than 5 pips for forex/i,
+    example: 'Avoid taking if FVG is too small (less than 5 pips for forex).',
+  },
+  {
+    name: 'Failed order block is claimed to automatically flip bias',
+    pattern: /The failed OB now acts as the opposite bias/i,
+    example: 'The failed OB now acts as the opposite bias.',
+  },
+  {
+    name: 'AMD requires London to create a Judas Swing',
+    pattern: /Wait for London session to create the Judas Swing/i,
+    example: 'Wait for London session to create the Judas Swing.',
+  },
+  {
+    name: 'ChoCH is described as confirmation of reversal',
+    pattern: /ChoCH confirming reversal/i,
+    example: 'Drop to 5M or 1M — wait for ChoCH confirming reversal.',
+  },
+  {
+    name: 'A named setup is represented as available daily without evidence',
+    pattern: /trades:\\s*'Daily'/i,
+    example: "trades: 'Daily'",
+  },
+  {
+    name: 'A single universal OTE level is labelled not ideal',
+    pattern: /50% = Equilibrium \\(neutral — not ideal entry\\)/i,
+    example: '50% = Equilibrium (neutral — not ideal entry)',
+  },
+];
+
+for (const check of strategyForbiddenChecks) {
+  if (!check.pattern.test(check.example)) {
+    errors.push('Strategy guard self-test failed (' + check.name + ').');
+  }
+  if (check.pattern.test(strategiesSource)) {
+    errors.push('Strategy editorial guard failed (' + check.name + ').');
+  }
+}
+
+const strategyRequiredChecks = [
+  {
+    name: 'Silver Bullet source/window variants are disclosed',
+    pattern: /one testable variant—not a universal sequence/,
+  },
+  {
+    name: 'AMD does not require a Judas Swing every day',
+    pattern: /do not assume a Judas Swing must occur/,
+  },
+  {
+    name: 'Asian-range boundary and sweep variants are defined',
+    pattern: /crossing neither, one or both sides qualifies/,
+  },
+  {
+    name: 'OTE retracement is not sufficient by itself for an entry',
+    pattern: /entering solely because price reaches it is not a complete trading rule/,
+  },
+  {
+    name: 'Fixed FVG pip threshold has been replaced with a contextual rule',
+    pattern: /do not apply one unvalidated 5-pip cutoff to every FX pair/,
+  },
+  {
+    name: 'Breaker outcomes are not promised',
+    pattern: /failure does not guarantee a polarity flip or continuation/,
+  },
+  {
+    name: 'Turtle Soup return timing is an observable, prewritten condition',
+    pattern: /within a fixed number of bars/,
+  },
+  {
+    name: 'SMT non-confirmation is not an automatic directional signal',
+    pattern: /do not treat it as an automatic directional signal/,
+  },
+  {
+    name: 'Midnight Open filters are compared with a baseline',
+    pattern: /visual overlap alone does not establish extra predictive value/,
+  },
+];
+
+for (const check of strategyRequiredChecks) {
+  if (!check.pattern.test(strategiesSource)) {
+    errors.push('Required strategy safeguard missing (' + check.name + ').');
+  }
+}
+
+const strategyFrequencyLabels = [...strategiesSource.matchAll(/trades:\\s*'([^']+)'/g)]
+  .map((match) => match[1]);
+const verifiedWinRateLabels = [...strategiesSource.matchAll(/winRate:\\s*'Not verified'/g)];
+const verifiedRiskRewardLabels = [...strategiesSource.matchAll(/rr:\\s*'Not verified'/g);
+if (strategyFrequencyLabels.length !== 8 || strategyFrequencyLabels.some((label) => label !== 'Varies')) {
+  errors.push('Strategy frequency labels should say Varies until actual frequency is documented.');
+}
+if (verifiedWinRateLabels.length !== 8) {
+  errors.push('All eight strategy cards must label unsupported win rates as not verified.');
+}
+if (verifiedRiskRewardLabels.length !== 8) {
+  errors.push('All eight strategy cards must label unsupported reward-to-risk figures as not verified.');
+}
+
 if (errors.length) {
   for (const error of errors) console.error('Retired site claim guard failed: ' + error);
   process.exit(1);
