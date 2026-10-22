@@ -476,12 +476,12 @@ const strategyForbiddenChecks = [
   },
   {
     name: 'A named setup is represented as available daily without evidence',
-    pattern: /trades:\\s*'Daily'/i,
+        pattern: /trades: 'Daily'/i,
     example: "trades: 'Daily'",
   },
   {
     name: 'A single universal OTE level is labelled not ideal',
-    pattern: /50% = Equilibrium \\(neutral — not ideal entry\\)/i,
+        pattern: /50% = Equilibrium/i,
     example: '50% = Equilibrium (neutral — not ideal entry)',
   },
 ];
@@ -540,10 +540,10 @@ for (const check of strategyRequiredChecks) {
   }
 }
 
-const strategyFrequencyLabels = [...strategiesSource.matchAll(/trades:\\s*'([^']+)'/g)]
+const strategyFrequencyLabels = [...strategiesSource.matchAll(/trades: '([^']+)'/g)]
   .map((match) => match[1]);
-const verifiedWinRateLabels = [...strategiesSource.matchAll(/winRate:\\s*'Not verified'/g)];
-const verifiedRiskRewardLabels = [...strategiesSource.matchAll(/rr:\\s*'Not verified'/g);
+const verifiedWinRateLabels = [...strategiesSource.matchAll(/winRate: 'Not verified'/g)];
+const verifiedRiskRewardLabels = [...strategiesSource.matchAll(/rr: 'Not verified'/g)];
 if (strategyFrequencyLabels.length !== 8 || strategyFrequencyLabels.some((label) => label !== 'Varies')) {
   errors.push('Strategy frequency labels should say Varies until actual frequency is documented.');
 }
