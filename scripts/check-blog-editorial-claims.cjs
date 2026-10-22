@@ -1400,6 +1400,23 @@ const articleBodyRegressionChecks = [
     ],
   },
 
+  {
+    slug: 'trading-psychology-complete-guide',
+    forbidden: [
+      ['psychology title promises a complete guide to mastering the mind', /Trading Psychology: The Complete Guide to Mastering Your Mind \(2026\)/i],
+      ['discipline described as the only real edge', /Chapter 5: Discipline -- The Only Real Edge/i],
+      ['confidence promised to be unshakeable', /Chapter 6: Building Unshakeable Confidence/i],
+      ['FOMO asserted to mean the optimal entry is gone', /By the time you feel FOMO, the optimal entry is gone/i],
+    ],
+    required: [
+      ['psychology title names the actual topics without mastery promise', /Trading Psychology: Fear, FOMO, Risk and Decision Routines/i],
+      ['discipline is positioned alongside execution quality', /Chapter 5: Discipline and Execution Quality/i],
+      ['confidence is grounded in evidence and process', /Chapter 6: Building Evidence-Based Confidence/i],
+      ['FOMO is not treated as evidence that an opportunity is gone', /the feeling alone does not show whether an opportunity has passed or remains available/i],
+      ['psychology copy says performance also depends on other factors', /Psychology is one part of trading performance alongside strategy quality, risk management, market conditions, and execution/i],
+    ],
+  },
+
 ];
 
 for (const check of articleBodyRegressionChecks) {
