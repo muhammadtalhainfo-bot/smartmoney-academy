@@ -1069,6 +1069,7 @@ const articleBodyRegressionChecks = [
   {
     slug: 'ict-judas-swing-complete',
     forbidden: [
+      ['Judas Swing heading attributes creation to an algorithm', /Why the Algorithm Creates a Judas Swing/i],
       ['Judas Swing explicitly described as an algorithm-created false move', /It finds this liquidity by creating a false move in the opposite direction/i],
       ['bullish setup says to expect London sweep and delivery higher', /expect the London session to sweep the Asian low[\s\S]{0,100}before delivering higher/i],
       ['bearish setup says to expect London sweep and delivery lower', /expect the London session to sweep the Asian high[\s\S]{0,100}before delivering lower/i],
@@ -1080,6 +1081,7 @@ const articleBodyRegressionChecks = [
       ['MSS and FVG are prescribed as entry requirements', /After the sweep, watch for the reversal confirmation[\s\S]{0,200}is your entry/i]
     ],
     required: [
+      ['Judas Swing heading describes the label without asserting intent', /How the Judas Swing Label Is Used/i],
       ['Judas Swing does not establish algorithmic intent or deliberate trapping', /Candle data alone does not show that an algorithm created the move, that stop losses were triggered, or that retail traders were deliberately trapped/i],
       ['bullish and bearish variants are conditional hypotheses', /If testing a bullish-bias variant, record whether price moves below the Asian low/i],
       ['a sweep-and-return is a model rule rather than universal requirement', /not a universal requirement for all ICT trades/i],
