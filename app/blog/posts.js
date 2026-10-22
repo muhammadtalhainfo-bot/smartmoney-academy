@@ -3084,7 +3084,7 @@ export const POSTS = [
     featured: false,
     content: [
       { type: 'intro', text: 'The Judas Swing is an ICT term for a possible early-session move against a later directional thesis, sometimes discussed alongside a sweep of a nearby high or low. It is not established that a deliberate trap occurred, and some sessions have no clear opposite move or reversal.' },
-      { type: 'heading', text: 'Why the Algorithm Creates a Judas Swing' },
+      { type: 'heading', text: 'How the Judas Swing Label Is Used' },
       { type: 'paragraph', text: 'Some ICT explanations interpret an early move beyond a reference followed by a return as a Judas Swing. Candle data alone does not show that an algorithm created the move, that stop losses were triggered, or that retail traders were deliberately trapped. Describe the observable crossing and return, and test whether the sequence is followed by reversal, continuation or range.' },
       { type: 'paragraph', text: 'In one ICT convention, a Judas Swing is a move that appears to extend one way before price returns and later moves the other way. The label is typically applied retrospectively unless the return and timing criteria are fixed in advance; an opposite move may be absent or delayed.' },
       { type: 'heading', text: 'Identifying the Judas Swing' },
