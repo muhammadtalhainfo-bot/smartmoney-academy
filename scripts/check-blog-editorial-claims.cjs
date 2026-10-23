@@ -1731,6 +1731,56 @@ for (const check of remainingModelSessionGapChecks) {
   }
 }
 
+
+const remainingSupplySuspensionChecks = [
+  {
+    slug: 'ict-supply-demand-forex',
+    forbidden: [
+      ['ICT claimed a more precise institutional framework', /ICT elevates and refines those concepts into a more precise institutional framework/i],
+      ['prior buying pressure claimed to activate again', /expecting the buying pressure that previously reversed price there to activate again/i],
+      ['tighter stop said to improve reward-to-risk automatically', /tighter stop = better R:R/i],
+      ['premium/discount treated as mandatory ICT rule', /only buy in discount \(below 50% of range\)/i],
+      ['zone break said to create a short entry automatically', /it will flip to resistance and become a short entry on the retest/i],
+      ['ICT terminology promised immediate accuracy improvement', /you will immediately improve your entry accuracy/i],
+    ],
+    required: [
+      ['zone labels do not establish superiority', /Compare explicit versions of both methods on the same sample before drawing a performance conclusion/i],
+      ['tighter stop risk tradeoff is explicit', /A tighter stop can increase the nominal reward-to-risk ratio while also increasing stop-outs/i],
+      ['added filters tested against a simpler baseline', /Compare each added condition with a simpler baseline on the same sample/i],
+      ['zone labels do not verify institutional orders', /it does not prove that institutional orders remain in a zone/i],
+    ],
+  },
+  {
+    slug: 'ict-suspension-block-2025',
+    forbidden: [
+      ['3-7 candle cluster presented as universal definition', /Look for a cluster of 3-7 candles with very small bodies/i],
+      ['powerful displacement assumed after every suspension', /Immediately following the suspension cluster, a powerful displacement move occurs/i],
+      ['suspension zone automatically becomes a valid block', /The suspension zone itself becomes the Suspension Block/i],
+      ['retest said to act as support or resistance', /acts as support \(if the move after it was bullish\) or resistance/i],
+      ['quiet sessions described as institutional accumulation', /The most valid Suspension Blocks form during accumulation periods/i],
+    ],
+    required: [
+      ['candle count is a model choice to test', /Three to seven bars can be tested as one choice, not treated as a universal definition/i],
+      ['post-cluster failure cases are recorded', /record clusters that are followed by a small move, a reversal or no clear move/i],
+      ['retest may fail or never occur', /the marked zone may hold, fail, or not be revisited/i],
+      ['session timing does not prove accumulation', /A quiet session does not establish institutional accumulation/i],
+    ],
+  },
+];
+for (const check of remainingSupplySuspensionChecks) {
+  const post = postChunks.find((item) => item.slug === check.slug);
+  if (!post) {
+    errors.push('Missing article required for supply/suspension checks: ' + check.slug);
+    continue;
+  }
+  for (const [label, pattern] of check.forbidden) {
+    if (pattern.test(post.source)) errors.push('/blog/' + check.slug + ': supply/suspension regression (' + label + ').');
+  }
+  for (const [label, pattern] of check.required) {
+    if (!pattern.test(post.source)) errors.push('/blog/' + check.slug + ': required supply/suspension safeguard missing (' + label + ').');
+  }
+}
+
 if (errors.length) {
   for (const error of errors) console.error('Blog editorial guard failed: ' + error);
   process.exit(1);
