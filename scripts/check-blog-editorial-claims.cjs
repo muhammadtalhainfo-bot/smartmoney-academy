@@ -1781,6 +1781,56 @@ for (const check of remainingSupplySuspensionChecks) {
   }
 }
 
+
+const remainingSwingPullbackChecks = [
+  {
+    slug: 'ict-swing-high-swing-low-explained',
+    forbidden: [
+      ['additional confirming bars said to prove significance', /more confirming candles on each side = more significant swing low/i],
+      ['swing highs asserted to be where liquidity accumulates', /Swing highs are where buy-side liquidity accumulates/i],
+      ['timeframe alone said to determine liquidity pool size', /daily swing highs are major structural levels with large liquidity pools/i],
+      ['fixed confirmation count prescribed by timeframe', /On the 5-minute chart, use the minimum definition.*?On the daily chart, use 3-5 confirming candles/i],
+      ['swing practice promises automatic accuracy in two weeks', /Within two weeks, swing identification will be automatic/i],
+      ['pivot labels said universally to determine correct OB', /Wrong swing = wrong OB/i],
+    ],
+    required: [
+      ['confirming bars change recognition but do not prove order density', /they do not by themselves prove greater significance or a larger pool of orders/i],
+      ['higher timeframe is not evidence of larger order pool', /timeframe alone does not prove a larger order pool, more important level or better entry/i],
+      ['confirmation count is a testable variant', /neither is a universal requirement or proof of greater structural significance/i],
+      ['practice is not a guarantee of accuracy', /Repeated practice can improve consistency, but it does not guarantee automatic identification or greater trading accuracy/i],
+    ],
+  },
+  {
+    slug: 'ict-valid-pullback-guide',
+    forbidden: [
+      ['one HL break universally means pullback is invalid or ChoCH', /this is a ChoCH, not a valid pullback/i],
+      ['prior mitigation universally invalidates FVG', /a previously mitigated FVG is no longer valid for re-entry/i],
+      ['open space assumed to have no institutional zone', /no institutional zone to react from/i],
+      ['news flow contrasted with institutional order flow as if known', /rather than institutional order flow/i],
+      ['slow overlap claimed to diagnose structural reversal', /this suggests potential structural reversal rather than a healthy trend retracement/i],
+    ],
+    required: [
+      ['HL rule is a selected variant, not universal', /This is not a universal definition of every pullback or ChoCH/i],
+      ['prior mitigation is an optional filter to test', /prior contact alone does not make every gap universally invalid for re-entry/i],
+      ['news and liquidity are context variables, not participant identification', /they do not identify whether a move came from institutional or other order flow/i],
+      ['pace filter is predeclared and captures both outcomes', /include both continuations and reversals in the results/i],
+    ],
+  },
+];
+for (const check of remainingSwingPullbackChecks) {
+  const post = postChunks.find((item) => item.slug === check.slug);
+  if (!post) {
+    errors.push('Missing article required for swing/pullback checks: ' + check.slug);
+    continue;
+  }
+  for (const [label, pattern] of check.forbidden) {
+    if (pattern.test(post.source)) errors.push('/blog/' + check.slug + ': swing/pullback regression (' + label + ').');
+  }
+  for (const [label, pattern] of check.required) {
+    if (!pattern.test(post.source)) errors.push('/blog/' + check.slug + ': required swing/pullback safeguard missing (' + label + ').');
+  }
+}
+
 if (errors.length) {
   for (const error of errors) console.error('Blog editorial guard failed: ' + error);
   process.exit(1);
