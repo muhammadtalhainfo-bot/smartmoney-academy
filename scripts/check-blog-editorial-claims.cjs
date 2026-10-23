@@ -1959,6 +1959,43 @@ for (const check of remaining2022ModelChecks) {
   }
 }
 
+
+const remainingVenomModelChecks = [
+  {
+    slug: 'ict-venom-model-2025',
+    forbidden: [
+      ['daily bias stated as verified institutional order flow', /Determine whether institutional order flow is bullish or bearish on the daily chart/i],
+      ['counter-side crossing required as a universal stop sweep', /wait for price to sweep the liquidity level opposite to your bias/i],
+      ['MSS said to require a fixed 5-minute confirmation', /Price must break above the most recent short-term high.*?with a displacement candle/i],
+      ['FVG retracement entry treated as certain', /Wait for price to retrace into this FVG and enter at the CE/i],
+      ['sweep stop claimed to prevent significant damage', /the stop is triggered before significant damage is done/i],
+      ['sweep/MSS sequence said to protect from false signals', /Both forms of patience protect you from false signals/i],
+      ['three components said to be the only model that works', /The model only works when all three components/i],
+    ],
+    required: [
+      ['daily context is a tested filter, not proof of order flow', /Candle structure does not verify institutional order flow; test whether limiting entries to that direction changes outcomes/i],
+      ['crossing does not prove stops were collected', /A crossing does not prove that stops were present or collected/i],
+      ['structure condition is source-specific', /This is a model-specific confirmation, not proof of a reversal or a universal requirement/i],
+      ['retrace may not occur and expiry is specified', /Price may not return, may pass through the zone or may never qualify/i],
+      ['stop is an invalidation rule with execution risk', /it can still be hit by continuation or volatility/i],
+      ['combined model is compared with its components and failure cases', /Compare the combined rule with each component alone and include failed, absent and missed-fill cases/i],
+    ],
+  },
+];
+for (const check of remainingVenomModelChecks) {
+  const post = postChunks.find((item) => item.slug === check.slug);
+  if (!post) {
+    errors.push('Missing article required for Venom-model checks: ' + check.slug);
+    continue;
+  }
+  for (const [label, pattern] of check.forbidden) {
+    if (pattern.test(post.source)) errors.push('/blog/' + check.slug + ': Venom-model regression (' + label + ').');
+  }
+  for (const [label, pattern] of check.required) {
+    if (!pattern.test(post.source)) errors.push('/blog/' + check.slug + ': required Venom-model safeguard missing (' + label + ').');
+  }
+}
+
 if (errors.length) {
   for (const error of errors) console.error('Blog editorial guard failed: ' + error);
   process.exit(1);
