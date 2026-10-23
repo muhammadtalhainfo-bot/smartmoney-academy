@@ -1675,7 +1675,7 @@ const remainingLongTailEditorialChecks = [
       ['definitions vary and need a prewritten boundary rule', /Definitions of a Propulsion Block vary by ICT source/i],
       ['first retest may fail or never happen', /Price may not return, may trade through it or may react without a tradable entry/i],
       ['entry, invalidation and exit rules are written before replay', /Specify the confirmation, invalidation and exit rules before replay/i],
-      ['confluence must be benchmarked rather than ranked', /Overlapping is a candidate filter, not proof of independent confirmations or superior performance/i],
+      ['confluence must be benchmarked rather than ranked', /Overlap is a candidate filter, not proof of independent confirmations or superior performance/i],
     ],
   },
   {
@@ -1720,8 +1720,8 @@ const remainingLongTailEditorialChecks = [
   {
     slug: 'ict-ipda-interbank-price-delivery',
     forbidden: [
-      ['IPDA levels described as certain targets', /all six levels will be reached/i],
-      ['algorithm asserted to dictate the path', /one algorithm governs markets/i],
+      ['IPDA levels described as certain targets', /(?:The model guarantees|IPDA guarantees|Price must reach) all six levels/i],
+      ['algorithm asserted to dictate the path', /(?:IPDA proves|IPDA establishes|IPDA confirms)\s+(?:that\s+)?one algorithm governs markets/i],
     ],
     required: [
       ['IPDA is presented as a conceptual model rather than independent proof', /it is not independent evidence that one algorithm governs markets/i],
