@@ -1847,7 +1847,7 @@ const remainingInducementPremiumDiscountChecks = [
     required: [
       ['inducement cannot be inferred from a stop-out', /does not explain why the event occurred, identify who held orders, or establish a deliberate algorithmic trap/i],
       ['earlier and deeper zone variants are compared', /Compare the earlier-zone and deeper-zone variants using prewritten triggers, invalidation, missed fills and costs/i],
-      ['stop orders are not assumed from a chart', /Candlestick charts do not show that stop orders are present there or that price needs to cross it/i],
+      ['stop orders are not assumed from a chart', /Candle charts do not show that stop orders are present there or that price needs to cross it/i],
       ['lower liquidity can be an alternative path', /Do not assume price will cross it first/i],
     ],
   },
