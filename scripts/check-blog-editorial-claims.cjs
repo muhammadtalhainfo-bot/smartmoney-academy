@@ -2106,6 +2106,56 @@ for (const check of remainingLiquidityMechanicsCbdrChecks) {
   }
 }
 
+
+const remainingFrameworkComparisonRiskChecks = [
+  {
+    slug: 'ict-vs-smc-difference',
+    forbidden: [
+      ['guide claims to settle history with facts', /This guide settles the debate with facts, history, and practical advice/i],
+      ['single origin timeline asserted for all SMC', /SMC evolved from the community around 2015-2020/i],
+      ['successful traders said to all learn both frameworks', /Most successful traders eventually learn both ICT and SMC/i],
+      ['course success and superiority asserted without sourcing', /thousands of successful students|more comprehensive than most paid courses/i],
+      ['frameworks described as a path to profitable institutional replication', /understanding how institutional traders move price and using that knowledge to trade profitably/i],
+    ],
+    required: [
+      ['frameworks are not proof of market cause or intent', /Neither label proves that the trader can observe institutional activity or guarantees profitable trading/i],
+      ['success and course-quality claims require sources', /Claims about student success, years of teaching, and relative course quality require reliable sourcing/i],
+      ['rules are compared using costs and risk controls', /test with costs, risk controls and out-of-sample examples/i],
+    ],
+  },
+  {
+    slug: 'common-ict-mistakes',
+    forbidden: [
+      ['midnight open automatically determines direction', /Above midnight open = bullish bias \(look for longs\)\. Below midnight open = bearish bias/i],
+      ['revenge trading assigned an unsourced 70% loss rate', /Revenge trading after a loss produces 70%\+ loss rates/i],
+      ['news event setups called automatic traps', /ICT setups before NFP or FOMC are traps/i],
+      ['1% risk and two consecutive losses imposed as universal rules', /Risk 1% or less\?[\s\S]{0,100}Stop after 2 consecutive losses/i],
+      ['checklist score equated to professionalism', /Score 10\/10 = professional trader/i],
+      ['FVG/OB stop boundary prescribed for all variants', /For OB entries: stop beyond the OB\. For FVG entries: stop beyond the FVG/i],
+    ],
+    required: [
+      ['midnight open is a variant reference not a complete bias rule', /price above or below it does not by itself establish a bullish or bearish bias/i],
+      ['unsourced revenge-trading rate is removed', /Do not use an unsourced 70%\+ loss-rate claim for revenge trading/i],
+      ['news risk is handled with a strategy-specific window', /define whether a tested strategy excludes particular windows/i],
+      ['risk and pause rules are plan-specific', /respect the account's risk limit[\s\S]*as a universal measure of professionalism/i],
+      ['backtesting is not described as proof of future performance', /cannot prove future results/i],
+    ],
+  },
+];
+for (const check of remainingFrameworkComparisonRiskChecks) {
+  const post = postChunks.find((item) => item.slug === check.slug);
+  if (!post) {
+    errors.push('Missing article required for framework/mistake checks: ' + check.slug);
+    continue;
+  }
+  for (const [label, pattern] of check.forbidden) {
+    if (pattern.test(post.source)) errors.push('/blog/' + check.slug + ': framework/mistake regression (' + label + ').');
+  }
+  for (const [label, pattern] of check.required) {
+    if (!pattern.test(post.source)) errors.push('/blog/' + check.slug + ': required framework/mistake safeguard missing (' + label + ').');
+  }
+}
+
 if (errors.length) {
   for (const error of errors) console.error('Blog editorial guard failed: ' + error);
   process.exit(1);
