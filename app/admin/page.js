@@ -469,17 +469,25 @@ function BlogSection({ adminDbClient = adminDb }) {
   const [search, setSearch] = useState('');
   const [filterCat, setFilterCat] = useState('all');
 
-  const load = useCallback(async () => {
+  const load = useCallback(async (isActive = () => true) => {
     try {
-      const { data } = await adminDbClient('blog.list');
-      if (data) setPosts(data);
+      // Defer the client invocation so even a synchronous adapter error is
+      // handled asynchronously rather than setting state in the effect call.
+      const { data } = await Promise.resolve().then(() => adminDbClient('blog.list'));
+      if (isActive() && data) setPosts(data);
     } catch (error) {
       console.error('Admin blog load failed:', error);
-      setMsg({ text: 'Unable to load blog posts.', type: 'error' });
+      if (isActive()) setMsg({ text: 'Unable to load blog posts.', type: 'error' });
     }
   }, [adminDbClient]);
 
-  useEffect(() => { load(); }, [load]);
+  useEffect(() => {
+    let active = true;
+    void Promise.resolve().then(() => {
+      if (active) return load(() => active);
+    });
+    return () => { active = false; };
+  }, [load]);
 
   const filtered = posts.filter(p => {
     const q = search.toLowerCase();
