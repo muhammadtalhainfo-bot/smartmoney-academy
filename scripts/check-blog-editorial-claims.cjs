@@ -2060,6 +2060,52 @@ for (const check of remainingRdrbNewsAsianChecks) {
   }
 }
 
+
+const remainingLiquidityMechanicsCbdrChecks = [
+  {
+    slug: 'liquidity-in-ict-trading',
+    forbidden: [
+      ['retail stops claimed as liquidity filled by institutions', /Retail traders provide liquidity through their stop losses[\s\S]{0,180}the institution on the other side of the trade can fill against/i],
+    ],
+    required: [
+      ['stop order interaction does not identify the counterparty', /Execution can involve a range of counterparties and liquidity providers; candle data does not show that a stop belonged to a retail trader or that an institution was on the other side of a particular fill/i],
+    ],
+  },
+  {
+    slug: 'ict-central-bank-dealers-range',
+    forbidden: [
+      ['CBDR attributed to central-bank desk inventory management', /the major institutional participants \(the central bank dealing desks and their associated market makers\) are either winding down for the day or managing overnight inventory/i],
+      ['range claimed to be an accumulation phase', /The high and low of this range represent the outer boundaries of the accumulation phase/i],
+      ['London breakout treated as typical and decisive', /price will typically break out of the CBDR and move decisively in one direction/i],
+      ['narrow CBDR prescribed to yield large daily range', /expect a large daily range once the breakout occurs/i],
+      ['wide CBDR said to guarantee a modest move', /The breakout will still occur, but the move is likely to be more modest/i],
+      ['break above CBDR treated as session-long bullish bias', /bias is bullish for the session/i],
+      ['London assumes a sweep then opposite-direction delivery', /watch for the London session to sweep one side before delivering in the other direction/i],
+      ['large/small CBDR stated as a deterministic forecast', /Large CBDR = modest day; small CBDR = potentially large day/i],
+    ],
+    required: [
+      ['CBDR is a selected measurement interval not an institutional activity observation', /price candles alone cannot identify which institutions were active, what inventory they managed, or who caused the interval’s high and low/i],
+      ['subsequent session outcomes include multiple paths', /price may break one side, stay inside, cross both sides or continue ranging/i],
+      ['range-width hypothesis is tested with no-break cases', /Include days with no breakout or limited movement, and compare results with a baseline/i],
+      ['CBDR break is a candidate condition not a direction guarantee', /The crossing does not guarantee a bearish session/i],
+      ['CBDR width is compared with baseline instead of assumed', /do not assume a large CBDR means a modest day or a small CBDR predicts expansion/i],
+    ],
+  },
+];
+for (const check of remainingLiquidityMechanicsCbdrChecks) {
+  const post = postChunks.find((item) => item.slug === check.slug);
+  if (!post) {
+    errors.push('Missing article required for liquidity/CBDR checks: ' + check.slug);
+    continue;
+  }
+  for (const [label, pattern] of check.forbidden) {
+    if (pattern.test(post.source)) errors.push('/blog/' + check.slug + ': liquidity/CBDR regression (' + label + ').');
+  }
+  for (const [label, pattern] of check.required) {
+    if (!pattern.test(post.source)) errors.push('/blog/' + check.slug + ': required liquidity/CBDR safeguard missing (' + label + ').');
+  }
+}
+
 if (errors.length) {
   for (const error of errors) console.error('Blog editorial guard failed: ' + error);
   process.exit(1);
