@@ -1831,6 +1831,59 @@ for (const check of remainingSwingPullbackChecks) {
   }
 }
 
+
+const remainingInducementPremiumDiscountChecks = [
+  {
+    slug: 'ict-inducement-after-bos',
+    forbidden: [
+      ['inducement described as deliberate algorithmic trap', /a deliberate algorithmic trap designed to attract entries at the wrong level/i],
+      ['deeper zone described as the real entry after a trap', /The real entry zone was the deeper PD Array/i],
+      ['deeper 62-79% zone assumed necessary', /the shallow retracement is inducement/i],
+      ['algorithm said to need to collect stops', /the algorithm still needs to collect that liquidity/i],
+      ['entry alignment failure called almost certainly inducement', /is almost certainly inducement/i],
+      ['deeper liquidity target assumed to be swept first', /price will likely take that liquidity first/i],
+      ['all entries required to pass four filters', /You need a confirmed HTF PD Array,[\s\S]{0,180}If your entry cannot satisfy all four criteria/i],
+    ],
+    required: [
+      ['inducement cannot be inferred from a stop-out', /does not explain why the event occurred, identify who held orders, or establish a deliberate algorithmic trap/i],
+      ['earlier and deeper zone variants are compared', /Compare the earlier-zone and deeper-zone variants using prewritten triggers, invalidation, missed fills and costs/i],
+      ['stop orders are not assumed from a chart', /Candlestick charts do not show that stop orders are present there or that price needs to cross it/i],
+      ['lower liquidity can be an alternative path', /Do not assume price will cross it first/i],
+    ],
+  },
+  {
+    slug: 'ict-premium-discount-zone-identification',
+    forbidden: [
+      ['midpoint called objective fair value', /the 50% midpoint of this range is the equilibrium — the fair value price/i],
+      ['premium/discount imposed as only buy/sell rule', /only consider buy entries when price is below the 50% level/i],
+      ['OTE called ideal entry point', /is the ideal entry point — deeply discounted within the range/i],
+      ['premium/discount used as absolute FVG/OB ban', /Never buy a premium FVG or sell a discount FVG/i],
+      ['multiple timeframe discount called double confirmation', /you have double confirmation of favorable pricing/i],
+      ['midpoint check promised to eliminate suboptimal entries', /will eliminate a large percentage of suboptimal entries/i],
+    ],
+    required: [
+      ['midpoint is arithmetic location not objective fair value', /that wording does not make it an objectively fair value or show where orders should be active/i],
+      ['premium/discount eligibility is a tested variant', /treat below-midpoint location as eligibility only/i],
+      ['OTE ratios are chosen conventions, not universal entry', /These ratios are not a universally ideal entry or a validated requirement/i],
+      ['multiple ranges are not independent confirmation by definition', /log that alignment as a condition rather than independent confirmation of favorable pricing/i],
+      ['filter requires with/without comparison', /compare performance with and without the filter/i],
+    ],
+  },
+];
+for (const check of remainingInducementPremiumDiscountChecks) {
+  const post = postChunks.find((item) => item.slug === check.slug);
+  if (!post) {
+    errors.push('Missing article required for inducement/premium-discount checks: ' + check.slug);
+    continue;
+  }
+  for (const [label, pattern] of check.forbidden) {
+    if (pattern.test(post.source)) errors.push('/blog/' + check.slug + ': inducement/premium-discount regression (' + label + ').');
+  }
+  for (const [label, pattern] of check.required) {
+    if (!pattern.test(post.source)) errors.push('/blog/' + check.slug + ': required inducement/premium-discount safeguard missing (' + label + ').');
+  }
+}
+
 if (errors.length) {
   for (const error of errors) console.error('Blog editorial guard failed: ' + error);
   process.exit(1);
