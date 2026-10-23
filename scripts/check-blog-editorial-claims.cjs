@@ -267,6 +267,60 @@ const postChunks = starts.map((match, index) => {
 });
 
 
+const remainingSweepEditorialChecks = [
+  {
+    slug: 'ict-liquidity-sweep-vs-run',
+    forbidden: [
+      ['sweep/run described as guaranteed reversal versus continuation', /one signals a reversal and the other signals continuation/i],
+      ['sweep claimed to trigger known stop orders', /triggering the stop orders resting there/i],
+      ['sweep equated with proven manipulation', /The sweep is complete; it was manipulation/i],
+      ['run described as using collected stops as fuel', /using that liquidity as fuel to continue/i],
+      ['universal one-to-three-bar classification window', /within 1-3 candles of the sweep/i],
+      ['larger target asserted to make a run more likely', /making a run more likely than a sweep/i],
+      ['PD Array made a binary sweep/run test', /If there is no significant PD Array beyond the sweep level, it may be a run/i],
+    ],
+    required: [
+      ['sweep and run are testable labels not advance signals', /These are chart-classification labels, not reliable advance signals/i],
+      ['order presence and motive not inferred from the crossing', /does not confirm that stop orders were present, that they were triggered, or that a participant intended to target them/i],
+      ['observation window is a model parameter', /There is no universal one-to-three-candle rule/i],
+      ['extra reference filters are tested against baseline', /test the extra filter against the same base rule without it/i],
+    ],
+  },
+  {
+    slug: 'ict-turtle-soup-pattern-guide',
+    forbidden: [
+      ['majority of breakouts claimed to be engineered stop hunts', /the majority of apparent breakouts are engineered stop hunts/i],
+      ['bars held said to imply accumulated stop orders', /the longer it holds, the more stop orders have accumulated/i],
+      ['killzone sweeps asserted more reliable', /sweeps during killzones are significantly more reliable/i],
+      ['sharp return proves manipulation', /confirms the sweep was manipulation/i],
+      ['trapped traders claimed to accelerate the move', /The trapped buyers will exit as price falls, accelerating the bearish move/i],
+      ['higher timeframe said to ensure a more powerful reversal', /the more powerful the reversal/i],
+      ['rejection violence presented as confirmation of a stop hunt', /The violence of the rejection is confirmation of the liquidity sweep/i],
+    ],
+    required: [
+      ['Turtle Soup described as failed-break candidate without motive claims', /a possible failed break of a prior high or low followed by a return/i],
+      ['killzone filter explicitly requires comparison', /compare qualifying events inside and outside that window/i],
+      ['candidate entry includes missed fill and failure cases', /Include cases with no retracement, a missed fill, a failed trigger or continued movement through the zone/i],
+      ['higher-timeframe levels require measured comparison', /compare outcomes on matched samples before claiming added value/i],
+      ['displacement filter is a variant rather than universal rule', /a predeclared filter rather than a universal requirement/i],
+    ],
+  },
+];
+for (const check of remainingSweepEditorialChecks) {
+  const post = postChunks.find((item) => item.slug === check.slug);
+  if (!post) {
+    errors.push('Missing article required for sweep editorial checks: ' + check.slug);
+    continue;
+  }
+  for (const [label, pattern] of check.forbidden) {
+    if (pattern.test(post.source)) errors.push('/blog/' + check.slug + ': sweep editorial regression (' + label + ').');
+  }
+  for (const [label, pattern] of check.required) {
+    if (!pattern.test(post.source)) errors.push('/blog/' + check.slug + ': required sweep safeguard missing (' + label + ').');
+  }
+}
+
+
 const remainingStructuralEditorialChecks = [
   {
     slug: 'ict-stl-itl-ltl-market-structure',
