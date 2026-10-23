@@ -2195,8 +2195,8 @@ const fvgMidpointAndEntryChecks = [
       ['CE prescribed as every OB/FVG/BPR entry', /set limit order at the CE of the FVG|set limit order at the CE of the OB body|is your entry level/i],
     ],
     required: [
-      ['bullish FVG midpoint boundaries are stated in correct order', /a bullish FVG lies between candle one's high and candle three's low when the first is lower/i],
-      ['bearish FVG midpoint boundaries are stated in correct order', /a bearish FVG lies between candle three's high and candle one's low when the former is lower/i],
+      ['bullish FVG midpoint boundaries are stated in correct order', /a bullish FVG lies between candle one\\?'s high and candle three\\?'s low when the first is lower/i],
+      ['bearish FVG midpoint boundaries are stated in correct order', /a bearish FVG lies between candle three\\?'s high and candle one\\?'s low when the former is lower/i],
       ['midpoint and premium/discount terms depend on chosen convention', /document the exact range and anchors because terminology and boundary selection can vary/i],
       ['midpoint entry is a testable variant rather than a directive', /a test can compare the overlap midpoint, zone boundaries and a separate confirmation trigger/i],
     ],
