@@ -1661,6 +1661,76 @@ for (const check of articleBodyRegressionChecks) {
   }
 }
 
+
+const remainingModelSessionGapChecks = [
+  {
+    slug: 'ict-market-maker-sell-model-mmsm',
+    forbidden: [
+      ['MSS claimed to confirm reversal', /The bearish MSS on the 5-minute chart confirms the reversal/i],
+      ['price delivery and distribution asserted as a completed lifecycle', /Phase Five — Bearish Distribution: Price is delivered lower aggressively/i],
+      ['short covering and retail panic inferred from candles', /The algorithm covers its short position into the selling panic of retail traders/i],
+      ['model said to provide complete structural context', /Identifying the model gives you the complete structural context/i],
+      ['model labels credited with consistent performance', /what produces consistent, repeatable performance/i],
+    ],
+    required: [
+      ['phases are not a verified institutional lifecycle', /They do not have to contain every lower-timeframe setup/i],
+      ['bearish structure label does not establish a lasting reversal', /An MSS label does not establish a lasting reversal/i],
+      ['SSL target is a candidate rather than guaranteed destination', /A nearby SSL is a candidate exit reference, not a guaranteed target/i],
+      ['baseline and failure cases are compared', /Compare a written model with a simpler range-break baseline on chronological and held-out samples/i],
+    ],
+  },
+  {
+    slug: 'ict-intraday-profiles-london',
+    forbidden: [
+      ['institutional agenda and largest-player claims', /the largest institutional players in the world/i],
+      ['daily institutional objectives stated as fact', /They have specific daily objectives: fill the Asian range gaps/i],
+      ['institutional execution claimed systematic and predictable', /the systematic execution of institutional order flow within predictable time structures/i],
+      ['London sweep/reverse called most common', /This is the most common London profile/i],
+      ['London continuation causally explained by bias overriding manipulation', /overrides the typical manipulation phase/i],
+      ['consolidation profile ranked least common and predicts NY move', /This is the least common London profile and typically precedes a significant New York session move/i],
+      ['Asian range declared target London will most likely seek', /These levels represent the buy-side and sell-side liquidity pools that London will most likely target/i],
+      ['daily bias said to predict which side London sweeps first', /A bearish daily bias suggests London will sweep the Asian high first/i],
+      ['London close described as a consistent profile tied to bank books', /The London close .* produces its own consistent profile/i],
+    ],
+    required: [
+      ['profiles are hypotheses and require chronological sample', /Test each profile against a chronological sample and include sessions that do not fit/i],
+      ['timezone and outcomes are consistently tracked', /Record no-cross, one-side, two-side and continuation outcomes/i],
+      ['London-close time filter does not prove bank motives', /does not establish that banks are closing positions or that a retracement will occur/i],
+      ['frequency and incremental value tested against baseline', /compare its frequency with a simple range or volatility baseline/i],
+    ],
+  },
+  {
+    slug: 'ict-nwog-ndog-opening-gaps',
+    forbidden: [
+      ['opening gaps described as algorithmic price levels', /algorithmic price levels created at the opening of each new trading week/i],
+      ['algorithm said to seek gap fill', /The algorithm seeks to fill this zone/i],
+      ['NWOG fill asserted to occur during the week', /price will at some point rally back up to fill the gap/i],
+      ['Monday/Tuesday fill frequency asserted without data', /Weekly gaps are commonly filled on Monday or Tuesday/i],
+      ['gap confluence said to significantly increase probability', /the probability and conviction behind that setup significantly increases/i],
+      ['midpoint alignment treated as a directional target', /gap fill represents a potential daily upside target/i],
+    ],
+    required: [
+      ['opening gap can remain open', /a gap may remain open/i],
+      ['gap revisit outcomes include no, partial and full fill', /separately count no revisit, partial fill and full fill/i],
+      ['gap midpoints are candidates not validated targets', /Its position relative to the opening price is not by itself a validated upside or downside target/i],
+      ['opening gap and external-range sequence is tested not assumed', /test any sequence between internal and external references rather than assuming an order in which price must visit them/i],
+    ],
+  },
+];
+for (const check of remainingModelSessionGapChecks) {
+  const post = postChunks.find((item) => item.slug === check.slug);
+  if (!post) {
+    errors.push('Missing article required for model/session/gap checks: ' + check.slug);
+    continue;
+  }
+  for (const [label, pattern] of check.forbidden) {
+    if (pattern.test(post.source)) errors.push('/blog/' + check.slug + ': model/session/gap regression (' + label + ').');
+  }
+  for (const [label, pattern] of check.required) {
+    if (!pattern.test(post.source)) errors.push('/blog/' + check.slug + ': required model/session/gap safeguard missing (' + label + ').');
+  }
+}
+
 if (errors.length) {
   for (const error of errors) console.error('Blog editorial guard failed: ' + error);
   process.exit(1);
