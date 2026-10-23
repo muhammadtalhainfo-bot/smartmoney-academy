@@ -105,6 +105,32 @@ for (const root of ['app', 'lib', 'public']) {
 
 const homepagePath = path.join(process.cwd(), 'app/page.js');
 const homepage = fs.readFileSync(homepagePath, 'utf8');
+const homepageAlgorithmForbidden = [
+  {
+    name: 'homepage frames ICT analysis as reading a verified market algorithm',
+    pattern: /START READING THE ALGORITHM/i,
+  },
+];
+const homepageAlgorithmRequired = [
+  {
+    name: 'homepage promotes defining, testing and reviewing a model',
+    pattern: /DEFINE\.[\s\S]*TEST\. REVIEW\./,
+  },
+  {
+    name: 'homepage distinguishes chart hypotheses from proof of algorithmic intent',
+    pattern: /chart-based hypotheses—not proof of an underlying market algorithm or institutional intent/,
+  },
+];
+for (const check of homepageAlgorithmForbidden) {
+  if (check.pattern.test(homepage)) {
+    errors.push('Homepage algorithm-claim guard failed (' + check.name + ').');
+  }
+}
+for (const check of homepageAlgorithmRequired) {
+  if (!check.pattern.test(homepage)) {
+    errors.push('Required homepage editorial principle missing (' + check.name + ').');
+  }
+}
 const homepageSessionForbidden = [
   {
     name: 'session card uses a fixed EST label for New York local time',
@@ -195,11 +221,11 @@ for (const check of metadataCopyChecks) {
 const strategyTimingChecks = {
   path: 'app/strategies/page.js',
   required: [
-    /Session windows depend on the time-zone convention and daylight-saving period, so verify the applicable New York time before trading\./,
-    /3:00–4:00 AM New York time \(ET\) — London session \(optional\)/,
-    /10:00–11:00 AM New York time \(ET\) — Primary NY macro window/,
-    /2:00–3:00 PM New York time \(ET\) — Afternoon session/,
-    /12:00 AM New York time/,
+    /Sources and variants can differ, so verify the New York-time convention and daylight-saving period\./,
+    /3:00–4:00 AM New York local time \(ET\) — example window used by some sources; verify the convention/,
+    /10:00–11:00 AM New York local time \(ET\) — example window used by some sources; not a universal definition/,
+    /2:00–3:00 PM New York local time \(ET\) — example window used by some sources; verify the convention/,
+    /12:00 AM New York local-time candle open for the selected trading day/,
   ],
   forbidden: [
     /3:00-4:00 AM EST/,
@@ -481,7 +507,7 @@ const strategyForbiddenChecks = [
   },
   {
     name: 'A single universal OTE level is labelled not ideal',
-        pattern: /50% = Equilibrium/i,
+        pattern: /50% = Equilibrium\s+\(neutral — not ideal entry\)/i,
     example: '50% = Equilibrium (neutral — not ideal entry)',
   },
 ];

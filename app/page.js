@@ -304,15 +304,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── QUOTE ── */}
+      {/* ── EDITORIAL PRINCIPLE ── */}
       <section style={{ position:'relative', zIndex:10, padding:'80px 24px', textAlign:'center', borderTop:'1px solid rgba(232,197,71,0.08)', background:'#0A0A0A' }}>
         <div style={{ maxWidth:'800px', margin:'0 auto' }}>
-          <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'rgba(232,197,71,0.5)', letterSpacing:'0.15em', marginBottom:'28px' }}>{'// ICT'}</div>
-          <blockquote className="font-display" style={{ fontSize:'clamp(28px, 5vw, 52px)', color:'white', lineHeight:1.2, marginBottom:'20px' }}>
-            &quot;STOP TRYING TO PREDICT.<br />
-            <span className="gold-text">START READING THE ALGORITHM.&quot;</span>
-          </blockquote>
-          <p style={{ fontFamily:'DM Mono,monospace', fontSize:'10px', color:'#B9C1CC', letterSpacing:'0.2em' }}>— MICHAEL J. HUDDLESTON (ICT)</p>
+          <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'rgba(232,197,71,0.5)', letterSpacing:'0.15em', marginBottom:'28px' }}>{'// DEFINE YOUR METHOD'}</div>
+          <h2 className="font-display" style={{ fontSize:'clamp(28px, 5vw, 52px)', color:'white', lineHeight:1.2, marginBottom:'20px' }}>
+            DEFINE.<br />
+            <span className="gold-text">TEST. REVIEW.</span>
+          </h2>
+          <p style={{ fontFamily:'DM Sans, sans-serif', fontSize:'14px', color:'#B9C1CC', lineHeight:1.7, maxWidth:'680px', margin:'0 auto' }}>
+            Study ICT concepts as chart-based hypotheses—not proof of an underlying market algorithm or institutional intent.
+          </p>
         </div>
       </section>
 
