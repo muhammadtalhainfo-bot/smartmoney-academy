@@ -175,72 +175,6 @@ if (index.includes('delivered weekly')) {
 }
 
 
-const remainingZoneEditorialChecks = [
-  {
-    slug: 'ict-inducement-forex-explained',
-    forbidden: [
-      ['inducement attributed to algorithmic pullback plan', /before the algorithm had finished its pullback/i],
-      ['structure change asserted to deliberately induce traders', /the algorithm creates a minor ChoCH that makes it appear the trend has reversed/i],
-      ['marked level presumed swept before true move', /the algorithm will likely sweep that liquidity first/i],
-      ['premium/discount location called inducement as fact', /A bullish FVG in premium is likely inducement/i],
-      ['deeper order block assumed more significant by timeframe', /the 4-hour OB is more significant/i],
-      ['opposing-side sweep treated as universally required', /Has the algorithm swept the opposing liquidity first/i],
-    ],
-    required: [
-      ['inducement is interpretation, not established intent', /does not establish that a market algorithm deliberately designed the setup to trap traders/i],
-      ['zone depth is not universal rank', /depth and timeframe alone do not establish which zone is more significant/i],
-      ['reference levels are alternative paths, not presumed algorithmic targets', /Record them as alternative paths the market may reach, not levels an algorithm will likely sweep/i],
-    ],
-  },
-  {
-    slug: 'ict-hidden-order-block',
-    forbidden: [
-      ['hidden order block said fully valid by definition', /a fully valid ICT Order Block/i],
-      ['return to hidden zone said to provide an entry', /it should react as a standard OB would/i],
-      ['overlapping wicks equated with increased institutional significance', /each one adding to the institutional significance/i],
-      ['hidden zones forecast as upcoming session entries', /will often be the commonly discussed entry zones of the upcoming session/i],
-      ['hidden zones called powerful categorically', /Why Hidden OBs Are Powerful/i],
-      ['hidden institutional orders trigger asserted as fact', /The institutional orders sitting at the Hidden OB level trigger/i],
-    ],
-    required: [
-      ['lower timeframe does not prove cause or reaction', /does not prove that the candidate zone caused the wick or will react on a revisit/i],
-      ['zone selection is source-specific and reproducible', /State the confirmation and boundary rules; other valid conventions may choose a different candle or no zone at all/i],
-      ['touch is not automatic entry', /A return to the zone is an observation point, not an automatic entry/i],
-      ['cluster compared with baseline', /test it against a single-zone and simple wick-reference baseline/i],
-    ],
-  },
-  {
-    slug: 'ict-rejection-block-explained',
-    forbidden: [
-      ['wick claimed to represent institutional interest', /The long wick represents price reaching into an area of institutional interest/i],
-      ['order block said to show institutional accumulation', /shows where institutions were accumulating their position/i],
-      ['wick claimed definitive algorithmic rejection', /the furthest extreme the algorithm reached and definitively rejected/i],
-      ['session wick zones claimed reliable across sessions', /gives you reliable, session-to-session structure/i],
-      ['automatic midpoint entry prescription', /Enter at the midpoint of the Rejection Block zone/i],
-      ['session extremes claimed particularly powerful', /Rejection Blocks at session extremes are particularly powerful/i],
-    ],
-    required: [
-      ['rejection is interpretation not evidence of motive', /it does not identify institutional interest or establish that price was deliberately rejected/i],
-      ['wick percentage is candidate parameter', /A 40–50% wick-to-range ratio is one candidate parameter, not a universal ICT requirement/i],
-      ['entry variant has explicit risk and expiry rules', /Specify the trigger, invalidation, maximum risk, expiry and exit in advance/i],
-      ['session hypothesis measured instead of assumed', /compare retests, clean breaks and no-revisit cases across sessions/i],
-    ],
-  },
-];
-for (const check of remainingZoneEditorialChecks) {
-  const post = postChunks.find((item) => item.slug === check.slug);
-  if (!post) {
-    errors.push('Missing article required for zone editorial checks: ' + check.slug);
-    continue;
-  }
-  for (const [label, pattern] of check.forbidden) {
-    if (pattern.test(post.source)) errors.push('/blog/' + check.slug + ': zone editorial regression (' + label + ').');
-  }
-  for (const [label, pattern] of check.required) {
-    if (!pattern.test(post.source)) errors.push('/blog/' + check.slug + ': required zone safeguard missing (' + label + ').');
-  }
-}
-
 const detailedPostSlugs = [
 
   'ict-ipda-interbank-price-delivery',
@@ -332,6 +266,75 @@ const postChunks = starts.map((match, index) => {
   const end = next ? next.index + next[0].lastIndexOf('{') : posts.length;
   return { slug: match[1], source: posts.slice(start, end) };
 });
+
+const remainingZoneEditorialChecks = [
+  {
+    slug: 'ict-inducement-forex-explained',
+    forbidden: [
+      ['inducement attributed to algorithmic pullback plan', /before the algorithm had finished its pullback/i],
+      ['structure change asserted to deliberately induce traders', /the algorithm creates a minor ChoCH that makes it appear the trend has reversed/i],
+      ['marked level presumed swept before true move', /the algorithm will likely sweep that liquidity first/i],
+      ['premium/discount location called inducement as fact', /A bullish FVG in premium is likely inducement/i],
+      ['deeper order block assumed more significant by timeframe', /the 4-hour OB is more significant/i],
+      ['opposing-side sweep treated as universally required', /Has the algorithm swept the opposing liquidity first/i],
+    ],
+    required: [
+      ['inducement is interpretation, not established intent', /does not establish that a market algorithm deliberately designed the setup to trap traders/i],
+      ['zone depth is not universal rank', /depth and timeframe alone do not establish which zone is more significant/i],
+      ['reference levels are alternative paths, not presumed algorithmic targets', /Record them as alternative paths the market may reach, not levels an algorithm will likely sweep/i],
+    ],
+  },
+  {
+    slug: 'ict-hidden-order-block',
+    forbidden: [
+      ['hidden order block said fully valid by definition', /a fully valid ICT Order Block/i],
+      ['return to hidden zone said to provide an entry', /it should react as a standard OB would/i],
+      ['overlapping wicks equated with increased institutional significance', /each one adding to the institutional significance/i],
+      ['hidden zones forecast as upcoming session entries', /will often be the commonly discussed entry zones of the upcoming session/i],
+      ['hidden zones called powerful categorically', /Why Hidden OBs Are Powerful/i],
+      ['hidden institutional orders trigger asserted as fact', /The institutional orders sitting at the Hidden OB level trigger/i],
+    ],
+    required: [
+      ['lower timeframe does not prove cause or reaction', /does not prove that the candidate zone caused the wick or will react on a revisit/i],
+      ['zone selection is source-specific and reproducible', /State the confirmation and boundary rules; other valid conventions may choose a different candle or no zone at all/i],
+      ['touch is not automatic entry', /A return to the zone is an observation point, not an automatic entry/i],
+      ['cluster compared with baseline', /test it against a single-zone and simple wick-reference baseline/i],
+    ],
+  },
+  {
+    slug: 'ict-rejection-block-explained',
+    forbidden: [
+      ['wick claimed to represent institutional interest', /The long wick represents price reaching into an area of institutional interest/i],
+      ['order block said to show institutional accumulation', /shows where institutions were accumulating their position/i],
+      ['wick claimed definitive algorithmic rejection', /the furthest extreme the algorithm reached and definitively rejected/i],
+      ['session wick zones claimed reliable across sessions', /gives you reliable, session-to-session structure/i],
+      ['automatic midpoint entry prescription', /Enter at the midpoint of the Rejection Block zone/i],
+      ['session extremes claimed particularly powerful', /Rejection Blocks at session extremes are particularly powerful/i],
+    ],
+    required: [
+      ['rejection is interpretation not evidence of motive', /it does not identify institutional interest or establish that price was deliberately rejected/i],
+      ['wick percentage is candidate parameter', /A 40–50% wick-to-range ratio is one candidate parameter, not a universal ICT requirement/i],
+      ['entry variant has explicit risk and expiry rules', /Specify the trigger, invalidation, maximum risk, expiry and exit in advance/i],
+      ['session hypothesis measured instead of assumed', /compare retests, clean breaks and no-revisit cases across sessions/i],
+    ],
+  },
+];
+for (const check of remainingZoneEditorialChecks) {
+  const post = postChunks.find((item) => item.slug === check.slug);
+  if (!post) {
+    errors.push('Missing article required for zone editorial checks: ' + check.slug);
+    continue;
+  }
+  for (const [label, pattern] of check.forbidden) {
+    if (pattern.test(post.source)) errors.push('/blog/' + check.slug + ': zone editorial regression (' + label + ').');
+  }
+  for (const [label, pattern] of check.required) {
+    if (!pattern.test(post.source)) errors.push('/blog/' + check.slug + ': required zone safeguard missing (' + label + ').');
+  }
+}
+
+
+
 
 
 const remainingSweepEditorialChecks = [
