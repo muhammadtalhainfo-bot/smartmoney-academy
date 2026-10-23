@@ -2156,6 +2156,78 @@ for (const check of remainingFrameworkComparisonRiskChecks) {
   }
 }
 
+
+const fvgMidpointAndEntryChecks = [
+  {
+    slug: 'how-to-trade-fair-value-gaps',
+    forbidden: [
+      ['displacement presented as required by the base three-candle definition', /Step 1: Identify a displacement move — a series of large-bodied candles/i],
+      ['higher-timeframe alignment is universal validity requirement', /Step 6: Confirm the FVG aligns with your HTF bias before considering it as an entry zone/i],
+      ['FVG without displacement called just a gap as a universal rule', /An FVG without a displacement move that created it is just a gap/i],
+    ],
+    required: [
+      ['displacement is an optional separately tested filter', /Apply a displacement filter only if your chosen model requires one/i],
+      ['HTF alignment is model-dependent', /record alignment as a candidate condition rather than a universal validity requirement/i],
+      ['FVG geometry is separated from claims of institutional activity', /A three-candle FVG is a chart classification under a chosen boundary rule/i],
+    ],
+  },
+  {
+    slug: 'ict-single-candle-order-block-scob',
+    forbidden: [
+      ['SCOB candle presented as full institutional order-placement range', /represents the full price range of the institutional order placement/i],
+      ['entry is prescribed as universal CE limit', /Set a limit order at the CE/i],
+      ['liquidity target treated as prescribed outcome', /Target: the next liquidity pool in the direction/i],
+      ['lower timeframe reaction FVG promises maximum precision', /enter at its CE for maximum precision/i],
+      ['precision advantage heading implies established benefit', /SCOB vs Standard OB — The Precision Advantage/i],
+    ],
+    required: [
+      ['single candle is a candidate zone, not confirmed institutional placement', /a chart does not confirm that the candle contains institutional orders/i],
+      ['one-candle stop trade-off is explicit', /compare after-cost outcomes and adverse excursion rather than assuming narrower means better/i],
+      ['entries are variants with predeclared execution rules', /One entry variant tests a limit at the body midpoint; define invalidation, missed fills and slippage in advance/i],
+      ['lower-timeframe confirmation is optional and not guaranteed to improve expectancy', /added steps do not guarantee greater precision or expectancy/i],
+    ],
+  },
+  {
+    slug: 'ict-consequent-encroachment-explained',
+    forbidden: [
+      ['bullish/bearish FVG boundary labels reversed', /high of candle 1 and the low of candle 3 \(for a bearish FVG\) or the low of candle 1 and the high of candle 3 \(for a bullish FVG\)/i],
+      ['FVG midpoint presented as the universal most common CE application', /The most common application of the CE is within a Fair Value Gap/i],
+      ['CE prescribed as every OB/FVG/BPR entry', /set limit order at the CE of the FVG|set limit order at the CE of the OB body|is your entry level/i],
+    ],
+    required: [
+      ['bullish FVG midpoint boundaries are stated in correct order', /a bullish FVG lies between candle one's high and candle three's low when the first is lower/i],
+      ['bearish FVG midpoint boundaries are stated in correct order', /a bearish FVG lies between candle three's high and candle one's low when the former is lower/i],
+      ['midpoint and premium/discount terms depend on chosen convention', /document the exact range and anchors because terminology and boundary selection can vary/i],
+      ['midpoint entry is a testable variant rather than a directive', /a test can compare the overlap midpoint, zone boundaries and a separate confirmation trigger/i],
+    ],
+  },
+  {
+    slug: 'ict-nwog-ndog-opening-gaps',
+    forbidden: [
+      ['gap marking is prescribed as a universal recurring rule', /Mark the NWOG at the start of every week|Mark the NDOG at the start of every day/i],
+      ['gaps described as only confluence targets', /use them as confluence targets when other PD Arrays align/i],
+    ],
+    required: [
+      ['NWOG timestamps and feed convention are stated', /record the chosen Friday-close and Sunday-open timestamps and feed/i],
+      ['NDOG time convention is model-specific', /record the specific daily boundary and timezone/i],
+      ['confluence is not a guarantee of fill or reaction', /Confluence with another zone does not guarantee a fill or a favorable reaction/i],
+    ],
+  },
+];
+for (const check of fvgMidpointAndEntryChecks) {
+  const post = postChunks.find((item) => item.slug === check.slug);
+  if (!post) {
+    errors.push('Missing article required for FVG/midpoint editorial checks: ' + check.slug);
+    continue;
+  }
+  for (const [label, pattern] of check.forbidden) {
+    if (pattern.test(post.source)) errors.push('/blog/' + check.slug + ': FVG/midpoint regression (' + label + ').');
+  }
+  for (const [label, pattern] of check.required) {
+    if (!pattern.test(post.source)) errors.push('/blog/' + check.slug + ': required FVG/midpoint safeguard missing (' + label + ').');
+  }
+}
+
 if (errors.length) {
   for (const error of errors) console.error('Blog editorial guard failed: ' + error);
   process.exit(1);
