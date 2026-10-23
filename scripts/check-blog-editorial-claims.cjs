@@ -1662,6 +1662,88 @@ for (const check of articleBodyRegressionChecks) {
 }
 
 
+const remainingLongTailEditorialChecks = [
+  {
+    slug: 'ict-propulsion-block-guide',
+    forbidden: [
+      ['first return claimed as an entry opportunity', /The first retracement back to the Propulsion Block zone is your entry opportunity/i],
+      ['zone said to show maximum institutional intent', /the area of maximum institutional intent/i],
+      ['midpoint limit and target prescription presented as universal', /Entry: a limit order at the midpoint of the Propulsion Block candle/i],
+      ['confluence described as particularly powerful', /creates one of the commonly studied entry structures in the entire advanced ICT toolkit/i],
+    ],
+    required: [
+      ['definitions vary and need a prewritten boundary rule', /Definitions of a Propulsion Block vary by ICT source/i],
+      ['first retest may fail or never happen', /Price may not return, may trade through it or may react without a tradable entry/i],
+      ['entry, invalidation and exit rules are written before replay', /Specify the confirmation, invalidation and exit rules before replay/i],
+      ['confluence must be benchmarked rather than ranked', /Overlapping is a candidate filter, not proof of independent confirmations or superior performance/i],
+    ],
+  },
+  {
+    slug: 'ict-breaker-block-explained',
+    forbidden: [
+      ['breaker and mitigation block claimed as one universal lifecycle', /A Mitigation Block is simply a failed Order Block[\s\S]{0,300}the Breaker Block trade is the entry/i],
+      ['retest assumed to confirm role reversal', /the polarity flip has been confirmed/i],
+    ],
+    required: [
+      ['breaker and mitigation terminology is educator-dependent', /Terminology around mitigation blocks and breakers varies by educator/i],
+      ['a revisit is not sufficient confirmation or an entry', /A revisit is not itself confirmation, and neither label is an entry until the trigger, invalidation and exit rules are met/i],
+    ],
+  },
+  {
+    slug: 'backtest-ict-strategies',
+    forbidden: [
+      ['positive sample expectancy equated with strategy profitability', /A positive expectancy equals a profitable strategy/i],
+      ['profit factor threshold called universally good or excellent', /Above 1\.5 is good\. Above 2\.0 is excellent/i],
+      ['20 trades stated to tell nothing', /20 trades tells you nothing/i],
+      ['one fixed pip adjustment applied to every win', /subtract 1-2 pips from every win to simulate real spread costs/i],
+      ['filter search guaranteed to reveal which rules to keep', /Results will show which filters to require and which to exclude/i],
+    ],
+    required: [
+      ['positive historical expectancy not treated as durable edge', /Positive historical expectancy does not establish a durable edge/i],
+      ['cost modelling is instrument and execution specific', /model spread, commission, slippage and any relevant financing costs/i],
+      ['filter comparisons require held-out validation', /validate any selected filter on untouched chronological data/i],
+      ['sample size and break-even treatment are disclosed', /report sample size and treatment of break-even trades/i],
+    ],
+  },
+  {
+    slug: 'ict-bearish-order-block-complete',
+    forbidden: [
+      ['a 3:1 to 8:1 ratio presented as standard', /a 3:1 to 8:1 ratio should be presented as standard/i],
+      ['bearish OB label mandates institutional interpretation', /confirms institutional selling or guarantees a reaction/i],
+    ],
+    required: [
+      ['reward-to-risk ratios require supporting data', /a 3:1 to 8:1 ratio should not be presented as standard without data/i],
+      ['bearish OB boundaries are selected and declared in advance', /State the boundary convention in advance/i],
+      ['no-retest and failed-retest outcomes are logged', /Track reactions, full traversal, no-retest and missed-entry outcomes/i],
+    ],
+  },
+  {
+    slug: 'ict-ipda-interbank-price-delivery',
+    forbidden: [
+      ['IPDA levels described as certain targets', /all six levels will be reached/i],
+      ['algorithm asserted to dictate the path', /one algorithm governs markets/i],
+    ],
+    required: [
+      ['IPDA is presented as a conceptual model rather than independent proof', /it is not independent evidence that one algorithm governs markets/i],
+      ['misses and untouched reference levels remain in the record', /Mark selected ranges, document the reason for each hypothesis, and record misses as well as hits/i],
+      ['quarterly context remains a scenario to test', /Treat the quarterly direction as a scenario to test/i],
+    ],
+  },
+];
+for (const check of remainingLongTailEditorialChecks) {
+  const post = postChunks.find((item) => item.slug === check.slug);
+  if (!post) {
+    errors.push('Missing long-tail article for editorial checks: ' + check.slug);
+    continue;
+  }
+  for (const [label, pattern] of check.forbidden) {
+    if (pattern.test(post.source)) errors.push('/blog/' + check.slug + ': long-tail claim regression (' + label + ').');
+  }
+  for (const [label, pattern] of check.required) {
+    if (!pattern.test(post.source)) errors.push('/blog/' + check.slug + ': long-tail safeguard missing (' + label + ').');
+  }
+}
+
 const remainingModelSessionGapChecks = [
   {
     slug: 'ict-market-maker-sell-model-mmsm',
