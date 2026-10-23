@@ -1922,6 +1922,43 @@ for (const check of remainingMmbmOsokChecks) {
   }
 }
 
+
+const remaining2022ModelChecks = [
+  {
+    slug: 'ict-complete-2022-trading-strategy',
+    forbidden: [
+      ['quarterly move said to have institutional delivery overriding short-term fluctuations', /Each quarter has an institutional directional delivery that overrides short-term fluctuations/i],
+      ['monthly direction implied to be determined by quarterly shift', /Within the quarterly shift, determine the current month/i],
+      ['DOL described as the target price is targeting this week', /a higher timeframe PD Array that price is targeting this week/i],
+      ['daily PD Array said to be most likely target', /that price is most likely to deliver to during the current or next trading session/i],
+      ['AMD pattern described as true directional move', /the distribution phase \(true directional move\)/i],
+      ['daily DOL prescribed as every setup target', /Target: the daily DOL/i],
+      ['3:1 ratio imposed as universal minimum', /at least a 3:1 minimum R:R for any 2022 model trade/i],
+    ],
+    required: [
+      ['quarterly context is a testable scenario', /It is a higher-timeframe scenario to test, not evidence of institutional delivery/i],
+      ['weekly DOL is a candidate reference', /Its presence does not establish that price is targeting it or will reach it this week/i],
+      ['AMD/Judas labels do not prove manipulation or true direction', /not proof of manipulation or the “true” direction/i],
+      ['entry includes no-trigger and missed-fill cases', /Include no-trigger, missed-fill and failed-trade cases/i],
+      ['3:1 minimum is not universal', /A 3:1 minimum reward-to-risk ratio is not a universal requirement/i],
+      ['risk rules and documented invalidation are preserved', /honoring predefined invalidation and risk limits/i],
+    ],
+  },
+];
+for (const check of remaining2022ModelChecks) {
+  const post = postChunks.find((item) => item.slug === check.slug);
+  if (!post) {
+    errors.push('Missing article required for 2022-model checks: ' + check.slug);
+    continue;
+  }
+  for (const [label, pattern] of check.forbidden) {
+    if (pattern.test(post.source)) errors.push('/blog/' + check.slug + ': 2022-model regression (' + label + ').');
+  }
+  for (const [label, pattern] of check.required) {
+    if (!pattern.test(post.source)) errors.push('/blog/' + check.slug + ': required 2022-model safeguard missing (' + label + ').');
+  }
+}
+
 if (errors.length) {
   for (const error of errors) console.error('Blog editorial guard failed: ' + error);
   process.exit(1);
