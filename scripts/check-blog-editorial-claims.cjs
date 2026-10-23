@@ -265,6 +265,107 @@ const postChunks = starts.map((match, index) => {
   const end = next ? next.index + next[0].lastIndexOf('{') : posts.length;
   return { slug: match[1], source: posts.slice(start, end) };
 });
+
+
+const remainingStructuralEditorialChecks = [
+  {
+    slug: 'ict-stl-itl-ltl-market-structure',
+    forbidden: [
+      ['nested swing tiers claimed to measure liquidity accumulation', /represent different levels of liquidity accumulation/i],
+      ['short-term swing break attributed to algorithmic liquidity collection', /the algorithm breaks an STL while maintaining ITL and LTL intact/i],
+      ['intermediate swing break said to prove a deeper retracement', /a deeper retracement is underway — trade the retracement/i],
+      ['long-term swing break said to establish trend reversal', /the primary trend is potentially reversing — this warrants a complete re-analysis/i],
+      ['nearest ITH/ITL prescribed as target', /targeting the nearest ITH|targeting the nearest ITL/i],
+      ['hierarchy promises traders will never be fooled again', /you will never again be fooled by a minor stop hunt/i],
+    ],
+    required: [
+      ['swing tiers are labels under chosen pivot rules', /these labels are built from chosen pivot rules and lookbacks; they organize chart structure but do not measure liquidity or predict future price/i],
+      ['ChoCH label varies by source and timeframe', /whether that event is labelled a Change of Character \(ChoCH\) varies by source and timeframe/i],
+      ['swing roles are candidate model rules, not universal hierarchy', /treat each role as a separate rule to test rather than a universal hierarchy/i],
+      ['practice log is not evidence of predictive skill', /repetition is a way to build a consistent record, not evidence that the hierarchy predicts future moves/i],
+    ],
+  },
+  {
+    slug: 'ict-daily-bias-trick',
+    forbidden: [
+      ['nearest liquidity pool required to determine bias', /you must identify which of these liquidity pools is closest and most likely to be reached/i],
+      ['Asian low/high sweep prescribes London bias', /If the Asian low was swept overnight, the bias for London is likely bullish/i],
+      ['algorithm alleged to accumulate during consolidation', /The algorithm is accumulating during these periods/i],
+      ['pre-session thesis claimed to be the true bias', /True bias is determined in pre-session analysis/i],
+      ['prior-day levels claimed the most useful universal anchor', /The Most Useful Daily Bias Anchor/i],
+    ],
+    required: [
+      ['DOL is a candidate and not a required or guaranteed target', /you do not need to select one target to form every directional thesis, and proximity does not establish that price will reach it/i],
+      ['Asian range crossing alone does not set directional bias', /A crossing of the Asian high or low is an observation, not a directional rule by itself/i],
+      ['bias is a conditional hypothesis rather than known direction', /Pre-session notes document a hypothesis, not a true direction known in advance/i],
+      ['range conditions may produce multiple outcomes', /ranging conditions can produce whipsaws, continuation or no trigger/i],
+    ],
+  },
+  {
+    slug: 'ict-displacement-move-explained',
+    forbidden: [
+      ['universal 60-80% body-to-range definition', /the body \(open to close\) represents 60-80% or more of the total candle range/i],
+      ['every valid FVG requires displacement', /Every valid FVG requires displacement/i],
+      ['FVG/OB attributed to balanced retail participation', /created by balanced retail participation — both buyers and sellers engaged/i],
+      ['displacement filter promises elimination of most losing trades', /This single filter will eliminate the majority of losing ICT trades/i],
+      ['overlap said to prove balanced participation', /Overlapping candles indicate balanced participation, not displacement/i],
+    ],
+    required: [
+      ['displacement criteria are predeclared candidate measures', /A 60–80% body ratio is one candidate threshold to test, not a universal requirement/i],
+      ['FVG and displacement can be defined separately', /A three-candle gap is a chart pattern under that convention, not evidence of institutional activity or a guarantee of predictive value/i],
+      ['filter is benchmarked against baseline with failure cases', /Compare the combined rule with the FVG rule alone on the same sample/i],
+    ],
+  },
+  {
+    slug: 'ict-bos-vs-choch-complete',
+    forbidden: [
+      ['BOS presented as proof of continuation', /confirming that the trend is continuing/i],
+      ['BOS called green light for trend-following trades', /The BOS is your green light for trend-following trades/i],
+      ['BOS said to confirm retracement has ended', /it confirms that the retracement was just a pullback within the trend/i],
+      ['ChoCH and MSS sequence claimed universally required for reversal', /The transition from trend to reversal requires: ChoCH first/i],
+      ['structural labels directly prescribe buy/sell', /buy when price pulls back to a PD Array after a BOS/i],
+      ['daily log promises to prevent countertrend mistakes', /prevents the common mistake of trading counter-trend entries/i],
+    ],
+    required: [
+      ['BOS is a common convention and does not prove continuation', /Under one common convention, a Break of Structure \(BOS\).*?the label does not prove that continuation has occurred/i],
+      ['BOS/PD-array trigger must be independently defined', /If using BOS as a trigger or filter, define the entry, invalidation, expiry and exit rules before testing/i],
+      ['BOS/ChoCH direction inference requires written rules', /If a strategy maps a BOS or ChoCH\/MSS sequence to direction, specify the exact classification, entry and invalidation rules/i],
+    ],
+  },
+  {
+    slug: 'ict-mss-vs-choch-explained',
+    forbidden: [
+      ['MSS and ChoCH said universally distinct in sequence', /They are related but distinct — they happen at different moments in the structural sequence/i],
+      ['daily MSS defined as confirming bearish shift', /confirming the daily structure has shifted bearish/i],
+      ['ChoCH/MSS labels treated as universally alert then execution', /The ChoCH gives you the alert to watch for the trade\. The MSS gives you the confirmation to execute the trade/i],
+      ['five-minute MSS claimed complete entry signal', /The 5-minute MSS within the 4-hour FVG is the complete entry signal/i],
+      ['MSS heading universally presented as confirmation', /Market Structure Shift \(MSS\) — The Confirmation/i],
+    ],
+    required: [
+      ['MSS/ChoCH terms can overlap or differ by source', /their meanings can overlap or differ by source/i],
+      ['timeframe cases are examples, not universal definitions', /These are example rules; they do not confirm that daily structure has shifted bearish/i],
+      ['lower timeframe trigger is model-specific and incomplete without risk rules', /a 5-minute label is not a complete or universally required entry model/i],
+      ['model-specific label distinction is reinforced', /Some ICT models require a second structure event after a ChoCH, while others define their trigger differently/i],
+    ],
+  },
+];
+for (const check of remainingStructuralEditorialChecks) {
+  const post = postChunks.find((item) => item.slug === check.slug);
+  if (!post) {
+    errors.push('Missing article required for structural editorial checks: ' + check.slug);
+    continue;
+  }
+  for (const [label, pattern] of check.forbidden) {
+    if (pattern.test(post.source)) {
+      errors.push('/blog/' + check.slug + ': structural editorial regression (' + label + ').');
+    }
+  }
+  for (const [label, pattern] of check.required) {
+    if (!pattern.test(post.source)) {
+      errors.push('/blog/' + check.slug + ': required structural safeguard missing (' + label + ').');
+    }
+  }
+}
 for (const slug of detailedPostSlugs) {
   const post = postChunks.find((item) => item.slug === slug);
   if (!post) {
