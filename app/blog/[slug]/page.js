@@ -173,13 +173,13 @@ export default async function BlogPost({ params }) {
             style={{ objectFit: 'cover', opacity: 0.4 }}
           />
         ) : (
-          <img
+          <Image
+            unoptimized
             src={coverImage}
             alt={post.title}
-            width="1600"
-            height="640"
-            loading="eager"
-            fetchPriority="high"
+            width={1600}
+            height={640}
+            priority
             style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.4 }}
           />
         )}
