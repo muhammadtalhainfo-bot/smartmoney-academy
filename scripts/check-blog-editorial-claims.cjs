@@ -2137,7 +2137,7 @@ const remainingFrameworkComparisonRiskChecks = [
       ['midnight open is a variant reference not a complete bias rule', /price above or below it does not by itself establish a bullish or bearish bias/i],
       ['unsourced revenge-trading rate is removed', /Do not use an unsourced 70%\+ loss-rate claim for revenge trading/i],
       ['news risk is handled with a strategy-specific window', /define whether a tested strategy excludes particular windows/i],
-      ['risk and pause rules are plan-specific', /respect the account's risk limit[\s\S]*as a universal measure of professionalism/i],
+      ['risk and pause rules are plan-specific', /respect the account\\?'s risk limit[\s\S]*as a universal measure of professionalism/i],
       ['backtesting is not described as proof of future performance', /cannot prove future results/i],
     ],
   },
