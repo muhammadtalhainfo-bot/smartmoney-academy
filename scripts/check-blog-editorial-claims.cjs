@@ -1010,7 +1010,7 @@ const articleBodyRegressionChecks = [
     ],
     required: [
       ['body threshold is only a testable candle-shape filter', /no percentage confirms institutional order placement or makes a SCOB premium/i],
-      ['tighter stops are evaluated against stop-outs and expectancy', /A tighter stop can change the nominal ratio while also increasing stop-outs/i],
+      ['tighter stops are evaluated against stop-outs and expectancy', /A one-candle boundary may create a narrower planned stop.*?compare after-cost outcomes and adverse excursion rather than assuming narrower means better/i],
     ],
   },
 
