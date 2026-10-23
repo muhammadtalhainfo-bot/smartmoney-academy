@@ -1137,7 +1137,7 @@ export const POSTS = [
       { type: 'paragraph', text: 'The relation between CBDR width and subsequent daily range should be tested rather than assumed. A narrow range does not prove large institutional orders are accumulating, and a wide range does not prove daily expansion will be smaller.' },
       { type: 'list', items: [
         'Narrow-range hypothesis: test whether a pre-defined narrow CBDR is associated with a larger subsequent range on the selected instrument. Include days with no breakout or limited movement, and compare results with a baseline before using the relationship in a plan.',
-        'Wide-range hypothesis: test whether a pre-defined wide CBDR is associated with a smaller subsequent range. Do not assume that a breakout will occur or that the day's movement will be modest; record continuations, false breaks, both-side breaks and no-break days.',
+        'Wide-range hypothesis: test whether a pre-defined wide CBDR is associated with a smaller subsequent range. Do not assume that a breakout will occur or that the day\'s movement will be modest; record continuations, false breaks, both-side breaks and no-break days.',
         'Mark the CBDR high and low before each London session opens.',
         'If a selected variant uses a break above the CBDR high plus a displacement threshold, record a bullish-break candidate under that written rule. The crossing does not guarantee bullish direction for the full session; define confirmation, invalidation and expiry separately.',
         'If a selected variant uses a break below the CBDR low, record a bearish-break candidate under the written wick/close rule. The crossing does not guarantee a bearish session; include cases where price reclaims the range or crosses the other side.',
