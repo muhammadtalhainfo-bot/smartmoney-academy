@@ -1884,6 +1884,44 @@ for (const check of remainingInducementPremiumDiscountChecks) {
   }
 }
 
+
+const remainingMmbmOsokChecks = [
+  {
+    slug: 'ict-market-maker-buy-model-mmbm',
+    forbidden: [
+      ['MMBM session timing claimed as a consistent pattern', /You will find a consistent pattern: the Judas Swing most often occurs during the Asian session/i],
+      ['phase timing presented as a recurring session rule', /the true distribution \(Phase Five\) occurs during the London and New York sessions/i],
+    ],
+    required: [
+      ['phase/session sample is selected without looking ahead', /preselect a consecutive sample of daily charts and define each phase without looking ahead/i],
+      ['session timing is compared with baseline and includes exceptions', /compared with a baseline and reported with the sample size; do not assume phase timing repeats/i],
+    ],
+  },
+  {
+    slug: 'ict-one-shot-one-kill-model',
+    forbidden: [
+      ['DOL imposed as the exact target for every OSOK setup', /the exact target \(the DOL\)/i],
+    ],
+    required: [
+      ['DOL is a candidate target, not a required destination', /a Draw on Liquidity \(DOL\) can be one candidate reference if the model uses it, but it is not a destination price must reach/i],
+      ['entry and exit rules are defined separately', /define the entry trigger, invalidation and stop rule/i],
+    ],
+  },
+];
+for (const check of remainingMmbmOsokChecks) {
+  const post = postChunks.find((item) => item.slug === check.slug);
+  if (!post) {
+    errors.push('Missing article required for MMBM/OSOK checks: ' + check.slug);
+    continue;
+  }
+  for (const [label, pattern] of check.forbidden) {
+    if (pattern.test(post.source)) errors.push('/blog/' + check.slug + ': MMBM/OSOK regression (' + label + ').');
+  }
+  for (const [label, pattern] of check.required) {
+    if (!pattern.test(post.source)) errors.push('/blog/' + check.slug + ': required MMBM/OSOK safeguard missing (' + label + ').');
+  }
+}
+
 if (errors.length) {
   for (const error of errors) console.error('Blog editorial guard failed: ' + error);
   process.exit(1);
