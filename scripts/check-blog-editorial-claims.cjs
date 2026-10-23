@@ -1996,6 +1996,70 @@ for (const check of remainingVenomModelChecks) {
   }
 }
 
+
+const remainingRdrbNewsAsianChecks = [
+  {
+    slug: 'ict-rdrb-redelivered-rebalanced-price-range',
+    forbidden: [
+      ['RDRB described as creating new institutional significance', /creates the RDRB — the zone now has a new type of institutional significance/i],
+      ['RDRB described as double institutional significance', /The RDRB has a double layer/i],
+      ['gap fill said to confirm institutional presence', /institutions confirmed their presence there by filling it/i],
+      ['RDRB midpoint entry prescribed automatically', /Enter at the CE of the lower timeframe FVG/i],
+    ],
+    required: [
+      ['RDRB sequence is a source-specific label', /The classification does not establish new institutional significance/i],
+      ['fill/redelivery boundaries are predeclared', /Define what counts as a complete fill and redelivery under the chosen source/i],
+      ['label does not show unfilled institutional orders', /Neither label shows that unfilled institutional orders remain at the zone/i],
+      ['entry/exit are variants with expiry and candidate target', /an external-range level can be a candidate exit, not a required destination/i],
+    ],
+  },
+  {
+    slug: 'ict-seek-and-destroy-friday',
+    forbidden: [
+      ['NFP assigned a fixed first-Friday schedule', /NFP is released at 8:30 AM New York time on the first Friday of each month/i],
+      ['fixed 50-150 pip move claimed from release', /produces moves of 50-150 pips in seconds/i],
+      ['pre-release institutional positioning asserted as fact', /institutional traders are positioning, hedging, and accumulating/i],
+      ['algorithm said to collect both sides before true move', /The algorithm takes advantage of this positioning period to collect liquidity from both sides/i],
+      ['universal pre-event size reduction prescribed', /significantly reduce your position sizing or avoid trading altogether during the pre-event period/i],
+    ],
+    required: [
+      ['release schedule checked on current calendar', /check the current release calendar and timezone rather than assuming a fixed weekday rule/i],
+      ['candles do not reveal participant positioning or motive', /Candles do not reveal institutional positioning or show that an algorithm collects liquidity/i],
+      ['event-risk action follows predeclared policy', /follow a written event-risk policy/i],
+      ['event move size is instrument and event dependent', /the size of a move varies by instrument and event/i],
+    ],
+  },
+  {
+    slug: 'ict-asian-range-trading-strategy',
+    forbidden: [
+      ['narrow Asian range said to contain more institutional orders', /A narrow Asian range has more accumulated institutional orders/i],
+      ['bullish bias predicts the Asian low is swept first', /If bullish, expect the London session to first sweep the Asian low/i],
+      ['bearish bias predicts the Asian high is swept first', /expect London to first sweep the Asian high/i],
+      ['first FVG after crossing prescribed as entry', /Enter at the first FVG created by the reversal displacement/i],
+      ['opposite side and external pool prescribed in sequence', /the opposite side of the Asian range first, then the next higher timeframe liquidity pool beyond it/i],
+    ],
+    required: [
+      ['range width is measured and does not reveal orders', /A narrow range does not reveal order placement or predict a larger London or New York move/i],
+      ['alternative London paths are recorded', /count cases that cross the high, both sides or neither/i],
+      ['entry is a defined variant, not automatic', /a crossing alone does not create an automatic trade/i],
+      ['range boundaries are candidate exits not required sequence', /Price may reach neither or visit them in a different order/i],
+    ],
+  },
+];
+for (const check of remainingRdrbNewsAsianChecks) {
+  const post = postChunks.find((item) => item.slug === check.slug);
+  if (!post) {
+    errors.push('Missing article required for RDRB/news/Asian-range checks: ' + check.slug);
+    continue;
+  }
+  for (const [label, pattern] of check.forbidden) {
+    if (pattern.test(post.source)) errors.push('/blog/' + check.slug + ': RDRB/news/Asian-range regression (' + label + ').');
+  }
+  for (const [label, pattern] of check.required) {
+    if (!pattern.test(post.source)) errors.push('/blog/' + check.slug + ': required RDRB/news/Asian-range safeguard missing (' + label + ').');
+  }
+}
+
 if (errors.length) {
   for (const error of errors) console.error('Blog editorial guard failed: ' + error);
   process.exit(1);
