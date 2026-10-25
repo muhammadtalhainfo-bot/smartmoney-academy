@@ -2310,6 +2310,78 @@ for (const check of fvgMidpointAndEntryChecks) {
   }
 }
 
+
+const editorialHeadingAndFramingChecks = [
+  {
+    slug: 'draw-on-liquidity-ict',
+    forbidden: [
+      ['weekly DOL wording treats Friday delivery as an expected answer', /where do you believe price will deliver by Friday/i],
+      ['weekly target exercise called powerful and framed as price delivery', /A single powerful exercise:/i],
+    ],
+    required: [
+      ['weekly target is recorded as a falsifiable hypothesis', /Weekly Target-Hypothesis Exercise:[\s\S]*condition that would invalidate the hypothesis/i],
+      ['review counts alternative levels and no-target outcomes', /whether another level came first and whether no clear target was reached/i],
+    ],
+  },
+  {
+    slug: 'ict-ipda-interbank-price-delivery',
+    forbidden: [
+      ['IPDA heading implies an established delivery mechanism', /How IPDA Delivers Price/i],
+    ],
+    required: [
+      ['IPDA heading describes observed reference use rather than causal delivery', /How Traders Use IPDA References/i],
+      ['IPDA is explicitly treated as a conceptual framework', /it is not independent evidence that one algorithm governs markets/i],
+    ],
+  },
+  {
+    slug: 'ict-supply-demand-forex',
+    forbidden: [
+      ['section title claims ICT improves supply and demand as a fact', /How ICT Improves S&D — The Key Advances/i],
+    ],
+    required: [
+      ['section compares methods rather than ranking one as superior', /How ICT and Supply-and-Demand Use Different Filters/i],
+      ['methods are compared on the same sample before conclusions', /Compare clearly written versions of each method against the same sample/i],
+    ],
+  },
+  {
+    slug: 'what-is-ict-trading',
+    forbidden: [
+      ['trader failure attributed to one universal lack of understanding', /The traders who fail with ICT are those who learn the vocabulary without understanding the logic/i],
+    ],
+    required: [
+      ['learning pitfalls are framed as one possible explanation, not a diagnosis of all traders', /A possible learning pitfall is memorizing labels without a written definition or testable rule/i],
+      ['article allows for multiple causes of poor trading outcomes', /no single explanation applies to all traders/i],
+    ],
+  },
+  {
+    slug: 'power-of-three-amd-model',
+    forbidden: [
+      ['accumulation heading states institutions are building a position', /Phase 1: Accumulation — Building the Position/i],
+    ],
+    required: [
+      ['accumulation heading describes a chart-label convention', /Phase 1: Accumulation — Labeling a Range/i],
+      ['body text says a consolidation label does not confirm institutional positioning', /The chart alone does not confirm that institutions are building positions/i],
+    ],
+  },
+];
+for (const check of editorialHeadingAndFramingChecks) {
+  const post = postChunks.find((item) => item.slug === check.slug);
+  if (!post) {
+    errors.push('Missing article required for heading/framing checks: ' + check.slug);
+    continue;
+  }
+  for (const [label, pattern] of check.forbidden) {
+    if (pattern.test(post.source)) {
+      errors.push('/blog/' + check.slug + ': framing regression (' + label + ').');
+    }
+  }
+  for (const [label, pattern] of check.required) {
+    if (!pattern.test(post.source)) {
+      errors.push('/blog/' + check.slug + ': required framing safeguard missing (' + label + ').');
+    }
+  }
+}
+
 if (errors.length) {
   for (const error of errors) console.error('Blog editorial guard failed: ' + error);
   process.exit(1);
