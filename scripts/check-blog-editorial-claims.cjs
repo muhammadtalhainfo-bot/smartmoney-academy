@@ -472,6 +472,18 @@ const remainingStructuralEditorialChecks = [
       ['model-specific label distinction is reinforced', /Some ICT models require a second structure event after a ChoCH, while others define their trigger differently/i],
     ],
   },
+  {
+    slug: 'ict-liquidity-forex-trading',
+    forbidden: [
+      ['nearest liquidity pool prescribed as the default market direction', /stop thinking about price going .*?and start thinking about price going toward the nearest liquidity pool/i],
+      ['nearest liquidity pool implied to be the required daily target', /Before every session, ask: .*?nearest significant liquidity pool/i],
+    ],
+    required: [
+      ['liquidity references framed as scenarios rather than default direction', /the nearest pool is not necessarily the best target and price need not move toward it/i],
+      ['alternative directions and invalidation are explicitly recorded', /list plausible upside and downside references, define what evidence would favor each scenario/i],
+      ['nearest-pool approach compared against a baseline', /Compare this approach with a baseline that does not require selecting the nearest liquidity pool/i],
+    ],
+  },
 ];
 for (const check of remainingStructuralEditorialChecks) {
   const post = postChunks.find((item) => item.slug === check.slug);
