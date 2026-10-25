@@ -267,6 +267,10 @@ const postChunks = starts.map((match, index) => {
   return { slug: match[1], source: posts.slice(start, end) };
 });
 
+if (/\n\s*,\n\s*\{"type":"heading"/.test(posts)) {
+  errors.push('Blog content contains an empty array slot before an expanded heading.');
+}
+
 const remainingZoneEditorialChecks = [
   {
     slug: 'ict-inducement-forex-explained',
