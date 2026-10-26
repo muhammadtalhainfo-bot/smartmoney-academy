@@ -1,4 +1,5 @@
-const { POSTS } = await import('../app/blog/posts.js');
+async function main() {
+  const { POSTS } = await import('../app/blog/posts.js');
 
 const EXPECTED = {
   'ict-implied-fair-value-gap-ifvg': 'Inverted Fair Value Gap (IFVG): Rules & Examples',
@@ -40,4 +41,10 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log('Blog search snippet guard passed: ' + Object.keys(EXPECTED).length + ' query-aligned article titles and descriptions, within length limits.');
+  console.log('Blog search snippet guard passed: ' + Object.keys(EXPECTED).length + ' query-aligned article titles and descriptions, within length limits.');
+}
+
+main().catch((error) => {
+  console.error('Blog search snippet guard could not complete:', error);
+  process.exit(1);
+});
