@@ -139,6 +139,7 @@ export default async function BlogPost({ params }) {
     image: [absoluteImageUrl(post.image)],
     mainEntityOfPage: canonical,
     datePublished: safeIsoDate(post.date),
+    ...(safeIsoDate(post.modifiedDate) ? { dateModified: safeIsoDate(post.modifiedDate) } : {}),
     author: { '@type': 'Organization', name: 'ICT Flow', url: 'https://ictflow.com' },
     publisher: { '@type': 'Organization', name: 'ICT Flow', url: 'https://ictflow.com' },
   };

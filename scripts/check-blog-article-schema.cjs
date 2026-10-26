@@ -7,6 +7,8 @@ async function main() {
 
   const requiredPatterns = [
     [/datePublished:\s*safeIsoDate\(post\.date\)/, 'Article structured data must expose a safely parsed publication date.'],
+    [/safeIsoDate\(post\.modifiedDate\)/, 'Article schema may expose dateModified only from an explicit modifiedDate field.'],
+    [/\.\.\.\(safeIsoDate\(post\.modifiedDate\) \? \{ dateModified: safeIsoDate\(post\.modifiedDate\) \} : \{\}\)/, 'Article schema must omit dateModified when no explicit valid modified date is supplied.'],
     [/const breadcrumbSchema\s*=\s*\{/, 'Article pages must define BreadcrumbList structured data.'],
     [/'@type':\s*'BreadcrumbList'/, 'Breadcrumb structured data must use the BreadcrumbList type.'],
     [/item:\s*canonical/, 'The final breadcrumb must point to the article canonical URL.'],
@@ -23,7 +25,22 @@ async function main() {
   if (slugs.length !== POSTS.length) errors.push('Every static article must have a slug.');
   if (new Set(slugs).size !== slugs.length) errors.push('Static article slugs must be unique.');
 
+  const modifiedDateSource = fs.readFileSync('lib/blog-data.js', 'utf8');
+  if (!/modifiedDate:\s*row\.modified_date\s*\|\|\s*staticPost\?\.modifiedDate\s*\|\|\s*''/.test(modifiedDateSource)) {
+    errors.push('Blog database rows must pass through an explicit modified_date field without substituting created_at or build time.');
+  }
+
   let validDates = 0;
+  let validModifiedDates = 0;
+  for (const post of POSTS) {
+    if (post?.modifiedDate) {
+      if (!Number.isFinite(Date.parse(String(post.modifiedDate)))) {
+        errors.push('/blog/' + post.slug + ': modifiedDate must be parseable when provided.');
+      } else {
+        validModifiedDates += 1;
+      }
+    }
+  }
   for (const post of POSTS) {
     const value = typeof post?.date === 'string' ? post.date.trim() : '';
     if (!value || !Number.isFinite(Date.parse(value))) {
@@ -38,7 +55,7 @@ async function main() {
     process.exit(1);
   }
 
-  console.log('Blog article schema guard passed: ' + POSTS.length + ' static articles, ' + validDates + ' parseable publication dates, accessible breadcrumbs and matching canonical destinations.');
+  console.log('Blog article schema guard passed: ' + POSTS.length + ' static articles, ' + validDates + ' parseable publication dates, ' + validModifiedDates + ' explicit modified dates, accessible breadcrumbs and matching canonical destinations.');
 }
 
 main().catch((error) => {

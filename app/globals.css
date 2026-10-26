@@ -2,6 +2,9 @@
 
 :root {
   color-scheme: dark;
+  --font-bebas-neue: 'Bebas Neue';
+  --font-dm-sans: 'DM Sans';
+  --font-dm-mono: 'DM Mono';
   --if-bg: #070707;
   --if-surface: #0c0c0c;
   --if-border: rgba(255,255,255,0.09);
@@ -20,7 +23,7 @@ html {
 body {
   background: var(--if-bg);
   color: var(--if-text);
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-dm-sans), sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
