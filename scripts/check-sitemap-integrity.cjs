@@ -71,7 +71,7 @@ if (!/learnPages\.length\s*\?\s*\{\s*url:\s*.*\/learn/.test(sitemap)) {
 }
 if (!sitemap.includes('getPublishedBlogPosts()') ||
     !sitemap.includes('const blogPages = (posts || [])') ||
-    !/\.filter\(p\s*=>\s*p\s*&&\s*p\.slug\)/.test(sitemap)) {
+    !/\.filter\(p\s*=>\s*p\s*&&\s*p\.slug(?:\s*&&\s*!LEGACY_BLOG_REDIRECTS\[p\.slug\])?\)/.test(sitemap)) {
   fail('Blog sitemap entries must come from published posts with non-empty slugs.');
 }
 
