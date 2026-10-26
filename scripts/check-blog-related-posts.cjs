@@ -2,7 +2,7 @@ const fs = require('node:fs');
 
 async function main() {
   const { POSTS } = await import('../app/blog/posts.js');
-  const { getRelatedBlogPosts } = await import('../lib/related-blog-posts.js');
+  const { getRelatedBlogPosts, CURATED_RELATED } = await import('../lib/related-blog-posts.js');
   const page = fs.readFileSync('app/blog/[slug]/page.js', 'utf8');
   const knownSlugs = new Set(POSTS.map((post) => post.slug));
   const errors = [];
@@ -26,6 +26,22 @@ async function main() {
 
     for (const slug of slugs) {
       if (!knownSlugs.has(slug)) errors.push(post.slug + ': related slug does not exist: ' + slug);
+    }
+  }
+
+  for (const [sourceSlug, preferredSlugs] of Object.entries(CURATED_RELATED)) {
+    const sourcePost = POSTS.find((post) => post.slug === sourceSlug);
+    if (!sourcePost) {
+      errors.push('Curated related-reading source is missing: ' + sourceSlug);
+      continue;
+    }
+    const relatedSlugs = getRelatedBlogPosts(sourcePost, POSTS).map((post) => post.slug);
+    for (const targetSlug of preferredSlugs) {
+      if (!knownSlugs.has(targetSlug)) {
+        errors.push(sourceSlug + ': curated related-reading target does not exist: ' + targetSlug);
+      } else if (!relatedSlugs.includes(targetSlug)) {
+        errors.push(sourceSlug + ': curated related-reading target is not included: ' + targetSlug);
+      }
     }
   }
 
