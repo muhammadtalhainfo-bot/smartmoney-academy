@@ -59,14 +59,52 @@ async function main() {
       description: 'ICT Premium and Discount zones tell you whether price is cheap or expensive.',
       expect: 'redirect',
     },
+    {
+      slug: 'how-to-trade-nas100-ict',
+      title: 'How to Trade NAS100 Using ICT Concepts',
+      description: 'NAS100 is the most popular market for ICT traders.',
+      content: 'NAS100 respects Order Blocks and FVGs with remarkable precision making it ideal for ICT methodology.',
+      expect: 'suppress',
+      requiredFlag: 'unsupported-performance-ranking',
+    },
+    {
+      slug: 'ict-2026-mentorship-concepts',
+      title: 'ICT 2026 Mentorship — Key Concepts Explained',
+      description: 'ICT continues to release new content in 2026.',
+      content: 'The 2026 mentorship introduces refined models including Propulsion Blocks and updated IPDA ranges.',
+      expect: 'suppress',
+      requiredFlag: 'time-sensitive-current-claim',
+    },
+    {
+      slug: 'liquidity-in-trading-ict',
+      title: 'What is Liquidity in Trading? ICT Explanation',
+      description: 'Liquidity is the foundation of ICT trading.',
+      content: 'Liquidity refers to clusters of stop-loss orders that institutions need to fill their massive positions.',
+      expect: 'suppress',
+      requiredFlag: 'unverified-institutional-motive',
+    },
+    {
+      slug: 'smart-money-concepts-vs-ict',
+      title: 'Smart Money Concepts vs ICT — What is the Difference?',
+      description: 'SMC and ICT are often confused. Learn the key differences.',
+      content: 'ICT is the original methodology. SMC is a simplified community-built framework derived from ICT.',
+      expect: 'suppress',
+      requiredFlag: 'unverified-framework-lineage',
+    },
   ];
 
   for (const fixture of fixtures) {
     const decision = assessDatabaseBlogRow(fixture, staticSlugs.has(fixture.slug));
     if (!decision.flags.length) errors.push(fixture.slug + ': known legacy claim was not flagged.');
 
+    if (fixture.requiredFlag && !decision.flags.includes(fixture.requiredFlag)) {
+      errors.push(fixture.slug + ': expected editorial risk flag missing (' + fixture.requiredFlag + ').');
+    }
     if (fixture.expect === 'static-fallback' && (!decision.useStaticFallback || decision.suppress)) {
       errors.push(fixture.slug + ': unsafe DB override must fall back to its reviewed static article.');
+    }
+    if (fixture.expect === 'suppress' && (!decision.suppress || decision.useStaticFallback || decision.redirectSlug)) {
+      errors.push(fixture.slug + ': unsafe database-only article must be suppressed without a static fallback or redirect.');
     }
     if (fixture.expect === 'redirect') {
       if (!decision.suppress) errors.push(fixture.slug + ': unsafe database-only article must be suppressed.');
@@ -109,7 +147,7 @@ async function main() {
     process.exit(1);
   }
 
-  console.log('Database blog editorial guard passed: ' + fixtures.length + ' legacy fixtures, ' + Object.keys(LEGACY_BLOG_REDIRECTS).length + ' canonical redirects, a reviewed-static fallback, and a safe neutral fixture.');
+  console.log('Database blog editorial guard passed: ' + fixtures.length + ' published CMS fixtures, ' + Object.keys(LEGACY_BLOG_REDIRECTS).length + ' canonical redirects, reviewed-static fallback/suppression, and a safe neutral fixture.');
 }
 
 main().catch((error) => {
