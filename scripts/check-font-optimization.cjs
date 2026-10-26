@@ -18,6 +18,10 @@ if (!css.includes('font-family: var(--font-dm-sans), sans-serif;')) {
 }
 for (const name of ['--font-bebas-neue', '--font-dm-sans', '--font-dm-mono']) {
   if (!layout.includes(name)) errors.push('Root layout configuration is missing ' + name + '.');
+  if (!css.includes('[style*="' + name.replace('--font-', '').replaceAll('-', ' ') + '"]')) {
+    const legacyName = name === '--font-bebas-neue' ? 'Bebas Neue' : name === '--font-dm-sans' ? 'DM Sans' : 'DM Mono';
+    if (!css.includes('[style*="' + legacyName + '"]')) errors.push('Legacy inline styles must map to the generated ' + name + ' font.');
+  }
 }
 
 if (errors.length) {
