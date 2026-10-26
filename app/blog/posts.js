@@ -3372,4 +3372,180 @@ export const POSTS = [
 
     ],
   },
+  {
+    "slug": "how-to-trade-nas100-ict",
+    "title": "How to Study NAS100 With ICT Concepts: Rules, Sessions and Risk",
+    "description": "A practical framework for testing ICT-style price-action ideas on NAS100 without treating chart labels as evidence of institutional intent or as a forecast.",
+    "category": "Instrument Study",
+    "readTime": "8 min read",
+    "date": "October 27, 2026",
+    "image": "/images/market-structure.png",
+    "featured": false,
+    "content": [
+      {
+        "type": "intro",
+        "text": "This guide treats ICT concepts as labels for observable price behaviour and possible trading hypotheses. It is not a recommendation to trade NAS100, and a chart alone does not reveal who placed orders or why price moved."
+      },
+      {
+        "type": "heading",
+        "text": "Know Which NAS100 Feed You Are Studying"
+      },
+      {
+        "type": "paragraph",
+        "text": "NAS100 is a label commonly used on broker-provided Nasdaq-100 index products, including some CFD feeds. Symbol names, quotes, trading hours and overnight rules can vary by provider, so do not assume two charts are interchangeable. Record the provider, exact symbol, chart timezone, session template and relevant trading costs before comparing examples."
+      },
+      {
+        "type": "heading",
+        "text": "Write the Setup in Observable Terms"
+      },
+      {
+        "type": "paragraph",
+        "text": "Define swing highs and lows, whether a sweep requires a wick or a close, how a fair value gap is measured, and what qualifies as a structure break. These are chart rules. They do not prove that a bank or algorithm engineered a move, and the same pattern can precede a reversal, continuation or no useful entry."
+      },
+      {
+        "type": "list",
+        "items": [
+          "Instrument and data: record the broker/feed, symbol, chart timezone and candle source.",
+          "Context: specify the range or levels you will mark, with objective rules for selecting them.",
+          "Trigger: define the exact candle or sequence required before entry.",
+          "Invalidation and exit: prewrite the condition that ends the idea, the stop logic and the exit rule.",
+          "No-trade cases: state when the setup expires, fails to form or is skipped."
+        ]
+      },
+      {
+        "type": "heading",
+        "text": "Test Session Windows Instead of Assuming Them"
+      },
+      {
+        "type": "paragraph",
+        "text": "If your model uses a London or New York window, record the timezone convention and daylight-saving adjustment. Test the chosen window against a comparison period using the same entry and exit rules. A session label by itself does not establish that better setups occur there or that price must reach a particular level."
+      },
+      {
+        "type": "heading",
+        "text": "Define Risk for the Instrument"
+      },
+      {
+        "type": "paragraph",
+        "text": "NAS100 products may differ in point value, spread, execution and financing. Work from the actual contract or broker specifications and the risk limit of the account being used. A stop distance that fits one product or volatility regime may be unsuitable for another. Do not infer that a tight stop is safer or more profitable without measuring adverse movement and execution costs."
+      },
+      {
+        "type": "heading",
+        "text": "Hypothetical Review"
+      },
+      {
+        "type": "paragraph",
+        "text": "For a hypothetical replay, suppose a pre-marked prior-session high is 18,000 points. Price trades above it, closes back below, and later breaks a short-term low selected before the session. Count this as a candidate failed-break setup only if those conditions were written down before the move. Record cases where price instead continues higher, stays inside the range, or never produces the trigger."
+      },
+      {
+        "type": "heading",
+        "text": "Evaluate the Result Fairly"
+      },
+      {
+        "type": "paragraph",
+        "text": "Include spreads, commissions, slippage, missed fills and all eligible no-trade sessions. Separate the sample used to define the rules from a later holdout sample. Report trade count, average net result, drawdown and uncertainty; a small winning sample is not proof of a durable edge."
+      },
+      {
+        "type": "highlight",
+        "text": "ICT terminology can help make a chart hypothesis repeatable. It does not prove institutional motive, validate a specific NAS100 setup or guarantee that the next move will follow the hypothesis."
+      },
+      {
+        "type": "heading",
+        "text": "Pre-Test Checklist"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Freeze the feed, session timezone and candle definitions.",
+          "Write context, trigger, invalidation, expiry and exit rules before replay.",
+          "Record winners, losses, missed fills and days with no setup.",
+          "Compare results after costs against a simple baseline and an untouched sample."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "ict-2026-mentorship-concepts",
+    "title": "ICT Mentorship Concepts: A Study, Testing and Source-Checking Framework",
+    "description": "Use a repeatable process to define ICT concepts, check source and version details, and test rules without assuming a newer label is a validated strategy or a proven market mechanism.",
+    "category": "Study Guide",
+    "readTime": "7 min read",
+    "date": "October 27, 2026",
+    "image": "/images/market-structure.png",
+    "featured": false,
+    "content": [
+      {
+        "type": "intro",
+        "text": "This is an evergreen method for studying ICT mentorship material, not a verified list of 2026 releases. Check date-sensitive lesson claims against the original source. A newer label or revised lesson title does not itself establish novelty, accuracy or trading performance."
+      },
+      {
+        "type": "heading",
+        "text": "Record the Original Source and Version"
+      },
+      {
+        "type": "paragraph",
+        "text": "For each lesson, record the publisher, lesson or video title, publication date when available, relevant timestamp, terminology used and the date you reviewed it. Distinguish an original source statement from a community explanation or your own interpretation. If a release date or claimed update cannot be verified, mark it as unconfirmed rather than repeating it as fact."
+      },
+      {
+        "type": "heading",
+        "text": "Separate Definitions From Explanations"
+      },
+      {
+        "type": "paragraph",
+        "text": "A market-structure rule can describe how highs and lows are classified. A liquidity label can identify a level traders choose to monitor. A fair value gap can describe a relationship between candle extremes. Explanations that attribute these patterns to institutional motives or a programmed delivery mechanism are interpretations, not something the chart proves on its own."
+      },
+      {
+        "type": "heading",
+        "text": "Turn a Lesson Into a Testable Rule"
+      },
+      {
+        "type": "paragraph",
+        "text": "A concept becomes testable when the market, timeframe, data source, session, setup condition, entry trigger, invalidation, exit and exclusions are written in advance. State what would count as a failure as well as what would count as a match. Keep no-trade sessions and setups that do not trigger in the record."
+      },
+      {
+        "type": "list",
+        "items": [
+          "Definition: state the observable candle, range or level rule.",
+          "Context: name any higher-timeframe, directional or session filter and how it is measured.",
+          "Execution: predefine entry, stop/invalidation, target, expiry and order type.",
+          "Risk: specify sizing from the instrument's contract terms and the account's limits.",
+          "Review: record outcome, costs, slippage, rule deviations and screenshot or timestamp."
+        ]
+      },
+      {
+        "type": "heading",
+        "text": "Track Different Variants Separately"
+      },
+      {
+        "type": "paragraph",
+        "text": "Terminology and boundary choices can vary between educators and strategy variants. For example, traders may differ on whether a wick or closing price defines a violation, or whether a displacement filter is required. Do not change the definition after seeing the outcome. Give each variant a version label and compare it on the same eligible sample."
+      },
+      {
+        "type": "heading",
+        "text": "Review Evidence Without Overclaiming"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use chronological testing, realistic costs and a holdout period that was not used to select the rules. Report sample size, uncertainty, drawdown and failed examples. Testing many variants and publishing only the best result can produce an exaggerated picture. Historical performance does not establish future profitability."
+      },
+      {
+        "type": "heading",
+        "text": "Source-Checking Checklist"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Can I locate the original lesson or publication supporting this date-sensitive claim?",
+          "Is this an explicit definition, a proposed explanation or an empirical performance claim?",
+          "Are the entry, invalidation, exit, exclusions and costs fully specified?",
+          "Have I recorded unsuccessful examples and no-setup cases?",
+          "Did I validate the rules on data that was not used to develop them?"
+        ]
+      },
+      {
+        "type": "highlight",
+        "text": "Study the source, define the observable rule and test the outcome separately. A mentorship label is educational context; it is not independent evidence that a setup has an edge."
+      }
+    ]
+  },
+
 ];

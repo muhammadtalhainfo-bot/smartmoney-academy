@@ -64,7 +64,7 @@ async function main() {
       title: 'How to Trade NAS100 Using ICT Concepts',
       description: 'NAS100 is the most popular market for ICT traders.',
       content: 'NAS100 respects Order Blocks and FVGs with remarkable precision making it ideal for ICT methodology.',
-      expect: 'suppress',
+      expect: 'static-fallback',
       requiredFlag: 'unsupported-performance-ranking',
     },
     {
@@ -72,7 +72,7 @@ async function main() {
       title: 'ICT 2026 Mentorship — Key Concepts Explained',
       description: 'ICT continues to release new content in 2026.',
       content: 'The 2026 mentorship introduces refined models including Propulsion Blocks and updated IPDA ranges.',
-      expect: 'suppress',
+      expect: 'static-fallback',
       requiredFlag: 'time-sensitive-current-claim',
     },
     {
@@ -80,7 +80,7 @@ async function main() {
       title: 'What is Liquidity in Trading? ICT Explanation',
       description: 'Liquidity is the foundation of ICT trading.',
       content: 'Liquidity refers to clusters of stop-loss orders that institutions need to fill their massive positions.',
-      expect: 'suppress',
+      expect: 'redirect',
       requiredFlag: 'unverified-institutional-motive',
     },
     {
@@ -88,7 +88,7 @@ async function main() {
       title: 'Smart Money Concepts vs ICT — What is the Difference?',
       description: 'SMC and ICT are often confused. Learn the key differences.',
       content: 'ICT is the original methodology. SMC is a simplified community-built framework derived from ICT.',
-      expect: 'suppress',
+      expect: 'redirect',
       requiredFlag: 'unverified-framework-lineage',
     },
   ];
@@ -124,6 +124,16 @@ async function main() {
   }, false);
   if (safeRow.flags.length || safeRow.suppress || safeRow.useStaticFallback) {
     errors.push('A neutral, test-oriented database article must remain eligible for ordinary publication.');
+  }
+
+  const unsafeUnknownRow = assessDatabaseBlogRow({
+    slug: 'test-unsafe-db-only-post',
+    title: 'Liquidity Sweep — A Guaranteed Institutional Trap',
+    description: 'Banks engineer liquidity sweeps.',
+    content: 'Price is programmed to fill the gap.',
+  }, false);
+  if (!unsafeUnknownRow.flags.length || !unsafeUnknownRow.suppress || unsafeUnknownRow.useStaticFallback) {
+    errors.push('An unreviewed unsafe database-only article must remain suppressed when no static replacement exists.');
   }
 
   if (!blogData.includes('assessDatabaseBlogRow(row, Boolean(existing))')) {
