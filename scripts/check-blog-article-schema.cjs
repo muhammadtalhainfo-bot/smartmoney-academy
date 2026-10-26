@@ -3,6 +3,7 @@ const fs = require('node:fs');
 async function main() {
   const { POSTS } = await import('../app/blog/posts.js');
   const page = fs.readFileSync('app/blog/[slug]/page.js', 'utf8');
+  const blogData = fs.readFileSync('lib/blog-data.js', 'utf8');
   const errors = [];
 
   const requiredPatterns = [
@@ -25,9 +26,8 @@ async function main() {
   if (slugs.length !== POSTS.length) errors.push('Every static article must have a slug.');
   if (new Set(slugs).size !== slugs.length) errors.push('Static article slugs must be unique.');
 
-  const modifiedDateSource = fs.readFileSync('lib/blog-data.js', 'utf8');
-  if (!/modifiedDate:\s*row\.modified_date\s*\|\|\s*staticPost\?\.modifiedDate\s*\|\|\s*''/.test(modifiedDateSource)) {
-    errors.push('Blog database rows must pass through an explicit modified_date field without substituting created_at or build time.');
+  if (blogData.includes('row.modified_date')) {
+    errors.push('Do not read blog_posts.modified_date until a versioned schema migration adds that column; the current table has no modified_date field.');
   }
 
   let validDates = 0;
