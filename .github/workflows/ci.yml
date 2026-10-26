@@ -78,6 +78,9 @@ jobs:
       - name: Validate database-backed blog editorial safety
         run: node scripts/check-blog-database-editorial-guard.cjs
 
+      - name: Validate blog canonical routes and alias exclusions
+        run: node scripts/check-blog-canonical-routes.cjs
+
       - name: Validate topic-aware blog related reading
         run: node scripts/check-blog-related-posts.cjs
 
