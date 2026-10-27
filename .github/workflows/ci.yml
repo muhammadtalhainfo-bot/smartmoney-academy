@@ -81,6 +81,9 @@ jobs:
       - name: Validate blog canonical routes and alias exclusions
         run: node scripts/check-blog-canonical-routes.cjs
 
+      - name: Validate blog reading-time estimates
+        run: node scripts/check-blog-reading-time.cjs
+
       - name: Validate search-oriented blog snippets
         run: node scripts/check-blog-search-snippets.cjs
 

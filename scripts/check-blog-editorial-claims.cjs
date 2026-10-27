@@ -704,7 +704,6 @@ const articleBodyRegressionChecks = [
       ['premium/discount framed as contextual', /Premium and discount describe location relative to a chosen range midpoint/i],
       ['BPR is defined as visible overlap, not orders', /an overlap of candle-defined price areas; it does not prove that institutional orders remain at that level/i],
     ],
-    readTime: /readTime:\s*'4 min read'/,
   },
   {
     slug: 'ict-liquidity-forex-trading',
@@ -724,7 +723,6 @@ const articleBodyRegressionChecks = [
       ['equal highs and lows are candidate areas rather than universal targets', /They are candidate reference areas, not automatically the primary targets in every session/i],
       ['DOL remains a candidate target hypothesis', /Some ICT models use a Draw on Liquidity \(DOL\) as a candidate target hypothesis/i],
     ],
-    readTime: /readTime:\s*'3 min read'/,
   },
   {
     slug: 'ict-balanced-price-range-bpr',
@@ -739,7 +737,6 @@ const articleBodyRegressionChecks = [
       ['BPR reward-risk claims are explicitly not assumed', /does not establish a typical 5:1-or-better result/i],
       ['BPR boundary and entry rules are model-specific', /Possible test rules include entry at the overlap midpoint/i],
     ],
-    readTime: /readTime:\s*'3 min read'/,
   },
   {
     slug: 'power-of-three-amd-model',
@@ -753,7 +750,6 @@ const articleBodyRegressionChecks = [
       ['AMD phase timing is a testable hypothesis', /Those calendar associations are hypotheses, not reliable schedules/i],
       ['AMD timeframe patterns are not universal cycles', /do not establish a universal fractal cycle/i],
     ],
-    readTime: /readTime:\s*'4 min read'/,
   },
   {
     slug: 'ict-killzones-guide',
@@ -763,7 +759,6 @@ const articleBodyRegressionChecks = [
     required: [
       ['session windows are described as filters to test', /do not guarantee cleaner price action or higher win rates/i],
     ],
-    readTime: /readTime:\s*'4 min read'/,
   },
   {
     slug: 'ict-mss-vs-choch-explained',
@@ -773,7 +768,6 @@ const articleBodyRegressionChecks = [
     required: [
       ['structure labels treated as model-specific conventions', /Some ICT models require a second structure event after a ChoCH, while others define their trigger differently/i],
     ],
-    readTime: /readTime:\s*'3 min read'/,
   },
   {
     slug: 'what-is-ict-trading',
@@ -784,7 +778,6 @@ const articleBodyRegressionChecks = [
     required: [
       ['retail trading approaches are not generalized as one group', /No single description applies to all retail traders/i],
     ],
-    readTime: /readTime:\s*'5 min read'/,
   },
   {
     slug: 'ict-mitigation-block-guide',
@@ -795,7 +788,6 @@ const articleBodyRegressionChecks = [
     required: [
       ['mitigation-block terminology is qualified by convention', /Some educators label a zone that price has crossed a mitigation block, while others use different conventions/i],
     ],
-    readTime: /readTime:\s*'3 min read'/,
   },
   {
     slug: 'ict-sibi-bisi-explained',
@@ -808,7 +800,6 @@ const articleBodyRegressionChecks = [
       ['BISI is a candle-pattern label rather than participant evidence', /A BISI \(bullish FVG\) is one ICT label for a bullish three-candle gap/i],
       ['SIBI/BISI benefits are not presumed without testing', /labels themselves do not prove directional intent or an edge/i],
     ],
-    readTime: /readTime:\s*'3 min read'/,
   },
   {
     slug: 'draw-on-liquidity-ict',
@@ -821,7 +812,6 @@ const articleBodyRegressionChecks = [
       ['DOL path is explicitly a hypothesis', /One ICT narrative describes some moves as transitions between candidate liquidity references/i],
       ['DOL is one exit method among alternatives', /A candidate DOL can be one preplanned exit method, alongside fixed-R, time-based or other tested rules/i],
     ],
-    readTime: /readTime:\s*'6 min read'/,
   },
   {
     slug: 'ict-implied-fair-value-gap-ifvg',
@@ -832,7 +822,6 @@ const articleBodyRegressionChecks = [
     required: [
       ['close-through does not guarantee a role reversal', /A close through does not guarantee a role reversal/i],
     ],
-    readTime: /readTime:\s*'3 min read'/,
   },
   {
     slug: 'ict-market-structure-complete-guide',
@@ -853,7 +842,6 @@ const articleBodyRegressionChecks = [
       ['BOS classification does not mandate an entry', /Treat it as a condition to test, not an automatic continuation signal or instruction to enter long/i],
       ['ChoCH displacement threshold is predeclared rather than universal', /There is no universal rule that makes a weak-looking break invalid across every source/i]
     ],
-    readTime: /readTime:\s*'4 min read'/,
   },
   {
     slug: 'ict-1st-presented-fvg-opening-range',
@@ -868,7 +856,6 @@ const articleBodyRegressionChecks = [
       ['first-presented FVG is framed as a reference rule', /The first qualifying FVG after a selected open is one reproducible reference rule/i],
       ['entry rule explicitly accounts for misses and costs', /The setup may not trigger; include missed fills and execution costs in the test/i],
     ],
-    readTime: /readTime:\s*'3 min read'/,
   },
 
   {
@@ -933,7 +920,6 @@ const articleBodyRegressionChecks = [
       ['FVG criterion labels do not prove institutional significance', /none of those labels alone demonstrates institutional significance/i],
       ['FVG checklist criteria are model-specific and testable', /Treat each condition as model-specific and test whether it adds value/i],
     ],
-    readTime: /readTime:\s*'11 min read'/,
   },
   {
     slug: 'ict-bullish-order-block-complete',
@@ -1679,9 +1665,6 @@ for (const check of articleBodyRegressionChecks) {
   }
   for (const [label, pattern] of check.required) {
     if (!pattern.test(post.source)) errors.push('/blog/' + check.slug + ': expected body safeguard missing: ' + label + '.');
-  }
-  if (check.readTime && !check.readTime.test(post.source)) {
-    errors.push('/blog/' + check.slug + ': reading-time label no longer matches the audited estimate.');
   }
 }
 
