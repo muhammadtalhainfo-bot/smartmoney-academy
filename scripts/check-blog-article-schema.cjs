@@ -40,7 +40,7 @@ async function main() {
       errors.push('/blog/' + (post?.slug || '(unknown)') + ': image must reference a local /images/ asset.');
       continue;
     }
-    const imagePath = path.join('public', image.replace(/^\\/+/, ''));
+    const imagePath = path.join('public', image.slice(1));
     if (!fs.existsSync(imagePath)) {
       errors.push('/blog/' + (post?.slug || '(unknown)') + ': image asset does not exist: ' + image);
     } else {
