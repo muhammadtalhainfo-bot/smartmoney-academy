@@ -1,4 +1,5 @@
 const fs = require('node:fs');
+const path = require('node:path');
 
 async function main() {
   const { POSTS } = await import('../app/blog/posts.js');
@@ -32,6 +33,20 @@ async function main() {
 
   let validDates = 0;
   let validModifiedDates = 0;
+  let validImages = 0;
+  for (const post of POSTS) {
+    const image = typeof post?.image === 'string' ? post.image.trim() : '';
+    if (!image.startsWith('/images/') || image.includes('..')) {
+      errors.push('/blog/' + (post?.slug || '(unknown)') + ': image must reference a local /images/ asset.');
+      continue;
+    }
+    const imagePath = path.join('public', image.replace(/^\\/+/, ''));
+    if (!fs.existsSync(imagePath)) {
+      errors.push('/blog/' + (post?.slug || '(unknown)') + ': image asset does not exist: ' + image);
+    } else {
+      validImages += 1;
+    }
+  }
   for (const post of POSTS) {
     if (post?.modifiedDate) {
       if (!Number.isFinite(Date.parse(String(post.modifiedDate)))) {
@@ -55,7 +70,7 @@ async function main() {
     process.exit(1);
   }
 
-  console.log('Blog article schema guard passed: ' + POSTS.length + ' static articles, ' + validDates + ' parseable publication dates, ' + validModifiedDates + ' explicit modified dates, accessible breadcrumbs and matching canonical destinations.');
+  console.log('Blog article schema guard passed: ' + POSTS.length + ' static articles, ' + validDates + ' parseable publication dates, ' + validModifiedDates + ' explicit modified dates, ' + validImages + ' existing local images, accessible breadcrumbs and matching canonical destinations.');
 }
 
 main().catch((error) => {
