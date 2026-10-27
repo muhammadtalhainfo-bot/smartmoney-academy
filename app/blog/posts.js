@@ -111,6 +111,8 @@ export const POSTS = [
   {
     slug: 'understanding-order-blocks',
     title: 'ICT Order Blocks: Definitions, Boundaries and Retest Rules',
+    metaTitle: 'ICT Order Blocks: Definitions, Boundaries and Retest Rules',
+    metaDesc: 'Learn how traders label order-block zones around displacement moves, define boundaries and invalidation, and test retests without assuming orders remain.',
     description: 'Learn how ICT traders label order-block zones around displacement moves, set consistent boundaries and invalidation, and test retests without treating a candle as proof of institutional orders.',
     category: 'Intermediate',
     readTime: '5 min read',
@@ -373,6 +375,8 @@ export const POSTS = [
   {
     slug: 'smt-divergence-ict-explained',
     title: 'ICT SMT Divergence: Comparing Correlated-Market Swings',
+    metaTitle: 'ICT SMT Divergence: Comparing Correlated-Market Swings',
+    metaDesc: 'Compare swing behavior in related instruments using consistent divergence rules, and record outcomes without inferring manipulation or intent.',
     description: 'Understand how ICT traders compare swing behavior in related instruments, choose consistent divergence rules and record continuation, reversal and no-trade outcomes without inferring market manipulation or true intent.',
     category: 'Advanced',
     readTime: '3 min read',
@@ -412,6 +416,8 @@ export const POSTS = [
   {
     slug: 'how-to-pass-ftmo-ict-strategy',
     title: 'Prop-Firm Evaluation Planning: Rules, Risk and ICT Setups',
+    metaTitle: 'Prop-Firm Evaluation Planning: Rules, Risk and ICT Setups',
+    metaDesc: 'Plan a prop-firm evaluation around current program rules, risk limits and tested ICT setups. No entry model or schedule guarantees a pass.',
     description: 'A risk-first guide to evaluating ICT setups during a prop-firm challenge. Check the current terms for your specific program and test your entry rules; no setup or schedule guarantees a pass.',
     category: 'Advanced',
     readTime: '5 min read',
@@ -455,6 +461,8 @@ export const POSTS = [
   {
     slug: 'daily-bias-ict-how-to-determine',
     title: 'ICT Daily Bias: Building and Testing a Conditional Thesis',
+    metaTitle: 'ICT Daily Bias: Building and Testing a Conditional Thesis',
+    metaDesc: 'Build a conditional thesis from higher-timeframe structure and reference levels, with invalidation and neutral conditions rather than treating forecasts as certain.',
     description: 'A process for forming a directional thesis from higher-timeframe structure and reference levels, with rules for invalidation and neutral conditions rather than assuming a correct forecast is knowable in advance.',
     category: 'Intermediate',
     readTime: '4 min read',
@@ -495,6 +503,8 @@ export const POSTS = [
   {
     slug: 'draw-on-liquidity-ict',
     title: 'ICT Draw on Liquidity: Candidate Targets and Invalidations',
+    metaTitle: 'ICT Draw on Liquidity: Candidate Targets and Invalidations',
+    metaDesc: 'Select possible targets from prior highs, lows and range boundaries, define invalidation, and log whether they are reached without treating them as known destinations.',
     description: 'Learn how traders select possible target levels from prior highs, lows and range boundaries, define invalidation and log whether targets are reached without treating them as known destinations.',
     category: 'Advanced',
     readTime: '5 min read',
@@ -579,6 +589,8 @@ export const POSTS = [
   {
     slug: 'ict-turtle-soup-pattern-guide',
     title: 'ICT Turtle Soup: Defining Sweep-and-Return Conditions',
+    metaTitle: 'ICT Turtle Soup: Defining Sweep-and-Return Conditions',
+    metaDesc: 'Review Turtle Soup as a possible move beyond a swing and return. Define confirmation and invalidation, and test without assuming stops were deliberately hunted.',
     description: 'Review the Turtle Soup label as a possible move beyond a prior swing followed by a return, define confirmation and invalidation, and test every qualifying case without assuming stops were deliberately hunted.',
     category: 'Intermediate',
     readTime: '5 min read',
@@ -620,6 +632,8 @@ export const POSTS = [
   {
     slug: 'ict-silver-bullet-strategy-complete',
     title: 'ICT Silver Bullet: Session Windows, Conditions and Risk',
+    metaTitle: 'ICT Silver Bullet: Session Windows, Conditions and Risk',
+    metaDesc: 'Review the Silver Bullet framework\'s common time windows and chart conditions, with risk rules and ways to test performance rather than presume an edge.',
     description: 'A structured overview of the Silver Bullet framework\'s commonly discussed time windows, liquidity sweep and FVG conditions, with risk rules and ways to test performance rather than presume an edge.',
     category: 'Advanced',
     readTime: '6 min read',
@@ -718,6 +732,8 @@ export const POSTS = [
   {
     slug: 'ict-pd-array-matrix-explained',
     title: 'ICT PD Array Matrix: Comparing Common Price Reference Zones',
+    metaTitle: 'ICT PD Array Matrix: Comparing Common Price Reference Zones',
+    metaDesc: 'Review common ICT price-reference labels, organize them with range context, and define entry and invalidation rules without assuming a ranked edge.',
     description: 'Review common ICT price-reference labels and how some traders organize them with range context, then define objective entry and invalidation rules without assuming a ranked edge.',
     category: 'Advanced',
     readTime: '5 min read',
@@ -763,6 +779,8 @@ export const POSTS = [
   {
     slug: 'ict-macro-times-explained',
     title: 'ICT Macro Times: Session Windows and Testable Conditions',
+    metaTitle: 'ICT Macro Times: Session Windows and Testable Conditions',
+    metaDesc: 'Learn how some ICT traders use intraday windows to observe sweeps or FVG revisits. Definitions vary by source and instrument, so test timing against a baseline.',
     description: 'Learn how some ICT traders use predefined intraday windows to observe sweeps or FVG revisits. Definitions can vary by source and instrument; test timing against a consistent baseline rather than presume algorithmic activity.',
     category: 'Advanced',
     readTime: '5 min read',
@@ -808,6 +826,8 @@ export const POSTS = [
   {
     slug: 'ict-cisd-change-in-state-of-delivery',
     title: 'ICT CISD: Defining a Change in Delivery Hypothesis',
+    metaTitle: 'ICT CISD: Defining a Change in Delivery Hypothesis',
+    metaDesc: 'Learn how ICT traders label a possible change in delivery, separate the label from structural confirmation, and test rules without inferring algorithmic intent.',
     description: 'Learn how ICT traders label a possible change in directional delivery, distinguish the label from later structural confirmation, and test prewritten rules without attributing moves to a known algorithm.',
     category: 'Advanced',
     readTime: '5 min read',
@@ -846,6 +866,8 @@ export const POSTS = [
   {
     slug: 'ict-unicorn-model-explained',
     title: 'ICT Unicorn Model: Defining Mitigation and FVG Overlap',
+    metaTitle: 'ICT Unicorn Model: Defining Mitigation and FVG Overlap',
+    metaDesc: 'Explore the Unicorn label as a combination of mitigation-block and FVG ideas, define the overlap consistently, and test whether the combination adds an edge.',
     description: 'Explore the Unicorn label as a combination of mitigation-block and Fair Value Gap ideas, define the overlap consistently, and test all outcomes rather than assuming two chart labels imply a stronger edge.',
     category: 'Advanced',
     readTime: '4 min read',
@@ -929,6 +951,8 @@ export const POSTS = [
   {
     slug: 'ict-smt-divergence-complete-guide',
     title: 'ICT SMT Divergence: Comparing Correlated Instruments',
+    metaTitle: 'ICT SMT Divergence: Comparing Correlated Instruments',
+    metaDesc: 'Compare swings in related instruments, define when divergence qualifies, and record reversal, continuation and no-trade outcomes without inferring manipulation or intent.',
     description: 'Learn how traders compare swings in related instruments, define when a divergence qualifies, and record reversal, continuation and no-trade outcomes without inferring manipulation or true intent.',
     category: 'Advanced',
     readTime: '4 min read',
@@ -1017,6 +1041,8 @@ export const POSTS = [
   {
     slug: 'ict-intraday-profiles-london',
     title: 'ICT London Intraday Profiles: Session Patterns to Test',
+    metaTitle: 'ICT London Intraday Profiles: Session Patterns to Test',
+    metaDesc: 'Review commonly discussed London-session scenarios with a repeatable way to log qualifying sessions and test whether a pattern adds value.',
     description: 'An overview of commonly discussed London-session scenarios, including sweeps and reversals, with a repeatable way to log all qualifying sessions and test whether any pattern adds value.',
     category: 'Advanced',
     readTime: '4 min read',
@@ -1216,6 +1242,8 @@ export const POSTS = [
   {
     slug: 'ict-venom-model-2025',
     title: 'ICT Venom Model: Setup Definitions and Testing Limitations',
+    metaTitle: 'ICT Venom Model: Setup Definitions and Testing Limitations',
+    metaDesc: 'Review the Venom Model as a price-action framework, document entry and invalidation rules, and test outcomes without assuming an FVG reveals algorithmic intent.',
     description: 'Review the Venom Model as a price-action framework, document the entry and invalidation rules used by your chosen source, and test outcomes without assuming a sweep or FVG reveals algorithmic intent.',
     category: 'Advanced',
     readTime: '4 min read',
@@ -1258,6 +1286,8 @@ export const POSTS = [
   {
     slug: 'ict-suspension-block-2025',
     title: 'ICT Suspension Blocks: Candidate Zones and Retest Rules',
+    metaTitle: 'ICT Suspension Blocks: Candidate Zones and Retest Rules',
+    metaDesc: 'Explore the Suspension Block label, define its candle and range boundaries and invalidation, and test retests without assuming institutional accumulation.',
     description: 'Explore the Suspension Block label as used in some ICT material, define its candle/range boundaries and invalidation, and test later retests without treating the zone as verified institutional accumulation.',
     category: 'Advanced',
     readTime: '4 min read',
@@ -1300,6 +1330,8 @@ export const POSTS = [
   {
     slug: 'ict-reversal-patterns-guide',
     title: 'ICT Reversal Patterns: Sweep, Spring and SMT Hypotheses',
+    metaTitle: 'ICT Reversal Patterns: Sweep, Spring and SMT Hypotheses',
+    metaDesc: 'Review ICT reversal ideas, define observable conditions and invalidation, and test outcomes without treating a pattern as proof of manipulation or a confirmed turn.',
     description: 'Review three reversal ideas discussed in ICT education, define their observable conditions and invalidation, and test all outcomes without treating a pattern label as proof of manipulation or a confirmed turn.',
     category: 'Intermediate',
     readTime: '4 min read',
@@ -1427,6 +1459,8 @@ export const POSTS = [
   {
     slug: 'ict-rdrb-redelivered-rebalanced-price-range',
     title: 'ICT RDRB: Defining Redelivery and Rebalancing Zones',
+    metaTitle: 'ICT RDRB: Defining Redelivery and Rebalancing Zones',
+    metaDesc: 'An introduction to the RDRB label in ICT chart analysis, including how to define a candidate zone and record retests without inferring intent from price alone.',
     description: 'An introduction to the RDRB label as used in ICT chart analysis, including how to define a candidate zone and record retests without inferring institutional intent from price alone.',
     category: 'Advanced',
     readTime: '4 min read',
@@ -1468,6 +1502,8 @@ export const POSTS = [
   {
     slug: 'ict-1st-presented-fvg-opening-range',
     title: 'ICT First-Presented FVG: A Session-Based Hypothesis',
+    metaTitle: 'ICT First-Presented FVG: A Session-Based Hypothesis',
+    metaDesc: 'Learn how to define the first qualifying FVG after a selected open, record missed retests, and compare it with later gaps without assuming it determines direction.',
     description: 'Learn how traders define the first qualifying Fair Value Gap after a chosen session open, record missed retests and compare the rule with later gaps without assuming the first gap determines direction.',
     category: 'Intermediate',
     readTime: '4 min read',
@@ -1554,6 +1590,8 @@ export const POSTS = [
   {
     slug: 'ict-scalping-strategy',
     title: 'ICT Scalping: Entries, Execution Costs and Risk Limits',
+    metaTitle: 'ICT Scalping: Entries, Execution Costs and Risk Limits',
+    metaDesc: 'A risk-first guide to low-timeframe ICT concepts, with entry rules, stop placement, spread and slippage assumptions, and after-cost review instead of fixed pip targets.',
     description: 'A risk-first guide to applying chart-based ICT concepts on low timeframes, with explicit entry rules, realistic stop placement, spread and slippage assumptions, and after-cost review instead of fixed pip targets.',
     category: 'Strategy',
     readTime: '4 min read',
@@ -1597,6 +1635,8 @@ export const POSTS = [
   {
     slug: 'ict-top-down-analysis-complete',
     title: 'ICT Top-Down Analysis: A Multi-Timeframe Planning Workflow',
+    metaTitle: 'ICT Top-Down Analysis: A Multi-Timeframe Planning Workflow',
+    metaDesc: 'Connect higher-timeframe context with lower-timeframe execution, record conflicting signals and define invalidation without assuming alignment guarantees an edge.',
     description: 'A structured way to connect higher-timeframe context with lower-timeframe execution, record conflicting signals and state what would confirm or invalidate the directional idea without assuming alignment guarantees an edge.',
     category: 'Intermediate',
     readTime: '4 min read',
@@ -1735,6 +1775,8 @@ export const POSTS = [
   {
     slug: 'ict-stl-itl-ltl-market-structure',
     title: 'ICT STL, ITL and LTL: Rules for Swing Classification',
+    metaTitle: 'ICT STL, ITL and LTL: Rules for Swing Classification',
+    metaDesc: 'Review short-, intermediate- and long-term swing labels, define lookback and confirmation rules, and avoid inferring order locations or trend commitment.',
     description: 'Review short-, intermediate- and long-term swing labels as a classification framework, define lookback and confirmation rules, and avoid inferring order locations or trend commitment from the labels alone.',
     category: 'Intermediate',
     readTime: '5 min read',
@@ -1778,6 +1820,8 @@ export const POSTS = [
   {
     slug: 'ict-asian-range-trading-strategy',
     title: 'ICT Asian Range: Session Boundaries and Scenarios to Test',
+    metaTitle: 'ICT Asian Range: Session Boundaries and Scenarios to Test',
+    metaDesc: 'Measure an Asian-session range and evaluate later breaks, returns and continuation. Treat it as a test reference, not proof of hidden orders or a guaranteed reversal.',
     description: 'Learn how to measure a chosen Asian-session range and evaluate later breaks, returns and continuation. A range is a reference for testing, not proof of hidden orders or a guaranteed London reversal.',
     category: 'Intermediate',
     readTime: '4 min read',
@@ -1905,6 +1949,8 @@ export const POSTS = [
   {
     slug: 'ict-daily-bias-trick',
     title: 'ICT Daily Bias: A Pre-Session Thesis and Invalidation Rules',
+    metaTitle: 'ICT Daily Bias: A Pre-Session Thesis and Invalidation Rules',
+    metaDesc: 'Form a conditional daily thesis from higher-timeframe structure and prior ranges, with explicit invalidation rather than claiming the correct bias is knowable in advance.',
     description: 'A practical process for forming a conditional daily thesis from higher-timeframe structure and prior ranges, with explicit invalidation criteria instead of claims that a correct bias can be known in advance.',
     category: 'Beginner',
     readTime: '5 min read',
@@ -1948,6 +1994,8 @@ export const POSTS = [
   {
     slug: 'ict-mss-vs-choch-explained',
     title: 'ICT MSS vs ChoCH: Structural Labels and Confirmation Rules',
+    metaTitle: 'ICT MSS vs ChoCH: Structural Labels and Confirmation Rules',
+    metaDesc: 'Compare MSS and ChoCH terminology, define swing and confirmation rules consistently, and separate chart structure from claims about motive or guaranteed trend change.',
     description: 'Compare how MSS and ChoCH are used in ICT education, define the swing and confirmation rule consistently, and separate chart structure from claims about algorithmic motive or a guaranteed trend change.',
     category: 'Beginner',
     readTime: '4 min read',
@@ -1989,6 +2037,8 @@ export const POSTS = [
   {
     slug: 'ict-liquidity-sweep-vs-run',
     title: 'ICT Liquidity Sweep vs Run: Defining Observable Differences',
+    metaTitle: 'ICT Liquidity Sweep vs Run: Defining Observable Differences',
+    metaDesc: 'Compare a brief move beyond a selected level with continued movement using predefined wick, close and confirmation rules. Neither label guarantees an outcome.',
     description: 'Compare a brief move beyond a selected level with continued movement through it using predefined wick, close and confirmation rules. Neither label establishes an algorithm\'s target or guarantees reversal or continuation.',
     category: 'Intermediate',
     readTime: '5 min read',
@@ -2031,6 +2081,8 @@ export const POSTS = [
   {
     slug: 'ict-weekly-profiles-range-expansion',
     title: 'ICT Weekly Profiles: Weekday Hypotheses to Record and Test',
+    metaTitle: 'ICT Weekly Profiles: Weekday Hypotheses to Record and Test',
+    metaDesc: 'Review weekday-profile ideas as hypotheses about when weekly extremes may form. Log consecutive weeks and exceptions instead of treating AMD as a forecast.',
     description: 'Review weekday-profile ideas as hypotheses about when weekly extremes may form. Log consecutive weeks and exceptions instead of treating an AMD narrative as a forecast of the weekly high or low.',
     category: 'Advanced',
     readTime: '4 min read',
@@ -2074,6 +2126,8 @@ export const POSTS = [
   {
     slug: 'ict-one-shot-one-kill-model',
     title: 'ICT One Shot One Kill: Session Limits and Rule Testing',
+    metaTitle: 'ICT One Shot One Kill: Session Limits and Rule Testing',
+    metaDesc: 'Explore One Shot One Kill as a way to limit attempts and predefine eligibility. A single-trade limit is a process choice, not proof a perfect setup exists.',
     description: 'Explore the One Shot One Kill idea as a way to limit attempts and predefine eligibility. A single-trade limit is a process choice, not evidence that one perfect setup exists or that the trade will succeed.',
     category: 'Strategy',
     readTime: '4 min read',
@@ -2116,6 +2170,8 @@ export const POSTS = [
   {
     slug: 'ict-balanced-price-range-bpr',
     title: 'ICT Balanced Price Range (BPR): Defining Overlapping FVGs',
+    metaTitle: 'ICT Balanced Price Range (BPR): Defining Overlapping FVGs',
+    metaDesc: 'Define overlapping bullish and bearish FVG areas, set objective boundaries, and test retests without assuming the overlap represents orders or adds an edge.',
     description: 'A guide to defining overlapping bullish and bearish FVG areas, choosing objective boundaries and testing retests without assuming the overlap represents unfilled institutional orders or a stronger edge.',
     category: 'Advanced',
     readTime: '4 min read',
@@ -2158,6 +2214,8 @@ export const POSTS = [
   {
     slug: 'ict-internal-external-range-liquidity',
     title: 'ICT IRL vs ERL: Internal and External Reference Levels',
+    metaTitle: 'ICT IRL vs ERL: Internal and External Reference Levels',
+    metaDesc: 'Distinguish internal range references from external swing extremes, define target rules and test value without assuming price must travel between levels.',
     description: 'Learn how ICT traders distinguish internal range references from external swing extremes, define candidate target rules and test whether the framework adds value without assuming price must travel from one level to the other.',
     category: 'Intermediate',
     readTime: '4 min read',
@@ -2201,6 +2259,8 @@ export const POSTS = [
   {
     slug: 'ict-displacement-move-explained',
     title: 'ICT Displacement: Measurable Candle-Movement Criteria',
+    metaTitle: 'ICT Displacement: Measurable Candle-Movement Criteria',
+    metaDesc: 'Learn how traders describe displacement and turn it into a measurable rule. A sharp move gives chart context but does not prove institutional cause or validate an entry.',
     description: 'Learn how ICT traders describe displacement and convert the visual concept into a measurable rule. A sharp move can provide chart context but does not by itself prove institutional cause or validate an entry.',
     category: 'Beginner',
     readTime: '4 min read',
@@ -2244,6 +2304,8 @@ export const POSTS = [
   {
     slug: 'ict-bos-vs-choch-complete',
     title: 'ICT BOS vs ChoCH: Structural Labels and Confirmation Rules',
+    metaTitle: 'ICT BOS vs ChoCH: Structural Labels and Confirmation Rules',
+    metaDesc: 'Compare Break of Structure and Change of Character terminology, define swing scope consistently, and distinguish a structural label from a complete trade plan.',
     description: 'Compare Break of Structure and Change of Character terminology, define swing scope consistently, and distinguish a structural label from a complete trading plan or confirmed change in trend.',
     category: 'Beginner',
     readTime: '4 min read',
@@ -2286,6 +2348,8 @@ export const POSTS = [
   {
     slug: 'ict-propulsion-block-guide',
     title: 'ICT Propulsion Block: Definition and Retest Testing',
+    metaTitle: 'ICT Propulsion Block: Definition and Retest Testing',
+    metaDesc: 'Review how ICT traders define a propulsion-block candidate and test later retests, without assuming the label causes an explosive move or proves algorithmic intent.',
     description: 'Review how ICT traders define a propulsion-block candidate and test its behavior on later retests, without assuming the label causes an explosive move or proves algorithmic intent.',
     category: 'Advanced',
     readTime: '4 min read',
@@ -2328,6 +2392,8 @@ export const POSTS = [
   {
     slug: 'ict-liquidity-void-explained',
     title: 'ICT Liquidity Voids: Low-Overlap Price Areas and Risk',
+    metaTitle: 'ICT Liquidity Voids: Low-Overlap Price Areas and Risk',
+    metaDesc: 'Understand how traders label fast price movement with limited candle overlap, why charts may not show volume at each price, and how to test revisits with risk rules.',
     description: 'Understand how traders label fast price movement with limited candle overlap, why a chart may not show actual traded volume at every price, and how to test a revisit hypothesis with explicit risk rules.',
     category: 'Intermediate',
     readTime: '4 min read',
@@ -2456,6 +2522,8 @@ export const POSTS = [
 {
     slug: 'ict-fibonacci-levels-settings',
     title: 'ICT Fibonacci Levels: Ratios, Anchors and Testing Rules',
+    metaTitle: 'ICT Fibonacci Levels: Ratios, Anchors and Testing Rules',
+    metaDesc: 'Document Fibonacci anchors and ratios used in ICT setups; definitions vary, and a ratio alone does not establish a precise or profitable entry.',
     description: 'A practical guide to documenting Fibonacci anchor points and retracement ratios used in ICT setups, including why definitions vary and why a ratio alone does not establish a precise or profitable entry.',
     category: 'Intermediate',
     readTime: '4 min read',
@@ -2499,6 +2567,8 @@ export const POSTS = [
   {
     slug: 'ict-swing-high-swing-low-explained',
     title: 'ICT Swing Highs and Lows: Confirmation Rules for Structure',
+    metaTitle: 'ICT Swing Highs and Lows: Confirmation Rules for Structure',
+    metaDesc: 'Learn a consistent rule for identifying swing pivots and context, account for confirmation delay, and avoid retrospective relabeling based on later price action.',
     description: 'Learn a consistent rule for identifying swing pivots and classifying their context, while accounting for confirmation delay and avoiding retrospective relabeling based on later price action.',
     category: 'Beginner',
     readTime: '5 min read',
@@ -2583,6 +2653,8 @@ export const POSTS = [
   {
     slug: 'ict-bearish-order-block-complete',
     title: 'ICT Bearish Order Block: Identification and Risk Rules',
+    metaTitle: 'ICT Bearish Order Block: Identification and Risk Rules',
+    metaDesc: 'Learn how ICT traders mark a candidate bearish order block before downward movement, define invalidation, and test retests without assuming institutional selling.',
     description: 'Learn how ICT traders mark a candidate bearish order block before a downward displacement, define invalidation, and test retests without assuming the zone proves institutional selling or guarantees a reaction.',
     category: 'Beginner',
     readTime: '4 min read',
@@ -2667,6 +2739,8 @@ export const POSTS = [
   {
     slug: 'ict-complete-2022-trading-strategy',
     title: 'ICT 2022 Model: Setup Rules, Context and Limitations',
+    metaTitle: 'ICT 2022 Model: Setup Rules, Context and Limitations',
+    metaDesc: 'Review the 2022-model framework discussed in ICT education, including time, price, structure and risk planning, without implying a universal strategy or risk schedule.',
     description: 'A structured overview of the 2022-model framework as presented in ICT education, including time, price, structural confirmation and risk planning, without implying a universal strategy or standard risk schedule.',
     category: 'Advanced',
     readTime: '6 min read',
@@ -2707,6 +2781,8 @@ export const POSTS = [
   {
     slug: 'ict-liquidity-forex-trading',
     title: 'Liquidity in Forex and ICT: Order Flow Terms and Limits',
+    metaTitle: 'Liquidity in Forex and ICT: Order Flow Terms and Limits',
+    metaDesc: 'Compare the market-microstructure meaning of liquidity with ICT chart labels, including why a marked swing does not reveal every order or prove a price target.',
     description: 'Compare the market-microstructure meaning of liquidity with the way ICT traders use liquidity labels on charts, including why a marked swing does not reveal every order or prove a price target.',
     category: 'Beginner',
     readTime: '5 min read',
@@ -2744,6 +2820,8 @@ export const POSTS = [
   {
     slug: 'ict-ipda-interbank-price-delivery',
     title: 'ICT IPDA Explained: Lookback Ranges as Testable References',
+    metaTitle: 'ICT IPDA Explained: Lookback Ranges as Testable References',
+    metaDesc: 'Learn how ICT educators use IPDA lookback ranges as price references, then test whether predefined levels are reached without assuming one algorithm dictates markets.',
     description: 'Learn how ICT educators use IPDA lookback ranges as price references, then test whether pre-defined levels are reached without assuming one algorithm dictates market movement.',
     category: 'Advanced',
     readTime: '4 min read',
@@ -2827,6 +2905,8 @@ export const POSTS = [
   {
     slug: 'ict-single-candle-order-block-scob',
     title: 'ICT Single-Candle Order Block (SCOB): Rules and Test Design',
+    metaTitle: 'ICT Single-Candle Order Block (SCOB): Rules and Test Design',
+    metaDesc: 'Learn how the SCOB label is applied to a selected candle, document its boundaries and invalidation, and compare results with other order-block definitions after costs.',
     description: 'Learn how the SCOB label is applied to a selected candle, document its boundaries and invalidation, and compare results with other order-block definitions after costs.',
     category: 'Intermediate',
     readTime: '4 min read',
@@ -2868,6 +2948,8 @@ export const POSTS = [
   {
     slug: 'ict-sibi-bisi-explained',
     title: 'ICT SIBI and BISI: Naming Bullish and Bearish Imbalances',
+    metaTitle: 'ICT SIBI and BISI: Naming Bullish and Bearish Imbalances',
+    metaDesc: 'Understand how ICT labels bearish and bullish three-candle imbalances, and record revisits without assuming a gap reveals institutional activity or predicts direction.',
     description: 'Understand how ICT terminology labels bearish and bullish three-candle imbalances, and use consistent definitions to record revisits without assuming that the gap reveals institutional activity or predicts direction.',
     category: 'Intermediate',
     readTime: '4 min read',
@@ -2908,6 +2990,8 @@ export const POSTS = [
   {
     slug: 'ict-market-maker-buy-model-mmbm',
     title: 'ICT Market Maker Buy Model (MMBM): A Framework to Evaluate',
+    metaTitle: 'ICT Market Maker Buy Model (MMBM): A Framework to Evaluate',
+    metaDesc: 'Explore the MMBM phases as an ICT interpretation of price movement, and define each phase before testing instead of treating a completed chart as proof of accumulation.',
     description: 'Explore the MMBM phases as an ICT interpretation of price movement, and define each phase before testing it instead of treating a completed chart as proof of accumulation or manipulation.',
     category: 'Advanced',
     readTime: '4 min read',
@@ -2989,6 +3073,8 @@ export const POSTS = [
   {
     slug: 'ict-tgif-setup-explained',
     title: 'ICT TGIF: Friday Price-Action Scenarios and Testing',
+    metaTitle: 'ICT TGIF: Friday Price-Action Scenarios and Testing',
+    metaDesc: 'Review TGIF as a hypothesis about Friday retracements and continuation, log qualifying weeks and exceptions, and avoid inferring a fixed pattern or algorithmic cause.',
     description: 'Review the TGIF label as a hypothesis about Friday retracements and continuation, record all qualifying weeks and avoid inferring a fixed weekly pattern or algorithmic cause from selected examples.',
     category: 'Strategy',
     readTime: '4 min read',
@@ -3116,6 +3202,8 @@ export const POSTS = [
   {
     slug: 'ict-judas-swing-complete',
     title: 'ICT Judas Swing: Session Reversals and Liquidity Sweeps',
+    metaTitle: 'ICT Judas Swing: Session Reversals and Liquidity Sweeps',
+    metaDesc: 'Learn how ICT traders describe an early-session move opposite the later direction, then test continuation, reversal and no-trade outcomes without assuming trapping.',
     description: 'Learn how ICT traders describe a possible early-session move opposite a later direction, and test a fixed definition against continuation, reversal and no-trade outcomes without assuming deliberate trapping.',
     category: 'Beginner',
     readTime: '4 min read',
@@ -3285,6 +3373,8 @@ export const POSTS = [
   {
     slug: 'ict-vs-smc-difference',
     title: 'ICT vs SMC: Comparing Terminology, Frameworks and Evidence',
+    metaTitle: 'ICT vs SMC: Comparing Terminology, Frameworks and Evidence',
+    metaDesc: 'Compare ICT and SMC terminology, note where definitions overlap or differ, and separate framework explanations from independently verified market mechanics.',
     description: 'Compare commonly used ICT and Smart Money Concepts terminology, note where definitions overlap or differ, and distinguish each framework\'s explanations from independently verified market mechanics.',
     category: 'Education',
     readTime: '4 min read',
@@ -3366,6 +3456,8 @@ export const POSTS = [
   {
     slug: 'common-ict-mistakes',
     title: 'Common ICT Trading Mistakes: Process, Risk and Evidence',
+    metaTitle: 'Common ICT Trading Mistakes: Process, Risk and Evidence',
+    metaDesc: 'Review setup definitions, risk, execution and trading behavior without using unsourced win-rate claims or assuming every loss is a mistake and every win proves an edge.',
     description: 'A checklist for reviewing setup definitions, risk, execution and trading behavior without using unsourced win-rate claims or assuming every loss is a mistake and every win proves an edge.',
     category: 'Education',
     readTime: '4 min read',
@@ -3406,6 +3498,8 @@ export const POSTS = [
   {
     slug: 'backtest-ict-strategies',
     title: 'How to Backtest ICT Strategies: Rules, Samples and Review',
+    metaTitle: 'How to Backtest ICT Strategies: Rules, Samples and Review',
+    metaDesc: 'Build a repeatable ICT backtesting process with fixed rules, chronological samples, trading costs and holdout checks; historical results alone do not prove an edge.',
     description: 'Build a repeatable process for backtesting ICT ideas in TradingView Replay, including fixed rules, chronological samples, costs, out-of-sample checks and the limits of inferring an edge from historical results.',
     category: 'Education',
     readTime: '4 min read',
