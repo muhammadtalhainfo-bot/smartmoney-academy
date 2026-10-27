@@ -4,6 +4,7 @@ async function main() {
   const { POSTS } = await import('../app/blog/posts.js');
   const { getRelatedBlogPosts, CURATED_RELATED } = await import('../lib/related-blog-posts.js');
   const page = fs.readFileSync('app/blog/[slug]/page.js', 'utf8');
+  const indexPage = fs.readFileSync('app/blog/BlogIndexClient.js', 'utf8');
   const knownSlugs = new Set(POSTS.map((post) => post.slug));
   const errors = [];
 
@@ -12,6 +13,19 @@ async function main() {
   if (!page.includes("href={'/blog/' + related.slug}")) errors.push('Related recommendations must link to their canonical /blog/[slug] route.');
 
   if (knownSlugs.size !== POSTS.length) errors.push('Blog post slugs must be unique before building internal links.');
+
+  if (!indexPage.includes('const availableCategories = useMemo(() =>')) {
+    errors.push('Blog category buttons must derive their available values from the published article list.');
+  }
+  if (!indexPage.includes('allPosts.map((post) => post?.category)')) {
+    errors.push('Every published article category must be available as a filter, including newly added CMS categories.');
+  }
+  if (!indexPage.includes('{availableCategories.map(cat => (')) {
+    errors.push('The blog index must render its derived, deduplicated category list.');
+  }
+  if (!indexPage.includes("allPosts.filter(p => p.category === active)")) {
+    errors.push('Selecting a category must filter the visible article list by that category.');
+  }
 
   for (const post of POSTS) {
     const related = getRelatedBlogPosts(post, POSTS);
