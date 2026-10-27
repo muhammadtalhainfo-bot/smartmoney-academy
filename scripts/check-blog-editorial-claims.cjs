@@ -661,6 +661,8 @@ const focusedSeoRegressions = [
   ['breaker institutional-control conclusion', /confirms the bears are fully in control/i],
   ['fixed EST session label', /Asian Session \(7 PM – 12 AM EST\)/i],
   ['NYSE regular-session opening mislabeled as 10 AM', /10:00 AM EST — NYSE Open Macro — full NYSE liquidity comes online/i],
+  ['IFVG presented as a probability comparison without evidence', /IFVG vs Standard FVG — Probability Comparison/i],
+  ['IFVG midpoint entry presented as a prescribed setup', /Enter short at the CE of the IFVG zone/i],
 ];
 for (const [label, pattern] of focusedSeoRegressions) {
   if (pattern.test(posts)) errors.push('Unsupported claim regression: ' + label + '.');
@@ -671,6 +673,12 @@ const requiredSeoContext = [
   ['killzone clock uses New York local time', /Asian Session \(7 PM – 12 AM New York time\)/],
   ['macro timestamps are described as references to test', /Some ICT sources discuss specific macro timestamps, but labels and definitions can differ/i],
   ['NYSE open is not mislabeled as 10 AM', /the regular NYSE core session opens at 9:30 AM ET/i],
+  ['general FVG guide has distinct search-intent metadata', /metaTitle: 'Fair Value Gap \(FVG\): Meaning, Rules & Examples'/],
+  ['validated FVG guide targets rule-definition intent', /metaTitle: 'Valid FVG Rules: Define and Test ICT Gaps'/],
+  ['CE guide targets midpoint-calculation intent', /metaTitle: 'Consequent Encroachment \(CE\): FVG Midpoint Rules'/],
+  ['IFVG page targets inverted-gap intent', /metaTitle: 'What Is an IFVG\? Inverted Fair Value Gap Rules'/],
+  ['IFVG comparison is framed as testing separate setups', /IFVG vs Standard FVG — Compare Outcomes as Separate Setups/],
+  ['IFVG entries are described as a variant to test', /One setup variant some traders test is a return into a reclassified zone/],
   ['IFVG title uses inverted wording', /title: 'Inverted Fair Value Gap \(IFVG\): ICT Rules and Retests'/],
   ['inducement title targets forex query', /title: 'What Is Inducement in Forex\? ICT Concept and Examples'/],
   ['breaker explanations avoid institutional-motive inference', /Candles do not show whether institutional buyers abandoned the area/i],

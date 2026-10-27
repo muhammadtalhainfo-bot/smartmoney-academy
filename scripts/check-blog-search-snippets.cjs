@@ -2,7 +2,10 @@ async function main() {
   const { POSTS } = await import('../app/blog/posts.js');
 
 const EXPECTED = {
-  'ict-implied-fair-value-gap-ifvg': 'Inverted Fair Value Gap (IFVG): Rules & Examples',
+  'how-to-trade-fair-value-gaps': 'Fair Value Gap (FVG): Meaning, Rules & Examples',
+  'ict-valid-fair-value-gap': 'Valid FVG Rules: Define and Test ICT Gaps',
+  'ict-consequent-encroachment-explained': 'Consequent Encroachment (CE): FVG Midpoint Rules',
+  'ict-implied-fair-value-gap-ifvg': 'What Is an IFVG? Inverted Fair Value Gap Rules',
   'ict-inducement-forex-explained': 'What Is Inducement in Forex? ICT Definition',
   'ict-breaker-block-explained': 'ICT Breaker Block vs Order Block: Rules & Examples',
   'trading-psychology-complete-guide': 'Best Trading Psychology Tips: Fear, FOMO & Risk',
