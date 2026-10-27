@@ -195,6 +195,8 @@ export const POSTS = [
 
   {
     slug: 'liquidity-in-ict-trading',
+    metaTitle: 'Liquidity in ICT Trading: Levels & Market Drivers',
+    metaDesc: 'Learn how ICT traders mark buy-side and sell-side liquidity levels, what candles cannot reveal about orders, and how to test target hypotheses.',
     title: 'Liquidity in ICT Trading: Chart References and Market Drivers',
     description: 'Explore how ICT traders use buy-side and sell-side liquidity references, why visible levels do not reveal every order or participant motive, and how to test target hypotheses against broader market context.',
     category: 'Beginner',
@@ -328,6 +330,8 @@ export const POSTS = [
 
   {
     slug: 'ict-premium-discount-zones',
+    metaTitle: 'ICT Premium & Discount: Midpoint Context',
+    metaDesc: 'Learn how traders divide a chosen range at its midpoint and use premium or discount as context, without treating either label as proof of value or direction.',
     title: 'ICT Premium and Discount Zones: Midpoint Context and Limitations',
     description: 'Learn how ICT traders divide a selected range at its midpoint and use premium or discount as context. These labels do not prove value or predict a reversal without separately defined rules and testing.',
     category: 'Intermediate',
@@ -665,6 +669,8 @@ export const POSTS = [
 
   {
     slug: 'ict-optimal-trade-entry-ote',
+    metaTitle: 'ICT OTE: Retracement Zone Rules & Testing',
+    metaDesc: 'Learn how traders define the Optimal Trade Entry (OTE) retracement area, select swing anchors consistently, and test it as context rather than a standalone signal.',
     title: 'ICT Optimal Trade Entry (OTE): Retracement Zones and Testing',
     description: 'A guide to the commonly discussed OTE retracement area, how to state swing anchors consistently, and why a Fibonacci zone is context rather than a standalone entry signal.',
     category: 'Intermediate',
@@ -882,6 +888,8 @@ export const POSTS = [
 
   {
     slug: 'ict-candle-range-theory-crt',
+    metaTitle: 'Candle Range Theory (CRT): Rules & Testing',
+    metaDesc: 'Learn how ICT traders use a prior candle range as a reference, define sweep-and-return rules, and test outcomes without assuming an algorithmic cycle.',
     title: 'Candle Range Theory (CRT): Reference Candles and Testing Rules',
     description: 'Learn how traders use a prior candle range as a reference in some ICT approaches, how to define a sweep-and-return rule, and why candle ranges do not imply an algorithmic cycle or guaranteed next move.',
     category: 'Advanced',
@@ -964,6 +972,8 @@ export const POSTS = [
 
   {
     slug: 'ict-institutional-order-flow-entry-drill',
+    metaTitle: 'ICT Order Flow Entry Drill: Rules & Tests',
+    metaDesc: 'A practical review of the IOFED entry-sequence label with defined triggers and invalidation, compared against a simpler FVG rule without inferring participants.',
     title: 'ICT Institutional Order Flow Entry Drill: Rules and Test Cases',
     description: 'A practical review of the IOFED label as an entry sequence, with defined triggers, invalidation and comparison against a simpler FVG rule. Candle patterns alone do not identify institutional participants.',
     category: 'Advanced',
@@ -1038,6 +1048,8 @@ export const POSTS = [
 
   {
     slug: 'ict-nwog-ndog-opening-gaps',
+    metaTitle: 'ICT NWOG & NDOG: Opening Gap Rules',
+    metaDesc: 'Learn how NWOG and NDOG are marked as price-gap references, define the feed and time boundaries, and test revisits without treating gaps as guaranteed targets.',
     title: 'ICT NWOG and NDOG — New Week and New Day Opening Gaps Explained',
     description: 'The New Week Opening Gap (NWOG) and New Day Opening Gap (NDOG) are gap references used by some ICT traders. Price may revisit them, but gaps can remain open and should not be treated as guaranteed targets.',
     category: 'Intermediate',
@@ -1076,6 +1088,8 @@ export const POSTS = [
 
   {
     slug: 'ict-mitigation-block-guide',
+    metaTitle: 'ICT Mitigation Blocks: Rules & Retests',
+    metaDesc: 'Learn a common way to mark a mitigation-block candidate after an order-block failure, define boundaries and invalidation, and test retests without inferring intent.',
     title: 'ICT Mitigation Blocks: Failed-Zone Definitions and Retest Testing',
     description: 'Learn one convention for marking a mitigation-block candidate after an order-block failure, specify its boundaries and invalidation, and test retests without inferring whether institutions entered or exited positions.',
     category: 'Intermediate',
@@ -1118,6 +1132,8 @@ export const POSTS = [
 
   {
     slug: 'ict-central-bank-dealers-range',
+    metaTitle: 'ICT CBDR: Range Measurement & Scenarios',
+    metaDesc: 'Define the Central Bank Dealers Range (CBDR) as a selected interval, compare its width with later session movement, and record exceptions rather than forecast outcomes.',
     title: 'ICT Central Bank Dealers Range (CBDR): Measurement and Scenarios',
     description: 'Define the CBDR as a selected time-range reference, compare its size with subsequent session movement and record exceptions rather than assuming it predicts daily range or institutional activity.',
     category: 'Intermediate',
@@ -1159,6 +1175,8 @@ export const POSTS = [
 
   {
     slug: 'ict-power-of-three-amd-complete',
+    metaTitle: 'ICT Power of Three (AMD): Phases & Testing',
+    metaDesc: 'Explore the Power of Three as a chart-label framework for selected ranges or sessions, define its phases in advance, and record cases that do not follow the sequence.',
     title: 'ICT Power of Three (AMD): Accumulation, Manipulation and Distribution',
     description: 'Explore the Power of Three as a chart-interpretation framework for selected ranges or sessions, and learn to define its phases in advance without assuming every candle follows the same sequence.',
     category: 'Beginner',
@@ -1364,6 +1382,8 @@ export const POSTS = [
 
   {
     slug: 'ict-hidden-order-block',
+    metaTitle: 'ICT Hidden Order Blocks: Definitions & Tests',
+    metaDesc: 'Review how ICT traders mark hidden-order-block candidates across timeframes, set range and confirmation rules, and test the idea without treating the label as a signal.',
     title: 'ICT Hidden Order Blocks: Timeframe Definitions and Test Rules',
     description: 'Review the Hidden Order Block label used in ICT education, how traders mark candidate zones across timeframes, and what evidence is needed to evaluate the idea. The name alone is not a trading signal.',
     category: 'Advanced',
@@ -1489,6 +1509,8 @@ export const POSTS = [
 
   {
     slug: 'ict-seek-and-destroy-friday',
+    metaTitle: 'ICT Seek & Destroy Friday: A Testable Idea',
+    metaDesc: 'Review the Seek and Destroy label as a hypothesis about choppy price action near selected news events. Define the time window and record counterexamples.',
     title: 'ICT Seek and Destroy Friday: A Hypothesis Around News Sessions',
     description: 'Review the Seek and Destroy label as a hypothesis about choppy or conflicting price action before selected news events. Define the window in advance and record counterexamples rather than inferring algorithmic intent.',
     category: 'Strategy',
@@ -1623,6 +1645,8 @@ export const POSTS = [
 
 {
     slug: 'ict-qml-quasimodo-pattern',
+    metaTitle: 'ICT Quasimodo (QML): Structure & Confirmation',
+    metaDesc: 'Learn how traders label the Quasimodo (QML) pattern, specify swing-break and confirmation rules, and test follow-through without assuming a swing predicts reversal.',
     title: 'ICT Quasimodo (QML): Swing Structure and Reversal Hypotheses',
     description: 'Learn how traders label the Quasimodo pattern from swing structure, specify the relevant break and confirmation, and evaluate follow-through without assuming a swing extreme predicts a reversal.',
     category: 'Intermediate',
@@ -1796,6 +1820,8 @@ export const POSTS = [
 
   {
     slug: 'ict-inducement-after-bos',
+    metaTitle: 'ICT Inducement After BOS: Rules & Evidence',
+    metaDesc: 'Study inducement after a Break of Structure as a possible entry-area sweep. Define observable conditions and test results without assuming deliberate algorithmic traps.',
     title: 'ICT Inducement After BOS: Separating Observation from Intent',
     description: 'Explore how the inducement label is used for a possible entry-level sweep after a Break of Structure, while separating observable price movement from claims that an algorithm deliberately traps traders.',
     category: 'Intermediate',
@@ -1839,6 +1865,8 @@ export const POSTS = [
 
   {
     slug: 'ict-hrlr-lrlr-liquidity-run',
+    metaTitle: 'ICT HRLR & LRLR: Movement Toward Levels',
+    metaDesc: 'Learn how ICT traders label high- and low-resistance movement toward a reference, distinguish chart interpretation from measured order flow, and test the rule.',
     title: 'ICT HRLR and LRLR: Describing Price Movement Toward References',
     description: 'Learn how ICT traders label high- and low-resistance movement toward a reference level, distinguish the label from measured order flow, and test management rules without assuming the target will be reached.',
     category: 'Advanced',
@@ -2339,6 +2367,8 @@ export const POSTS = [
 
   {
     slug: 'ict-market-order-flow-explained',
+    metaTitle: 'Market Order Flow vs ICT Chart Interpretation',
+    metaDesc: 'Distinguish market-microstructure order flow from ICT candle labels. A chart alone cannot reveal the full order book, participant identity or institutional intent.',
     title: 'ICT Market Order Flow: Observable Data vs Chart Interpretation',
     description: 'Distinguish market-microstructure order flow from ICT interpretations of candle structure. Chart patterns alone do not reveal the complete order book, participant identities or institutional intent.',
     category: 'Beginner',
@@ -2380,6 +2410,8 @@ export const POSTS = [
 
   {
     slug: 'ict-premium-discount-zone-identification',
+    metaTitle: 'ICT Premium & Discount: Midpoint Rules',
+    metaDesc: 'Learn how traders divide a selected range at its midpoint and use premium or discount as context, without assuming institutions must buy or sell either side.',
     title: 'ICT Premium and Discount: Midpoint Context Without Certainty',
     description: 'Learn how a selected dealing range is divided around its midpoint and how some ICT traders use premium or discount as context, without assuming that institutions must buy or sell on either side.',
     category: 'Beginner',
@@ -2508,6 +2540,8 @@ export const POSTS = [
 
   {
     slug: 'ict-reclaimed-order-block',
+    metaTitle: 'ICT Reclaimed Order Blocks: Zone & Retest Rules',
+    metaDesc: 'Learn how some ICT traders label a previously failed order-block zone after a retest. Define boundaries and confirmation without inferring institutional positions.',
     title: 'ICT Reclaimed Order Blocks: Zone Definitions and Retest Evidence',
     description: 'Learn how some ICT traders classify a previously failed order-block zone after a later retest, state the exact boundaries and confirmation rule, and avoid inferring institutional positions from the pattern alone.',
     category: 'Advanced',
@@ -2588,6 +2622,8 @@ export const POSTS = [
 
   {
     slug: 'ict-bullish-order-block-complete',
+    metaTitle: 'ICT Bullish Order Block: Identification & Risk',
+    metaDesc: 'Learn how ICT traders mark a candidate bullish order block before an upward move, define invalidation, and assess retests without inferring institutional buying.',
     title: 'ICT Bullish Order Block: Identification, Context and Testing',
     description: 'Learn how ICT traders mark a candidate bullish order block before an upward displacement, define invalidation, and measure retests without treating the label as evidence of institutional buying or a reliable edge.',
     category: 'Beginner',
@@ -2907,6 +2943,8 @@ export const POSTS = [
 
   {
     slug: 'ict-market-maker-sell-model-mmsm',
+    metaTitle: 'ICT Market Maker Sell Model (MMSM): Rules & Tests',
+    metaDesc: 'Review the bearish Market Maker model as an ICT chart interpretation. Define candidate phases and test outcomes without inferring participant motives from candles.',
     title: 'ICT Market Maker Sell Model (MMSM): Chart Framework and Tests',
     description: 'Review the bearish Market Maker model as an ICT interpretation of selected price sequences, with rules for marking candidate phases and warnings against reading institutional positions or motives from candles alone.',
     category: 'Advanced',
@@ -2990,6 +3028,8 @@ export const POSTS = [
 
   {
     slug: 'ict-valid-pullback-guide',
+    metaTitle: 'ICT Pullback Rules: Structure & Invalidation',
+    metaDesc: 'Define pullback candidates using consistent structure and range rules, then record continuation, reversal and no-trade outcomes without assuming a marked area must hold.',
     title: 'ICT Pullback Candidates: Structure, Confirmation and Invalidation',
     description: 'A practical guide to defining pullback candidates, choosing structure and range rules, and recording continuation, reversal and no-trade outcomes without assuming a marked zone must hold.',
     category: 'Intermediate',
@@ -3031,6 +3071,8 @@ export const POSTS = [
 
   {
     slug: 'ict-rejection-block-explained',
+    metaTitle: 'ICT Rejection Blocks: Wick Zones & Testing',
+    metaDesc: 'Learn one way ICT traders mark rejection-block candidates around long wicks. Separate observed behavior from claims about intent and test retests under fixed rules.',
     title: 'ICT Rejection Blocks: Wick-Based Zones and Alternative Explanations',
     description: 'Learn one way ICT traders mark rejection-block candidates around long wicks, distinguish observations from claims about participant intent and record retests under a prewritten rule.',
     category: 'Intermediate',
@@ -3111,6 +3153,8 @@ export const POSTS = [
 
   {
     slug: 'ict-market-structure-shift-complete',
+    metaTitle: 'ICT Market Structure Shift (MSS): Rules & Limits',
+    metaDesc: 'Learn how ICT traders define a break of selected swing structure, specify wick or close confirmation, and separate the observation from proof of a trend change.',
     title: 'ICT Market Structure Shift (MSS): Definitions, Confirmation and Limits',
     description: 'Learn how ICT traders define a break of selected swing structure, specify wick or close confirmation, and distinguish that observation from proof of a trend change or a complete entry plan.',
     category: 'Beginner',
@@ -3196,6 +3240,8 @@ export const POSTS = [
 
   {
     slug: 'ict-supply-demand-forex',
+    metaTitle: 'Supply & Demand vs ICT: Comparing Chart Zones',
+    metaDesc: 'Compare supply-and-demand zones with ICT order-block and FVG labels. Define both frameworks consistently and test outcomes without assuming zones reveal unfilled orders.',
     title: 'Supply and Demand vs ICT: Comparing Zone-Based Chart Frameworks',
     description: 'Compare supply-and-demand zones with ICT labels such as order blocks and FVGs, define each framework consistently, and test outcomes without assuming zones reveal unfilled institutional orders or a validated edge.',
     category: 'Beginner',
@@ -3396,6 +3442,8 @@ export const POSTS = [
   },
   {
     "slug": "how-to-trade-nas100-ict",
+    metaTitle: 'How to Study NAS100 With ICT Concepts',
+    metaDesc: 'Test ICT-style price-action ideas on NAS100 with explicit session, entry and invalidation rules. Chart labels do not prove institutional intent or forecast the next move.',
     "title": "How to Study NAS100 With ICT Concepts: Rules, Sessions and Risk",
     "description": "A practical framework for testing ICT-style price-action ideas on NAS100 without treating chart labels as evidence of institutional intent or as a forecast.",
     "category": "Instrument Study",
@@ -3487,6 +3535,8 @@ export const POSTS = [
   },
   {
     "slug": "ict-2026-mentorship-concepts",
+    metaTitle: 'ICT Mentorship Concepts: Source Checks & Testing',
+    metaDesc: 'Use a repeatable process to check ICT lesson versions, separate definitions from interpretations, and test written rules without treating new labels as proof of an edge.',
     "title": "ICT Mentorship Concepts: A Study, Testing and Source-Checking Framework",
     "description": "Use a repeatable process to define ICT concepts, check source and version details, and test rules without assuming a newer label is a validated strategy or a proven market mechanism.",
     "category": "Study Guide",
