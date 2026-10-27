@@ -18,6 +18,35 @@ const EXPECTED = {
 const errors = [];
 const bySlug = new Map(POSTS.map((post) => [post.slug, post]));
 const titles = new Set();
+const descriptions = new Set();
+
+for (const post of POSTS) {
+  const slug = String(post?.slug || '').trim();
+  const title = String(post?.title || '').trim();
+  const description = String(post?.description || '').trim();
+  const effectiveTitle = String(post?.metaTitle || (title ? title + ' | ICT Flow' : '')).trim();
+  const effectiveDescription = String(post?.metaDesc || description).trim();
+
+  if (!slug || !title || !description || !post?.date) {
+    errors.push((slug || '(unknown article)') + ': every static blog article needs a slug, visible title, description and publication date.');
+    continue;
+  }
+  if (Boolean(post.metaTitle) !== Boolean(post.metaDesc)) {
+    errors.push(slug + ': custom metaTitle and metaDesc must be supplied together.');
+  }
+  if (post.metaTitle && (post.metaTitle.length < 30 || post.metaTitle.length > 70)) {
+    errors.push(slug + ': custom metaTitle must be 30–70 characters.');
+  }
+  if (post.metaDesc && (post.metaDesc.length < 120 || post.metaDesc.length > 170)) {
+    errors.push(slug + ': custom metaDesc must be 120–170 characters.');
+  }
+  const normalizedTitle = effectiveTitle.toLowerCase();
+  if (titles.has(normalizedTitle)) errors.push(slug + ': rendered article title duplicates another article.');
+  titles.add(normalizedTitle);
+  const normalizedDescription = effectiveDescription.toLowerCase();
+  if (descriptions.has(normalizedDescription)) errors.push(slug + ': rendered article description duplicates another article.');
+  descriptions.add(normalizedDescription);
+}
 
 for (const [slug, expectedTitle] of Object.entries(EXPECTED)) {
   const post = bySlug.get(slug);
@@ -34,8 +63,6 @@ for (const [slug, expectedTitle] of Object.entries(EXPECTED)) {
   if (typeof post.metaDesc !== 'string' || post.metaDesc.length < 120 || post.metaDesc.length > 170) {
     errors.push(slug + ': metaDesc must be 120–170 characters.');
   }
-  if (titles.has(post.metaTitle)) errors.push(slug + ': duplicate SEO title.');
-  titles.add(post.metaTitle);
   if (!post.title || !post.description) errors.push(slug + ': visible title and description must remain present.');
 }
 
