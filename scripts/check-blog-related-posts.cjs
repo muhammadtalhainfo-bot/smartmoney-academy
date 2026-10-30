@@ -27,7 +27,10 @@ async function main() {
     errors.push('Selecting a category must filter the visible article list by that category.');
   }
 
-  if (!/const rest = active === 'All'\\s*\\?\\s*filtered\\.filter\\(\\(post\\) => post\\.slug !== featured\\?\\.slug\\)\\s*:\\s*filtered;/.test(indexPage)) {
+  const expectedFeaturedFilter = `const rest = active === 'All'
+      ? filtered.filter((post) => post.slug !== featured?.slug)
+      : filtered;`;
+  if (!indexPage.includes(expectedFeaturedFilter)) {
     errors.push('Category filters must retain the featured article when it belongs to the selected category.');
   }
 
