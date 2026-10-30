@@ -14,7 +14,9 @@ export default function BlogIndexClient({ posts }) {
     const allPosts = Array.isArray(posts) ? posts : [];
     const filtered = active === 'All' ? allPosts : allPosts.filter(p => p.category === active);
     const featured = allPosts.find(p => p.featured) || allPosts[0];
-    const rest = filtered.filter(p => p.slug !== featured?.slug);
+    const rest = active === 'All'
+      ? filtered.filter((post) => post.slug !== featured?.slug)
+      : filtered;
     return { allPosts, featured, rest };
   }, [posts, active]);
 

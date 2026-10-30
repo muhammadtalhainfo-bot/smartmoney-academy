@@ -27,6 +27,10 @@ async function main() {
     errors.push('Selecting a category must filter the visible article list by that category.');
   }
 
+  if (!/const rest = active === 'All'\\s*\\?\\s*filtered\\.filter\\(\\(post\\) => post\\.slug !== featured\\?\\.slug\\)\\s*:\\s*filtered;/.test(indexPage)) {
+    errors.push('Category filters must retain the featured article when it belongs to the selected category.');
+  }
+
   for (const post of POSTS) {
     const related = getRelatedBlogPosts(post, POSTS);
     if (related.length !== Math.min(3, POSTS.length - 1)) {
