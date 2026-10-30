@@ -2,8 +2,9 @@ const fs = require('node:fs');
 
 async function main() {
   const { POSTS } = await import('../app/blog/posts.js');
-  const { getRelatedBlogPosts } = await import('../lib/related-blog-posts.js');
+  const { getRelatedBlogPosts, CURATED_RELATED } = await import('../lib/related-blog-posts.js');
   const page = fs.readFileSync('app/blog/[slug]/page.js', 'utf8');
+  const indexPage = fs.readFileSync('app/blog/BlogIndexClient.js', 'utf8');
   const knownSlugs = new Set(POSTS.map((post) => post.slug));
   const errors = [];
 
@@ -12,6 +13,30 @@ async function main() {
   if (!page.includes("href={'/blog/' + related.slug}")) errors.push('Related recommendations must link to their canonical /blog/[slug] route.');
 
   if (knownSlugs.size !== POSTS.length) errors.push('Blog post slugs must be unique before building internal links.');
+
+  if (!indexPage.includes('const availableCategories = useMemo(() =>')) {
+    errors.push('Blog category buttons must derive their available values from the published article list.');
+  }
+  if (!indexPage.includes('allPosts.map((post) => post?.category)')) {
+    errors.push('Every published article category must be available as a filter, including newly added CMS categories.');
+  }
+  if (!indexPage.includes('{availableCategories.map(cat => (')) {
+    errors.push('The blog index must render its derived, deduplicated category list.');
+  }
+  if (!indexPage.includes("allPosts.filter(p => p.category === active)")) {
+    errors.push('Selecting a category must filter the visible article list by that category.');
+  }
+
+  const expectedFeaturedFilter = `const rest = active === 'All'
+      ? filtered.filter((post) => post.slug !== featured?.slug)
+      : filtered;`;
+  if (!indexPage.includes(expectedFeaturedFilter)) {
+    errors.push('Category filters must retain the featured article when it belongs to the selected category.');
+  }
+  const expectedCategoryHeading = "{active === 'All' ? 'ALL ARTICLES' : active.toUpperCase() + ' ARTICLES'} ({active === 'All' ? allPosts.length : rest.length})";
+  if (!indexPage.includes(expectedCategoryHeading)) {
+    errors.push('The blog index heading and count must reflect the selected category rather than the full catalogue.');
+  }
 
   for (const post of POSTS) {
     const related = getRelatedBlogPosts(post, POSTS);
@@ -26,6 +51,22 @@ async function main() {
 
     for (const slug of slugs) {
       if (!knownSlugs.has(slug)) errors.push(post.slug + ': related slug does not exist: ' + slug);
+    }
+  }
+
+  for (const [sourceSlug, preferredSlugs] of Object.entries(CURATED_RELATED)) {
+    const sourcePost = POSTS.find((post) => post.slug === sourceSlug);
+    if (!sourcePost) {
+      errors.push('Curated related-reading source is missing: ' + sourceSlug);
+      continue;
+    }
+    const relatedSlugs = getRelatedBlogPosts(sourcePost, POSTS).map((post) => post.slug);
+    for (const targetSlug of preferredSlugs) {
+      if (!knownSlugs.has(targetSlug)) {
+        errors.push(sourceSlug + ': curated related-reading target does not exist: ' + targetSlug);
+      } else if (!relatedSlugs.includes(targetSlug)) {
+        errors.push(sourceSlug + ': curated related-reading target is not included: ' + targetSlug);
+      }
     }
   }
 

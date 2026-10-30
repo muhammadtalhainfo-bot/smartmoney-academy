@@ -5,7 +5,7 @@ import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 import ModuleBanner from '@/app/components/ModuleBanner';
 
-const CATEGORIES = ['All', 'Beginner', 'Intermediate', 'Advanced', 'Strategy', 'Psychology', 'News', 'Analysis'];
+const CATEGORIES = ['Beginner', 'Intermediate', 'Advanced', 'Strategy', 'Psychology', 'News', 'Analysis'];
 
 export default function BlogIndexClient({ posts }) {
   const [active, setActive] = useState('All');
@@ -14,9 +14,21 @@ export default function BlogIndexClient({ posts }) {
     const allPosts = Array.isArray(posts) ? posts : [];
     const filtered = active === 'All' ? allPosts : allPosts.filter(p => p.category === active);
     const featured = allPosts.find(p => p.featured) || allPosts[0];
-    const rest = filtered.filter(p => p.slug !== featured?.slug);
+    const rest = active === 'All'
+      ? filtered.filter((post) => post.slug !== featured?.slug)
+      : filtered;
     return { allPosts, featured, rest };
   }, [posts, active]);
+
+  const availableCategories = useMemo(() => {
+    const present = new Set(
+      allPosts.map((post) => post?.category).filter((category) => typeof category === 'string' && category.trim())
+    );
+    const known = CATEGORIES.filter((category) => present.has(category));
+    const additional = [...present].filter((category) => !CATEGORIES.includes(category))
+      .sort((a, b) => a.localeCompare(b));
+    return ['All', ...known, ...additional];
+  }, [allPosts]);
 
   return (
     <div style={{ minHeight: '100vh', background: '#080808', color: 'white', fontFamily: "'DM Sans', sans-serif" }}>
@@ -65,10 +77,10 @@ export default function BlogIndexClient({ posts }) {
 
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px', flexWrap: 'wrap', gap: '12px' }}>
           <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '24px', color: 'white' }}>
-            ALL ARTICLES ({allPosts.length})
+            {active === 'All' ? 'ALL ARTICLES' : active.toUpperCase() + ' ARTICLES'} ({active === 'All' ? allPosts.length : rest.length})
           </h2>
           <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-            {CATEGORIES.map(cat => (
+            {availableCategories.map(cat => (
               <button type="button" key={cat} onClick={() => setActive(cat)} aria-pressed={active === cat} style={{
                 padding: '6px 14px', borderRadius: '100px',
                 border: '1px solid ' + (active === cat ? '#E8C547' : 'rgba(255,255,255,0.6)'),

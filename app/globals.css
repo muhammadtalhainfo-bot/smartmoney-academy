@@ -20,10 +20,17 @@ html {
 body {
   background: var(--if-bg);
   color: var(--if-text);
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-dm-sans), sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
+
+/* Legacy pages still set these family names in inline styles. Bridge those
+   declarations to next/font's generated local families without editing hundreds
+   of unrelated components in one pass. */
+[style*="Bebas Neue"] { font-family: var(--font-bebas-neue), sans-serif !important; }
+[style*="DM Sans"] { font-family: var(--font-dm-sans), sans-serif !important; }
+[style*="DM Mono"] { font-family: var(--font-dm-mono), monospace !important; }
 
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: #0A0A0A; }
