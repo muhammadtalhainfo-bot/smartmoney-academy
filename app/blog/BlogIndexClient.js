@@ -77,7 +77,7 @@ export default function BlogIndexClient({ posts }) {
 
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px', flexWrap: 'wrap', gap: '12px' }}>
           <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '24px', color: 'white' }}>
-            ALL ARTICLES ({allPosts.length})
+            {active === 'All' ? 'ALL ARTICLES' : active.toUpperCase() + ' ARTICLES'} ({active === 'All' ? allPosts.length : rest.length})
           </h2>
           <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
             {availableCategories.map(cat => (

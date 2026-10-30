@@ -33,6 +33,10 @@ async function main() {
   if (!indexPage.includes(expectedFeaturedFilter)) {
     errors.push('Category filters must retain the featured article when it belongs to the selected category.');
   }
+  const expectedCategoryHeading = "{active === 'All' ? 'ALL ARTICLES' : active.toUpperCase() + ' ARTICLES'} ({active === 'All' ? allPosts.length : rest.length})";
+  if (!indexPage.includes(expectedCategoryHeading)) {
+    errors.push('The blog index heading and count must reflect the selected category rather than the full catalogue.');
+  }
 
   for (const post of POSTS) {
     const related = getRelatedBlogPosts(post, POSTS);
