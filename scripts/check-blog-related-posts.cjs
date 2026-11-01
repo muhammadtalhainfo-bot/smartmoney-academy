@@ -3,6 +3,7 @@ const fs = require('node:fs');
 async function main() {
   const { POSTS } = await import('../app/blog/posts.js');
   const { getRelatedBlogPosts, CURATED_RELATED } = await import('../lib/related-blog-posts.js');
+  const { sortBlogPosts } = await import('../lib/blog-sort.js');
   const page = fs.readFileSync('app/blog/[slug]/page.js', 'utf8');
   const indexPage = fs.readFileSync('app/blog/BlogIndexClient.js', 'utf8');
   const knownSlugs = new Set(POSTS.map((post) => post.slug));
@@ -29,6 +30,42 @@ async function main() {
   if (!indexPage.includes("const featured = active === 'All' && !searchQuery ? featuredPost : null;") ||
       !indexPage.includes('const rest = matchingPosts.filter((post) => post.slug !== featured?.slug);')) {
     errors.push('The featured article must remain visible in All mode and join normal results during search or category filtering.');
+  }
+
+  if (!indexPage.includes("import { sortBlogPosts } from '@/lib/blog-sort';") ||
+      !indexPage.includes('value={sortBy}') ||
+      !indexPage.includes('onChange={(event) => setSortBy(event.target.value)}')) {
+    errors.push('The blog index must expose a controlled article-sort selector.');
+  }
+  for (const option of ['featured', 'newest', 'oldest', 'title']) {
+    if (!indexPage.includes('value="' + option + '"')) {
+      errors.push('The blog sort selector is missing the ' + option + ' mode.');
+    }
+  }
+
+  const sortingFixture = [
+    { slug: 'middle', title: 'Beta', date: 'May 3, 2026' },
+    { slug: 'newest', title: 'Alpha', date: 'June 10, 2026' },
+    { slug: 'oldest', title: 'Delta', date: 'January 1, 2026' },
+    { slug: 'missing-date', title: 'Charlie', date: '' },
+    { slug: 'invalid-date', title: 'Echo', date: 'not-a-date' },
+  ];
+  const originalOrder = sortingFixture.map((post) => post.slug).join(',');
+  const expectedOrders = {
+    featured: 'middle,newest,oldest,missing-date,invalid-date',
+    newest: 'newest,middle,oldest,missing-date,invalid-date',
+    oldest: 'oldest,middle,newest,missing-date,invalid-date',
+    title: 'newest,middle,missing-date,oldest,invalid-date',
+  };
+  for (const [mode, expected] of Object.entries(expectedOrders)) {
+    const actual = sortBlogPosts(sortingFixture, mode).map((post) => post.slug).join(',');
+    if (actual !== expected) errors.push('Blog article sort mode ' + mode + ' returned ' + actual + ' instead of ' + expected + '.');
+  }
+  if (sortingFixture.map((post) => post.slug).join(',') !== originalOrder) {
+    errors.push('Sorting blog articles must not mutate the source collection.');
+  }
+  if (sortBlogPosts(null, 'newest').length !== 0 || sortBlogPosts(sortingFixture, 'unknown').map((post) => post.slug).join(',') !== expectedOrders.featured) {
+    errors.push('Blog sorting must handle invalid collections and unknown modes safely.');
   }
 
   const expectedFilteredHeading = "{active === 'All' ? (searchQuery ? 'SEARCH RESULTS' : 'ALL ARTICLES') : active.toUpperCase() + ' ARTICLES'} ({resultCount})";

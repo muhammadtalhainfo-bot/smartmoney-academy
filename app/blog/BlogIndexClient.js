@@ -4,12 +4,14 @@ import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 import ModuleBanner from '@/app/components/ModuleBanner';
+import { sortBlogPosts } from '@/lib/blog-sort';
 
 const CATEGORIES = ['Beginner', 'Intermediate', 'Advanced', 'Strategy', 'Psychology', 'News', 'Analysis'];
 
 export default function BlogIndexClient({ posts }) {
   const [active, setActive] = useState('All');
   const [search, setSearch] = useState('');
+  const [sortBy, setSortBy] = useState('featured');
   const searchQuery = search.trim().toLowerCase();
 
   const { allPosts, featured, rest, resultCount } = useMemo(() => {
@@ -23,11 +25,12 @@ export default function BlogIndexClient({ posts }) {
         .toLowerCase();
       return searchTerms.every((term) => searchableText.includes(term));
     });
+    const sortedPosts = sortBlogPosts(matchingPosts, sortBy);
     const featuredPost = allPosts.find((post) => post?.featured) || allPosts[0];
-    const featured = active === 'All' && !searchQuery ? featuredPost : null;
-    const rest = matchingPosts.filter((post) => post.slug !== featured?.slug);
+    const featured = active === 'All' && !searchQuery && sortBy === 'featured' ? featuredPost : null;
+    const rest = sortedPosts.filter((post) => post.slug !== featured?.slug);
     return { allPosts, featured, rest, resultCount: matchingPosts.length };
-  }, [posts, active, searchQuery]);
+  }, [posts, active, searchQuery, sortBy]);
 
   const availableCategories = useMemo(() => {
     const counts = new Map();
@@ -84,6 +87,22 @@ export default function BlogIndexClient({ posts }) {
             <p id="blog-search-help" style={{ color: 'rgba(255,255,255,0.6)', fontSize: '12px', lineHeight: 1.5, margin: '7px 0 0' }}>
               Search matches every word across article titles, topics and descriptions.
             </p>
+          </div>
+          <div style={{ flex: '0 1 210px', minWidth: '180px' }}>
+            <label htmlFor="blog-sort-order" style={{ display: 'block', color: '#E8C547', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.08em', marginBottom: '9px' }}>
+              SORT ARTICLES
+            </label>
+            <select
+              id="blog-sort-order"
+              value={sortBy}
+              onChange={(event) => setSortBy(event.target.value)}
+              style={{ width: '100%', boxSizing: 'border-box', background: '#101010', color: 'white', border: '1px solid rgba(232,197,71,0.35)', borderRadius: '8px', padding: '12px 14px', fontSize: '14px' }}
+            >
+              <option value="featured">Featured layout</option>
+              <option value="newest">Newest first</option>
+              <option value="oldest">Oldest first</option>
+              <option value="title">Title A–Z</option>
+            </select>
           </div>
           <p role="status" aria-live="polite" aria-atomic="true" style={{ color: 'rgba(255,255,255,0.72)', fontSize: '13px', margin: '0 0 4px' }}>
             Showing {resultCount} {resultCount === 1 ? 'article' : 'articles'}
