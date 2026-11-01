@@ -46,7 +46,7 @@ async function main() {
   if (!indexPage.includes('searchTerms.every((term) => searchableText.includes(term))')) {
     errors.push('Article search must match all query words against indexed article text.');
   }
-  if (!indexPage.includes(String.raw`searchQuery.split(/\\s+/)`)) {
+  if (!indexPage.includes('searchQuery.split(/' + String.fromCharCode(92) + 's+/)')) {
     errors.push('Article search must split multi-word queries on whitespace.');
   }
   if (!indexPage.includes('availableCategories.map(({ name: cat, count }) => (')) {
