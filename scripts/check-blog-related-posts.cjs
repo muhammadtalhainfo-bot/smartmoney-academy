@@ -33,9 +33,9 @@ async function main() {
   if (!indexPage.includes(expectedFeaturedFilter)) {
     errors.push('Category filters must retain the featured article when it belongs to the selected category.');
   }
-  const expectedCategoryHeading = "{active === 'All' ? 'ALL ARTICLES' : active.toUpperCase() + ' ARTICLES'} ({active === 'All' ? allPosts.length : rest.length})";
-  if (!indexPage.includes(expectedCategoryHeading)) {
-    errors.push('The blog index heading and count must reflect the selected category rather than the full catalogue.');
+  const expectedFilteredHeading = "{active === 'All' ? (searchQuery ? 'SEARCH RESULTS' : 'ALL ARTICLES') : active.toUpperCase() + ' ARTICLES'} ({resultCount})";
+  if (!indexPage.includes(expectedFilteredHeading)) {
+    errors.push('The blog index heading and count must reflect the actual filtered and searched result set.');
   }
 
   if (!indexPage.includes('type="search"') ||
@@ -45,6 +45,9 @@ async function main() {
   }
   if (!indexPage.includes('searchTerms.every((term) => searchableText.includes(term))')) {
     errors.push('Article search must match all query words against indexed article text.');
+  }
+  if (!indexPage.includes(String.raw`searchQuery.split(/\\s+/)`)) {
+    errors.push('Article search must split multi-word queries on whitespace.');
   }
   if (!indexPage.includes('availableCategories.map(({ name: cat, count }) => (')) {
     errors.push('Each category filter must display its published article count.');
@@ -59,6 +62,9 @@ async function main() {
       !indexPage.includes('CLEAR SEARCH AND FILTERS') ||
       !indexPage.includes("setActive('All'); setSearch('');")) {
     errors.push('An empty search result must explain the state and provide a working reset action.');
+  }
+  if (!indexPage.includes('{rest.length > 0 || featured ? (')) {
+    errors.push('The blog index must still show its featured card when it is the only available article.');
   }
 
   for (const post of POSTS) {

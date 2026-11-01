@@ -15,7 +15,7 @@ export default function BlogIndexClient({ posts }) {
   const { allPosts, featured, rest, resultCount } = useMemo(() => {
     const allPosts = Array.isArray(posts) ? posts : [];
     const categoryPosts = active === 'All' ? allPosts : allPosts.filter((post) => post.category === active);
-    const searchTerms = searchQuery.split(/\\s+/).filter(Boolean);
+    const searchTerms = searchQuery.split(/\s+/).filter(Boolean);
     const matchingPosts = categoryPosts.filter((post) => {
       const searchableText = [post?.title, post?.description, post?.category, post?.slug]
         .filter((value) => typeof value === 'string')
@@ -114,7 +114,7 @@ export default function BlogIndexClient({ posts }) {
 
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px', flexWrap: 'wrap', gap: '12px' }}>
           <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '24px', color: 'white' }}>
-            {active === 'All' ? 'ALL ARTICLES' : active.toUpperCase() + ' ARTICLES'} ({active === 'All' ? allPosts.length : rest.length})
+            {active === 'All' ? (searchQuery ? 'SEARCH RESULTS' : 'ALL ARTICLES') : active.toUpperCase() + ' ARTICLES'} ({resultCount})
           </h2>
           <nav aria-label="Filter articles by category" style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
             {availableCategories.map(({ name: cat, count }) => (
@@ -131,7 +131,7 @@ export default function BlogIndexClient({ posts }) {
           </nav>
         </div>
 
-        {rest.length > 0 ? (
+        {rest.length > 0 || featured ? (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%,300px), 1fr))', gap: '16px' }}>
             {rest.map(post => (
               <Link key={post.slug} href={'/blog/' + post.slug} style={{ textDecoration: 'none' }}>
