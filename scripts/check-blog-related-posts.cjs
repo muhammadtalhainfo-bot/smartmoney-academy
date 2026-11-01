@@ -17,22 +17,20 @@ async function main() {
   if (!indexPage.includes('const availableCategories = useMemo(() =>')) {
     errors.push('Blog category buttons must derive their available values from the published article list.');
   }
-  if (!indexPage.includes('allPosts.map((post) => post?.category)')) {
-    errors.push('Every published article category must be available as a filter, including newly added CMS categories.');
+  if (!indexPage.includes('for (const post of allPosts)') || !indexPage.includes('counts.set(category')) {
+    errors.push('Every published article category must be counted and available as a filter.');
   }
-  if (!indexPage.includes('{availableCategories.map(cat => (')) {
-    errors.push('The blog index must render its derived, deduplicated category list.');
+  if (!indexPage.includes('availableCategories.map(({ name: cat, count }) => (')) {
+    errors.push('The blog index must render category filters with their article counts.');
   }
-  if (!indexPage.includes("allPosts.filter(p => p.category === active)")) {
-    errors.push('Selecting a category must filter the visible article list by that category.');
+  if (!indexPage.includes("const categoryPosts = active === 'All' ? allPosts : allPosts.filter((post) => post.category === active);")) {
+    errors.push('Selecting a category must filter the published article collection before text search.');
+  }
+  if (!indexPage.includes("const featured = active === 'All' && !searchQuery ? featuredPost : null;") ||
+      !indexPage.includes('const rest = matchingPosts.filter((post) => post.slug !== featured?.slug);')) {
+    errors.push('The featured article must remain visible in All mode and join normal results during search or category filtering.');
   }
 
-  const expectedFeaturedFilter = `const rest = active === 'All'
-      ? filtered.filter((post) => post.slug !== featured?.slug)
-      : filtered;`;
-  if (!indexPage.includes(expectedFeaturedFilter)) {
-    errors.push('Category filters must retain the featured article when it belongs to the selected category.');
-  }
   const expectedFilteredHeading = "{active === 'All' ? (searchQuery ? 'SEARCH RESULTS' : 'ALL ARTICLES') : active.toUpperCase() + ' ARTICLES'} ({resultCount})";
   if (!indexPage.includes(expectedFilteredHeading)) {
     errors.push('The blog index heading and count must reflect the actual filtered and searched result set.');
