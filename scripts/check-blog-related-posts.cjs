@@ -38,6 +38,29 @@ async function main() {
     errors.push('The blog index heading and count must reflect the selected category rather than the full catalogue.');
   }
 
+  if (!indexPage.includes('type="search"') ||
+      !indexPage.includes('id="blog-article-search"') ||
+      !indexPage.includes('aria-describedby="blog-search-help"')) {
+    errors.push('The blog index must provide a labelled, described article search field.');
+  }
+  if (!indexPage.includes('searchTerms.every((term) => searchableText.includes(term))')) {
+    errors.push('Article search must match all query words against indexed article text.');
+  }
+  if (!indexPage.includes('availableCategories.map(({ name: cat, count }) => (')) {
+    errors.push('Each category filter must display its published article count.');
+  }
+  if (!indexPage.includes('<nav aria-label="Filter articles by category"')) {
+    errors.push('Category filters must be grouped in a labelled navigation landmark.');
+  }
+  if (!indexPage.includes('role="status" aria-live="polite" aria-atomic="true"')) {
+    errors.push('Search and filter result changes must be announced to assistive technology.');
+  }
+  if (!indexPage.includes('NO MATCHING ARTICLES') ||
+      !indexPage.includes('CLEAR SEARCH AND FILTERS') ||
+      !indexPage.includes("setActive('All'); setSearch('');")) {
+    errors.push('An empty search result must explain the state and provide a working reset action.');
+  }
+
   for (const post of POSTS) {
     const related = getRelatedBlogPosts(post, POSTS);
     if (related.length !== Math.min(3, POSTS.length - 1)) {
