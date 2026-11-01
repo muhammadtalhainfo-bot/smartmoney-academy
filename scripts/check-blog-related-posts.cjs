@@ -27,9 +27,10 @@ async function main() {
   if (!indexPage.includes("const categoryPosts = active === 'All' ? allPosts : allPosts.filter((post) => post.category === active);")) {
     errors.push('Selecting a category must filter the published article collection before text search.');
   }
-  if (!indexPage.includes("const featured = active === 'All' && !searchQuery ? featuredPost : null;") ||
-      !indexPage.includes('const rest = matchingPosts.filter((post) => post.slug !== featured?.slug);')) {
-    errors.push('The featured article must remain visible in All mode and join normal results during search or category filtering.');
+  if (!indexPage.includes("const featured = active === 'All' && !searchQuery && sortBy === 'featured' ? featuredPost : null;") ||
+      !indexPage.includes('const sortedPosts = sortBlogPosts(matchingPosts, sortBy);') ||
+      !indexPage.includes('const rest = sortedPosts.filter((post) => post.slug !== featured?.slug);')) {
+    errors.push('The featured layout must be reserved for the unfiltered Featured mode, while other sort modes include every matching article in the sorted list.');
   }
 
   if (!indexPage.includes("import { sortBlogPosts } from '@/lib/blog-sort';") ||
