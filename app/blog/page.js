@@ -1,6 +1,7 @@
 import BlogIndexClient from './BlogIndexClient';
 import { getPublishedBlogPosts } from '@/lib/blog-data';
 import { serializeJsonLd } from '@/lib/jsonld';
+import { LEGACY_BLOG_REDIRECTS } from '@/lib/blog-editorial-policy';
 
 export const metadata = {
   title: 'ICT Trading Blog — Strategies, Analysis & Education',
@@ -26,7 +27,8 @@ export const metadata = {
 export const revalidate = 300;
 
 export default async function BlogPage() {
-  const publishedPosts = await getPublishedBlogPosts();
+  const publishedPosts = (await getPublishedBlogPosts())
+    .filter((post) => post?.slug && !LEGACY_BLOG_REDIRECTS[post.slug]);
   const posts = publishedPosts.map((p) => ({
     slug: p.slug,
     title: p.title,

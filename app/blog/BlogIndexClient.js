@@ -4,19 +4,53 @@ import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 import ModuleBanner from '@/app/components/ModuleBanner';
+import { sortBlogPosts } from '@/lib/blog-sort';
 
-const CATEGORIES = ['All', 'Beginner', 'Intermediate', 'Advanced', 'Strategy', 'Psychology', 'News', 'Analysis'];
+const CATEGORIES = ['Beginner', 'Intermediate', 'Advanced', 'Strategy', 'Psychology', 'News', 'Analysis'];
+
+function publicationDateTime(value) {
+  const timestamp = Date.parse(String(value || ''));
+  return Number.isFinite(timestamp) ? new Date(timestamp).toISOString() : undefined;
+}
 
 export default function BlogIndexClient({ posts }) {
   const [active, setActive] = useState('All');
+  const [search, setSearch] = useState('');
+  const [sortBy, setSortBy] = useState('featured');
+  const searchQuery = search.trim().toLowerCase();
 
-  const { allPosts, featured, rest } = useMemo(() => {
+  const { allPosts, featured, rest, resultCount } = useMemo(() => {
     const allPosts = Array.isArray(posts) ? posts : [];
-    const filtered = active === 'All' ? allPosts : allPosts.filter(p => p.category === active);
-    const featured = allPosts.find(p => p.featured) || allPosts[0];
-    const rest = filtered.filter(p => p.slug !== featured?.slug);
-    return { allPosts, featured, rest };
-  }, [posts, active]);
+    const categoryPosts = active === 'All' ? allPosts : allPosts.filter((post) => post.category === active);
+    const searchTerms = searchQuery.split(/\s+/).filter(Boolean);
+    const matchingPosts = categoryPosts.filter((post) => {
+      const searchableText = [post?.title, post?.description, post?.category, post?.slug]
+        .filter((value) => typeof value === 'string')
+        .join(' ')
+        .toLowerCase();
+      return searchTerms.every((term) => searchableText.includes(term));
+    });
+    const sortedPosts = sortBlogPosts(matchingPosts, sortBy);
+    const featuredPost = allPosts.find((post) => post?.featured) || allPosts[0];
+    const featured = active === 'All' && !searchQuery && sortBy === 'featured' ? featuredPost : null;
+    const rest = sortedPosts.filter((post) => post.slug !== featured?.slug);
+    return { allPosts, featured, rest, resultCount: matchingPosts.length };
+  }, [posts, active, searchQuery, sortBy]);
+
+  const availableCategories = useMemo(() => {
+    const counts = new Map();
+    for (const post of allPosts) {
+      const category = typeof post?.category === 'string' ? post.category.trim() : '';
+      if (category) counts.set(category, (counts.get(category) || 0) + 1);
+    }
+    const known = CATEGORIES.filter((category) => counts.has(category));
+    const additional = [...counts.keys()].filter((category) => !CATEGORIES.includes(category))
+      .sort((a, b) => a.localeCompare(b));
+    return [
+      { name: 'All', count: allPosts.length },
+      ...[...known, ...additional].map((name) => ({ name, count: counts.get(name) })),
+    ];
+  }, [allPosts]);
 
   return (
     <div style={{ minHeight: '100vh', background: '#080808', color: 'white', fontFamily: "'DM Sans', sans-serif" }}>
@@ -41,6 +75,47 @@ export default function BlogIndexClient({ posts }) {
 
       <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '48px 24px' }}>
 
+        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '16px', flexWrap: 'wrap', marginBottom: '28px' }}>
+          <div style={{ flex: '1 1 320px', maxWidth: '520px' }}>
+            <label htmlFor="blog-article-search" style={{ display: 'block', color: '#E8C547', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.08em', marginBottom: '9px' }}>
+              SEARCH ARTICLES
+            </label>
+            <input
+              id="blog-article-search"
+              type="search"
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              placeholder="Search titles, topics or descriptions"
+              aria-describedby="blog-search-help"
+              style={{ width: '100%', boxSizing: 'border-box', background: '#101010', color: 'white', border: '1px solid rgba(232,197,71,0.35)', borderRadius: '8px', padding: '12px 14px', fontSize: '14px' }}
+            />
+            <p id="blog-search-help" style={{ color: 'rgba(255,255,255,0.6)', fontSize: '12px', lineHeight: 1.5, margin: '7px 0 0' }}>
+              Search matches every word across article titles, topics and descriptions.
+            </p>
+          </div>
+          <div style={{ flex: '0 1 210px', minWidth: '180px' }}>
+            <label htmlFor="blog-sort-order" style={{ display: 'block', color: '#E8C547', fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.08em', marginBottom: '9px' }}>
+              SORT ARTICLES
+            </label>
+            <select
+              id="blog-sort-order"
+              value={sortBy}
+              onChange={(event) => setSortBy(event.target.value)}
+              style={{ width: '100%', boxSizing: 'border-box', background: '#101010', color: 'white', border: '1px solid rgba(232,197,71,0.35)', borderRadius: '8px', padding: '12px 14px', fontSize: '14px' }}
+            >
+              <option value="featured">Featured layout</option>
+              <option value="newest">Newest first</option>
+              <option value="oldest">Oldest first</option>
+              <option value="title">Title A–Z</option>
+              <option value="shortest">Shortest read</option>
+              <option value="longest">Longest read</option>
+            </select>
+          </div>
+          <p role="status" aria-live="polite" aria-atomic="true" style={{ color: 'rgba(255,255,255,0.72)', fontSize: '13px', margin: '0 0 4px' }}>
+            Showing {resultCount} {resultCount === 1 ? 'article' : 'articles'}
+          </p>
+        </div>
+
         {active === 'All' && featured && (
           <Link href={'/blog/' + featured.slug} style={{ textDecoration: 'none', display: 'block', marginBottom: '48px' }}>
             <div className="card" style={{ background: '#0C0C0C', border: '1px solid rgba(232,197,71,0.95)', borderRadius: '20px', overflow: 'hidden' }}>
@@ -49,6 +124,20 @@ export default function BlogIndexClient({ posts }) {
                   <div style={{ flex: 1 }}>
                     <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(24px, 3vw, 34px)', color: 'white', lineHeight: 1.05, marginBottom: '12px' }}>{featured.title}</h2>
                     <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.72)', lineHeight: 1.65, fontWeight: 300 }}>{featured.description}</p>
+                    {(featured.date || featured.readTime) && (
+                      <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '12px', marginTop: '14px' }}>
+                        {featured.date && (
+                          <time dateTime={publicationDateTime(featured.date)} style={{ color: 'rgba(255,255,255,0.58)', fontFamily: 'DM Mono, monospace', fontSize: '10px' }}>
+                            Published {featured.date}
+                          </time>
+                        )}
+                        {featured.readTime && (
+                          <span style={{ color: 'rgba(255,255,255,0.58)', fontFamily: 'DM Mono, monospace', fontSize: '10px' }}>
+                            {featured.readTime}
+                          </span>
+                        )}
+                      </div>
+                    )}
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '12px', flexShrink: 0 }}>
                     <span style={{ padding: '4px 12px', borderRadius: '100px', border: '1px solid #E8C547', fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#E8C547' }}>FEATURED</span>
@@ -65,10 +154,10 @@ export default function BlogIndexClient({ posts }) {
 
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px', flexWrap: 'wrap', gap: '12px' }}>
           <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '24px', color: 'white' }}>
-            ALL ARTICLES ({allPosts.length})
+            {active === 'All' ? (searchQuery ? 'SEARCH RESULTS' : 'ALL ARTICLES') : active.toUpperCase() + ' ARTICLES'} ({resultCount})
           </h2>
-          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-            {CATEGORIES.map(cat => (
+          <nav aria-label="Filter articles by category" style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+            {availableCategories.map(({ name: cat, count }) => (
               <button type="button" key={cat} onClick={() => setActive(cat)} aria-pressed={active === cat} style={{
                 padding: '6px 14px', borderRadius: '100px',
                 border: '1px solid ' + (active === cat ? '#E8C547' : 'rgba(255,255,255,0.6)'),
@@ -76,15 +165,16 @@ export default function BlogIndexClient({ posts }) {
                 color: active === cat ? '#080808' : 'rgba(255,255,255,0.85)',
                 fontFamily: 'DM Mono, monospace', fontSize: '11px', cursor: 'pointer'
               }}>
-                {cat}
+                {cat} ({count})
               </button>
             ))}
-          </div>
+          </nav>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%,300px), 1fr))', gap: '16px' }}>
-          {rest.map(post => (
-            <Link key={post.slug} href={'/blog/' + post.slug} style={{ textDecoration: 'none' }}>
+        {rest.length > 0 || featured ? (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%,300px), 1fr))', gap: '16px' }}>
+            {rest.map(post => (
+              <Link key={post.slug} href={'/blog/' + post.slug} style={{ textDecoration: 'none' }}>
               <div className="card" style={{ background: '#0C0C0C', border: '1px solid rgba(232,197,71,0.95)', borderRadius: '18px', overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ padding: '16px 20px 14px', background: 'linear-gradient(135deg, #111008 0%, #0E0E0E 100%)', borderBottom: '1px solid rgba(212,168,67,0.07)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
@@ -98,15 +188,41 @@ export default function BlogIndexClient({ posts }) {
                 </div>
                 <div style={{ padding: '14px 20px 18px', flex: 1, display: 'flex', flexDirection: 'column' }}>
                   <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.72)', lineHeight: 1.65, fontWeight: 300, marginBottom: '14px', flex: 1 }}>{post.description}</p>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                    {post.date ? (
+                      <time dateTime={publicationDateTime(post.date)} style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.6)' }}>
+                        {post.date}
+                      </time>
+                    ) : <span />}
                     <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.6)' }}>{post.readTime}</span>
                     <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#E8C547' }}>Read</span>
                   </div>
                 </div>
               </div>
             </Link>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <section aria-labelledby="blog-empty-heading" style={{ padding: '40px 24px', textAlign: 'center', background: '#101010', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '14px' }}>
+            <h3 id="blog-empty-heading" style={{ color: 'white', fontFamily: 'Bebas Neue, sans-serif', fontSize: '26px', marginBottom: '8px' }}>
+              {allPosts.length === 0 ? 'NO ARTICLES AVAILABLE YET' : 'NO MATCHING ARTICLES'}
+            </h3>
+            <p style={{ color: 'rgba(255,255,255,0.68)', fontSize: '14px', lineHeight: 1.7, maxWidth: '520px', margin: '0 auto 18px' }}>
+              {allPosts.length === 0
+                ? 'There are no published articles to display right now.'
+                : 'Try a different search phrase or clear the current filters to browse all articles.'}
+            </p>
+            {allPosts.length > 0 && (active !== 'All' || search) && (
+              <button
+                type="button"
+                onClick={() => { setActive('All'); setSearch(''); }}
+                style={{ border: '1px solid #E8C547', background: 'transparent', color: '#E8C547', borderRadius: '8px', padding: '10px 16px', fontSize: '12px', cursor: 'pointer' }}
+              >
+                CLEAR SEARCH AND FILTERS
+              </button>
+            )}
+          </section>
+        )}
       </div>
 
       <Footer />
