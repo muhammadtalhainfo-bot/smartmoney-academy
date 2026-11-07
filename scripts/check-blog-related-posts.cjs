@@ -38,18 +38,18 @@ async function main() {
       !indexPage.includes('onChange={(event) => setSortBy(event.target.value)}')) {
     errors.push('The blog index must expose a controlled article-sort selector.');
   }
-  for (const option of ['featured', 'newest', 'oldest', 'title']) {
+  for (const option of ['featured', 'newest', 'oldest', 'title', 'shortest', 'longest']) {
     if (!indexPage.includes('value="' + option + '"')) {
       errors.push('The blog sort selector is missing the ' + option + ' mode.');
     }
   }
 
   const sortingFixture = [
-    { slug: 'middle', title: 'Beta', date: 'May 3, 2026' },
-    { slug: 'newest', title: 'Alpha', date: 'June 10, 2026' },
-    { slug: 'oldest', title: 'Delta', date: 'January 1, 2026' },
-    { slug: 'missing-date', title: 'Charlie', date: '' },
-    { slug: 'invalid-date', title: 'Echo', date: 'not-a-date' },
+    { slug: 'middle', title: 'Beta', date: 'May 3, 2026', readTime: '3 min read' },
+    { slug: 'newest', title: 'Alpha', date: 'June 10, 2026', readTime: '6 min read' },
+    { slug: 'oldest', title: 'Delta', date: 'January 1, 2026', readTime: '4 min read' },
+    { slug: 'missing-date', title: 'Charlie', date: '', readTime: '5 min read' },
+    { slug: 'invalid-date', title: 'Echo', date: 'not-a-date', readTime: 'unknown' },
   ];
   const originalOrder = sortingFixture.map((post) => post.slug).join(',');
   const expectedOrders = {
@@ -57,6 +57,8 @@ async function main() {
     newest: 'newest,middle,oldest,missing-date,invalid-date',
     oldest: 'oldest,middle,newest,missing-date,invalid-date',
     title: 'newest,middle,missing-date,oldest,invalid-date',
+    shortest: 'middle,oldest,missing-date,newest,invalid-date',
+    longest: 'newest,missing-date,oldest,middle,invalid-date',
   };
   for (const [mode, expected] of Object.entries(expectedOrders)) {
     const actual = sortBlogPosts(sortingFixture, mode).map((post) => post.slug).join(',');
@@ -67,6 +69,12 @@ async function main() {
   }
   if (sortBlogPosts(null, 'newest').length !== 0 || sortBlogPosts(sortingFixture, 'unknown').map((post) => post.slug).join(',') !== expectedOrders.featured) {
     errors.push('Blog sorting must handle invalid collections and unknown modes safely.');
+  }
+
+  if (!indexPage.includes('function publicationDateTime(value)') ||
+      !indexPage.includes('<time dateTime={publicationDateTime(post.date)}') ||
+      !indexPage.includes('Published {featured.date}')) {
+    errors.push('The blog index must show publication dates semantically on featured and standard article cards.');
   }
 
   const expectedFilteredHeading = "{active === 'All' ? (searchQuery ? 'SEARCH RESULTS' : 'ALL ARTICLES') : active.toUpperCase() + ' ARTICLES'} ({resultCount})";

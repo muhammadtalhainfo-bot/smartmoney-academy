@@ -8,6 +8,11 @@ import { sortBlogPosts } from '@/lib/blog-sort';
 
 const CATEGORIES = ['Beginner', 'Intermediate', 'Advanced', 'Strategy', 'Psychology', 'News', 'Analysis'];
 
+function publicationDateTime(value) {
+  const timestamp = Date.parse(String(value || ''));
+  return Number.isFinite(timestamp) ? new Date(timestamp).toISOString() : undefined;
+}
+
 export default function BlogIndexClient({ posts }) {
   const [active, setActive] = useState('All');
   const [search, setSearch] = useState('');
@@ -102,6 +107,8 @@ export default function BlogIndexClient({ posts }) {
               <option value="newest">Newest first</option>
               <option value="oldest">Oldest first</option>
               <option value="title">Title A–Z</option>
+              <option value="shortest">Shortest read</option>
+              <option value="longest">Longest read</option>
             </select>
           </div>
           <p role="status" aria-live="polite" aria-atomic="true" style={{ color: 'rgba(255,255,255,0.72)', fontSize: '13px', margin: '0 0 4px' }}>
@@ -117,6 +124,20 @@ export default function BlogIndexClient({ posts }) {
                   <div style={{ flex: 1 }}>
                     <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(24px, 3vw, 34px)', color: 'white', lineHeight: 1.05, marginBottom: '12px' }}>{featured.title}</h2>
                     <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.72)', lineHeight: 1.65, fontWeight: 300 }}>{featured.description}</p>
+                    {(featured.date || featured.readTime) && (
+                      <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '12px', marginTop: '14px' }}>
+                        {featured.date && (
+                          <time dateTime={publicationDateTime(featured.date)} style={{ color: 'rgba(255,255,255,0.58)', fontFamily: 'DM Mono, monospace', fontSize: '10px' }}>
+                            Published {featured.date}
+                          </time>
+                        )}
+                        {featured.readTime && (
+                          <span style={{ color: 'rgba(255,255,255,0.58)', fontFamily: 'DM Mono, monospace', fontSize: '10px' }}>
+                            {featured.readTime}
+                          </span>
+                        )}
+                      </div>
+                    )}
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '12px', flexShrink: 0 }}>
                     <span style={{ padding: '4px 12px', borderRadius: '100px', border: '1px solid #E8C547', fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#E8C547' }}>FEATURED</span>
@@ -167,7 +188,12 @@ export default function BlogIndexClient({ posts }) {
                 </div>
                 <div style={{ padding: '14px 20px 18px', flex: 1, display: 'flex', flexDirection: 'column' }}>
                   <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.72)', lineHeight: 1.65, fontWeight: 300, marginBottom: '14px', flex: 1 }}>{post.description}</p>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                    {post.date ? (
+                      <time dateTime={publicationDateTime(post.date)} style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.6)' }}>
+                        {post.date}
+                      </time>
+                    ) : <span />}
                     <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'rgba(255,255,255,0.6)' }}>{post.readTime}</span>
                     <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '10px', color: '#E8C547' }}>Read</span>
                   </div>
