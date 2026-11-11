@@ -2,8 +2,13 @@ const fs = require('node:fs');
 
 async function main() {
   const { POSTS } = await import('../app/blog/posts.js');
-  const { getRelatedBlogPosts } = await import('../lib/related-blog-posts.js');
+  const { getRelatedBlogPosts, CURATED_RELATED } = await import('../lib/related-blog-posts.js');
+  const { sortBlogPosts } = await import('../lib/blog-sort.js');
+  const { matchesBlogPost } = await import('../lib/blog-search.js');
   const page = fs.readFileSync('app/blog/[slug]/page.js', 'utf8');
+  const blogIndexPage = fs.readFileSync('app/blog/page.js', 'utf8');
+  const indexPage = fs.readFileSync('app/blog/BlogIndexClient.js', 'utf8');
+  const searchMatcher = fs.readFileSync('lib/blog-search.js', 'utf8');
   const knownSlugs = new Set(POSTS.map((post) => post.slug));
   const errors = [];
 
@@ -12,6 +17,133 @@ async function main() {
   if (!page.includes("href={'/blog/' + related.slug}")) errors.push('Related recommendations must link to their canonical /blog/[slug] route.');
 
   if (knownSlugs.size !== POSTS.length) errors.push('Blog post slugs must be unique before building internal links.');
+
+  if (!indexPage.includes('const availableCategories = useMemo(() =>')) {
+    errors.push('Blog category buttons must derive their available values from the published article list.');
+  }
+  if (!indexPage.includes('for (const post of allPosts)') || !indexPage.includes('counts.set(category')) {
+    errors.push('Every published article category must be counted and available as a filter.');
+  }
+  if (!indexPage.includes('availableCategories.map(({ name: cat, count }) => (')) {
+    errors.push('The blog index must render category filters with their article counts.');
+  }
+  if (!indexPage.includes("const categoryPosts = active === 'All' ? allPosts : allPosts.filter((post) => post.category === active);")) {
+    errors.push('Selecting a category must filter the published article collection before text search.');
+  }
+  if (!indexPage.includes("const featured = active === 'All' && !searchQuery && sortBy === 'featured' ? featuredPost : null;") ||
+      !indexPage.includes('const sortedPosts = sortBlogPosts(matchingPosts, sortBy);') ||
+      !indexPage.includes('const rest = sortedPosts.filter((post) => post.slug !== featured?.slug);')) {
+    errors.push('The featured layout must be reserved for the unfiltered Featured mode, while other sort modes include every matching article in the sorted list.');
+  }
+
+  if (!indexPage.includes("import { sortBlogPosts } from '@/lib/blog-sort';") ||
+      !indexPage.includes('value={sortBy}') ||
+      !indexPage.includes('onChange={(event) => setSortBy(event.target.value)}')) {
+    errors.push('The blog index must expose a controlled article-sort selector.');
+  }
+  for (const option of ['featured', 'newest', 'oldest', 'title', 'shortest', 'longest']) {
+    if (!indexPage.includes('value="' + option + '"')) {
+      errors.push('The blog sort selector is missing the ' + option + ' mode.');
+    }
+  }
+
+  const sortingFixture = [
+    { slug: 'middle', title: 'Beta', date: 'May 3, 2026', readTime: '3 min read' },
+    { slug: 'newest', title: 'Alpha', date: 'June 10, 2026', readTime: '6 min read' },
+    { slug: 'oldest', title: 'Delta', date: 'January 1, 2026', readTime: '4 min read' },
+    { slug: 'missing-date', title: 'Charlie', date: '', readTime: '5 min read' },
+    { slug: 'invalid-date', title: 'Echo', date: 'not-a-date', readTime: 'unknown' },
+  ];
+  const originalOrder = sortingFixture.map((post) => post.slug).join(',');
+  const expectedOrders = {
+    featured: 'middle,newest,oldest,missing-date,invalid-date',
+    newest: 'newest,middle,oldest,missing-date,invalid-date',
+    oldest: 'oldest,middle,newest,missing-date,invalid-date',
+    title: 'newest,middle,missing-date,oldest,invalid-date',
+    shortest: 'middle,oldest,missing-date,newest,invalid-date',
+    longest: 'newest,missing-date,oldest,middle,invalid-date',
+  };
+  for (const [mode, expected] of Object.entries(expectedOrders)) {
+    const actual = sortBlogPosts(sortingFixture, mode).map((post) => post.slug).join(',');
+    if (actual !== expected) errors.push('Blog article sort mode ' + mode + ' returned ' + actual + ' instead of ' + expected + '.');
+  }
+  if (sortingFixture.map((post) => post.slug).join(',') !== originalOrder) {
+    errors.push('Sorting blog articles must not mutate the source collection.');
+  }
+  if (sortBlogPosts(null, 'newest').length !== 0 || sortBlogPosts(sortingFixture, 'unknown').map((post) => post.slug).join(',') !== expectedOrders.featured) {
+    errors.push('Blog sorting must handle invalid collections and unknown modes safely.');
+  }
+
+  if (!indexPage.includes('function publicationDateTime(value)') ||
+      !indexPage.includes('<time dateTime={publicationDateTime(post.date)}') ||
+      !indexPage.includes('Published {featured.date}')) {
+    errors.push('The blog index must show publication dates semantically on featured and standard article cards.');
+  }
+
+  const expectedFilteredHeading = "{active === 'All' ? (searchQuery ? 'SEARCH RESULTS' : 'ALL ARTICLES') : active.toUpperCase() + ' ARTICLES'} ({resultCount})";
+  if (!indexPage.includes(expectedFilteredHeading)) {
+    errors.push('The blog index heading and count must reflect the actual filtered and searched result set.');
+  }
+
+  if (!indexPage.includes('type="search"') ||
+      !indexPage.includes('id="blog-article-search"') ||
+      !indexPage.includes('aria-describedby="blog-search-help"')) {
+    errors.push('The blog index must provide a labelled, described article search field.');
+  }
+  if (!indexPage.includes("import { matchesBlogPost } from '@/lib/blog-search';") ||
+      !indexPage.includes('categoryPosts.filter((post) => matchesBlogPost(post, searchQuery))')) {
+    errors.push('The blog index must use the shared, directly tested article-search matcher.');
+  }
+  const searchFixture = {
+    slug: 'smt-divergence',
+    title: 'SMT Divergence',
+    description: 'Compare correlated market swings.',
+    category: 'Analysis',
+    metaTitle: 'ICT Fair Value Gap and Liquidity Sweep Guide',
+    metaDesc: 'A testable entry model with clearly defined invalidation and review conditions.',
+  };
+  const searchCases = [
+    ['smt divergence', true],
+    ['fair value gap', true],
+    ['liquidity sweep model', true],
+    ['analysis correlated', true],
+    ['ICT\t fair   value', true],
+    ['', true],
+    ['unrelated term', false],
+  ];
+  for (const [query, expected] of searchCases) {
+    const actual = matchesBlogPost(searchFixture, query);
+    if (actual !== expected) errors.push('Blog search query ' + JSON.stringify(query) + ' returned ' + actual + ' instead of ' + expected + '.');
+  }
+  if (matchesBlogPost(null, 'smt') || matchesBlogPost(searchFixture, null) !== true) {
+    errors.push('Blog search must handle missing posts and empty queries safely.');
+  }
+  if (!blogIndexPage.includes("metaTitle: p.metaTitle || ''") || !blogIndexPage.includes("metaDesc: p.metaDesc || ''")) {
+    errors.push('The server-rendered blog index must pass alternate SEO title and description metadata into the search index.');
+  }
+  if (!searchMatcher.includes('post.metaTitle') || !searchMatcher.includes('post.metaDesc')) {
+    errors.push('The shared article-search matcher must include alternate SEO titles and descriptions so related search phrases can find the right article.');
+  }
+  if (!searchMatcher.includes('split(/' + String.fromCharCode(92) + 's+/)')) {
+    errors.push('The shared article-search matcher must split multi-word queries on whitespace.');
+  }
+  if (!indexPage.includes('availableCategories.map(({ name: cat, count }) => (')) {
+    errors.push('Each category filter must display its published article count.');
+  }
+  if (!indexPage.includes('<nav aria-label="Filter articles by category"')) {
+    errors.push('Category filters must be grouped in a labelled navigation landmark.');
+  }
+  if (!indexPage.includes('role="status" aria-live="polite" aria-atomic="true"')) {
+    errors.push('Search and filter result changes must be announced to assistive technology.');
+  }
+  if (!indexPage.includes('NO MATCHING ARTICLES') ||
+      !indexPage.includes('CLEAR SEARCH AND FILTERS') ||
+      !indexPage.includes("setActive('All'); setSearch('');")) {
+    errors.push('An empty search result must explain the state and provide a working reset action.');
+  }
+  if (!indexPage.includes('{rest.length > 0 || featured ? (')) {
+    errors.push('The blog index must still show its featured card when it is the only available article.');
+  }
 
   for (const post of POSTS) {
     const related = getRelatedBlogPosts(post, POSTS);
@@ -26,6 +158,22 @@ async function main() {
 
     for (const slug of slugs) {
       if (!knownSlugs.has(slug)) errors.push(post.slug + ': related slug does not exist: ' + slug);
+    }
+  }
+
+  for (const [sourceSlug, preferredSlugs] of Object.entries(CURATED_RELATED)) {
+    const sourcePost = POSTS.find((post) => post.slug === sourceSlug);
+    if (!sourcePost) {
+      errors.push('Curated related-reading source is missing: ' + sourceSlug);
+      continue;
+    }
+    const relatedSlugs = getRelatedBlogPosts(sourcePost, POSTS).map((post) => post.slug);
+    for (const targetSlug of preferredSlugs) {
+      if (!knownSlugs.has(targetSlug)) {
+        errors.push(sourceSlug + ': curated related-reading target does not exist: ' + targetSlug);
+      } else if (!relatedSlugs.includes(targetSlug)) {
+        errors.push(sourceSlug + ': curated related-reading target is not included: ' + targetSlug);
+      }
     }
   }
 

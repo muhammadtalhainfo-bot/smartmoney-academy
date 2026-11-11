@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect, useCallback } from 'react';
+import Image from 'next/image';
 import { adminDb } from './actions';
 import { getAdminSession, loginAdmin, logoutAdmin } from './actions';
 import { MODULES as CURRICULUM_MODULES, CURRICULUM_STATS } from '@/lib/curriculum';
@@ -469,17 +470,25 @@ function BlogSection({ adminDbClient = adminDb }) {
   const [search, setSearch] = useState('');
   const [filterCat, setFilterCat] = useState('all');
 
-  const load = useCallback(async () => {
+  const load = useCallback(async (isActive = () => true) => {
     try {
-      const { data } = await adminDbClient('blog.list');
-      if (data) setPosts(data);
+      // Defer the client invocation so even a synchronous adapter error is
+      // handled asynchronously rather than setting state in the effect call.
+      const { data } = await Promise.resolve().then(() => adminDbClient('blog.list'));
+      if (isActive() && data) setPosts(data);
     } catch (error) {
       console.error('Admin blog load failed:', error);
-      setMsg({ text: 'Unable to load blog posts.', type: 'error' });
+      if (isActive()) setMsg({ text: 'Unable to load blog posts.', type: 'error' });
     }
   }, [adminDbClient]);
 
-  useEffect(() => { load(); }, [load]);
+  useEffect(() => {
+    let active = true;
+    void Promise.resolve().then(() => {
+      if (active) return load(() => active);
+    });
+    return () => { active = false; };
+  }, [load]);
 
   const filtered = posts.filter(p => {
     const q = search.toLowerCase();
@@ -603,7 +612,7 @@ function BlogSection({ adminDbClient = adminDb }) {
             <FieldGroup label="Image URL">
               <Input value={form.image} onChange={e => setForm({ ...form, image: e.target.value })} placeholder="/images/fvg.png or https://..." />
             </FieldGroup>
-            {form.image && <img src={form.image} alt="" style={{ width: '100%', height: '100px', objectFit: 'cover', borderRadius: '8px', marginTop: '8px' }} onError={e => e.target.style.display = 'none'} />}
+            {form.image && <Image unoptimized src={form.image} alt="" width={1200} height={100} style={{ width: '100%', height: '100px', objectFit: 'cover', borderRadius: '8px', marginTop: '8px' }} onError={e => { e.currentTarget.style.display = 'none'; }} />}
           </div>
 
           <div style={{ ...css.card, marginBottom: '16px' }}>
@@ -647,7 +656,7 @@ function BlogSection({ adminDbClient = adminDb }) {
         ) : filtered.map(p => (
           <div key={p.id || p.slug} style={{ ...css.card, display: 'flex', alignItems: 'center', gap: '14px', padding: '14px 18px' }}>
             <div style={{ width: '44px', height: '44px', borderRadius: '8px', background: S3, flexShrink: 0, overflow: 'hidden' }}>
-              {p.image && <img src={p.image} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => e.target.style.display = 'none'} />}
+              {p.image && <Image unoptimized src={p.image} alt="" width={44} height={44} style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => { e.currentTarget.style.display = 'none'; }} />}
             </div>
             <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ fontWeight: 600, fontSize: '14px', marginBottom: '3px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
@@ -830,7 +839,7 @@ function MediaSection() {
             style={{ ...css.card, padding: '12px', cursor: 'pointer', border: copied === img ? `1px solid ${G}` : `1px solid ${BORDER}`, color: 'inherit', textAlign: 'left' }}
           >
             <div style={{ width: '100%', height: '70px', background: S3, borderRadius: '6px', overflow: 'hidden', marginBottom: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <img src={img} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => { e.target.style.display = 'none'; }} />
+              <Image src={img} alt="" width={240} height={70} style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => { e.currentTarget.style.display = 'none'; }} />
             </div>
             <div style={{ ...css.mono, fontSize: '9px', color: copied === img ? G : '#AAB3BF', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
               {copied === img ? '✓ COPIED!' : img.split('/').pop()}

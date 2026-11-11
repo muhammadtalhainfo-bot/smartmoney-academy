@@ -75,11 +75,26 @@ jobs:
       - name: Validate blog editorial claims and context
         run: node scripts/check-blog-editorial-claims.cjs
 
+      - name: Validate database-backed blog editorial safety
+        run: node scripts/check-blog-database-editorial-guard.cjs
+
+      - name: Validate blog canonical routes and alias exclusions
+        run: node scripts/check-blog-canonical-routes.cjs
+
+      - name: Validate blog reading-time estimates
+        run: node scripts/check-blog-reading-time.cjs
+
+      - name: Validate search-oriented blog snippets
+        run: node scripts/check-blog-search-snippets.cjs
+
       - name: Validate topic-aware blog related reading
         run: node scripts/check-blog-related-posts.cjs
 
       - name: Validate blog article schema and breadcrumbs
         run: node scripts/check-blog-article-schema.cjs
+
+      - name: Validate optimized local fonts
+        run: node scripts/check-font-optimization.cjs
 
       - name: Validate AdSense publisher and ads.txt consistency
         run: node scripts/check-adsense-config.cjs
