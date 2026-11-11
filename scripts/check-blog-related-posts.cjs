@@ -8,6 +8,7 @@ async function main() {
   const page = fs.readFileSync('app/blog/[slug]/page.js', 'utf8');
   const blogIndexPage = fs.readFileSync('app/blog/page.js', 'utf8');
   const indexPage = fs.readFileSync('app/blog/BlogIndexClient.js', 'utf8');
+  const searchMatcher = fs.readFileSync('lib/blog-search.js', 'utf8');
   const knownSlugs = new Set(POSTS.map((post) => post.slug));
   const errors = [];
 
@@ -120,11 +121,11 @@ async function main() {
   if (!blogIndexPage.includes("metaTitle: p.metaTitle || ''") || !blogIndexPage.includes("metaDesc: p.metaDesc || ''")) {
     errors.push('The server-rendered blog index must pass alternate SEO title and description metadata into the search index.');
   }
-  if (!indexPage.includes('post?.metaTitle') || !indexPage.includes('post?.metaDesc')) {
-    errors.push('Article search must include alternate SEO titles and descriptions so related search phrases can find the right article.');
+  if (!searchMatcher.includes('post.metaTitle') || !searchMatcher.includes('post.metaDesc')) {
+    errors.push('The shared article-search matcher must include alternate SEO titles and descriptions so related search phrases can find the right article.');
   }
-  if (!indexPage.includes('searchQuery.split(/' + String.fromCharCode(92) + 's+/)')) {
-    errors.push('Article search must split multi-word queries on whitespace.');
+  if (!searchMatcher.includes('split(/' + String.fromCharCode(92) + 's+/)')) {
+    errors.push('The shared article-search matcher must split multi-word queries on whitespace.');
   }
   if (!indexPage.includes('availableCategories.map(({ name: cat, count }) => (')) {
     errors.push('Each category filter must display its published article count.');
