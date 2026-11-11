@@ -5,6 +5,7 @@ import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 import ModuleBanner from '@/app/components/ModuleBanner';
 import { sortBlogPosts } from '@/lib/blog-sort';
+import { matchesBlogPost } from '@/lib/blog-search';
 
 const CATEGORIES = ['Beginner', 'Intermediate', 'Advanced', 'Strategy', 'Psychology', 'News', 'Analysis'];
 
@@ -22,14 +23,7 @@ export default function BlogIndexClient({ posts }) {
   const { allPosts, featured, rest, resultCount } = useMemo(() => {
     const allPosts = Array.isArray(posts) ? posts : [];
     const categoryPosts = active === 'All' ? allPosts : allPosts.filter((post) => post.category === active);
-    const searchTerms = searchQuery.split(/\s+/).filter(Boolean);
-    const matchingPosts = categoryPosts.filter((post) => {
-      const searchableText = [post?.title, post?.description, post?.metaTitle, post?.metaDesc, post?.category, post?.slug]
-        .filter((value) => typeof value === 'string')
-        .join(' ')
-        .toLowerCase();
-      return searchTerms.every((term) => searchableText.includes(term));
-    });
+    const matchingPosts = categoryPosts.filter((post) => matchesBlogPost(post, searchQuery));
     const sortedPosts = sortBlogPosts(matchingPosts, sortBy);
     const featuredPost = allPosts.find((post) => post?.featured) || allPosts[0];
     const featured = active === 'All' && !searchQuery && sortBy === 'featured' ? featuredPost : null;

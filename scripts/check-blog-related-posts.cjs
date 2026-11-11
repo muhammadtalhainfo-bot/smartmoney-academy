@@ -4,6 +4,7 @@ async function main() {
   const { POSTS } = await import('../app/blog/posts.js');
   const { getRelatedBlogPosts, CURATED_RELATED } = await import('../lib/related-blog-posts.js');
   const { sortBlogPosts } = await import('../lib/blog-sort.js');
+  const { matchesBlogPost } = await import('../lib/blog-search.js');
   const page = fs.readFileSync('app/blog/[slug]/page.js', 'utf8');
   const blogIndexPage = fs.readFileSync('app/blog/page.js', 'utf8');
   const indexPage = fs.readFileSync('app/blog/BlogIndexClient.js', 'utf8');
@@ -88,8 +89,33 @@ async function main() {
       !indexPage.includes('aria-describedby="blog-search-help"')) {
     errors.push('The blog index must provide a labelled, described article search field.');
   }
-  if (!indexPage.includes('searchTerms.every((term) => searchableText.includes(term))')) {
-    errors.push('Article search must match all query words against indexed article text.');
+  if (!indexPage.includes("import { matchesBlogPost } from '@/lib/blog-search';") ||
+      !indexPage.includes('categoryPosts.filter((post) => matchesBlogPost(post, searchQuery))')) {
+    errors.push('The blog index must use the shared, directly tested article-search matcher.');
+  }
+  const searchFixture = {
+    slug: 'smt-divergence',
+    title: 'SMT Divergence',
+    description: 'Compare correlated market swings.',
+    category: 'Analysis',
+    metaTitle: 'ICT Fair Value Gap and Liquidity Sweep Guide',
+    metaDesc: 'A testable entry model with clearly defined invalidation and review conditions.',
+  };
+  const searchCases = [
+    ['smt divergence', true],
+    ['fair value gap', true],
+    ['liquidity sweep model', true],
+    ['analysis correlated', true],
+    ['ICT\t fair   value', true],
+    ['', true],
+    ['unrelated term', false],
+  ];
+  for (const [query, expected] of searchCases) {
+    const actual = matchesBlogPost(searchFixture, query);
+    if (actual !== expected) errors.push('Blog search query ' + JSON.stringify(query) + ' returned ' + actual + ' instead of ' + expected + '.');
+  }
+  if (matchesBlogPost(null, 'smt') || matchesBlogPost(searchFixture, null) !== true) {
+    errors.push('Blog search must handle missing posts and empty queries safely.');
   }
   if (!blogIndexPage.includes("metaTitle: p.metaTitle || ''") || !blogIndexPage.includes("metaDesc: p.metaDesc || ''")) {
     errors.push('The server-rendered blog index must pass alternate SEO title and description metadata into the search index.');
