@@ -5,6 +5,7 @@ async function main() {
   const { getRelatedBlogPosts, CURATED_RELATED } = await import('../lib/related-blog-posts.js');
   const { sortBlogPosts } = await import('../lib/blog-sort.js');
   const page = fs.readFileSync('app/blog/[slug]/page.js', 'utf8');
+  const blogIndexPage = fs.readFileSync('app/blog/page.js', 'utf8');
   const indexPage = fs.readFileSync('app/blog/BlogIndexClient.js', 'utf8');
   const knownSlugs = new Set(POSTS.map((post) => post.slug));
   const errors = [];
@@ -89,6 +90,12 @@ async function main() {
   }
   if (!indexPage.includes('searchTerms.every((term) => searchableText.includes(term))')) {
     errors.push('Article search must match all query words against indexed article text.');
+  }
+  if (!blogIndexPage.includes("metaTitle: p.metaTitle || ''") || !blogIndexPage.includes("metaDesc: p.metaDesc || ''")) {
+    errors.push('The server-rendered blog index must pass alternate SEO title and description metadata into the search index.');
+  }
+  if (!indexPage.includes('post?.metaTitle') || !indexPage.includes('post?.metaDesc')) {
+    errors.push('Article search must include alternate SEO titles and descriptions so related search phrases can find the right article.');
   }
   if (!indexPage.includes('searchQuery.split(/' + String.fromCharCode(92) + 's+/)')) {
     errors.push('Article search must split multi-word queries on whitespace.');

@@ -38,6 +38,8 @@ export default async function BlogPage() {
     date: p.date || '',
     image: p.image || '/images/market-structure.png',
     featured: p.featured || false,
+    metaTitle: p.metaTitle || '',
+    metaDesc: p.metaDesc || '',
   }));
 
   const blogSchema = {

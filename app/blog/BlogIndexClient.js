@@ -24,7 +24,7 @@ export default function BlogIndexClient({ posts }) {
     const categoryPosts = active === 'All' ? allPosts : allPosts.filter((post) => post.category === active);
     const searchTerms = searchQuery.split(/\s+/).filter(Boolean);
     const matchingPosts = categoryPosts.filter((post) => {
-      const searchableText = [post?.title, post?.description, post?.category, post?.slug]
+      const searchableText = [post?.title, post?.description, post?.metaTitle, post?.metaDesc, post?.category, post?.slug]
         .filter((value) => typeof value === 'string')
         .join(' ')
         .toLowerCase();
@@ -90,7 +90,7 @@ export default function BlogIndexClient({ posts }) {
               style={{ width: '100%', boxSizing: 'border-box', background: '#101010', color: 'white', border: '1px solid rgba(232,197,71,0.35)', borderRadius: '8px', padding: '12px 14px', fontSize: '14px' }}
             />
             <p id="blog-search-help" style={{ color: 'rgba(255,255,255,0.6)', fontSize: '12px', lineHeight: 1.5, margin: '7px 0 0' }}>
-              Search matches every word across article titles, topics and descriptions.
+              Search matches every word across article titles, topics, descriptions and related search phrases.
             </p>
           </div>
           <div style={{ flex: '0 1 210px', minWidth: '180px' }}>
