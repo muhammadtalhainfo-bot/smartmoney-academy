@@ -252,7 +252,7 @@ export default function StrategiesPage() {
 
           <div style={{ marginTop: '40px', padding: '24px', background: 'rgba(212,168,67,0.04)', border: '1px solid rgba(212,168,67,0.22)', borderRadius: '12px', textAlign: 'center' }}>
             <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '14px', marginBottom: '16px', fontWeight: 300 }}>Practice this strategy with our daily challenges</p>
-            <Link href="/practice" style={{ display: 'inline-block', padding: '12px 28px', background: 'linear-gradient(135deg,#E8C547,#8A6B28)', borderRadius: '8px', color: 'black', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.1em', fontWeight: 600 }}>
+            <Link href="/practice" style={{ display: 'inline-block', padding: '12px 28px', background: 'linear-gradient(135deg,#E8C547,#C49A22)', borderRadius: '8px', color: 'black', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.1em', fontWeight: 600 }}>
               START DAILY PRACTICE →
             </Link>
           </div>
