@@ -154,7 +154,7 @@ export default function PricingPage() {
           </Link>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {FREE_FEATURES.map((f, i) => (
-              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', opacity: f.included ? 1 : 0.3 }}>
+              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', opacity: f.included ? 1 : 0.9 }}>
                 <span style={{ fontSize: '14px', color: f.included ? '#34D399' : 'rgba(255,255,255,0.85)', flexShrink: 0 }}>{f.included ? '✓' : '✗'}</span>
                 <span style={{ fontSize: '13px', color: f.included ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.6)', textDecoration: f.included ? 'none' : 'none' }}>{f.text}</span>
               </div>

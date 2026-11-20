@@ -44,11 +44,19 @@ const lessonClient = read('app/lesson/[id]/LessonClient.js');
 const admin = read('app/admin/page.js');
 expectIncludes(homepage, "color:'#D4A843'", 'Homepage section label');
 expectIncludes(tools, "color: '#D4A843'", 'Tools page subtitle');
-expectIncludes(lessonClient, "color: ' #D4A843'".replace("color: ' #", "color: '#"), 'Lesson section index');
+expectIncludes(lessonClient, "color: '#D4A843'", 'Lesson section index');
 expectIncludes(admin, "color: '#D4A843'", 'Admin module index');
 expectIncludes(admin, "color: '#FCA5A5'", 'Admin destructive action');
 expectContrast('#D4A843', '#070707', 'Muted gold label');
 expectContrast('#FCA5A5', '#0C0C0C', 'Admin destructive action');
+
+// Out-of-plan feature descriptions remain readable; the marker communicates
+// exclusion without washing the explanatory text out.
+const pricing = read('app/pricing/page.js');
+expectIncludes(pricing, 'opacity: f.included ? 1 : 0.9', 'Free-plan unavailable feature readability');
+if (pricing.includes('opacity: f.included ? 1 : 0.3')) {
+  errors.push('Pricing unavailable features are still faded below readable contrast.');
+}
 
 // The leaderboard rank names are text, not merely decorative icon colors.
 const leaderboard = read('app/leaderboard/page.js');
