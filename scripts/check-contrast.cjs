@@ -20,6 +20,18 @@ function luminance(hex) {
   return 0.2126 * channel(rgb[0]) + 0.7152 * channel(rgb[1]) + 0.0722 * channel(rgb[2]);
 }
 
+
+function blend(foreground, background, alpha) {
+  const fg = foreground.replace('#', '');
+  const bg = background.replace('#', '');
+  const values = [0, 2, 4].map((offset) => {
+    const front = parseInt(fg.slice(offset, offset + 2), 16);
+    const back = parseInt(bg.slice(offset, offset + 2), 16);
+    return Math.round(front * alpha + back * (1 - alpha)).toString(16).padStart(2, '0');
+  });
+  return '#' + values.join('');
+}
+
 function contrast(foreground, background) {
   const a = luminance(foreground);
   const b = luminance(background);
@@ -114,6 +126,26 @@ for (const node of textNodes) {
   checkedSvgLabels += 1;
 }
 if (checkedSvgLabels < 50) errors.push('SVG contrast audit scanned too few text labels: ' + checkedSvgLabels + '.');
+
+// Text-based module thumbnail artwork (SVG source kept under .webp paths).
+// ICTFLOW.COM is a deliberately subdued watermark; content labels are checked.
+const moduleAssetPaths = Array.from({ length: 14 }, (_, index) =>
+  'public/modules/module-' + (index + 15) + '.webp'
+);
+for (const file of moduleAssetPaths) {
+  const svg = read(file);
+  const nodes = [...svg.matchAll(/<text\\b([^>]*)>([\\s\\S]*?)<\\/text>/g)];
+  for (const node of nodes) {
+    const label = node[2].replace(/<[^>]*>/g, '').trim();
+    if (!label || label === 'ICTFLOW.COM') continue;
+    const fill = node[1].match(/\\bfill=[\"'](#[0-9a-fA-F]{6})[\"']/);
+    if (!fill) continue;
+    const opacityMatch = node[1].match(/\\b(?:fill-)?opacity=[\"']([0-9.]+)[\"']/);
+    const alpha = opacityMatch ? Number(opacityMatch[1]) : 1;
+    const effectiveColor = blend(fill[1], '#080808', alpha);
+    expectContrast(effectiveColor, '#080808', file + ' label ' + label);
+  }
+}
 
 // Certificate copy is rendered on a white paper surface, so test it against
 // white rather than incorrectly comparing it with the site's dark body.
