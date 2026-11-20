@@ -30,7 +30,7 @@ function Section({ section, index, diagramSrc, diagramAlt }) {
         className="w-full flex items-center justify-between p-5 text-left hover:bg-[rgba(212,168,67,0.03)] transition-colors"
       >
         <div className="flex items-center gap-3">
-          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', color: 'rgba(212,168,67,0.5)' }}>
+          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', color: '#D4A843' }}>
             {String(index + 1).padStart(2, '0')}
           </span>
           <span className="font-semibold text-white">{section.title}</span>

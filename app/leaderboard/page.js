@@ -6,10 +6,12 @@ import Footer from '@/app/components/Footer';
 import { createClient } from '@/lib/supabase';
 
 const RANKS = [
-  { name: 'Retail', min: 0, color: '#6B7280', icon: '👤' },
-  { name: 'Smart Money', min: 100, color: '#10B981', icon: '💡' },
-  { name: 'Institutional', min: 500, color: '#3B82F6', icon: '🏦' },
-  { name: 'Liquidity Hunter', min: 1000, color: '#8B5CF6', icon: '🎯' },
+  // Text accents are kept distinct from the decorative icon/background hues
+  // and meet WCAG AA contrast on the leaderboard's dark surface.
+  { name: 'Retail', min: 0, color: '#9CA3AF', icon: '👤' },
+  { name: 'Smart Money', min: 100, color: '#34D399', icon: '💡' },
+  { name: 'Institutional', min: 500, color: '#60A5FA', icon: '🏦' },
+  { name: 'Liquidity Hunter', min: 1000, color: '#A78BFA', icon: '🎯' },
   { name: 'ICT Master', min: 2500, color: '#E8C547', icon: '👑' },
 ];
 const RANKS_DESC = [...RANKS].reverse();

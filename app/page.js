@@ -307,7 +307,7 @@ export default function HomePage() {
       {/* ── EDITORIAL PRINCIPLE ── */}
       <section style={{ position:'relative', zIndex:10, padding:'80px 24px', textAlign:'center', borderTop:'1px solid rgba(232,197,71,0.08)', background:'#0A0A0A' }}>
         <div style={{ maxWidth:'800px', margin:'0 auto' }}>
-          <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'rgba(232,197,71,0.5)', letterSpacing:'0.15em', marginBottom:'28px' }}>{'// DEFINE YOUR METHOD'}</div>
+          <div style={{ fontFamily:'DM Mono,monospace', fontSize:'11px', color:'#D4A843', letterSpacing:'0.15em', marginBottom:'28px' }}>{'// DEFINE YOUR METHOD'}</div>
           <h2 className="font-display" style={{ fontSize:'clamp(28px, 5vw, 52px)', color:'white', lineHeight:1.2, marginBottom:'20px' }}>
             DEFINE.<br />
             <span className="gold-text">TEST. REVIEW.</span>
