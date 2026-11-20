@@ -21,5 +21,5 @@
   <text x="28" y="252" font-size="22" font-family="serif">🕐</text>
   <text x="60" y="248" font-size="14" font-family="Arial Black, sans-serif" fill="white" font-weight="bold" letter-spacing="-0.3">Session Timing & Market Hours</text>
   <text x="60" y="268" font-size="10" font-family="monospace" fill="#D4A843" opacity="0.7" letter-spacing="0.5">ICT · BEGINNER · 5 LESSONS</text>
-  <text x="480" y="292" text-anchor="end" font-size="9" font-family="monospace" fill="#D4A843" opacity="0.3" letter-spacing="1">ICTFLOW.COM</text>
+  <text x="480" y="292" text-anchor="end" font-size="9" font-family="monospace" fill="#D4A843" letter-spacing="1" opacity="0.8">ICTFLOW.COM</text>
 </svg>
