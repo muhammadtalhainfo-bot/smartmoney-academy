@@ -137,7 +137,7 @@ for (const file of moduleAssetPaths) {
   const nodes = [...svg.matchAll(/<text\b([^>]*)>([\s\S]*?)<\/text>/g)];
   for (const node of nodes) {
     const label = node[2].replace(/<[^>]*>/g, '').trim();
-    if (!label || label === 'ICTFLOW.COM') continue;
+    if (!label) continue;
     const fill = node[1].match(/\bfill=["'](#[0-9a-fA-F]{6})["']/);
     if (!fill) continue;
     const opacityMatch = node[1].match(/\b(?:fill-)?opacity=["']([0-9.]+)["']/);
