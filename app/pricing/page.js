@@ -154,7 +154,7 @@ export default function PricingPage() {
           </Link>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {FREE_FEATURES.map((f, i) => (
-              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', opacity: f.included ? 1 : 0.3 }}>
+              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', opacity: f.included ? 1 : 0.9 }}>
                 <span style={{ fontSize: '14px', color: f.included ? '#34D399' : 'rgba(255,255,255,0.85)', flexShrink: 0 }}>{f.included ? '✓' : '✗'}</span>
                 <span style={{ fontSize: '13px', color: f.included ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.6)', textDecoration: f.included ? 'none' : 'none' }}>{f.text}</span>
               </div>
@@ -167,7 +167,7 @@ export default function PricingPage() {
           <div style={{ position: 'absolute', top: 0, right: 0, width: '250px', height: '250px', background: 'radial-gradient(circle, rgba(212,168,67,0.22) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
           {/* POPULAR BADGE */}
-          <div style={{ position: 'absolute', top: '20px', right: '20px', background: 'linear-gradient(135deg,#E8C547,#8A6B28)', borderRadius: '6px', padding: '4px 12px', fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'black', fontWeight: 600, letterSpacing: '0.1em' }}>POPULAR</div>
+          <div style={{ position: 'absolute', top: '20px', right: '20px', background: 'linear-gradient(135deg,#E8C547,#C49A22)', borderRadius: '6px', padding: '4px 12px', fontFamily: 'DM Mono, monospace', fontSize: '10px', color: 'black', fontWeight: 600, letterSpacing: '0.1em' }}>POPULAR</div>
 
           <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '11px', letterSpacing: '0.2em', color: '#E8C547', marginBottom: '16px' }}>PRO ACCESS</div>
           <div style={{ display: 'flex', alignItems: 'flex-end', gap: '6px', marginBottom: '4px' }}>
@@ -185,7 +185,7 @@ export default function PricingPage() {
             Premium tools and an ad-free study experience for deeper study and review.
           </p>
 
-          <button type="button" style={{ display: 'block', width: '100%', textAlign: 'center', padding: '15px', borderRadius: '10px', border: 'none', background: 'linear-gradient(135deg,#E8C547,#8A6B28)', color: 'black', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600, cursor: 'pointer', marginBottom: '28px', transition: 'opacity 0.2s' }}
+          <button type="button" style={{ display: 'block', width: '100%', textAlign: 'center', padding: '15px', borderRadius: '10px', border: 'none', background: 'linear-gradient(135deg,#E8C547,#C49A22)', color: 'black', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600, cursor: 'pointer', marginBottom: '28px', transition: 'opacity 0.2s' }}
             onClick={handleCheckout} disabled={checkoutLoading}
             onMouseOver={e => e.currentTarget.style.opacity = '0.9'}
             onMouseOut={e => e.currentTarget.style.opacity = '1'}>
@@ -250,7 +250,7 @@ export default function PricingPage() {
         <div style={{ maxWidth: '500px', margin: '0 auto', padding: '48px', background: 'rgba(212,168,67,0.04)', border: '1px solid rgba(232,197,71,0.95)', borderRadius: '20px' }}>
           <div className="font-display shine" style={{ fontSize: '40px', marginBottom: '12px' }}>START FREE TODAY</div>
           <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px', marginBottom: '24px', fontWeight: 300 }}>No credit card. No commitment. Just ICT education.</p>
-          <Link href="/auth" style={{ display: 'inline-block', padding: '14px 36px', background: 'linear-gradient(135deg,#E8C547,#8A6B28)', borderRadius: '10px', color: 'black', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600 }}>
+          <Link href="/auth" style={{ display: 'inline-block', padding: '14px 36px', background: 'linear-gradient(135deg,#E8C547,#C49A22)', borderRadius: '10px', color: 'black', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600 }}>
             CREATE FREE ACCOUNT →
           </Link>
         </div>

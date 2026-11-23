@@ -125,7 +125,7 @@ export default function AboutPage() {
             Study all {CURRICULUM_STATS.moduleCount} structured modules covering ICT and Smart Money Concepts. Start free, then upgrade only if you want the premium tools and ad-free experience.
           </p>
           <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/courses" style={{ padding: '14px 32px', background: 'linear-gradient(135deg,#E8C547,#8A6B28)', borderRadius: '10px', color: 'black', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600 }}>
+            <Link href="/courses" style={{ padding: '14px 32px', background: 'linear-gradient(135deg,#E8C547,#C49A22)', borderRadius: '10px', color: 'black', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600 }}>
               VIEW CURRICULUM →
             </Link>
             <Link href="/auth" style={{ padding: '14px 32px', background: 'transparent', borderRadius: '10px', color: 'rgba(255,255,255,0.6)', border: '1px solid rgba(255,255,255,0.6)', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em' }}>

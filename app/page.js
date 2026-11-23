@@ -259,7 +259,7 @@ export default function HomePage() {
           </div>
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(200px, 1fr))', gap:'12px' }}>
             {[
-              { time:'8PM–12AM EST', zone:'Asian', phase:'ACCUMULATION', desc:'Traders may study the Asian Range as context for session highs, lows and potential liquidity.', color:'#6366F1', bg:'rgba(99,102,241,0.06)' },
+              { time:'8PM–12AM EST', zone:'Asian', phase:'ACCUMULATION', desc:'Traders may study the Asian Range as context for session highs, lows and potential liquidity.', color:'#A5B4FC', bg:'rgba(99,102,241,0.06)' },
               { time:'2AM–5AM EST', zone:'London', phase:'MANIPULATION', desc:'An opposite-direction move may be studied as a possible Judas Swing or liquidity sweep; participant intent cannot be confirmed from the chart.', color:'#F87171', bg:'rgba(248,113,113,0.06)' },
               { time:'7AM–12PM EST', zone:'New York AM', phase:'DISTRIBUTION', desc:'Some ICT traders focus on this window for execution; setup quality and outcomes vary by market and day.', color:'#E8C547', bg:'rgba(232,197,71,0.06)' },
               { time:'10AM–12PM EST', zone:'London Close', phase:'REVERSAL', desc:'Activity can change around the close as positions are adjusted; treat the move as a hypothesis, not a guarantee.', color:'#34D399', bg:'rgba(52,211,153,0.06)' },

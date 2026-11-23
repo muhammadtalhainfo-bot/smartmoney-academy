@@ -41,6 +41,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Validate WCAG text contrast for shared UI treatments
+        run: node scripts/check-contrast.cjs
+
       - name: Audit production dependencies for high-severity vulnerabilities
         run: npm audit --omit=dev --audit-level=high
 

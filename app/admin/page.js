@@ -742,7 +742,7 @@ function CoursesSection() {
               </div>
             ) : (
               <div style={{ ...css.card, display: 'flex', alignItems: 'center', gap: '14px', padding: '12px 18px' }}>
-                <div style={{ ...css.mono, fontSize: '11px', color: 'rgba(232,197,71,0.5)', width: '28px', flexShrink: 0 }}>{m.module}</div>
+                <div style={{ ...css.mono, fontSize: '11px', color: '#D4A843', width: '28px', flexShrink: 0 }}>{m.module}</div>
                 <div style={{ width: '34px', height: '34px', borderRadius: '8px', background: `${G}18`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px', flexShrink: 0 }}>{m.emoji}</div>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontSize: '14px', fontWeight: 600, marginBottom: '2px' }}>{m.title}</div>
@@ -1292,7 +1292,7 @@ export default function AdminPage() {
             {!sidebarCollapsed && <span style={{ ...css.mono, fontSize: '10px' }}>VIEW SITE ↗</span>}
           </a>
           <button type="button" onClick={async () => { await logoutAdmin(); setAuthed(false); }}
-            style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 10px', borderRadius: '8px', border: 'none', background: 'transparent', color: 'rgba(248,113,113,0.6)', cursor: 'pointer', justifyContent: sidebarCollapsed ? 'center' : 'flex-start' }}>
+            style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 10px', borderRadius: '8px', border: 'none', background: 'transparent', color: '#FCA5A5', cursor: 'pointer', justifyContent: sidebarCollapsed ? 'center' : 'flex-start' }}>
             <span>🚪</span>
             {!sidebarCollapsed && <span style={{ ...css.mono, fontSize: '10px' }}>LOGOUT</span>}
           </button>

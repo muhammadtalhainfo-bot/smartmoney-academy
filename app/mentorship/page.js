@@ -515,7 +515,7 @@ export default function MentorshipPage() {
             ].map((s, i) => (
               <div key={i}>
                 <div className="font-display" style={{ fontSize: '36px', color: '#E8C547', lineHeight: 1 }}>{s.value}</div>
-                <div style={{ ...mono, fontSize: '10px', color: '#808080', letterSpacing: '0.12em', textTransform: 'uppercase', marginTop: '4px' }}>{s.label}</div>
+                <div style={{ ...mono, fontSize: '10px', color: '#A6AFBB', letterSpacing: '0.12em', textTransform: 'uppercase', marginTop: '4px' }}>{s.label}</div>
               </div>
             ))}
           </div>
@@ -544,7 +544,7 @@ export default function MentorshipPage() {
                 style={{ background: activePhase === String(p.id) ? `${p.color}15` : 'transparent', border: `1px solid ${activePhase === String(p.id) ? p.color + '40' : 'rgba(255,255,255,0.18)'}`, borderRadius: '10px', padding: '10px 16px', cursor: 'pointer', textAlign: 'left', minWidth: '160px' }}>
                 <div style={{ ...mono, fontSize: '9px', color: p.color, letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '4px' }}>{p.label} · EP {p.episodes}</div>
                 <div style={{ fontSize: '12px', color: 'white', fontWeight: 500, marginBottom: '6px' }}>{p.name}</div>
-                <div style={{ ...mono, fontSize: '9px', color: '#808080' }}>{watchedInPhase}/{phaseEps.length} watched</div>
+                <div style={{ ...mono, fontSize: '9px', color: '#A6AFBB' }}>{watchedInPhase}/{phaseEps.length} watched</div>
               </button>
             );
           })}
@@ -587,7 +587,7 @@ export default function MentorshipPage() {
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px', paddingBottom: '12px', borderBottom: `1px solid ${phase.color}20` }}>
                 <span style={{ ...mono, fontSize: '10px', color: phase.color, letterSpacing: '0.15em', textTransform: 'uppercase' }}>{phase.label}</span>
                 <span className="font-display" style={{ fontSize: '24px', color: 'white', letterSpacing: '0.05em' }}>{phase.name}</span>
-                <span style={{ ...mono, fontSize: '10px', color: '#808080' }}>Episodes {phase.episodes}</span>
+                <span style={{ ...mono, fontSize: '10px', color: '#A6AFBB' }}>Episodes {phase.episodes}</span>
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -624,7 +624,7 @@ export default function MentorshipPage() {
                               {isMustWatch && <span style={{ ...mono, fontSize: '9px', background: 'rgba(232,197,71,0.95)', color: '#080808', padding: '2px 6px', borderRadius: '4px', letterSpacing: '0.08em' }}>MUST WATCH</span>}
                             </div>
                             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
-                              <span style={{ ...mono, fontSize: '10px', color: '#808080' }}>{ep.duration}</span>
+                              <span style={{ ...mono, fontSize: '10px', color: '#A6AFBB' }}>{ep.duration}</span>
                               {ep.concepts.slice(0, 3).map(c => (
                                 <span key={c} style={{ ...mono, fontSize: '9px', color: 'rgba(232,197,71,0.95)', background: 'rgba(212,168,67,0.05)', border: '1px solid rgba(232,197,71,0.95)', padding: '1px 6px', borderRadius: '4px' }}>{c}</span>
                               ))}
@@ -638,7 +638,7 @@ export default function MentorshipPage() {
                           <button
                             type="button"
                             onClick={() => toggleWatched(ep.id)}
-                            style={{ background: isWatched ? 'rgba(52,211,153,0.1)' : 'rgba(255,255,255,0.04)', border: `1px solid ${isWatched ? 'rgba(52,211,153,0.25)' : 'rgba(255,255,255,0.18)'}`, borderRadius: '8px', padding: '6px 12px', ...mono, fontSize: '10px', color: isWatched ? '#34D399' : '#808080', cursor: 'pointer', letterSpacing: '0.06em' }}>
+                            style={{ background: isWatched ? 'rgba(52,211,153,0.1)' : 'rgba(255,255,255,0.04)', border: `1px solid ${isWatched ? 'rgba(52,211,153,0.25)' : 'rgba(255,255,255,0.18)'}`, borderRadius: '8px', padding: '6px 12px', ...mono, fontSize: '10px', color: isWatched ? '#34D399' : '#A6AFBB', cursor: 'pointer', letterSpacing: '0.06em' }}>
                             {isWatched ? '✓ WATCHED' : 'MARK WATCHED'}
                           </button>
                           <button
@@ -670,7 +670,7 @@ export default function MentorshipPage() {
 
                           {/* All concepts */}
                           <div style={{ marginBottom: '16px' }}>
-                            <div style={{ ...mono, fontSize: '10px', color: '#808080', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '8px' }}>Concepts Covered</div>
+                            <div style={{ ...mono, fontSize: '10px', color: '#A6AFBB', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '8px' }}>Concepts Covered</div>
                             <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
                               {ep.concepts.map(c => (
                                 <span key={c} style={{ ...mono, fontSize: '10px', color: '#E8C547', background: 'rgba(212,168,67,0.22)', border: '1px solid rgba(232,197,71,0.95)', padding: '3px 8px', borderRadius: '6px' }}>{c}</span>
@@ -698,7 +698,7 @@ export default function MentorshipPage() {
           <div style={{ textAlign: 'center', padding: '80px 24px' }}>
             <div style={{ fontSize: '48px', marginBottom: '16px' }}>🔍</div>
             <div className="font-display" style={{ fontSize: '28px', color: 'white', marginBottom: '8px' }}>NO EPISODES FOUND</div>
-            <div style={{ ...mono, fontSize: '12px', color: '#808080' }}>Try a different search term or filter</div>
+            <div style={{ ...mono, fontSize: '12px', color: '#A6AFBB' }}>Try a different search term or filter</div>
           </div>
         )}
       </div>
