@@ -1,6 +1,7 @@
 import { MODULES } from '../lib/curriculum'
 import { getPublishedBlogPosts } from '../lib/blog-data'
 import { SEO_PAGES } from './learn/seo-data'
+import { LEGACY_BLOG_REDIRECTS } from '../lib/blog-editorial-policy'
 
 export const revalidate = 3600
 
@@ -46,7 +47,7 @@ export default async function sitemap() {
   // A publication date is not a last-modified timestamp. Omit lastModified
   // until the content sources expose a trustworthy update timestamp.
   const blogPages = (posts || [])
-    .filter(p => p && p.slug)
+    .filter(p => p && p.slug && !LEGACY_BLOG_REDIRECTS[p.slug])
     .map(p => ({
       url: `${BASE}/blog/${p.slug}`,
       changeFrequency: 'monthly',

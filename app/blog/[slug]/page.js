@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from '@/app/components/Navbar';
@@ -8,6 +8,7 @@ import { getRelatedBlogPosts } from '@/lib/related-blog-posts';
 import { serializeJsonLd } from '@/lib/jsonld';
 import { CURRICULUM_STATS } from '@/lib/curriculum';
 import AdSlot from '@/app/components/AdSlot';
+import { LEGACY_BLOG_REDIRECTS } from '@/lib/blog-editorial-policy';
 
 function renderContent(content) {
   if (typeof content === 'string') {
@@ -81,6 +82,9 @@ function isLocalImage(image) {
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
+  const legacyTarget = LEGACY_BLOG_REDIRECTS[slug];
+  if (legacyTarget) permanentRedirect(`/blog/${legacyTarget}`);
+
   const posts = await getPublishedBlogPosts();
   const post = posts.find((item) => item && item.slug === slug);
 
@@ -120,6 +124,8 @@ export async function generateMetadata({ params }) {
 
 export default async function BlogPost({ params }) {
   const { slug } = await params;
+  const legacyTarget = LEGACY_BLOG_REDIRECTS[slug];
+  if (legacyTarget) permanentRedirect(`/blog/${legacyTarget}`);
 
   if (!slug) return <div style={{ minHeight: '100vh', background: '#080808' }} />;
 
@@ -139,6 +145,7 @@ export default async function BlogPost({ params }) {
     image: [absoluteImageUrl(post.image)],
     mainEntityOfPage: canonical,
     datePublished: safeIsoDate(post.date),
+    ...(safeIsoDate(post.modifiedDate) ? { dateModified: safeIsoDate(post.modifiedDate) } : {}),
     author: { '@type': 'Organization', name: 'ICT Flow', url: 'https://ictflow.com' },
     publisher: { '@type': 'Organization', name: 'ICT Flow', url: 'https://ictflow.com' },
   };
@@ -173,13 +180,13 @@ export default async function BlogPost({ params }) {
             style={{ objectFit: 'cover', opacity: 0.4 }}
           />
         ) : (
-          <img
+          <Image
+            unoptimized
             src={coverImage}
             alt={post.title}
-            width="1600"
-            height="640"
-            loading="eager"
-            fetchPriority="high"
+            width={1600}
+            height={640}
+            priority
             style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.4 }}
           />
         )}

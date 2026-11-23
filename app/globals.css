@@ -20,10 +20,17 @@ html {
 body {
   background: var(--if-bg);
   color: var(--if-text);
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-dm-sans), sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
+
+/* Legacy pages still set these family names in inline styles. Bridge those
+   declarations to next/font's generated local families without editing hundreds
+   of unrelated components in one pass. */
+[style*="Bebas Neue"] { font-family: var(--font-bebas-neue), sans-serif !important; }
+[style*="DM Sans"] { font-family: var(--font-dm-sans), sans-serif !important; }
+[style*="DM Mono"] { font-family: var(--font-dm-mono), monospace !important; }
 
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: #0A0A0A; }
@@ -76,9 +83,9 @@ select option { background: #141414; }
 [style*="rgba(255,255,255,0.55)"] { color: #b9c1cc !important; }
 [style*="rgba(255,255,255,0.65)"] { color: #c5ccd6 !important; }
 [style*="rgba(255,255,255,0.7)"] { color: #d0d6de !important; }
-[style*="color: '#808080'"] { color: #9da6b2 !important; }
-[style*="color: '#445060'"] { color: #8f99a6 !important; }
-[style*="color: '#7A8EA8'"] { color: #a3acb8 !important; }
+[style*="color:#808080"], [style*="color: #808080"] { color: #A6AFBB !important; }
+[style*="color:#445060"], [style*="color: #445060"] { color: #A6AFBB !important; }
+[style*="color:#7A8EA8"], [style*="color: #7A8EA8"] { color: #C5CCD6 !important; }
 
 .if-readable { color: #c7c7c7 !important; }
 .if-muted { color: #a9a9a9 !important; }

@@ -2,74 +2,74 @@ const LESSONS = {
   1: {
     id: 1,
     title: 'Market Structure',
-    subtitle: 'The Language of Price — How to Read What the Market Is Actually Saying',
+    subtitle: 'A Framework for Describing Price Structure',
     level: 'Beginner',
     duration: '18 min read',
     category: 'Foundation',
-    imageCaption: 'BOS vs ChoCH — the two most critical market structure signals in ICT',
-    intro: `Before you can trade ICT, you need to understand one thing: price can exhibit recurring patterns and structure. Learning to read those patterns can provide a framework for interpreting charts. Market structure is the foundation of everything in ICT. It tells you the direction price is going, when that direction is changing, and when a new move is starting.`,
+    imageCaption: 'BOS and ChoCH/MSS are common labels for describing price structure in ICT',
+    intro: `Before you can trade ICT, you need to understand one thing: price can exhibit recurring patterns and structure. Learning to read those patterns can provide a framework for interpreting charts. Market structure is one framework used in ICT analysis. It helps describe recent price direction and possible changes, but a swing sequence does not identify the cause of a move or predict the next one with certainty.`,
     sections: [
       {
         title: 'What Is Market Structure?',
         content: `Market structure is the sequence of highs and lows that price creates as it moves. Those patterns can help traders describe whether recent price action is making higher highs and higher lows or lower highs and lower lows, but they do not by themselves reveal every participant's intent.
 
-In an uptrend, price creates Higher Highs (HH) and Higher Lows (HL). Each new push up goes higher than the last. Each pullback stops higher than the previous pullback. Buyers are in full control.
+In an uptrend, price creates Higher Highs (HH) and Higher Lows (HL). Each push reaches a higher level and each pullback holds above the prior pullback in this simplified description. This pattern describes price action; it does not establish that buyers are uniformly in control.
 
-In a downtrend, price creates Lower Highs (LH) and Lower Lows (LL). Each rally stops lower than the last. Each drop goes deeper. Sellers are in full control.
+In a downtrend, price creates Lower Highs (LH) and Lower Lows (LL). Each rally reaches a lower level and each drop reaches a lower level in this simplified description. This pattern describes price action; it does not establish that sellers are uniformly in control.
 
 This sounds simple — and it is. Many retail traders struggle to apply this consistently. They try to buy in downtrends and sell in uptrends and wonder why they keep losing.`,
         highlight: '📌 Rule #1: Some traders filter setups by higher-timeframe structure; test whether this filter improves your results.',
       },
       {
         title: 'Break of Structure (BOS)',
-        content: `A Break of Structure (BOS) happens when price breaks through the most recent swing high (in an uptrend) or swing low (in a downtrend). It confirms that the current trend is continuing.
+        content: `In one common ICT convention, a Break of Structure (BOS) is a break beyond a defined swing high in an uptrend or swing low in a downtrend. Traders may interpret it as continuation evidence, but swing selection, closing-price rules and the following response vary by model; a break does not confirm continuation by itself.
 
 Here's how to identify a Bullish BOS: Price is in an uptrend (HH, HL sequence). Price pulls back, creates a new Higher Low. Then price pushes up and breaks above the last Higher High. That break above the previous swing high = BOS. This can support a continuation interpretation; any directional trade should still follow a defined, tested plan.
 
-Bearish BOS is the opposite: price breaks below the most recent swing low, confirming continuation of the downtrend.
+A bearish BOS is commonly marked when price breaks below a defined swing low; whether that supports continuation depends on the trader’s rules and subsequent price action.
 
-The BOS is not your entry signal — it's your confirmation that the trend is still running. Your entry comes from the pullback that follows.`,
+A BOS is not an entry signal by itself. Some strategies wait for a pullback after the break, while others define different triggers; specify the rules before testing them.`,
         highlight: '📌 BOS is commonly used as a continuation reference in ICT analysis; it does not by itself confirm institutional intent or guarantee continuation.',
       },
       {
         title: 'Change of Character (ChoCH / MSS)',
-        content: `This is where it gets powerful. A Change of Character (ChoCH) — also called a Market Structure Shift (MSS) — is the signal that the trend is REVERSING.
+        content: `A Change of Character (ChoCH) or Market Structure Shift (MSS) is often used for a break against previously identified structure. Terminology and swing-selection rules differ among ICT variants; the label marks a possible change, not proof that a reversal is underway.
 
-In a downtrend, price is making LH and LL. Then suddenly, price shoots up and breaks above the most recent Lower High. That break = ChoCH. It means buyers have stepped in aggressively enough to break the bearish structure. This can be an early sign that the prior downtrend may be weakening or changing.
+In a downtrend, price is making LH and LL. Then suddenly, price shoots up and breaks above the most recent Lower High. Some ICT traders label that break a bullish ChoCH or MSS. It can be interpreted as evidence that prior bearish structure is weakening, but price alone does not identify who stepped in or guarantee the next direction.
 
-In an uptrend, if price breaks below the most recent Higher Low in one aggressive move — that's a bearish ChoCH. Sellers just took control.
+In an uptrend, some ICT traders label a break below a defined Higher Low a bearish ChoCH or MSS. It can suggest that the prior bullish structure is weakening, but it does not prove sellers have taken control.
 
 The key difference between BOS and ChoCH is direction:
 • BOS breaks in the direction of the current trend = continuation
 • ChoCH breaks AGAINST the current trend = potential reversal
 
 This is one framework ICT traders use to study potential turning points; interpretations about institutional positioning are not directly observable from price alone.`,
-        highlight: '📌 ChoCH = The first warning sign that trend is reversing. Don\'t jump in immediately — wait for confirmation and a PD Array to enter from.',
+        highlight: '📌 A ChoCH/MSS is one framework for flagging a possible structural change. Define swing points and confirmation rules, and do not treat the label alone as a reversal or entry confirmation.',
       },
       {
         title: 'Internal vs External Structure',
         content: `ICT goes deeper than just "uptrend/downtrend." He breaks structure into two layers:
 
-External Structure (swing highs/lows visible on your current timeframe) — these are the major turning points. They create the overall bias.
+External Structure (swing highs/lows visible on your current timeframe) refers to larger turning points that some traders use to frame context and possible bias.
 
-Internal Structure (the smaller movements WITHIN the external swings) — these are the Lower Timeframe (LTF) details that give you precise entries.
+Internal Structure (the smaller movements WITHIN the external swings) refers to lower-timeframe details that some traders use to refine, but not guarantee, an entry.
 
-For example, you might be looking at a 1-hour bullish trend (external structure). Inside that, on the 5-minute chart, you'll see a mini downtrend creating the pullback. When that internal bearish structure shifts to bullish (internal ChoCH on 5min) — THAT is your precise entry trigger.
+For example, you might be looking at a 1-hour bullish trend (external structure). Inside that, on the 5-minute chart, you'll see a mini downtrend creating the pullback. Some models use an internal bearish-to-bullish shift on the 5-minute chart as a candidate entry condition; test whether it adds value under explicit rules.
 
 This nested view is one way ICT traders distinguish higher-timeframe context from lower-timeframe execution.`,
         highlight: '📌 Higher-timeframe context can inform bias while lower timeframes can refine entries. Test the exact sequence and rules that fit your strategy.',
       },
       {
         title: 'How to Use Market Structure in a Real Trade',
-        content: `Here's the complete workflow:
+        content: `One possible top-down workflow to define and test is:
 
 Step 1 — Check the Daily chart. Is it making HH/HL (bullish) or LH/LL (bearish)? This is your macro bias. Use this as a directional filter if it is part of your tested plan.
 
-Step 2 — Move to the 1-Hour or 4-Hour chart. Confirm the same structure direction. Look for where the last BOS happened to know how deep the pullback could go.
+Step 2 — Move to the 1-Hour or 4-Hour chart. Confirm the same structure direction. Note the last BOS as context, without assuming it predicts how deep a pullback will go.
 
-Step 3 — When price pulls back, drop to the 15-minute or 5-minute chart. Watch for a ChoCH in the direction of your HTF bias. This is your LTF confirmation.
+Step 3 — When price pulls back, drop to the 15-minute or 5-minute chart. Watch for a ChoCH in the direction of your HTF bias if that condition is part of your tested model; it is a candidate filter, not confirmation of a profitable setup.
 
-Step 4 — After LTF ChoCH, look for a PD Array (FVG, OB, etc.) nearby to enter from. Set your stop below the swing low that caused the ChoCH.
+Step 4 — After LTF ChoCH, look for a PD Array (FVG, OB, etc.) nearby to enter from. Define invalidation and stop placement from tested model and position-sizing rules; a swing low is one possible reference for a bullish setup.
 
 This is one possible top-down analysis framework; traders can adapt the timeframes and rules to their instrument and tested plan.`,
         highlight: '📌 The trade entry is on the LOWER timeframe, but the bias comes from the HIGHER timeframe. This is a commonly emphasized ICT guideline; traders should test the timeframes and rules that fit their plan.',
@@ -77,8 +77,8 @@ This is one possible top-down analysis framework; traders can adapt the timefram
     ],
     quiz: [
       { q: 'In a downtrend, price creates...', options: ['Higher Highs and Higher Lows', 'Lower Highs and Lower Lows', 'Equal Highs and Equal Lows', 'Higher Highs and Lower Lows'], answer: 1 },
-      { q: 'A BOS (Break of Structure) signals...', options: ['Trend reversal', 'Trend continuation', 'No trading signal', 'Liquidity sweep only'], answer: 1 },
-      { q: 'A ChoCH in a downtrend means...', options: ['Sellers got stronger', 'Buyers broke above a Lower High', 'Price reached premium zone', 'Asian session opened'], answer: 1 },
+      { q: 'In one common ICT convention, a BOS is interpreted as...', options: ['Proof of institutional intent', 'A possible continuation reference, depending on the model and later price action', 'A guaranteed trend continuation', 'Evidence that no liquidity is nearby'], answer: 1 },
+      { q: 'In one common ICT convention, a bullish ChoCH/MSS in a downtrend is marked when...', options: ['Price forms another lower low', 'Price breaks above a defined Lower High', 'Price reaches premium zone', 'The Asian session opens'], answer: 1 },
     ],
     nextLesson: { id: 2, title: 'Liquidity Concepts' },
     prevLesson: null,
@@ -105,12 +105,14 @@ This is a central ICT interpretation of liquidity; not every market move needs t
       },
       {
         title: 'Buy-Side Liquidity (BSL)',
-        content: `Buy-Side Liquidity (BSL) sits ABOVE price, at levels where:
-• Retail traders have placed stop-losses on their short positions
-• Buy-stop orders from breakout traders are waiting
-• Equal highs or swing highs that everyone can see on the chart
+        content: `Buy-Side Liquidity (BSL) is the ICT label for potential buy-stop liquidity above a chosen high, often discussed around:
+• Areas where traders may place buy stops to manage short positions
+• Levels where breakout traders may place buy-stop entry orders
+• Equal highs or visible swing highs that market participants may watch
 
-Within the ICT framework, traders may study BSL as an area where sell-side liquidity and potential reactions can occur. Actual participant intent and the resulting direction are not directly observable from the chart.
+The chart does not reveal the actual orders or prove that a particular level contains a large cluster of stops.
+
+Within the ICT framework, traders may study BSL as a reference above watched highs where buy-stop orders could be present or where a break may attract momentum orders. The chart does not reveal the actual order book, participant intent or the direction of any later reaction.
 
 You'll recognize BSL as: Equal Highs (EQH) on a chart, previous day/week highs, obvious resistance levels that everyone is watching, and round numbers like 1.1000 or 2000 on Gold.
 
@@ -119,12 +121,14 @@ A common liquidity-sweep example is price approaching BSL, briefly trading above
       },
       {
         title: 'Sell-Side Liquidity (SSL)',
-        content: `Sell-Side Liquidity (SSL) is the mirror image — it sits BELOW price, at levels where:
-• Retail longs have their stop-losses
-• Sell-stop orders from breakout sellers are resting
-• Equal lows, swing lows, support levels
+        content: `Sell-Side Liquidity (SSL) is the ICT label for potential sell-stop liquidity below a chosen low, often discussed around:
+• Areas where traders may place sell stops to manage long positions
+• Levels where breakout traders may place sell-stop entry orders
+• Equal lows, visible swing lows or commonly watched support areas
 
-ICT teachings commonly interpret sell-side liquidity as an area where buy-side orders may be filled. Some ICT explanations describe price moving below obvious lows before reversing, but the chart alone cannot establish that institutions deliberately triggered stops or accumulated positions there.
+The chart alone does not establish which orders are present or how much liquidity sits at a level.
+
+Some ICT explanations hypothesize that a move below SSL can interact with available orders and may be followed by a rebound. A chart alone cannot establish who triggered the move, whether institutions accumulated positions, or whether price will reverse.
 
 You'll identify SSL as: Equal Lows (EQL), previous day/week lows, obvious support levels, and round numbers below current price.
 
@@ -142,17 +146,17 @@ In ICT terminology: EQH = resting BSL above. EQL = resting SSL below. When you s
       },
       {
         title: 'How to Trade Liquidity Sweeps',
-        content: `The complete liquidity sweep trade setup:
+        content: `One possible liquidity-sweep workflow to define and test:
 
 Step 1 — Identify your HTF bias (bullish or bearish) using market structure.
 
 Step 2 — Mark all visible BSL (above recent highs) and SSL (below recent lows) on your chart.
 
-Step 3 — In a bullish bias, watch for price to sweep below SSL (a fake breakdown). This is the institution filling buys.
+Step 3 — In a bullish scenario, a model may look for price to move below an identified low. Treat this as a candidate liquidity interaction; the chart alone cannot identify who traded or why.
 
-Step 4 — After the sweep, wait for a ChoCH or BOS to the upside on the LTF. This confirms the sweep is done and price is reversing.
+Step 4 — Some models require a later upside structure break on a lower timeframe. It can be a defined condition to test, but it does not prove the sweep is complete or that a durable reversal has begun.
 
-Step 5 — Enter from a nearby FVG or OB that forms after the sweep/ChoCH.
+Step 5 — If the tested model calls for it, consider a nearby FVG or OB formed after the move. Define entry, invalidation, missed-fill handling and position size before judging results.
 
 A commonly studied ICT sequence is Liquidity Sweep → Structure Shift → Entry from a PD Array. It appears in several ICT-style models, but individual models and criteria differ.`,
         highlight: '📌 Example setup: SSL sweep → bullish structure shift → FVG/OB entry. Treat this as a testable setup, not a guaranteed or universally superior trade.',
@@ -161,7 +165,7 @@ A commonly studied ICT sequence is Liquidity Sweep → Structure Shift → Entry
     quiz: [
       { q: 'Buy-side liquidity (BSL) is located...', options: ['Below recent lows', 'Above recent highs', 'At the 50% Fibonacci level', 'During the Asian session'], answer: 1 },
       { q: 'What can happen after a liquidity sweep?', options: ['Price may continue, reverse, or consolidate depending on conditions', 'Price reverses sharply in every case', 'Price consolidates for weeks', 'Volume disappears'], answer: 0 },
-      { q: 'Equal Highs (EQH) in ICT represent...', options: ['Strong resistance to sell from', 'Resting buy-side liquidity above', 'A bullish continuation pattern', 'Order block validation'], answer: 1 },
+      { q: 'In ICT terminology, equal highs are commonly treated as...', options: ['Guaranteed resistance to sell from', 'A potential reference for buy-side liquidity above the highs', 'A bullish continuation signal on its own', 'Proof that an order block is valid'], answer: 1 },
     ],
     nextLesson: { id: 3, title: 'Fair Value Gaps (FVG)' },
     prevLesson: { id: 1, title: 'Market Structure' },
@@ -179,7 +183,7 @@ A commonly studied ICT sequence is Liquidity Sweep → Structure Shift → Entry
     sections: [
       {
         title: 'What Is a Fair Value Gap?',
-        content: `A Fair Value Gap (FVG) is a three-candle price formation where the middle candle moves so aggressively that it leaves a price gap — a zone where no two-sided trading occurred.
+        content: `A Fair Value Gap (FVG) is a three-candle chart formation in which the first and third candles' wicks do not overlap under a chosen definition. The chart pattern describes candle ranges; it does not mean that no trading occurred in the zone.
 
 Here's how to identify a Bullish FVG:
 • Candle 1: any candle
@@ -187,36 +191,36 @@ Here's how to identify a Bullish FVG:
 • Candle 3: the next candle
 • The FVG = the gap between the HIGH of Candle 1 and the LOW of Candle 3
 
-If Candle 3's low is ABOVE Candle 1's high — there is a gap where price skipped. That gap is the FVG. Price passed through it so fast that buyers and sellers couldn't meet there. The market is "imbalanced" in that zone.
+If Candle 3's low is above Candle 1's high, the non-overlapping interval is commonly marked as a bullish FVG. This is a chart-based definition; it does not show that buyers and sellers could not trade there or establish why the formation occurred.
 
 Bearish FVG is the mirror: Candle 3's HIGH is below Candle 1's LOW after a large bearish displacement candle.`,
         highlight: '📌 The FVG is the gap between Candle 1\'s high and Candle 3\'s low (bullish). Mark it on your chart — price may revisit this zone; revisit frequency and reaction should be tested.',
       },
       {
         title: 'Why Does Price Return to FVGs?',
-        content: `Price returns to FVGs because of the mechanics of how large institutional orders get filled. When a bank places a massive order, it creates a displacement move — price moves so fast that many orders can't get filled at those levels. The Some ICT teachings describe this as an algorithmic explanation, but it is not a directly verified mechanism.
+        content: `There is no established rule that every FVG will be revisited. Some ICT explanations hypothesize that price returns to these zones as part of repricing or later order flow, but the candle pattern alone does not verify a particular cause or guarantee a revisit. The usefulness of the hypothesis should be measured using a consistent FVG definition and recorded outcomes.
 
 Think of it this way: imagine you're at an auction and the bidding jumps from $100 to $150 in one instant. Someone missed their chance to bid at $120. A market may revisit prior prices, but the auction analogy does not establish why any specific FVG will be revisited. That's the FVG.
 
 For ICT traders, FVGs can serve as potential areas of interest or confluence. Their usefulness should be evaluated with market context and personal testing rather than assumed to outperform other forms of analysis.`,
-        highlight: '📌 FVGs aren\'t just patterns — they represent unfilled institutional orders. Some ICT teachings use an algorithmic explanation for FVG behavior, but the mechanism and performance should be treated as a hypothesis to test.',
+        highlight: '📌 An FVG is a chart-defined price formation. Some ICT explanations attribute its behavior to institutional orders or algorithms, but those mechanisms are not verified by the pattern alone; test revisit and outcome rates using a consistent definition.',
       },
       {
         title: 'Bullish vs Bearish FVG',
-        content: `Bullish FVG (Buy from here in a bullish bias):
+        content: `Bullish FVG (potential long context in a bullish scenario):
 • Forms during a bullish displacement (large upward candle)
 • Located BELOW current price after the move
 • Price comes back down into this zone = retracement
 • In a bullish bias, this can be a potential buy area when supported by a tested setup
 • Entry: wait for price to enter the FVG, look for a reaction candle
 
-Bearish FVG (Sell from here in a bearish bias):
+Bearish FVG (potential short context in a bearish scenario):
 • Forms during a bearish displacement (large downward candle)
 • Located ABOVE current price after the move
 • Price comes back up into this zone = retracement
 • In a bearish bias, this can be a potential sell area when supported by a tested setup
 
-A common filtering rule is to align FVG direction with higher-timeframe bias; test whether this improves your setup quality. Using an FVG against the HTF bias is one of the most common mistakes ICT beginners make.`,
+Some traders use higher-timeframe alignment as an FVG filter. Test whether it improves results after costs and missed fills; using an FVG against the higher-timeframe direction is not automatically a mistake or a losing setup.`,
         highlight: '📌 Some traders use HTF alignment as an FVG filter. Treat it as contextual information to test, not a guarantee that opposing setups are traps.',
       },
       {
@@ -225,42 +229,42 @@ A common filtering rule is to align FVG direction with higher-timeframe bias; te
 
 Consequent Encroachment (CE): The 50% midpoint of the FVG. Some ICT traders monitor this midpoint when studying FVG revisits. A reaction there can be treated as a testable entry condition rather than a guaranteed reversal.
 
-Inverse FVG (IFVG): When an FVG gets fully filled and price passes through it — the FVG "inverts" its polarity. A bullish FVG that gets completely filled becomes a bearish resistance zone on re-test.
+Inverse FVG (IFVG): Some ICT variants use this label when price fully fills and then breaks through an FVG, treating the former zone as a candidate area of opposite polarity on a later revisit. Whether it acts as resistance or support is an outcome to test, not an automatic consequence.
 
-Balanced Price Range (BPR): When a bullish FVG and bearish FVG overlap on different timeframes, creating an exceptionally strong zone that is a higher-confluence zone in this framework; any performance difference should be tested.
+Balanced Price Range (BPR): Some ICT variants mark an overlap between bullish and bearish FVGs as a confluence area. Overlap alone does not establish that the zone is exceptionally strong or more predictive; evaluate it under a consistent definition.
 
-1st Presented FVG: In any displacement, the FIRST FVG that forms is the most important. ICT specifically targets the first one because it is closest to where the institutional order was placed.
+1st Presented FVG: Some ICT variants prioritize the first FVG identified after a displacement. The claim that it is always most important or closest to an institutional order is a theoretical explanation, not something a candle chart can verify; compare it with alternatives in testing.
 
 BISI (Buy-side Imbalance, Sell-side Inefficiency): A bullish FVG — price imbalanced to the buy-side.
 SIBI (Sell-side Imbalance, Buy-side Inefficiency): A bearish FVG — price imbalanced to the sell-side.`,
-        highlight: '📌 Most important variations: CE (50% of FVG), IFVG (inverted after full fill), BPR (overlapping FVGs = double strength).',
+        highlight: '📌 Common variations include CE (the 50% midpoint), IFVG (a former FVG treated as a possible opposite-polarity zone under some rules), and BPR (overlapping opposing FVG zones). Labels do not establish relative predictive strength; test each definition.',
       },
       {
-        title: 'Trading FVGs — The Complete Process',
-        content: `Here is how to trade an FVG from start to finish:
+        title: 'One FVG-Based Entry Variant',
+        content: `Here is one possible FVG-based entry variant to define and test:
 
-Step 1 — Establish HTF Bias. Check Daily/4H. Is structure bullish or bearish? Only use FVGs that align.
+Step 1 — Define higher-timeframe context on Daily/4H if your model uses it. Test whether aligning FVG direction with that context improves outcomes; do not assume this filter is universally superior.
 
-Step 2 — Identify a Liquidity Sweep. Price sweeps SSL (in bullish scenario). This starts the reversal.
+Step 2 — If required by the tested model, mark a move below a defined low. A sweep label does not establish that a reversal has started or that a stop hunt occurred.
 
-Step 3 — Find the FVG. After the sweep, a bullish displacement move forms. Mark the FVG (gap between candle 1 high and candle 3 low).
+Step 3 — Apply the FVG definition. If the chosen setup produces a qualifying bullish displacement, mark the non-overlapping interval between Candle 1's high and Candle 3's low. Do not assume every sweep is followed by displacement or an FVG.
 
-Step 4 — Wait for Price to Return. Price pulls back into the FVG zone. You're not chasing — you're waiting.
+Step 4 — A later return to the FVG may or may not occur. Define how you handle a missed fill and test outcomes for filled trades as well as setups that never trigger.
 
-Step 5 — Entry Trigger. Look for a small bullish confirmation candle inside the FVG. Or simply enter at the CE (50%) of the FVG with a limit order.
+Step 5 — Define the entry rule in advance. A confirmation candle or a limit order near the CE (50%) are different variants; a limit order may be missed or filled without a favorable reaction.
 
-Step 6 — Stop Loss. Below the low of the FVG (for bullish trades). This invalidates the FVG if hit.
+Step 6 — Define the stop from the setup's prewritten invalidation and account-risk rules. Some variants use an FVG boundary or nearby swing, but a stop being hit does not universally invalidate the chart pattern.
 
-Step 7 — Target. The next liquidity pool above (BSL, previous high, etc.).
+Step 7 — Choose a predefined target rule, such as a relevant high, a fixed risk multiple or a time-based exit, and evaluate it after costs. A nearby liquidity reference is one option, not a guaranteed destination.
 
 Risk/reward outcomes vary by setup and market; use the target and stop rules defined by your tested plan.`,
-        highlight: '📌 A commonly studied ICT sequence is SSL Sweep → Bullish Displacement → FVG → potential entry near CE. Treat it as a testable setup, not a guaranteed outcome.',
+        highlight: '📌 One ICT-style variant combines a move below a chosen low, bullish displacement and a possible FVG entry near CE. Define every step, include missed fills and alternative outcomes, and test it as a hypothesis rather than a guaranteed sequence.',
       },
     ],
     quiz: [
-      { q: 'A Fair Value Gap forms between...', options: ['Two consecutive candle bodies', 'Candle 1\'s high and Candle 3\'s low', 'The open and close of one candle', 'Two daily session opens'], answer: 1 },
+      { q: 'A bullish Fair Value Gap is commonly defined using the non-overlap between...', options: ['Two consecutive candle bodies', 'Candle 1’s high and Candle 3’s low', 'The open and close of one candle', 'Two daily session opens'], answer: 1 },
       { q: 'CE (Consequent Encroachment) refers to...', options: ['The full fill of the FVG', 'The 50% midpoint of the FVG', 'A second FVG forming inside the first', 'The candle that creates the FVG'], answer: 1 },
-      { q: 'An Inverse FVG (IFVG) forms when...', options: ['The FVG is very large', 'The original FVG gets completely filled', 'Two FVGs overlap', 'Price gaps overnight'], answer: 1 },
+      { q: 'In some ICT variants, an IFVG candidate is marked when...', options: ['The FVG is especially large', 'Price fully fills and breaks through the original FVG under the model’s definition', 'Two FVGs overlap', 'Price gaps overnight'], answer: 1 },
     ],
     nextLesson: { id: 4, title: 'Order Blocks' },
     prevLesson: { id: 2, title: 'Liquidity Concepts' },
@@ -278,68 +282,70 @@ Risk/reward outcomes vary by setup and market; use the target and stop rules def
     sections: [
       {
         title: 'What Is an Order Block?',
-        content: `An Order Block is the last opposing candle before a strong impulse move. It represents the candle where an institution was absorbing all retail orders — quietly filling their position against the crowd — before launching price in their intended direction.
+        content: `An Order Block is the last opposing candle before a strong impulse move. ICT interpretations sometimes describe this candle as a possible area of institutional activity, but a chart pattern cannot show whether institutions absorbed retail orders, who traded, or what participants intended. Treat the candle as a reproducible marking rule and test what happened after the move.
+
+Boundary conventions vary across ICT/SMC sources: some use the full candle range, some use an open-to-extreme range, and others use the candle body. The bullets below show a body-only example; choose and document one convention before marking or testing an OB.
 
 Bullish Order Block:
 • The last BEARISH (red) candle before a significant bullish move
 • ICT interpretations may describe this candle as an area of institutional buying; actual participant positioning cannot be confirmed from the candle alone.
-• The OB zone = the body of that last bearish candle (open to close)
+• Under this body-only example, the OB zone runs from the open to the close of that last bearish candle.
 • Price may revisit this zone and react, but the response should be treated as a testable outcome rather than an expectation
 
 Bearish Order Block:
 • The last BULLISH (green) candle before a significant bearish move
 • ICT interpretations may describe this candle as an area of institutional selling; actual participant positioning cannot be confirmed from the candle alone.
-• The OB zone = the body of that last bullish candle
-• Price returns here as resistance
+• Under this body-only example, the OB zone runs from the open to the close of that last bullish candle.
+• A later revisit may be studied as possible resistance under a defined model; it can also fail or be crossed without a reaction.
 
 In this ICT-style framework, traders may define an OB confirmation using a BOS/ChoCH, an FVG, and displacement; these are model criteria to test rather than universal validation rules.`,
         highlight: '📌 In ICT terminology, an Order Block is studied as a candle/zone associated with a subsequent displacement move. Claims about unfilled institutional orders should be treated as a theoretical interpretation.',
       },
       {
         title: 'How to Identify a Valid Order Block',
-        content: `Not every candle before a move is a valid Order Block. ICT gives specific criteria for validity:
+        content: `Not every candle before a move is an Order Block under a given strategy. Definitions and validity criteria differ across ICT variants, so state the rules you use:
 
 1. Some ICT traders look for displacement after an OB, often accompanied by large directional candles and FVGs. A slower move may be treated differently depending on the model; test the rule rather than assume it is universally valid.
 
-2. The move must include a BOS or ChoCH — confirming that structure shifted after the OB candle. This is interpreted within the ICT model as evidence of a potential structural shift; institutional intent cannot be confirmed from chart structure alone.
+2. Some OB definitions require a BOS or ChoCH after the candidate candle. If your model uses that rule, define structure consistently and test whether it adds information; the shift is not confirmation of institutional intent.
 
-3. Mitigation threshold — once price returns to the OB, it should react within the body of the OB candle. Specifically, ICT says a bullish OB is valid if price holds above the 50% level of the OB candle (the midpoint between open and close).
+3. Mitigation threshold — definitions vary. Some traders assess whether price holds above or below the OB candle's 50% level (the midpoint between open and close); others use a different boundary or close rule. Specify one definition and record failures as well as reactions.
 
-4. Volume context — higher volume on the OB candle and the displacement move adds validity.
+4. Volume context — some traders include volume as a filter where the data represents the market they trade. Volume availability and meaning vary by venue and instrument; test whether the filter adds value instead of assuming that higher volume validates an OB.
 
-5. Higher-timeframe alignment — some traders use a Daily OB as context for a 5-minute OB. Whether this adds value depends on the model and should be tested. Always record the timeframe of the OB.`,
-        highlight: '📌 OB validity checklist: (1) displacement after it ✓ (2) BOS or ChoCH after it ✓ (3) FVG in the displacement ✓ (4) HTF alignment ✓',
+5. Higher-timeframe alignment — some traders use a Daily OB as context for a 5-minute OB. Whether this adds value depends on the model and should be tested. Record the timeframe used.`,
+        highlight: '📌 Possible OB filter set: define displacement, any BOS/ChoCH condition, FVG criteria and the role of HTF context. These are model choices to test, not universal requirements or proof of institutional activity.',
       },
       {
         title: 'Order Block Variations',
-        content: `ICT has developed several OB variations over the years:
+        content: `ICT teaching uses several Order Block variations, but their naming rules differ by source and model:
 
-Breaker Block: An Order Block that FAILED. When price returns to an OB and instead of reversing, it blasts through — that OB is now a Breaker Block. In a bullish scenario: a bearish OB that gets violated to the upside becomes a support zone (breaker). Within the ICT interpretation, a breaker may be discussed as a former OB that changes role after being violated; the chart alone cannot confirm that institutions defended or added to a position.
+Breaker Block: Some ICT variants label a former OB a Breaker after price violates it, then study whether it may act as a reference on a later revisit. A bullish or bearish polarity change is a hypothesis, not a guaranteed result. Define the violation (wick or close), retest condition, entry trigger and invalidation before testing it.
 
-Mitigation Block: When an OB is partially filled — price enters the OB but not fully. ICT considers partially mitigated OBs as still valid for future tests.
+Mitigation Block: Some traders use this label for a particular type of retracement or partial return to a former zone. Definitions differ; do not assume partial entry into an OB preserves its future validity without a specific rule and evidence.
 
-Rejection Block: The WICK of a candle before a strong move, rather than the body. When price creates a long wick before launching, that wick zone is a rejection block — slightly different from a standard OB.
+Rejection Block: Some ICT definitions focus on a wick or rejection area rather than the OB candle body. Define the candle, wick boundary and qualifying move explicitly; a long wick alone does not establish future support or resistance.
 
-Hidden OB: An OB that exists on a higher timeframe but is not visible when looking at a lower timeframe alone. Requires multi-timeframe analysis to identify.
+Hidden OB: Some traders use this label for a candidate zone identified on a higher timeframe that is less apparent on a lower-timeframe chart. The designation depends on the chosen zone definition and timeframe.
 
-Reclaimed OB (2024): If an OB gets swept through but price quickly returns inside it — the OB is "reclaimed" and is still valid for trading.`,
-        highlight: '📌 Breaker Block is the OB that failed. When an OB gets broken through, it inverts polarity and becomes support (if bullish) or resistance (if bearish).',
+Reclaimed OB: Some variants use this label when price trades through a candidate OB and then returns inside it. A reclaim label does not itself prove the zone remains valid for a future entry; define the return condition, invalidation and trade trigger before testing the variant.`,
+        highlight: '📌 A Breaker is one ICT label for a failed zone that may later change role. Define its violation and retest criteria; a polarity change or reaction is not guaranteed.',
       },
       {
         title: 'Order Block vs Fair Value Gap — Key Differences',
         content: `Both can be studied as potential entry zones within the framework, but they are fundamentally different:
 
-Order Block = WHERE institutions entered (the candle they used to build their position). It's about position accumulation.
+Order Block = a candle or zone identified by a chosen ICT rule before a subsequent directional move. The chart does not reveal where institutions entered or whether they used that candle to build a position.
 
-Fair Value Gap = WHERE price moved too fast and left an imbalance. It's about price inefficiency.
+Fair Value Gap = a three-candle price formation defined by a selected candle-range convention. Some ICT explanations interpret it as an imbalance; the formation alone does not establish its cause or predict a revisit.
 
 An OB that overlaps an FVG is one commonly studied ICT confluence pattern; whether it improves outcomes should be tested. ICT calls this a "confluence" zone. When an Order Block and FVG overlap, traders may treat the combination as additional confluence; its effectiveness should be tested rather than assumed.
 
 How to determine which to use:
-• OBs are better for swing trades and higher timeframe setups
-• FVGs are better for intraday precision entries on 5m/15m
-• When they overlap, some traders treat the area as additional confluence; confidence and performance should be evaluated rather than assumed.
-• Consider both as part of the checklist if your tested strategy uses them.`,
+• Some strategies use OBs as higher-timeframe context, while others apply them intraday; the timeframe is a model choice to define and test.
+• Some strategies use FVGs for intraday entries or other purposes; a particular timeframe does not make an FVG inherently more precise or profitable.
+• When they overlap, some traders treat the area as additional confluence; compare it with the same setup without the added condition.
+• Include either reference only when its definition and role are explicit in the strategy being tested.`,
         highlight: '📌 OB + FVG overlap can provide additional confluence in an ICT-style setup; it does not guarantee a better outcome.',
       },
     ],
@@ -355,7 +361,7 @@ How to determine which to use:
   5: {
     id: 5,
     title: 'Killzones & Macro Times',
-    subtitle: 'Time Is Your Edge — Studying Institutional Trading Windows',
+    subtitle: 'Studying Session Windows as a Testable Context Filter',
     level: 'Intermediate',
     duration: '15 min read',
     category: 'Time & Sessions',
@@ -373,24 +379,24 @@ ICT teaching commonly divides the day into four named Killzones and assigns poss
       },
       {
         title: 'The Four Killzones',
-        content: `Asian Killzone (8:00 PM – 12:00 AM EST):
-ICT label sometimes used: accumulation. The range may be a useful reference, but it does not confirm participant positioning. ICT teaching sometimes frames this session as accumulation, but actual participant positioning cannot be confirmed from the chart alone. The high and low of the Asian session = critical levels. Price may revisit or sweep one of these levels during London or New York. Mark them every single day.
+        content: `Asian Killzone (8:00 PM – 12:00 AM New York time; confirm the source's ET/daylight-saving convention):
+ICT teaching sometimes labels this window as accumulation. The range can be used as a reference, but it does not confirm participant positioning. The Asian-session high and low are candidate levels that some traders mark; price may revisit, sweep, break through, or ignore either level. Marking the range is a journaling convention, not a requirement for every strategy.
 
-London Killzone (2:00 AM – 5:00 AM EST):
-ICT label sometimes used: possible manipulation/Judas Swing; it is a hypothesis, and outcomes vary by market and day. Price may sweep one side of the Asian range before reversing, but the move, participant intent, and direction can vary by market and day. Some ICT traders avoid opening minutes or watch for a move beyond the Asian range. This is a model-specific filter, not a universal rule; define the time and sweep conditions and test the results.
+London Killzone (2:00 AM – 5:00 AM New York time; confirm the source's ET/daylight-saving convention):
+Some ICT traders interpret a move during this window as a possible manipulation phase or Judas Swing. This is a hypothesis, and the move, participant intent, and direction can vary by market and day. Some models watch for a move beyond the Asian range; this is a model-specific filter, not a universal rule. Define the time and sweep conditions and test the results.
 
-New York AM Killzone (7:00 AM – 10:00 AM EST) — or 8:30-11:00 AM:
-ICT label sometimes used: distribution. Directional expansion can occur, but the session's role is not fixed. Volatility and directional behavior can vary by market and day, and institutional positioning cannot be confirmed from the chart alone. The Silver Bullet trade runs entirely within this window (specifically 10:00-11:00 AM EST for the NY AM Silver Bullet).
+New York AM Killzone (one common convention is 7:00 AM – 10:00 AM New York time; other ICT sources use different windows, including 8:30–11:00 AM):
+Some ICT teaching labels this window as a possible distribution phase. Directional expansion can occur, but the session's role is not fixed. Volatility and directional behavior vary by market and day, and institutional positioning cannot be confirmed from the chart alone. One commonly taught New York Silver Bullet window is 10:00–11:00 AM New York time. Do not treat that window as wholly inside the 7:00–10:00 convention; choose and document the exact windows from your source and account for daylight saving.
 
-London Close Killzone (10:00 AM – 12:00 PM EST):
-Possible interpretation: reversal or profit-taking. The behavior varies by session and market; this is not a fixed role. The behavior varies by session and market, and specific bank positioning cannot be confirmed from a chart. ICT traders either close positions here or look for a fade trade.`,
-        highlight: '📌 London = fake out (Judas). NY AM = real move. This two-step pattern is commonly taught within the AMD framework; its occurrence and usefulness should be evaluated across the market and session being studied.',
+London Close Killzone (one commonly listed window is 10:00 AM – 12:00 PM New York time; confirm your source's convention):
+Some ICT traders study this period for possible reversals or position-management decisions. The behavior varies by session and market, and specific bank positioning cannot be confirmed from a chart. Whether to close a position or test a fade setup should follow the strategy's written rules, not the time label alone.`,
+        highlight: '📌 London can be interpreted as a possible counter-directional phase and New York AM as possible expansion in one AMD narrative; the sequence and direction are not fixed, and both should be tested.'
       },
       {
         title: 'ICT Macro Times',
-        content: `Beyond Killzones, ICT introduced "Macro Times" — 20-minute windows within sessions that some ICT teachings use as additional timing references; traders can test whether they add useful context.
+        content: `Beyond Killzones, some ICT teachings list "Macro Times" as short intraday windows to study alongside other conditions. The windows vary by source and are not a verified institutional schedule; test whether they add useful information beyond a baseline.
 
-The key Macro Times (all EST):
+The illustrative clock labels below are in New York local time; confirm the source's daylight-saving convention before applying or converting them:
 • London Macro 1: 2:33 AM – 3:00 AM
 • London Macro 2: 4:03 AM – 4:30 AM
 • New York AM Macro 1: 8:50 AM – 9:10 AM
@@ -401,31 +407,31 @@ The key Macro Times (all EST):
 • Last Hour Macro: 3:15 PM – 3:45 PM
 
 Some ICT teachings describe these windows as periods when price may move toward a liquidity reference. The chart does not establish that a specific algorithm causes the move or that a target will be reached. The Silver Bullet is commonly studied during selected windows, but its effectiveness should be tested against clearly defined rules.`,
-        highlight: '📌 Macro Times are ICT time-window concepts that some traders study for session behavior. Their precision and usefulness should be evaluated for the market and strategy being tested.',
+        highlight: '📌 Macro Times are ICT time-window concepts, not guaranteed market-moving periods. Record the exact source definition and test whether the chosen window adds value for the market and rules being studied.',
       },
       {
         title: 'The Asian Range — Your Daily Map',
-        content: `One of the most practical applications of the session framework is marking the Asian Range every single day. Here's why it matters:
+        content: `One possible use of the session framework is to record the Asian Range. Whether to mark it every day depends on the instrument and the strategy being tested:
 
 The Asian session commonly forms a definable high-low range. ICT traders may interpret this range as an accumulation reference, but institutional positioning cannot be confirmed from the range alone.
 
 London and New York sessions can interact with the Asian range. A sweep of one or both sides is not required, and target reliability varies by market and conditions.
 
-Daily routine:
-1. At midnight EST, mark the Asian Range High and Low
-2. During London open (2-5 AM), watch which side gets swept first
-3. Record whether a sweep occurred; do not label it a Judas Swing without defined criteria.
-4. Track whether price reversed, continued or remained in a range.
-5. Use the result as one observation, not a standalone NY AM directional bias.
+Optional logging routine:
+1. Choose and document one consistent Asian-session definition, using New York time or UTC with daylight-saving handling.
+2. Record the range high and low if they are part of your model.
+3. During your predefined London window, record whether neither, one, or both boundaries were crossed; do not assume one side must be swept first.
+4. Track whether price reversed, continued, or remained in a range.
+5. Treat each observation as one data point, not a standalone New York directional bias.
 
 The Asian-range sweep-and-reversal setup is an example traders may study; reported profitability depends on the trader, market, execution, costs, and rules used. The initial sweep does not prove the next move will go in the opposite direction or establish a New York bias.`,
         highlight: '📌 Marking the Asian Range can provide session context. London may sweep one side, both sides, or neither; use the result as one input rather than a guaranteed NY bias.',
       },
     ],
     quiz: [
-      { q: 'The London Killzone is primarily known for...', options: ['The real directional move', 'The Judas Swing / fake-out', 'Profit taking and reversals', 'Asian range consolidation'], answer: 1 },
-      { q: 'The New York AM Killzone serves the role of...', options: ['Accumulation', 'Manipulation', 'Distribution', 'Consolidation'], answer: 2 },
-      { q: 'Macro Times are approximately...', options: ['1-hour windows', '20-minute precision windows', 'The entire trading session', '4-hour windows'], answer: 1 },
+      { q: 'Within one ICT interpretation, how is the London window sometimes described?', options: ['As a guaranteed directional move', 'As a possible Judas Swing hypothesis whose frequency and outcome vary', 'As a period when price cannot reverse', 'As proof of institutional positioning'], answer: 1 },
+      { q: 'In one common ICT AMD narrative, New York AM is described as...', options: ['Always accumulation', 'Always manipulation', 'A possible distribution phase, not a fixed session role', 'A guaranteed reversal'], answer: 2 },
+      { q: 'How should named ICT Macro Times be used?', options: ['As guaranteed precision entries', 'As time-window hypotheses to test against a baseline', 'As a universal institutional schedule', 'Only after a trade loses'], answer: 1 },
     ],
     nextLesson: { id: 6, title: 'Power of Three (AMD)' },
     prevLesson: { id: 4, title: 'Order Blocks' },
@@ -475,13 +481,13 @@ The Judas-style sequence can recur across sessions, but its consistency varies. 
       },
       {
         title: 'Reading the Daily Candle as AMD',
-        content: `One of the most profound insights ICT offers is that you can read the STRUCTURE of a single daily candle as an AMD story:
+        content: `One way some ICT traders interpret a completed daily candle is through the AMD framework. The candle's shape is observable; phase labels are hypotheses rather than verified events:
 
 A Bullish Daily Candle:
-• Open (midnight open)
+• Open, based on the chart's daily-session boundary; the boundary can vary by provider and timezone
 • A lower wick may be interpreted as a possible move against the close direction; this does not verify manipulation
 • A long green body describes net upward movement; it does not establish a distribution phase
-• Small wick UP = sometimes a minor London Close reversal
+• A small upper wick records a limited move above the body; by itself it does not identify a London Close reversal
 • Close near the high
 
 A Bearish Daily Candle:
@@ -516,7 +522,7 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
     ],
     quiz: [
       { q: 'In some ICT descriptions, what does the "M" (Manipulation) phase refer to?', options: ['The real directional move', 'A possible Judas Swing or move against the later direction', 'Institutional accumulation as a verified fact', 'Profit taking at day close'], answer: 1 },
-      { q: 'On a bullish AMD day, the lower wick of the daily candle represents...', options: ['Strong support', 'The distribution phase', 'The Judas Swing / liquidity sweep below', 'End of trend'], answer: 2 },
+      { q: 'Within one ICT interpretation, how might a long lower wick on a bullish daily candle be read?', options: ['As proof of strong support', 'As a confirmed distribution phase', 'As a possible move below the range, not proof of a Judas Swing', 'As proof the trend has ended'], answer: 2 },
       { q: 'How should the claim that Tuesday is common for a weekly Judas Swing be treated?', options: ['As a universal market fact', 'As an attributed hypothesis that needs testing', 'As a guaranteed reversal signal', 'As proof of institutional activity'], answer: 1 },
     ],
     nextLesson: { id: 7, title: 'Premium & Discount Zones' },
@@ -530,31 +536,31 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
     duration: '22 min read',
     category: 'Price Theory',
     imageCaption: 'Premium vs Discount: ICT premium/discount framing: traders study selling in premium and buying in discount relative to a swing range',
-    intro: `One important concept in ICT is this: ICT presents premium/discount as a framework for judging relative price within a defined range. It can be used as contextual information, but it does not determine every institutional transaction or guarantee better entries. The Premium & Discount framework is ICT's answer to the question every trader asks: "Is this a good price to enter?"`,
+    intro: `ICT presents premium/discount as a framework for describing price location within a defined range. It can be used as context, but it does not identify institutional positioning, establish objective value, or answer by itself whether an entry is favorable. Combine it with a defined setup and test whether it adds value to the trading plan.`,
     sections: [
       {
-        title: 'The Core Principle: Price Is Always Relative',
-        content: `Here is the fundamental insight: there is no such thing as an objectively "good" or "bad" price. Price is only good or bad RELATIVE to a range. A price that is cheap in one context is expensive in another.\n\nICT uses the Fibonacci retracement tool not to predict reversal levels — but to define premium and discount zones within any swing range.\n\nHere's how it works:\n• Identify a significant swing low and swing high (or high to low for bearish)\n• Draw a Fibonacci from the swing low to the swing high\n• The 50% level (equilibrium) divides the range in half\n• Everything ABOVE the 50% = Premium Zone (relatively higher within the range)\n• Everything BELOW the 50% = Discount Zone (relatively lower within the range)\n\nThis is a commonly taught ICT framing of price relative to a dealing range:\n• Traders may study discount areas (below 50%) for potential long setups\n• Traders may study premium areas (above 50%) for potential short setups\n• Actual order flow and future direction cannot be confirmed from premium/discount location alone\n\nThis framework is intended to help traders compare price relative to a range; it does not establish that retail traders consistently enter at extremes or that institutions systematically take the opposite side.`,
+        title: 'Price Relative to a Defined Range',
+        content: `In the premium/discount framework, price is classified as relatively high or low with reference to a chosen range; this is a location convention, not an objective valuation of the asset. A price that is lower within one range may still be high relative to a different range or timeframe.\n\nSome ICT traders use Fibonacci retracement levels to define premium and discount zones within a selected swing range. Those zones describe location; they do not predict reversal by themselves.\n\nHere's one way to define the range:\n• Identify a significant swing low and swing high (or high to low for bearish)\n• Draw a Fibonacci from the swing low to the swing high\n• The 50% level (equilibrium) divides the range in half\n• Everything ABOVE the 50% = Premium Zone (relatively higher within the range)\n• Everything BELOW the 50% = Discount Zone (relatively lower within the range)\n\nThis is a commonly taught ICT framing of price relative to a dealing range:\n• Traders may study discount areas (below 50%) for potential long setups\n• Traders may study premium areas (above 50%) for potential short setups\n• Actual order flow and future direction cannot be confirmed from premium/discount location alone\n\nThis framework is intended to help traders compare price relative to a range; it does not establish that retail traders consistently enter at extremes or that institutions systematically take the opposite side.`,
         highlight: '📌 Study guideline: Some ICT traders use discount/premium as a directional filter. Treat it as one contextual input and test whether it improves your entries.',
       },
       {
         title: 'The Optimal Trade Entry (OTE)',
-        content: `In some ICT teachings, the Optimal Trade Entry (OTE) is a retracement zone placed within a defined premium or discount range. One common version uses three Fibonacci levels:\n\nFor a BULLISH OTE (buy zone in discount):\n• 62% retracement — start of the OTE zone\n• 70.5% retracement — the deepest sweet spot\n• 79% retracement — the outer limit of the OTE zone\n\nIf price retraces into the defined 62–79% zone after a bullish BOS, an ICT trader using this OTE version may consider it a candidate entry area. The retracement does not itself establish a valid entry, institutional buying or a successful reversal; apply the model's other conditions and invalidation rules.\n\nThese levels are part of the ICT OTE framework. Claims about institutional re-entry or consistent demand at a specific Fibonacci level are theoretical and should be tested rather than treated as established market mechanics.\n\nFor a BEARISH OTE (sell zone in premium):\n• 62% retracement of a swing high to low\n• 70.5% level\n• 79% level\n\nThe OTE is not a guarantee; within the ICT framework it is commonly studied as a potential entry zone, and its performance should be tested. It must be combined with a liquidity sweep, a Fair Value Gap or Order Block, and alignment with the higher timeframe narrative.`,
+        content: `In some ICT teachings, the Optimal Trade Entry (OTE) is a retracement zone placed within a defined premium or discount range. One common version uses three Fibonacci levels:\n\nFor a BULLISH OTE (buy zone in discount):\n• 62% retracement — start of the OTE zone\n• 70.5% retracement — the deepest sweet spot\n• 79% retracement — the outer limit of the OTE zone\n\nIf price retraces into the defined 62–79% zone after a bullish BOS, an ICT trader using this OTE version may consider it a candidate entry area. The retracement does not itself establish a valid entry, institutional buying or a successful reversal; apply the model's other conditions and invalidation rules.\n\nThese levels are part of the ICT OTE framework. Claims about institutional re-entry or consistent demand at a specific Fibonacci level are theoretical and should be tested rather than treated as established market mechanics.\n\nFor a BEARISH OTE (sell zone in premium):\n• 62% retracement of a swing high to low\n• 70.5% level\n• 79% level\n\nThe OTE is not a guarantee; within the ICT framework it is commonly studied as a potential entry zone, and its performance should be tested. Some OTE variants combine a liquidity sweep, an FVG or Order Block reference, and higher-timeframe context. Define each filter in advance and measure whether it adds value rather than assuming every OTE setup must use the same checklist.`,
         highlight: '📌 The OTE zone is 62%-79% of a Fibonacci retracement. Within the ICT framework, this zone is commonly studied as a potential entry area rather than evidence that "smart money" is re-entering. Define your entry and invalidation rules in advance and test them rather than assuming the zone should be traded.',
       },
       {
         title: 'Premium and Discount Arrays — The Full Spectrum',
-        content: `Within the premium and discount framework, ICT identifies specific price delivery arrays — zones that the framework treats as potential reaction areas. From most premium to most discount:\n\nPREMIUM ARRAYS (selling opportunities):\n1. Old Highs / Buy-Side Liquidity (BSL) — most premium\n2. Bearish Order Blocks\n3. Bearish Fair Value Gaps (FVGs)\n4. Equilibrium (50%) — the dividing line\n5. Bullish Fair Value Gaps\n6. Bullish Order Blocks\n7. Old Lows / Sell-Side Liquidity (SSL) — most discount\n\nThis spectrum provides a way to organize potential resistance in premium and support in discount; actual reactions vary by instrument, timeframe, and market conditions.\n\nUnderstanding this spectrum can help organize setups by context. An old SSL combined with bullish OB/FVG confluence may be treated as a higher-confluence example within this framework, but it does not establish the highest-quality outcome or guarantee undervaluation.`,
+        content: `Within the premium/discount framework, traders may group ICT price arrays by their location relative to a chosen dealing range. The outline below is one common way to organize candidate references from higher-price to lower-price context; it is not a validated ranking of predictive power or trade quality:\n\nPOTENTIAL PREMIUM CONTEXT (above the range's 50% equilibrium):\n• Prior highs / buy-side liquidity references\n• Bearish Order Blocks, under a chosen OB definition\n• Bearish Fair Value Gaps, under a chosen FVG definition\n\nEQUILIBRIUM:\n• The 50% level divides the defined range; it is not, by itself, a buy or sell signal.\n\nPOTENTIAL DISCOUNT CONTEXT (below the range's 50% equilibrium):\n• Bullish Fair Value Gaps, under a chosen FVG definition\n• Bullish Order Blocks, under a chosen OB definition\n• Prior lows / sell-side liquidity references\n\nThe relative ordering of these references inside premium or discount is convention-dependent. Their price location can help describe context, but does not imply a specific reaction, identify the best entry, or show that the market is overvalued or undervalued. A prior low overlapping a bullish OB/FVG is a possible confluence condition to define and test—not proof of a higher-quality trade.`,
         highlight: '📌 The premium/discount spectrum organizes zones by their position in a range. Extremes can be studied as potential reaction areas, but reversal probability varies with market conditions.',
       },
       {
         title: 'Applying Premium & Discount Across Timeframes',
-        content: `The premium/discount framework is fractal — it applies at every timeframe simultaneously. This is where ICT's multi-timeframe analysis becomes powerful.\n\nThe process:\n1. Weekly chart: Identify the major swing high and low. Is price in weekly premium or discount?\n2. Daily chart: Identify the daily swing. Is price in daily premium or discount?\n3. 4H chart: Same analysis\n4. 1H/15M: Find your entry within the OTE\n\nSome traders look for greater confluence when multiple timeframes agree:\n• Weekly: Discount (bullish bias)\n• Daily: Discount (bullish bias)\n• 4H: Pullback into discount after BOS\n• 1H/15M: OTE entry with FVG or OB\n\nWhen multiple ranges show discount, the framework may provide additional context for a potential long setup. This does not reveal what institutional traders are doing or guarantee that price is at the cheapest possible level.\n\nThe opposite alignment can be studied as premium context for potential short setups; it should not be treated as an exclusive sell condition.`,
+        content: `Some traders apply the premium/discount convention to ranges on more than one timeframe. Each timeframe can produce a different swing selection and different premium/discount location, so the results are not a single objective reading that applies identically everywhere.\n\nThe process:\n1. Weekly chart: Identify the major swing high and low. Is price in weekly premium or discount?\n2. Daily chart: Identify the daily swing. Is price in daily premium or discount?\n3. 4H chart: Same analysis\n4. 1H/15M: Find your entry within the OTE\n\nSome traders look for greater confluence when multiple timeframes agree:\n• Weekly: Discount (bullish bias)\n• Daily: Discount (bullish bias)\n• 4H: Pullback into discount after BOS\n• 1H/15M: OTE entry with FVG or OB\n\nWhen multiple ranges show discount, the framework may provide additional context for a potential long setup. This does not reveal what institutional traders are doing or guarantee that price is at the cheapest possible level.\n\nThe opposite alignment can be studied as premium context for potential short setups; it should not be treated as an exclusive sell condition.`,
         highlight: '📌 Multi-timeframe discount alignment can provide additional confluence in this framework. It does not guarantee institutional backing or a trading outcome.',
       },
       {
         title: 'Common Mistakes with Premium & Discount',
-        content: `Even traders who understand the concept make critical errors in application:\n\nMistake 1 — Wrong swing selection:\nThe range you draw determines everything. Using the wrong swing high/low gives you the wrong premium/discount zones. Use a recent, meaningful swing that fits the range and timeframe you are analyzing; compare alternative swing selections when testing the framework.\n\nMistake 2 — Ignoring the higher timeframe:\nA lower-timeframe discount signal can conflict with a higher-timeframe premium context. Higher-timeframe context may carry more weight in this framework, but the appropriate hierarchy should be tested.\n\nMistake 3 — Entering at equilibrium:\nThe 50% level is not a buy or sell zone — it's neutral. Many traders try to enter at exactly 50% and get chopped up. The ICT OTE framework commonly uses a 62% starting level; this is a framework convention rather than evidence that 62% is inherently superior.\n\nMistake 4 — Abandoning the concept during strong trends:\nIn a very strong uptrend, price sometimes only retraces to the 38.2% or 50% level before continuing. In these cases, the OTE (62-79%) may not be reached. Don't force the framework — if price gives you a clear signal at a shallower retracement with a valid order block, take it.\n\nMistake 5 — No directional bias:\nWithin this framework, traders often combine premium/discount with a directional context from market structure. The exact sequence and filter can be tested rather than treated as mandatory.`,
+        content: `Even traders who understand the concept make critical errors in application:\n\nMistake 1 — Wrong swing selection:\nThe range you draw determines everything. Using the wrong swing high/low gives you the wrong premium/discount zones. Use a recent, meaningful swing that fits the range and timeframe you are analyzing; compare alternative swing selections when testing the framework.\n\nMistake 2 — Ignoring the higher timeframe:\nA lower-timeframe discount signal can conflict with a higher-timeframe premium context. Higher-timeframe context may carry more weight in this framework, but the appropriate hierarchy should be tested.\n\nMistake 3 — Treating equilibrium as an entry signal:\nThe 50% level is the equilibrium reference in this framework, not an entry signal by itself. If your model uses it as an entry condition, define the trigger and invalidation and test it rather than assuming the level is inherently reliable or unreliable. The ICT OTE framework commonly uses a 62% starting level; this is a framework convention rather than evidence that 62% is inherently superior.\n\nMistake 4 — Changing the entry rule after the setup is missed:\nPrice may reverse or continue before reaching the defined OTE zone. That is a possible missed setup, not a reason to add a new entry rule after seeing the outcome. If a separate shallower-retracement setup belongs to your prewritten plan, define and test it as a separate variant, including invalidation and risk. Otherwise, record no trade under the OTE rules.\n\nMistake 5 — No directional bias:\nWithin this framework, traders often combine premium/discount with a directional context from market structure. The exact sequence and filter can be tested rather than treated as mandatory.`,
         highlight: '📌 Swing selection affects a premium/discount analysis. Define what qualifies as the reference swing before reviewing outcomes, and apply that rule consistently during testing.',
       },
     ],
@@ -572,10 +578,10 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
     duration: '25 min read',
     category: 'Execution',
     imageCaption: 'Examples of ICT entry rules that traders can define, test and adapt',
-    intro: `Having all the concepts in your head means nothing if you don't know HOW to combine them into a concrete trade entry. ICT entry models are structured, repeatable frameworks for defining potential entries. Their rules can be precise, but meeting the conditions does not guarantee a high-probability or profitable outcome.`,
+    intro: `Knowing individual ICT concepts is not the same as having a complete entry plan. Entry models combine selected conditions into a potential setup; define the rules clearly and remember that meeting them does not guarantee a profitable outcome.`,
     sections: [
       {
-        title: 'The Foundation: What Makes a Valid ICT Entry',
+        title: 'The Foundation: How to Define a Testable ICT Entry',
         content: `One commonly taught ICT entry checklist includes the following candidate conditions; no single list is a universal requirement for every strategy:\n\n1. CONTEXT — Define higher-timeframe conditions if the model uses them; specify how neutral or conflicting context affects a trade.\n\n2. REFERENCE LEVEL/TRIGGER — If the model requires a sweep, define the level and what counts as a break; a sweep alone does not prove a reversal.\n\n3. CONFIRMATION — Define displacement or structure conditions when the model requires them; do not assume every reversal must be impulsive.\n\n4. ENTRY — Specify whether and how FVG, OB or OTE references matter to this model, and state the exact entry trigger.\n\n5. INVALIDATION — Set the stop from a written invalidation rule; a beyond-sweep stop is one option when the model calls for it.\n\n6. EXIT — Define target selection in advance; a liquidity level is one possible target, not a required destination.\n\nWhen these six elements are present, the example matches this lesson's checklist. Traders can define their own minimum requirements and test whether each element adds value.`,
         highlight: '📌 One example ICT checklist is HTF bias + liquidity sweep + displacement + entry array + clear target. Treat these as testable criteria rather than universal requirements.',
       },
@@ -587,7 +593,7 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
       {
         title: 'Entry Model 2: The Order Block Entry',
         content: `ILLUSTRATIVE ORDER-BLOCK MODEL:\nSome ICT traders label the last opposing candle before a strong directional move as an Order Block. To test an OB entry, define which candle qualifies, whether the reference is the candle body or full range, the entry trigger, stop/invalidation and target.\n\nSome models study the first return to a marked OB or use a retracement such as its midpoint. Neither a touch nor a trade through the zone has a universal meaning; write down exactly what constitutes entry, mitigation and invalidation for the strategy being tested.`,
-        highlight: '📌 📌 Some ICT traders prioritize the first return to an OB. Define the entry, invalidation and management rules in advance and validate them with historical data.',
+        highlight: '📌 Some ICT traders prioritize the first return to an OB. Define the entry, invalidation and management rules in advance and validate them with historical data.',
       },
       {
         title: 'Entry Model 3: The Silver Bullet',
@@ -596,14 +602,14 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
       },
       {
         title: 'Entry Model 4: The Breaker Block',
-        content: `Some ICT models label an Order Block that price trades through as a potential Breaker candidate; the label does not prove liquidity was consumed. Within this ICT interpretation, a former OB may be marked as a potential role-reversal zone; it does not necessarily become support or resistance after a break.\n\nHOW A BREAKER FORMS:\n• A Bullish OB exists\n• Price sweeps THROUGH the OB (structure breaks)\n• Within the ICT model, the former OB may be marked as a Bearish Breaker candidate\n• Price pulls back to this zone — it now acts as resistance\n\nTHE SEQUENCE (Bearish Breaker):\nStep 1 — Former Bullish OB swept through\nStep 2 — HTF must be bearish\nStep 3 — Price pulls back UP to the Breaker\nStep 4 — Look for rejection (bearish FVG or LTF ChoCH)\nStep 5 — Enter short at the Breaker\nStep 6 — Stop: above the Breaker zone\nStep 7 — Target: next SSL below\n\nWithin ICT terminology, Breakers are studied as failed Order Blocks that may change role; claims about “exhausted liquidity” are an interpretation and should be tested.`,
+        content: `Some ICT models label an Order Block that price trades through as a potential Breaker candidate. The label describes a chosen price-action classification; it does not prove liquidity was consumed or guarantee that the former zone will change role on a retest.\n\nILLUSTRATIVE BEARISH BREAKER VARIANT:\n1. Define a candidate bullish OB using a consistent candle and range rule.\n2. Specify in advance what counts as a violation (for example, a wick through the zone or a candle close beyond it).\n3. If the model requires it, assess higher-timeframe context as a separately defined filter rather than a universal requirement.\n4. Define the retest and rejection condition, if any, using observable price rules such as a specified FVG or lower-timeframe structure condition.\n5. If the full entry trigger occurs, apply the model's predefined stop/invalidation and target rules. A stop above the zone and a target at a lower liquidity reference are possible rules, not instructions that fit every setup.\n\nPrice may not retest, may continue through the former zone, or may react without meeting the entry rule. Test the complete variant—including failed and missed setups—rather than assuming a role reversal or a required “exhausted liquidity” mechanism.`,
         highlight: '📌 In ICT terminology a Breaker is a failed-OB reference some traders interpret as a possible role reversal; define confirmation and invalidation rather than assuming a flip.',
       },
     ],
     quiz: [
-      { q: 'Which list matches the example checklist in this lesson?', options: ['Chart pattern, indicator, news, volume, trend', 'HTF bias, liquidity sweep, displacement, entry array, stop and target', 'Support, resistance, RSI, MACD, volume', 'Fibonacci, MA, candlestick, trend, time'], answer: 1 },
-      { q: 'The Silver Bullet 10:00 AM window closes at?', options: ['10:30 AM', '11:30 AM', '11:00 AM', '12:00 PM'], answer: 2 },
-      { q: 'What happens when an Order Block is swept through?', options: ['It becomes stronger', 'It disappears', 'It becomes a Breaker Block', 'Nothing changes'], answer: 2 },
+      { q: 'Which option best summarizes this lesson’s example checklist, without making it a universal requirement?', options: ['Chart pattern, indicator, news, volume, trend', 'HTF context, a defined trigger and entry, invalidation, exit and risk rules', 'Support, resistance, RSI, MACD, volume', 'Fibonacci, MA, candlestick, trend, time'], answer: 1 },
+      { q: 'For the Silver Bullet example variant defined as 10:00–11:00 AM New York time, when does that window close?', options: ['10:30 AM', '11:30 AM', '11:00 AM', '12:00 PM'], answer: 2 },
+      { q: 'In some ICT variants, how may an Order Block be classified after price violates it?', options: ['It must become a stronger OB', 'It can never be used again', 'As a candidate Breaker Block under a defined rule, without guaranteed polarity change', 'It always reverses price'], answer: 2 },
     ],
   },
   9: {
@@ -628,7 +634,7 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
       },
       {
         title: 'False Flag and Seek & Destroy',
-        content: `ICT teachings use terms such as False Flag and Seek & Destroy to describe deceptive or range-bound price behavior around particular sessions or days.\n\nFor a test, define:\n• The day or session being studied\n• The reference range\n• What counts as the false move\n• What confirms the subsequent direction\n• The target and invalidation\n\nA Friday that behaves differently from the rest of the week is not automatically a Seek & Destroy or TGIF pattern. The label should only be applied when the predefined conditions are present.`,
+        content: `ICT teachings use terms such as False Flag and Seek & Destroy as labels for certain price sequences, including apparent failed moves or range-bound behavior around particular sessions or days. These labels describe an interpretation of price behavior; a chart alone cannot establish deliberate deception or manipulation by market participants.\n\nFor a test, define:\n• The day or session being studied\n• The reference range\n• What counts as the false move\n• What confirms the subsequent direction\n• The target and invalidation\n\nA Friday that behaves differently from the rest of the week is not automatically a Seek & Destroy or TGIF pattern. The label should only be applied when the predefined conditions are present.`,
         highlight: '📌 Narrative labels are useful only when they become measurable rules. Do not convert an interesting chart story into a trading rule without testing it.',
       },
       {
@@ -660,7 +666,7 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
     sections: [
       {
         title: 'SMT Between Correlated Pairs',
-        content: `Start with two markets that have a defensible relationship, such as EURUSD and GBPUSD or NAS100 and S&P 500.\n\nMark comparable swing highs and lows on both charts. A bullish SMT example occurs when one market makes a lower low while the correlated market fails to make a corresponding lower low. A bearish example is the inverse.\n\nThe key is comparison: both markets must be viewed over the same relevant time window and swing definition.`,
+        content: `Start with two markets that have a defensible relationship, such as EURUSD and GBPUSD or NAS100 and S&P 500.\n\nMark comparable swing highs and lows on both charts. For a positively related pair, a bullish SMT example is one market making a lower low while the other fails to make a corresponding lower low; a bearish example is one market making a higher high while the other fails to confirm that high. These labels assume the pair is expected to move in the same direction. For an inverse pair, such as gold versus the dollar index, compare opposite-direction expectations instead (for example, whether a gold higher high is accompanied by a corresponding dollar-index lower low). Identify the instrument being traded and define in advance how the mismatch maps to a bullish or bearish hypothesis; do not apply same-direction rules mechanically to an inverse pair.\n\nThe key is comparison: both markets must be viewed over the same relevant time window and swing definition.`,
         highlight: '📌 SMT is a non-confirmation between related markets. It is not proof that institutions are buying or selling at a specific level.',
       },
       {
@@ -671,7 +677,7 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
       {
         title: 'SMT With Indices',
         content: `For index traders, NAS100 and S&P 500 are a common pair to study. Compare equivalent swing points rather than simply comparing whether one chart is higher or lower.\n\nA practical workflow:\n1. Establish the higher-timeframe level or liquidity reference.\n2. Mark the corresponding swing on both indices.\n3. Check whether one index breaks the prior extreme while the other does not.\n4. Wait for your separate entry model if SMT is only a confirmation filter.\n5. Define invalidation independently of the divergence.`,
-        highlight: '📌 SMT should usually be a confluence or filter, not the complete entry model.',
+        highlight: '📌 Many traders use SMT as a confluence or filter. A standalone SMT strategy can also be tested, but its entry trigger, invalidation and risk rules must be defined separately.',
       },
       {
         title: 'SMT Entry Confirmation',
@@ -698,7 +704,7 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
     duration: '50 min',
     category: 'ICT',
     imageCaption: 'IPDA and Candle Range Theory are educational frameworks for studying time and price behavior; they are not verified descriptions of a market-moving algorithm.',
-    intro: `IPDA (Interbank Price Delivery Algorithm) and Candle Range Theory (CRT) are ICT frameworks for interpreting price delivery, time and liquidity. These ideas can organize chart study, but a chart cannot independently verify the existence, intent or operation of a specific market algorithm.`,
+    intro: `IPDA (Interbank Price Delivery Algorithm) is part of ICT teaching that uses historical price ranges to frame analysis. Candle Range Theory (CRT) is also discussed in ICT-adjacent trading communities, but its attribution and exact rules vary by source; do not assume every CRT variant is an official ICT-authored model. Both can organize chart study, but a chart cannot independently verify a specific market algorithm, participant intent or a reliable trading edge.`,
     sections: [
       {
         title: 'IPDA and the 20/40/60-Day Lookback',
@@ -712,7 +718,7 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
       },
       {
         title: 'Candle Range Theory (CRT)',
-        content: `CRT is commonly taught around a range-forming candle and the idea that a later candle may sweep one side of that range before delivering toward the opposite side.\n\nA simple test requires fixed rules for:\n• The reference candle timeframe\n• The range high and low\n• What counts as a sweep\n• What confirms the directional move\n• Entry, invalidation and target\n\nThe model should be evaluated across many examples rather than selected from the cleanest historical charts.`,
+        content: `CRT is commonly described as using a chosen candle’s high and low as a reference range. Later price may trade beyond one boundary and then return inside the range, with a possible move toward the opposite boundary. This is a hypothesis, not a dependable prediction: a boundary break can continue as a breakout instead of reversing.\n\nDifferent CRT sources define the setup differently, so specify the version before testing. At minimum, record:\n• The reference candle and timeframe\n• What counts as a sweep (for example, a wick beyond the range or a defined candle-close condition)\n• Whether and when price must reclaim the range\n• The entry trigger, invalidation and target\n• The fixed time horizon for judging whether the opposite boundary was reached\n\nEvaluate all qualifying examples, including failed, losing and unresolved cases; do not select only clean historical charts.`,
         highlight: '📌 CRT becomes testable only when the reference candle, sweep and confirmation rules are defined in advance.',
       },
       {
@@ -740,11 +746,11 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
     duration: '75 min',
     category: 'NEWER',
     imageCaption: 'Newer ICT concepts can be studied as defined frameworks, but labels and interpretations should be checked against the source material and tested before use.',
-    intro: `This module collects newer concepts associated with ICT's 2024-era teaching, including the Venom Model, Propulsion Blocks, Quarterly Shifts, SCOB, QML and weekly profile templates. Because terminology and examples can evolve, treat the source material as the definition of the model and separate documented rules from your own interpretation.`,
+    intro: `This module focuses on newer concepts associated with ICT's 2024-era and later teaching, such as the Venom Model, Propulsion Blocks and Quarterly Shifts, alongside related terms (including SCOB and QML) that may have different origins or naming conventions. Because terminology and examples can evolve, treat each source's model definitions carefully and separate documented rules from your own interpretation.`,
     sections: [
       {
         title: 'Venom Model',
-        content: `The Venom Model is a time-based ICT framework that combines session context, liquidity and price delivery into a defined setup sequence. When studying it, record the exact session window, liquidity condition, displacement or structure condition, entry trigger, invalidation and target from the source material you are following.\n\nDo not add a rule simply because it appears to improve historical examples. If you modify the model, label it as your own variant and test it separately.`,
+        content: `The Venom Model is taught with a defined reference range and a post-range liquidity-sweep hypothesis, but public explainers do not consistently specify the same range. Some describe an 08:00–09:30 New York-time pre-open range; other explainers describe a 09:30–10:00 New York-time opening range with a later sweep. These are different model specifications, not interchangeable times in one universal rule. Choose a named source/version before testing, and record its instrument, reference window, time-zone/daylight-saving convention, sweep/reclaim rule, displacement or structure condition, entry trigger, invalidation, target and outcome horizon. A sweep can fail or continue as a breakout rather than reverse.\n\nDo not add a rule simply because it appears to improve historical examples. If you modify the model, label it as your own variant and test it separately.`,
         highlight: '📌 Keep the published model and your personal variation separate. Otherwise you cannot tell which rules produced your results.',
       },
       {
@@ -759,7 +765,7 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
       },
       {
         title: 'SCOB and QML',
-        content: `SCOB (Silver Bullet Order Block) and QML (Quasi Market Level) are newer terminology that can be incorporated into an ICT study process.\n\nFor either concept, preserve the source definition and then create a checklist: location, structure, liquidity, trigger, invalidation and target. If your definition differs from the source, document the difference.`,
+        content: `SCOB is commonly expanded as Single Candle Order Block in ICT-oriented reference material, while QML is often used for a Quasimodo pattern or level in broader price-action and SMC discussions. The labels do not imply that the concepts share the same origin or source series, and educators may define their rules differently.\n\nFor either concept, preserve the source definition and then create a checklist: location, structure, liquidity, trigger, invalidation and target. If your definition differs from the source, document the difference.`,
         highlight: '📌 New terminology is not automatically a new edge. Define it precisely, then test whether it adds information beyond your existing model.',
       },
       {
@@ -806,7 +812,7 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
       },
       {
         title: 'Inducement and the SMC Trade Framework',
-        content: `Inducement is commonly used for a price feature that attracts traders before a larger move. Because intent cannot be observed directly, use it as a chart hypothesis rather than a statement about what participants were thinking.\n\nA complete SMC workflow can be written as:\n1. Higher-timeframe context\n2. Liquidity reference\n3. Structure condition\n4. Setup zone\n5. Entry trigger\n6. Invalidation\n7. Target\n8. Risk and review rules\n\nEvery component should be testable independently.`,
+        content: `Inducement is commonly used for a price feature that attracts traders before a larger move. Because intent cannot be observed directly, use it as a chart hypothesis rather than a statement about what participants were thinking.\n\nA complete SMC workflow can be written as:\n1. Higher-timeframe context\n2. Liquidity reference\n3. Structure condition\n4. Setup zone\n5. Entry trigger\n6. Invalidation\n7. Target\n8. Risk and review rules\n\nWhere feasible, test each component's incremental contribution against the same baseline. Then test the combined workflow as a whole, because filters can interact and a component that helps alone may not improve the combined model.`,
         highlight: '📌 SMC becomes a system only when context, setup, trigger, invalidation, target and risk are all written as rules.',
       },
     ],
@@ -819,7 +825,7 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
   14: {
     id: 14,
     title: 'Top-Down Analysis',
-    subtitle: 'From Monthly context to 1-minute execution',
+    subtitle: 'From Higher-Timeframe Context to Model-Specific Execution',
     level: 'Intermediate',
     duration: '45 min',
     category: 'ICT & SMC',
@@ -837,19 +843,19 @@ Some ICT materials describe Tuesday as a possible day for a weekly Judas Swing, 
         highlight: '📌 A useful daily narrative contains conditions that can invalidate it. A directional statement without invalidation is only a prediction.',
       },
       {
-        title: '4H Confirmation',
-        content: `Use the 4H chart to refine structure between the daily narrative and intraday execution. Check whether the current swing sequence supports the scenario and where the nearest meaningful liquidity sits.\n\nDo not keep changing the higher-timeframe narrative every time a small 4H candle moves. Define the swing structure before the session begins and update it only when your structural rule is actually met.`,
+        title: '4H Context (If Used by the Model)',
+        content: `If your strategy includes a 4H layer, use it to refine the relationship between daily context and intraday execution. Check the swing sequence and candidate reference levels under your predefined rules. A 4H chart is not a required confirmation layer for every ICT-style model.\n\nDo not keep changing the higher-timeframe narrative every time a small 4H candle moves. Define the swing structure before the session begins and update it only when your structural rule is actually met.`,
         highlight: '📌 The 4H layer should refine the scenario, not create endless narrative changes during execution.',
       },
       {
-        title: '15M and 5M Entry Timeframes',
-        content: `Once context is established, move down to the execution environment. On 15M and 5M, mark session highs/lows, local liquidity and the setup zone.\n\nA lower-timeframe entry should have its own trigger—such as a defined displacement, structure shift or FVG rule. The exact trigger depends on the strategy being tested.\n\nAvoid entering merely because price reached a higher-timeframe level.`,
+        title: 'Intraday Entry Timeframes (Model-Specific)',
+        content: `For strategies that use intraday execution, choose and document the lower timeframes in advance; 15M and 5M are examples, not universal requirements. Mark session highs/lows and candidate setup zones only when they belong to the written model.\n\nA lower-timeframe entry should have its own trigger—such as a defined displacement, structure shift or FVG rule. The exact trigger and timeframe depend on the strategy being tested.\n\nAvoid entering merely because price reached a higher-timeframe level.`,
         highlight: '📌 A higher-timeframe level is context. The lower-timeframe trigger is what turns the context into a testable entry.',
       },
       {
         title: 'Full Trade Walkthrough',
-        content: `A complete top-down routine can be written as:\n1. Monthly/weekly: major context and liquidity\n2. Daily: current narrative and scenarios\n3. 4H: structural confirmation\n4. 15M: session structure and setup zone\n5. 5M/1M: entry trigger and invalidation\n6. Trade: predefined target and risk\n7. Review: screenshot every layer and record whether each rule was present\n\nIf any required layer is missing, mark the trade as “not qualified” instead of filling the gap with hindsight.`,
-        highlight: '📌 The strongest top-down process is the one you can repeat without changing definitions after seeing the result.',
+        content: `A complete top-down routine can be written as:\n1. Monthly/weekly: major context and liquidity\n2. Daily: current narrative and scenarios\n3. 4H: structural context, if used by the model\n4. 15M: session structure and setup zone, if required\n5. 5M/1M: entry trigger and invalidation\n6. Trade: predefined target and risk\n7. Review: screenshot the relevant layers and record whether each prewritten condition was present\n\nUse only the layers required by the strategy you are testing. If a required condition is missing, mark the setup as “not qualified” rather than filling the gap with hindsight; do not assume every ICT-style strategy must use all of these timeframes.`,
+        highlight: '📌 A useful top-down process is one you can apply consistently without changing definitions after seeing the result.',
       },
     ],
     quiz: [

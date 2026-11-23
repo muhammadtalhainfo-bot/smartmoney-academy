@@ -4,18 +4,18 @@ import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 
 const PROP_FIRMS = [
-  { name:'FTMO', logo:'🏆', color:'#F59E0B', tag:'MOST POPULAR', tagColor:'#F59E0B', desc:'FTMO offers simulated trading accounts of up to $200,000; current program terms and eligibility apply.', payout:'80–90% profit split', challenge:'See FTMO for current Challenge pricing', link:'https://ftmo.com/', features:['2-step evaluation','10% max drawdown','No time limit','Bi-weekly payouts'] },
-  { name:'The Funded Trader', logo:'💎', color:'#8B5CF6', tag:'HIGH PAYOUT', tagColor:'#8B5CF6', desc:"Offers evaluation programs and profit-sharing terms that can change; review the provider&apos;s current terms before purchasing.", payout:'Up to 90% profit split', challenge:'See provider for current Challenge pricing', link:'https://thefundedtrader.com/', features:['Standard & Royal plans','Unlimited trading days','Weekend holding','Scaling options vary by program; see provider for current limits'] },
-  { name:'E8 Funding', logo:'⚡', color:'#10B981', tag:'BEGINNER FRIENDLY', tagColor:'#10B981', desc:"Offers evaluation programs and payout terms; rules and pricing should be checked on the provider's current site.", payout:'80% profit split', challenge:'See provider for current Challenge pricing', link:'https://e8funding.com/', features:['1-step option available','No minimum trading days','Easy scaling plan','See provider for current drawdown rules'] },
-  { name:'Apex Trader Funding', logo:'🚀', color:'#3B82F6', tag:'FUTURES FOCUS', tagColor:'#3B82F6', desc:"A futures-focused evaluation provider with published payout rules; compare its current terms with your requirements.", payout:'100% first $25K then 90%', challenge:'See provider for current evaluation pricing', link:'https://apextraderfunding.com/', features:['1-step evaluation','Futures only','100% first payout','Multiple accounts'] },
+  { name:'FTMO', logo:'🏆', color:'#F59E0B', textColor:'#FCD34D', tag:'MOST POPULAR', tagColor:'#F59E0B', desc:'FTMO offers simulated trading accounts of up to $200,000; current program terms and eligibility apply.', payout:'80–90% profit split', challenge:'See FTMO for current Challenge pricing', link:'https://ftmo.com/', features:['2-step evaluation','10% max drawdown','No time limit','Bi-weekly payouts'] },
+  { name:'The Funded Trader', logo:'💎', color:'#8B5CF6', textColor:'#C4B5FD', tag:'HIGH PAYOUT', tagColor:'#8B5CF6', desc:"Offers evaluation programs and profit-sharing terms that can change; review the provider&apos;s current terms before purchasing.", payout:'Up to 90% profit split', challenge:'See provider for current Challenge pricing', link:'https://thefundedtrader.com/', features:['Standard & Royal plans','Unlimited trading days','Weekend holding','Scaling options vary by program; see provider for current limits'] },
+  { name:'E8 Funding', logo:'⚡', color:'#10B981', textColor:'#6EE7B7', tag:'BEGINNER FRIENDLY', tagColor:'#10B981', desc:"Offers evaluation programs and payout terms; rules and pricing should be checked on the provider's current site.", payout:'80% profit split', challenge:'See provider for current Challenge pricing', link:'https://e8funding.com/', features:['1-step option available','No minimum trading days','Easy scaling plan','See provider for current drawdown rules'] },
+  { name:'Apex Trader Funding', logo:'🚀', color:'#3B82F6', textColor:'#93C5FD', tag:'FUTURES FOCUS', tagColor:'#3B82F6', desc:"A futures-focused evaluation provider with published payout rules; compare its current terms with your requirements.", payout:'100% first $25K then 90%', challenge:'See provider for current evaluation pricing', link:'https://apextraderfunding.com/', features:['1-step evaluation','Futures only','100% first payout','Multiple accounts'] },
 ];
 const BROKERS = [
-  { name:'Pepperstone', logo:'🌶️', color:'#EF4444', desc:'Offers Standard and Razor account structures; spreads and commissions vary by instrument, account type and jurisdiction.', spread:'FX Razor spreads start from 0.0 points; see current instrument-specific pricing.', platforms:'MT4, MT5, cTrader', link:'https://pepperstone.com/' },
-  { name:'IC Markets', logo:'📊', color:'#E8C547', desc:'Offers multiple account types and trading platforms; execution conditions, spreads and commissions vary by account and jurisdiction.', spread:'See broker for current instrument-specific spreads', platforms:'MT4, MT5, cTrader', link:'https://icmarkets.com/' },
+  { name:'Pepperstone', logo:'🌶️', color:'#EF4444', textColor:'#FCA5A5', desc:'Offers Standard and Razor account structures; spreads and commissions vary by instrument, account type and jurisdiction.', spread:'FX Razor spreads start from 0.0 points; see current instrument-specific pricing.', platforms:'MT4, MT5, cTrader', link:'https://pepperstone.com/' },
+  { name:'IC Markets', logo:'📊', color:'#E8C547', textColor:'#FDE68A', desc:'Offers multiple account types and trading platforms; execution conditions, spreads and commissions vary by account and jurisdiction.', spread:'See broker for current instrument-specific spreads', platforms:'MT4, MT5, cTrader', link:'https://icmarkets.com/' },
 ];
 const TOOLS = [
-  { name:'TradingView', logo:'📈', color:'#2962FF', desc:'A charting platform that supports drawing tools, indicators and multi-market analysis.', price:'Plans and pricing vary; see TradingView for current pricing.', link:'https://www.tradingview.com/', highlight:'CHARTING' },
-  { name:'ICT Mentorship (Official)', logo:'🎓', color:'#E8C547', desc:"Michael Huddleston's official YouTube channel. Free content — use alongside ICT Flow.", price:'Free on YouTube', link:'https://youtube.com/@InnerCircleTrader', highlight:'FREE' },
+  { name:'TradingView', logo:'📈', color:'#2962FF', textColor:'#93C5FD', desc:'A charting platform that supports drawing tools, indicators and multi-market analysis.', price:'Plans and pricing vary; see TradingView for current pricing.', link:'https://www.tradingview.com/', highlight:'CHARTING' },
+  { name:'ICT Mentorship (Official)', logo:'🎓', color:'#E8C547', textColor:'#FDE68A', desc:"Michael Huddleston's official YouTube channel. Free content — use alongside ICT Flow.", price:'Free on YouTube', link:'https://youtube.com/@InnerCircleTrader', highlight:'FREE' },
 ];
 
 const styles = {
@@ -66,7 +66,7 @@ function ResourceGrid({title,subtitle,items,primary}) {
         <div style={{display:'flex',alignItems:'center',gap:'12px',marginBottom:'16px'}}>
           <div style={{width:'48px',height:'48px',borderRadius:'12px',background:item.color+'15',border:'1px solid '+item.color+'30',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'24px'}}>{item.logo}</div>
           <div className="font-display" style={{fontSize:'24px',color:'white',letterSpacing:'.05em'}}>{item.name}</div>
-          {item.highlight && <span style={{marginLeft:'auto',fontFamily:'DM Mono,monospace',fontSize:'10px',color:item.color,letterSpacing:'.1em'}}>{item.highlight}</span>}
+          {item.highlight && <span style={{marginLeft:'auto',fontFamily:'DM Mono,monospace',fontSize:'10px',color:item.textColor || item.color,letterSpacing:'.1em'}}>{item.highlight}</span>}
         </div>
         <p style={{color:'rgba(255,255,255,.55)',fontSize:'14px',lineHeight:1.6,marginBottom:'20px'}}>{item.desc}</p>
         <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'8px',marginBottom:'20px'}}>
@@ -81,7 +81,7 @@ function ResourceGrid({title,subtitle,items,primary}) {
         </div>
         <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',paddingTop:'16px',borderTop:'1px solid var(--border)'}}>
           <span style={{fontFamily:'DM Mono,monospace',fontSize:'11px',color:'rgba(255,255,255,.6)',letterSpacing:'.1em'}}>OFFICIAL LINK</span>
-          <span style={{fontFamily:'DM Mono,monospace',fontSize:'12px',color:item.color,letterSpacing:'.1em'}}>GET {primary.toUpperCase()} →</span>
+          <span style={{fontFamily:'DM Mono,monospace',fontSize:'12px',color:item.textColor || item.color,letterSpacing:'.1em'}}>GET {primary.toUpperCase()} →</span>
         </div>
       </a>)}
     </div>

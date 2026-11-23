@@ -384,9 +384,12 @@ function TradeForm({ initial, onSave, onCancel, error }) {
               <input aria-label="Screenshot URL" value={form.screenshot_url} onChange={e => set('screenshot_url', e.target.value)}
                 placeholder="https://..." style={inp} maxLength={2048} inputMode="url" />
               {form.screenshot_url && isSafeHttpUrl(form.screenshot_url) && (
-                <img
+                <Image
+                  unoptimized
                   src={form.screenshot_url.trim()}
                   alt="Trade chart preview"
+                  width={800}
+                  height={120}
                   loading="lazy"
                   referrerPolicy="no-referrer"
                   onError={e => { e.currentTarget.style.display = 'none'; }}
