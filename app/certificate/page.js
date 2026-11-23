@@ -77,7 +77,7 @@ export default function CertificatePage() {
               {accessError.toLowerCase().includes('sign in') ? 'SIGN IN REQUIRED' : 'CERTIFICATE UNAVAILABLE'}
             </div>
             <p style={{ color: '#D0D6DE', margin: '0 auto 24px', maxWidth: '520px', lineHeight: 1.7 }}>{accessError}</p>
-            <Link href={accessError.toLowerCase().includes('sign in') ? '/auth' : '/courses'} style={{ padding: '14px 32px', background: 'linear-gradient(135deg,#E8C547,#8A6B28)', borderRadius: '10px', color: 'black', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.1em' }}>
+            <Link href={accessError.toLowerCase().includes('sign in') ? '/auth' : '/courses'} style={{ padding: '14px 32px', background: 'linear-gradient(135deg,#E8C547,#C49A22)', borderRadius: '10px', color: 'black', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.1em' }}>
               {accessError.toLowerCase().includes('sign in') ? 'SIGN IN →' : 'CONTINUE LEARNING →'}
             </Link>
           </div>
@@ -118,7 +118,7 @@ export default function CertificatePage() {
             </div>
 
             <div style={{ textAlign: 'center' }}>
-              <Link href="/courses" style={{ display: 'inline-block', padding: '14px 36px', background: 'linear-gradient(135deg,#E8C547,#8A6B28)', borderRadius: '10px', color: 'black', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600 }}>
+              <Link href="/courses" style={{ display: 'inline-block', padding: '14px 36px', background: 'linear-gradient(135deg,#E8C547,#C49A22)', borderRadius: '10px', color: 'black', textDecoration: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600 }}>
                 CONTINUE LEARNING →
               </Link>
             </div>
@@ -139,7 +139,7 @@ export default function CertificatePage() {
 
               {/* Logo */}
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', marginBottom: '32px' }}>
-                <div style={{ width: '40px', height: '40px', borderRadius: '8px', background: 'linear-gradient(135deg,#E8C547,#8A6B28)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Bebas Neue, sans-serif', color: 'black', fontSize: '22px' }}>S</div>
+                <div style={{ width: '40px', height: '40px', borderRadius: '8px', background: 'linear-gradient(135deg,#E8C547,#C49A22)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Bebas Neue, sans-serif', color: 'black', fontSize: '22px' }}>S</div>
                 <div style={{ textAlign: 'left' }}>
                   <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '18px', letterSpacing: '0.15em', color: '#1a1a1a' }}>ICT FLOW</div>
                   <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', color: '#6B4F16', letterSpacing: '0.2em' }}>ICT & SMART MONEY EDUCATION</div>
@@ -203,7 +203,7 @@ export default function CertificatePage() {
 
             {/* ACTIONS */}
             <div className="no-print" style={{ display: 'flex', gap: '12px', justifyContent: 'center', marginTop: '32px' }}>
-              <button type="button" onClick={() => window.print()} style={{ padding: '14px 32px', background: 'linear-gradient(135deg,#E8C547,#8A6B28)', borderRadius: '10px', color: 'black', border: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600, cursor: 'pointer' }}>
+              <button type="button" onClick={() => window.print()} style={{ padding: '14px 32px', background: 'linear-gradient(135deg,#E8C547,#C49A22)', borderRadius: '10px', color: 'black', border: 'none', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', fontWeight: 600, cursor: 'pointer' }}>
                 🖨️ PRINT / SAVE PDF
               </button>
               <Link href="/dashboard" style={{ padding: '14px 32px', background: 'transparent', borderRadius: '10px', color: 'rgba(255,255,255,0.6)', border: '1px solid rgba(255,255,255,0.6)', fontFamily: 'DM Mono, monospace', fontSize: '12px', letterSpacing: '0.12em', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
