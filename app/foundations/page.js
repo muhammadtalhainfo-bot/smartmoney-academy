@@ -352,7 +352,7 @@ export default function FoundationsPage() {
             ].map((s, i) => (
               <div key={i}>
                 <div className="font-display" style={{ fontSize: '38px', color: '#E8C547', lineHeight: 1 }}>{s.value}</div>
-                <div style={{ ...mono, fontSize: '10px', color: '#808080', letterSpacing: '0.12em', textTransform: 'uppercase', marginTop: '4px' }}>{s.label}</div>
+                <div style={{ ...mono, fontSize: '10px', color: '#A6AFBB', letterSpacing: '0.12em', textTransform: 'uppercase', marginTop: '4px' }}>{s.label}</div>
               </div>
             ))}
           </div>
@@ -451,7 +451,7 @@ export default function FoundationsPage() {
                     </button>
                     <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexShrink: 0 }}>
                       <button type="button" aria-pressed={isDone} onClick={() => toggleCompleted(topic.id)}
-                        style={{ background: isDone ? 'rgba(52,211,153,0.1)' : 'rgba(255,255,255,0.04)', border: `1px solid ${isDone ? 'rgba(52,211,153,0.3)' : 'rgba(255,255,255,0.18)'}`, borderRadius: '8px', padding: '6px 12px', ...mono, fontSize: '10px', color: isDone ? '#34D399' : '#808080', cursor: 'pointer' }}>
+                        style={{ background: isDone ? 'rgba(52,211,153,0.1)' : 'rgba(255,255,255,0.04)', border: `1px solid ${isDone ? 'rgba(52,211,153,0.3)' : 'rgba(255,255,255,0.18)'}`, borderRadius: '8px', padding: '6px 12px', ...mono, fontSize: '10px', color: isDone ? '#34D399' : '#A6AFBB', cursor: 'pointer' }}>
                         {isDone ? '✓ DONE' : 'MARK DONE'}
                       </button>
                       <button
