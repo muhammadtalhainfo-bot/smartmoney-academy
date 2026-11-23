@@ -109,6 +109,20 @@ expectContrast('#000000', '#C49A22', 'Black button text at darkest gold gradient
 // Small SVG labels must be fully legible. The two large low-opacity words are
 // intentional background watermarks, not informational labels.
 const banner = read('app/components/ModuleBanner.js');
+
+// Text placed on the solid gold badge surfaces must use dark foreground ink.
+// These labels were previously gold-on-gold (approximately 1:1 contrast).
+for (const [label, snippet] of [
+  ['BOS', 'fontSize="8" fill="#080808">BOS</text>'],
+  ['ORDER', 'fontSize="8.5" fill="#080808">ORDER</text>'],
+  ['BLOCK', 'fontSize="8.5" fill="#080808">BLOCK</text>'],
+  ['CHoCH', 'fontSize="8" fill="#080808">CHoCH</text>'],
+  ['SMART MONEY', 'fontSize="8" fill="#080808">SMART MONEY</text>'],
+]) {
+  expectIncludes(banner, snippet, 'Gold badge label ' + label + ' foreground');
+}
+expectContrast('#080808', '#E8C547', 'Dark text on solid gold SVG badges');
+
 const textNodes = [...banner.matchAll(/<text\b[\s\S]*?<\/text>/g)].map((match) => match[0]);
 let checkedSvgLabels = 0;
 for (const node of textNodes) {
