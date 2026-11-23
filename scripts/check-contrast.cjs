@@ -63,6 +63,36 @@ expectContrast('#D4A843', '#070707', 'Muted gold label');
 expectIncludes(homepage, "color:'#A5B4FC', bg:'rgba(99,102,241,0.06)'", 'Homepage ICT phase label');
 const homepagePhaseBackground = blend('#6366F1', '#0F0F0F', 0.06);
 expectContrast('#A5B4FC', homepagePhaseBackground, 'Homepage ICT phase label on tinted indigo card');
+
+expectContrast('#A5B4FC', homepagePhaseBackground, 'Homepage ICT phase label on tinted indigo card');
+
+// Strategy category labels and model names are informational text, not just
+// decorative brand accents. Verify both card and lightly tinted card surfaces.
+const strategies = read('app/strategies/page.js');
+expectIncludes(strategies, "color: '#C4B5FD'", 'AMD strategy label contrast');
+expectIncludes(strategies, "color: '#A5B4FC'", 'Midnight Open strategy label contrast');
+const strategyTintedSurface = blend('#FFFFFF', '#111111', 0.03);
+expectContrast('#C4B5FD', '#111111', 'AMD strategy label');
+expectContrast('#C4B5FD', strategyTintedSurface, 'AMD strategy label on tinted card');
+expectContrast('#A5B4FC', '#111111', 'Midnight Open strategy label');
+expectContrast('#A5B4FC', strategyTintedSurface, 'Midnight Open strategy label on tinted card');
+
+// Uncompleted action controls remain readable on their translucent dark cards.
+const foundations = read('app/foundations/page.js');
+const mentorship = read('app/mentorship/page.js');
+expectIncludes(foundations, "color: isDone ? '#34D399' : '#A6AFBB'", 'Foundation mark-done control');
+expectIncludes(mentorship, "color: isWatched ? '#34D399' : '#A6AFBB'", 'Mentorship mark-watched control');
+if (foundations.includes('#808080') || mentorship.includes('#808080')) {
+  errors.push('Foundation or mentorship text still uses low-contrast gray #808080.');
+}
+const mutedCardSurface = blend('#FFFFFF', '#080808', 0.04);
+expectContrast('#A6AFBB', mutedCardSurface, 'Uncompleted foundation and mentorship controls');
+
+// Legacy inline color selectors must match React's serialized style attributes.
+const globalStyles = read('app/globals.css');
+expectIncludes(globalStyles, '[style*="color:#808080"]', 'Serialized gray text override selector');
+expectIncludes(globalStyles, '[style*="color:#445060"]', 'Serialized slate text override selector');
+expectIncludes(globalStyles, '[style*="color:#7A8EA8"]', 'Serialized blue-gray text override selector');
 expectContrast('#FCA5A5', '#0C0C0C', 'Admin destructive action');
 
 // Out-of-plan feature descriptions remain readable; the marker communicates
