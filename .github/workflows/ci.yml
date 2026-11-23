@@ -81,6 +81,9 @@ jobs:
       - name: Validate blog article schema and breadcrumbs
         run: node scripts/check-blog-article-schema.cjs
 
+      - name: Validate WCAG text contrast for shared UI treatments
+        run: node scripts/check-contrast.cjs
+
       - name: Validate AdSense publisher and ads.txt consistency
         run: node scripts/check-adsense-config.cjs
 
