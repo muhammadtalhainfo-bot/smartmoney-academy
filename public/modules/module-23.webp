@@ -25,7 +25,7 @@
   <rect x="78" y="20" width="36" height="22" fill="rgba(52,211,153,0.12)" stroke="#34D399" stroke-width="0.8" rx="3"/>
   <text x="96" y="35" text-anchor="middle" font-size="10" font-family="monospace" fill="#34D399" font-weight="bold">NEW</text>
   <!-- Chart visual area -->
-  <g transform="translate(0, 20)"><line x1="100" y1="200" x2="100" y2="80" stroke="#D4A843" stroke-width="1" opacity="0.3"/><line x1="100" y1="200" x2="420" y2="200" stroke="#D4A843" stroke-width="1" opacity="0.3"/><text x="115" y="110" font-size="9" fill="#D4A843" opacity="0.5" font-family="monospace">PRICE</text><text x="370" y="215" font-size="9" fill="#D4A843" opacity="0.5" font-family="monospace">TIME</text><circle cx="180" cy="150" r="4" fill="#D4A843" opacity="0.8"/><circle cx="260" cy="110" r="4" fill="#D4A843" opacity="0.8"/><circle cx="340" cy="130" r="4" fill="#D4A843" opacity="0.8"/><line x1="160" y1="200" x2="160" y2="80" stroke="#D4A843" stroke-width="0.5" opacity="0.2" stroke-dasharray="3,3"/><line x1="260" y1="200" x2="260" y2="80" stroke="#D4A843" stroke-width="0.5" opacity="0.2" stroke-dasharray="3,3"/></g>
+  <g transform="translate(0, 20)"><line x1="100" y1="200" x2="100" y2="80" stroke="#D4A843" stroke-width="1" opacity="0.3"/><line x1="100" y1="200" x2="420" y2="200" stroke="#D4A843" stroke-width="1" opacity="0.3"/><text x="115" y="110" font-size="9" fill="#FDE68A" font-family="monospace">PRICE</text><text x="370" y="215" font-size="9" fill="#FDE68A" font-family="monospace">TIME</text><circle cx="180" cy="150" r="4" fill="#D4A843" opacity="0.8"/><circle cx="260" cy="110" r="4" fill="#D4A843" opacity="0.8"/><circle cx="340" cy="130" r="4" fill="#D4A843" opacity="0.8"/><line x1="160" y1="200" x2="160" y2="80" stroke="#D4A843" stroke-width="0.5" opacity="0.2" stroke-dasharray="3,3"/><line x1="260" y1="200" x2="260" y2="80" stroke="#D4A843" stroke-width="0.5" opacity="0.2" stroke-dasharray="3,3"/></g>
   <!-- Bottom text area -->
   <rect x="0" y="220" width="500" height="80" fill="rgba(8,8,8,0.9)"/>
   <line x1="20" y1="222" x2="480" y2="222" stroke="#D4A843" stroke-width="0.5" opacity="0.3"/>
@@ -36,5 +36,5 @@
   <!-- Subtitle -->
   <text x="60" y="268" font-size="11" font-family="monospace" fill="#D4A843" opacity="0.7" letter-spacing="0.5">ICT · ADVANCED · 6 LESSONS</text>
   <!-- ICT Flow branding -->
-  <text x="480" y="292" text-anchor="end" font-size="9" font-family="monospace" fill="#D4A843" opacity="0.3" letter-spacing="1">ICTFLOW.COM</text>
+  <text x="480" y="292" text-anchor="end" font-size="9" font-family="monospace" fill="#D4A843" letter-spacing="1" opacity="0.8">ICTFLOW.COM</text>
 </svg>
