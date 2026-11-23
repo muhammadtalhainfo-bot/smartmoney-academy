@@ -60,6 +60,9 @@ expectIncludes(lessonClient, "color: '#D4A843'", 'Lesson section index');
 expectIncludes(admin, "color: '#D4A843'", 'Admin module index');
 expectIncludes(admin, "color: '#FCA5A5'", 'Admin destructive action');
 expectContrast('#D4A843', '#070707', 'Muted gold label');
+expectIncludes(homepage, "color:'#A5B4FC', bg:'rgba(99,102,241,0.06)'", 'Homepage ICT phase label');
+const homepagePhaseBackground = blend('#6366F1', '#0F0F0F', 0.06);
+expectContrast('#A5B4FC', homepagePhaseBackground, 'Homepage ICT phase label on tinted indigo card');
 expectContrast('#FCA5A5', '#0C0C0C', 'Admin destructive action');
 
 // Out-of-plan feature descriptions remain readable; the marker communicates
