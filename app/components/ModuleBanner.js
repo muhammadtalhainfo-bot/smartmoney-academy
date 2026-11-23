@@ -76,7 +76,7 @@ const BANNERS = {
       ))}
       {/* BOS label */}
       <rect x={130} y={h-100} width={44} height={16} rx="3" fill="rgba(232,197,71,0.95)" stroke={GOLD} strokeWidth="0.7" strokeOpacity="0.4" />
-      <text x={152} y={h-88} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={GOLD} fillOpacity="0.9">BOS</text>
+      <text x={152} y={h-88} textAnchor="middle" fontFamily="monospace" fontSize="8" fill="#080808">BOS</text>
       {/* ChoCH */}
       <line x1={62} y1={h-28} x2={62} y2={h-42} stroke={GOLD} strokeWidth="0.8" strokeOpacity="0.35" strokeDasharray="3,3" />
       <text x={68} y={h-32} fontFamily="monospace" fontSize="7" fill={GOLD} fillOpacity="0.9">ChoCH</text>
@@ -139,8 +139,8 @@ const BANNERS = {
       <GridLines w={w} h={h} spacing={36} opacity={0.03} />
       {/* OB zone */}
       <rect x={20} y={55} width={70} height={35} rx="3" fill="rgba(232,197,71,0.95)" stroke={GOLD} strokeWidth="1.2" strokeOpacity="0.7" />
-      <text x={55} y={70} textAnchor="middle" fontFamily="monospace" fontSize="8.5" fill={GOLD} fillOpacity="0.9">ORDER</text>
-      <text x={55} y={82} textAnchor="middle" fontFamily="monospace" fontSize="8.5" fill={GOLD} fillOpacity="0.9">BLOCK</text>
+      <text x={55} y={70} textAnchor="middle" fontFamily="monospace" fontSize="8.5" fill="#080808">ORDER</text>
+      <text x={55} y={82} textAnchor="middle" fontFamily="monospace" fontSize="8.5" fill="#080808">BLOCK</text>
       {/* Price moves up from OB */}
       <polyline points={`90,72 130,60 155,35 185,20 215,28 ${w-20},15`}
         fill="none" stroke="#34D399" strokeWidth="1.6" strokeOpacity="0.75" />
@@ -343,7 +343,7 @@ const BANNERS = {
       {/* CHoCH line */}
       <line x1={w/2} y1={48} x2={w/2} y2={h-48} stroke={GOLD} strokeWidth="1" strokeOpacity="0.4" strokeDasharray="4,3" />
       <rect x={w/2-20} y={h/2-10} width={40} height={20} rx="3" fill="rgba(232,197,71,0.95)" stroke={GOLD} strokeWidth="0.8" strokeOpacity="0.5" />
-      <text x={w/2} y={h/2+4} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={GOLD} fillOpacity="0.9">CHoCH</text>
+      <text x={w/2} y={h/2+4} textAnchor="middle" fontFamily="monospace" fontSize="8" fill="#080808">CHoCH</text>
     </>
   ),
 
@@ -394,7 +394,7 @@ const BANNERS = {
       <polyline points={`18,${h*0.6} 55,${h*0.5} 95,${h*0.55} 135,${h*0.38} 175,${h*0.42} 215,${h*0.3} ${w-20},${h*0.25}`}
         fill="none" stroke={GOLD} strokeWidth="1.6" strokeOpacity="0.7" />
       <rect x={20} y={h*0.28} width={55} height={18} rx="3" fill="rgba(232,197,71,0.95)" stroke={GOLD} strokeWidth="0.8" strokeOpacity="0.5" />
-      <text x={47} y={h*0.28+12} textAnchor="middle" fontFamily="monospace" fontSize="8" fill={GOLD} fillOpacity="0.9">SMART MONEY</text>
+      <text x={47} y={h*0.28+12} textAnchor="middle" fontFamily="monospace" fontSize="8" fill="#080808">SMART MONEY</text>
     </>
   ),
 
