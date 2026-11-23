@@ -260,7 +260,7 @@ export default function HomePage() {
           </div>
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(200px, 1fr))', gap:'12px' }}>
             {[
-              { time:'8PM–12AM ET', zone:'Asian', phase:'POSSIBLE ACCUMULATION', desc:'Some ICT narratives label this window as accumulation. The range is a reference; it does not verify positioning or require a particular phase.', color:'#6366F1', bg:'rgba(99,102,241,0.06)' },
+              { time:'8PM–12AM ET', zone:'Asian', phase:'POSSIBLE ACCUMULATION', desc:'Some ICT narratives label this window as accumulation. The range is a reference; it does not verify positioning or require a particular phase.', color:'#A5B4FC', bg:'rgba(99,102,241,0.06)' },
               { time:'2AM–5AM ET', zone:'London', phase:'POSSIBLE MANIPULATION', desc:'Some ICT narratives interpret an opposite-direction move here as a possible Judas Swing or sweep. The pattern and participant intent cannot be confirmed from a chart.', color:'#F87171', bg:'rgba(248,113,113,0.06)' },
               { time:'7AM–12PM ET', zone:'New York AM', phase:'NY AM SESSION', desc:'This is a broad morning-session reference; exact New York killzone windows vary by ICT source. Test the selected window and rules for the instrument.', color:'#E8C547', bg:'rgba(232,197,71,0.06)' },
               { time:'10AM–12PM ET', zone:'London Close', phase:'LONDON CLOSE', desc:'Some traders study activity around the London close as context. Price may continue, reverse or range; reversal is not a fixed phase.', color:'#34D399', bg:'rgba(52,211,153,0.06)' },
