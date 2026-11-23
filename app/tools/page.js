@@ -287,7 +287,7 @@ export default function ToolsPage() {
           <div style={{ background: '#0D0D0D', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '16px', padding: '28px 32px', marginBottom: '28px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '16px' }}>
               <div>
-                <div className="font-mono-c" style={{ fontSize: '11px', color: 'rgba(212,168,67,0.6)', letterSpacing: '2px', marginBottom: '6px', textTransform: 'uppercase' }}>
+                <div className="font-mono-c" style={{ fontSize: '11px', color: '#D4A843', letterSpacing: '2px', marginBottom: '6px', textTransform: 'uppercase' }}>
                   {tool.subtitle}
                 </div>
                 <h2 className="font-display" style={{ fontSize: '32px', color: 'white', marginBottom: '8px' }}>
